@@ -1,19 +1,28 @@
 <?php
 	include("./config.php");
 	include("./functions.php");
+
+
+	$mysqli = new mysqli(HOST, USERNAME, PWD, DB);
+	/* check connection */
+	if (mysqli_connect_errno()) {
+		printf("<BR>Αποτυχία Σύνδεσης: %s\n", mysqli_connect_error());
+		exit();
+	}
 ?>
 
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Flight Scanner V1.0</title>
 	<link rel="icon" type="image/png" href="./images/plane_02.png"/>
 	
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link rel="stylesheet" href="./styles.css" type="text/css" />
-	
+
 	<script>
 		$(function() {
 			var dateFormat = "dd/mm/yy",
@@ -144,8 +153,8 @@
 
 <body>
 	<?php 
-	  ini_set("allow_url_fopen", 1); 
-	  session_start() 
+		ini_set("allow_url_fopen", 1); 
+		session_start()
 	?>
 	
 	<script>
@@ -161,31 +170,103 @@
 				b.innerHTML = "Show Request";
 			}
 		}
+	
+		function waydirection(choice) {
+			var returnDate = document.getElementById("return_date");
+			
+			if (choice === 1) {
+				returnDate.type = "hidden";
+				returnDate.value = "";
+				/*returnDate.required = false;*/
+				returnDate.removeAttribute('required');
+			} else {
+				returnDate.type = "text";
+				returnDate.required = true;
+			}
+		}
 	</script>
 	
 	<div class="topright"><button id='brequest' onclick="showRequest()">Show Request</button></div>
 	
 	<div class=request>
-	<form method="post" action=""> 
-		<label class="control-label">Από: </label>
-		<input type="text" id="origin_descr" name="origin_descr" placeholder="Πόλη ή αεροδρόμιο" required class="form-textbox" value="<?php 
-			if (isset($_POST['origin_descr'])){
-				echo($_POST['origin_descr']); }
+	<form method="post" action="" >
+		<table>
+		<tr><td colspan=3>
+			<div class="widget">
+			<label class="container">Απλή μετάβαση
+				<input type="radio" id="direction" name="direction" value=1 onclick="waydirection(1)" <?php
+					if (isset($_POST['direction'])){
+						if($_POST['direction']==1) echo("checked");
+					} else { 
+						echo("checked");
+					}
+					?>> 
+				<span class="checkmark"></span>
+			</label>
+			<label class="container">Με επιστροφή
+				<input type="radio" id="direction" name="direction" value=2 onclick="waydirection(2)" <?php
+					if (isset($_POST['direction'])){
+						if($_POST['direction']==2) echo("checked");
+					}
+					?>>
+				<span class="checkmark"></span>
+			</label>
+			</div>
+		</td></tr>
+		<tr><td>
+			<!--<label class="control-label">Από: </label>-->
+			<input type="text" id="origin_descr" required name="origin_descr" placeholder="Αναχώρηση από ..." class="form-textbox" value="<?php 
+				if (isset($_POST['origin_descr'])){
+					echo($_POST['origin_descr']); }
+				else { 
+					echo('');
+				}
+			?>"/>
+		</td><td>
+		<!--<label class="control-label">Ημ/νία αναχώρησης: </label>-->
+			<input type="text" id="departure_date" required name="departure_date" size=6 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-textbox" value="<?php 
+				if (isset($_POST['departure_date'])){
+					echo($_POST['departure_date']); 
+				} else {
+					echo("");
+				}
+			?>"/>
+		</td><td rowspan=3>
+			<input type="submit" value="Αναζήτηση" name="submit" class="btn" id="searchButton" />
+		</td></tr>
+		<tr><td>
+			<!--<label class="control-label">Σε: </label>-->
+			<input type="text" id="destination_descr" required name="destination_descr" placeholder="Άφιξη σε ..." class="form-textbox" value="<?php 
+				if (isset($_POST['destination_descr'])){
+					echo($_POST['destination_descr']); }
+				else { 
+					echo('');
+				}
+			?>"/>
+		</td><td>
+		<!--<label class="control-label">Ημ/νία επιστροφής: </label>-->
+		<input type="<?php 
+			if (isset($_POST['direction'])){
+				if($_POST['direction']==2) {
+					echo("text");
+				} else {
+					echo("hidden");
+				}
+			} else {
+				echo("hidden");
+			}?>" id="return_date" name="return_date" size=6 placeholder="Επιστροφή" autocomplete="off"  class="form-textbox form-date" value="<?php 
+			if (isset($_POST['return_date'])){
+				echo($_POST['return_date']); }
 			else { 
 				echo('');
 			}
 			?>"/>
+		</td></tr>
+		</table>
+		
 		<input type="hidden" id="origin" name="origin" required value="<?php 
 			if (isset($_POST['origin'])){
 				echo($_POST['origin']); }
-			else { 
-				echo('');
-			}
-			?>"/>
-		<label class="control-label">Σε: </label>
-		<input type="text" id="destination_descr" name="destination_descr" placeholder="Πόλη ή αεροδρόμιο" required class="form-textbox" value="<?php 
-			if (isset($_POST['destination_descr'])){
-				echo($_POST['destination_descr']); }
 			else { 
 				echo('');
 			}
@@ -197,26 +278,8 @@
 				echo('');
 			}
 			?>"/>
-		<hr>
-		<label class="control-label">Ημ/νία αναχώρησης: </label>
-		<input type="text" id="departure_date" required name="departure_date" size=6 placeholder="" required autocomplete="off" readonly class="form-date form-textbox" value="<?php 
-			if (isset($_POST['departure_date'])){
-				echo($_POST['departure_date']); }
-			else { 
-				echo('');
-			}
-			?>"/>
-		<label class="control-label">Ημ/νία επιστροφής: </label>
-		<input type="text" id="return_date" name="return_date" size=6 placeholder="" required autocomplete="off" readonly class="form-textbox form-date" value="<?php 
-			if (isset($_POST['return_date'])){
-				echo($_POST['return_date']); }
-			else { 
-				echo('');
-			}
-			?>"/>
-
-		<br/>
-		<input type="submit" value="Αναζήτηση" name="submit" class="btn" id="searchButton" />
+		
+		
 	</form>
 	</div>
 	
@@ -239,7 +302,7 @@
 				$request .= '&return_date='.$freturn_date;
 			}
 
-			echo "<div id='apirequest' style='display:none;' class=request>Request url: <br><a target='_BLANK' href='".htmlentities($request)."'>".htmlentities($request)."</a></b></div><br>";
+			echo "<div id='apirequest' style='display:none;'>Request url: <br><a target='_BLANK' href='".htmlentities($request)."'>".htmlentities($request)."</a></b></div><br>";
 			$response  = @file_get_contents($request);
 			$code=getHttpCode($http_response_header);
 			$jsonobj  = json_decode($response);
@@ -250,7 +313,7 @@
 				echo "Δεν βρέθηκαν πτήσεις με τα κριτήρια που δώσατε!";
 			} elseif ($code == 200) {
 				$flights_sum = 0;
-				echo "<br><u>Νόμισμα:</u>".$jsonobj->currency;
+				//echo "<br><u>Νόμισμα:</u>".$jsonobj->currency;
 				
 				echo('<table id="results" border=1>');
 				?>
@@ -279,7 +342,6 @@
 				<?php
 				foreach($jsonobj->results as $results)
 				{
-					
 					echo('<tr>');
 					
 					foreach($results->itineraries as $itineraries) {
@@ -388,9 +450,7 @@
 						}
 						
 						echo('<tr><td colspan=14 style="background: lightblue; line-height:0.01;">&nbsp;</td></tr>');						
-						
 					}
-					
 				}
 				echo('</table>');
 				
@@ -400,6 +460,9 @@
 							alert('Βρέθηκαν ".$flights_sum." πτήσεις με τα κριτήρια που δώσατε');
 					   </script>";
 			}	
-		} ?>
+		} else {
+			unset($_POST);
+			$_POST = array();
+		}?>
 </body>
 </html>
