@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8">
-	<title>Flight Scanner</title>
+	<title>Flight Scanner V1.0</title>
 	<link rel="icon" type="image/png" href="./images/plane_02.png"/>
 	
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -232,6 +232,13 @@
 			//echo("<br>4: ".$fdeparture_date);
 			
 			$request = 'https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=3jl39kYzxVtbQA9UWNg9BTV5Su3vLGnu&currency=EUR&origin='.$_POST["origin"].'&number_of_results=250'.'&destination='.$_POST["destination"].'&departure_date='.$fdeparture_date;
+
+ 			if ($_POST["return_date"]!="") {
+				$treturn_date = ((strpos($_POST["return_date"], "-") === true ) ? explode("-", $_POST["return_date"]) : explode("/", $_POST["return_date"]));
+				$freturn_date = $treturn_date[2]."-".$treturn_date[1]."-".$treturn_date[0];
+				$request .= '&return_date='.$freturn_date;
+			}
+
 			echo "<div id='apirequest' style='display:none;' class=request>Request url: <br><a target='_BLANK' href='".htmlentities($request)."'>".htmlentities($request)."</a></b></div><br>";
 			$response  = @file_get_contents($request);
 			$code=getHttpCode($http_response_header);
@@ -247,25 +254,26 @@
 				
 				echo('<table id="results" border=1>');
 				?>
-				<tr><td rowspan=2 align=center>Διάρκεια</td>
-					<td colspan=2 align=center>Αναχώρηση</td>
-					<td colspan=2 align=center>Άφιξη</td>
-					<td colspan=3 align=center>Πτήση</td>
-					<td colspan=2 rowspan=2 align=center>Θέση</td>
-					<td rowspan=2 align=center>Διαθέσιμες<br>θέσεις</td>
-					<td colspan=3 align=center>Συν. Κόστος</td>
+				<tr>
+				    <th rowspan=2>Διάρκεια</th>
+					<th colspan=2>Αναχώρηση</th>
+					<th colspan=2>Άφιξη</th>
+					<th colspan=3>Πτήση</th>
+					<th colspan=2 rowspan=2 >Θέση</th>
+					<th rowspan=2>Διαθέσιμες<br>θέσεις</th>
+					<th colspan=3>Συν. Κόστος</th>
 				</tr>
-				<tr><td align=center>Αεροδρόμιο</td>
-					<td align=center>Ώρα</td>
-					<td align=center>Αεροδρόμιο</td>
-					<td align=center>Ώρα</td>
-					<td align=center>Airline</td>
-					<td align=center>Αριθμός</td>
-					<td align=center>Αεροσκάφος</td>
-					<td align=center>Total Price</td>
-					<td align=center>Total Fare</td>
-					<td align=center>Tax</td>
-					
+				<tr>
+				    <th>Αεροδρόμιο</th>
+					<th>Ώρα</th>
+					<th>Αεροδρόμιο</th>
+					<th>Ώρα</th>
+					<th>Airline</th>
+					<th>Αριθμός</th>
+					<th>Αεροσκάφος</th>
+					<th>Total Price</th>
+					<th>Total Fare</th>
+					<th>Tax</th>
 				</tr>
 				
 				<?php
@@ -274,14 +282,18 @@
 					
 					echo('<tr>');
 					
-					
 					foreach($results->itineraries as $itineraries) {
 						$dromologia=count($itineraries->outbound->flights);
 						$duration = explode(":", $itineraries->outbound->duration);
 						
-						echo('<tr><td colspan=14 style="background: lightblue; line-height:0.01">&nbsp;</td></tr><tr>');
+						$totallines=$dromologia;
+                        If(isset($itineraries->inbound)) {
+							$totallines+=count($itineraries->inbound->flights);
+						}	
+						
 						$flights_sum++;
-						echo("<td align=center rowspan=".$dromologia.">".$duration[0]."ώ ".$duration[1]."λ<br>");
+						echo("<td align=center rowspan=".$dromologia."><b>Μετάβαση</b><br>".$duration[0]."ώ ".$duration[1]."λ<br>");
+						
 						if($dromologia == 1) 
 							echo("<b>Απευθείας πτήση</b></td>");
 						else
@@ -290,9 +302,9 @@
 						$index=0;
 						
 						foreach($itineraries->outbound->flights as $flights) {
+
 							if($index > 0) echo("<tr>");
-							
-							
+														
 							echo("<td align=center>".$flights->origin->airport."<br>".find_airport($flights->origin->airport)."</td>");
 							
 							$departure=explode("T", $flights->departs_at);
@@ -318,13 +330,28 @@
 							if($flights->booking_info->seats_remaining==9) $seats=">=9";
 							echo("<td align=center>".$seats."</td>");
 
-							if($index == 0) echo("<td align=center rowspan=".$dromologia.">".$results->fare->total_price."</td>");
-							if($index == 0) echo("<td align=center rowspan=".$dromologia.">".$results->fare->price_per_adult->total_fare."</td>");
-							if($index == 0) echo("<td align=center rowspan=".$dromologia.">".$results->fare->price_per_adult->tax."</td>");
-							if($index > 0) echo("</tr>");
+							if($index == 0) echo("<td align=center rowspan=".$totallines.">".$results->fare->total_price."</td>");
+							if($index == 0) echo("<td align=center rowspan=".$totallines.">".$results->fare->price_per_adult->total_fare."</td>");
+							if($index == 0) echo("<td align=center rowspan=".$totallines.">".$results->fare->price_per_adult->tax."</td>");
+
+							echo("</tr>");
+							
 							$index++;
 						}
+						
 						If(isset($itineraries->inbound)) {
+
+							$dromologia=count($itineraries->inbound->flights);
+							$duration = explode(":", $itineraries->inbound->duration);
+							
+							echo("<td align=center rowspan=".$dromologia."><b>Επιστροφή</b><br>".$duration[0]."ώ ".$duration[1]."λ<br>");
+							if($dromologia == 1) 
+								echo("<b>Απευθείας πτήση</b></td>");
+							else
+								echo("<b>".($dromologia - 1).(($dromologia - 1)>1?" στάσεις":" στάση")."</b></td>");
+							
+							$index=0;
+
 							foreach($itineraries->inbound->flights as $flights) {
 								if($index > 0) echo("<tr>");
 								
@@ -349,20 +376,20 @@
 								echo("<td align=center>".$flights->aircraft."</td>");
 								echo("<td align=center>".$flights->booking_info->travel_class."</td>");
 								echo("<td align=center>".$flights->booking_info->booking_code."</td>");
+
 								$seats=$flights->booking_info->seats_remaining;
 								if($flights->booking_info->seats_remaining==9) $seats=">=9";
 								echo("<td align=center>".$seats."</td>");
 								
-								if($index == 0) echo("<td align=center rowspan=".$dromologia.">".$results->fare->total_price."</td>");
-								if($index == 0) echo("<td align=center rowspan=".$dromologia.">".$results->fare->price_per_adult->total_fare."</td>");
-								if($index == 0) echo("<td align=center rowspan=".$dromologia.">".$results->fare->price_per_adult->tax."</td>");
-								if($index > 0) echo("</tr>");
+								echo("</tr>");
+
 								$index++;
 							}
 						}
+						
+						echo('<tr><td colspan=14 style="background: lightblue; line-height:0.01;">&nbsp;</td></tr>');						
+						
 					}
-					
-					echo('</tr>');
 					
 				}
 				echo('</table>');
