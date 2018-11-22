@@ -9,9 +9,6 @@
 		printf("<BR>Αποτυχία Σύνδεσης: %s\n", mysqli_connect_error());
 		exit();
 	}
-		ini_set("allow_url_fopen", 1); 
-		session_start()
-	
 ?>
 
 <!DOCTYPE html>
@@ -149,50 +146,17 @@
 					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
 				}
 			});			
-		
-		
-			$( "#error-dialog" ).dialog({
-				autoOpen: false,
-				modal: true,
-				buttons: {
-					Ok: function() {
-						$( this ).dialog( "close" );
-					}
-				}
-			});
-		
-		
-			$( "form" ).submit(function( event ) {
-				var flist = "";
-				
-				if ( $( "#origin_descr" ).val() === "" ) { flist += "<li>Αναχώρηση από</li>"; }
-				if ( $( "#destination_descr" ).val() === "" ) { flist += "<li>Άφιξη σε</li>"; }
-				if ( $( "#departure_date" ).val() === "" ) { flist += "<li>Ημ/νία Αναχώρησης</li>"; }
-				
-				var direction = $('input[name=direction]:checked').val();
-				if ( direction === "2" ) { 
-					if ( $( "#return_date" ).val() === "" ) { flist += "<li>Ημ/νία Άφιξης</li>"; }
-				}
-				
-				if (flist === "") {
-					$( "#searching" ).show();
-					return;
-				} else {
-					$( "#error-dialog" ).html( "<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 7px 50px 0;'></span>Δεν έχετε συμπληρώσει όλα τα υποχρεωτικά πεδία:</p><p><ul>" + flist + "</ul></p>" );
-					$( "#error-dialog" ).dialog( "open" );
-
-					event.preventDefault();
-				}
-			});
-			
-			$( "#searching" ).hide();
-		
 		});
 		
 	</script>
 </head>
 
 <body>
+	<?php 
+		ini_set("allow_url_fopen", 1); 
+		session_start()
+	?>
+	
 	<script>
 		function showRequest() {
 			var x = document.getElementById("apirequest");
@@ -213,18 +177,20 @@
 			if (choice === 1) {
 				returnDate.type = "hidden";
 				returnDate.value = "";
+				/*returnDate.required = false;*/
+				returnDate.removeAttribute('required');
 			} else {
 				returnDate.type = "text";
+				returnDate.required = true;
 			}
 		}
-		
 	</script>
 	
 	<div class="topright"><button id='brequest' onclick="showRequest()">Show Request</button></div>
 	
 	<div class=request>
-		<form method="post" action="">
-			<table border=0>
+		<form method="post" action="" >
+			<table>
 			<tr><td colspan=3>
 				<div class="widget">
 				<label class="container">Απλή μετάβαση
@@ -249,7 +215,7 @@
 			</td></tr>
 			<tr><td>
 				<!--<label class="control-label">Από: </label>-->
-				<input type="text" id="origin_descr" name="origin_descr" placeholder="Αναχώρηση από ..." class="form-textbox" value="<?php 
+				<input type="text" id="origin_descr" required name="origin_descr" placeholder="Αναχώρηση από ..." class="form-textbox" value="<?php 
 					if (isset($_POST['origin_descr'])){
 						echo($_POST['origin_descr']); }
 					else { 
@@ -258,7 +224,7 @@
 				?>"/>
 			</td><td>
 			<!--<label class="control-label">Ημ/νία αναχώρησης: </label>-->
-				<input type="text" id="departure_date"  name="departure_date" size=6 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-textbox" value="<?php 
+				<input type="text" id="departure_date" required name="departure_date" size=6 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-textbox" value="<?php 
 					if (isset($_POST['departure_date'])){
 						echo($_POST['departure_date']); 
 					} else {
@@ -270,7 +236,7 @@
 			</td></tr>
 			<tr><td>
 				<!--<label class="control-label">Σε: </label>-->
-				<input type="text" id="destination_descr"  name="destination_descr" placeholder="Άφιξη σε ..." class="form-textbox" value="<?php 
+				<input type="text" id="destination_descr" required name="destination_descr" placeholder="Άφιξη σε ..." class="form-textbox" value="<?php 
 					if (isset($_POST['destination_descr'])){
 						echo($_POST['destination_descr']); }
 					else { 
@@ -296,10 +262,9 @@
 				}
 				?>"/>
 			</td></tr>
-			
 			</table>
 			
-			<input type="hidden" id="origin" name="origin" value="<?php 
+			<input type="hidden" id="origin" name="origin" required value="<?php 
 				if (isset($_POST['origin'])){
 					echo($_POST['origin']); }
 				else { 
@@ -317,16 +282,17 @@
 			
 		</form>
 	</div>
-
-	<div id="error-dialog" title="Έλεγχος πεδίων"></div>
-	<div id="result-dialog" title="Αποτελέσματα αναζήτησης"></div>
-	<div id="searching" class="center-div"></div>
 	
 	<?php
+		//echo $_POST['submit'];
 		if (isset($_POST['submit'])) {
 			
 			$tdeparture_date = ((strpos($_POST["departure_date"], "-") === true ) ? explode("-", $_POST["departure_date"]) : explode("/", $_POST["departure_date"]) );
+			//$fdeparture_date = ((strpos($_POST["departure_date"], "-") === true ) ? "-" : "/" );
+			
 			$fdeparture_date = $tdeparture_date[2]."-".$tdeparture_date[1]."-".$tdeparture_date[0];
+			//echo("<br>3: ".$tdeparture_date[0]);
+			//echo("<br>4: ".$fdeparture_date);
 			
 			$request = 'https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=djnSPkH5LeLwOsA8gbApHjGjdCkaRpAa&currency=EUR&origin='.$_POST["origin"].'&number_of_results=250'.'&destination='.$_POST["destination"].'&departure_date='.$fdeparture_date;
 
@@ -347,6 +313,7 @@
 				echo "Δεν βρέθηκαν πτήσεις με τα κριτήρια που δώσατε!";
 			} elseif ($code == 200) {
 				$flights_sum = 0;
+				//echo "<br><u>Νόμισμα:</u>".$jsonobj->currency;
 				
 				echo('<table id="results" border=1>');
 				?>
@@ -487,34 +454,11 @@
 				}
 				echo('</table>');
 				
-				/*
 				echo "<script>
 							var numobj = document.getElementById('flightsnum');
 							numobj.innerHTML = '<u>ΑΠΟΤΕΛΕΣΜΑΤΑ ΑΝΑΖΗΤΗΣΗΣ:</u> <b>(Βρέθηκαν ' + ".$flights_sum." + ' πτήσεις)</b>';
 							alert('Βρέθηκαν ".$flights_sum." πτήσεις με τα κριτήρια που δώσατε');
 					   </script>";
-				*/
-				echo '<script>
-							$( "#result-dialog" ).dialog({
-								autoOpen: false,
-								modal: true,
-								buttons: {
-									Ok: function() {
-										$( this ).dialog( "close" );
-									}
-								}
-							});
-				
-							$( "#result-dialog" ).html( "<p><span class=\'ui-icon ui-icon-search\' style=\'float:left; margin:0 7px 50px 0;\'></span>Βρέθηκαν <b>'.$flights_sum.'</b> πτήσεις με τα κριτήρια που δώσατε</p><p></p>" );
-							$( "#result-dialog" ).dialog( "open" );
-					   </script>';
-				
-				
-					
-					
-
-					   
-					   
 			}	
 		} else {
 			unset($_POST);
