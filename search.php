@@ -495,6 +495,9 @@
 					   </script>";
 				*/
 				echo '<script>
+							var numobj = document.getElementById("flightsnum");
+							numobj.innerHTML = "<u>ΑΠΟΤΕΛΕΣΜΑΤΑ ΑΝΑΖΗΤΗΣΗΣ:</u> <b>(Βρέθηκαν " + '.$flights_sum.' + " πτήσεις)</b>";
+							
 							$( "#result-dialog" ).dialog({
 								autoOpen: false,
 								modal: true,
