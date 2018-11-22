@@ -149,3 +149,15 @@ label {
   background-size: 300px 300px;
   border-radius: 3px;
 }
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 20px;
+   background-color: #286090;
+   color: white;
+   text-align: center;
+   padding: 5px;
+}

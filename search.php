@@ -511,17 +511,15 @@
 							$( "#result-dialog" ).html( "<p><span class=\'ui-icon ui-icon-search\' style=\'float:left; margin:0 7px 50px 0;\'></span>Βρέθηκαν <b>'.$flights_sum.'</b> πτήσεις με τα κριτήρια που δώσατε</p><p></p>" );
 							$( "#result-dialog" ).dialog( "open" );
 					   </script>';
-				
-				
-					
-					
-
-					   
-					   
 			}	
 		} else {
 			unset($_POST);
 			$_POST = array();
 		}?>
+		
+		
+	<div class="footer">
+	  Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-19
+	</div>
 </body>
 </html>
