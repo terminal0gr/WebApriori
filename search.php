@@ -25,13 +25,17 @@
 
     <link rel="icon" type="image/png" href="./images/plane_02.png"/>
     
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-    <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="./styles.css" type="text/css" />
 
-    <title>Flight Scanner V1.0 beta</title>
+	<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <title>Flight Scanner</title>
 
 	<script>
 		$(function() {
@@ -226,37 +230,35 @@
 
 <body>
 
-    <div class="container-fluid">
-
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark rounded">
-	<a class="navbar-brand" href="#">Flight scanner 1.0</a>
-	<ul class="navbar-nav mr-auto">
-		<li class="nav-item active">
-		<a class="nav-link">Αρχική</a>
-		</li>
-		<li class="nav-item">
-		<a class="nav-link">Αναζήτηση</a>
-		</li>
-	</ul>
-	<ul class="navbar-nav ml-auto">
-		<li class="nav-item">
-		<a class="nav-link">Right Link 1</a>
-		</li>
-		<li class="nav-item dropdown">
-		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">            Dropdown on Right</a>
-		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			<a class="dropdown-item" href="#">Action</a>
-			<a class="dropdown-item" href="#">Another action with a lot of text inside of an item</a>
-		</div>
-		</li>
-	</ul>
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Flight scanner 1.0</a>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="index.php">Αρχική</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active">Αναζήτηση</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link">Εγγραφή</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link">Είσοδος</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link">Έξοδος</a>
+			</li>
+		</ul>
 	</nav>
 
+	<div class="container-fluid">
    
         <div class="float-right"><button class="btn btn-secondary btn-sm" type="button" id='brequest' onclick="showRequest()">Show Request</button></div>
 		
 		<form method="post" action="">
-			<table border=0>
+			<table >
 			<tr><td colspan=3>
 				<div class="form-group">
 					<label >Απλή μετάβαση
@@ -288,7 +290,6 @@
                     }
                 ?>"/>
 			</td><td>
-			<!--<label class="control-label">Ημ/νία αναχώρησης: </label>-->
 				<input type="text" id="departure_date"  name="departure_date" size=6 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-control" value="<?php 
 					if (isset($_POST['departure_date'])){
 						echo($_POST['departure_date']); 
@@ -300,7 +301,6 @@
 				<input type="submit" value="Αναζήτηση" name="submit" class="btn btn-primary" id="searchButton" />
 			</td></tr>
 			<tr><td>
-				<!--<label class="control-label">Σε: </label>-->
 				<input type="text" id="destination_descr"  name="destination_descr" placeholder="Άφιξη σε ..." class="form-control" value="<?php 
 					if (isset($_POST['destination_descr'])){
 						echo($_POST['destination_descr']); }
@@ -554,15 +554,10 @@
 	</div>
 
     <footer>
-	<nav class="navbar fixed-bottom navbar-expand-sm navbar-light">
-		<span class="navbar-text">Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-19</span>
+	<nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
+		<span class="navbar-text ">Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-2019</span>
 	</nav>
 	</footer>
-
-
-<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
 
 </body>
 </html>
