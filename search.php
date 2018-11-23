@@ -9,22 +9,29 @@
 		printf("<BR>Αποτυχία Σύνδεσης: %s\n", mysqli_connect_error());
 		exit();
 	}
-		ini_set("allow_url_fopen", 1); 
-		session_start()
+    
+    ini_set("allow_url_fopen", 1); 
+    session_start()
 	
 ?>
 
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Flight Scanner V1.0</title>
-	<link rel="icon" type="image/png" href="./images/plane_02.png"/>
-	
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<link rel="stylesheet" href="./styles.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="icon" type="image/png" href="./images/plane_02.png"/>
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- <link rel="stylesheet" href="./styles.css" type="text/css" /> -->
+
+    <title>Flight Scanner V1.0 beta</title>
 
 	<script>
 		$(function() {
@@ -220,45 +227,48 @@
 		
 	</script>
 	
-	<div class="topright"><button id='brequest' onclick="showRequest()">Show Request</button></div>
-	
-	<div class=request>
+	    <!-- <div class="topright"><button id='brequest' onclick="showRequest()">Show Request</button></div> -->
+    
+    <!--<div class=request>-->
+    <div class="container-fluid">
+    
+        <div class="float-right"><button class="btn btn-secondary btn-sm" type="button" id='brequest' onclick="showRequest()">Show Request</button></div>
+		
 		<form method="post" action="">
 			<table border=0>
 			<tr><td colspan=3>
-				<div class="widget">
-				<label class="container">Απλή μετάβαση
-					<input type="radio" id="direction" name="direction" value=1 onclick="waydirection(1)" <?php
-						if (isset($_POST['direction'])){
-							if($_POST['direction']==1) echo("checked");
-						} else { 
-							echo("checked");
-						}
-						?>> 
-					<span class="checkmark"></span>
-				</label>
-				<label class="container">Με επιστροφή
-					<input type="radio" id="direction" name="direction" value=2 onclick="waydirection(2)" <?php
-						if (isset($_POST['direction'])){
-							if($_POST['direction']==2) echo("checked");
-						}
-						?>>
-					<span class="checkmark"></span>
-				</label>
+				<div class="form-group">
+					<label >Απλή μετάβαση
+						<input type="radio" id="direction" name="direction" value=1 onclick="waydirection(1)" <?php
+							if (isset($_POST['direction'])){
+								if($_POST['direction']==1) echo("checked");
+							} else { 
+								echo("checked");
+							}
+							?>> 
+						<span class="checkmark"></span>
+					</label>
+                    <label >Με επιστροφή
+						<input type="radio" id="direction" name="direction" value=2 onclick="waydirection(2)" <?php
+							if (isset($_POST['direction'])){
+								if($_POST['direction']==2) echo("checked");
+							}
+							?>>
+						<span class="checkmark"></span>
+					</label>
 				</div>
 			</td></tr>
 			<tr><td>
-				<!--<label class="control-label">Από: </label>-->
-				<input type="text" id="origin_descr" name="origin_descr" placeholder="Αναχώρηση από ..." class="form-textbox" value="<?php 
-					if (isset($_POST['origin_descr'])){
-						echo($_POST['origin_descr']); }
-					else { 
-						echo('');
-					}
-				?>"/>
+				<input type="text" id="origin_descr" name="origin_descr" placeholder="Αναχώρηση από ..." class="form-control" value="<?php 
+                    if (isset($_POST['origin_descr'])){
+                        echo($_POST['origin_descr']); }
+                    else { 
+                        echo('');
+                    }
+                ?>"/>
 			</td><td>
 			<!--<label class="control-label">Ημ/νία αναχώρησης: </label>-->
-				<input type="text" id="departure_date"  name="departure_date" size=6 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-textbox" value="<?php 
+				<input type="text" id="departure_date"  name="departure_date" size=6 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-control" value="<?php 
 					if (isset($_POST['departure_date'])){
 						echo($_POST['departure_date']); 
 					} else {
@@ -266,11 +276,11 @@
 					}
 				?>"/>
 			</td><td rowspan=3>
-				<input type="submit" value="Αναζήτηση" name="submit" class="btn" id="searchButton" />
+				<input type="submit" value="Αναζήτηση" name="submit" class="btn btn-primary" id="searchButton" />
 			</td></tr>
 			<tr><td>
 				<!--<label class="control-label">Σε: </label>-->
-				<input type="text" id="destination_descr"  name="destination_descr" placeholder="Άφιξη σε ..." class="form-textbox" value="<?php 
+				<input type="text" id="destination_descr"  name="destination_descr" placeholder="Άφιξη σε ..." class="form-control" value="<?php 
 					if (isset($_POST['destination_descr'])){
 						echo($_POST['destination_descr']); }
 					else { 
@@ -288,7 +298,7 @@
 					}
 				} else {
 					echo("hidden");
-				}?>" id="return_date" name="return_date" size=6 placeholder="Επιστροφή" autocomplete="off"  class="form-textbox form-date" value="<?php 
+				}?>" id="return_date" name="return_date" size=6 placeholder="Επιστροφή" autocomplete="off"  class="form-control form-date" value="<?php 
 				if (isset($_POST['return_date'])){
 					echo($_POST['return_date']); }
 				else { 
@@ -517,9 +527,10 @@
 			$_POST = array();
 		}?>
 		
-		
-	<div class="footer">
-	  Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-19
-	</div>
+	<footer class="fixed-bottom">
+        <div class="footer-copyright text-center py-3">
+	        Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-19
+        </div>
+    </footer>   
 </body>
 </html>
