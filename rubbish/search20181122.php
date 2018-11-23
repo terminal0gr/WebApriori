@@ -9,33 +9,19 @@
 		printf("<BR>Αποτυχία Σύνδεσης: %s\n", mysqli_connect_error());
 		exit();
 	}
-    
-    ini_set("allow_url_fopen", 1); 
-    session_start()
-	
 ?>
 
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <link rel="icon" type="image/png" href="./images/plane_02.png"/>
-    
-
-    <link rel="stylesheet" href="./styles.css" type="text/css" />
-
-	<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Flight Scanner V1.0</title>
+	<link rel="icon" type="image/png" href="./images/plane_02.png"/>
+	
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-    <title>Flight Scanner</title>
+	<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="./styles.css" type="text/css" />
 
 	<script>
 		$(function() {
@@ -160,46 +146,18 @@
 					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
 				}
 			});			
-		
-		
-			$( "#error-dialog" ).dialog({
-				autoOpen: false,
-				modal: true,
-				buttons: {
-					Ok: function() {
-						$( this ).dialog( "close" );
-					}
-				}
-			});
-		
-		
-			$( "form" ).submit(function( event ) {
-				var flist = "";
-				
-				if ( $( "#origin_descr" ).val() === "" ) { flist += "<li>Αναχώρηση από</li>"; }
-				if ( $( "#destination_descr" ).val() === "" ) { flist += "<li>Άφιξη σε</li>"; }
-				if ( $( "#departure_date" ).val() === "" ) { flist += "<li>Ημ/νία Αναχώρησης</li>"; }
-				
-				var direction = $('input[name=direction]:checked').val();
-				if ( direction === "2" ) { 
-					if ( $( "#return_date" ).val() === "" ) { flist += "<li>Ημ/νία Άφιξης</li>"; }
-				}
-				
-				if (flist === "") {
-					$( "#searching" ).show();
-					return;
-				} else {
-					$( "#error-dialog" ).html( "<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 7px 50px 0;'></span>Δεν έχετε συμπληρώσει όλα τα υποχρεωτικά πεδία:</p><p><ul>" + flist + "</ul></p>" );
-					$( "#error-dialog" ).dialog( "open" );
-
-					event.preventDefault();
-				}
-			});
-			
-			$( "#searching" ).hide();
-		
 		});
+		
+	</script>
+</head>
 
+<body>
+	<?php 
+		ini_set("allow_url_fopen", 1); 
+		session_start()
+	?>
+	
+	<script>
 		function showRequest() {
 			var x = document.getElementById("apirequest");
 			var b = document.getElementById("brequest");
@@ -219,78 +177,54 @@
 			if (choice === 1) {
 				returnDate.type = "hidden";
 				returnDate.value = "";
+				/*returnDate.required = false;*/
+				returnDate.removeAttribute('required');
 			} else {
 				returnDate.type = "text";
+				returnDate.required = true;
 			}
 		}
-		
 	</script>
-
-</head>
-
-<body>
-
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Flight scanner 1.1</a>
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item">
-				<a class="nav-link" href="index.php">Αρχική</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link active">Αναζήτηση</a>
-			</li>
-		</ul>
-		<ul class="navbar-nav ml-auto">
-			<li class="nav-item">
-				<a class="nav-link">Εγγραφή</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link">Είσοδος</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link">Έξοδος</a>
-			</li>
-		</ul>
-	</nav>
-
-	<div class="container">
-   
-        <div class="float-right"><button class="btn btn-secondary btn-sm" type="button" id='brequest' onclick="showRequest()">Show Request</button></div>
-		
-		<form method="post" action="">
-			<table >
+	
+	<div class="topright"><button id='brequest' onclick="showRequest()">Show Request</button></div>
+	
+	<div class=request>
+		<form method="post" action="" >
+			<table>
 			<tr><td colspan=3>
-				<div class="form-group">
-					<label >Απλή μετάβαση
-						<input type="radio" id="direction" name="direction" value=1 onclick="waydirection(1)" <?php
-							if (isset($_POST['direction'])){
-								if($_POST['direction']==1) echo("checked");
-							} else { 
-								echo("checked");
-							}
-							?>> 
-						<span class="checkmark"></span>
-					</label>
-                    <label >Με επιστροφή
-						<input type="radio" id="direction" name="direction" value=2 onclick="waydirection(2)" <?php
-							if (isset($_POST['direction'])){
-								if($_POST['direction']==2) echo("checked");
-							}
-							?>>
-						<span class="checkmark"></span>
-					</label>
+				<div class="widget">
+				<label class="container">Απλή μετάβαση
+					<input type="radio" id="direction" name="direction" value=1 onclick="waydirection(1)" <?php
+						if (isset($_POST['direction'])){
+							if($_POST['direction']==1) echo("checked");
+						} else { 
+							echo("checked");
+						}
+						?>> 
+					<span class="checkmark"></span>
+				</label>
+				<label class="container">Με επιστροφή
+					<input type="radio" id="direction" name="direction" value=2 onclick="waydirection(2)" <?php
+						if (isset($_POST['direction'])){
+							if($_POST['direction']==2) echo("checked");
+						}
+						?>>
+					<span class="checkmark"></span>
+				</label>
 				</div>
 			</td></tr>
 			<tr><td>
-				<input type="text" id="origin_descr" name="origin_descr" placeholder="Αναχώρηση από ..." class="form-control" value="<?php 
-                    if (isset($_POST['origin_descr'])){
-                        echo($_POST['origin_descr']); }
-                    else { 
-                        echo('');
-                    }
-                ?>"/>
+				<!--<label class="control-label">Από: </label>-->
+				<input type="text" id="origin_descr" required name="origin_descr" placeholder="Αναχώρηση από ..." class="form-textbox" value="<?php 
+					if (isset($_POST['origin_descr'])){
+						echo($_POST['origin_descr']); }
+					else { 
+						echo('');
+					}
+				?>"/>
 			</td><td>
-				<input type="text" id="departure_date"  name="departure_date" size=6 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-control" value="<?php 
+			<!--<label class="control-label">Ημ/νία αναχώρησης: </label>-->
+				<input type="text" id="departure_date" required name="departure_date" size=6 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-textbox" value="<?php 
 					if (isset($_POST['departure_date'])){
 						echo($_POST['departure_date']); 
 					} else {
@@ -298,10 +232,11 @@
 					}
 				?>"/>
 			</td><td rowspan=3>
-				<input type="submit" value="Αναζήτηση" name="submit" class="btn btn-primary" id="searchButton" />
+				<input type="submit" value="Αναζήτηση" name="submit" class="btn" id="searchButton" />
 			</td></tr>
 			<tr><td>
-				<input type="text" id="destination_descr"  name="destination_descr" placeholder="Άφιξη σε ..." class="form-control" value="<?php 
+				<!--<label class="control-label">Σε: </label>-->
+				<input type="text" id="destination_descr" required name="destination_descr" placeholder="Άφιξη σε ..." class="form-textbox" value="<?php 
 					if (isset($_POST['destination_descr'])){
 						echo($_POST['destination_descr']); }
 					else { 
@@ -319,7 +254,7 @@
 					}
 				} else {
 					echo("hidden");
-				}?>" id="return_date" name="return_date" size=6 placeholder="Επιστροφή" autocomplete="off"  class="form-control form-date" value="<?php 
+				}?>" id="return_date" name="return_date" size=6 placeholder="Επιστροφή" autocomplete="off"  class="form-textbox form-date" value="<?php 
 				if (isset($_POST['return_date'])){
 					echo($_POST['return_date']); }
 				else { 
@@ -327,10 +262,9 @@
 				}
 				?>"/>
 			</td></tr>
-			
 			</table>
 			
-			<input type="hidden" id="origin" name="origin" value="<?php 
+			<input type="hidden" id="origin" name="origin" required value="<?php 
 				if (isset($_POST['origin'])){
 					echo($_POST['origin']); }
 				else { 
@@ -347,16 +281,18 @@
 			
 			
 		</form>
-
-	<div id="error-dialog" title="Έλεγχος πεδίων"></div>
-	<div id="result-dialog" title="Αποτελέσματα αναζήτησης"></div>
-	<div id="searching" class="center-div"></div>
+	</div>
 	
 	<?php
+		//echo $_POST['submit'];
 		if (isset($_POST['submit'])) {
 			
 			$tdeparture_date = ((strpos($_POST["departure_date"], "-") === true ) ? explode("-", $_POST["departure_date"]) : explode("/", $_POST["departure_date"]) );
+			//$fdeparture_date = ((strpos($_POST["departure_date"], "-") === true ) ? "-" : "/" );
+			
 			$fdeparture_date = $tdeparture_date[2]."-".$tdeparture_date[1]."-".$tdeparture_date[0];
+			//echo("<br>3: ".$tdeparture_date[0]);
+			//echo("<br>4: ".$fdeparture_date);
 			
 			$request = 'https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=djnSPkH5LeLwOsA8gbApHjGjdCkaRpAa&currency=EUR&origin='.$_POST["origin"].'&number_of_results=250'.'&destination='.$_POST["destination"].'&departure_date='.$fdeparture_date;
 
@@ -377,6 +313,7 @@
 				echo "Δεν βρέθηκαν πτήσεις με τα κριτήρια που δώσατε!";
 			} elseif ($code == 200) {
 				$flights_sum = 0;
+				//echo "<br><u>Νόμισμα:</u>".$jsonobj->currency;
 				
 				echo('<table id="results" border=1>');
 				?>
@@ -517,47 +454,15 @@
 				}
 				echo('</table>');
 				
-				/*
 				echo "<script>
 							var numobj = document.getElementById('flightsnum');
 							numobj.innerHTML = '<u>ΑΠΟΤΕΛΕΣΜΑΤΑ ΑΝΑΖΗΤΗΣΗΣ:</u> <b>(Βρέθηκαν ' + ".$flights_sum." + ' πτήσεις)</b>';
 							alert('Βρέθηκαν ".$flights_sum." πτήσεις με τα κριτήρια που δώσατε');
 					   </script>";
-				*/
-				echo '<script>
-							var numobj = document.getElementById("flightsnum");
-							numobj.innerHTML = "<u>ΑΠΟΤΕΛΕΣΜΑΤΑ ΑΝΑΖΗΤΗΣΗΣ:</u> <b>(Βρέθηκαν " + '.$flights_sum.' + " πτήσεις)</b>";
-							
-							$( "#result-dialog" ).dialog({
-								autoOpen: false,
-								modal: true,
-								buttons: {
-									Ok: function() {
-										$( this ).dialog( "close" );
-									}
-								}
-							});
-				
-							$( "#result-dialog" ).html( "<p><span class=\'ui-icon ui-icon-search\' style=\'float:left; margin:0 7px 50px 0;\'></span>Βρέθηκαν <b>'.$flights_sum.'</b> πτήσεις με τα κριτήρια που δώσατε</p><p></p>" );
-							$( "#result-dialog" ).dialog( "open" );
-					   </script>';
 			}	
 		} else {
 			unset($_POST);
 			$_POST = array();
 		}?>
-		
-
-		<!-- <div class=footer>
-			Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-19
-		</div> -->
-	</div>
-
-    <footer>
-	<nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
-		<span class="navbar-text ">Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-2019</span>
-	</nav>
-	</footer>
-
 </body>
 </html>
