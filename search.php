@@ -231,7 +231,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Flight scanner 1.0</a>
+		<a class="navbar-brand" href="#">Flight scanner 1.1</a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<a class="nav-link" href="index.php">Αρχική</a>
@@ -253,7 +253,7 @@
 		</ul>
 	</nav>
 
-	<div class="container-fluid">
+	<div class="container">
    
         <div class="float-right"><button class="btn btn-secondary btn-sm" type="button" id='brequest' onclick="showRequest()">Show Request</button></div>
 		
