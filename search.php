@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <link rel="icon" type="image/png" href="./images/plane_02.png"/>
     
@@ -29,7 +29,7 @@
 
     <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <!-- <link rel="stylesheet" href="./styles.css" type="text/css" /> -->
+    <link rel="stylesheet" href="./styles.css" type="text/css" />
 
     <title>Flight Scanner V1.0 beta</title>
 
@@ -195,12 +195,7 @@
 			$( "#searching" ).hide();
 		
 		});
-		
-	</script>
-</head>
 
-<body>
-	<script>
 		function showRequest() {
 			var x = document.getElementById("apirequest");
 			var b = document.getElementById("brequest");
@@ -226,12 +221,38 @@
 		}
 		
 	</script>
-	
-	    <!-- <div class="topright"><button id='brequest' onclick="showRequest()">Show Request</button></div> -->
-    
-    <!--<div class=request>-->
+
+</head>
+
+<body>
+
     <div class="container-fluid">
-    
+
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark rounded">
+	<a class="navbar-brand" href="#">Flight scanner 1.0</a>
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item active">
+		<a class="nav-link">Αρχική</a>
+		</li>
+		<li class="nav-item">
+		<a class="nav-link">Αναζήτηση</a>
+		</li>
+	</ul>
+	<ul class="navbar-nav ml-auto">
+		<li class="nav-item">
+		<a class="nav-link">Right Link 1</a>
+		</li>
+		<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">            Dropdown on Right</a>
+		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			<a class="dropdown-item" href="#">Action</a>
+			<a class="dropdown-item" href="#">Another action with a lot of text inside of an item</a>
+		</div>
+		</li>
+	</ul>
+	</nav>
+
+   
         <div class="float-right"><button class="btn btn-secondary btn-sm" type="button" id='brequest' onclick="showRequest()">Show Request</button></div>
 		
 		<form method="post" action="">
@@ -326,7 +347,6 @@
 			
 			
 		</form>
-	</div>
 
 	<div id="error-dialog" title="Έλεγχος πεδίων"></div>
 	<div id="result-dialog" title="Αποτελέσματα αναζήτησης"></div>
@@ -527,10 +547,22 @@
 			$_POST = array();
 		}?>
 		
-	<footer class="fixed-bottom">
-        <div class="footer-copyright text-center py-3">
-	        Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-19
-        </div>
-    </footer>   
+
+		<!-- <div class=footer>
+			Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-19
+		</div> -->
+	</div>
+
+    <footer>
+	<nav class="navbar fixed-bottom navbar-expand-sm navbar-light">
+		<span class="navbar-text">Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-19</span>
+	</nav>
+	</footer>
+
+
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
+
 </body>
 </html>
