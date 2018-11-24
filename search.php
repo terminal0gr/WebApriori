@@ -344,8 +344,6 @@
 					echo('');
 				}
 				?>"/>
-			
-			
 		</form>
 
 	<div id="error-dialog" title="Έλεγχος πεδίων"></div>
@@ -367,9 +365,9 @@
 			}
 
 			echo "<div id='apirequest' style='display:none;'>Request url: <br><a target='_BLANK' href='".htmlentities($request)."'>".htmlentities($request)."</a></b></div><br>";
-			$response  = @file_get_contents($request);
-			$code=getHttpCode($http_response_header);
-			$jsonobj  = json_decode($response);
+			$response = @file_get_contents($request);
+			$code = getHttpCode($http_response_header);
+			$jsonobj = json_decode($response);
 
 			echo "<br><div id='flightsnum'><u>ΑΠΟΤΕΛΕΣΜΑΤΑ ΑΝΑΖΗΤΗΣΗΣ:</u></div><br>";
 			
@@ -517,13 +515,6 @@
 				}
 				echo('</table>');
 				
-				/*
-				echo "<script>
-							var numobj = document.getElementById('flightsnum');
-							numobj.innerHTML = '<u>ΑΠΟΤΕΛΕΣΜΑΤΑ ΑΝΑΖΗΤΗΣΗΣ:</u> <b>(Βρέθηκαν ' + ".$flights_sum." + ' πτήσεις)</b>';
-							alert('Βρέθηκαν ".$flights_sum." πτήσεις με τα κριτήρια που δώσατε');
-					   </script>";
-				*/
 				echo '<script>
 							var numobj = document.getElementById("flightsnum");
 							numobj.innerHTML = "<u>ΑΠΟΤΕΛΕΣΜΑΤΑ ΑΝΑΖΗΤΗΣΗΣ:</u> <b>(Βρέθηκαν " + '.$flights_sum.' + " πτήσεις)</b>";
