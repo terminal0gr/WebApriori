@@ -277,3 +277,23 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+--------------------------------------------------------------------------------
+--------Δομή πίνακα Χρηστών---------------------------------
+CREATE TABLE `usertable` (
+  `email` varchar(30) NOT NULL,
+ `passwd` varchar(30) NOT NULL,
+ `oname` varchar (30) NOT NULL,
+ `fname` varchar (30) NOT NULL,
+ PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+----------προσωρινός πίνακας για το confirmation email----------------------
+CREATE TABLE `temp_usertable` (
+  `confirm_code` varchar(30) NOT NULL,
+  `temail` varchar(30) NOT NULL,
+ `tpasswd` varchar(30) NOT NULL,
+ `toname` varchar (30) NOT NULL,
+ `tfname` varchar (30) NOT NULL,
+ PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

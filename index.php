@@ -107,7 +107,7 @@
         <form action="validation.php" method="post">
 			<div >
 				<label>email</label>
-				<input type="email" name="email" class="form-control" placeholder="Email" required>
+				<input type="email" name="email" class="form-control" autocomplete="off" required>
 			</div>
 			<div >
 				<label>Password</label>
@@ -124,28 +124,26 @@
         </h4>
       </div>
       <div id="collapse2" class="panel-collapse collapse">
-        <form action="resgistration.php" method="post">
+        <form action="registration.php" method="post">
 			<div>
 				<label>email</label>
-				<input type="email" name="email" class="form-control" placeholder="Email" required>
+				<input type="email" name="email" class="form-control" autocomplete="off" required>
 			</div>
 			<div>
 				<label>Password</label>
-				<input type="password" name="password" class="form-control" required>
+				<input type="password" name="passwd" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"title="Πρέπει να περιέχεται τουλάχιστον ένας αριθμός,ένας κεφαλαίος και ένας πεζός χαρακτήρας και να αποτελείται απο τουλάχιστον 8 χαρακτήρες"  required>
 			</div>
 		
 			<div>
 				<label>Όνομα</label>
-				<input type="name" name="name" class="form-control"  required>
+				<input type="name" name="oname" class="form-control"  autocomplete="off" required>
 			</div>
 			<div>
 				<label>Επίθετο</label>
-				<input type="name" name="Fname" class="form-control" required>
+				<input type="name" name="fname" class="form-control" autocomplete="off" required>
 			</div>
 			<div>
-				<p><img src="/captcha.php" width="120" height="30" border="1" alt="CAPTCHA"></p>
-				<p><input type="text" size="6" maxlength="5" name="captcha" value=""><br>
-				<small>copy the digits from the image into this box</small></p>	
+				<div class="g-recaptcha" data-sitekey="6LcLYHkUAAAAAJNkmWs9E-L9m_hQtCHZbRHiJvnr"></div>	
 			</div>
 			<div>
 				<button type="submit" class="btn btn-primary"> Register </button>
