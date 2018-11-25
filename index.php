@@ -1,3 +1,10 @@
+<?php
+session_start();
+unset($_SESSION['mail']);
+session_destroy();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,10 +49,10 @@
 				<a class="nav-link">Εγγραφή</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link">Είσοδος</a>
+				<a class="nav-link" >Είσοδος</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link">Έξοδος</a>
+				<a class="nav-link" href = "logout.php">Έξοδος</a>
 			</li>
 		</ul>
 	</nav>
@@ -104,14 +111,14 @@
         </h4>
       </div>
       <div id="collapse1" class="panel-collapse collapse in">
-        <form action="validation.php" method="post">
+        <form action= "validation.php" method="post">
 			<div >
 				<label>email</label>
 				<input type="email" name="email" class="form-control" autocomplete="off" required>
 			</div>
 			<div >
 				<label>Password</label>
-				<input type="password" name="password" class="form-control" required>
+				<input type="password" name="passwd" class="form-control" required>
 			</div>
 			<button type="submit" class="btn btn-primary"> Login </button>
 		</form>

@@ -1,36 +1,45 @@
 <?php
 
- $con=mysqli_connect('localhost','flightsuser','flightsuser','flightsdata');
+session_start();
+    
+//    $con = new mysqli(HOST, USERNAME, PWD, DB);
+$con = new mysqli("localhost", "webeng7", "webeng71819", "webeng7");
+
+        /* check connection */
+	if (mysqli_connect_errno()) {
+		printf("<BR>Αποτυχία Σύνδεσης: %s\n", mysqli_connect_error());
+		exit();
+	}
 
 // Passkey that got from link
 $passkey=$_GET['passkey'];
 
-$temp_usertable="temp_members_db";
+/
 
 // Retrieve data from table where row that match this passkey
-$sql1="SELECT * FROM $temp_usertable WHERE confirm_code ='$passkey'";
-$result1=mysql_query($con,$sql1);
+$sql1="SELECT * FROM temp_usertable WHERE confirm_code ='$passkey'";
+$result1=mysqli_query($con,$sql1);
 
 // If successfully queried
 if($result1){
 
 // Count how many row has this passkey
-$count=mysql_num_rows($con,$result1);
+$count=mysqli_num_rows($result1);
 
-// if found this passkey in our database, retrieve data from table "temp_members_db"
+// if found this passkey in our database, retrieve data from table "temp_usertable"
 if($count==1){
 
-$rows=mysql_fetch_array($result1);
-$oname=$rows['oname'];
-$email=$rows['email'];
-$passwd=$rows['passwd'];
-$fname=$rows['fname'];
+$rows=mysqli_fetch_array($result1);
+$oname=$rows['toname'];
+$email=$rows['temail'];
+$passwd=$rows['tpasswd'];
+$fname=$rows['tfname'];
 
-$usertable="registered_members";
 
-// Insert data that retrieves from "temp_members_db" into table "registered_members"
-$sql2="INSERT INTO $usertable(oname, email, passwd, fname)VALUES('$oname', '$email', '$passwd', '$fname')";
-$result2=mysql_query($con,$sql2);
+
+// Insert data that retrieves from "temp_usertable" into table "usertable"
+$sql2="INSERT INTO usertable(oname, email, passwd, fname)VALUES('$oname', '$email', '$passwd', '$fname')";
+$result2=mysqli_query($con,$sql2);
 }
 
 // if not found passkey, display message "Wrong Confirmation code"
@@ -44,10 +53,11 @@ if($result2){
 echo "Your account has been activated";
 
 // Delete information of this user from table "temp_members_db" that has this passkey
-$sql3="DELETE FROM $temp_usertable WHERE confirm_code = '$passkey'";
-$result3=mysql_query($con,$sql3);
+$sql3="DELETE FROM temp_usertable WHERE confirm_code = '$passkey'";
+$result3=mysqli_query($con,$sql3);
 
 }
 
 }
+session_destroy();
 ?>

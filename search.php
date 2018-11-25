@@ -1,4 +1,5 @@
 <?php
+	
 	include("./config.php");
 	include("./functions.php");
 
@@ -11,7 +12,7 @@
 	}
     
     ini_set("allow_url_fopen", 1); 
-    session_start()
+    
 	
 ?>
 
@@ -248,7 +249,7 @@
 				<a class="nav-link">Είσοδος</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link">Έξοδος</a>
+				<a class="nav-link"href = "logout.php">Έξοδος</a>
 			</li>
 		</ul>
 	</nav>
