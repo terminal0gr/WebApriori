@@ -50,6 +50,7 @@
 					})
 					.on( "change", function() {
 						return_date.datepicker( "option", "minDate", getDate( this ) );
+						$('#ddate').val( $.datepicker.formatDate( 'yy-mm-dd', new Date( getDate( this ) ) ) );
 					}),
 				return_date = $("#return_date")
 					.datepicker({
@@ -67,6 +68,7 @@
 					})
 					.on( {  change: function() {
 								departure_date.datepicker( "option", "maxDate", getDate( this ) );
+								$('#rdate').val( $.datepicker.formatDate( 'yy-mm-dd', new Date( getDate( this ) ) ) );
 							},
 							close: function () {
 								var event = arguments.callee.caller.caller.arguments[0];                
@@ -90,7 +92,7 @@
 			
 			$( "#dialog" ).dialog({ autoOpen: false });
 			$( "#opener" ).click(function() {
-			  $( "#dialog" ).dialog( "open" );
+				$( "#dialog" ).dialog( "open" );
 			});
 			
 			function log( message ) {
@@ -177,17 +179,43 @@
 			$( "form" ).submit(function( event ) {
 				var flist = "";
 				
-				if ( $( "#origin_descr" ).val() === "" ) { flist += "<li>Αναχώρηση από</li>"; }
-				if ( $( "#destination_descr" ).val() === "" ) { flist += "<li>Άφιξη σε</li>"; }
-				if ( $( "#departure_date" ).val() === "" ) { flist += "<li>Ημ/νία Αναχώρησης</li>"; }
+				if ( $( "#origin" ).val() === "" ) { flist += "<li>Αναχώρηση από</li>"; }
+				if ( $( "#destination" ).val() === "" ) { flist += "<li>Άφιξη σε</li>"; }
+				if ( $( "#ddate" ).val() === "" ) { flist += "<li>Ημ/νία Αναχώρησης</li>"; }
 				
 				var direction = $('input[name=direction]:checked').val();
 				if ( direction === "2" ) { 
-					if ( $( "#return_date" ).val() === "" ) { flist += "<li>Ημ/νία Άφιξης</li>"; }
+					if ( $( "#rdate" ).val() === "" ) { flist += "<li>Ημ/νία Άφιξης</li>"; }
 				}
 				
 				if (flist === "") {
 					$( "#searching" ).show();
+					$( "#apidiv" ).html( "Retrieval start...." );
+					/*********************************************/
+					$.ajax({
+						url: "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search",
+						dataType: "json",
+						data: {
+							apikey: "djnSPkH5LeLwOsA8gbApHjGjdCkaRpAa",
+							number_of_results:"250",
+							currency: "EUR",
+							origin: $( "#origin" ).val(),
+							destination: $( "#destination" ).val(),
+							departure_date: $( "#ddate" ).val(),
+							return_date: $( "#rdate" ).val()
+						},
+						success: function(response) {
+							console.log(response);
+							$( "#apidiv" ).html( "Retrieval end...." );
+						} 
+                    });
+					
+					/*********************************************/
+					
+					$( "#searching" ).hide();
+					
+					event.preventDefault();
+					
 					return;
 				} else {
 					$( "#error-dialog" ).html( "<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 7px 50px 0;'></span>Δεν έχετε συμπληρώσει όλα τα υποχρεωτικά πεδία:</p><p><ul>" + flist + "</ul></p>" );
@@ -330,7 +358,9 @@
 			</td></tr>
 			
 			</table>
-			
+			<input type="hidden" id="ddate"  name="ddate" size=6 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-control"> 
+			<input type="hidden" id="rdate"  name="rdate" size=6 placeholder="Άφιξη" autocomplete="off"  class="form-date form-control"> 
+				
 			<input type="hidden" id="origin" name="origin" value="<?php 
 				if (isset($_POST['origin'])){
 					echo($_POST['origin']); }
@@ -350,8 +380,9 @@
 	<div id="error-dialog" title="Έλεγχος πεδίων"></div>
 	<div id="result-dialog" title="Αποτελέσματα αναζήτησης"></div>
 	<div id="searching" class="center-div"></div>
+	<div id="apidiv">API Div</div>
 	
-	<?php
+	<?php /*
 		if (isset($_POST['submit'])) {
 			
 			$tdeparture_date = ((strpos($_POST["departure_date"], "-") === true ) ? explode("-", $_POST["departure_date"]) : explode("/", $_POST["departure_date"]) );
@@ -364,7 +395,7 @@
 				$freturn_date = $treturn_date[2]."-".$treturn_date[1]."-".$treturn_date[0];
 				$request .= '&return_date='.$freturn_date;
 			}
-
+			
 			echo "<div id='apirequest' style='display:none;'>Request url: <br><a target='_BLANK' href='".htmlentities($request)."'>".htmlentities($request)."</a></b></div><br>";
 			$response = @file_get_contents($request);
 			$code = getHttpCode($http_response_header);
@@ -533,16 +564,14 @@
 							$( "#result-dialog" ).html( "<p><span class=\'ui-icon ui-icon-search\' style=\'float:left; margin:0 7px 50px 0;\'></span>Βρέθηκαν <b>'.$flights_sum.'</b> πτήσεις με τα κριτήρια που δώσατε</p><p></p>" );
 							$( "#result-dialog" ).dialog( "open" );
 					   </script>';
+				
 			}	
 		} else {
 			unset($_POST);
 			$_POST = array();
-		}?>
+		} */
+		?>
 		
-
-		<!-- <div class=footer>
-			Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-19
-		</div> -->
 	</div>
 
     <footer>
