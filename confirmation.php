@@ -14,7 +14,6 @@ $con = new mysqli("localhost", "webeng7", "webeng71819", "webeng7");
 // Passkey that got from link
 $passkey=$_GET['passkey'];
 
-/
 
 // Retrieve data from table where row that match this passkey
 $sql1="SELECT * FROM temp_usertable WHERE confirm_code ='$passkey'";
@@ -52,9 +51,11 @@ if($result2){
 
 echo "Your account has been activated";
 
+
 // Delete information of this user from table "temp_members_db" that has this passkey
 $sql3="DELETE FROM temp_usertable WHERE confirm_code = '$passkey'";
 $result3=mysqli_query($con,$sql3);
+ 
 
 }
 

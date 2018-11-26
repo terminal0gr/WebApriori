@@ -290,7 +290,7 @@ CREATE TABLE `usertable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 ----------προσωρινός πίνακας για το confirmation email----------------------
 CREATE TABLE `temp_usertable` (
-  `confirm_code` varchar(30) NOT NULL,
+  `confirm_code` varchar(50) NOT NULL,
   `temail` varchar(30) NOT NULL,
  `tpasswd` varchar(60) NOT NULL,
  `toname` varchar (30) NOT NULL,
