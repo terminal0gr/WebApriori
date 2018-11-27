@@ -46,7 +46,7 @@ session_destroy();
 				<a class="nav-link" href="SignUp.html">Εγγραφή</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="Login.html">Είσοδος</a>
+				<a class="nav-link glyphicon glyphicon-envelope" href="Login.html">Είσοδος</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href = "logout.php">Έξοδος</a>
@@ -56,7 +56,7 @@ session_destroy();
 
     <br>
 
-	<div class="container">
+	<div class="container" style="width:80%; height=40%;" >
   
         <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel" data-interval="4000">
             <ol class="carousel-indicators">
@@ -66,40 +66,48 @@ session_destroy();
                 <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
             </ol>
-         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="images/a1.jpg?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="img-fluid rounded" src="images/a1.jpg?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="img-fluid rounded" src="images/a2.jpg?auto=yes&text=Second slide" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="img-fluid rounded" src="images/a3.jpg?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100 rounded" src="images/a4.jpg?auto=yes&bg=555&fg=333&text=Fourth slide" alt="Fourth slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100 rounded" src="images/a5.jpg?auto=yes&bg=555&fg=333&text=Fifth slide" alt="Fifth slide">
+                </div>
             </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="images/a2.jpg?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="images/a3.jpg?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="images/a4.jpg?auto=yes&bg=555&fg=333&text=Fourth slide" alt="Fourth slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="images/a5.jpg?auto=yes&bg=555&fg=333&text=Fifth slide" alt="Fifth slide">
-            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
 
-</div>
+        <br>
+        <br>
+        <br>
+        <br>
 
     <footer>
-	<nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
 		<span class="navbar-text ">Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-2019</span>
 	</nav>
 	</footer>
+
+    </div>   
+    
+
+
 
 
 </body>

@@ -194,16 +194,6 @@
 				
 				if (flist === "") {
 
-					// var Mdata = "{'apikey':'djnSPkH5LeLwOsA8gbApHjGjdCkaRpAa'";
-					// Mdata += ",'number_of_results':'250'";
-					// Mdata += ",'currency':'EUR'";
-					// Mdata += ",'origin':'" + $("#origin").val() + "'";
-					// Mdata += ",'destination':'" + $("#destination").val() + "'";
-					// Mdata += ",'departure_date':'" + $("#ddate").val() + "'";
-					// if (direction === "2") {
-					// 	Mdata += ",'return_date':'" + $("#rdate").val() + "'";
-					// }
-					// Mdata += "}";
 					var Mdata = "apikey=djnSPkH5LeLwOsA8gbApHjGjdCkaRpAa";
 					Mdata += "&number_of_results=250";
 					Mdata += "&currency=EUR";
@@ -213,19 +203,6 @@
 					if (direction === "2") {
 						Mdata += "&return_date=" + $("#rdate").val();
 					}
-
-
-					// data: {
-					// 		'apikey': 'djnSPkH5LeLwOsA8gbApHjGjdCkaRpAa',
-					// 		'number_of_results':'250',
-					// 		'currency': 'EUR',
-					// 		'origin': $('#origin').val(),
-					// 		'destination': $('#destination').val(),
-					// 		'departure_date': $('#ddate').val(),
-					// 		'return_date': $('#rdate').val()
-					// 	},
-
-
 
 					$( "#searching" ).show();
 					$( "#apidiv" ).html( "Retrieval start...." );
@@ -313,12 +290,15 @@
 
 	<div class="container">
    
-        <div class="float-right"><button class="btn btn-secondary btn-sm" type="button" id='brequest' onclick="showRequest()">Show Request</button></div>
+        <!-- <div class="float-right"><button class="btn btn-secondary btn-sm" type="button" id='brequest' onclick="showRequest()">Show Request</button></div> -->
 		
 		<form method="post" action="">
+
+			<br>
+            <div class="border border-primary rounded">
 			<table >
 			<tr><td colspan=3>
-				<div class="form-group">
+				<!-- <div class="form-group"> -->
 					<label >Απλή μετάβαση
 						<input type="radio" id="direction" name="direction" value=1 onclick="waydirection(1)" <?php
 							if (isset($_POST['direction'])){
@@ -327,7 +307,7 @@
 								echo("checked");
 							}
 							?>> 
-						<span class="checkmark"></span>
+						<!-- <span class="checkmark"></span> -->
 					</label>
                     <label >Με επιστροφή
 						<input type="radio" id="direction" name="direction" value=2 onclick="waydirection(2)" <?php
@@ -337,7 +317,7 @@
 							?>>
 						<span class="checkmark"></span>
 					</label>
-				</div>
+				<!-- </div> -->
 			</td></tr>
 			<tr><td>
 				<input type="text" id="origin_descr" name="origin_descr" placeholder="Αναχώρηση από ..." class="form-control" value="<?php 
@@ -348,7 +328,7 @@
                     }
                 ?>"/>
 			</td><td>
-				<input type="text" id="departure_date"  name="departure_date" size=6 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-control" value="<?php 
+				<input type="text" id="departure_date"  name="departure_date" size=8 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-control" value="<?php 
 					if (isset($_POST['departure_date'])){
 						echo($_POST['departure_date']); 
 					} else {
@@ -377,7 +357,7 @@
 					}
 				} else {
 					echo("hidden");
-				}?>" id="return_date" name="return_date" size=6 placeholder="Επιστροφή" autocomplete="off"  class="form-control form-date" value="<?php 
+				}?>" id="return_date" name="return_date" size=7 placeholder="Επιστροφή" autocomplete="off"  class="form-control form-date" value="<?php 
 				if (isset($_POST['return_date'])){
 					echo($_POST['return_date']); }
 				else { 
@@ -387,6 +367,7 @@
 			</td></tr>
 			
 			</table>
+			</span>
 			<input type="hidden" id="ddate"  name="ddate" size=6 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-control"> 
 			<input type="hidden" id="rdate"  name="rdate" size=6 placeholder="Άφιξη" autocomplete="off"  class="form-date form-control"> 
 				
@@ -405,6 +386,7 @@
 				}
 				?>"/>
 		</form>
+
 
 	<div id="error-dialog" title="Έλεγχος πεδίων"></div>
 	<div id="result-dialog" title="Αποτελέσματα αναζήτησης"></div>
