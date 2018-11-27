@@ -34,7 +34,9 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="scripts/scripts.js"></script>
+	
 
     <title>Flight Scanner</title>
 
@@ -182,32 +184,65 @@
 				if ( $( "#origin" ).val() === "" ) { flist += "<li>Αναχώρηση από</li>"; }
 				if ( $( "#destination" ).val() === "" ) { flist += "<li>Άφιξη σε</li>"; }
 				if ( $( "#ddate" ).val() === "" ) { flist += "<li>Ημ/νία Αναχώρησης</li>"; }
-				
+
 				var direction = $('input[name=direction]:checked').val();
 				if ( direction === "2" ) { 
-					if ( $( "#rdate" ).val() === "" ) { flist += "<li>Ημ/νία Άφιξης</li>"; }
+					if ( $( "#rdate" ).val() === "" ) { 
+						flist += "<li>Ημ/νία Άφιξης</li>"; 
+					}
 				}
 				
 				if (flist === "") {
+
+					// var Mdata = "{'apikey':'djnSPkH5LeLwOsA8gbApHjGjdCkaRpAa'";
+					// Mdata += ",'number_of_results':'250'";
+					// Mdata += ",'currency':'EUR'";
+					// Mdata += ",'origin':'" + $("#origin").val() + "'";
+					// Mdata += ",'destination':'" + $("#destination").val() + "'";
+					// Mdata += ",'departure_date':'" + $("#ddate").val() + "'";
+					// if (direction === "2") {
+					// 	Mdata += ",'return_date':'" + $("#rdate").val() + "'";
+					// }
+					// Mdata += "}";
+					var Mdata = "apikey=djnSPkH5LeLwOsA8gbApHjGjdCkaRpAa";
+					Mdata += "&number_of_results=250";
+					Mdata += "&currency=EUR";
+					Mdata += "&origin=" + $("#origin").val();
+					Mdata += "&destination=" + $("#destination").val();
+					Mdata += "&departure_date=" + $("#ddate").val();
+					if (direction === "2") {
+						Mdata += "&return_date=" + $("#rdate").val();
+					}
+
+
+					// data: {
+					// 		'apikey': 'djnSPkH5LeLwOsA8gbApHjGjdCkaRpAa',
+					// 		'number_of_results':'250',
+					// 		'currency': 'EUR',
+					// 		'origin': $('#origin').val(),
+					// 		'destination': $('#destination').val(),
+					// 		'departure_date': $('#ddate').val(),
+					// 		'return_date': $('#rdate').val()
+					// 	},
+
+
+
 					$( "#searching" ).show();
 					$( "#apidiv" ).html( "Retrieval start...." );
 					/*********************************************/
+
 					$.ajax({
 						url: "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search",
 						dataType: "json",
-						data: {
-							apikey: "djnSPkH5LeLwOsA8gbApHjGjdCkaRpAa",
-							number_of_results:"250",
-							currency: "EUR",
-							origin: $( "#origin" ).val(),
-							destination: $( "#destination" ).val(),
-							departure_date: $( "#ddate" ).val(),
-							return_date: $( "#rdate" ).val()
-						},
+                        data: Mdata,
 						success: function(response) {
-							console.log(response);
-							$( "#apidiv" ).html( "Retrieval end...." );
+
+							$("#apidiv").html(FillTheTable(response));
+
 						} 
+                    }).fail(function (jqXHR, textStatus, errorThrown) {
+                        alert(textStatus+": "+errorThrown+"\n\n"+to_s(jqXHR.responseText));
+                        $(e.target).prop('disabled', false);
                     });
 					
 					/*********************************************/
@@ -271,13 +306,7 @@
 		</ul>
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
-				<a class="nav-link">Εγγραφή</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link">Είσοδος</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link"href = "logout.php">Έξοδος</a>
+				<a class="nav-link" href = "logout.php">Έξοδος</a>
 			</li>
 		</ul>
 	</nav>
@@ -380,7 +409,7 @@
 	<div id="error-dialog" title="Έλεγχος πεδίων"></div>
 	<div id="result-dialog" title="Αποτελέσματα αναζήτησης"></div>
 	<div id="searching" class="center-div"></div>
-	<div id="apidiv">API Div</div>
+	<div id="apidiv"></div>
 	
 	<?php /*
 		if (isset($_POST['submit'])) {

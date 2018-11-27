@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	$con1 = new mysqli("localhost", "webeng7", "webeng71819", "webeng7");
-   
+	$con1 = new mysqli(HOST, USERNAME, PWD, DB);
+
     /* check connection */
 	if ($con1->connect_error)
 		{
