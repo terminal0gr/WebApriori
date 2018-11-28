@@ -27,6 +27,18 @@ session_destroy();
 
     <title>Flight Scanner V1.1</title>
 
+    <script>
+		$( window ).resize(function() {
+			if ($(window).width() <= 768 || $(window).height() <= 576) {
+				$('#c-footer').removeClass('fixed-bottom');
+			}
+			else {
+				$('#c-footer').addClass('fixed-bottom')
+			}
+		});
+    </script>
+
+
 </head>
 
 <body>
@@ -68,13 +80,13 @@ session_destroy();
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="img-fluid rounded" src="images/a1.jpg?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                    <img class="img-fluid rounded" src="images/a1.jpg?auto=yes&text=First slide" alt="First slide">
                 </div>
                 <div class="carousel-item">
                     <img class="img-fluid rounded" src="images/a2.jpg?auto=yes&text=Second slide" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="img-fluid rounded" src="images/a3.jpg?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+                    <img class="img-fluid rounded" src="images/a3.jpg?auto=yes&text=Third slide" alt="Third slide">
                 </div>
                 <div class="carousel-item">
                     <img class="d-block w-100 rounded" src="images/a4.jpg?auto=yes&bg=555&fg=333&text=Fourth slide" alt="Fourth slide">
@@ -94,20 +106,27 @@ session_destroy();
         </div>
 
         <br>
+
+        <div class="jumbotron text-center">
+           <h3>Παρακαλώ <a href="Login.html">Εισέλθετε</a> στην εφαρμογή, ή κάντε νέα <a href="SignUp.html">Εγγραφή</a></h3> 
+        </div>
+
+        <br>
         <br>
         <br>
         <br>
 
-    <footer>
-	<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
-		<span class="navbar-text ">Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-2019</span>
-	</nav>
-	</footer>
+
 
     </div>   
     
 
-
+    <footer>
+	    <nav id="c-footer" class="navbar fixed-bottom navbar-expand-md navbar-dark bg-dark">
+	    <!-- <nav class="c-footer "> -->
+        	<span class="navbar-text ">Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-2019</span>
+	    </nav>
+	</footer>
 
 
 </body>

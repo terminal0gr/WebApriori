@@ -17,6 +17,17 @@
 
     <title>Flight Scanner V1.1</title>
 
+	<script>
+		$( window ).resize(function() {
+			if ($(window).width() <= 768 || $(window).height() <= 576) {
+				$('#c-footer').removeClass('fixed-bottom');
+			}
+			else {
+				$('#c-footer').addClass('fixed-bottom')
+			}
+		});
+	</script>
+
 </head>
 
 <body>
@@ -64,7 +75,7 @@
 	
 
     <footer>
-        <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
+        <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
             <span class="navbar-text ">Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-2019</span>
         </nav>
 	</footer>

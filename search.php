@@ -41,6 +41,15 @@
     <title>Flight Scanner</title>
 
 	<script>
+		$( window ).resize(function() {
+			if ($(window).width() <= 768 || $(window).height() <= 576) {
+				$('#c-footer').removeClass('fixed-bottom');
+			}
+			else {
+				$('#c-footer').addClass('fixed-bottom')
+			}
+		});
+
 		$(function() {
 			var dateFormat = "dd/mm/yy",
 				departure_date = $("#departure_date")
@@ -393,6 +402,18 @@
 	<div id="searching" class="center-div"></div>
 	<div id="apidiv"></div>
 	
+	</div>
+
+	<br>
+	<br>
+
+    <footer>
+		<nav id="c-footer" class="navbar fixed-bottom navbar-expand-md navbar-dark bg-dark">
+			<span class="navbar-text ">Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-2019</span>
+		</nav>
+	</footer>
+
+
 	<?php /*
 		if (isset($_POST['submit'])) {
 			
@@ -582,14 +603,7 @@
 			$_POST = array();
 		} */
 		?>
-		
-	</div>
-
-    <footer>
-	<nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
-		<span class="navbar-text ">Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-2019</span>
-	</nav>
-	</footer>
+	
 
 </body>
 </html>
