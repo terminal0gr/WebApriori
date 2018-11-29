@@ -20,16 +20,28 @@
 	<script>
 
 		$(function() {
-			$('#navbar-brand').html('Flight scanner ' +  sessionStorage.getItem('version'));
+			if (sessionStorage.getItem('version')) {
+				$('#navbar-brand').html('Flight scanner ' +  sessionStorage.getItem('version'));
+			}
+			else {
+				window.location.href = "index.html";
+			}
+
+            M_F();
+			
 		});
 
-		$( window ).resize(function() {
-			if ($(window).width() <= 768 || $(window).height() <= 576) {
+        function M_F() {
+			if ($(window).width() <= 800 || $(window).height() <= 600) {
 				$('#c-footer').removeClass('fixed-bottom');
 			}
 			else {
 				$('#c-footer').addClass('fixed-bottom')
 			}
+		}
+
+		$( window ).resize(function() {
+            M_F();
 		});
 	</script>
 
@@ -41,7 +53,7 @@
 		<a id="navbar-brand" class="navbar-brand" href="#">Flight scanner     </a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
-				<a class="nav-link" href="index.php">Αρχική</a>
+				<a class="nav-link" href="index.html">Αρχική</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="search.php">Αναζήτηση</a>
@@ -66,15 +78,17 @@
 	<div class="container">
 
        		<form action= "validation.php" method="post">
-					<div >
+					<div class="p-1">
 						<label>email</label>
 						<input type="email" name="email" class="form-control" autocomplete="off" required>
 					</div>
-					<div >
+					<div class="p-1" >
 						<label>Password</label>
 						<input type="password" name="passwd" class="form-control" required>
 					</div>
-					<button type="submit" class="btn btn-primary"> Login </button>
+					<div class=" p-1" >
+						<button type="submit" class="btn btn-primary"> Login </button>
+					</div>
 		</form>
 	</div>
 	

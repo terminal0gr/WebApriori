@@ -52,7 +52,12 @@
 
 		$(function() {
 
-			$('#navbar-brand').html('Flight scanner ' +  sessionStorage.getItem('version'));
+			if (sessionStorage.getItem('version')) {
+				$('#navbar-brand').html('Flight scanner ' +  sessionStorage.getItem('version'));
+			}
+			else {
+				window.location.href = "index.html";
+			}
 
 			var dateFormat = "dd/mm/yy",
 				departure_date = $("#departure_date")
@@ -287,7 +292,7 @@
 		<a id="navbar-brand" class="navbar-brand" href="#">Flight scanner     </a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
-				<a class="nav-link" href="index.php">Αρχική</a>
+				<a class="nav-link" href="index.html">Αρχική</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link active">Αναζήτηση</a>
