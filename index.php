@@ -28,6 +28,12 @@ session_destroy();
     <title>Flight Scanner V1.1</title>
 
     <script>
+
+    	$(function() {
+            sessionStorage.setItem('version', '1.2 beta');
+			$('#navbar-brand').html('Flight scanner ' +  sessionStorage.getItem('version'));
+        });
+        
 		$( window ).resize(function() {
 			if ($(window).width() <= 768 || $(window).height() <= 576) {
 				$('#c-footer').removeClass('fixed-bottom');
@@ -44,7 +50,7 @@ session_destroy();
 <body>
 
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Flight scanner 1.1</a>
+		<a id="navbar-brand" class="navbar-brand" href="#">Flight scanner</a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<a class="nav-link active">Αρχική</a>

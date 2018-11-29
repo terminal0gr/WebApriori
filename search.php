@@ -51,6 +51,9 @@
 		});
 
 		$(function() {
+
+			$('#navbar-brand').html('Flight scanner ' +  sessionStorage.getItem('version'));
+
 			var dateFormat = "dd/mm/yy",
 				departure_date = $("#departure_date")
 					.datepicker({
@@ -281,7 +284,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Flight scanner 1.1</a>
+		<a id="navbar-brand" class="navbar-brand" href="#">Flight scanner     </a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<a class="nav-link" href="index.php">Αρχική</a>
@@ -305,78 +308,78 @@
 
 			<br>
             <div class="border border-primary rounded">
-			<table >
-			<tr><td colspan=3>
-				<!-- <div class="form-group"> -->
-					<label >Απλή μετάβαση
-						<input type="radio" id="direction" name="direction" value=1 onclick="waydirection(1)" <?php
-							if (isset($_POST['direction'])){
-								if($_POST['direction']==1) echo("checked");
-							} else { 
-								echo("checked");
-							}
-							?>> 
-						<!-- <span class="checkmark"></span> -->
-					</label>
-                    <label >Με επιστροφή
-						<input type="radio" id="direction" name="direction" value=2 onclick="waydirection(2)" <?php
-							if (isset($_POST['direction'])){
-								if($_POST['direction']==2) echo("checked");
-							}
-							?>>
-						<span class="checkmark"></span>
-					</label>
-				<!-- </div> -->
-			</td></tr>
-			<tr><td>
-				<input type="text" id="origin_descr" name="origin_descr" placeholder="Αναχώρηση από ..." class="form-control" value="<?php 
-                    if (isset($_POST['origin_descr'])){
-                        echo($_POST['origin_descr']); }
-                    else { 
-                        echo('');
-                    }
-                ?>"/>
-			</td><td>
-				<input type="text" id="departure_date"  name="departure_date" size=8 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-control" value="<?php 
-					if (isset($_POST['departure_date'])){
-						echo($_POST['departure_date']); 
+				<table >
+				<tr><td colspan=3>
+					<!-- <div class="form-group"> -->
+						<label >Απλή μετάβαση
+							<input type="radio" id="direction" name="direction" value=1 onclick="waydirection(1)" <?php
+								if (isset($_POST['direction'])){
+									if($_POST['direction']==1) echo("checked");
+								} else { 
+									echo("checked");
+								}
+								?>> 
+						</label>
+						<label >Με επιστροφή
+							<input type="radio" id="direction" name="direction" value=2 onclick="waydirection(2)" <?php
+								if (isset($_POST['direction'])){
+									if($_POST['direction']==2) echo("checked");
+								}
+								?>>
+							<span class="checkmark"></span>
+						</label>
+					<!-- </div> -->
+				</td></tr>
+				<tr><td>
+					<input type="text" id="origin_descr" name="origin_descr" placeholder="Αναχώρηση από ..." class="form-control" value="<?php 
+						if (isset($_POST['origin_descr'])){
+							echo($_POST['origin_descr']); }
+						else { 
+							echo('');
+						}
+					?>"/>
+				</td><td>
+					<input type="text" id="departure_date"  name="departure_date" size=8 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-control" value="<?php 
+						if (isset($_POST['departure_date'])){
+							echo($_POST['departure_date']); 
+						} else {
+							echo("");
+						}
+					?>"/>
+				</td><td rowspan=3>
+					<input type="submit" value="Αναζήτηση" name="submit" class="btn btn-primary" id="searchButton" />
+				</td></tr>
+				<tr><td>
+					<input type="text" id="destination_descr"  name="destination_descr" placeholder="Άφιξη σε ..." class="form-control" value="<?php 
+						if (isset($_POST['destination_descr'])){
+							echo($_POST['destination_descr']); }
+						else { 
+							echo('');
+						}
+					?>"/>
+				</td><td>
+				<!--<label class="control-label">Ημ/νία επιστροφής: </label>-->
+				<input type="<?php 
+					if (isset($_POST['direction'])){
+						if($_POST['direction']==2) {
+							echo("text");
+						} else {
+							echo("hidden");
+						}
 					} else {
-						echo("");
-					}
-				?>"/>
-			</td><td rowspan=3>
-				<input type="submit" value="Αναζήτηση" name="submit" class="btn btn-primary" id="searchButton" />
-			</td></tr>
-			<tr><td>
-				<input type="text" id="destination_descr"  name="destination_descr" placeholder="Άφιξη σε ..." class="form-control" value="<?php 
-					if (isset($_POST['destination_descr'])){
-						echo($_POST['destination_descr']); }
+						echo("hidden");
+					}?>" id="return_date" name="return_date" size=7 placeholder="Επιστροφή" autocomplete="off"  class="form-control form-date" value="<?php 
+					if (isset($_POST['return_date'])){
+						echo($_POST['return_date']); }
 					else { 
 						echo('');
 					}
-				?>"/>
-			</td><td>
-			<!--<label class="control-label">Ημ/νία επιστροφής: </label>-->
-			<input type="<?php 
-				if (isset($_POST['direction'])){
-					if($_POST['direction']==2) {
-						echo("text");
-					} else {
-						echo("hidden");
-					}
-				} else {
-					echo("hidden");
-				}?>" id="return_date" name="return_date" size=7 placeholder="Επιστροφή" autocomplete="off"  class="form-control form-date" value="<?php 
-				if (isset($_POST['return_date'])){
-					echo($_POST['return_date']); }
-				else { 
-					echo('');
-				}
-				?>"/>
-			</td></tr>
-			
-			</table>
-			</span>
+					?>"/>
+				</td></tr>
+				
+				</table>
+			</div>
+
 			<input type="hidden" id="ddate"  name="ddate" size=6 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-control"> 
 			<input type="hidden" id="rdate"  name="rdate" size=6 placeholder="Άφιξη" autocomplete="off"  class="form-date form-control"> 
 				
