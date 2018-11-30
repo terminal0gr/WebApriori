@@ -198,14 +198,14 @@
 			$( "form" ).submit(function( event ) {
 				var flist = "";
 				
-				if ( $( "#origin" ).val() === "" ) { flist += "<li>Αναχώρηση από</li>"; }
-				if ( $( "#destination" ).val() === "" ) { flist += "<li>Άφιξη σε</li>"; }
-				if ( $( "#ddate" ).val() === "" ) { flist += "<li>Ημ/νία Αναχώρησης</li>"; }
+				if ( $( "#origin" ).val() === "" ) { flist += "<li>Departure from</li>"; }
+				if ( $( "#destination" ).val() === "" ) { flist += "<li>Arrival to</li>"; }
+				if ( $( "#ddate" ).val() === "" ) { flist += "<li>Departure date</li>"; }
 
 				var direction = $('input[name=direction]:checked').val();
 				if ( direction === "2" ) { 
 					if ( $( "#rdate" ).val() === "" ) { 
-						flist += "<li>Ημ/νία Άφιξης</li>"; 
+						flist += "<li>Arrival date</li>"; 
 					}
 				}
 				
@@ -292,15 +292,15 @@
 		<a id="navbar-brand" class="navbar-brand" href="#">Flight scanner     </a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
-				<a class="nav-link" href="index.html">Αρχική</a>
+				<a class="nav-link" href="index.html">Home</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active">Αναζήτηση</a>
+				<a class="nav-link active">Flight search</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
-				<a class="nav-link" href = "logout.php">Έξοδος</a>
+				<a class="nav-link" href = "logout.php">Sign Out</a>
 			</li>
 		</ul>
 	</nav>
@@ -417,7 +417,7 @@
 
     <footer>
 		<nav id="c-footer" class="navbar fixed-bottom navbar-expand-md navbar-dark bg-dark">
-			<span class="navbar-text ">Εφαρμογή αναζήτησης πτήσεων χαμηλού κόστους &middot; Π.Μ.Σ. Ευφυείς Τεχνολογίες Διαδικτύου &copy; 2018-2019</span>
+		<span class="navbar-text ">Low fare flights search engine &middot; MSc in Web Intelligence &copy; 2018-2019</span>
 		</nav>
 	</footer>
 
