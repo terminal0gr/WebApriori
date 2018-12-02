@@ -30,7 +30,7 @@
 
 		$message = "Username and/or Password incorrect.\\nTry again.";
 		echo "<script type='text/javascript'>alert('$message');
-		window.location.href='index.php';</script>";
+		window.location.href='index.html';</script>";
 
 		
 	}

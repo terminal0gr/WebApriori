@@ -23,7 +23,7 @@
 		{
 		$message = "SORRY...YOU ARE ALREADY REGISTERED USER...";
 		echo "<script type='text/javascript'>alert('$message');
-		window.location.href='index.php';</script>";
+		window.location.href='index.html';</script>";
 		}
 	/* New user @temp_usertable & send confirmation email */
 	else
@@ -46,8 +46,8 @@
 			$mail->Body  = $message;
 			if(!$mail->send()) 
 				{
-				echo 'Το email δεν στάλθηκε.';
-				echo 'Σφάλμα: ' . $mail->ErrorInfo;
+				echo 'Email has not been sent.';
+				echo 'Errot: ' . $mail->ErrorInfo;
 				}
 			else
 				{			  
