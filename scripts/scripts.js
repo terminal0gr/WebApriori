@@ -5,22 +5,22 @@ function FillTheTable(response) {
      <hr>
     <table id='results' border=1>    
     <tr>
-        <th rowspan=2>Διάρκεια</th>
-        <th colspan=2>Αναχώρηση</th>
-        <th colspan=2>Άφιξη</th>
-        <th colspan=3>Πτήση</th>
-        <th colspan=2 rowspan=2 >Θέση</th>
-        <th rowspan=2>Διαθέσιμες<br>θέσεις</th>
-        <th colspan=3>Συν. Κόστος</th>
+        <th rowspan=2>Duration</th>
+        <th colspan=2>Departure</th>
+        <th colspan=2>Arrival</th>
+        <th colspan=3>Flight</th>
+        <th colspan=2 rowspan=2 >Seat</th>
+        <th rowspan=2>Seats<br>Available</th>
+        <th colspan=3>Total Cost</th>
     </tr>
     <tr>
-        <th>Αεροδρόμιο</th>
-        <th>Ώρα</th>
-        <th>Αεροδρόμιο</th>
-        <th>Ώρα</th>
+        <th>Airport</th>
+        <th>Time</th>
+        <th>Airport</th>
+        <th>Time</th>
         <th>Airline</th>
-        <th>Αριθμός</th>
-        <th>Αεροσκάφος</th>
+        <th>Flight No</th>
+        <th>Aircraft</th>
         <th>Total Price</th>
         <th>Total Fare</th>
         <th>Tax</th>
@@ -46,21 +46,32 @@ function FillTheTable(response) {
 
             flights_sum++;
 
-            retval+=`<td align=center rowspan=` + dromologia + `><b>Μετάβαση</b><br>` + duration[0] + `ώ ` + duration[1] + `λ<br>`;
+            retval+=`<td align=center rowspan=` + dromologia + `><b>Transition</b><br>` + (duration[0]==0 ? `` : duration[0]  + `h `) + duration[1] + `m<br>`;
 
+            if (dromologia == 1) {
+                retval+=`<b>Non stop</b></td>`;
+            }
+            else {
+                retval+=`<b>` + (dromologia - 1) + ((dromologia - 1)>1?` stops` : ` stop`) + `</b></td>`;
+            }
+
+            var index=0;
+
+            $.each(itirenaries.outbound.flights, function(key1, flights) {
+
+                if (index > 0) retval+=`<tr>`;
+
+                //retval+=`<td align=center>` + flights.origin.airport + `<br>` + find_airport(flights.origin.airport) + `</td>`;
+
+            });
         });
     });
 
+    retval += `<br><br><br>`
+
     return retval;
 
-
-        //         echo("<td align=center rowspan=".$dromologia."><b>Μετάβαση</b><br>".$duration[0]."ώ ".$duration[1]."λ<br>");
-                
-        //         if($dromologia == 1) 
-        //             echo("<b>Απευθείας πτήση</b></td>");
-        //         else
-        //             echo("<b>".($dromologia - 1).(($dromologia - 1)>1?" στάσεις":" στάση")."</b></td>");
-                
+};                
         //         $index=0;
                 
         //         foreach($itineraries->outbound->flights as $flights) {
@@ -154,4 +165,4 @@ function FillTheTable(response) {
         // }
         // echo('</table>');
 
-};
+

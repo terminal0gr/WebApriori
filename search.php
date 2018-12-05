@@ -18,7 +18,7 @@
 	$mysqli = new mysqli(HOST, USERNAME, PWD, DB);
 	/* check connection */
 	if (mysqli_connect_errno()) {
-		printf("<BR>Αποτυχία Σύνδεσης: %s\n", mysqli_connect_error());
+		printf("<BR>Connection error: %s\n", mysqli_connect_error());
 		exit();
 	}
     
@@ -327,7 +327,7 @@
 				<table >
 				<tr><td colspan=3>
 					<!-- <div class="form-group"> -->
-						<label >Απλή μετάβαση
+						<label >One way
 							<input type="radio" id="direction" name="direction" value=1 onclick="waydirection(1)" <?php
 								if (isset($_POST['direction'])){
 									if($_POST['direction']==1) echo("checked");
@@ -336,7 +336,7 @@
 								}
 								?>> 
 						</label>
-						<label >Με επιστροφή
+						<label >Round trip
 							<input type="radio" id="direction" name="direction" value=2 onclick="waydirection(2)" <?php
 								if (isset($_POST['direction'])){
 									if($_POST['direction']==2) echo("checked");
@@ -347,7 +347,7 @@
 					<!-- </div> -->
 				</td></tr>
 				<tr><td>
-					<input type="text" id="origin_descr" name="origin_descr" placeholder="Αναχώρηση από ..." class="form-control" value="<?php 
+					<input type="text" id="origin_descr" name="origin_descr" placeholder="Departure from..." class="form-control" value="<?php 
 						if (isset($_POST['origin_descr'])){
 							echo($_POST['origin_descr']); }
 						else { 
@@ -355,7 +355,7 @@
 						}
 					?>"/>
 				</td><td>
-					<input type="text" id="departure_date"  name="departure_date" size=8 placeholder="Αναχώρηση" autocomplete="off"  class="form-date form-control" value="<?php 
+					<input type="text" id="departure_date"  name="departure_date" size=8 placeholder="Departure" autocomplete="off"  class="form-date form-control" value="<?php 
 						if (isset($_POST['departure_date'])){
 							echo($_POST['departure_date']); 
 						} else {
@@ -363,10 +363,10 @@
 						}
 					?>"/>
 				</td><td rowspan=3>
-					<input type="submit" value="Αναζήτηση" name="submit" class="btn btn-primary" id="searchButton" />
+					<input type="submit" value="Search" name="submit" class="btn btn-primary" id="searchButton" />
 				</td></tr>
 				<tr><td>
-					<input type="text" id="destination_descr"  name="destination_descr" placeholder="Άφιξη σε ..." class="form-control" value="<?php 
+					<input type="text" id="destination_descr"  name="destination_descr" placeholder="Arrival to..." class="form-control" value="<?php 
 						if (isset($_POST['destination_descr'])){
 							echo($_POST['destination_descr']); }
 						else { 
@@ -374,7 +374,6 @@
 						}
 					?>"/>
 				</td><td>
-				<!--<label class="control-label">Ημ/νία επιστροφής: </label>-->
 				<input type="<?php 
 					if (isset($_POST['direction'])){
 						if($_POST['direction']==2) {
@@ -384,7 +383,7 @@
 						}
 					} else {
 						echo("hidden");
-					}?>" id="return_date" name="return_date" size=7 placeholder="Επιστροφή" autocomplete="off"  class="form-control form-date" value="<?php 
+					}?>" id="return_date" name="return_date" size=7 placeholder="Arrival" autocomplete="off"  class="form-control form-date" value="<?php 
 					if (isset($_POST['return_date'])){
 						echo($_POST['return_date']); }
 					else { 
@@ -416,8 +415,8 @@
 		</form>
 
 
-	<div id="error-dialog" title="Έλεγχος πεδίων"></div>
-	<div id="result-dialog" title="Αποτελέσματα αναζήτησης"></div>
+	<div id="error-dialog" title="Filter check"></div>
+	<div id="result-dialog" title="Search results"></div>
 	<div id="searching" class="center-div"></div>
 	<div id="apidiv"></div>
 	
