@@ -1,7 +1,7 @@
 <?php
    session_start(); 
  //   $con = new mysqli(HOST, USERNAME, PWD, DB);
- $con = new mysqli("localhost", "webeng7", "webeng71819", "webeng7");
+ $con = mysqli_connect("localhost", "webeng7", "webeng71819", "webeng7");
  
  
         /* check connection */
@@ -30,7 +30,7 @@
 
 		$message = "Username and/or Password incorrect.\\nTry again.";
 		echo "<script type='text/javascript'>alert('$message');
-		window.location.href='index.html';</script>";
+		window.location.href='Login.html';</script>";
 
 		
 	}

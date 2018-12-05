@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$con1 = new mysqli(HOST, USERNAME, PWD, DB);
+	$con1 = mysqli_connect("localhost", "webeng7", "webeng71819", "webeng7");
 
     /* check connection */
 	if ($con1->connect_error)
@@ -42,7 +42,7 @@
 			$mail->From = 'ait242018@ait.teithe.gr';   
 			$mail->FromName = 'Flights';
 			$mail->addAddress($email);               
-			$mail->Subject  = "Flights. Please verify!";
+			$mail->Subject  = "Flights Scanner. Please verify!";
 			$mail->Body  = $message;
 			if(!$mail->send()) 
 				{

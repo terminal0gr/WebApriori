@@ -3,7 +3,7 @@
 session_start();
     
 //    $con = new mysqli(HOST, USERNAME, PWD, DB);
-$con = new mysqli("localhost", "webeng7", "webeng71819", "webeng7");
+$con = mysqli_connect("localhost", "webeng7", "webeng71819", "webeng7");
 
         /* check connection */
 	if (mysqli_connect_errno()) {
