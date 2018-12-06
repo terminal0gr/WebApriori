@@ -1,3 +1,34 @@
+var airports = [];
+
+function find_airport(A_Code) {
+
+    fill_airport();
+
+    var res = airports.find(x => x.code === A_Code);
+    if (res===undefined) {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET","getairport.php",false);
+            xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+            //xmlhttp.send(airports)
+            xmlhttp.send("code=" + escape(A_Code));
+            alert(xmlhttp.responseText);
+        }
+
+        return A_Code;
+    } else {
+        return res.airport;
+    }
+
+}
+
+function fill_airport() {
+    airports = [
+        {code:"SKG", airport:"Thessaloniki"},
+        {code:"ATH", airport:"Athens"}
+      ];
+}
+
 function FillTheTable(response) {
     var Retval;
     retval = 
@@ -27,6 +58,8 @@ function FillTheTable(response) {
     </tr>`
 
     var flights_sum=0;
+
+
 
     $.each(response.results, function(key, results) {
         
@@ -61,7 +94,7 @@ function FillTheTable(response) {
 
                 if (index > 0) retval+=`<tr>`;
 
-                //retval+=`<td align=center>` + flights.origin.airport + `<br>` + find_airport(flights.origin.airport) + `</td>`;
+                retval+=`<td align=center>` + flights.origin.airport + `<br>` + find_airport(flights.origin.airport) + `</td>`;
 
             });
         });

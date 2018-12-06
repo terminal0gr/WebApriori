@@ -28,6 +28,7 @@
 ?>
 
 <!DOCTYPE html>
+<html>
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -307,6 +308,9 @@
 			</li>
 			<li class="nav-item">
 				<a class="nav-link active">Flight search</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active" onclick="find_airport('ATQ')">Test</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
