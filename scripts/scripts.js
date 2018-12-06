@@ -2,17 +2,19 @@ var airports = [];
 
 function find_airport(A_Code) {
 
-    fill_airport();
+    //fill_airport();
 
     var res = airports.find(x => x.code === A_Code);
     if (res===undefined) {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("GET","getairport.php",false);
+
+            xmlhttp.open("POST","getairport.php", false);
             xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
-            //xmlhttp.send(airports)
-            xmlhttp.send("code=" + escape(A_Code));
+            xmlhttp.send("code=ATH");
+            xmlhttp.send();
             alert(xmlhttp.responseText);
+
         }
 
         return A_Code;
@@ -21,6 +23,19 @@ function find_airport(A_Code) {
     }
 
 }
+
+  
+  function transferComplete(evt) {
+    alert("The transfer is complete.");
+  }
+  
+  function transferFailed(evt) {
+    alert("An error occurred while transferring the file.");
+  }
+  
+  function transferCanceled(evt) {
+    alert("The transfer has been canceled by the user.");
+  }
 
 function fill_airport() {
     airports = [
