@@ -310,7 +310,7 @@
 				<a class="nav-link active">Flight search</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active" onclick="find_airport('ATH')">Test</a>
+				<a class="nav-link active" onclick="find_airport('SKG')">Test</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto">

@@ -19,21 +19,9 @@
             $stmt->bind_result($city, $country);
             $stmt->fetch();
             $stmt->close();
-            $airport = '{code:' . $city . ', airport:' . $country . '}';
-            //printf($airport);
+            $airport = array('code' => $airline_code, 'city' => $city, 'country' => $country);
             print json_encode($airport);
-            // $stmt->bind_param("s", $airline_code);
-            // $stmt->execute();
-            // $stmt->bind_result($airline);
-            // $rows = array();
-            // while($r = mysqli_fetch_assoc($stmt)) {
-            //     $rows[] = $r;
-            // }
-    
-            //http_response_code(200);
-    
-            //return $airport;
-            //print json_encode($rows);
+
         }
     
         $mysqli->close();

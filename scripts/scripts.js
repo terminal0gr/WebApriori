@@ -8,41 +8,27 @@ function find_airport(A_Code) {
     if (res===undefined) {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
-
             xmlhttp.open("POST","getairport.php", false);
             xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
-            xmlhttp.send("code=ATH");
-            xmlhttp.send();
-            alert(xmlhttp.responseText);
+            xmlhttp.send("code=" +A_Code);
 
+            res=JSON.parse(xmlhttp.responseText);
+            airports.push(res); 
+            return res.city + ",<br>" + res.country;
         }
-
-        return A_Code;
+        else return A_Code;
     } else {
-        return res.airport;
+        return res.city + ",<br>" + res.country;
     }
 
 }
 
-  
-  function transferComplete(evt) {
-    alert("The transfer is complete.");
-  }
-  
-  function transferFailed(evt) {
-    alert("An error occurred while transferring the file.");
-  }
-  
-  function transferCanceled(evt) {
-    alert("The transfer has been canceled by the user.");
-  }
 
-function fill_airport() {
-    airports = [
-        {code:"SKG", airport:"Thessaloniki"},
-        {code:"ATH", airport:"Athens"}
-      ];
-}
+// function fill_airport() {
+//      airports = [
+//          {code:'ATH', city:'Athens', country:'Greece'}
+//        ];
+// }
 
 function FillTheTable(response) {
     var Retval;
@@ -111,6 +97,12 @@ function FillTheTable(response) {
 
                 retval+=`<td align=center>` + flights.origin.airport + `<br>` + find_airport(flights.origin.airport) + `</td>`;
 
+                var departure = flights.departs_at.split("T");
+                var tmp_departure_date =departure[0].split("-");
+                var departure_date = tmp_departure_date[2] + "/" + tmp_departure_date[1] + "/" + tmp_departure_date[0];
+                var departure_time = departure[1];
+                retval+=`<td align=center>` + departure_date + `<br>` + departure_time + `</td>`;
+
             });
         });
     });
@@ -120,19 +112,7 @@ function FillTheTable(response) {
     return retval;
 
 };                
-        //         $index=0;
-                
-        //         foreach($itineraries->outbound->flights as $flights) {
 
-        //             if($index > 0) echo("<tr>");
-                                                
-        //             echo("<td align=center>".$flights->origin->airport."<br>".find_airport($flights->origin->airport)."</td>");
-                    
-        //             $departure=explode("T", $flights->departs_at);
-        //             $tmp_departure_date = explode("-", $departure[0]);
-        //             $departure_date = $tmp_departure_date[2]."/".$tmp_departure_date[1]."/".$tmp_departure_date[0];
-        //             $departure_time = $departure[1];
-        //             echo("<td align=center>".$departure_date."<br>".$departure_time."</td>");
                     
         //             echo("<td align=center>".$flights->destination->airport."<br>".find_airport($flights->destination->airport)."</td>");
                     
