@@ -1,4 +1,6 @@
 <?php
+	include("./config.php");
+	include("./phpfunctions/jwt_helper.php");
    session_start(); 
  //   $con = new mysqli(HOST, USERNAME, PWD, DB);
  $con = mysqli_connect("localhost", "webeng7", "webeng71819", "webeng7");
@@ -20,11 +22,15 @@
    
       // If result matched $myusername and $mypassword, table row must be 1 row
 
-     
+  
    if($num==1){
-	 
-	    $_SESSION['email']=$email;
-	   header("location:search.php");
+
+	   $token = array();
+	   $token['id'] = $email;
+	   $_SESSION["encodedToken"] = JWT::encode($token, SERVERKEY); //SERVERKEY from config.php
+
+
+	   header("location:search.html");
 	}else{
 		
 
@@ -34,6 +40,6 @@
 
 		
 	}
-	session_destroy();
+//	session_destroy();
 ?>
 
