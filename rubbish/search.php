@@ -309,9 +309,6 @@
 			<li class="nav-item">
 				<a class="nav-link active">Flight search</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link active" onclick="find_airport('SKG')">Test</a>
-			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
@@ -346,7 +343,7 @@
 									if($_POST['direction']==2) echo("checked");
 								}
 								?>>
-							<span class="checkmark"></span>
+							<!--<span class="checkmark"></span> -->
 						</label>
 					<!-- </div> -->
 				</td></tr>
@@ -422,6 +419,7 @@
 	<div id="error-dialog" title="Filter check"></div>
 	<div id="result-dialog" title="Search results"></div>
 	<div id="searching" class="center-div"></div>
+
 	<div id="apidiv"></div>
 	
 	</div>

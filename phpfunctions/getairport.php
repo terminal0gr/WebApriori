@@ -1,5 +1,5 @@
 <?php
-   include_once 'config.php';
+   include_once '../config.php';
 
     header("Content-Type: application/json");
     header("Access-Control-Allow-Origin: *");
@@ -7,7 +7,7 @@
 
     $mysqli = new mysqli(HOST, USERNAME, PWD, DB);
 	if (mysqli_connect_errno()) {
-		printf("<BR>Connection error: %s\n", mysqli_connect_error());
+		printf("<br>Connection error: %s\n", mysqli_connect_error());
         exit();
     } else {
         $query = "select city, country from airports where code = ?";
@@ -26,8 +26,5 @@
     
         $mysqli->close();
     }
-    
-
-
     
 ?>
