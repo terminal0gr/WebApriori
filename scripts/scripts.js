@@ -7,11 +7,30 @@ var airports = [];
 var airlines = [];
 //Json Object shape
 //airlines = [
-//  {}
+//  {iata:'OA', name:'Olympic Airways'}
 //];
 
-function find_airport(A_Code) {
 
+function find_airline(A_iata) {
+    var res = airlines.find(x => x.iata === A_iata);
+    if (res===undefined) {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST","phpfunctions/getairline.php", false);
+            xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+            xmlhttp.send("iata=" +A_iata);
+
+            res=JSON.parse(xmlhttp.responseText);
+            airlines.push(res); 
+            return res.iata + ",<br>" + res.name;
+        }
+        else return A_iata;
+    } else {
+        return res.iata + ",<br>" + res.name;
+    }
+}
+
+function find_airport(A_Code) {
     var res = airports.find(x => x.code === A_Code);
     if (res===undefined) {
         if (window.XMLHttpRequest) {
@@ -28,7 +47,6 @@ function find_airport(A_Code) {
     } else {
         return res.city + ",<br>" + res.country;
     }
-
 }
 
 function FillTheTable(response) {
@@ -110,8 +128,7 @@ function FillTheTable(response) {
                 var arrival_time = arrival[1];
                 retval+=`<td align=center>` + arrival_date + `<br>` + arrival_time + `</td>`;
 
-                //TODO Read airlines From Database...
-                retval+=`<td align=center>` + flights.operating_airline + `<br>` +  `</td>`;
+                retval+=`<td align=center>` + find_airline(flights.operating_airline) + `<br>` +  `</td>`;
 
                 retval+=`<td align=center>` + flights.flight_number + `</td>`;
                 retval+=`<td align=center>` + flights.aircraft + `</td>`;
@@ -164,8 +181,7 @@ function FillTheTable(response) {
                     var arrival_time = arrival[1];
                     retval+=`<td align=center>` + arrival_date + `<br>` + arrival_time + `</td>`;
 
-                    //TODO Read airlines From Database...
-                    retval+=`<td align=center>` + flights.operating_airline + `<br>` +  `</td>`;
+                    retval+=`<td align=center>` + find_airline(flights.operating_airline) + `<br>` +  `</td>`;
 
                     retval+=`<td align=center>` + flights.flight_number + `</td>`;
                     retval+=`<td align=center>` + flights.aircraft + `</td>`;
