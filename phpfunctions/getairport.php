@@ -3,7 +3,6 @@
 
     header("Content-Type: application/json");
     header("Access-Control-Allow-Origin: *");
-    //header("Content-Type: application/json; charset=UTF-8");
 
     $mysqli = new mysqli(HOST, USERNAME, PWD, DB);
 	if (mysqli_connect_errno()) {
