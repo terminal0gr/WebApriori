@@ -74,10 +74,12 @@
     <br>
     <br>
 
+	<div id="form-messages"></div>
+
 	<div class="container">
 		<h1>Welcome! Please Sign In</h1>
 		<p>or <a href="SignUp.html">Sign Up</a> if you are a new user</p>
-		<form action= "validation.php" method="post">
+		<form id="ajax-contact" action= "validation.php" method="post">
 				<div class="p-1">
 					<label>Email</label>
 					<input type="email" name="email" class="form-control" autocomplete="off" required>
@@ -99,5 +101,6 @@
         </nav>
 	</footer>
 
+	<script src="scripts/login.js"></script>
 </body>
 </html>
