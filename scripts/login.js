@@ -28,7 +28,6 @@ $(function() {
 			res=JSON.parse(response);
 
 			if (res.http_response_code==200) {
-				$(formMessages).text(res.token + '<br>' + res.http_response_code + ' ' + res.message);
 				sessionStorage.setItem('token', res.token);
 				sessionStorage.setItem('username', res.name);
 				window.location.href='index.html';
@@ -37,10 +36,6 @@ $(function() {
 
 			}
 
-			// Clear the form.
-			//$('#name').val('');
-			//$('#email').val('');
-			//$('#message').val('');
 		})
 		.fail(function(data) {
 			// Make sure that the formMessages div has the 'error' class.
@@ -57,3 +52,5 @@ $(function() {
 	});
 
 });
+
+

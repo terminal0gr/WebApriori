@@ -47,7 +47,7 @@
 			//header("location:search.html");
 		} else {
 			
-            $JsonReq = array('http_response_code' => 500, 'message' => 'Username and/or Password incorrect.\\nTry again.');
+            $JsonReq = array('http_response_code' => 500, 'message' => $passwd.'Username and/or Password incorrect.\\nTry again.');
             print json_encode($JsonReq);
 
             //$message = "Username and/or Password incorrect.\\nTry again.";

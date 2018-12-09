@@ -35,14 +35,11 @@
     <title>Flight Scanner</title>
 
 	<script>
-		$( window ).resize(function() {
-			if ($(window).width() <= 768 || $(window).height() <= 576) {
-				$('#c-footer').removeClass('fixed-bottom');
-			}
-			else {
-				$('#c-footer').addClass('fixed-bottom')
-			}
-		});
+
+        if (!sessionStorage.getItem('token')) {
+			sessionStorage.clear();
+            window.location.href='index.html';
+		}
 
 		$(function() {
 
@@ -50,8 +47,15 @@
 				$('#navbar-brand').html('Flight scanner ' +  sessionStorage.getItem('version'));
 			}
 			else {
-				window.location.href = "index.html";
+				sessionStorage.clear();
+				window.location.href='index.html';
 			}
+			M_F();
+			VT();
+			$('#SignOut').click(function() {
+				sessionStorage.clear();
+				window.location.href='index.html';
+			});		
 
 			var dateFormat = "dd/mm/yy",
 				departure_date = $("#departure_date")
@@ -252,6 +256,31 @@
 		
 		});
 
+        function M_F() {
+            if ($(window).width() <= 800 || $(window).height() <= 600) {
+                $('#c-footer').removeClass('fixed-bottom');
+            }
+            else {
+                $('#c-footer').addClass('fixed-bottom')
+            }
+        }
+
+        function VT() {
+            if (sessionStorage.getItem('token')) {
+                $('#SignUp').hide();
+                $('#SignIn').hide();
+                $('#SignOut').show();
+            } else {
+                $('#SignUp').show();
+                $('#SignIn').show();
+                $('#SignOut').hide();
+            }
+        }
+
+        $( window ).resize(function() {
+            M_F();
+        });		
+
 		function showRequest() {
 			var x = document.getElementById("apirequest");
 			var b = document.getElementById("brequest");
@@ -293,8 +322,14 @@
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
-			<li class="nav-item">
-				<a class="nav-link" href = "logout.php">Sign Out</a>
+			<li id="SignUp" class="nav-item">
+				<a class="nav-link" href="SignUp.html">Sign Up</a>
+			</li>
+			<li id="SignIn" class="nav-item">
+				<a class="nav-link glyphicon glyphicon-envelope" href="Login.html">Sign In</a>
+			</li>
+			<li id="SignOut" class="nav-item">
+				<a class="nav-link">Sign out</a>
 			</li>
 		</ul>
 	</nav>

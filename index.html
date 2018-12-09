@@ -33,24 +33,27 @@
 
     <script>
 
-        sessionStorage.clear();
-
     	$(function() {
-            sessionStorage.setItem('version', '2.0');
+            sessionStorage.setItem('version', '2.1');
 			$('#navbar-brand').html('Flight scanner ' +  sessionStorage.getItem('version'));
             M_F();
             VT();
+            $('#SignOut').click(function() {
+                sessionStorage.clear();
+                window.location.href='index.html';
+            });
+
         });
-        
+
         function M_F() {
-			if ($(window).width() <= 800 || $(window).height() <= 600) {
-				$('#c-footer').removeClass('fixed-bottom');
-			}
-			else {
-				$('#c-footer').addClass('fixed-bottom')
-			}
+            if ($(window).width() <= 800 || $(window).height() <= 600) {
+                $('#c-footer').removeClass('fixed-bottom');
+            }
+            else {
+                $('#c-footer').addClass('fixed-bottom')
+            }
         }
-        
+
         function VT() {
             if (sessionStorage.getItem('token')) {
                 $('#SignUp').hide();
@@ -63,9 +66,9 @@
             }
         }
 
-		$( window ).resize(function() {
+        $( window ).resize(function() {
             M_F();
-		});
+        });
 
     </script>
 
@@ -95,7 +98,7 @@
 				<a class="nav-link glyphicon glyphicon-envelope" href="Login.html">Sign In</a>
 			</li>
 			<li id="SignOut" class="nav-item">
-				<a class="nav-link" href = "logout.php">Sign out</a>
+                <a class="nav-link">Sign out</a>
 			</li>
 		</ul>
 	</nav>
