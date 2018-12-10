@@ -18,12 +18,34 @@
 	$result = mysqli_query($con1,$query);
 	$num=mysqli_num_rows($result);
 	
+	
+	// Check captcha
+	$captcha_error = "";
+	$captcha = $_POST['g-recaptcha-response'];
+	if (!isset($_POST['g-recaptcha-response'])||empty($_POST['g-recaptcha-response'])) {
+        $captcha_error = "Δεν έχετε κάνει τον έλεγχο επαλήθευσης";
+	} else {
+		$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=X6LdP7H8UAAAAAFZ5qAl0_FmLAqzdBUeD0G3ZaX0p&response=".$_POST['g-recaptcha-response'], False);
+		
+		$jresponse = json_decode($response, true);
+		if(!$jresponse["success"] === true)
+		{
+			$captcha_error = "Δεν πέτυχε ο έλεγχος επαλήθευσης";//.$response;
+		}
+	}
+	if($captcha_error != "") {
+		echo "<script type='text/javascript'>alert('$captcha_error');
+		window.location.href='SignUp.html';</script>";
+	}
+	
+	
+	
 	/* User is registered */
 	if($num==1)
 		{
 		$message = "SORRY...YOU ARE ALREADY REGISTERED USER...";
 		echo "<script type='text/javascript'>alert('$message');
-		window.location.href='index.html';</script>";
+		window.location.href='SignUp.html';</script>";
 		}
 	/* New user @temp_usertable & send confirmation email */
 	else

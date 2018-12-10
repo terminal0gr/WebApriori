@@ -14,6 +14,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	
     <title>Flight Scanner</title>
 
 	<script>
@@ -57,6 +59,32 @@
         $( window ).resize(function() {
             M_F();
         });
+		
+		
+		var recaptchachecked;
+		function recaptchaCallback() {
+			recaptchachecked = true;
+			$('#submitBtn').removeAttr('disabled');
+			$('#captcha-error').hide();
+			
+		};
+		
+		function recaptchaExpired() {
+			recaptchachecked = false;
+			$('#submitBtn').attr("disabled", true);
+			$('#captcha-error').hide();
+			
+		};
+		
+		function checkForm(){
+			if (recaptchachecked) {
+				return true;
+			} else {
+				document.getElementById("captcha-error").style.display = "block"
+				return false;
+				
+			}
+		};
 	</script>
 
 </head>
@@ -94,7 +122,7 @@
 		<h1>Welcome! Please Sign Up</h1>
 		<p>or <a href="Login.html">Sign In</a> if you are already our customer</p>
 
-		<form action="registration.php" method="post">
+		<form action="registration.php" method="post" onsubmit="return checkForm()">
 			<div class="p-1">
 				<label>Email</label>
 				<input type="email" name="email" class="form-control" autocomplete="off" required>
@@ -113,10 +141,12 @@
 				<input type="name" name="fname" class="form-control" autocomplete="off" required>
 			</div>
 			<div class="p-1">
-				<div class="g-recaptcha" data-sitekey="6LcLYHkUAAAAAJNkmWs9E-L9m_hQtCHZbRHiJvnr"></div>	
+				<!--<div class="g-recaptcha" data-sitekey="6LcLYHkUAAAAAJNkmWs9E-L9m_hQtCHZbRHiJvnr"></div>-->
+				<div class="g-recaptcha" data-callback="recaptchaCallback" data-expired-callback="recaptchaExpired" data-sitekey="6LdP7H8UAAAAAKjav2XpTfxV-wtnGrZVwWl5lbSD"></div>
+				<div id="captcha-error" style="display:none; color:red;"><b>Δεν έχετε κάνει τον έλεγχο επαλήθευσης</b></div>
 			</div>
 			<div class="p-1">
-				<button type="submit" class="btn btn-primary"> Sign Up </button>
+				<button id="submitBtn" type="submit" class="btn btn-primary" disabled> Sign Up </button>
 			</div>
 		</div>		
     
