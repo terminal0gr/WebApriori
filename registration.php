@@ -1,6 +1,8 @@
 <?php
 	session_start();
-	$con1 = mysqli_connect("localhost", "webeng7", "webeng71819", "webeng7");
+
+	$con1 = new mysqli(HOST, USERNAME, PWD, DB);
+	//$con1 = mysqli_connect("localhost", "webeng7", "webeng71819", "webeng7");
 
     /* check connection */
 	if ($con1->connect_error)
@@ -23,14 +25,14 @@
 	$captcha_error = "";
 	$captcha = $_POST['g-recaptcha-response'];
 	if (!isset($_POST['g-recaptcha-response'])||empty($_POST['g-recaptcha-response'])) {
-        $captcha_error = "Δεν έχετε κάνει τον έλεγχο επαλήθευσης";
+        $captcha_error = "Verification check has not been done";
 	} else {
 		$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=X6LdP7H8UAAAAAFZ5qAl0_FmLAqzdBUeD0G3ZaX0p&response=".$_POST['g-recaptcha-response'], False);
 		
 		$jresponse = json_decode($response, true);
 		if(!$jresponse["success"] === true)
 		{
-			$captcha_error = "Δεν πέτυχε ο έλεγχος επαλήθευσης";//.$response;
+			$captcha_error = "Verification check failed";//.$response;
 		}
 	}
 	if($captcha_error != "") {
@@ -64,17 +66,17 @@
 			$mail->From = 'ait242018@ait.teithe.gr';   
 			$mail->FromName = 'Flights';
 			$mail->addAddress($email);               
-			$mail->Subject  = "Flights Scanner. Please verify!";
+			$mail->Subject  = "Flights Scanner. Please confirm your verification!";
 			$mail->Body  = $message;
 			if(!$mail->send()) 
 				{
 				echo 'Email has not been sent.';
-				echo 'Errot: ' . $mail->ErrorInfo;
+				echo 'Error: ' . $mail->ErrorInfo;
 				}
 			else
 				{			  
 				$message = "Your Confirmation link Has Been Sent To Your Email Address.";
-				echo "<script type='text/javascript'>alert('$message');
+				echo "<script>alert('$message');
 				window.location.href='Login.html';</script>";
 				}
 			}
@@ -83,7 +85,7 @@
 		else
 			{
 			$message = "Your confirmation link has been already sent to your email address. Please check your email again!";
-			echo "<script type='text/javascript'>alert('$message');
+			echo "<script>alert('$message');
 			window.location.href='Login.html';</script>";
 			}
 		}

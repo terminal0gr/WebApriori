@@ -2,12 +2,12 @@
 
 session_start();
     
-//    $con = new mysqli(HOST, USERNAME, PWD, DB);
-$con = mysqli_connect("localhost", "webeng7", "webeng71819", "webeng7");
+    $con = new mysqli(HOST, USERNAME, PWD, DB);
+    //$con = mysqli_connect("localhost", "webeng7", "webeng71819", "webeng7");
 
         /* check connection */
 	if (mysqli_connect_errno()) {
-		printf("<BR>Αποτυχία Σύνδεσης: %s\n", mysqli_connect_error());
+		printf("<br>Connection error: %s\n", mysqli_connect_error());
 		exit();
 	}
 
