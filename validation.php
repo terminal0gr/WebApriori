@@ -39,12 +39,10 @@
 
 			$token = array();
 			$token['id'] = $email;
-			//$etoken = JWT::encode($token, SERVERKEY); //SERVERKEY from config.php
 
             $JsonReq = array('http_response_code' => 200, 'token' => JWT::encode($token, SERVERKEY), 'name' => $rowobj->fname." ".$rowobj->oname, 'message' => 'success');
             print json_encode($JsonReq);
 
-			//header("location:search.html");
 		} else {
 			
             $JsonReq = array('http_response_code' => 500, 'message' => $passwd.'Username and/or Password incorrect.\\nTry again.');
