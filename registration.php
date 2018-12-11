@@ -1,8 +1,6 @@
 <?php
 	session_start();
-
-	$con1 = new mysqli(HOST, USERNAME, PWD, DB);
-	//$con1 = mysqli_connect("localhost", "webeng7", "webeng71819", "webeng7");
+	$con1 = mysqli_connect("localhost", "webeng7", "webeng71819", "webeng7");
 
     /* check connection */
 	if ($con1->connect_error)
@@ -25,22 +23,18 @@
 	$captcha_error = "";
 	$captcha = $_POST['g-recaptcha-response'];
 	if (!isset($_POST['g-recaptcha-response'])||empty($_POST['g-recaptcha-response'])) {
-        $captcha_error = "Verification check has not been done";
+        $captcha_error = "Δεν έχετε κάνει τον έλεγχο επαλήθευσης";
 	} else {
 		$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdP7H8UAAAAAFZ5qAl0_FmLAqzdBUeD0G3ZaX0p&response=".$_POST['g-recaptcha-response'], False);
 		
 		$jresponse = json_decode($response, true);
 		if(!$jresponse["success"] === true)
 		{
-			$captcha_error = "Verification check failed";//.$response;
+			$captcha_error = true;
+			echo "<script type='text/javascript'>alert('Δεν πέτυχε ο έλεγχος επαλήθευσης');
+			window.location.href='SignUp.html';</script>";
 		}
 	}
-	if($captcha_error != "") {
-		echo "<script type='text/javascript'>alert('$captcha_error');
-		window.location.href='SignUp.html';</script>";
-	}
-	
-	
 	
 	/* User is registered */
 	if($num==1)
@@ -50,12 +44,10 @@
 		window.location.href='SignUp.html';</script>";
 		}
 	/* New user @temp_usertable & send confirmation email */
-	else
-		{
+	elseif(!$captcha_error) {
 		$sql="INSERT INTO temp_usertable(confirm_code,temail,tpasswd,toname,tfname)VALUES('$confirm_code','$email','$passwd','$oname','$fname')";
 		$result = mysqli_query($con1,$sql);
-		if($result)
-			{
+		if($result) {
 			$message = "Your Comfirmation link \r\nhttp://nireas.it.teithe.gr/webeng7/flights/confirmation.php?passkey=$confirm_code ";                   
 			require_once("mailer/class.phpmailer.php");
 			$mail = new PHPMailer;
@@ -66,29 +58,22 @@
 			$mail->From = 'ait242018@ait.teithe.gr';   
 			$mail->FromName = 'Flights';
 			$mail->addAddress($email);               
-			$mail->Subject  = "Flights Scanner. Please confirm your verification!";
+			$mail->Subject  = "Flights Scanner. Please verify!";
 			$mail->Body  = $message;
-			if(!$mail->send()) 
-				{
+			if(!$mail->send()) {
 				echo 'Email has not been sent.';
-				echo 'Error: ' . $mail->ErrorInfo;
-				}
-			else
-				{			  
+				echo 'Errot: ' . $mail->ErrorInfo;
+			} else {			  
 				$message = "Your Confirmation link Has Been Sent To Your Email Address.";
-				echo "<script>alert('$message');
+				echo "<script type='text/javascript'>alert('$message');
 				window.location.href='Login.html';</script>";
-				}
 			}
-		
-		/* Confirmation email has been already sent */
-		else
-			{
+		} else { /* Confirmation email has been already sent */
 			$message = "Your confirmation link has been already sent to your email address. Please check your email again!";
-			echo "<script>alert('$message');
+			echo "<script type='text/javascript'>alert('$message');
 			window.location.href='Login.html';</script>";
-			}
 		}
+	}
  
 	session_destroy();
 ?>
