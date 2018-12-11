@@ -1,4 +1,6 @@
 <?php
+	include("./config.php");
+	
 	session_start();
 	$con1 = new mysqli(HOST, USERNAME, PWD, DB);
     
@@ -49,7 +51,7 @@
 		$result = mysqli_query($con1,$sql);
 		
 		if($result) {
-			$message = "Your Comfirmation link \r\nhttp://nireas.it.teithe.gr/webeng7/flights/confirmation.php?passkey=$confirm_code ";                   
+			$message = "Your Confirmation link \r\nhttp://nireas.it.teithe.gr/webeng7/flights/confirmation.php?passkey=$confirm_code ";                   
 			require_once("mailer/class.phpmailer.php");
 			$mail = new PHPMailer;
 			$mail -> IsSMTP();
