@@ -40,18 +40,14 @@
 			$token = array();
 			$token['id'] = $email;
 
-            $JsonReq = array('http_response_code' => 200, 'token' => JWT::encode($token, SERVERKEY), 'name' => $rowobj->fname." ".$rowobj->oname, 'message' => 'success');
+			http_response_code(200);
+            $JsonReq = array('http_response_code' => 200, 'token' => JWT::encode($token, SERVERKEY), 'apikey' => apikey, 'name' => $rowobj->fname." ".$rowobj->oname, 'message' => 'success');
             print json_encode($JsonReq);
 
 		} else {
-			
-            $JsonReq = array('http_response_code' => 500, 'message' => $passwd.'Username and/or Password incorrect.\\nTry again.');
-            print json_encode($JsonReq);
-
-            //$message = "Username and/or Password incorrect.\\nTry again.";
-			//echo "<script type='text/javascript'>alert('$message');
-			//window.location.href='Login.html';</script>";
-            //echo $message;
+			//set a 403 (forbidden) response code.	
+			http_response_code(403);
+			echo "403 Username and/or Password incorrect.\nPlease try again.";
 
 		}
 
@@ -60,6 +56,5 @@
 		http_response_code(403);
 		echo "There was a problem with your submission, please try again.";
 	}
-	//	session_destroy();
 ?>
 

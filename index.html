@@ -34,11 +34,15 @@
     <script>
 
     	$(function() {
-            sessionStorage.setItem('version', '2.1');
+            sessionStorage.setItem('version', '2.2');
 			$('#navbar-brand').html('Flight scanner ' +  sessionStorage.getItem('version'));
             M_F();
             VT();
             $('#SignOut').click(function() {
+                sessionStorage.clear();
+                window.location.href='index.html';
+            });
+            $('#JTSignOut').click(function() {
                 sessionStorage.clear();
                 window.location.href='index.html';
             });
@@ -54,15 +58,18 @@
             }
         }
 
+
         function VT() {
             if (sessionStorage.getItem('token')) {
                 $('#SignUp').hide();
                 $('#SignIn').hide();
                 $('#SignOut').show();
+                $('#JumbotronMsg').html('Different user? Please <a id="JTSignOut" href="#">Sign Out</a>');
             } else {
                 $('#SignUp').show();
                 $('#SignIn').show();
                 $('#SignOut').hide();
+                $('#JumbotronMsg').html('Please, <a href="Login.html">Sign In</a> in our application, or if you are a new customer, please <a href="SignUp.html">Sign up');
             }
         }
 
@@ -145,7 +152,7 @@
         <br>
 
         <div class="jumbotron text-center">
-           <h3>Please, <a href="Login.html">Sign In</a> in our application, or if you are a new customer, please <a href="SignUp.html">Sign up</a></h3> 
+           <h3 Id="JumbotronMsg">Please, <a href="Login.html">Sign In</a> in our application, or if you are a new customer, please <a href="SignUp.html">Sign up</a></h3> 
         </div>
 
         <br>

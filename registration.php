@@ -43,7 +43,7 @@
 	
 	/* User is registered */
 	if($num==1) {
-		$message = "SORRY...YOU ARE ALREADY REGISTERED USER...";
+		$message = "Sorry...You are already registered user...";
 		echo "<script type='text/javascript'>alert('$message');
 		window.location.href='SignUp.html';</script>";
 	} elseif(!$captcha_error) { /* New user @temp_usertable & send confirmation email */

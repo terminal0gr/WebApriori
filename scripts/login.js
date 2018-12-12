@@ -21,31 +21,25 @@ $(function() {
 			data: formData
 		})
 		.done(function(response) {
-			// Make sure that the formMessages div has the 'success' class.
-			$(formMessages).removeClass('error');
-			$(formMessages).addClass('success');
 
 			res=JSON.parse(response);
 
 			if (res.http_response_code==200) {
 				sessionStorage.setItem('token', res.token);
+				sessionStorage.setItem('apikey', res.apikey);
 				sessionStorage.setItem('username', res.name);
 				window.location.href='index.html';
 			} else {
-				$(formMessages).text('An error occured.<br>' + res.http_response_code + ' ' + res.message)
-
+				alert('An error occured.<br>' + res.http_response_code + ' ' + res.message);
 			}
 
 		})
 		.fail(function(data) {
-			// Make sure that the formMessages div has the 'error' class.
-			$(formMessages).removeClass('success');
-			$(formMessages).addClass('error');
 
 			if (data.responseText) {
-				$(formMessages).text(data.responseText);
+				alert(data.responseText);
 			} else {
-				$(formMessages).text('An error occured.');
+				alert('An error occured.');
 			}
 		});
 

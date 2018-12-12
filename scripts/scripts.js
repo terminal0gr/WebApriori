@@ -73,7 +73,7 @@ function FillTheTable(response) {
         <th>Flight No</th>
         <th>Aircraft</th>
         <th>Total Price</th>
-        <th>Total Fare</th>
+        <th>Fare</th>
         <th>Tax</th>
     </tr>`
 
@@ -138,8 +138,9 @@ function FillTheTable(response) {
                 if(flights.booking_info.seats_remaining==9) {seats=">=9"};
                 retval+=`<td align=center>` + seats + `</td>`;
 
+                fare=parseFloat(parseFloat(results.fare.price_per_adult.total_fare).toFixed(2)-parseFloat(results.fare.price_per_adult.tax).toFixed(2)).toFixed(2);
                 if(index == 0) {retval+=`<td align=center rowspan=` + totallines + `>` + results.fare.total_price + `</td>`};
-                if(index == 0) {retval+=`<td align=center rowspan=` + totallines + `>` + results.fare.price_per_adult.total_fare + `</td>`};
+                if(index == 0) {retval+=`<td align=center rowspan=` + totallines + `>` + fare + `</td>`};
                 if(index == 0) {retval+=`<td align=center rowspan=` + totallines + `>` + results.fare.price_per_adult.tax + `</td>`};
      
                 retval+=`</tr>`;

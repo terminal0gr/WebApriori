@@ -123,7 +123,7 @@
 						url: "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete",
 						dataType: "json",
 						data: {
-							apikey: "djnSPkH5LeLwOsA8gbApHjGjdCkaRpAa",
+							apikey: sessionStorage.getItem('apikey'),
 							term: request.term
 						},
 						success: function( data ) {
@@ -155,7 +155,7 @@
 						url: "https://api.sandbox.amadeus.com/v1.2/airports/autocomplete",
 						dataType: "json",
 						data: {
-							apikey: "djnSPkH5LeLwOsA8gbApHjGjdCkaRpAa",
+							apikey: sessionStorage.getItem('apikey'),
 							term: request.term
 						},
 						success: function( data ) {
@@ -209,7 +209,7 @@
 				
 				if (flist === "") {
 
-					var Mdata = "apikey=djnSPkH5LeLwOsA8gbApHjGjdCkaRpAa";
+					var Mdata = "apikey=" + sessionStorage.getItem('apikey');
 					Mdata += "&number_of_results=250";
 					Mdata += "&currency=EUR";
 					Mdata += "&origin=" + $("#origin").val();
