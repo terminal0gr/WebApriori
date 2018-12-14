@@ -54,7 +54,7 @@ function FillTheTable(response) {
     retval = 
     `<br>
      <hr>
-    <table id='results' border=1>    
+    <table id='results' class="table table-bordered">    
     <tr>
         <th rowspan=2>Duration</th>
         <th colspan=2>Departure</th>
