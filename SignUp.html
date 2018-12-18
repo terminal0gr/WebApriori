@@ -92,7 +92,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-		<a id="navbar-brand" class="navbar-brand" href="#">Flight scanner     </a>
+		<a id="navbar-brand" class="navbar-brand d-none d-sm-block" href="#">Flight scanner     </a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<a class="nav-link" href="index.html">Home</a>
@@ -117,10 +117,9 @@
     <br>
     <br>
 
-	<div class="container">
-
-		<h1>Welcome! Please Sign Up</h1>
-		<p>or <a href="Login.html">Sign In</a> if you are already our customer</p>
+	<div class="mx-auto border rounded mb-3 p-2" style="width: 329px;">
+		<h4 class="text-center">Welcome! Please Sign Up</h4>
+		<p class="text-center">Already our customer? Please <a href="Login.html">sign In</a></p>
 
 		<form action="registration.php" method="post" onsubmit="return checkForm()">
 			<div class="p-1">
@@ -140,13 +139,13 @@
 				<label>Last Name</label>
 				<input type="name" name="fname" class="form-control" autocomplete="off" required>
 			</div>
-			<div class="p-1">
+			<div class="p-1 mt-1">
 				<!--<div class="g-recaptcha" data-sitekey="6LcLYHkUAAAAAJNkmWs9E-L9m_hQtCHZbRHiJvnr"></div>-->
 				<div class="g-recaptcha" data-callback="recaptchaCallback" data-expired-callback="recaptchaExpired" data-sitekey="6LdP7H8UAAAAAKjav2XpTfxV-wtnGrZVwWl5lbSD"></div>
 				<div id="captcha-error" style="display:none; color:red;"><b>Verification check has not been done!</b></div>
 			</div>
 			<div class="p-1">
-				<button id="submitBtn" type="submit" class="btn btn-primary" disabled> Sign Up </button>
+				<button id="submitBtn" type="submit" class="btn btn-primary btn-block mt-1" disabled> Sign Up </button>
 			</div>
 		</div>		
 	

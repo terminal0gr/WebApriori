@@ -89,32 +89,19 @@
     <br>
     <br>
 
-	<div class="mx-auto border rounded mb-3 p-2" style="width: 300px;" >
-		<h4 class="text-center">Welcome! Please Sign In</h4>
 
+	<div class="mx-auto border rounded mb-3 p-2" style="width: 300px;" >
+		<h4 class="text-center">Reset you password</h4>
 		<form id="ajax-contact" action= "validation.php" method="post">
 			<div class="p-1">
-				<label>Email</label>
-				<input type="email" name="email" class="form-control" autocomplete="off" required>
+				<label>Enter your email address and we will send you link to reset your password.</label>
+				<input type="email" name="email" class="form-control" autocomplete="off" placeholder="Enter your email address" required>
 			</div>
-			<div class="p-1" >
-				<div class="row">
-					<div class="col-4">
-						<label>Password</label>
-					</div>
-					<div class="col-8 ">
-						<label class="label-link" tabindex="-1" style="float: right"><a href="forgot.html" tabindex="-1">Forgot Password?</a></label>
-					</div>
-				</div>
-				<input type="password" name="passwd" class="form-control" required>
-			</div>
+
 			<div class=" p-1" >
-				<button type="submit" class="btn btn-primary btn-block mt-3"> Sign In </button>
+				<button type="submit" class="btn btn-primary btn-block mt-3">Send password reset email</button>
 			</div>
 		</form>
-	</div>
-	<div class="mx-auto border rounded m-3 p-2 " style="width: 300px; height:50px" >
-		<span class="text-center align-middle" >New to Flight Scanner? Please <a href="SignUp.html">Sign Up</a>.</span>
 	</div>
 
     <footer>
