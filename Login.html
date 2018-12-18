@@ -91,24 +91,33 @@
 
 	<div id="form-messages"></div>
 
-	<div class="container">
-		<h1>Welcome! Please Sign In</h1>
-		<p>or <a href="SignUp.html">Sign Up</a> if you are a new user</p>
+	<div class="mx-auto border rounded mb-3 p-2" style="width: 300px;" >
+		<h2>Welcome! Please Sign In</h2>
+
 		<form id="ajax-contact" action= "validation.php" method="post">
 			<div class="p-1">
 				<label>Email</label>
 				<input type="email" name="email" class="form-control" autocomplete="off" required>
 			</div>
 			<div class="p-1" >
-				<label>Password</label>
+				<div class="row">
+					<div class="col-4">
+						<label>Password</label>
+					</div>
+					<div class="col-8 ">
+						<label style="float: right"><a  href="#">Forgot Password?</a></label>
+					</div>
+				</div>
 				<input type="password" name="passwd" class="form-control" required>
 			</div>
 			<div class=" p-1" >
-				<button type="submit" class="btn btn-primary"> Sign In </button>
+				<button type="submit" class="btn btn-primary btn-block mt-3"> Sign In </button>
 			</div>
 		</form>
 	</div>
-	
+	<div class="mx-auto border rounded m-3 p-2 " style="width: 300px; height:50px" >
+		<span class="text-center align-middle" >New to Flight Scanner? Please <a href="SignUp.html">Sign Up</a>.</span>
+	</div>
 
     <footer>
         <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
