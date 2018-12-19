@@ -127,6 +127,10 @@
 						},
 						success: function( data ) {
 							response( data );
+							if (data) {
+							 	$("#origin_descr").val(data[0].label);
+							 	$("#origin").val(data[0].value);
+							 }
 						}
 					});
 				},
@@ -139,6 +143,7 @@
 				focus: function(event, ui) {
 					event.preventDefault();
 					$("#origin_descr").val(ui.item.label);
+					$("#origin").val(ui.item.value);
 				},
 				open: function() {
 					$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
@@ -159,6 +164,10 @@
 						},
 						success: function( data ) {
 							response( data );
+							if (data) {
+							 	$("#destination_descr").val(data[0].label);
+							 	$("#destination").val(data[0].value);
+							 }
 						}
 					});
 				},
@@ -171,6 +180,7 @@
 				focus: function(event, ui) {
 					event.preventDefault();
 					$("#destination_descr").val(ui.item.label);
+					$("#destination").val(ui.item.value);
 				},
 				open: function() {
 					$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
@@ -311,7 +321,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-		<a id="navbar-brand d-none d-sm-block" class="navbar-brand" href="#">Flight scanner    </a>
+		<a id="navbar-brand" class="navbar-brand d-none d-sm-block" href="#">Flight scanner    </a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<a class="nav-link" href="index.html">Home</a>
@@ -340,7 +350,7 @@
 	<form method="post" action="">
 		<div class="container">
 			<div class="row justify-content-center p-2">
-				<div class="col-10 col-sm-10 col-md-9 col-lg-8 col-xl-7 pb-2 border border-primary rounded p-2">
+				<div class="col-10 col-sm-10 col-md-9 col-lg-8 col-xl-7 pb-2 border rounded p-2">
 					<div class="row">
 						<div class="col">
 							<label >One way
@@ -348,6 +358,10 @@
 							</label>
 							<label >Round trip
 								<input type="radio" id="direction" name="direction" value=2 onclick="waydirection(2)" >
+								&nbsp;&nbsp;&nbsp;&nbsp;
+							</label>
+							<label>Non stop only
+								<input type="checkbox" id="Nonstop" >
 							</label>
 						</div>
 					</div>
@@ -369,7 +383,7 @@
 					</div>
 				</div>
 				<div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 p-1 border border-primary rounded">
-					<input type="submit" value="Search" name="submit" size="6" class="btn  btn-primary btn-block" style="height:100%; width:100%" id="searchButton" />
+					<input type="submit" value="Search" name="submit" class="btn  btn-primary btn-block" style="height:100%; width:100%" id="searchButton" />
 					<!-- <input type="submit" value="Search" name="submit" class="btn btn-primary center" id="searchButton" /> -->
 				</div>
 			</div>

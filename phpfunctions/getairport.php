@@ -1,5 +1,6 @@
 <?php
    include_once '../config.php';
+   include_once 'functions.php';
 
     header("Content-Type: application/json");
     header("Access-Control-Allow-Origin: *");
@@ -18,7 +19,7 @@
             $stmt->execute();
             $stmt->bind_result($city, $country);
             $stmt->fetch();
-            if ($mysqli->affected_rows) {
+            if ($city) {
                 $airport = array('code' => $_REQUEST['code'], 'city' => $city, 'country' => $country, 'Message' => 'Airport found in Database');
                 print json_encode($airport);
                 exit();
