@@ -6,24 +6,50 @@
 
     $mysqli = new mysqli(HOST, USERNAME, PWD, DB);
 	if (mysqli_connect_errno()) {
-		printf("<br>Connection error: %s\n", mysqli_connect_error());
+        $airport = array('code' => $_REQUEST['code'], 'city' => '', 'country' => '', 'Message' => 'Connection error:'.mysqli_connect_error());
+        print json_encode($airport);
         exit();
     } else {
         $query = "select city, country from airports where code = ?";
-        $airline_code=$_REQUEST['code'];
+        $iata_code=$_REQUEST['code'];
         
         if ($stmt = $mysqli->prepare($query)) {
-            $stmt->bind_param("s", $airline_code);
+            $stmt->bind_param("s", $iata_code);
             $stmt->execute();
             $stmt->bind_result($city, $country);
             $stmt->fetch();
-            $stmt->close();
-            $airport = array('code' => $airline_code, 'city' => $city, 'country' => $country);
-            print json_encode($airport);
+            if ($mysqli->affected_rows) {
+                $airport = array('code' => $_REQUEST['code'], 'city' => $city, 'country' => $country, 'Message' => 'Airport found in Database');
+                print json_encode($airport);
+                exit();
+            } else {
+                //https://api.sandbox.amadeus.com/v1.2/location/SMI?apikey=TZXCihIgRAkexLGxXtsVmfuyJpwHlp82
+                ini_set("allow_url_fopen", 1); 
 
+                $request = "https://api.sandbox.amadeus.com/v1.2/location/".$iata_code."?apikey=".apikey;
+
+                 $response = @file_get_contents($request);
+                 $code = getHttpCode($http_response_header);
+
+                if($code <> 200) {
+                    $airport = array('code' => $_REQUEST['code'], 'city' => '', 'country' => '', 'Message' => 'Airport not found');
+                    print json_encode($airport);
+                    exit();
+                }
+
+                $jsonobj = json_decode($response);
+
+                if (!$jsonobj->city) {
+                    $airport = array('code' => $_REQUEST['code'], 'city' => '', 'country' => '', 'Message' => 'Airport not found');
+                    print json_encode($airport);
+                    exit();
+                }
+
+                $airport = array('code' => $_REQUEST['code'], 'city' => $jsonobj->city->name, 'country' => $jsonobj->city->country, 'Message' => 'Airport retrieved from API');
+                print json_encode($airport);
+                exit();
+            }
         }
-    
-        $mysqli->close();
     }
     
 ?>
