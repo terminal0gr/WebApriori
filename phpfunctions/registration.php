@@ -1,11 +1,8 @@
 <?php
-	include("./config.php");
+	include("config.php");
 	
 	session_start();
 	$con1 = new mysqli(HOST, USERNAME, PWD, DB);
-    
-	/*$con1 = mysqli_connect("localhost", "webeng7", "webeng71819", "webeng7");*/
-	
 	
 	/* check connection */
 	if ($con1->connect_error) {
@@ -37,7 +34,7 @@
 		{
 			$captcha_error = true;
 			echo "<script type='text/javascript'>alert('Verification check failed');
-			window.location.href='SignUp.html';</script>";
+			window.location.href='../SignUp.html';</script>";
 		}
 	}
 	
@@ -45,14 +42,14 @@
 	if($num==1) {
 		$message = "Sorry...You are already registered user...";
 		echo "<script type='text/javascript'>alert('$message');
-		window.location.href='SignUp.html';</script>";
+		window.location.href='../SignUp.html';</script>";
 	} elseif(!$captcha_error) { /* New user @temp_usertable & send confirmation email */
 		$sql="INSERT INTO temp_usertable(confirm_code,temail,tpasswd,toname,tfname)VALUES('$confirm_code','$email','$passwd','$oname','$fname')";
 		$result = mysqli_query($con1,$sql);
 		
 		if($result) {
-			$message = "Your Confirmation link \r\nhttp://nireas.it.teithe.gr/webeng7/flights/confirmation.php?passkey=$confirm_code ";                   
-			require_once("mailer/class.phpmailer.php");
+			$message = "Your Confirmation link \r\nhttp://nireas.it.teithe.gr/webeng7/flights/phpfunctions/confirmation.php?passkey=$confirm_code ";                   
+			require_once("class.phpmailer.php");
 			$mail = new PHPMailer;
 			$mail -> IsSMTP();
 			$mail->CharSet="UTF-8";       
@@ -67,14 +64,13 @@
 				echo 'Email has not been sent.';
 				echo 'Error: ' . $mail->ErrorInfo;
 			} else {			  
-				$message = "Your Confirmation link Has Been Sent To Your Email Address.";
+				$message = "Your Confirmation link Has Been Sent To Your Email Address.".$email;
 				echo "<script>alert('$message');
-				window.location.href='Login.html';</script>";
+				window.location.href='../Login.html';</script>";
 			}
 		} else { /* Confirmation email has been already sent */
-			$message = "Your confirmation link has been already sent to your email address. Please check your email again!";
-			echo "<script'>alert('$message');
-			window.location.href='Login.html';</script>";
+			echo "<script>alert('Your confirmation link has been already sent to your email address ".$email.". Please check your email again!');
+			window.location.href='../Login.html';</script>";
 		}
 	}
  

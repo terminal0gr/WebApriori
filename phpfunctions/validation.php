@@ -1,6 +1,6 @@
 <?php
-	include("./config.php");
-	include("./phpfunctions/jwt_helper.php");
+	include("config.php");
+	include("jwt_helper.php");
 	session_start(); 
     
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {

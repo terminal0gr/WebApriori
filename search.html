@@ -242,11 +242,9 @@
 
 						} 
                     }).fail(function (jqXHR, textStatus, errorThrown) {
-                        alert(textStatus+": "+errorThrown+"\n\n"+to_s(jqXHR.responseText));
-                        $(e.target).prop('disabled', false);
+						var msg=jqXHR.responseJSON.message + "<hr>" + jqXHR.responseJSON.more_info + "<hr>" + jqXHR.responseJSON.status
+						$( "#apidiv" ).html(msg);
                     });
-					
-					/*********************************************/
 					
 					$( "#searching" ).hide();
 					

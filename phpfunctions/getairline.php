@@ -1,5 +1,5 @@
 <?php
-   include_once '../config.php';
+   include_once 'config.php';
 
     header("Content-Type: application/json");
     header("Access-Control-Allow-Origin: *");

@@ -121,7 +121,7 @@
 		<h4 class="text-center">Welcome! Please Sign Up</h4>
 		<p class="text-center">Already our customer? Please <a href="Login.html">sign In</a></p>
 
-		<form action="registration.php" method="post" onsubmit="return checkForm()">
+		<form action="phpfunctions/registration.php" method="post" onsubmit="return checkForm()">
 			<div class="p-1">
 				<label>Email</label>
 				<input type="email" name="email" class="form-control" autocomplete="off" required>
@@ -147,9 +147,10 @@
 			<div class="p-1">
 				<button id="submitBtn" type="submit" class="btn btn-primary btn-block mt-1" disabled> Sign Up </button>
 			</div>
-		</div>		
+		</form>	
+	</div>		
 	
-		<br><br><br>
+	<br><br><br>
   
     <footer>
         <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">

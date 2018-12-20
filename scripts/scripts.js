@@ -33,11 +33,11 @@ function find_airline(A_iata) {
 function find_airport(A_Code) {
     var res = airports.find(x => x.code === A_Code);
     if (res===undefined) {
-        if (window.XMLHttpRequest) {
+        if (window.XMLHttpRequest && sessionStorage.getItem('token')) {
             xmlhttp = new XMLHttpRequest();
             xmlhttp.open("POST","phpfunctions/getairport.php", false);
             xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
-            xmlhttp.send("code=" +A_Code);
+            xmlhttp.send("token="+sessionStorage.getItem('token')+"&code=" +A_Code);
 
             res=JSON.parse(xmlhttp.responseText);
             airports.push(res); 
