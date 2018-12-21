@@ -35,12 +35,16 @@ if($result1){
 		$sql2="INSERT INTO usertable(oname, email, passwd, fname)VALUES('$oname', '$email', '$passwd', '$fname')";
 		$result2=mysqli_query($con,$sql2);
 	} else { // if not found passkey, display message "Wrong Confirmation code"
-		echo "Wrong Confirmation code";
+		$message = "Wrong Confirmation code";
+		echo "<script>alert('$message');
+		window.location.href='../index.html';</script>";
 	}
 
 	// if successfully moved data from table"temp_members_db" to table "registered_members" displays message "Your account has been activated" and don't forget to delete confirmation code from table "temp_members_db"
 	if($result2){
-		echo "Your account has been activated";
+		$message = "Your account has been activated. please Sign In with your credentials.";
+		echo "<script>alert('$message');
+		window.location.href='../index.html';</script>";
 
 		// Delete information of this user from table "temp_members_db" that has this passkey
 		$sql3="DELETE FROM temp_usertable WHERE confirm_code = '$passkey'";

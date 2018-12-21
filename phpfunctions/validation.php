@@ -23,7 +23,7 @@
         if ( empty($email) OR empty($passwd) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Set a 400 (bad request) response code and exit.
             http_response_code(400);
-            echo "There was a problem with your submission. Please complete the form and try again.";
+            echo "There was a problem with your email and/or password. Please correct the form and try again.";
             exit;
         }
     
