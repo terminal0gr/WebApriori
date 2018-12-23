@@ -17,8 +17,7 @@
 	$num=mysqli_num_rows($result);
 
 	if (!$result) {
-		$message = "Unable to reset password!!! Error(1) \r\nPlease retry!!!";
-		echo "<script>alert('$message');
+		echo "<script>alert('Unable to reset password!!!  Error(1). Please retry!!!');
 		window.location.href='../index.html';
 		</script>";
 	}
@@ -33,8 +32,7 @@
 	$result = mysqli_query($con1,$sql);
 	
 	if (!$result) {
-		$message = "Unable to reset password!!!  Error(2) \r\nPlease retry!!!";
-		echo "<script>alert('$message');
+		echo "<script>alert('Unable to reset password!!!  Error(2). Please retry!!!');
 		window.location.href='../index.html';
 		</script>";
 	}
@@ -45,17 +43,14 @@
 	$result = mysqli_query($con1,$sql);
 
 	if (!$result) {
-		$message = "Unable to reset password!!!  Error(3) \r\nPlease retry!!!";
-		echo "<script>alert('$message');
+		echo "<script>alert('Unable to reset password!!!  Error(3). Please retry!!!');
 		window.location.href='../index.html';
 		</script>";
 	}
 
-	echo "<script>alert('Your password has been successfully updated!!! Please sign in.');
-	window.location.href='../index.html'";
-	sleep(10);
-	echo "<script>
-	window.location.href='../Login.html';
+	echo "<script>alert('Your password has been successfully updated!!! Please Sign in.');
+	sessionStorage.setItem('SignIn',true);
+	window.location.href='../index.html';
 	</script>";
 
 ?>

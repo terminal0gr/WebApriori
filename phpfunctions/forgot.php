@@ -19,33 +19,27 @@
 	
 	// Check captcha
 	$captcha_error = "";
-	//$captcha = $_POST['g-recaptcha-response'];
+	$captcha = $_POST['g-recaptcha-response'];
 	
-	// if (!isset($_POST['g-recaptcha-response'])||empty($_POST['g-recaptcha-response'])) {
-    //     $captcha_error = "Verification check has not been done";
-	// } else {
-	// 	$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdP7H8UAAAAAFZ5qAl0_FmLAqzdBUeD0G3ZaX0p&response=".$_POST['g-recaptcha-response'], False);
+	if (!isset($_POST['g-recaptcha-response'])||empty($_POST['g-recaptcha-response'])) {
+        $captcha_error = "Verification check has not been done";
+	} else {
+		$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdP7H8UAAAAAFZ5qAl0_FmLAqzdBUeD0G3ZaX0p&response=".$_POST['g-recaptcha-response'], False);
 		
-	// 	$jresponse = json_decode($response, true);
-	// 	if(!$jresponse["success"] === true)
-	// 	{
-	// 		$captcha_error = true;
-	// 		echo "<script type='text/javascript'>alert('Verification check failed');
-	// 		window.location.href='../SignUp.html';</script>";
-	// 	}
-	// }
+		$jresponse = json_decode($response, true);
+		if(!$jresponse["success"] === true)
+		{
+			$captcha_error = true;
+			echo "<script type='text/javascript'>alert('Verification check failed');
+			window.location.href='../SignUp.html';</script>";
+		}
+	}
 	
-	/* User is registered */
-
-
-
-	if(!$captcha_error) { /* New user @temp_usertable & send confirmation email */
+	if(!$captcha_error) { 
         $sql="Select * from usertable
               where email='$email'";
 		$result = mysqli_query($con1,$sql);
         
-
-
 		if($result) {
 
             $message = "Your Confirmation link Has Been Sent To Your Email Address.".$email;
@@ -77,11 +71,15 @@
                 }
             }
 
-        } else { /* Confirmation email has been already sent */
+        } else {
             header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
             echo "<script>alert('Internal server error');
 			window.location.href='../index.html';</script>";
 		}
+	} else {
+		header($_SERVER['SERVER_PROTOCOL'] . ' 403 forbitten', true, 403);
+		echo "<script>alert('Flight Scanner. Access denied!!!');
+		window.location.href='../index.html';</script>";
 	}
 ?>
 

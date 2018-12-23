@@ -44,6 +44,7 @@ if($result1){
 	if($result2){
 		$message = "Your account has been activated. please Sign In with your credentials.";
 		echo "<script>alert('$message');
+		sessionStorage.setItem('SignIn',true);
 		window.location.href='../index.html';</script>";
 
 		// Delete information of this user from table "temp_members_db" that has this passkey

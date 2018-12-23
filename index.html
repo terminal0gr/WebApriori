@@ -34,7 +34,13 @@
     <script>
 
     	$(function() {
-            sessionStorage.setItem('version', '2.2');
+            sessionStorage.setItem('version', '2.3');
+            if(sessionStorage.getItem('SignIn')) {
+                sessionStorage.removeItem('SignIn');
+                window.location.href='Login.html';
+                return;
+            }
+
 			$('#navbar-brand').html('Flight scanner ' +  sessionStorage.getItem('version'));
             M_F();
             VT();

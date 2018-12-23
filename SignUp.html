@@ -85,6 +85,20 @@
 				
 			}
 		};
+
+		function CheckVer(){
+			var t= document.getElementById("passwd" );
+			var t2= document.getElementById("vpasswd");
+			if(t && t2){
+				if(t.value !== t2.value){
+					alert('Passwords do not match!');
+					t.focus();
+					return false;
+				}
+				return true;
+			}
+		};
+
 	</script>
 
 </head>
@@ -124,20 +138,23 @@
 		<form action="phpfunctions/registration.php" method="post" onsubmit="return checkForm()">
 			<div class="p-1">
 				<label>Email</label>
-				<input type="email" name="email" class="form-control" autocomplete="off" required>
+				<input type="email" name="email" class="form-control" autocomplete="off" required placeholder="Type your email">
 			</div>
 			<div class="p-1">
-				<label>Password</label>
-				<input type="password" name="passwd" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"title="It must contain at least one number, a capital and a lower case and consist of at least 8 characters "  required>
+				<label for="passwd">Password</label>
+				<input id="passwd" type="password" name="passwd" class="form-control" placeholder="Type a strong password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"title="It must contain at least one number, a capital and a lower case and consist of at least 8 characters "  required>
 			</div>
-		
+			<div class="p-1">
+					<label for="vpasswd">Verify password.</label>
+					<input id="vpasswd" type="password" name="vpasswd" placeholder="Validate your password" onblur="CheckVer()" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"title="It must contain at least one number, a capital and a lower case and consist of at least 8 characters "  required>
+			</div>
 			<div class="p-1">
 				<label>First Name</label>
-				<input type="name" name="oname" class="form-control"  autocomplete="off" required>
+				<input type="name" name="oname" class="form-control" placeholder="Type your name"  autocomplete="off" required>
 			</div>
 			<div class="p-1">
 				<label>Last Name</label>
-				<input type="name" name="fname" class="form-control" autocomplete="off" required>
+				<input type="name" name="fname" class="form-control" placeholder="Type your surname"  autocomplete="off" required>
 			</div>
 			<div class="p-1 mt-1">
 				<!--<div class="g-recaptcha" data-sitekey="6LcLYHkUAAAAAJNkmWs9E-L9m_hQtCHZbRHiJvnr"></div>-->
@@ -145,7 +162,7 @@
 				<div id="captcha-error" style="display:none; color:red;"><b>Verification check has not been done!</b></div>
 			</div>
 			<div class="p-1">
-				<button id="submitBtn" type="submit" class="btn btn-primary btn-block mt-1" disabled> Sign Up </button>
+				<button id="submitBtn" onsubmit="return CheckVer()" type="submit" class="btn btn-primary btn-block mt-1" disabled> Sign Up </button>
 			</div>
 		</form>	
 	</div>		

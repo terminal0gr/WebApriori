@@ -32,7 +32,6 @@
 	<script>
     	$(function() {
             M_F();
-
         });
 
         function M_F() {
@@ -66,6 +65,13 @@
 
 <body>
 
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+		<a id="navbar-brand" class="navbar-brand d-none d-sm-block" href="#">Flight scanner     </a>
+	</nav>
+
+    <br>
+    <br>
+
 	<div class="mx-auto border rounded mb-3 p-2" style="width: 329px;" >
 		<h4 class="text-center">Reset you password</h4>
 		<form id="ajax-contact" action= "forgot2.php" method="post">
@@ -92,7 +98,6 @@
         </nav>
 	</footer>
 
-	<!-- <script src="scripts/login.js"></script> -->
 </body>
 </html>
 <?php
