@@ -14,6 +14,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <title>Flight Scanner</title>
 
 	<script>
@@ -90,14 +92,18 @@
     <br>
 
 
-	<div class="mx-auto border rounded mb-3 p-2" style="width: 300px;" >
+	<div class="mx-auto border rounded mb-3 p-2" style="width: 329px;" >
 		<h4 class="text-center">Reset you password</h4>
-		<form id="ajax-contact" action= "phpfunctions/validation.php" method="post">
+		<form id="ajax-contact" action= "phpfunctions/forgot.php" method="post">
 			<div class="p-1">
 				<label>Enter your email address and we will send you link to reset your password.</label>
 				<input type="email" name="email" class="form-control" autocomplete="off" placeholder="Enter your email address" required>
 			</div>
-
+			<div class="p-1 mt-1">
+				<!--<div class="g-recaptcha" data-sitekey="6LcLYHkUAAAAAJNkmWs9E-L9m_hQtCHZbRHiJvnr"></div>-->
+				<div class="g-recaptcha" data-callback="recaptchaCallback" data-expired-callback="recaptchaExpired" data-sitekey="6LdP7H8UAAAAAKjav2XpTfxV-wtnGrZVwWl5lbSD"></div>
+				<div id="captcha-error" style="display:none; color:red;"><b>Verification check has not been done!</b></div>
+			</div>
 			<div class=" p-1" >
 				<button type="submit" class="btn btn-primary btn-block mt-3">Send password reset email</button>
 			</div>
@@ -110,6 +116,6 @@
         </nav>
 	</footer>
 
-	<script src="scripts/login.js"></script>
+	<!-- <script src="scripts/login.js"></script> -->
 </body>
 </html>
