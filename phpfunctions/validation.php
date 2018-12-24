@@ -39,9 +39,10 @@
 
 			$token = array();
 			$token['id'] = $email;
+			$key=SERVERKEY.date("m.d.y");
 
 			http_response_code(200);
-            $JsonReq = array('http_response_code' => 200, 'token' => JWT::encode($token, SERVERKEY), 'apikey' => apikey, 'name' => $rowobj->fname." ".$rowobj->oname, 'message' => 'success');
+            $JsonReq = array('http_response_code' => 200, 'token' => JWT::encode($email, $key), 'apikey' => apikey, 'name' => $rowobj->fname." ".$rowobj->oname, 'message' => 'success');
             print json_encode($JsonReq);
 
 		} else {

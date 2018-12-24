@@ -14,15 +14,25 @@ var airlines = [];
 function find_airline(A_iata) {
     var res = airlines.find(x => x.iata === A_iata);
     if (res===undefined) {
-        if (window.XMLHttpRequest) {
+        if (window.XMLHttpRequest && sessionStorage.getItem('token')) {
             xmlhttp = new XMLHttpRequest();
             xmlhttp.open("POST","phpfunctions/getairline.php", false);
             xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
-            xmlhttp.send("iata=" +A_iata);
+            xmlhttp.send("token="+sessionStorage.getItem('token')+"&iata=" +A_iata);
 
-            res=JSON.parse(xmlhttp.responseText);
-            airlines.push(res); 
-            return res.iata + ",<br>" + res.name;
+            if(xmlhttp.status=200) {
+                if (xmlhttp.responseText.startsWith("{")) { //Είναι Json και κατ' επέκτασιν σωστή η κλήση
+                    res=JSON.parse(xmlhttp.responseText);
+                    airlines.push(res); 
+                    return res.iata + ",<br>" + res.name;
+                } else {
+                    alert(xmlhttp.responseText);
+                    return A_iata;
+                }
+            } else {
+                alert(xmlhttp.responseText);
+                return A_iata;
+            }
         }
         else return A_iata;
     } else {
@@ -39,9 +49,19 @@ function find_airport(A_Code) {
             xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
             xmlhttp.send("token="+sessionStorage.getItem('token')+"&code=" +A_Code);
 
-            res=JSON.parse(xmlhttp.responseText);
-            airports.push(res); 
-            return res.city + ",<br>" + res.country;
+            if(xmlhttp.status=200) {
+                if (xmlhttp.responseText.startsWith("{")) { //Είναι Json και κατ' επέκτασιν σωστή η κλήση
+                    res=JSON.parse(xmlhttp.responseText);
+                    airports.push(res); 
+                    return res.city + ",<br>" + res.country;
+                } else {
+                    alert(xmlhttp.responseText);
+                    return A_Code;
+                }
+            } else {
+                alert(xmlhttp.responseText);
+                return A_Code;
+            }                
         }
         else return A_Code;
     } else {
