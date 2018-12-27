@@ -25,7 +25,7 @@ $(function() {
 				sessionStorage.setItem('token', res.token);
 				sessionStorage.setItem('apikey', res.apikey);
 				sessionStorage.setItem('username', res.name);
-				window.location.href='index.html';
+				window.location.href='search.html';
 			} else {
 				alert('An error occured.<br>' + res.http_response_code + ' ' + res.message);
 			}

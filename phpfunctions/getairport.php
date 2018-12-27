@@ -68,30 +68,46 @@
                  $code = getHttpCode($http_response_header);
 
                 if($code <> 200) {
-                    $airport = array('code' => $_REQUEST['code'], 'city' => '', 'country' => '', 'Message' => 'Airport not found');
+                    $airport = array('code' => $_REQUEST['code'], 'city' => '', 'country' => '', 'Message' => 'Airport not found'.$code);
                     print json_encode($airport);
                     exit();
                 }
 
                 $jsonobj = json_decode($response);
 
-                if (!$jsonobj->city) {
-                    $airport = array('code' => $_REQUEST['code'], 'city' => '', 'country' => '', 'Message' => 'Airport not found');
-                    print json_encode($airport);
-                    exit();
+                $city='';
+                $country='';
+                $message='';
+                if (isset($jsonobj->city)) {
+                    $city=(isset($jsonobj->city->name) ? $jsonobj->city->name : '');
+                    $country=(isset($jsonobj->city->country) ? $jsonobj->city->country : '');
+                }
+                if ($city=='') {
+                    if (isset($jsonobj->airports[0])) {
+                        $city=(isset($jsonobj->airports[0]->city_name) ? $jsonobj->airports[0]->city_name : '');
+                    }
+                }
+                if ($country=='') {
+                    if (isset($jsonobj->airports[0])) {
+                        $country=(isset($jsonobj->airports[0]->country) ? $jsonobj->airports[0]->country : '');
+                    }
+                }
+                if ($city=='' && $country=='') {
+                    $message=$_REQUEST['code'].'Airport not found';
+                } else {
+                    $query = "insert into airports (code, city, country)
+                    values (?,?,?)";
+                    if ($stmt = $mysqli->prepare($query)) {
+                        $stmt->bind_param("sss", $A, $B, $C);
+                        $A=$_REQUEST['code'];
+                        $B=$city;
+                        $C=$country;
+                        $stmt->execute();
+                    }
+                    $message='Airport retrieved from API';
                 }
 
-                $query = "insert into airports (code, city, country)
-                          values (?,?,?)";
-                if ($stmt = $mysqli->prepare($query)) {
-                    $stmt->bind_param("sss", $A, $B, $C);
-                    $A=$_REQUEST['code'];
-                    $B=$jsonobj->city->name;
-                    $C=$jsonobj->city->country;
-                    $stmt->execute();
-                }
-                
-                $airport = array('code' => $_REQUEST['code'], 'city' => $jsonobj->city->name, 'country' => $jsonobj->city->country, 'Message' => 'Airport retrieved from API');
+                $airport = array('code' => $_REQUEST['code'], 'city' => $city, 'country' => $country, 'Message' => $message);
                 print json_encode($airport);
                 exit();
             }
