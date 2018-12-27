@@ -111,8 +111,29 @@
 
 <body>
 
+	<div class="modal fade" id="Credits" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title text-primary">Flight Scanner<br><p class="text-secondary">An innovative low-fare flight searching engine</p></h5>
+					
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<h5 class="modal-title text-primary">Developers</h5>
+					<p>Nariris Dimitris<br>Malliaridis Konstantinos<br>Sklavou Nasia</p>
+				</div>
+				<div class="modal-footer">
+					<p class="text-center" >MSc in Web Intelligence &copy; 2018-2019</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-		<a id="navbar-brand" class="navbar-brand d-none d-sm-block" href="#">Flight scanner     </a>
+		<a id="navbar-brand" class="navbar-brand d-none d-sm-block" data-toggle="modal" data-target="#Credits" href="#">Flight scanner     </a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<a class="nav-link" href="index.html">Home</a>
