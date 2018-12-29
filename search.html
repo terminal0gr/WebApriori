@@ -36,6 +36,7 @@
 	<script>
 
         if (!sessionStorage.getItem('token')) {
+			alert('Please Sign in, or Sign up if you are a new user, in order to use our new flight search engine!');
 			sessionStorage.clear();
             window.location.href='index.html';
 		}
@@ -278,7 +279,13 @@
         function VT() {
             if (sessionStorage.getItem('token')) {
                 $('#SignUp').hide();
-                $('#SignIn').hide();
+				$('#SignIn').hide();
+                if (sessionStorage.getItem('username')) {
+                    $('#person').html('<img src="images/person24.png" alt="p">' + sessionStorage.getItem('username'));
+                    $('#person').show;
+                } else {
+                    $('#person').hide;
+                }                    
                 $('#sdropdown').show();
             } else {
                 $('#SignUp').show();
@@ -316,13 +323,93 @@
 		}
 		
 	</script>
+	
+	<!-- Save filter ...start -->
+	  <script type="text/javascript">
+		function SaveFilter() {
+			  var msg;
+			  var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+			  var illegalC;
+			  var SaveFilterName = prompt("Give a name to save this record");
+			  SaveFilterName = SaveFilterName.trim();
+			  if(format.test(SaveFilterName)){
+				  illegalC = "1";
+				} else {
+				  illegalC = "0";
+				}
+				if (SaveFilterName == null || SaveFilterName == "" ){
+				msg = "Please fill a name";
+				alert (msg);
+				}
+				else if (illegalC == "1"){
+					msg = "Please use only letters and numbers without spaces or special characters";
+					alert (msg);
+					}
+				else {
+					var token = sessionStorage.getItem('token');
+//					var playload = JSON.parse(atob(token.split('.')[1]));
+//					var email = playload;
 
+					var direction = $('input[name="direction"]:checked').val();
+					var nonstop = $('input[name="nonstop"]:checked').val();
+					if (nonstop != "on") {
+						nonstop = "off";
+						}
+				
+//					var origin_descr = document.getElementById("origin_descr").value;
+					var origin_descr = $('input[name="origin_descr"]').val();
+//					var destination_descr = document.getElementById("destination_descr").value;
+					var destination_descr = $('input[name="destination_descr"]').val();
+//					var departure_date = document.getElementById("departure_date").value;
+					var departure_date = $('input[name="departure_date"]').val();
+//					var return_date = document.getElementById("return_date").value;
+					var return_date = $('input[name="return_date"]').val();
+					
+					$.post('/webeng7/flights/phpfunctions/savefilter.php', {
+						token: token,
+						SaveFilterName: SaveFilterName,
+						direction: direction,
+						nonstop: nonstop,
+						origin_descr: origin_descr,
+						destination_descr: destination_descr,
+						departure_date: departure_date,
+						return_date: return_date
+						}, function(data) {
+							alert (data);
+					});
+					}
+			}
+
+	</script>
+	<!-- Save filter ...end -->
+	
 </head>
 
 <body>
 
+	<div class="modal fade" id="Credits" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title text-primary">Flight Scanner<br><p class="text-secondary">An innovative low-fare flight searching engine</p></h5>
+					
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<h5 class="modal-title text-primary">Developers</h5>
+					<p>Nariris Dimitris<br>Malliaridis Konstantinos<br>Sklavou Nasia</p>
+				</div>
+				<div class="modal-footer">
+					<p class="text-center" >MSc in Web Intelligence &copy; 2018-2019</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-		<a id="navbar-brand" class="navbar-brand d-none d-sm-block" href="#">Flight scanner    </a>
+		<a id="navbar-brand" class="navbar-brand d-none d-sm-block" data-toggle="modal" data-target="#Credits" href="#">Flight scanner    </a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<a class="nav-link" href="index.html">Home</a>
@@ -346,6 +433,7 @@
 					<img src="images/settings24.png" alt="">
 				</a>
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                    <p id="person" class="text-primary text-center"></p>
 					<a id="settings" class="dropdown-item" href="#"><img src="images/settings24.png" alt="">Settings</a>
 					<a id="SignOut"  class="dropdown-item" href="#"><img src="images/signout24.png" alt="">Sign out</a>
 				</div>
@@ -372,7 +460,11 @@
 							</label>
 							<label>Non stop only
 								<input type="checkbox" id="nonstop" name="nonstop" >
+								&nbsp;&nbsp;&nbsp;&nbsp;
 							</label>
+							<!-- save button start -->
+							<input type="button" id="savefilter" name="savefilter" value="Save filter" onclick="javascript: SaveFilter();"/>
+							<!-- save button end -->
 						</div>
 					</div>
 					<div class="row">
@@ -393,8 +485,7 @@
 					</div>
 				</div>
 				<div class="col-2 col-xs-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 p-1 border border-primary rounded">
-					<input type="submit" value="Search" name="submit" class="btn  btn-primary btn-block" style="height:100%; width:100%" id="searchButton" />
-					<!-- <input type="submit" value="Search" name="submit" class="btn btn-primary center" id="searchButton" /> -->
+					<button class="btn btn-primary btn-block" type="submit" style="height:100%; width:100%" id="searchButton" ><img src="images/plane24.png" alt=""></button>
 				</div>
 			</div>
 
