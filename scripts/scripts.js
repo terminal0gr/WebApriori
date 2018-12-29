@@ -70,10 +70,14 @@ function find_airport(A_Code) {
 }
 
 function FillTheTable(response) {
-    var Retval;
-    retval = 
-    `<br>
-     <hr>
+    var retval=``;
+
+    // if (response.results[0].itineraries.length) {
+    //     retval+=`<p class=text-center>` + response.results.itineraries.length + ` low fare flights retrieved</p>`;
+    // }
+
+    retval += 
+    `<hr>
     <table id='results' class="table table-bordered">    
     <tr>
         <th rowspan=2>Duration</th>
@@ -92,15 +96,15 @@ function FillTheTable(response) {
         <th>Airline</th>
         <th>Flight No</th>
         <th>Aircraft</th>
-        <th>Total Price</th>
         <th>Fare</th>
         <th>Tax</th>
-    </tr>`
+        <th>Total Price</th>
+    </tr>`;
 
     flights_sum=0;
 
     $.each(response.results, function(key, results) {
-        
+
         retval += ` <tr> `;
   
         $.each(results.itineraries, function(key1, itineraries) {
@@ -159,9 +163,9 @@ function FillTheTable(response) {
                 retval+=`<td align=center>` + seats + `</td>`;
 
                 fare=parseFloat(parseFloat(results.fare.price_per_adult.total_fare).toFixed(2)-parseFloat(results.fare.price_per_adult.tax).toFixed(2)).toFixed(2);
-                if(index == 0) {retval+=`<td align=center rowspan=` + totallines + `>` + results.fare.total_price + `</td>`};
                 if(index == 0) {retval+=`<td align=center rowspan=` + totallines + `>` + fare + `</td>`};
                 if(index == 0) {retval+=`<td align=center rowspan=` + totallines + `>` + results.fare.price_per_adult.tax + `</td>`};
+                if(index == 0) {retval+=`<td align=center rowspan=` + totallines + `>` + results.fare.total_price + `</td>`};
      
                 retval+=`</tr>`;
                     
@@ -227,6 +231,10 @@ function FillTheTable(response) {
     retval += `</table>`
 
     retval += `<br><br><br>`
+
+    if (flights_sum>0) {
+        retval = `<p class=text-center>` + flights_sum + ` low fare flights retrieved</p>` +  retval;
+    }
 
     return retval;
 
