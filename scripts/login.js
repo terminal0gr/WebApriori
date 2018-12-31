@@ -27,16 +27,19 @@ $(function() {
 				sessionStorage.setItem('username', res.name);
 				window.location.href='search.html';
 			} else {
-				alert('An error occured.<br>' + res.http_response_code + ' ' + res.message);
+				MyModal("An error occured",res.http_response_code + ' ' + res.message);
+				//alert('An error occured.<br>' + res.http_response_code + ' ' + res.message);
 			}
 
 		})
 		.fail(function(data) {
 
 			if (data.responseText) {
-				alert(data.responseText);
+				MyModal("Flight Scanner",data.responseText);
+				//alert(data.responseText);
 			} else {
-				alert('An error occured.');
+				MyModal("Flight Scanner",'Unknown error occured!');
+				//alert('An error occured.');
 			}
 		});
 
