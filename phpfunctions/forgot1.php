@@ -73,7 +73,7 @@
     <br>
 
 	<div class="mx-auto border rounded mb-3 p-2" style="width: 329px;" >
-		<h4 class="text-center">Reset you password</h4>
+		<h4 class="text-center">Reset your password</h4>
 		<form id="ajax-contact" action= "forgot2.php" method="post">
 			<div class="p-1">
 				<label for="passwd">Enter your new password.</label>

@@ -62,8 +62,7 @@ if(isset($_POST['token']) &&
 	}
 else {
 	echo "wrong data";
-	}
-	
+}	
 	
 session_destroy();
 ?>

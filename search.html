@@ -324,25 +324,146 @@
 		
 	</script>
 	
+	<!-- Load & delete filters ...start -->
+	<script type="text/javascript">
+	function SelectFilter() {
+			
+		//request data from php
+		var token = sessionStorage.getItem('token');
+		$.post('/webeng7/flights/phpfunctions/loadfiltersname.php', {
+			token: token
+		}, function(data) { //data from php
+			if (data != "0 results"){
+				data = JSON.parse(data);
+				$('#Selfilters').empty();
+				$('#Selfilters').append('<option value="" selected disabled >select filter</option>'); //Default option
+				data.forEach(function(FilterName){ //fill select options
+					$('#Selfilters').append("<option id='" + FilterName.FilterName + "' value='"+ FilterName.FilterName + "'>"+ FilterName.FilterName + "   /   " + FilterName.FilterDate +"</option>");
+				});
+			}
+			else {
+				$('#Selfilters').empty();
+				$('#Selfilters').append('<option value="" selected disabled >select filter</option>'); //Default option
+			}		
+		});
+		
+		$( "#loadfilterdialog" ).show();
+		$( "#loadfilterdialog" ).dialog({
+			buttons: {
+				"Load filter": function() {
+					//get selection
+					var doc = document.getElementById('Selfilters');
+					var FilterName = doc.options[doc.selectedIndex].value;
+					//request data from php
+					var token = sessionStorage.getItem('token');
+					if (FilterName != ""){
+						$.post('/webeng7/flights/phpfunctions/loadfilter.php', {
+							token: token,
+							FilterName: FilterName
+						}, function(data) { //data from php
+							data = JSON.parse(data);
+							//fill data
+							data.forEach(function(Filter){ //fill form filters
+								document.getElementsByName('direction')[(Filter.FilterOneway-1)].checked=true;
+								if (Filter.FilterNonStop == 'on'){
+									document.getElementById('nonstop').checked = true;
+								}
+								else {
+									document.getElementById('nonstop').checked = false;
+								}
+								
+								document.getElementById('origin_descr').value = Filter.FilterOrigin;
+								var matches = Filter.FilterOrigin.match(/\[(.*?)\]/);
+								if (matches) {
+									var submatch = matches[1];
+								}							
+								document.getElementById('origin').value = submatch;
+								
+								document.getElementById('destination_descr').value = Filter.FilterDestination;
+								var matches = Filter.FilterDestination.match(/\[(.*?)\]/);
+								if (matches) {
+									var submatch = matches[1];
+								}								
+								document.getElementById('destination').value = submatch;
+
+								if (Filter.FilterDDate != '0000-00-00'){
+									var mySQLDate = Filter.FilterDDate.split("-");
+									var myJSDate =  mySQLDate[2]+ "/" +mySQLDate[1]+ "/" +mySQLDate[0];
+									document.getElementById('departure_date').value = myJSDate;
+									document.getElementById('ddate').value = Filter.FilterDDate;
+								}
+								else {
+									document.getElementById('departure_date').value = "";
+								}
+								
+								if (Filter.FilterRDate != '0000-00-00' && Filter.FilterOneway == '2'){
+									var mySQLDate = Filter.FilterRDate.split("-");
+									var myJSDate =  mySQLDate[2]+ "/" +mySQLDate[1]+ "/" +mySQLDate[0];
+									document.getElementById("return_date").type = "text";
+									document.getElementById('return_date').value = myJSDate;
+									document.getElementById('rdate').value = Filter.FilterRDate;
+								}
+								else {
+									document.getElementById("return_date").type = "hidden";
+									document.getElementById('return_date').value = "";
+								}
+								
+							});						
+						});
+						$( this ).dialog( "close" );
+					}
+					else {
+						alert ("Nothing to load");
+					}
+				},
+				"Delete filter": function() {
+					//get selection
+					var doc = document.getElementById("Selfilters");
+					var FilterName = doc.options[doc.selectedIndex].value;
+					if (FilterName != ""){
+						//request data from php
+						var token = sessionStorage.getItem('token');
+						$.post('/webeng7/flights/phpfunctions/deletefilter.php', {
+							token: token,
+							FilterName: FilterName
+						}, function(data) { //data from php
+							alert (data);
+						});
+						$( this ).dialog( "close" );
+					}
+					else { //trying to delete default selection option
+						alert ("Nothing to delete");
+					}
+				}
+			},
+			clickOutside: true, // clicking outside the dialog will close it
+			clickOutsideTrigger: "#Selfilters"  // Element (id or class) that triggers the dialog opening 			
+		});
+	}
+		
+	</script>	
+	<!-- Load & delete filters ...end -->
+	
 	<!-- Save filter ...start -->
 	  <script type="text/javascript">
 		function SaveFilter() {
-			  var msg;
-			  var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-			  var illegalC;
-			  var SaveFilterName = prompt("Give a name to save this record");
-			  SaveFilterName = SaveFilterName.trim();
-			  if(format.test(SaveFilterName)){
-				  illegalC = "1";
+			var msg;
+			var format = /[!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?]/;
+			var illegalC;
+			var SaveFilterName = prompt("Give a name to save this record");
+			if (SaveFilterName != null) {
+				SaveFilterName = SaveFilterName.trim();
+				if(format.test(SaveFilterName)){
+					illegalC = "1";
 				} else {
-				  illegalC = "0";
+					illegalC = "0";
 				}
 				if (SaveFilterName == null || SaveFilterName == "" ){
 				msg = "Please fill a name";
 				alert (msg);
 				}
 				else if (illegalC == "1"){
-					msg = "Please use only letters and numbers without spaces or special characters";
+					msg = "Please use only letters and numbers without special characters";
 					alert (msg);
 					}
 				else {
@@ -356,13 +477,9 @@
 						nonstop = "off";
 						}
 				
-//					var origin_descr = document.getElementById("origin_descr").value;
 					var origin_descr = $('input[name="origin_descr"]').val();
-//					var destination_descr = document.getElementById("destination_descr").value;
 					var destination_descr = $('input[name="destination_descr"]').val();
-//					var departure_date = document.getElementById("departure_date").value;
 					var departure_date = $('input[name="departure_date"]').val();
-//					var return_date = document.getElementById("return_date").value;
 					var return_date = $('input[name="return_date"]').val();
 					
 					$.post('/webeng7/flights/phpfunctions/savefilter.php', {
@@ -374,14 +491,17 @@
 						destination_descr: destination_descr,
 						departure_date: departure_date,
 						return_date: return_date
-						}, function(data) {
+					}, function(data) {
 							alert (data);
-					});
-					}
+						});
+				}
 			}
+
+		}
 
 	</script>
 	<!-- Save filter ...end -->
+
 	
 </head>
 
@@ -462,9 +582,18 @@
 								<input type="checkbox" id="nonstop" name="nonstop" >
 								&nbsp;&nbsp;&nbsp;&nbsp;
 							</label>
-							<!-- save button start -->
+							
+							<!-- Select filter button - start -->
+							<div id="loadfilterdialog" title="Filter selection" style="display: none;">
+								<select class="form-control" id="Selfilters" name="Selfilters" >
+								</select>
+							</div>
+							<input type="button" id="Selectfilter" value="Select filter" onclick="javascript: SelectFilter();"/>
+							<!-- Select filter button - end -->	
+							
+							<!-- Save filter button - start -->
 							<input type="button" id="savefilter" name="savefilter" value="Save filter" onclick="javascript: SaveFilter();"/>
-							<!-- save button end -->
+							<!-- Save filter button - end -->
 						</div>
 					</div>
 					<div class="row">

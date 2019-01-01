@@ -297,3 +297,17 @@ CREATE TABLE `temp_usertable` (
  `tfname` varchar (30) NOT NULL,
  PRIMARY KEY (`temail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+------------Δομή πίνακα φίλτρων-------------------------------------------
+CREATE TABLE `filters` (
+`FilterEmail` varchar(30)
+`FilterName` varchar(30)
+`FilterDate` datetime
+`FilterOrigin` varchar(100)
+`FilterDestination` varchar(100)
+`FilterDDate` date
+`FilterRDate` date 
+`FilterNonStop` varchar(3)
+`FilterOneway` varchar(1)
+PRIMARY KEY (`FilterEmail`,`FilterName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
