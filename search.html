@@ -28,23 +28,24 @@
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 	<script src="scripts/scripts.js"></script>
-	
+    <script src="scripts/modal.js"></script>
 
     <title>Flight Scanner</title>
 
 	<script>
 
-        if (!sessionStorage.getItem('token')) {
-			alert('Please Sign in, or Sign up if you are a new user, in order to use our new flight search engine!');
-			sessionStorage.clear();
-            window.location.href='index.html';
-		}
-
 		$(function() {
 
+			if (!sessionStorage.getItem('token') || sessionStorage.getItem('token')==0) {
+				MyModal("Flight Scanner",'Please Sign in, or Sign up if you are a new user, in order to save/load your searches while using our new flight search engine!');
+				// sessionStorage.clear();
+				// window.location.href='index.html';
+			}
+
 			if (sessionStorage.getItem('version')) {
-				$('#navbar-brand').html('Flight scanner ' +  sessionStorage.getItem('version'));
+				$('#navbar-brand').html('<img class="d-inline-block mr-1" src="./images/plane_02.png" width="24" height="24" alt="">Flight scanner ' +  sessionStorage.getItem('version'));
 			}
 			else {
 				sessionStorage.clear();
@@ -277,7 +278,7 @@
         }
 
         function VT() {
-            if (sessionStorage.getItem('token')) {
+            if (sessionStorage.getItem('token') && sessionStorage.getItem('token')!='0') {
                 $('#SignUp').hide();
 				$('#SignIn').hide();
                 if (sessionStorage.getItem('username')) {
@@ -507,30 +508,9 @@
 
 <body>
 
-	<div class="modal fade" id="Credits" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title text-primary">Flight Scanner<br><p class="text-secondary">An innovative low-fare flight searching engine</p></h5>
-					
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<h5 class="modal-title text-primary">Developers</h5>
-					<p>Nariris Dimitris<br>Malliaridis Konstantinos<br>Sklavou Nasia</p>
-				</div>
-				<div class="modal-footer">
-					<p class="text-center" >MSc in Web Intelligence &copy; 2018-2019</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-		<a id="navbar-brand" class="navbar-brand d-none d-sm-block" data-toggle="modal" data-target="#Credits" href="#">Flight scanner    </a>
-		<ul class="navbar-nav mr-auto">
+        <a id="navbar-brand" class="navbar-brand d-none d-sm-block" onclick="credits()" href="#"></a>   
+			<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<a class="nav-link" href="index.html">Home</a>
 			</li>

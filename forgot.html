@@ -16,6 +16,9 @@
 
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+	<script src="scripts/scripts.js"></script>
+    <script src="scripts/modal.js"></script>
+
     <title>Flight Scanner</title>
 
 	<script>
@@ -23,7 +26,7 @@
             M_F();
 			VT();
 			if (sessionStorage.getItem('version')) {
-				$('#navbar-brand').html('Flight scanner ' +  sessionStorage.getItem('version'));
+				$('#navbar-brand').html('<img class="d-inline-block mr-1" src="./images/plane_02.png" width="24" height="24" alt="">Flight scanner ' +  sessionStorage.getItem('version'));
 			} else {
 				window.location.href='index.html';
 			}
@@ -45,7 +48,7 @@
         }
 
         function VT() {
-            if (sessionStorage.getItem('token')) {
+            if (sessionStorage.getItem('token') && sessionStorage.getItem('token')!='0') {
                 $('#SignUp').hide();
 				$('#SignIn').hide();
                 if (sessionStorage.getItem('username')) {

@@ -14,37 +14,42 @@
     } else {
 
         $iata_code=$_REQUEST['code'];
-        $token = $_REQUEST['token'];
-        if(!$token) {
+
+        if(!isset($_REQUEST['token'])) {
             http_response_code(403);
             echo "Flight Scanner. Access denied!!! Error(Retrieving airports 1)";
             exit();
         }
 
+        $token = $_REQUEST['token'];
+
         $key=SERVERKEY.date("m.d.y");
 
-        try {
-            $email=JWT::decode($token, $key);
-        } catch (Exception $e) {
-            http_response_code(403);
-            echo "Flight Scanner. Access denied!!! Error(Retrieving airports 1.1)";
-            exit();
-        }
-        
-        if(!$email) {
-            http_response_code(403);
-            echo "Flight Scanner. Access denied!!! Error(Retrieving airports 2)";
-            exit();
-        }
+        if ($token!="0") {
+            try {
+                $email=JWT::decode($token, $key);
+            } catch (Exception $e) {
+                http_response_code(403);
+                echo "Flight Scanner. Access denied!!! Error(Retrieving airports 1.1)";
+                exit();
+            }
 
-        $email = mysqli_real_escape_string($mysqli, $email);
-        $query ="SELECT * FROM usertable WHERE email='$email'";
-        $result = mysqli_query($mysqli,$query);
-        $num=mysqli_num_rows($result);
-        if($num!==1){
-            http_response_code(403);
-            echo "Flight Scanner. Access denied!!! Error(Retrieving airports 3)";
-            exit();
+                    
+            if(!$email) {
+                http_response_code(403);
+                echo "Flight Scanner. Access denied!!! Error(Retrieving airports 2)";
+                exit();
+            }
+
+            $email = mysqli_real_escape_string($mysqli, $email);
+            $query ="SELECT * FROM usertable WHERE email='$email'";
+            $result = mysqli_query($mysqli,$query);
+            $num=mysqli_num_rows($result);
+            if($num!==1){
+                http_response_code(403);
+                echo "Flight Scanner. Access denied!!! Error(Retrieving airports 3)";
+                exit();
+            }
         }
 
         $query = "select city, country from airports where code = ?";

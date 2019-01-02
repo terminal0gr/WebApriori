@@ -13,12 +13,16 @@ var airlines = [];
 
 function find_airline(A_iata) {
     var res = airlines.find(x => x.iata === A_iata);
+    var token = "0";
+    if (sessionStorage.getItem('token')) {
+        token=sessionStorage.getItem('token');
+    }
     if (res===undefined) {
         if (window.XMLHttpRequest && sessionStorage.getItem('token')) {
             xmlhttp = new XMLHttpRequest();
             xmlhttp.open("POST","phpfunctions/getairline.php", false);
             xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
-            xmlhttp.send("token="+sessionStorage.getItem('token')+"&iata=" +A_iata);
+            xmlhttp.send("token="+token+"&iata=" +A_iata);
 
             if(xmlhttp.status=200) {
                 if (xmlhttp.responseText.startsWith("{")) { //Είναι Json και κατ' επέκτασιν σωστή η κλήση
@@ -42,12 +46,16 @@ function find_airline(A_iata) {
 
 function find_airport(A_Code) {
     var res = airports.find(x => x.code === A_Code);
+    var token = "0";
+    if (sessionStorage.getItem('token')) {
+        token=sessionStorage.getItem('token');
+    }
     if (res===undefined) {
         if (window.XMLHttpRequest && sessionStorage.getItem('token')) {
             xmlhttp = new XMLHttpRequest();
             xmlhttp.open("POST","phpfunctions/getairport.php", false);
             xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
-            xmlhttp.send("token="+sessionStorage.getItem('token')+"&code=" +A_Code);
+            xmlhttp.send("token="+token+"&code=" +A_Code);
 
             if(xmlhttp.status=200) {
                 if (xmlhttp.responseText.startsWith("{")) { //Είναι Json και κατ' επέκτασιν σωστή η κλήση
@@ -239,7 +247,33 @@ function FillTheTable(response) {
     return retval;
 
 };                
+
+function guestlogin() {
+
+    $.ajax({
+        type: 'POST',
+        url: 'phpfunctions/guestlogin.php'
+    })
+    .done(function(response) {
+
+        res=JSON.parse(response);
+
+        if (res.http_response_code==200) {
+            sessionStorage.setItem('token', res.token);
+            sessionStorage.setItem('apikey', res.apikey);
+            sessionStorage.setItem('username', res.name);
+        } else {
+            MyModal("An error occured",res.http_response_code + ' ' + res.message);
+        }
+
+    })
+    .fail(function(data) {
+
+        if (data.responseText) {
+            MyModal("Flight Scanner",data.responseText);
+        } else {
+            MyModal("Flight Scanner",'Unknown error occured!');
+        }
+    });
+};
                         
-                    
-
-
