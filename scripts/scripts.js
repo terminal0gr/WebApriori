@@ -86,28 +86,32 @@ function FillTheTable(response) {
 
     retval += 
     `<hr>
-    <table id='results' class="table table-bordered">    
-    <tr>
-        <th rowspan=2>Duration</th>
-        <th colspan=2>Departure</th>
-        <th colspan=2>Arrival</th>
-        <th colspan=3>Flight</th>
-        <th colspan=2 rowspan=2 >Seat</th>
-        <th rowspan=2>Seats<br>Available</th>
-        <th colspan=3>Total Cost</th>
-    </tr>
-    <tr>
-        <th>Airport</th>
-        <th>Time</th>
-        <th>Airport</th>
-        <th>Time</th>
-        <th>Airline</th>
-        <th>Flight No</th>
-        <th>Aircraft</th>
-        <th>Fare</th>
-        <th>Tax</th>
-        <th>Total Price</th>
-    </tr>`;
+    <table id='results' class="table table-bordered">  
+        <thead>
+            <tr>
+                <th class="text-center" rowspan=2>#</th>
+                <th class="text-center" rowspan=2>Duration</th>
+                <th class="text-center" colspan=2>Departure</th>
+                <th class="text-center" colspan=2>Arrival</th>
+                <th class="text-center" colspan=3>Flight</th>
+                <th class="text-center" colspan=2 rowspan=2 >Seat</th>
+                <th class="text-center" rowspan=2>Seats<br>Available</th>
+                <th class="text-center" colspan=3>Total Cost</th>
+            </tr>
+            <tr>
+                <th class="text-center" >Airport</th>
+                <th class="text-center" >Time</th>
+                <th class="text-center" >Airport</th>
+                <th class="text-center" >Time</th>
+                <th class="text-center" >Airline</th>
+                <th class="text-center" >Flight No</th>
+                <th class="text-center" >Aircraft</th>
+                <th class="text-center" >Fare</th>
+                <th class="text-center" >Tax</th>
+                <th class="text-center" >Total Price</th>
+            </tr>
+        </thead>
+        <tbody>`;
 
     flights_sum=0;
 
@@ -128,6 +132,8 @@ function FillTheTable(response) {
             }
 
             flights_sum++;
+
+            retval+=`<td align=right rowspan=` + totallines + `>` + flights_sum + `</td>`
 
             retval+=`<td align=center rowspan=` + dromologia + `><b>Transition</b><br>` + (duration[0]==0 ? `` : duration[0]  + `h `) + duration[1] + `m<br>`;
 
@@ -231,12 +237,13 @@ function FillTheTable(response) {
                 });
             }
 
-            retval+=`<tr><td colspan=14 style="background: lightblue; line-height:0.01;">&nbsp;</td></tr>`;	
+            retval+=`<tr><td colspan=15 style="background:#007BFF; line-height:0.01;">&nbsp;</td></tr>`;	
 
         });
     });
 
-    retval += `</table>`
+    retval += `</tbody>
+    </table>`
 
     retval += `<br><br><br>`
 
