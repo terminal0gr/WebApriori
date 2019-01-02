@@ -28,7 +28,6 @@ $(function() {
 				window.location.href='search.html';
 			} else {
 				MyModal("An error occured",res.http_response_code + ' ' + res.message);
-				//alert('An error occured.<br>' + res.http_response_code + ' ' + res.message);
 			}
 
 		})
@@ -36,10 +35,8 @@ $(function() {
 
 			if (data.responseText) {
 				MyModal("Flight Scanner",data.responseText);
-				//alert(data.responseText);
 			} else {
 				MyModal("Flight Scanner",'Unknown error occured!');
-				//alert('An error occured.');
 			}
 		});
 
