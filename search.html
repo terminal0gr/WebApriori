@@ -96,6 +96,11 @@
 					} );
 			
 			
+			$('#PromptSave').click(function() {
+				SaveFilter($('#InputText').val());
+				$('#InputText').val('');
+			});
+
 			function getDate( element ) {
 			  var date;
 			  try {
@@ -232,8 +237,7 @@
 						Mdata += "&nonstop=true";
 					}
 
-					$( "#searching" ).show();
-					$( "#apidiv" ).html( "Retrieving data..." );
+					$('#result-dialog').html('<p class="text-center text-primary">Retrieving data...</p>');
 					/*********************************************/
 
 					$.ajax({
@@ -250,8 +254,6 @@
 						$( "#apidiv" ).html(msg);
                     });
 					
-					$( "#searching" ).hide();
-					
 					event.preventDefault();
 					
 					return;
@@ -263,8 +265,6 @@
 				}
 			});
 			
-			$( "#searching" ).hide();
-		
 		});
 
         function M_F() {
@@ -322,161 +322,180 @@
 			}
 		}
 		
-	</script>
-	
-	<!-- Load & delete filters ...start -->
-	<script type="text/javascript">
-	function SelectFilter() {
+		//Load & delete filters ...start
+		function SelectFilter() {
+				
+			//request data from php
+			var token = sessionStorage.getItem('token');
+			$.post('/webeng7/flights/phpfunctions/loadfiltersname.php', {
+				token: token
+			}, function(data) { //data from php
+				if (data != "0 results"){
+					data = JSON.parse(data);
+					$('#Selfilters').empty();
+					$('#Selfilters').append('<option value="" selected disabled >select filter</option>'); //Default option
+					data.forEach(function(FilterName){ //fill select options
+						$('#Selfilters').append("<option id='" + FilterName.FilterName + "' value='"+ FilterName.FilterName + "'>"+ FilterName.FilterName + "   /   " + FilterName.FilterDate +"</option>");
+					});
+				}
+				else {
+					$('#Selfilters').empty();
+					$('#Selfilters').append('<option value="" selected disabled >select filter</option>'); //Default option
+				}		
+			});
 			
-		//request data from php
-		var token = sessionStorage.getItem('token');
-		$.post('/webeng7/flights/phpfunctions/loadfiltersname.php', {
-			token: token
-		}, function(data) { //data from php
-			if (data != "0 results"){
-				data = JSON.parse(data);
-				$('#Selfilters').empty();
-				$('#Selfilters').append('<option value="" selected disabled >select filter</option>'); //Default option
-				data.forEach(function(FilterName){ //fill select options
-					$('#Selfilters').append("<option id='" + FilterName.FilterName + "' value='"+ FilterName.FilterName + "'>"+ FilterName.FilterName + "   /   " + FilterName.FilterDate +"</option>");
-				});
-			}
-			else {
-				$('#Selfilters').empty();
-				$('#Selfilters').append('<option value="" selected disabled >select filter</option>'); //Default option
-			}		
-		});
-		
-		$( "#loadfilterdialog" ).show();
-		$( "#loadfilterdialog" ).dialog({
-			buttons: {
-				"Load filter": function() {
-					//get selection
-					var doc = document.getElementById('Selfilters');
-					var FilterName = doc.options[doc.selectedIndex].value;
-					//request data from php
-					var token = sessionStorage.getItem('token');
-					if (FilterName != ""){
-						$.post('/webeng7/flights/phpfunctions/loadfilter.php', {
-							token: token,
-							FilterName: FilterName
-						}, function(data) { //data from php
-							data = JSON.parse(data);
-							//fill data
-							data.forEach(function(Filter){ //fill form filters
-								document.getElementsByName('direction')[(Filter.FilterOneway-1)].checked=true;
-								if (Filter.FilterNonStop == 'on'){
-									document.getElementById('nonstop').checked = true;
-								}
-								else {
-									document.getElementById('nonstop').checked = false;
-								}
-								
-								document.getElementById('origin_descr').value = Filter.FilterOrigin;
-								var matches = Filter.FilterOrigin.match(/\[(.*?)\]/);
-								if (matches) {
-									var submatch = matches[1];
-								}							
-								document.getElementById('origin').value = submatch;
-								
-								document.getElementById('destination_descr').value = Filter.FilterDestination;
-								var matches = Filter.FilterDestination.match(/\[(.*?)\]/);
-								if (matches) {
-									var submatch = matches[1];
-								}								
-								document.getElementById('destination').value = submatch;
-
-								//parse tomorrow for comparison
-								var today = new Date();
-								var dd = today.getDate()+1;
-								var mm = today.getMonth()+1; //January is 0!
-								var yyyy = today.getFullYear();
-								if(dd<10) {
-									dd = '0'+dd
-								} 
-								if(mm<10) {
-									mm = '0'+mm
-								} 
-								tomorrow =  yyyy + '-' + mm + '-' + dd;
-
-								if (Filter.FilterDDate != '0000-00-00'){
-									if (Filter.FilterDDate<tomorrow) {
-										MyModal("Information","Departure date has passed. Tomorrow date will be used instead.");
-										midDate=tomorrow;
-									} else {
-										midDate = Filter.FilterDDate;
-									}
-									var mySQLDate = midDate.split("-");
-									var myJSDate =  mySQLDate[2]+ "/" +mySQLDate[1]+ "/" +mySQLDate[0];
-									document.getElementById('departure_date').value = myJSDate;
-									document.getElementById('ddate').value = midDate;
-								}
-								else {
-									document.getElementById('departure_date').value = "";
-								}
-								
-								if (Filter.FilterRDate != '0000-00-00' && Filter.FilterOneway == '2'){
-									if (Filter.FilterRDate<tomorrow) {
-										MyModal("Information","Arrival date has passed. Tomorrow date will be used instead.");
-										midDate=tomorrow;
-									} else {
-										midDate = Filter.FilterRDate;
-									}
-									var mySQLDate = midDate.split("-");
-									var myJSDate =  mySQLDate[2]+ "/" +mySQLDate[1]+ "/" +mySQLDate[0];
-									document.getElementById("return_date").type = "text";
-									document.getElementById('return_date').value = myJSDate;
-									document.getElementById('rdate').value = midDate;
-								}
-								else {
-									document.getElementById("return_date").type = "hidden";
-									document.getElementById('return_date').value = "";
-								}
-								
-							});						
-						});
-						$( this ).dialog( "close" );
-					}
-					else {
-						MyModal("Flight Scanner","Nothing to load");
-					}
-				},
-				"Delete filter": function() {
-					//get selection
-					var doc = document.getElementById("Selfilters");
-					var FilterName = doc.options[doc.selectedIndex].value;
-					if (FilterName != ""){
+			$( "#loadfilterdialog" ).show();
+			$( "#loadfilterdialog" ).dialog({
+				buttons: {
+					"Load filter": function() {
+						//get selection
+						var doc = document.getElementById('Selfilters');
+						var FilterName = doc.options[doc.selectedIndex].value;
 						//request data from php
 						var token = sessionStorage.getItem('token');
-						$.post('/webeng7/flights/phpfunctions/deletefilter.php', {
-							token: token,
-							FilterName: FilterName
-						}, function(data) { //data from php
-							MyModal("Flight Scanner",data);
-						});
-						$( this ).dialog( "close" );
+						if (FilterName != ""){
+							$.post('/webeng7/flights/phpfunctions/loadfilter.php', {
+								token: token,
+								FilterName: FilterName
+							}, function(data) { //data from php
+								data = JSON.parse(data);
+								//fill data
+								data.forEach(function(Filter){ //fill form filters
+									document.getElementsByName('direction')[(Filter.FilterOneway-1)].checked=true;
+									if (Filter.FilterNonStop == 'on'){
+										document.getElementById('nonstop').checked = true;
+									}
+									else {
+										document.getElementById('nonstop').checked = false;
+									}
+									
+									document.getElementById('origin_descr').value = Filter.FilterOrigin;
+									var matches = Filter.FilterOrigin.match(/\[(.*?)\]/);
+									if (matches) {
+										var submatch = matches[1];
+									}							
+									document.getElementById('origin').value = submatch;
+									
+									document.getElementById('destination_descr').value = Filter.FilterDestination;
+									var matches = Filter.FilterDestination.match(/\[(.*?)\]/);
+									if (matches) {
+										var submatch = matches[1];
+									}								
+									document.getElementById('destination').value = submatch;
+
+									//parse tomorrow for comparison
+									var today = new Date();
+									var dd = today.getDate()+1;
+									var mm = today.getMonth()+1; //January is 0!
+									var yyyy = today.getFullYear();
+									if(dd<10) {
+										dd = '0'+dd
+									} 
+									if(mm<10) {
+										mm = '0'+mm
+									} 
+									tomorrow =  yyyy + '-' + mm + '-' + dd;
+
+									if (Filter.FilterDDate != '0000-00-00'){
+										if (Filter.FilterDDate<tomorrow) {
+											MyModal("Information","Departure date has passed. Tomorrow date will be used instead.");
+											midDate=tomorrow;
+										} else {
+											midDate = Filter.FilterDDate;
+										}
+										var mySQLDate = midDate.split("-");
+										var myJSDate =  mySQLDate[2]+ "/" +mySQLDate[1]+ "/" +mySQLDate[0];
+										document.getElementById('departure_date').value = myJSDate;
+										document.getElementById('ddate').value = midDate;
+									}
+									else {
+										document.getElementById('departure_date').value = "";
+									}
+									
+									if (Filter.FilterRDate != '0000-00-00' && Filter.FilterOneway == '2'){
+										if (Filter.FilterRDate<tomorrow) {
+											MyModal("Information","Arrival date has passed. Tomorrow date will be used instead.");
+											midDate=tomorrow;
+										} else {
+											midDate = Filter.FilterRDate;
+										}
+										var mySQLDate = midDate.split("-");
+										var myJSDate =  mySQLDate[2]+ "/" +mySQLDate[1]+ "/" +mySQLDate[0];
+										document.getElementById("return_date").type = "text";
+										document.getElementById('return_date').value = myJSDate;
+										document.getElementById('rdate').value = midDate;
+									}
+									else {
+										document.getElementById("return_date").type = "hidden";
+										document.getElementById('return_date').value = "";
+									}
+									
+								});						
+							});
+							$( this ).dialog( "close" );
+						}
+						else {
+							MyModal("Flight Scanner","Nothing to load");
+						}
+					},
+					"Delete filter": function() {
+						//get selection
+						var doc = document.getElementById("Selfilters");
+						var FilterName = doc.options[doc.selectedIndex].value;
+						if (FilterName != ""){
+							//request data from php
+							var token = sessionStorage.getItem('token');
+							$.post('/webeng7/flights/phpfunctions/deletefilter.php', {
+								token: token,
+								FilterName: FilterName
+							}, function(data) { //data from php
+								MyModal("Flight Scanner",data);
+							});
+							$( this ).dialog( "close" );
+						}
+						else { //trying to delete default selection option
+							MyModal("Flight Scanner","Nothing to delete");
+						}
 					}
-					else { //trying to delete default selection option
-						MyModal("Flight Scanner","Nothing to delete");
-					}
-				}
-			},
-			clickOutside: true, // clicking outside the dialog will close it
-			clickOutsideTrigger: "#Selfilters"  // Element (id or class) that triggers the dialog opening 			
-		});
-	}
-		
-	</script>	
-	<!-- Load & delete filters ...end -->
+				},
+				clickOutside: true, // clicking outside the dialog will close it
+				clickOutsideTrigger: "#Selfilters"  // Element (id or class) that triggers the dialog opening 			
+			});
+		}
+		//Load & delete filters ...end
 	
-	<!-- Save filter ...start -->
-	  <script type="text/javascript">
-		function SaveFilter() {
+		function CheckFilters() {
+			if ($('#direction').val()!=1 && $('#direction').val()!=2) {
+				MyModal("Wrong filters!", "Declare One way or round trip please!");
+				return;
+			}
+			if (!$('#origin_descr').val()) {
+				MyModal("Wrong filters!", "Please choose departure airport please!");
+				return;
+			}
+			if (!$('#departure_date').val()) {
+				MyModal("Wrong filters!", "Please choose departure date please!");
+				return;
+			}
+			if (!$('#destination_descr').val()) {
+				MyModal("Wrong filters!", "Please choose destination airport please!");
+				return;
+			}
+			if ($('#direction').val()==2) {
+				if (!$('#return_date').val()) {
+					MyModal("Wrong filters!", "Please choose return date please!");
+					return;
+				}
+			}
+			$('#MyPrompt').modal('show')
+		};
+
+		//Save filter ...start
+		function SaveFilter(SaveFilterName) {
 			var msg;
 			var format = /[!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?]/;
 			var illegalC;
-			//var SaveFilterName = MyModal("Flight Scann	er","Give a name to save this record");
-			var SaveFilterName = prompt("Give a name to save this record");
+			//var SaveFilterName = prompt("Give a name to save this record");
 			if (SaveFilterName != null) {
 				SaveFilterName = SaveFilterName.trim();
 				if(format.test(SaveFilterName)){
@@ -562,11 +581,11 @@
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDropdown">
                     <p id="person" class="text-primary text-center"></p>
 					<div class="dropdown-divider"></div>
-					<a id="savefilters" class="dropdown-item" onclick="SaveFilter()" href="#"><img src="images/settings24.png" alt="">Save search filters</a>
-					<a id="loadfilters" class="dropdown-item" onclick="SelectFilter()" href="#"><img src="images/settings24.png" alt="">Load search filters</a>
+					<a id="savefilters" class="dropdown-item" onclick="CheckFilters()" href="#"><img src="images/save24.png" alt=""> Save search filters</a>
+					<a id="loadfilters" class="dropdown-item" onclick="SelectFilter()" href="#"><img src="images/load24.png" alt=""> Load search filters</a>
 					<div class="dropdown-divider"></div>
-					<a id="settings" class="dropdown-item" href="#"><img src="images/settings24.png" alt="">Settings</a>
-					<a id="SignOut"  class="dropdown-item" href="#"><img src="images/signout24.png" alt="">Sign out</a>
+					<a id="settings" class="dropdown-item" href="#"><img src="images/settings24.png" alt=""> Settings</a>
+					<a id="SignOut"  class="dropdown-item" href="#"><img src="images/signout24.png" alt=""> Sign out</a>
 				</div>
 			</li>			
 		</ul>
@@ -574,6 +593,13 @@
 
 	<!-- <div class="float-right"><button class="btn btn-secondary btn-sm" type="button" id='brequest' onclick="showRequest()">Show Request</button></div> -->
 
+	<!-- Select filter button - start -->
+	<div id="loadfilterdialog" title="Filter selection" style="display: none;">
+		<select class="form-control" id="Selfilters" name="Selfilters" >
+		</select>
+	</div>
+	<!-- Select filter button - end -->	
+	
 	<br>
 	
 	<form method="post" action="">
@@ -593,14 +619,6 @@
 								<input type="checkbox" id="nonstop" name="nonstop" >
 								&nbsp;&nbsp;&nbsp;&nbsp;
 							</label>
-							
-							<!-- Select filter button - start -->
-							<div id="loadfilterdialog" title="Filter selection" style="display: none;">
-								<select class="form-control" id="Selfilters" name="Selfilters" >
-								</select>
-							</div>
-							<!-- Select filter button - end -->	
-							
 						</div>
 					</div>
 					<div class="row">
@@ -635,7 +653,6 @@
 
 	<div id="error-dialog" title="Filter check"></div>
 	<div id="result-dialog" title="Search results"></div>
-	<div id="searching" class="center-div"></div>
 
 	<div id="apidiv" class="table-responsive"></div>
 
@@ -647,6 +664,28 @@
 		<span class="navbar-text ">Low fare flights search engine &middot; MSc in Web Intelligence &copy; 2018-2019</span>
 		</nav>
 	</footer>
+
+	<div class="modal fade" id="MyPrompt" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-primary" id="TitleText">Save search filters</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body container">
+				   <p Id="InputLabel" class>Type a name for the search filters</p>
+				   <input type="text" id="InputText" class="form-control" placeholder="Type a name">
+				</div>
+				
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" Id="PromptSave"  data-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-secondary" Id="PromptCancel" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

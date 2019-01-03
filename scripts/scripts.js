@@ -85,7 +85,7 @@ function FillTheTable(response) {
     // }
 
     retval += 
-    `<hr>
+    `
     <table id='results' class="table table-bordered">  
         <thead>
             <tr>
@@ -248,7 +248,7 @@ function FillTheTable(response) {
     retval += `<br><br><br>`
 
     if (flights_sum>0) {
-        retval = `<p class=text-center>` + flights_sum + ` low fare flights retrieved</p>` +  retval;
+        $('#result-dialog').html('<p class="text-center text-primary">' + flights_sum + ' low fare flights retrieved</p>');
     }
 
     return retval;
@@ -311,7 +311,7 @@ function MyModal(title="Flight scanner",maincontext="") {
 
 function credits() {
     if ($("#Credits")) {
-        var str = '<div class="modal fade" id="Credits" tabindex="-1" role="dialog">';
+        str     = '<div class="modal fade" id="Credits" tabindex="-1" role="dialog">';
         str    +=    '<div class="modal-dialog" role="document">';
         str    +=    '    <div class="modal-content">';
         str    +=    '            <div class="modal-header">';
