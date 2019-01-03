@@ -6,7 +6,7 @@
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <link rel="icon" type="image/png" href="images/plane24blue.png"/>
+    <link rel="icon" type="image/png" href="images/plane_02.png"/>
   
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
   
@@ -15,11 +15,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <script src="scripts/scripts.js"></script>
+    <script src="scripts/modal.js"></script>
 
     <title>Flight Scanner</title>
 
 	<script>
     	$(function() {
+
             M_F();
 			VT();
 			if (sessionStorage.getItem('version')) {
@@ -71,31 +73,10 @@
 
 <body>
 
-	<div class="modal fade" id="Credits" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title text-primary">Flight Scanner<br><p class="text-secondary">An innovative low-fare flight searching engine</p></h5>
-					
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<h5 class="modal-title text-primary">Developers</h5>
-					<p>Nariris Dimitris<br>Malliaridis Konstantinos<br>Sklavou Nasia</p>
-				</div>
-				<div class="modal-footer">
-					<p class="text-center" >MSc in Web Intelligence &copy; 2018-2019</p>
-				</div>
-			</div>
-		</div>
-	</div>	
-
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 		<a id="navbar-brand" class="navbar-brand d-none d-sm-block" data-toggle="modal" data-target="#Credits" href="#">
 			<img class="d-inline-block mr-1" src="./images/plane_02.png" width="24" height="24" alt="">Flight scanner     
-        </a>		
+	    </a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<a class="nav-link" href="index.html">Home</a>

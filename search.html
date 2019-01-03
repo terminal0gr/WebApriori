@@ -386,22 +386,47 @@
 								}								
 								document.getElementById('destination').value = submatch;
 
+								//parse tomorrow for comparison
+								var today = new Date();
+								var dd = today.getDate()+1;
+								var mm = today.getMonth()+1; //January is 0!
+								var yyyy = today.getFullYear();
+								if(dd<10) {
+									dd = '0'+dd
+								} 
+								if(mm<10) {
+									mm = '0'+mm
+								} 
+								tomorrow =  yyyy + '-' + mm + '-' + dd;
+
 								if (Filter.FilterDDate != '0000-00-00'){
-									var mySQLDate = Filter.FilterDDate.split("-");
+									if (Filter.FilterDDate<tomorrow) {
+										MyModal("Information","Departure date has passed. Tomorrow date will be used instead.");
+										midDate=tomorrow;
+									} else {
+										midDate = Filter.FilterDDate;
+									}
+									var mySQLDate = midDate.split("-");
 									var myJSDate =  mySQLDate[2]+ "/" +mySQLDate[1]+ "/" +mySQLDate[0];
 									document.getElementById('departure_date').value = myJSDate;
-									document.getElementById('ddate').value = Filter.FilterDDate;
+									document.getElementById('ddate').value = midDate;
 								}
 								else {
 									document.getElementById('departure_date').value = "";
 								}
 								
 								if (Filter.FilterRDate != '0000-00-00' && Filter.FilterOneway == '2'){
-									var mySQLDate = Filter.FilterRDate.split("-");
+									if (Filter.FilterRDate<tomorrow) {
+										MyModal("Information","Arrival date has passed. Tomorrow date will be used instead.");
+										midDate=tomorrow;
+									} else {
+										midDate = Filter.FilterRDate;
+									}
+									var mySQLDate = midDate.split("-");
 									var myJSDate =  mySQLDate[2]+ "/" +mySQLDate[1]+ "/" +mySQLDate[0];
 									document.getElementById("return_date").type = "text";
 									document.getElementById('return_date').value = myJSDate;
-									document.getElementById('rdate').value = Filter.FilterRDate;
+									document.getElementById('rdate').value = midDate;
 								}
 								else {
 									document.getElementById("return_date").type = "hidden";
