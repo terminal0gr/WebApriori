@@ -14,7 +14,7 @@ if(isset($_POST['token'])){
 		$key=SERVERKEY.date("m.d.y");
 		$email = JWT::decode($token, $key);
 		$auth = true;
-		} catch (\Exception $e) {  //hide $key on error
+		} catch (Exception $e) {  //hide $key on error
 		echo 'error';
 		}			
 		
@@ -44,8 +44,8 @@ if(isset($_POST['token'])){
 	}
 }
 else {
-	echo "wrong post data";
-	}
+	echo "wrong request";
+}
 		
 session_destroy();
 ?>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="icon" type="image/png" href="images/plane24blue.png"/>
+  
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+  
+    <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+	<script src="scripts/scripts.js"></script>
+	
+    <title>Flight Scanner</title>
+
+	<script>
+    	$(function() {
+            M_F();
+			VT();
+			if (sessionStorage.getItem('version')) {
+				$('#navbar-brand').html('<img class="d-inline-block mr-1" src="./images/plane_02.png" width="24" height="24" alt="">Flight scanner ' +  sessionStorage.getItem('version'));
+			} else {
+				window.location.href='index.html';
+				return;
+			}
+
+			if (!sessionStorage.getItem('ProfileJSON')) {
+				MyModal("Flight scanner","Parsing data error reported!!!");
+				window.location.href='index.html';
+				return;
+			}
+
+			JsonProfile=JSON.parse(sessionStorage.getItem('ProfileJSON'));
+			$('#welcomemsg').html('Welcome ' + JsonProfile.oname + ' ' + JsonProfile.fname);
+			$('#email').val(JsonProfile.email);
+			$('#oname').val(JsonProfile.oname);
+			$('#fname').val(JsonProfile.fname);
+
+            $('#SignOut').click(function() {
+                sessionStorage.clear();
+                window.location.href='index.html';
+				return;
+			});
+			
+			$('#email').blur(function() {
+				JsonProfile=JSON.parse(sessionStorage.getItem('ProfileJSON'));
+				if ($('#email').val()!=JsonProfile.email) {
+					$('#email').addClass("bg-success text-white");
+				}
+				else {
+					$('#email').removeClass("bg-success text-white");
+				}
+			
+			});
+
+        });
+
+        function M_F() {
+            if ($(window).width() <= 800 || $(window).height() <= 600) {
+                $('#c-footer').removeClass('fixed-bottom');
+            }
+            else {
+                $('#c-footer').addClass('fixed-bottom')
+            }
+        }
+
+        function VT() {
+            if (sessionStorage.getItem('token') && sessionStorage.getItem('token')!='0') {
+                $('#SignUp').hide();
+				$('#SignIn').hide();
+                if (sessionStorage.getItem('username')) {
+                    $('#person').html('<img src="images/person24.png" alt="p">' + sessionStorage.getItem('username'));
+                    $('#person').show;
+                } else {
+                    $('#person').hide;
+                }                    
+                $('#sdropdown').show();
+            } else {
+                $('#SignUp').show();
+                $('#SignIn').show();
+                $('#sdropdown').hide();
+            }
+        }
+
+        $( window ).resize(function() {
+            M_F();
+        });
+
+		function CheckVer(){
+			var t= document.getElementById("passwd");
+			var t2= document.getElementById("vpasswd");
+			if(t && t2){
+				if(t.value !== t2.value){
+					MyModal('Attention!','Passwords do not match!');
+					t.focus();
+					return false;
+				}
+				return true;
+			}
+		};
+
+	</script>
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+		<a id="navbar-brand" class="navbar-brand d-none d-sm-block" data-toggle="modal" data-target="#Credits" href="#">
+			<img class="d-inline-block mr-1" src="./images/plane_02.png" width="24" height="24" alt="">Flight scanner     
+	    </a>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="index.html">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="search.html">Flight search</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav ml-auto">
+			<li id="Rate" class="nav-item">
+				<a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLScLYL2nig3jOst4QNx-ojEawqks9j3yrVP0AHSkBTIXJAEr0w/viewform">Rate us!</a>
+			</li>			
+			<li id="SignUp" class="nav-item">
+				<a class="nav-link" href="SignUp.html">Sign Up</a>
+			</li>
+			<li id="SignIn" class="nav-item active">
+				<a class="nav-link" href="Login.html">Sign In</a>
+			</li>
+			<li id=sdropdown class="nav-item dropdown">
+				<a class="nav-item nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="images/settings24.png" alt="">
+				</a>
+				<div class="dropdown-menu dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDropdown">
+					<p id="person" class="text-primary text-center"></p>
+					<div class="dropdown-divider"></div>
+					<a id="settings" class="dropdown-item" href="#"><img src="images/settings24.png" alt="">Settings</a>
+					<a id="SignOut"  class="dropdown-item" href="#"><img src="images/signout24.png" alt="">Sign out</a>
+				</div>
+			</li>			
+		</ul>
+	</nav>
+
+    <br>
+    <br>
+
+	<div class="mx-auto border rounded mb-3 p-2" style="width: 329px;">
+		<h3 class="text-center text-primary">Profile settings</h3>
+		<h4 id="welcomemsg" class="text-center">Welcome! </h4>
+
+		<form action="phpfunctions/saveprofile.php" method="post" onsubmit="return checkForm()">
+			<div class="p-1">
+				<label>Email</label>
+				<input id="email" type="email" name="email" onblur="updemail()" class="form-control" autocomplete="off" required placeholder="Type your email">
+			</div>
+			<div class="p-1">
+				<label for="passwd">Password</label>
+				<input id="passwd" type="password" name="passwd" class="form-control" placeholder="Type to change password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"title="It must contain at least one number, a capital and a lower case and consist of at least 8 characters "  required>
+			</div>
+			<div class="p-1">
+					<label for="vpasswd">Verify password.</label>
+					<input id="vpasswd" type="password" name="vpasswd" placeholder="Validate your password" onblur="CheckVer()" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"title="It must contain at least one number, a capital and a lower case and consist of at least 8 characters "  required>
+			</div>
+			<div class="p-1">
+				<label>First Name</label>
+				<input id="oname" type="name" name="oname" class="form-control" placeholder="Type your name"  autocomplete="off" required>
+			</div>
+			<div class="p-1">
+				<label>Last Name</label>
+				<input id="fname" type="name" name="fname" class="form-control" placeholder="Type your surname"  autocomplete="off" required>
+			</div>
+			<div class="p-1">
+				<button id="submitBtn" onsubmit="return CheckVer()" type="submit" class="btn btn-primary btn-block mt-1">Save profile changes</button>
+				<button id="cancelbtm" type="button" onclick="window.location.href='index.html'"" class="btn btn-secondary btn-block mt-1">Cancel</button>
+			</div>
+		</form>	
+	</div>		
+	
+	<br><br><br>
+  
+    <footer>
+        <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
+        	<span class="navbar-text ">Low fare flights search engine &middot; MSc in Web Intelligence &copy; 2018-2019</span>
+        </nav>
+	</footer>
+
+</body>
+</html>
