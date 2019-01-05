@@ -250,8 +250,7 @@
 
 						} 
                     }).fail(function (jqXHR, textStatus, errorThrown) {
-						var msg=jqXHR.responseJSON.message + "<hr>" + jqXHR.responseJSON.more_info + "<hr>" + jqXHR.responseJSON.status
-						$( "#apidiv" ).html(msg);
+						MyModal(jqXHR.responseJSON.status + " " + jqXHR.responseJSON.more_info,jqXHR.responseJSON.message);
                     });
 					
 					event.preventDefault();
@@ -322,37 +321,6 @@
 			}
 		}
 		
-		function ProfileSettings() {
-			if (!sessionStorage.getItem('token')) {
-				MyModal("Information","Please Sing In!!!");
-				return;
-			}
-
-			if (!window.XMLHttpRequest) {
-				MyModal("Error","Connection error!!!");
-				return;
-			}
-
-			xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST","phpfunctions/profile.php", false);
-            xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
-            xmlhttp.send("token="+sessionStorage.getItem('token'));
-
-            if(xmlhttp.status=200) {
-				if (xmlhttp.responseText.startsWith("{")) { //Είναι Json και κατ' επέκτασιν σωστή η κλήση
-					res=JSON.parse(xmlhttp.responseText);
-					sessionStorage.setItem('ProfileJSON',JSON.stringify(res));
-					window.location.href='profile.html';
-				} else {
-                    alert(xmlhttp.responseText);
-					return;
-                }
-			} else {
-				alert("Qe"+xmlhttp.responseText);
-				return;
-			}
-		};
-
 		//Load & delete filters ...start
 		function SelectFilter() {
 				
@@ -615,7 +583,7 @@
 					<a id="savefilters" class="dropdown-item" onclick="CheckFilters()"    href="#"><img src="images/save24.png"     alt=""> Save search filters</a>
 					<a id="loadfilters" class="dropdown-item" onclick="SelectFilter()"    href="#"><img src="images/load24.png"     alt=""> Load search filters</a>
 					<div class="dropdown-divider"></div>
-					<a id="settings"    class="dropdown-item" onclick="ProfileSettings()" href="#"><img src="images/settings24.png" alt=""> Settings</a>
+					<a id="settings"    class="dropdown-item" href="profile.html"><img src="images/settings24.png" alt=""> Settings</a>
 					<a id="SignOut"     class="dropdown-item" href="#"><img src="images/signout24.png" alt=""> Sign out</a>
 				</div>
 			</li>			
@@ -687,6 +655,7 @@
 
 	<div id="apidiv" class="table-responsive"></div>
 
+	<br>
 	<br>
 	<br>
 

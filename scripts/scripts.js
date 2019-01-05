@@ -30,11 +30,11 @@ function find_airline(A_iata) {
                     airlines.push(res); 
                     return res.iata + ",<br>" + res.name;
                 } else {
-                    alert(xmlhttp.responseText);
+                    MyModal("Error", xmlhttp.responseText);
                     return A_iata;
                 }
             } else {
-                alert(xmlhttp.responseText);
+                MyModal("Error", xmlhttp.responseText);
                 return A_iata;
             }
         }
@@ -63,11 +63,11 @@ function find_airport(A_Code) {
                     airports.push(res); 
                     return res.city + ",<br>" + res.country;
                 } else {
-                    alert(xmlhttp.responseText);
+                    MyModal("Error", xmlhttp.responseText);
                     return A_Code;
                 }
             } else {
-                alert(xmlhttp.responseText);
+                MyModal("Error", xmlhttp.responseText);
                 return A_Code;
             }                
         }
@@ -334,3 +334,34 @@ function credits() {
     $("body").prepend(str);
     $( "#Credits").modal('show')   
 }
+
+function ProfileSettings() {
+    if (!sessionStorage.getItem('token')) {
+        MyModal("Information","Please Sing In!!!");
+        return;
+    }
+
+    if (!window.XMLHttpRequest) {
+        MyModal("Error","Connection error!!!");
+        return;
+    }
+
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("POST","phpfunctions/profile.php", false);
+    xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+    xmlhttp.send("token="+sessionStorage.getItem('token'));
+
+    if(xmlhttp.status=200) {
+        if (xmlhttp.responseText.startsWith("{")) { //Είναι Json και κατ' επέκτασιν σωστή η κλήση
+            res=JSON.parse(xmlhttp.responseText);
+            sessionStorage.setItem('ProfileJSON',JSON.stringify(res));
+            window.location.href='profile.html';
+        } else {
+            MyModal("Error", xmlhttp.responseText);
+            return;
+        }
+    } else {
+        MyModal("Error", xmlhttp.responseText);
+        return;
+    }
+};

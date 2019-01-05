@@ -73,7 +73,7 @@
 		
 	if($result) {
 		$sql="SELECT * FROM usertable WHERE email='$email'";
-		$result = mysqli_query($con,$sql);
+		$result = mysqli_query($con1,$sql);
 		$num=mysqli_num_rows($result);
 
 		if($num==1){

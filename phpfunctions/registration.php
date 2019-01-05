@@ -61,16 +61,31 @@
 			$mail->Subject  = "Flights Scanner. Please confirm your verification!";
 			$mail->Body  = $message;
 			if(!$mail->send()) {
-				echo 'Email has not been sent.';
-				echo 'Error: ' . $mail->ErrorInfo;
+
+				http_response_code(403);
+				$JsonReq = array('http_response_code' => 403, 'title' => 'Error', 'message' => 'Email has not been sent.' + $mail->ErrorInfo);
+				print json_encode($JsonReq);
+				//exit();
+
+				// echo 'Email has not been sent.';
+				// echo 'Error: ' . $mail->ErrorInfo;
 			} else {			  
-				$message = "Your Confirmation link Has Been Sent To Your Email Address.".$email;
-				echo "<script>alert('$message');
-				window.location.href='../Login.html';</script>";
+
+				http_response_code(200);
+				$JsonReq = array('http_response_code' => 200, 'title' => 'Information', 'message' => 'Your Confirmation link Has Been Sent To Your Email Address.');
+				print json_encode($JsonReq);
+				//exit();
+				// $message = "Your Confirmation link Has Been Sent To Your Email Address.".$email;
+				// echo "<script>alert('$message');
+				//window.location.href='../Login.html';</script>";
 			}
 		} else { /* Confirmation email has been already sent */
-			echo "<script>alert('Your confirmation link has been already sent to your email address ".$email.". Please check your email again!');
-			window.location.href='../Login.html';</script>";
+			http_response_code(403);
+			$JsonReq = array('http_response_code' => 403, 'title' => 'Information', 'message' => 'Your confirmation link has been already sent to your email address '.$email.'. Please check your email again!');
+			print json_encode($JsonReq);
+			//exit();
+			//echo "<script>alert('Your confirmation link has been already sent to your email address ".$email.". Please check your email again!');
+			//window.location.href='../Login.html';</script>";
 		}
 	}
  

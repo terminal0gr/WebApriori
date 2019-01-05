@@ -33,7 +33,54 @@
             $('#SignOut').click(function() {
                 sessionStorage.clear();
                 window.location.href='index.html';
-            });
+			});
+			
+			// Get the form.
+			var form = $('#ajax-registration');
+
+			// Set up an event listener for the contact form.
+			$(form).submit(function(e) {
+				// Stop the browser from submitting the form.
+				e.preventDefault();
+
+				if (!checkForm()) {
+					return;
+				}
+
+				// Serialize the form data.
+				var formData = $(form).serialize();
+
+				// Submit the form using AJAX.
+				$.ajax({
+					type: 'POST',
+					url: $(form).attr('action'),
+					data: formData
+				})
+				.done(function(response) {
+
+					res=JSON.parse(response);
+
+					if (res.http_response_code==200) {
+						MyModal(res.title,res.message);
+						setTimeout(function()
+   						{
+							window.location.href='Login.html'
+    					}, 3000);
+					} else {
+						MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+					}
+
+				})
+				.fail(function(data) {
+
+					if (data.responseText) {
+						MyModal(data.title + '(' + data.http_response_code + ')', data.message);
+					} else {
+						MyModal("Flight Scanner",'Unknown error occured!');
+					}
+				});
+
+			});
 
         });
 
@@ -156,7 +203,7 @@
 		<h4 class="text-center">Welcome! Please Sign Up</h4>
 		<p class="text-center">Already our customer? Please <a href="Login.html">sign In</a></p>
 
-		<form action="phpfunctions/registration.php" method="post" onsubmit="return checkForm()">
+		<form Id="ajax-registration" action="phpfunctions/registration.php" method="post">
 			<div class="p-1">
 				<label>Email</label>
 				<input type="email" name="email" class="form-control" autocomplete="off" required placeholder="Type your email">

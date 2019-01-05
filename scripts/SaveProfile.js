@@ -26,6 +26,9 @@ $(function() {
 		// Serialize the form data.
 		var formData = $(form).serialize();
 
+		//Very important so to not lock in the profile state all the site
+		sessionStorage.removeItem('ProfileJSON');
+
 		// Submit the form using AJAX.
 		$.ajax({
 			type: 'POST',
@@ -41,7 +44,7 @@ $(function() {
 				sessionStorage.setItem('apikey', res.apikey);
 				sessionStorage.setItem('username', res.name);
 				MyModal("Information","Profile settings saved successfully!");
-				window.location.href='profile.html';
+				location.reload();
 			} else {
 				MyModal(res.title,res.http_response_code + ' ' + res.message);
 			}

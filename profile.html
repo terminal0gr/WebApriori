@@ -33,9 +33,12 @@
 			}
 
 			if (!sessionStorage.getItem('ProfileJSON')) {
-				MyModal("Flight scanner","Parsing data error reported!!!");
-				window.location.href='index.html';
-				return;
+				ProfileSettings();
+			}
+			if (!sessionStorage.getItem('ProfileJSON')) {
+			 	MyModal("Flight scanner","Parsing data error reported!!!");
+			 	window.location.href='index.html';
+			 	return;
 			}
 
 			JsonProfile=JSON.parse(sessionStorage.getItem('ProfileJSON'));
