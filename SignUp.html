@@ -71,13 +71,16 @@
 					}
 
 				})
-				.fail(function(data) {
+				.fail(function(response) {
 
-					if (data.responseText) {
-						MyModal(data.title + '(' + data.http_response_code + ')', data.message);
-					} else {
-						MyModal("Flight Scanner",'Unknown error occured!');
-					}
+					res=JSON.parse(response);
+
+					MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+					// if (data.responseText) {
+					// 	MyModal(data.title + '(' + data.http_response_code + ')', data.message);
+					// } else {
+					// 	MyModal("Flight Scanner",'Unknown error occured!');
+					// }
 				});
 
 			});

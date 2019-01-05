@@ -12,15 +12,23 @@ $(function() {
 
 		if (!sessionStorage.getItem('token') || !sessionStorage.getItem('ProfileJSON')) {
 			MyModal("Error","You must sign in!!!");
-			sessionStorage.clear();
-			window.location.href='index.html';
+			setTimeout(function()
+			{
+				sessionStorage.clear();
+				window.location.href='index.html';
+			}, 3000);	
 		}
 
 		JsonProfile=JSON.parse(sessionStorage.getItem('ProfileJSON'));
 		if (!JsonProfile) {
 			MyModal("Error","You must sign in!!!");
-			sessionStorage.clear();
-			window.location.href='index.html';
+
+			setTimeout(function()
+			{
+				sessionStorage.clear();
+				window.location.href='index.html';
+			}, 3000);	
+
 		}
 
 		// Serialize the form data.
@@ -44,9 +52,14 @@ $(function() {
 				sessionStorage.setItem('apikey', res.apikey);
 				sessionStorage.setItem('username', res.name);
 				MyModal("Information","Profile settings saved successfully!");
-				location.reload();
+
+				setTimeout(function()
+				{
+					location.reload();
+				}, 3000);	
+				 		
 			} else {
-				MyModal(res.title,res.http_response_code + ' ' + res.message);
+				MyModal(res.title + '(' + res.http_response_code + ')',  res.message);
 			}
 
 		})

@@ -9,14 +9,10 @@
 		die("Connection Error" . $con1->connect_error);
 	}
 		
-	/* Connection succesful*/
-	$confirm_code=md5(uniqid(rand()));
-	$email = mysqli_real_escape_string($con1, $_POST['email']);
-	$query ="SELECT * FROM usertable WHERE email='$email'";
-	$result = mysqli_query($con1,$query);
-	$num=mysqli_num_rows($result);
-	
-	
+	//erase expired orphan records
+	$sql="DELETE FROM temp_usertable WHERE `created_at`<DATE_SUB(NOW(), INTERVAL 5 MINUTE)";
+	$result = mysqli_query($con1,$sql);
+
 	// Check captcha
 	$captcha_error = "";
 	$captcha = $_POST['g-recaptcha-response'];
@@ -32,22 +28,34 @@
 			$captcha_error = true;
 			echo "<script type='text/javascript'>alert('Verification check failed');
 			window.location.href='../SignUp.html';</script>";
+			exit();
 		}
 	}
 	
 	if(!$captcha_error) { 
-        $sql="Select * from usertable
-              where email='$email'";
-		$result = mysqli_query($con1,$sql);
+		
+		$email = mysqli_real_escape_string($con1, $_POST['email']);
+		$query ="SELECT * FROM usertable WHERE email='$email'";
+		$result = mysqli_query($con1,$query);
+		$num=mysqli_num_rows($result);
         
 		if($result) {
 
-            $message = "Your Confirmation link Has Been Sent To Your Email Address.".$email;
-            echo "<script>alert('$message');
-            window.location.href='../index.html';
-            </script>";
-
             if($num==1) {
+
+				$query ="SELECT * FROM temp_usertable WHERE temail='$email'";
+				$result = mysqli_query($con1,$query);
+				$num=mysqli_num_rows($result);
+
+				if ($num>0) {
+					$message = "The confirmation link has already been sent to your email address ".$email.". Please check your email or retry in 5 minutes";
+					echo "<script>alert('$message');
+					window.location.href='../index.html';
+					</script>";
+					exit();
+				}
+
+				$confirm_code=md5(uniqid(rand()));
 
                 $sql="INSERT INTO `temp_usertable` (`confirm_code`, `temail`, `tpasswd`, `toname`, `tfname`)
                      values ('$confirm_code', '$email' ,'','','')";
@@ -62,10 +70,15 @@
                 $mail->From = 'ait242018@ait.teithe.gr';   
                 $mail->FromName = 'Flights';
                 $mail->addAddress($email);               
-                $mail->Subject  = "Flights Scanner. Reset password";
+				$mail->Subject  = "Flights Scanner. Reset password";
                 $message = "Please follow the link to reset your password. \r\nhttp://nireas.it.teithe.gr/webeng7/flights/phpfunctions/forgot1.php?passkey=$confirm_code ";                   
                 $mail->Body  = $message;
-                if(!$mail->send()) {
+                if($mail->send()) {
+					$message = "Your Confirmation link Has Been Sent To Your Email Address ".$email.", and will be valid for 5 minutes";
+					echo "<script>alert('$message');
+					window.location.href='../index.html';
+					</script>";
+				} else {
                     echo 'Email has not been sent.';
                     echo 'Error: ' . $mail->ErrorInfo;
                 }

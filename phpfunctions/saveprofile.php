@@ -32,12 +32,6 @@
 
 	if (isset($_POST['passwd']) && trim($_POST['passwd'])!='') {
 		$passwd =md5(mysqli_real_escape_string($con1, $_POST['passwd']));
-
-
-		$JsonReq = array('http_response_code' => 403, 'title' => $passwd, 'message' => $_POST['passwd']);
-		print json_encode($JsonReq);
-		exit();
-
 	}
 	$oname = mysqli_real_escape_string($con1, $_POST['oname']);
 	$fname = mysqli_real_escape_string($con1, $_POST['fname']);
@@ -48,7 +42,7 @@
 	
 	/* User is registered */
 	if($num==0) {
-		$JsonReq = array('http_response_code' => 403, 'title' => 'Error', 'message' => 'Sorry...You are not a registered user...');
+		$JsonReq = array('http_response_code' => 201, 'title' => 'Error', 'message' => 'Sorry...You are not a registered user...');
 		print json_encode($JsonReq);
 		exit();
 	}
@@ -58,7 +52,7 @@
 	$rowobj = $result->fetch_object();
 	if (isset($passwd)) {
 		if ($rowobj->passwd==$passwd) {
-            $JsonReq = array('http_response_code' => 403, 'title' => 'Information', 'message' => 'Sorry...you have used that password...');
+            $JsonReq = array('http_response_code' => 201, 'title' => 'Information', 'message' => 'Sorry...you have used that password...');
             print json_encode($JsonReq);
 			exit();
 		}
@@ -91,7 +85,7 @@
 		} else {
 			//set a 403 (forbidden) response code.	
 			http_response_code(403);
-            $JsonReq = array('http_response_code' => 403, 'title' => 'Error', 'message' => 'Authentication error occured');
+            $JsonReq = array('http_response_code' => 201, 'title' => 'Error', 'message' => 'Authentication error occured');
             print json_encode($JsonReq);
 			exit();
 		}
