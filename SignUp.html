@@ -86,7 +86,7 @@
 		
 		function checkForm(){
 			if (recaptchachecked) {
-				return true;
+				return CheckVer();
 			} else {
 				document.getElementById("captcha-error").style.display = "block"
 				return false;
@@ -183,7 +183,7 @@
 				<div id="captcha-error" style="display:none; color:red;"><b>Verification check has not been done!</b></div>
 			</div>
 			<div class="p-1">
-				<button id="submitBtn" onsubmit="return CheckVer()" type="submit" class="btn btn-primary btn-block mt-1" disabled> Sign Up </button>
+				<button id="submitBtn" type="submit" class="btn btn-primary btn-block mt-1" disabled> Sign Up </button>
 			</div>
 		</form>	
 	</div>		

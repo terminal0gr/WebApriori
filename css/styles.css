@@ -1,9 +1,9 @@
 
-/* .ui-autocomplete-loading {
+.ui-autocomplete-loading {
 	background: white url("../images/loading02b.gif") right center no-repeat;
-} */
+}
 
-/* .center-div
+.center-div
 {
   position: absolute;
   margin: auto;
@@ -16,5 +16,5 @@
   background: url("../images/searching02.gif") right center no-repeat;
   background-size: 300px 300px;
   border-radius: 3px;
-} */
+}
 
