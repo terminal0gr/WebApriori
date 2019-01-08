@@ -206,11 +206,11 @@
 			</div>
 			<div class="p-1">
 				<label for="passwd">Password</label>
-				<input id="passwd" type="password" name="passwd" class="form-control" placeholder="Type to change password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"title="It must contain at least one number, a capital and a lower case and consist of at least 8 characters " >
+				<input id="passwd" type="password" name="passwd" class="form-control"  autocomplete="off" placeholder="Type to change password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"title="It must contain at least one number, a capital and a lower case and consist of at least 8 characters " >
 			</div>
 			<div class="p-1">
 					<label for="vpasswd">Verify password.</label>
-					<input id="vpasswd" type="password" name="vpasswd" placeholder="Validate your password" onblur="CheckVer()" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"title="It must contain at least one number, a capital and a lower case and consist of at least 8 characters " >
+					<input id="vpasswd" type="password" name="vpasswd"  autocomplete="off" placeholder="Validate your password" onblur="CheckVer()" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"title="It must contain at least one number, a capital and a lower case and consist of at least 8 characters " >
 			</div>
 			<div class="p-1">
 				<label>First Name</label>

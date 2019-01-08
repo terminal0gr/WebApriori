@@ -77,11 +77,11 @@
 		<form id="ajax-contact" action= "forgot2.php" method="post">
 			<div class="p-1">
 				<label for="passwd">Enter your new password.</label>
-				<input type="password" id="passwd" name="passwd" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="It must contain at least one number, a capital and a lower case and consist of at least 8 characters "  required>
+				<input type="password" id="passwd" name="passwd" autocomplete="off" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="It must contain at least one number, a capital and a lower case and consist of at least 8 characters "  required>
 			</div>
 			<div class="p-1">
 				<label for="vpasswd">Verify your new password.</label>
-				<input id="vpasswd" type="password" name="vpasswd" onblur="CheckVer()" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"title="It must contain at least one number, a capital and a lower case and consist of at least 8 characters "  required>
+				<input id="vpasswd" type="password" name="vpasswd" autocomplete="off" onblur="CheckVer()" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"title="It must contain at least one number, a capital and a lower case and consist of at least 8 characters "  required>
             </div>
 
             <input id="passkey" type="hidden" name="passkey" class="form-control" value="<?php echo $passkey;?>" > 
