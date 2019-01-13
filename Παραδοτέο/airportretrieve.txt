@@ -66,8 +66,7 @@
            } else {
                ini_set("allow_url_fopen", 1);
 
-               //https://api.sandbox.amadeus.com/v1.2/location/SMI?apikey=TZXCihIgRAkexLGxXtsVmfuyJpwHlp82
-               $request = "https://api.sandbox.amadeus.com/v1.2/location/".$iata_code."?apikey=".apikey;
+                $request = "https://api.sandbox.amadeus.com/v1.2/location/".$iata_code."?apikey=".apikey;
 
                 $response = @file_get_contents($request);
                 $code = getHttpCode($http_response_header);
@@ -98,7 +97,7 @@
                    }
                }
                if ($city=='' && $country=='') {
-                   $message=$_REQUEST['code'].'Airport not found';
+                   $message=$_REQUEST['code'].' Airport not found';
                } else {
                    $query = "insert into airports (code, city, country)
                    values (?,?,?)";
