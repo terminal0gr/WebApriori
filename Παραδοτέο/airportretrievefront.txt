@@ -1,4 +1,11 @@
-/Ανάκτηση αεροδρομίων κατά την έκδοση αποτελεσμάτων πτήσεων (frontend)
+//Ανάκτηση αεροδρομίων κατά την έκδοση αποτελεσμάτων πτήσεων (frontend)
+
+var airports = [];
+//Json Object shape example
+//airports = [
+//  {code:'ATH', city:'Athens', country:'Greece'}
+//];
+
 function find_airport(A_Code) {
     var res = airports.find(x => x.code === A_Code);
     var token = "0";
