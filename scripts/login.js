@@ -34,9 +34,9 @@ $(function() {
 		.fail(function(data) {
 
 			if (data.responseText) {
-				MyModal("Flight Scanner",data.responseText);
+				MyModal("association rules",data.responseText);
 			} else {
-				MyModal("Flight Scanner",'Unknown error occured!');
+				MyModal("association rules",'Unknown error occured!');
 			}
 		});
 
