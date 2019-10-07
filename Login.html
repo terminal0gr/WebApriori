@@ -75,19 +75,19 @@
 
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 		<a id="navbar-brand" class="navbar-brand d-none d-sm-block" data-toggle="modal" data-target="#Credits" href="#">
-			<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="24" height="24" alt="">Flight scanner     
+			<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="24" height="24" alt="">Association rules mining     
 	    </a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<a class="nav-link" href="index.html">Home</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="search.html">Flight search</a>
+				<a class="nav-link" href="search.html">Rules search</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
 			<li id="Rate" class="nav-item">
-				<a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLScLYL2nig3jOst4QNx-ojEawqks9j3yrVP0AHSkBTIXJAEr0w/viewform">Rate us!</a>
+				<a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLScLYL2nig3jOst4QNx-ojEawqks9j3yrVP0AHSkBTIXJAEr0w/viewform" target="_blank">Rate us!</a>
 			</li>			
 			<li id="SignUp" class="nav-item">
 				<a class="nav-link" href="SignUp.html">Sign Up</a>
@@ -117,7 +117,7 @@
 		<form id="ajax-contact" action= "phpfunctions/validation.php" method="post">
 			<div class="p-1">
 				<label>Email</label>
-				<input type="email" name="email" class="form-control" autocomplete="off" required>
+				<input type="email" name="email" class="form-control" autocomplete="off" required placeholder="Type your email" >
 			</div>
 			<div class="p-1" >
 				<div class="row">
@@ -128,7 +128,7 @@
 						<label class="label-link" tabindex="-1" style="float: right"><a href="forgot.html" tabindex="-1">Forgot Password?</a></label>
 					</div>
 				</div>
-				<input type="password" name="passwd" class="form-control" required autocomplete="off">
+				<input type="password" name="passwd" class="form-control" required autocomplete="off" placeholder="Type your password" >
 			</div>
 			<div class=" p-1" >
 				<button type="submit" class="btn btn-primary btn-block mt-3"> Sign In </button>

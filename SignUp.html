@@ -25,7 +25,7 @@
             M_F();
 			VT();
 			if (sessionStorage.getItem('version')) {
-				$('#navbar-brand').html('<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="32" height="32" alt="">Flight scanner ' +  sessionStorage.getItem('version'));
+				$('#navbar-brand').html('<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="32" height="32" alt="">Association rules mining ' +  sessionStorage.getItem('version'));
 			} else {
 				window.location.href='index.html';
 			}
@@ -79,7 +79,7 @@
 					// if (data.responseText) {
 					// 	MyModal(data.title + '(' + data.http_response_code + ')', data.message);
 					// } else {
-					// 	MyModal("Flight Scanner",'Unknown error occured!');
+					// 	MyModal("Association rules mining",'Unknown error occured!');
 					// }
 				});
 
@@ -177,12 +177,12 @@
 		</ul>
 		<ul class="navbar-nav ml-auto">
 			<li id="Rate" class="nav-item">
-				<a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLScLYL2nig3jOst4QNx-ojEawqks9j3yrVP0AHSkBTIXJAEr0w/viewform">Rate us!</a>
+				<a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLScLYL2nig3jOst4QNx-ojEawqks9j3yrVP0AHSkBTIXJAEr0w/viewform" target="_blank">Rate us!</a>
 			</li>			
-			<li id="SignUp" class="nav-item">
+			<li id="SignUp" class="nav-item active">
 				<a class="nav-link" href="SignUp.html">Sign Up</a>
 			</li>
-			<li id="SignIn" class="nav-item active">
+			<li id="SignIn" class="nav-item">
 				<a class="nav-link" href="Login.html">Sign In</a>
 			</li>
 			<li id=sdropdown class="nav-item dropdown">
@@ -204,7 +204,7 @@
 
 	<div class="mx-auto border rounded mb-3 p-2" style="width: 329px;">
 		<h4 class="text-center">Welcome! Please Sign Up</h4>
-		<p class="text-center">Already our customer? Please <a href="Login.html">sign In</a></p>
+		<p class="text-center">Already user? Please <a href="Login.html">sign In</a></p>
 
 		<form Id="ajax-registration" action="phpfunctions/registration.php" method="post">
 			<div class="p-1">
@@ -239,17 +239,12 @@
 	</div>		
 	
 	<br><br><br>
-<!--   
+
     <footer>
         <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
-        	<span class="navbar-text ">Low fare flights search engine &middot; MSc in Web Intelligence &copy; 2018-2019</span>
+            <span class="text-muted">Association rules mining based on Apriori algorithm &middot; MSc in Web Intelligence &copy; 2019-2020</span>
         </nav>
-	</footer> -->
-	<footer class="footer mt-auto py-3">
-		<div class="container">
-		  <span class="text-muted">Association rules mining based on Apriori algorithm. MSc in Web Intelligence &copy; 2019-2020</span>
-		</div>
-	  </footer>
+	</footer> 
 
 </body>
 </html>

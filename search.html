@@ -38,13 +38,13 @@
 		$(function() {
 
 			if (!sessionStorage.getItem('token') || sessionStorage.getItem('token')==0) {
-				MyModal("Association rules",'Please Sign in, or Sign up if you are a new user, in order to save/load your searches while using our new flight search engine!');
+				MyModal("Association rules",'Please Sign in, or Sign up if you are a new user, in order to save/load your searches while using our new association rules mining engine!');
 				// sessionStorage.clear();
 				// window.location.href='index.html';
 			}
 
 			if (sessionStorage.getItem('version')) {
-				$('#navbar-brand').html('<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="24" height="24" alt="">Flight scanner ' +  sessionStorage.getItem('version'));
+				$('#navbar-brand').html('<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="24" height="24" alt="">Association rules mining ' +  sessionStorage.getItem('version'));
 			}
 			else {
 				sessionStorage.clear();
@@ -253,7 +253,7 @@
 				
 			//request data from php
 			var token = sessionStorage.getItem('token');
-			$.post('/webeng7/flights/phpfunctions/loadfiltersname.php', {
+			$.post('/phpfunctions/loadfiltersname.php', {
 				token: token
 			}, function(data) { //data from php
 				if (data != "0 results"){
@@ -280,7 +280,7 @@
 						//request data from php
 						var token = sessionStorage.getItem('token');
 						if (FilterName != ""){
-							$.post('/webeng7/flights/phpfunctions/loadfilter.php', {
+							$.post('/phpfunctions/loadfilter.php', {
 								token: token,
 								FilterName: FilterName
 							}, function(data) { //data from php
@@ -361,7 +361,7 @@
 							$( this ).dialog( "close" );
 						}
 						else {
-							MyModal("Flight Scanner","Nothing to load");
+							MyModal("Association rules mining","Nothing to load");
 						}
 					},
 					"Delete filter": function() {
@@ -371,16 +371,16 @@
 						if (FilterName != ""){
 							//request data from php
 							var token = sessionStorage.getItem('token');
-							$.post('/webeng7/flights/phpfunctions/deletefilter.php', {
+							$.post('/phpfunctions/deletefilter.php', {
 								token: token,
 								FilterName: FilterName
 							}, function(data) { //data from php
-								MyModal("Flight Scanner",data);
+								MyModal("Association rules mining",data);
 							});
 							$( this ).dialog( "close" );
 						}
 						else { //trying to delete default selection option
-							MyModal("Flight Scanner","Nothing to delete");
+							MyModal("Association rules mining","Nothing to delete");
 						}
 					}
 				},
@@ -431,11 +431,11 @@
 				}
 				if (SaveFilterName == null || SaveFilterName == "" ){
 				msg = "Please fill a name";
-				MyModal("Flight Scanner",msg);
+				MyModal("Association rules mining",msg);
 				}
 				else if (illegalC == "1"){
 					msg = "Please use only letters and numbers without special characters";
-					MyModal("Flight Scanner",msg);
+					MyModal("Association rules mining",msg);
 					}
 				else {
 					var token = sessionStorage.getItem('token');
@@ -453,7 +453,7 @@
 					var departure_date = $('input[name="departure_date"]').val();
 					var return_date = $('input[name="return_date"]').val();
 					
-					$.post('/webeng7/flights/phpfunctions/savefilter.php', {
+					$.post('/phpfunctions/savefilter.php', {
 						token: token,
 						SaveFilterName: SaveFilterName,
 						direction: direction,
@@ -463,7 +463,7 @@
 						departure_date: departure_date,
 						return_date: return_date
 					}, function(data) {
-						MyModal("Flight Scanner",data);
+						MyModal("Association rules mining",data);
 					});
 				}
 			}
@@ -480,19 +480,19 @@
 
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 		<a id="navbar-brand" class="navbar-brand d-none d-sm-block" data-toggle="modal" data-target="#Credits" href="#">
-			<img class="d-inline-block mr-1" src="./images/plane_02.png" width="24" height="24" alt="">Flight scanner     
+			<img class="d-inline-block mr-1" src="./images/plane_02.png" width="24" height="24" alt="">Association rules mining
         </a>		
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<a class="nav-link" href="index.html">Home</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active">Flight search</a>
+				<a class="nav-link active">Rules search</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
 			<li id="Rate" class="nav-item">
-				<a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLScLYL2nig3jOst4QNx-ojEawqks9j3yrVP0AHSkBTIXJAEr0w/viewform">Rate us!</a>
+				<a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLScLYL2nig3jOst4QNx-ojEawqks9j3yrVP0AHSkBTIXJAEr0w/viewform" target="_blank">Rate us!</a>
 			</li>			
 			<li id="SignUp" class="nav-item">
 				<a class="nav-link" href="SignUp.html">Sign Up</a>
