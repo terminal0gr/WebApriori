@@ -41,11 +41,12 @@
 			// Set up an event listener for the contact form.
 			$(form).submit(function(e) {
 				// Stop the browser from submitting the form.
-				e.preventDefault();
-
-				if (!checkForm()) {
-					return;
-				}
+				
+				//when capcha in working mode then uncomment next 4 lines
+				//e.preventDefault();
+				// if (!checkForm()) {
+				// 	return;
+				// }
 
 				// Serialize the form data.
 				var formData = $(form).serialize();
@@ -137,10 +138,10 @@
 		function checkForm(){
 			if (recaptchachecked) {
 				return CheckVer();
-			} else {
+			} 
+			else {
 				document.getElementById("captcha-error").style.display = "block"
-				return false;
-				
+			 	return false;
 			}
 		};
 
@@ -233,7 +234,9 @@
 				<div id="captcha-error" style="display:none; color:red;"><b>Verification check has not been done!</b></div>
 			</div>
 			<div class="p-1">
-				<button id="submitBtn" type="submit" class="btn btn-primary btn-block mt-1" disabled> Sign Up </button>
+				<!-- When capcha in working mode substitude the next 2 lines -->
+				<button id="submitBtn" type="submit" class="btn btn-primary btn-block mt-1"> Sign Up </button>
+				<!-- <button id="submitBtn" type="submit" class="btn btn-primary btn-block mt-1" disabled> Sign Up </button> -->
 			</div>
 		</form>	
 	</div>		
