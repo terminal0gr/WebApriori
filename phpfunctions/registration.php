@@ -79,14 +79,20 @@
 
 			//$mail->Host = 'smtp.teithe.gr';
 			//$mail->Port = 25;       
-			$mail->Host = 'smtp.mail.yahoo.com';
-			$mail->Port = 465; 
+			// $mail->Host = 'smtp.mail.yahoo.com';
+			// $mail->Port = 465; 
+			// $mail->SMTPAuth = true;                 // Enable SMTP authentication
+            // $mail->Username = 'terminal_gr@yahoo.com';  // SMTP username
+            // $mail->Password = 'samall321&@!';    // SMTP password
+            // $mail->SMTPSecure = 'ssl'; 
+			$mail->Host = 'smtp.office365.com';
+			$mail->Port = 587; 
 			$mail->SMTPAuth = true;                 // Enable SMTP authentication
-            $mail->Username = 'terminal_gr@yahoo.com';  // SMTP username
-            $mail->Password = 'samall321&@!';    // SMTP password
-            $mail->SMTPSecure = 'ssl'; 
+            $mail->Username = 'malliaridis@mentor.com.gr';  // SMTP username
+            $mail->Password = 'sakhs13!';    // SMTP password
+            $mail->SMTPSecure = 'tls'; 
 
-			$mail->setFrom('terminal_gr@yahoo.com', 'Association Rules mining');   
+			$mail->setFrom('malliaridis@mentor.com.gr', 'Association Rules mining');   
 			$mail->addAddress($email);               
 			$mail->Subject  = "Association rules mining. Please confirm your verification!";
 			$mail->Body  = $message;

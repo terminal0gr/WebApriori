@@ -41,7 +41,7 @@
 			// Set up an event listener for the contact form.
 			$(form).submit(function(e) {
 				// Stop the browser from submitting the form.
-				//e.preventDefault();
+				e.preventDefault();
 
 				// Check capcha
 				// In case of capcha working uncomment the lines below
@@ -63,7 +63,7 @@
 					data: formData
 				});
 
-				request.done(function( msg ) {
+				request.done(function(response) {
                     
 					res=JSON.parse(response);
 
