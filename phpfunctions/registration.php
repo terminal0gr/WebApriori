@@ -21,7 +21,7 @@
 	}
 	
 	//erase expired orphan records
-	$sql="DELETE FROM temp_usertable WHERE `created_at`<DATE_SUB(NOW(), INTERVAL 1 MINUTE)";
+	$sql="DELETE FROM temp_usertable WHERE `created_at`<DATE_SUB(NOW(), INTERVAL 5 MINUTE)";
 	$result = mysqli_query($con1,$sql);
 
 		
@@ -69,34 +69,29 @@
 		$query ="SELECT * FROM temp_usertable WHERE temail='$email'";
 		$result = mysqli_query($con1,$query);
 		$num=mysqli_num_rows($result);
-		if($num==0) {
-
-			$message = "Your Confirmation link \r\nhttp://nireas.it.teithe.gr/webeng7/flights/phpfunctions/confirmation.php?passkey=$confirm_code ";                   
+		if($num==0) {                  
 
 			$mail = new PHPMailer(TRUE);
 			$mail->IsSMTP();
 			$mail->CharSet="UTF-8";     
-
-			//$mail->Host = 'smtp.teithe.gr';
-			//$mail->Port = 25;       
-			// $mail->Host = 'smtp.mail.yahoo.com';
-			// $mail->Port = 465; 
-			// $mail->SMTPAuth = true;                 // Enable SMTP authentication
-            // $mail->Username = 'terminal_gr@yahoo.com';  // SMTP username
-            // $mail->Password = 'samall321&@!';    // SMTP password
-            // $mail->SMTPSecure = 'ssl'; 
-			$mail->Host = 'smtp.office365.com';
-			$mail->Port = 587; 
-			$mail->SMTPAuth = true;                 // Enable SMTP authentication
-            $mail->Username = 'malliaridis@mentor.com.gr';  // SMTP username
-            $mail->Password = 'sakhs13!';    // SMTP password
-            $mail->SMTPSecure = 'tls'; 
-
-			$mail->setFrom('malliaridis@mentor.com.gr', 'Association Rules mining');   
+			
+			$mail->Host = smtpHost;
+			$mail->Port = smtpPort; 
+			$mail->SMTPAuth = smtpAuth;                 
+            $mail->Username = smtpUsername;  
+            $mail->Password = smtpPassword;    
+            $mail->SMTPSecure = smtpSecure; 
+			$mail->setFrom(smtpFrom, smtpFromName);   
 			$mail->addAddress($email);               
 			$mail->Subject  = "Association rules mining. Please confirm your verification!";
-			$mail->Body  = $message;
-
+			$mail->IsHTML(true);
+			$mail->Body  = 	
+				"<p>Your Confirmation link for the Association rules mining engine is,</p>
+				<br>
+				<h2><a href=\"".siteRoot."/phpfunctions/confirmation.php?passkey=$confirm_code\">here</a></h2>
+				<br>
+				<p>and it would be valid for 5 minutes.</p>"; 
+			$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\nlocalhost/phpfunctions/confirmation.php?passkey=$confirm_code\r\nand it would be valid for 5 minutes.";
 			if(!$mail->send()) {
                 echo "Mailer Error: " . $mail->ErrorInfo;
 				http_response_code(401);
