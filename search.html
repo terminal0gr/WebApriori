@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
 
 	<script src="scripts/jquery-3.4.1.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 	<script src="scripts/scripts.js"></script>
 
@@ -52,48 +53,22 @@
 				sessionStorage.clear();
 				window.location.href='index.html';
 			});		
-			
-			$('#PromptSave').click(function() {
-				SaveFilter($('#InputText').val());
-				$('#InputText').val('');
-			});
-			
-			$( "#dialog" ).dialog({ autoOpen: false });
-			$( "#opener" ).click(function() {
-				$( "#dialog" ).dialog( "open" );
-			});
-			
-			function log( message ) {
-				$( "<div>" ).text( message ).prependTo( "#log" );
-				$( "#log" ).scrollTop( 0 );
-			}
-			
-			$( "#error-dialog" ).dialog({
-				autoOpen: false,
-				modal: true,
-				buttons: {
-					Ok: function() {
-						$( this ).dialog( "close" );
-					}
-				}
-			});
 
 			// Get the form.
-			var form = $('#uploadDataset');
+			var form = $('#uploadDatasetform');
 			// Set up an event listener for the contact form.
 			$(form).submit(function(e) {
 				// Stop the browser from submitting the form.
 				e.preventDefault();
-
 				// Serialize the form data.
 				var formData = $(form).serialize();
 				// Submit the form using AJAX.
 				$.ajax({
 					method: 'POST',
-					//url: $(form).attr('action'),
-					url:'phpfunctions/uploadDataset.php',
+					url: $(form).attr('action'),
 					data: formData
 				}).request.done(function(response) {
+					alert('a');
 					res=JSON.parse(response);
 					if (res.http_response_code==200) {
 						MyModal(res.title,res.message);
@@ -101,6 +76,7 @@
 						MyModal(res.title + '(' + res.http_response_code + ')', res.message);
 					}
 				}).request.fail(function( jqXHR, textStatus, thrownError ) {
+					alert('a');
 					res=JSON.parse(jqXHR.responseText);
 					MyModal(res.title + '(' + res.http_response_code + ')', res.message);
 				});
@@ -142,7 +118,7 @@
         });		
 		
 		function UploadDataset() {
-			$('#uploadDataset').show( "slow" );
+			$('#uploadDatasetform').show( "slow" );
 		}
 
 		//Load & delete filters ...start
@@ -424,7 +400,7 @@
 	
 	<br>
 	
-	<form id="uploadDataset" style="display:none;" action="" method="post" enctype="multipart/form-data">
+	<form id="uploadDatasetform" action="phpfunctions/uploadDataset.php" method="post" enctype="multipart/form-data">
 		<div class="container">
 			<div class="row justify-content-center p-1">
 				<div class="col-10 col-xs-10 col-sm-10 col-md-9 col-lg-8 col-xl-8 pb-2 border rounded p-2">
@@ -436,7 +412,7 @@
 					</div>
 				</div>
 				<div class="col-2 col-xs-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 p-1 border border-primary rounded">
-					<button class="btn btn-primary btn-block" type="submit" name="submitDataset" style="height:100%; width:100%" id="uploadButton" ><img src="./images/upload32White.png" width="32" height="32" alt=""></button>
+					<button class="btn btn-primary btn-block" type="submit" style="height:100%; width:100%" id="uploadButton" ><img src="./images/upload32White.png" width="32" height="32" alt=""></button>
 				</div>
 			</div>
 		</div>

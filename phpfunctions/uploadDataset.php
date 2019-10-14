@@ -1,14 +1,16 @@
 <?php
 
+http_response_code(201);
+$JsonReq = array('http_response_code' => 201, 'title' => 'Information', 'message' => 'a!');
+print json_encode($JsonReq);
+exit();
+
 session_start();
 
 $target_dir = "../Python/dataset/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 
-http_response_code(201);
-$JsonReq = array('http_response_code' => 201, 'title' => 'Information', 'message' => 'a!');
-print json_encode($JsonReq);
-exit();
+
 
 if(isset($_POST["submitDataset"])) {
     echo "b";
