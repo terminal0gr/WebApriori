@@ -82,25 +82,6 @@
 					res=JSON.parse(jqXHR.responseText);
 					MyModal(res.title + '(' + res.http_response_code + ')', res.message);
 				});
-				
-				// .done(function(response) {
-				// 	res=JSON.parse(response)
-
-				// 	if (res.http_response_code==200) {
-				// 		MyModal(res.title,res.message);
-				// 		setTimeout(function()
-   				// 		{
-				// 			window.location.href='Login.html'
-    			// 		}, 3000);
-				// 	} else {
-				// 		MyModal(res.title + '(' + res.http_response_code + ')', res.message);
-				// 	}
-				// })
-				// .fail(function(jqXHR, response) {
-				// 	alert(response)
-				// 	res=JSON.parse(response);
-				// 	MyModal(res.title + '(' + res.http_response_code + ')', res.message);
-				// });
 
 			});
 
