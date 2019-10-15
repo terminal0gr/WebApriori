@@ -3,14 +3,14 @@
 <head>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130197414-1"></script>
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130197414-1"></script>
 	<script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
 
 	gtag('config', 'UA-130197414-1');
-	</script>
+	</script> -->
 
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -60,23 +60,22 @@
 			$(form).submit(function(e) {
 				// Stop the browser from submitting the form.
 				e.preventDefault();
-				// Serialize the form data.
-				var formData = $(form).serialize();
+				alert("asdsaSDA")
 				// Submit the form using AJAX.
 				$.ajax({
 					method: 'POST',
 					url: $(form).attr('action'),
-					data: formData
-				}).request.done(function(response) {
-					alert('a');
+					data: $(form).serialize()
+				}).done(function(response) {
+					alert(response);
 					res=JSON.parse(response);
 					if (res.http_response_code==200) {
 						MyModal(res.title,res.message);
 					} else {
 						MyModal(res.title + '(' + res.http_response_code + ')', res.message);
 					}
-				}).request.fail(function( jqXHR, textStatus, thrownError ) {
-					alert('a');
+				}).fail(function( jqXHR, textStatus, thrownError ) {
+					alert('error');
 					res=JSON.parse(jqXHR.responseText);
 					MyModal(res.title + '(' + res.http_response_code + ')', res.message);
 				});
@@ -117,231 +116,231 @@
             M_F();
         });		
 		
-		function UploadDataset() {
-			$('#uploadDatasetform').show( "slow" );
-		}
+		// function UploadDataset() {
+		// 	$('#uploadDatasetform').show( "slow" );
+		// }
 
 		//Load & delete filters ...start
-		function SelectFilter() {
+		// function SelectFilter() {
 				
-			//request data from php
-			var token = sessionStorage.getItem('token');
-			$.post('/phpfunctions/loadfiltersname.php', {
-				token: token
-			}, function(data) { //data from php
-				if (data != "0 results"){
-					data = JSON.parse(data);
-					$('#Selfilters').empty();
-					$('#Selfilters').append('<option value="" selected disabled >select filter</option>'); //Default option
-					data.forEach(function(FilterName){ //fill select options
-						$('#Selfilters').append("<option id='" + FilterName.FilterName + "' value='"+ FilterName.FilterName + "'>"+ FilterName.FilterName + "   /   " + FilterName.FilterDate +"</option>");
-					});
-				}
-				else {
-					$('#Selfilters').empty();
-					$('#Selfilters').append('<option value="" selected disabled >select filter</option>'); //Default option
-				}		
-			});
+		// 	//request data from php
+		// 	var token = sessionStorage.getItem('token');
+		// 	$.post('/phpfunctions/loadfiltersname.php', {
+		// 		token: token
+		// 	}, function(data) { //data from php
+		// 		if (data != "0 results"){
+		// 			data = JSON.parse(data);
+		// 			$('#Selfilters').empty();
+		// 			$('#Selfilters').append('<option value="" selected disabled >select filter</option>'); //Default option
+		// 			data.forEach(function(FilterName){ //fill select options
+		// 				$('#Selfilters').append("<option id='" + FilterName.FilterName + "' value='"+ FilterName.FilterName + "'>"+ FilterName.FilterName + "   /   " + FilterName.FilterDate +"</option>");
+		// 			});
+		// 		}
+		// 		else {
+		// 			$('#Selfilters').empty();
+		// 			$('#Selfilters').append('<option value="" selected disabled >select filter</option>'); //Default option
+		// 		}		
+		// 	});
 			
-			$( "#loadfilterdialog" ).show();
-			$( "#loadfilterdialog" ).dialog({
-				buttons: {
-					"Load filter": function() {
-						//get selection
-						var doc = document.getElementById('Selfilters');
-						var FilterName = doc.options[doc.selectedIndex].value;
-						//request data from php
-						var token = sessionStorage.getItem('token');
-						if (FilterName != ""){
-							$.post('/phpfunctions/loadfilter.php', {
-								token: token,
-								FilterName: FilterName
-							}, function(data) { //data from php
-								data = JSON.parse(data);
-								//fill data
-								data.forEach(function(Filter){ //fill form filters
-									document.getElementsByName('direction')[(Filter.FilterOneway-1)].checked=true;
-									if (Filter.FilterNonStop == 'on'){
-										document.getElementById('nonstop').checked = true;
-									}
-									else {
-										document.getElementById('nonstop').checked = false;
-									}
+		// 	$( "#loadfilterdialog" ).show();
+		// 	$( "#loadfilterdialog" ).dialog({
+		// 		buttons: {
+		// 			"Load filter": function() {
+		// 				//get selection
+		// 				var doc = document.getElementById('Selfilters');
+		// 				var FilterName = doc.options[doc.selectedIndex].value;
+		// 				//request data from php
+		// 				var token = sessionStorage.getItem('token');
+		// 				if (FilterName != ""){
+		// 					$.post('/phpfunctions/loadfilter.php', {
+		// 						token: token,
+		// 						FilterName: FilterName
+		// 					}, function(data) { //data from php
+		// 						data = JSON.parse(data);
+		// 						//fill data
+		// 						data.forEach(function(Filter){ //fill form filters
+		// 							document.getElementsByName('direction')[(Filter.FilterOneway-1)].checked=true;
+		// 							if (Filter.FilterNonStop == 'on'){
+		// 								document.getElementById('nonstop').checked = true;
+		// 							}
+		// 							else {
+		// 								document.getElementById('nonstop').checked = false;
+		// 							}
 									
-									document.getElementById('origin_descr').value = Filter.FilterOrigin;
-									var matches = Filter.FilterOrigin.match(/\[(.*?)\]/);
-									if (matches) {
-										var submatch = matches[1];
-									}							
-									document.getElementById('origin').value = submatch;
+		// 							document.getElementById('origin_descr').value = Filter.FilterOrigin;
+		// 							var matches = Filter.FilterOrigin.match(/\[(.*?)\]/);
+		// 							if (matches) {
+		// 								var submatch = matches[1];
+		// 							}							
+		// 							document.getElementById('origin').value = submatch;
 									
-									document.getElementById('destination_descr').value = Filter.FilterDestination;
-									var matches = Filter.FilterDestination.match(/\[(.*?)\]/);
-									if (matches) {
-										var submatch = matches[1];
-									}								
-									document.getElementById('destination').value = submatch;
+		// 							document.getElementById('destination_descr').value = Filter.FilterDestination;
+		// 							var matches = Filter.FilterDestination.match(/\[(.*?)\]/);
+		// 							if (matches) {
+		// 								var submatch = matches[1];
+		// 							}								
+		// 							document.getElementById('destination').value = submatch;
 
-									//parse tomorrow for comparison
-									var today = new Date();
-									var dd = today.getDate()+1;
-									var mm = today.getMonth()+1; //January is 0!
-									var yyyy = today.getFullYear();
-									if(dd<10) {
-										dd = '0'+dd
-									} 
-									if(mm<10) {
-										mm = '0'+mm
-									} 
-									tomorrow =  yyyy + '-' + mm + '-' + dd;
+		// 							//parse tomorrow for comparison
+		// 							var today = new Date();
+		// 							var dd = today.getDate()+1;
+		// 							var mm = today.getMonth()+1; //January is 0!
+		// 							var yyyy = today.getFullYear();
+		// 							if(dd<10) {
+		// 								dd = '0'+dd
+		// 							} 
+		// 							if(mm<10) {
+		// 								mm = '0'+mm
+		// 							} 
+		// 							tomorrow =  yyyy + '-' + mm + '-' + dd;
 
-									if (Filter.FilterDDate != '0000-00-00'){
-										if (Filter.FilterDDate<tomorrow) {
-											MyModal("Information","Departure date has passed. Tomorrow date will be used instead.");
-											midDate=tomorrow;
-										} else {
-											midDate = Filter.FilterDDate;
-										}
-										var mySQLDate = midDate.split("-");
-										var myJSDate =  mySQLDate[2]+ "/" +mySQLDate[1]+ "/" +mySQLDate[0];
-										document.getElementById('departure_date').value = myJSDate;
-										document.getElementById('ddate').value = midDate;
-									}
-									else {
-										document.getElementById('departure_date').value = "";
-									}
+		// 							if (Filter.FilterDDate != '0000-00-00'){
+		// 								if (Filter.FilterDDate<tomorrow) {
+		// 									MyModal("Information","Departure date has passed. Tomorrow date will be used instead.");
+		// 									midDate=tomorrow;
+		// 								} else {
+		// 									midDate = Filter.FilterDDate;
+		// 								}
+		// 								var mySQLDate = midDate.split("-");
+		// 								var myJSDate =  mySQLDate[2]+ "/" +mySQLDate[1]+ "/" +mySQLDate[0];
+		// 								document.getElementById('departure_date').value = myJSDate;
+		// 								document.getElementById('ddate').value = midDate;
+		// 							}
+		// 							else {
+		// 								document.getElementById('departure_date').value = "";
+		// 							}
 									
-									if (Filter.FilterRDate != '0000-00-00' && Filter.FilterOneway == '2'){
-										if (Filter.FilterRDate<tomorrow) {
-											MyModal("Information","Arrival date has passed. Tomorrow date will be used instead.");
-											midDate=tomorrow;
-										} else {
-											midDate = Filter.FilterRDate;
-										}
-										var mySQLDate = midDate.split("-");
-										var myJSDate =  mySQLDate[2]+ "/" +mySQLDate[1]+ "/" +mySQLDate[0];
-										document.getElementById("return_date").type = "text";
-										document.getElementById('return_date').value = myJSDate;
-										document.getElementById('rdate').value = midDate;
-									}
-									else {
-										document.getElementById("return_date").type = "hidden";
-										document.getElementById('return_date').value = "";
-									}
+		// 							if (Filter.FilterRDate != '0000-00-00' && Filter.FilterOneway == '2'){
+		// 								if (Filter.FilterRDate<tomorrow) {
+		// 									MyModal("Information","Arrival date has passed. Tomorrow date will be used instead.");
+		// 									midDate=tomorrow;
+		// 								} else {
+		// 									midDate = Filter.FilterRDate;
+		// 								}
+		// 								var mySQLDate = midDate.split("-");
+		// 								var myJSDate =  mySQLDate[2]+ "/" +mySQLDate[1]+ "/" +mySQLDate[0];
+		// 								document.getElementById("return_date").type = "text";
+		// 								document.getElementById('return_date').value = myJSDate;
+		// 								document.getElementById('rdate').value = midDate;
+		// 							}
+		// 							else {
+		// 								document.getElementById("return_date").type = "hidden";
+		// 								document.getElementById('return_date').value = "";
+		// 							}
 									
-								});						
-							});
-							$( this ).dialog( "close" );
-						}
-						else {
-							MyModal("Association rules mining","Nothing to load");
-						}
-					},
-					"Delete filter": function() {
-						//get selection
-						var doc = document.getElementById("Selfilters");
-						var FilterName = doc.options[doc.selectedIndex].value;
-						if (FilterName != ""){
-							//request data from php
-							var token = sessionStorage.getItem('token');
-							$.post('/phpfunctions/deletefilter.php', {
-								token: token,
-								FilterName: FilterName
-							}, function(data) { //data from php
-								MyModal("Association rules mining",data);
-							});
-							$( this ).dialog( "close" );
-						}
-						else { //trying to delete default selection option
-							MyModal("Association rules mining","Nothing to delete");
-						}
-					}
-				},
-				clickOutside: true, // clicking outside the dialog will close it
-				clickOutsideTrigger: "#Selfilters"  // Element (id or class) that triggers the dialog opening 			
-			});
-		}
+		// 						});						
+		// 					});
+		// 					$( this ).dialog( "close" );
+		// 				}
+		// 				else {
+		// 					MyModal("Association rules mining","Nothing to load");
+		// 				}
+		// 			},
+		// 			"Delete filter": function() {
+		// 				//get selection
+		// 				var doc = document.getElementById("Selfilters");
+		// 				var FilterName = doc.options[doc.selectedIndex].value;
+		// 				if (FilterName != ""){
+		// 					//request data from php
+		// 					var token = sessionStorage.getItem('token');
+		// 					$.post('/phpfunctions/deletefilter.php', {
+		// 						token: token,
+		// 						FilterName: FilterName
+		// 					}, function(data) { //data from php
+		// 						MyModal("Association rules mining",data);
+		// 					});
+		// 					$( this ).dialog( "close" );
+		// 				}
+		// 				else { //trying to delete default selection option
+		// 					MyModal("Association rules mining","Nothing to delete");
+		// 				}
+		// 			}
+		// 		},
+		// 		clickOutside: true, // clicking outside the dialog will close it
+		// 		clickOutsideTrigger: "#Selfilters"  // Element (id or class) that triggers the dialog opening 			
+		// 	});
+		// }
 		//Load & delete filters ...end
 	
-		function CheckFilters() {
-			if ($('#direction').val()!=1 && $('#direction').val()!=2) {
-				MyModal("Wrong filters!", "Declare One way or round trip please!");
-				return;
-			}
-			if (!$('#origin_descr').val()) {
-				MyModal("Wrong filters!", "Please choose departure airport please!");
-				return;
-			}
-			if (!$('#departure_date').val()) {
-				MyModal("Wrong filters!", "Please choose departure date please!");
-				return;
-			}
-			if (!$('#destination_descr').val()) {
-				MyModal("Wrong filters!", "Please choose destination airport please!");
-				return;
-			}
-			if ($('#direction').val()==2) {
-				if (!$('#return_date').val()) {
-					MyModal("Wrong filters!", "Please choose return date please!");
-					return;
-				}
-			}
-			$('#MyPrompt').modal('show')
-		};
+// 		function CheckFilters() {
+// 			if ($('#direction').val()!=1 && $('#direction').val()!=2) {
+// 				MyModal("Wrong filters!", "Declare One way or round trip please!");
+// 				return;
+// 			}
+// 			if (!$('#origin_descr').val()) {
+// 				MyModal("Wrong filters!", "Please choose departure airport please!");
+// 				return;
+// 			}
+// 			if (!$('#departure_date').val()) {
+// 				MyModal("Wrong filters!", "Please choose departure date please!");
+// 				return;
+// 			}
+// 			if (!$('#destination_descr').val()) {
+// 				MyModal("Wrong filters!", "Please choose destination airport please!");
+// 				return;
+// 			}
+// 			if ($('#direction').val()==2) {
+// 				if (!$('#return_date').val()) {
+// 					MyModal("Wrong filters!", "Please choose return date please!");
+// 					return;
+// 				}
+// 			}
+// 			$('#MyPrompt').modal('show')
+// 		};
 
-		//Save filter ...start
-		function SaveFilter(SaveFilterName) {
-			var msg;
-			var format = /[!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?]/;
-			var illegalC;
-			//var SaveFilterName = prompt("Give a name to save this record");
-			if (SaveFilterName != null) {
-				SaveFilterName = SaveFilterName.trim();
-				if(format.test(SaveFilterName)){
-					illegalC = "1";
-				} else {
-					illegalC = "0";
-				}
-				if (SaveFilterName == null || SaveFilterName == "" ){
-				msg = "Please fill a name";
-				MyModal("Association rules mining",msg);
-				}
-				else if (illegalC == "1"){
-					msg = "Please use only letters and numbers without special characters";
-					MyModal("Association rules mining",msg);
-					}
-				else {
-					var token = sessionStorage.getItem('token');
-//					var playload = JSON.parse(atob(token.split('.')[1]));
-//					var email = playload;
+// 		//Save filter ...start
+// 		function SaveFilter(SaveFilterName) {
+// 			var msg;
+// 			var format = /[!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?]/;
+// 			var illegalC;
+// 			//var SaveFilterName = prompt("Give a name to save this record");
+// 			if (SaveFilterName != null) {
+// 				SaveFilterName = SaveFilterName.trim();
+// 				if(format.test(SaveFilterName)){
+// 					illegalC = "1";
+// 				} else {
+// 					illegalC = "0";
+// 				}
+// 				if (SaveFilterName == null || SaveFilterName == "" ){
+// 				msg = "Please fill a name";
+// 				MyModal("Association rules mining",msg);
+// 				}
+// 				else if (illegalC == "1"){
+// 					msg = "Please use only letters and numbers without special characters";
+// 					MyModal("Association rules mining",msg);
+// 					}
+// 				else {
+// 					var token = sessionStorage.getItem('token');
+// //					var playload = JSON.parse(atob(token.split('.')[1]));
+// //					var email = playload;
 
-					var direction = $('input[name="direction"]:checked').val();
-					var nonstop = $('input[name="nonstop"]:checked').val();
-					if (nonstop != "on") {
-						nonstop = "off";
-						}
+// 					var direction = $('input[name="direction"]:checked').val();
+// 					var nonstop = $('input[name="nonstop"]:checked').val();
+// 					if (nonstop != "on") {
+// 						nonstop = "off";
+// 						}
 				
-					var origin_descr = $('input[name="origin_descr"]').val();
-					var destination_descr = $('input[name="destination_descr"]').val();
-					var departure_date = $('input[name="departure_date"]').val();
-					var return_date = $('input[name="return_date"]').val();
+// 					var origin_descr = $('input[name="origin_descr"]').val();
+// 					var destination_descr = $('input[name="destination_descr"]').val();
+// 					var departure_date = $('input[name="departure_date"]').val();
+// 					var return_date = $('input[name="return_date"]').val();
 					
-					$.post('/phpfunctions/savefilter.php', {
-						token: token,
-						SaveFilterName: SaveFilterName,
-						direction: direction,
-						nonstop: nonstop,
-						origin_descr: origin_descr,
-						destination_descr: destination_descr,
-						departure_date: departure_date,
-						return_date: return_date
-					}, function(data) {
-						MyModal("Association rules mining",data);
-					});
-				}
-			}
+// 					$.post('/phpfunctions/savefilter.php', {
+// 						token: token,
+// 						SaveFilterName: SaveFilterName,
+// 						direction: direction,
+// 						nonstop: nonstop,
+// 						origin_descr: origin_descr,
+// 						destination_descr: destination_descr,
+// 						departure_date: departure_date,
+// 						return_date: return_date
+// 					}, function(data) {
+// 						MyModal("Association rules mining",data);
+// 					});
+// 				}
+// 			}
 
-		}
+// 		}
 
 	</script>
 	<!-- Save filter ...end -->
@@ -392,14 +391,20 @@
 	</nav>
 
 	<!-- Select filter button - start -->
-	<div id="loadfilterdialog" title="Filter selection" style="display: none;">
+	<!-- <div id="loadfilterdialog" title="Filter selection" style="display: none;">
 		<select class="form-control" id="Selfilters" name="Selfilters" >
 		</select>
-	</div>
+	</div> -->
 	<!-- Select filter button - end -->	
 	
 	<br>
 	
+	<!-- <form id="uploadDatasetform" action="phpfunctions/uploadDataset.php" method="POST" enctype="multipart/form-data">
+		<input type="file" name="fileToUpload" id="fileToUpload">
+		<input type="name" name="name1">
+		<input type="submit" value="Upload Image" name="submit">
+	</form> -->
+
 	<form id="uploadDatasetform" action="phpfunctions/uploadDataset.php" method="post" enctype="multipart/form-data">
 		<div class="container">
 			<div class="row justify-content-center p-1">
@@ -407,21 +412,21 @@
 					<div class="row">
 						<div class="col-12">
 							<label>Select image to upload:</label>
-							<input class="btn" type="file" name="fileToUpload" id="fileToUpload" accept=".csv,.txt">
+							<input type="file" name="fileToUpload" id="fileToUpload" >
 						</div>						
 					</div>
 				</div>
 				<div class="col-2 col-xs-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 p-1 border border-primary rounded">
-					<button class="btn btn-primary btn-block" type="submit" style="height:100%; width:100%" id="uploadButton" ><img src="./images/upload32White.png" width="32" height="32" alt=""></button>
+					<button class="btn btn-primary btn-block" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" ><img src="./images/upload32White.png" width="32" height="32" alt=""></button>
 				</div>
 			</div>
 		</div>
 	</form>		
 
-	<div id="error-dialog" title="Filter check"></div>
+	<!-- <div id="error-dialog" title="Filter check"></div>
 	<div id="result-dialog" title="Search results"></div>
 
-	<div id="apidiv" class="table-responsive"></div>
+	<div id="apidiv" class="table-responsive"></div> -->
 
 	<br>
 	<br>
