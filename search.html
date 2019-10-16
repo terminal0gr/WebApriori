@@ -3,14 +3,13 @@
 <head>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130197414-1"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130197414-1"></script>
 	<script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
-
 	gtag('config', 'UA-130197414-1');
-	</script> -->
+	</script>
 
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -49,6 +48,9 @@
 			}
 			M_F();
 			VT();
+
+			GetDatasetFilelist();
+
 			$('#SignOut').click(function() {
 				sessionStorage.clear();
 				window.location.href='index.html';
@@ -105,7 +107,51 @@
 				});
 			});
 
+			$('#hideUpload').click(function() {
+		 		$('#uploadDatasetform').hide( "slow" );
+			});
+
 		});
+
+		function GetDatasetFilelist() {
+
+			var formData = new FormData();
+			if (sessionStorage.getItem('token')) {
+					formData.set("token",sessionStorage.getItem('token'));
+			}
+			else {
+				MyModal("Error", "You are not signed in!!! Please sign in/up");
+				return;
+			};
+
+			$.ajax({
+				type: 'POST',
+				url: 'retrieveDatasetFilelist.php',
+				data: formData
+			})
+			.done(function(response) {
+				alert(response);
+				if (isJSON(response)) {
+					res=JSON.parse(response);
+				}
+				else {
+					MyModal("Error", response)
+				}
+
+			})
+			.fail(function( jqXHR, textStatus, thrownError ) {
+				if (jqXHR.responseText) {
+					if (isJSON(jqXHR.responseText)) {
+						res=JSON.parse(jqXHR.responseText);
+						MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+					}
+					else alert(jqXHR.responseText);
+
+				} else {
+					MyModal("association rules",'Unknown error occured!');
+				}
+			});
+		}
 
         // It handles the footer when the size of the window changes.
         function M_F() {
@@ -142,7 +188,7 @@
 		
 		function UploadDataset() {
 		 	$('#uploadDatasetform').show( "slow" );
-		}
+		};
 
 		//Load & delete filters ...start
 		// function SelectFilter() {
@@ -424,7 +470,7 @@
 	<br>
 
 	<form id="uploadDatasetform" action="phpfunctions/uploadDataset.php" method="post" enctype="multipart/form-data" style="display: none">
-		<div class="container">
+		<div class="form-group">
 			<div class="row justify-content-center p-1">
 				<div class="col-10 col-xs-10 col-sm-10 col-md-9 col-lg-8 col-xl-8 pb-2 border rounded p-2">
 					<div class="row">
@@ -432,11 +478,14 @@
 							<label class="float-right">Select dataset to upload:</label>
 						</div>
 						<div class="col-8">
-							<input type="file" name="fileToUpload" id="fileToUpload" >
+							<input type="file" class="form-control-file" name="fileToUpload" id="fileToUpload" >
 						</div>						
 					</div>
 					<div class="row">
-						<div class="col-4">
+						<div class="col-1">
+							<button type="button" class="btn" id="hideUpload" ><img src="./images/close24grey.png" width="16" height="16" alt="">	</button>
+						</div>
+						<div class="col-3">
 							<label class="float-right">Select dataset type:</label>
 						</div>
 						<div class="col-8">

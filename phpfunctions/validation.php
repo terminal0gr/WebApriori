@@ -2,7 +2,7 @@
 	include("config.php");
 	include("jwt_helper.php");
 	session_start(); 
-    
+
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		$con = new mysqli(HOST, USERNAME, PWD, DB);

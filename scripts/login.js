@@ -18,16 +18,19 @@ $(function() {
 			data: formData
 		})
 		.done(function(response) {
+			if (isJSON(response)) {
+				res=JSON.parse(response);
 
-			res=JSON.parse(response);
-
-			if (res.http_response_code==200) {
-				sessionStorage.setItem('token', res.token);
-				sessionStorage.setItem('apikey', res.apikey);
-				sessionStorage.setItem('username', res.name);
-				window.location.href='search.html';
+				if (res.http_response_code==200) {
+					sessionStorage.setItem('token', res.token);
+					sessionStorage.setItem('apikey', res.apikey);
+					sessionStorage.setItem('username', res.name);
+					window.location.href='search.html';
+				} else {
+					MyModal("An error occured",res.http_response_code + ' ' + res.message);
+				}
 			} else {
-				MyModal("An error occured",res.http_response_code + ' ' + res.message);
+				MyModal("Information", response)
 			}
 
 		})
