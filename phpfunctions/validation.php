@@ -6,11 +6,12 @@
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		$con = new mysqli(HOST, USERNAME, PWD, DB);
-		//$con = mysqli_connect("localhost", "webeng7", "webeng71819", "webeng7");
 	
 		/* check connection */
 		if (mysqli_connect_errno()) {
-			printf("<BR>Fatal Error: %s\n", mysqli_connect_error());
+			http_response_code(401);
+			$JsonReq = array('http_response_code' => 401, 'title' => 'Error', 'message' => 'Fatal Error: '.mysqli_connect_error());
+			print json_encode($JsonReq);
 			exit();
 		}
 
@@ -22,8 +23,9 @@
         
         if ( empty($email) OR empty($passwd) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Set a 400 (bad request) response code and exit.
-            http_response_code(400);
-            echo "There was a problem with your email and/or password. Please correct the form and try again.";
+            http_response_code(401);
+			$JsonReq = array('http_response_code' => 401, 'title' => 'Error', 'message' => 'There was a problem with your email and/or password. Please correct the form and try again.');
+			print json_encode($JsonReq);
             exit;
         }
     
@@ -48,14 +50,18 @@
 		} else {
 			//set a 403 (forbidden) response code.	
 			http_response_code(403);
-			echo "403 Username and/or Password incorrect.\nPlease try again.";
-
+			$JsonReq = array('http_response_code' => 403, 'title' => 'Error', 'message' => 'Username and/or Password incorrect.\nPlease try again.');
+			print json_encode($JsonReq);
+            exit;
 		}
 
 	} else {
 		// Not a POST request, set a 403 (forbidden) response code.
 		http_response_code(403);
-		echo "There was a problem with your submission, please try again.";
+		$JsonReq = array('http_response_code' => 403, 'title' => 'Error', 'message' => 'There was a problem with your submission, please try again.');
+		print json_encode($JsonReq);
+		exit;
+
 	}
 ?>
 

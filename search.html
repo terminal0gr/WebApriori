@@ -60,24 +60,48 @@
 			$(form).submit(function(e) {
 				// Stop the browser from submitting the form.
 				e.preventDefault();
-				alert("asdsaSDA")
+
+				//Prepare the data to send
+				var formData = new FormData();
+				var fileSelect = document.getElementById("fileToUpload");
+				if(fileSelect.files && fileSelect.files.length == 1){
+                    var file = fileSelect.files[0]
+                    formData.set("fileToUpload", file , file.name);
+				}
+				var datasetType = document.getElementById("datasetType");
+				formData.set("datasetType", datasetType.value);
+				if (sessionStorage.getItem('token')) {
+					formData.set("token",sessionStorage.getItem('token'));
+				}
+				else {
+					MyModal("Error", "You are not signed in!!! Please sign in/up");
+					return;
+				}
+
 				// Submit the form using AJAX.
 				$.ajax({
-					method: 'POST',
+					type: 'POST',
 					url: $(form).attr('action'),
-					data: $(form).serialize()
+					contentType: false,
+                    cache: false,
+                    processData:false,
+					data: formData //new FormData(this) //$(form).serialize()
 				}).done(function(response) {
-					alert(response);
-					res=JSON.parse(response);
-					if (res.http_response_code==200) {
-						MyModal(res.title,res.message);
-					} else {
-						MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+					if (isJSON(response)) {
+						res=JSON.parse(response);
+						if (res.http_response_code==200) {
+							MyModal(res.title,res.message);
+						} else {
+							MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+						}
 					}
+					else alert(response);
 				}).fail(function( jqXHR, textStatus, thrownError ) {
-					alert('error');
-					res=JSON.parse(jqXHR.responseText);
-					MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+					if (isJSON(jqXHR.responseText)) {
+						res=JSON.parse(jqXHR.responseText);
+						MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+					} 
+					else MyModal("Error", jqXHR.responseText);
 				});
 			});
 
@@ -116,9 +140,9 @@
             M_F();
         });		
 		
-		// function UploadDataset() {
-		// 	$('#uploadDatasetform').show( "slow" );
-		// }
+		function UploadDataset() {
+		 	$('#uploadDatasetform').show( "slow" );
+		}
 
 		//Load & delete filters ...start
 		// function SelectFilter() {
@@ -398,23 +422,33 @@
 	<!-- Select filter button - end -->	
 	
 	<br>
-	
-	<!-- <form id="uploadDatasetform" action="phpfunctions/uploadDataset.php" method="POST" enctype="multipart/form-data">
-		<input type="file" name="fileToUpload" id="fileToUpload">
-		<input type="name" name="name1">
-		<input type="submit" value="Upload Image" name="submit">
-	</form> -->
 
-	<form id="uploadDatasetform" action="phpfunctions/uploadDataset.php" method="post" enctype="multipart/form-data">
+	<form id="uploadDatasetform" action="phpfunctions/uploadDataset.php" method="post" enctype="multipart/form-data" style="display: none">
 		<div class="container">
 			<div class="row justify-content-center p-1">
 				<div class="col-10 col-xs-10 col-sm-10 col-md-9 col-lg-8 col-xl-8 pb-2 border rounded p-2">
 					<div class="row">
-						<div class="col-12">
-							<label>Select image to upload:</label>
+						<div class="col-4">
+							<label class="float-right">Select dataset to upload:</label>
+						</div>
+						<div class="col-8">
 							<input type="file" name="fileToUpload" id="fileToUpload" >
 						</div>						
 					</div>
+					<div class="row">
+						<div class="col-4">
+							<label class="float-right">Select dataset type:</label>
+						</div>
+						<div class="col-8">
+							<select id="datasetType" class="browser-default custom-select">
+								<option value="" disabled selected>Choose a dataset type</option>
+								<option value="1">Market basket list</option>
+								<option value="2">Order/Invoice detail</option>
+								<option value="3">Sparce item dataset</option>
+								<option value="4">Multiple nomimal values</option>
+							</select>
+						</div>
+					</div>		
 				</div>
 				<div class="col-2 col-xs-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 p-1 border border-primary rounded">
 					<button class="btn btn-primary btn-block" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" ><img src="./images/upload32White.png" width="32" height="32" alt=""></button>

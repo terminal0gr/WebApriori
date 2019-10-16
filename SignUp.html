@@ -78,8 +78,16 @@
 				});
  
 				request.fail(function( jqXHR, textStatus, thrownError ) {
-					res=JSON.parse(jqXHR.responseText);
-					MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+					if (jqXHR.responseText) {
+						if (isJSON(jqXHR.responseText)) {
+							res=JSON.parse(jqXHR.responseText);
+							MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+						}
+						else alert(jqXHR.responseText);
+
+					} else {
+						MyModal("association rules",'Unknown error occured!');
+					}
 				});
 
 			});

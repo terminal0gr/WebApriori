@@ -1,53 +1,103 @@
 <?php
+    include("config.php");
+    include("jwt_helper.php");
 
-if (isset($_FILES['fileToUpload'])) {
-    $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-    http_response_code(201);
-    print $target_file;
-    $JsonReq = array('http_response_code' => 201, 'title' => 'Information', 'message' => $_FILES["fileToUpload"]["name"]);
-    print json_encode($JsonReq);
-}
-exit();
+    session_start(); 
+    
+    $auth = false;
+	
+    if (!isset($_FILES['fileToUpload'])) {
+        http_response_code(400);
+        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'No file for upload detected!!!');
+        print json_encode($JsonReq);
+        exit();
+    }
 
-    session_start();
+    if (!isset($_POST['datasetType'])) {
+        http_response_code(400);
+        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Dataset type not provided!!!');
+        print json_encode($JsonReq);
+        exit();
+    }
 
-    $target_dir = "../Python/dataset/";
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    if (!isset($_POST['token'])) {
+        http_response_code(400);
+        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'You are not signed in!!! Please sign in/up');
+        print json_encode($JsonReq);
+        exit();
+    }
 
-    http_response_code(201);
-    $JsonReq = array('http_response_code' => 201, 'title' => 'Information', 'message' => isset($_POST['submit']));
-    print json_encode($JsonReq);
-    exit();
+    try {
+        // Get email
+        $key=SERVERKEY.date("m.d.y");
+        $email = JWT::decode($_POST['token'], $key);
+        $auth = true;
+    }
+    catch (Exception $e) {  //hide $key on error
+        http_response_code(400);
+        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Authentication error!!!');
+        print json_encode($JsonReq);
+        exit();
+    }			
+        
+    if (!$auth) {
+        http_response_code(400);
+        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Authentication error!!!');
+        print json_encode($JsonReq);
+        exit();
+    }
 
-    if(isset($_POST["submitDF"])) {
-        echo "b";
-        if ( isset($_FILES["fileToUpload"])) {
-            //if there was an error uploading the file
-            if ($_FILES["fileToUpload"]["error"] > 0) {
-                echo "Return Code: " . $_FILES["fileToUpload"]["error"] . "<br />";
-            }
-            else {
-                //Print file details
-                echo "Upload: " . $_FILES["fileToUpload"]["name"] . "<br />";
-                echo "Type: " . $_FILES["fileToUpload"]["type"] . "<br />";
-                echo "Size: " . ($_FILES["fileToUpload"]["size"] / 1024) . " Kb<br />";
-                echo "Temp file: " . $_FILES["fileToUpload"]["tmp_name"] . "<br />";
+    $identity=md5($email);
 
-                //if file already exists
-                if (file_exists($target_dir . $_FILES["fileToUpload"]["name"])) {
-                    echo $_FILES["fileToUpload"]["name"] . " already exists. ";
-                }
-                else {
-                    //Store file in directory "upload" with the name of "uploaded_file.txt"
-                    $storagename = "uploaded_file.txt";
-                    move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
-                    echo "Stored in: " . $target_file . "<br />";
-                }
-            }
-        } 
-        else {
-            echo "No file selected <br />";
+  	//Connect to mysql
+    $con1 = new mysqli(HOST, USERNAME, PWD, DB);
+	if ($con1->connect_error) {
+        http_response_code(400);
+        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => "Connection Error" . $con1->connect_error);
+        print json_encode($JsonReq);
+        exit();
+	}
+
+    if ($_FILES["fileToUpload"]["error"] > 0) {
+        http_response_code(400);
+        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Return Code: ' . $_FILES["fileToUpload"]["error"]);
+        print json_encode($JsonReq);
+        exit();
+    }
+
+    $target_dir = "../Python/datasets/".$identity."/".$_POST['datasetType']."/";
+
+    if (!is_dir($target_dir)) {
+        if (!mkdir($target_dir, 0777, true)) {
+            http_response_code(400);
+            $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Failed to store file!');
+            print json_encode($JsonReq);
+            exit();
         }
     }
+
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    //if file already exists
+    if (file_exists($target_file)) {
+        http_response_code(201);
+        $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => $_FILES["fileToUpload"]["name"] . " already exists. ");
+        print json_encode($JsonReq);
+        exit();
+    }
+    else { //Store file 
+        try {
+            move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
+
+            http_response_code(200);
+            $JsonReq = array('http_response_code' => 200, 'title' => 'Information', 'message' => 'File stored successfully.');
+            print json_encode($JsonReq);
+            exit();
+        } catch (Exception $e) {
+            http_response_code(400);
+            $JsonReq = array('http_response_code' => 400, 'title' => 'Exception', 'message' =>'Caught exception: ',  $e->getMessage(), "\n");
+            print json_encode($JsonReq);
+            exit();
+        }
+    }
+    
 ?>

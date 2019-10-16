@@ -93,7 +93,6 @@
 				<p>and it would be valid for 5 minutes.</p>"; 
 			$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\nlocalhost/phpfunctions/confirmation.php?passkey=$confirm_code\r\nand it would be valid for 5 minutes.";
 			if(!$mail->send()) {
-                echo "Mailer Error: " . $mail->ErrorInfo;
 				http_response_code(401);
 				$JsonReq = array('http_response_code' => 401, 'title' => 'Error', 'message' => 'Email has not been sent. '.$mail->ErrorInfo);
 				print json_encode($JsonReq);

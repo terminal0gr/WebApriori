@@ -31,10 +31,14 @@ $(function() {
 			}
 
 		})
-		.fail(function(data) {
+		.fail(function( jqXHR, textStatus, thrownError ) {
+			if (jqXHR.responseText) {
+				if (isJSON(jqXHR.responseText)) {
+					res=JSON.parse(jqXHR.responseText);
+					MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+				}
+				else alert(jqXHR.responseText);
 
-			if (data.responseText) {
-				MyModal("association rules",data.responseText);
 			} else {
 				MyModal("association rules",'Unknown error occured!');
 			}
