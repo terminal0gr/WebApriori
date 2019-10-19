@@ -3,13 +3,13 @@
 <head>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130197414-1"></script>
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130197414-1"></script>
 	<script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
 	gtag('config', 'UA-130197414-1');
-	</script>
+	</script> -->
 
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -70,7 +70,15 @@
                     var file = fileSelect.files[0]
                     formData.set("fileToUpload", file , file.name);
 				}
+				else {
+					MyModal("Information", "You have not chosen a file for upload.<br>Please choose one.");
+					return;
+				}
 				var datasetType = document.getElementById("datasetType");
+				if(!datasetType.value){
+					MyModal("Information", "You have not chosen datasetType!!!");
+					return;
+				}
 				formData.set("datasetType", datasetType.value);
 				if (sessionStorage.getItem('token')) {
 					formData.set("token",sessionStorage.getItem('token'));
@@ -87,7 +95,7 @@
 					contentType: false,
                     cache: false,
                     processData:false,
-					data: formData //new FormData(this) //$(form).serialize()
+					data: formData
 				}).done(function(response) {
 					if (isJSON(response)) {
 						res=JSON.parse(response);
@@ -97,7 +105,7 @@
 							MyModal(res.title + '(' + res.http_response_code + ')', res.message);
 						}
 					}
-					else alert(response);
+					else alert("123" + response);
 				}).fail(function( jqXHR, textStatus, thrownError ) {
 					if (isJSON(jqXHR.responseText)) {
 						res=JSON.parse(jqXHR.responseText);
@@ -114,44 +122,43 @@
 		});
 
 		function GetDatasetFilelist() {
-
 			var formData = new FormData();
 			if (sessionStorage.getItem('token')) {
-					formData.set("token",sessionStorage.getItem('token'));
+				formData.set("token",sessionStorage.getItem('token'));
 			}
 			else {
 				MyModal("Error", "You are not signed in!!! Please sign in/up");
 				return;
-			};
+			}
 
 			$.ajax({
-				type: 'POST',
-				url: 'retrieveDatasetFilelist.php',
-				data: formData
-			})
+				type: 'POST' ,
+				url: 'phpfunctions/retrieveDatasetFilelist.php',
+				contentType: false,
+                cache: false,
+                processData:false ,
+			    data: formData
+			}) 	
 			.done(function(response) {
 				alert(response);
 				if (isJSON(response)) {
 					res=JSON.parse(response);
 				}
 				else {
-					MyModal("Error", response)
+					MyModal("Error", response);
 				}
-
-			})
-			.fail(function( jqXHR, textStatus, thrownError ) {
+			}).fail(function( jqXHR, textStatus, thrownError ) {
 				if (jqXHR.responseText) {
 					if (isJSON(jqXHR.responseText)) {
 						res=JSON.parse(jqXHR.responseText);
 						MyModal(res.title + '(' + res.http_response_code + ')', res.message);
 					}
 					else alert(jqXHR.responseText);
-
 				} else {
 					MyModal("association rules",'Unknown error occured!');
 				}
 			});
-		}
+		};
 
         // It handles the footer when the size of the window changes.
         function M_F() {
@@ -161,7 +168,7 @@
             else {
                 $('#c-footer').addClass('fixed-bottom')
             }
-        }
+        };
 
         // handle the interface when guest or logged in
         function VT() {
@@ -180,7 +187,7 @@
                 $('#SignIn').show();
                 $('#sdropdown').hide();
             }
-        }
+        };
 
         $( window ).resize(function() {
             M_F();
@@ -478,7 +485,7 @@
 							<label class="float-right">Select dataset to upload:</label>
 						</div>
 						<div class="col-8">
-							<input type="file" class="form-control-file" name="fileToUpload" id="fileToUpload" >
+							<input type="file" class="form-control-file" name="fileToUpload" id="fileToUpload" accept=".csv, .txt" >
 						</div>						
 					</div>
 					<div class="row">
@@ -486,7 +493,7 @@
 							<button type="button" class="btn" id="hideUpload" ><img src="./images/close24grey.png" width="16" height="16" alt="">	</button>
 						</div>
 						<div class="col-3">
-							<label class="float-right">Select dataset type:</label>
+							<label class="col-form-label float-right">Select dataset type:</label>
 						</div>
 						<div class="col-8">
 							<select id="datasetType" class="browser-default custom-select">
@@ -505,6 +512,25 @@
 			</div>
 		</div>
 	</form>		
+
+	<form id="retrieveRules" action="phpfunctions/retrieveRules.php" method="post" >
+		<div class="form-group">
+			<div class="row justify-content-center p-1">
+				<div class="col-10 col-xs-10 col-sm-10 col-md-9 col-lg-8 col-xl-8 pb-2 border rounded p-2">
+					<div class="row">
+						<div class="col-4">
+							<label class="col-form-label float-right" for="dataset">Select dataset:</label>
+						</div>
+						<div class="col-8">	
+							<select id="dataset" class="form-control browser-default custom-select">
+								<option value="" disabled selected>Choose a dataset from the list</option>
+							</select>
+						</div>					
+					</div>
+				</div>
+		    </div>
+		</div>
+	</form>
 
 	<!-- <div id="error-dialog" title="Filter check"></div>
 	<div id="result-dialog" title="Search results"></div>

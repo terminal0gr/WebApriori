@@ -1,4 +1,5 @@
 <?php
+    include("config.php");
 	include("jwt_helper.php");
     session_start(); 
     
@@ -23,7 +24,7 @@
         print json_encode($JsonReq);
         exit();
     }			
-        
+
     if (!$auth) {
         http_response_code(400);
         $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Authentication error!!!');
@@ -42,14 +43,16 @@
         exit();
     }
 
+    $type='1';
+    $log_directory="../Python/datasets/".$identity."/".$type."/";
+    $filelist=array();
     foreach(glob($log_directory.'/*.*') as $file) {
-        $row = array();
-        $row['datasetType'] = '1';
-        $row['filename'] = $file;
-        $filelist[] = $row;
+        $filelist[] = array('datasetType' => $type, 'filename' => $file);
     }
-    http_response_code(200);
-    print json_encode($filelist);
-    exit();
+    if($filelist) {
+        http_response_code(200);
+        print json_encode($filelist);
+        exit();
+    }
 
 ?>
