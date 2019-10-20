@@ -46,8 +46,8 @@
     $type='1';
     $log_directory="../Python/datasets/".$identity."/".$type."/";
     $filelist=array();
-    foreach(glob($log_directory.'/*.*') as $file) {
-        $filelist[] = array('datasetType' => $type, 'filename' => $file);
+    foreach(glob($log_directory.'*.*') as $file) {
+        $filelist[] = array('datasetType' => $type, 'filepath' => $file, 'filename' => basename($file));
     }
     if($filelist) {
         http_response_code(200);

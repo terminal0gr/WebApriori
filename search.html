@@ -140,9 +140,18 @@
 			    data: formData
 			}) 	
 			.done(function(response) {
-				alert(response);
 				if (isJSON(response)) {
 					res=JSON.parse(response);
+					try {
+						str='<option value="" disabled selected >Choose a dataset or dblclick to upload a new</option>';
+						res.forEach(function(data, index){
+							str += '<option value="' + data.filepath + '">(' + data.datasetType + ') ' + data.filename + '</option>'   
+						});
+						$("#dataset").html(str);
+					}
+					catch(err) {
+						MyModal("Error", err.message);
+					}
 				}
 				else {
 					MyModal("Error", response);
@@ -195,6 +204,11 @@
 		
 		function UploadDataset() {
 		 	$('#uploadDatasetform').show( "slow" );
+		};
+
+		function deletecurrentDataset() {
+			var x = document.getElementById("dataset");
+			alert(x.value);
 		};
 
 		//Load & delete filters ...start
@@ -514,19 +528,22 @@
 	</form>		
 
 	<form id="retrieveRules" action="phpfunctions/retrieveRules.php" method="post" >
-		<div class="form-group">
+		<div class="form-group container">
 			<div class="row justify-content-center p-1">
-				<div class="col-10 col-xs-10 col-sm-10 col-md-9 col-lg-8 col-xl-8 pb-2 border rounded p-2">
-					<div class="row">
-						<div class="col-4">
-							<label class="col-form-label float-right" for="dataset">Select dataset:</label>
-						</div>
-						<div class="col-8">	
-							<select id="dataset" class="form-control browser-default custom-select">
-								<option value="" disabled selected>Choose a dataset from the list</option>
-							</select>
-						</div>					
+				<div class="row">
+					<div class="col-4">
+						<label class="col-form-label float-right" for="dataset" ondblclick="UploadDataset()">Select dataset or <a href="#" onclick="UploadDataset();return false;">upload</a> one:</label>
 					</div>
+					<div class="col-6">	
+						<select id="dataset" class="form-control browser-default custom-select" >
+							<option value="" disabled selected>Choose a dataset from the list</option>
+						</select>
+					</div>		
+					<div class="col-1">		
+						<button type="button" id="deleteDataset" class="btn" onclick="deletecurrentDataset()">
+							<img src="images/delete32grey.png" width="24" height="24" alt="">
+						</button>
+					</div>	
 				</div>
 		    </div>
 		</div>
