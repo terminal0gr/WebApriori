@@ -34,9 +34,11 @@
 		$(function() {
 
 			if (!sessionStorage.getItem('token') || sessionStorage.getItem('token')==0) {
-				MyModal("Association rules",'Please Sign in, or Sign up if you are a new user, in order to save/load your searches while using our new association rules mining engine!');
-				// sessionStorage.clear();
-				// window.location.href='index.html';
+				MyModal("Association rules",'Please Sign in, or Sign up if you are a new user, in order to use our new association rules mining engine!');
+				setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 4000);	
 			}
 
 			if (sessionStorage.getItem('version')) {
@@ -105,11 +107,17 @@
 							MyModal(res.title + '(' + res.http_response_code + ')', res.message);
 						}
 					}
-					else alert("123" + response);
+					else alert(response);
 				}).fail(function( jqXHR, textStatus, thrownError ) {
 					if (isJSON(jqXHR.responseText)) {
 						res=JSON.parse(jqXHR.responseText);
 						MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+						if (res.http_response_code>=400 && sessionStorage.getItem('token')) {
+							setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
+						}
 					} 
 					else MyModal("Error", jqXHR.responseText);
 				});
@@ -161,6 +169,12 @@
 					if (isJSON(jqXHR.responseText)) {
 						res=JSON.parse(jqXHR.responseText);
 						MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+						if (res.http_response_code>=400 && sessionStorage.getItem('token')) {
+							setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
+						}
 					}
 					else alert(jqXHR.responseText);
 				} else {
@@ -171,6 +185,17 @@
 
         // It handles the footer when the size of the window changes.
         function M_F() {
+			if ($(window).width() <= 600) {
+				$('#udfwidth').css("width", "100%");
+			}
+			else if ($(window).width() > 600 && $(window).width() <= 1200) {
+				var pos1=abs($(window).width()-1200)*0.833+50
+				$('#udfwidth').css("width", Math.round(pos1) + "%");
+			}
+			else {	
+				$('#udfwidth').css("width", "50%");
+			}
+			style="width: 329px;"
             if ($(window).width() <= 800 || $(window).height() <= 600) {
                 $('#c-footer').removeClass('fixed-bottom');
             }
@@ -490,6 +515,7 @@
 	
 	<br>
 
+	<div id="udfwidth" class="mx-auto border rounded mb-3 p-2">
 	<form id="uploadDatasetform" action="phpfunctions/uploadDataset.php" method="post" enctype="multipart/form-data" style="display: none">
 		<div class="form-group">
 			<div class="row justify-content-center p-1">
@@ -526,26 +552,41 @@
 			</div>
 		</div>
 	</form>		
+	</div>
 
 	<form id="retrieveRules" action="phpfunctions/retrieveRules.php" method="post" >
-		<div class="form-group container">
-			<div class="row justify-content-center p-1">
-				<div class="row">
-					<div class="col-4">
+		<div class="form-row align-items-center">
+			<!-- <div class="row justify-content-center p-1"> -->
+					<div class="col-sm-4">
 						<label class="col-form-label float-right" for="dataset" ondblclick="UploadDataset()">Select dataset or <a href="#" onclick="UploadDataset();return false;">upload</a> one:</label>
 					</div>
-					<div class="col-6">	
+					<div class="col-sm-7">	
 						<select id="dataset" class="form-control browser-default custom-select" >
 							<option value="" disabled selected>Choose a dataset from the list</option>
 						</select>
 					</div>		
-					<div class="col-1">		
+					<div class="col-sm-1">		
 						<button type="button" id="deleteDataset" class="btn" onclick="deletecurrentDataset()">
 							<img src="images/delete32grey.png" width="24" height="24" alt="">
 						</button>
 					</div>	
+				<!-- </div> -->
+			<div class="row justify-content-center p-1">
+				<div class="col-4">
+					<label class="col-form-label float-right" for="min_support">Minimum support</label>
 				</div>
-		    </div>
+				<div class="col-2">	
+					<input type="text" id="min_support" class="form-control" placeholder="0.01">
+				</div>		
+				<div class="col-3">
+						<label class="col-form-label float-right" for="min_support">Minimum confidence</label>
+				</div>
+				<div class="col-2">	
+						<input type="text" id="min_confidence" class="form-control" placeholder="0.2">
+				</div>
+				<div class="col-1">
+				</div>	
+			</div>
 		</div>
 	</form>
 
