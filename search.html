@@ -33,6 +33,9 @@
 
 		$(function() {
 
+			// initialization of tooltips in page
+			$('[data-toggle="tooltip"]').tooltip()
+
 			if (!sessionStorage.getItem('token') || sessionStorage.getItem('token')==0) {
 				MyModal("Association rules",'Please Sign in, or Sign up if you are a new user, in order to use our new association rules mining engine!');
 				setTimeout(function() {
@@ -186,15 +189,14 @@
         // It handles the footer when the size of the window changes.
         function M_F() {
 			if ($(window).width() <= 600) {
-				$('#udfwidth').css("width", "98%");
+				$('.udfwidth').css("width", "98%");
 			}
 			else if ($(window).width() > 600 && $(window).width() <= 1500) {
 				var pos1=Math.round(Math.abs($(window).width()-1500)*0.055+50);
-				$('#min_support').val(pos1);
-				$('#udfwidth').css("width", pos1 + "%");
+				$('.udfwidth').css("width", pos1 + "%");
 			}
 			else {	
-				$('#udfwidth').css("width", "50%");
+				$('.udfwidth').css("width", "50%");
 			}
 			style="width: 329px;"
             if ($(window).width() <= 800 || $(window).height() <= 600) {
@@ -234,7 +236,9 @@
 
 		function deletecurrentDataset() {
 			var x = document.getElementById("dataset");
-			alert(x.value);
+			if (!x.value) {
+				MyModal("Information","No dataset to delete.");
+			}
 		};
 
 		//Load & delete filters ...start
@@ -516,8 +520,6 @@
 	
 	<br>
 
-	<div id="udfwidth" class="mx-auto border rounded mb-3 p-2">
-
 	<form id="uploadDatasetform" action="phpfunctions/uploadDataset.php" method="post" enctype="multipart/form-data" style="display: none">
 		<div class="form-group">
 			<div class="row justify-content-center p-1">
@@ -555,38 +557,66 @@
 		</div>
 	</form>		
 
-		<form id="retrieveRules" action="phpfunctions/retrieveRules.php" method="post" >
-			<div class="form-form-group">
-				<label for="dataset" ondblclick="UploadDataset()">Select dataset or <a href="#" onclick="UploadDataset();return false;">upload</a> one:</label>
-				<select id="dataset" class="form-control browser-default custom-select" >
-					<option value="" disabled selected>Choose a dataset from the list</option>
-				</select>
-				<button type="button" id="deleteDataset" class="btn" onclick="deletecurrentDataset()">
-					<img src="images/delete32grey.png" width="24" height="24" alt="">
-				</button>
-			</div>		
-
-			<!-- <div class="col-sm-1">		
-						</div>	
-				<div class="row justify-content-center p-1">
-					<div class="col-4">
-						<label class="col-form-label float-right" for="min_support">Minimum support</label>
-					</div>
-					<div class="col-2">	
-						<input type="text" id="min_support" class="form-control" placeholder="0.01">
-					</div>		
-					<div class="col-3">
-							<label class="col-form-label float-right" for="min_support">Minimum confidence</label>
-					</div>
-					<div class="col-2">	
-							<input type="text" id="min_confidence" class="form-control" placeholder="0.2">
-					</div>
-					<div class="col-1">
-					</div>	
+	<form id="retrieveRules" action="phpfunctions/retrieveRules.php" method="post" >
+		<div class="udfwidth mx-auto border rounded p-2">
+			<div class="form-row">
+				<div class="col-9">	
+					<label for="dataset">Select dataset or <a href="#" onclick="UploadDataset();return false;" data-toggle="tooltip" title="Upload a new dataset on our server. Uploaded dataset limit is 10">upload</a> one:</label>			
 				</div>
-			</div> -->
-		</form>
-	</div>	
+				<div class="col-2">	
+					<label for="separator">Separator</label>			
+				</div>
+				<div class="col-1">	
+					<button type="button" id="deleteDataset" class="btn mt-n2 float-right" data-trigger="hover" data-toggle="tooltip" title="Delete the current dataset"  onclick="deletecurrentDataset()">
+						<img src="images/delete32grey.png" width="24" height="24" alt="">
+					</button>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-9">	
+					<select id="dataset" class="form-control browser-default custom-select" data-trigger="hover" data-toggle="tooltip" title="Pick the dataset for which association rules would be generated">
+						<option value="" disabled selected>Choose a dataset from the list</option>
+					</select>
+				</div>	
+			</div>	
+		</div>
+		<div class="udfwidth mx-auto border rounded p-2">
+			<div class="form-row">
+				<div class="col-6">		
+					<label for="min_support">Minimum support</label>
+				</div>
+				<div class="col-6">
+					<label for="min_confidence">Minimum confidence</label>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-6">		
+					<input type="text" id="min_support" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The minimum support that each association rule should have" placeholder="0.01">
+				</div>
+				<div class="col-6">	
+					<input type="text" id="min_confidence" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The minimum confidence that each association rule should have" placeholder="0.2">
+				</div>
+			</div>
+			<div class="form-row">
+					<div class="col-6">		
+						<label for="min_lift">Minimum lift</label>
+					</div>
+					<div class="col-6">
+						<label for="max_length">Maximum rules items</label>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col-6">		
+						<input type="text" id="min_lift" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The minimum lift that each association rule should have" placeholder="1.5">
+					</div>
+					<div class="col-6">	
+						<input type="text" id="max_length" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The maximum items each association rule consist of" placeholder="2">
+					</div>
+				</div>
+			</div>	
+		</div>	
+	</form>
+
 
 	<!-- <div id="error-dialog" title="Filter check"></div>
 	<div id="result-dialog" title="Search results"></div>

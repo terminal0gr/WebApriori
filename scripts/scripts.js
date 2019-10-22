@@ -52,6 +52,8 @@ function MyModal(title="association rules mining",maincontext="") {
     $( "#MyModal").modal('show')    
 }
 
+
+
 function credits() {
     if ($("#Credits")) {
         str     = '<div class="modal fade" id="Credits" tabindex="-1" role="dialog">';
