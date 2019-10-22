@@ -186,11 +186,12 @@
         // It handles the footer when the size of the window changes.
         function M_F() {
 			if ($(window).width() <= 600) {
-				$('#udfwidth').css("width", "100%");
+				$('#udfwidth').css("width", "98%");
 			}
-			else if ($(window).width() > 600 && $(window).width() <= 1200) {
-				var pos1=abs($(window).width()-1200)*0.833+50
-				$('#udfwidth').css("width", Math.round(pos1) + "%");
+			else if ($(window).width() > 600 && $(window).width() <= 1500) {
+				var pos1=Math.round(Math.abs($(window).width()-1500)*0.055+50);
+				$('#min_support').val(pos1);
+				$('#udfwidth').css("width", pos1 + "%");
 			}
 			else {	
 				$('#udfwidth').css("width", "50%");
@@ -516,6 +517,7 @@
 	<br>
 
 	<div id="udfwidth" class="mx-auto border rounded mb-3 p-2">
+
 	<form id="uploadDatasetform" action="phpfunctions/uploadDataset.php" method="post" enctype="multipart/form-data" style="display: none">
 		<div class="form-group">
 			<div class="row justify-content-center p-1">
@@ -552,43 +554,39 @@
 			</div>
 		</div>
 	</form>		
-	</div>
 
-	<form id="retrieveRules" action="phpfunctions/retrieveRules.php" method="post" >
-		<div class="form-row align-items-center">
-			<!-- <div class="row justify-content-center p-1"> -->
-					<div class="col-sm-4">
-						<label class="col-form-label float-right" for="dataset" ondblclick="UploadDataset()">Select dataset or <a href="#" onclick="UploadDataset();return false;">upload</a> one:</label>
+		<form id="retrieveRules" action="phpfunctions/retrieveRules.php" method="post" >
+			<div class="form-form-group">
+				<label for="dataset" ondblclick="UploadDataset()">Select dataset or <a href="#" onclick="UploadDataset();return false;">upload</a> one:</label>
+				<select id="dataset" class="form-control browser-default custom-select" >
+					<option value="" disabled selected>Choose a dataset from the list</option>
+				</select>
+				<button type="button" id="deleteDataset" class="btn" onclick="deletecurrentDataset()">
+					<img src="images/delete32grey.png" width="24" height="24" alt="">
+				</button>
+			</div>		
+
+			<!-- <div class="col-sm-1">		
+						</div>	
+				<div class="row justify-content-center p-1">
+					<div class="col-4">
+						<label class="col-form-label float-right" for="min_support">Minimum support</label>
 					</div>
-					<div class="col-sm-7">	
-						<select id="dataset" class="form-control browser-default custom-select" >
-							<option value="" disabled selected>Choose a dataset from the list</option>
-						</select>
+					<div class="col-2">	
+						<input type="text" id="min_support" class="form-control" placeholder="0.01">
 					</div>		
-					<div class="col-sm-1">		
-						<button type="button" id="deleteDataset" class="btn" onclick="deletecurrentDataset()">
-							<img src="images/delete32grey.png" width="24" height="24" alt="">
-						</button>
+					<div class="col-3">
+							<label class="col-form-label float-right" for="min_support">Minimum confidence</label>
+					</div>
+					<div class="col-2">	
+							<input type="text" id="min_confidence" class="form-control" placeholder="0.2">
+					</div>
+					<div class="col-1">
 					</div>	
-				<!-- </div> -->
-			<div class="row justify-content-center p-1">
-				<div class="col-4">
-					<label class="col-form-label float-right" for="min_support">Minimum support</label>
 				</div>
-				<div class="col-2">	
-					<input type="text" id="min_support" class="form-control" placeholder="0.01">
-				</div>		
-				<div class="col-3">
-						<label class="col-form-label float-right" for="min_support">Minimum confidence</label>
-				</div>
-				<div class="col-2">	
-						<input type="text" id="min_confidence" class="form-control" placeholder="0.2">
-				</div>
-				<div class="col-1">
-				</div>	
-			</div>
-		</div>
-	</form>
+			</div> -->
+		</form>
+	</div>	
 
 	<!-- <div id="error-dialog" title="Filter check"></div>
 	<div id="result-dialog" title="Search results"></div>
