@@ -119,3 +119,14 @@ function isJSON(str) {
     }
     return true;
 }
+
+function toggleDisplay(element="") {
+    if (element) {
+        if ($(element).is(":visible")) {
+            $(element).hide( "slow" );
+        }
+        else {
+            $(element).show( "slow" );
+        }
+    }
+};

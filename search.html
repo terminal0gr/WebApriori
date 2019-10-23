@@ -231,7 +231,12 @@
         });		
 		
 		function UploadDataset() {
-		 	$('#uploadDatasetform').show( "slow" );
+			if ($('#uploadDatasetform').is(":visible")) {
+				$('#uploadDatasetform').hide( "slow" );
+			}
+			else {
+				$('#uploadDatasetform').show( "slow" );
+			}
 		};
 
 		function deletecurrentDataset() {
@@ -521,26 +526,32 @@
 	<br>
 
 	<form id="uploadDatasetform" action="phpfunctions/uploadDataset.php" method="post" enctype="multipart/form-data" style="display: none">
-		<div class="form-group">
-			<div class="row justify-content-center p-1">
-				<div class="col-10 col-xs-10 col-sm-10 col-md-9 col-lg-8 col-xl-8 pb-2 border rounded p-2">
-					<div class="row">
-						<div class="col-4">
+		<div class="udfwidth mx-auto border rounded p-2">
+			<div class="form-row">
+				<div class="col-11">
+					<div class="form-row">
+						<div class="col-5">
 							<label class="float-right">Select dataset to upload:</label>
 						</div>
-						<div class="col-8">
+						<div class="col-7">
 							<input type="file" class="form-control-file" name="fileToUpload" id="fileToUpload" accept=".csv, .txt" >
 						</div>						
 					</div>
-					<div class="row">
+					<div class="form-row">
 						<div class="col-1">
-							<button type="button" class="btn" id="hideUpload" ><img src="./images/close24grey.png" width="16" height="16" alt="">	</button>
+							<button type="button" class="btn btn-sm" id="hideUpload" data-trigger="hover" data-toggle="tooltip" title="Hides upload new dataset section"><img src="./images/close24grey.png" width="24" height="24" alt="">	</button>
+						</div>
+						<div class="col-1">
+							<!-- <button type="button" class="btn btn-sm" data-toggle="collapse" data-target="#collapseInfo" aria-expanded="false" aria-controls="collapseInfo" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button> -->
+							<button type="button" class="btn btn-sm" onclick="toggleDisplay('#infoForDS')" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button>
 						</div>
 						<div class="col-3">
-							<label class="col-form-label float-right">Select dataset type:</label>
+							<label class="col-form-label float-right">dataset type:</label>
 						</div>
-						<div class="col-8">
-							<select id="datasetType" class="browser-default custom-select">
+						<div class="col-7">
+							<select id="datasetType" class="browser-default custom-select" data-html="true" data-trigger="hover" data-toggle="tooltip" 
+							    title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparce item Dataset<br>4) Columns with multiple nomimal values</p>"
+						    >
 								<option value="" disabled selected>Choose a dataset type</option>
 								<option value="1">Market basket list</option>
 								<option value="2">Order/Invoice detail</option>
@@ -550,18 +561,36 @@
 						</div>
 					</div>		
 				</div>
-				<div class="col-2 col-xs-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 p-1 border border-primary rounded">
-					<button class="btn btn-primary btn-block" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" ><img src="./images/upload32White.png" width="32" height="32" alt=""></button>
+				<div class="col-1 border border-primary rounded p-1	">
+					<button class="btn btn-primary btn-inline" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" data-trigger="hover" data-toggle="tooltip" title="Upload the Dataset!"><img src="./images/upload32White.png" width="32" height="32" alt=""></button>
 				</div>
 			</div>
 		</div>
 	</form>		
 
+	<!-- <div class="collapse" id="collapseInfo"> -->
+		<div id="infoForDS" class="udfwidth mx-auto border rounded p-2" style="display:none">
+				<p><b>1) Market Basket list.</b> No header is expected, The number of columns is undefined (Default). 
+				If header, then participant columns must be declared in args starting from arg[1:], 
+				In arg[0] the absent of item string must be declared. If absent item is nothing then assign '' or 'nan'
+				</br> 
+				<b>2) Order/Invoice detail.</b> Header line is mandatory. Number of columns is fixed, 
+				arg[0] primary key column and arg[1] items column are required in *args
+				</br> 
+				<b>3) Sparce item Dataset.</b> Header line is mandatory. Number of columns is fixed. 
+				Items columns are mandatory to be declared in args[1:].
+				In arg[0] the absent of item string must be declared!!! If absent item is nothing then assign '' or 'nan' 
+			    </br>
+			    <b>4) Columns with multiple nomimal values.</b> Header line is optional. 
+				Number of columns is fixed, optional items columns are expected in case header line exists.
+		</div>
+	<!-- </div> -->
+
 	<form id="retrieveRules" action="phpfunctions/retrieveRules.php" method="post" >
 		<div class="udfwidth mx-auto border rounded p-2">
 			<div class="form-row">
 				<div class="col-9">	
-					<label for="dataset">Select dataset or <a href="#" onclick="UploadDataset();return false;" data-toggle="tooltip" title="Upload a new dataset on our server. Uploaded dataset limit is 10">upload</a> one:</label>			
+					<label for="dataset">Select dataset or <a href="#" onclick="toggleDisplay('#uploadDatasetform');return false;" data-toggle="tooltip" title="Upload a new dataset on our server. Uploaded dataset limit is 10">upload</a> one:</label>			
 				</div>
 				<div class="col-2">	
 					<label for="separator">Separator</label>			
@@ -578,6 +607,9 @@
 						<option value="" disabled selected>Choose a dataset from the list</option>
 					</select>
 				</div>	
+				<div class="col-2">	
+					<input type="text" id="separator" class="form-control" data-trigger="hover" data-toggle="tooltip" title="the separator of the items in the CSV file. The most common characters are (,) and (;)" placeholder=",">		
+				</div>
 			</div>	
 		</div>
 		<div class="udfwidth mx-auto border rounded p-2">
@@ -598,22 +630,27 @@
 				</div>
 			</div>
 			<div class="form-row">
-					<div class="col-6">		
-						<label for="min_lift">Minimum lift</label>
-					</div>
-					<div class="col-6">
-						<label for="max_length">Maximum rules items</label>
-					</div>
+				<div class="col-6">		
+					<label for="min_lift">Minimum lift</label>
 				</div>
-				<div class="form-row">
-					<div class="col-6">		
-						<input type="text" id="min_lift" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The minimum lift that each association rule should have" placeholder="1.5">
-					</div>
-					<div class="col-6">	
-						<input type="text" id="max_length" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The maximum items each association rule consist of" placeholder="2">
-					</div>
+				<div class="col-6">
+					<label for="max_length">Maximum rules items</label>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-6">		
+					<input type="text" id="min_lift" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The minimum lift that each association rule should have" placeholder="1.5">
+				</div>
+				<div class="col-6">	
+					<input type="text" id="max_length" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The maximum items each association rule consist of" placeholder="2">
 				</div>
 			</div>	
+			<div class="form-col">	
+				<label for="extra parameters">Extra parameters / item names</label>
+			</div>
+			<div class="form-col">	
+				<input type="text" id="extra_parameters" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The maximum items each association rule consist of">
+			</div>
 		</div>	
 	</form>
 
