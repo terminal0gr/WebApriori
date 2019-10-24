@@ -65,6 +65,21 @@
         exit();
     }
 
+    $filelist=array();
+    $Vi=0;
+    for ($i = 1; $i < 5; $i++) {
+        $log_directory="../Python/datasets/".$identity."/".$i."/";
+        foreach(glob($log_directory.'*.*') as $file) {
+            $Vi++;
+        };
+    }
+    if ($Vi>10) {
+        http_response_code(201);
+        $JsonReq = array('http_response_code' => 201, 'title' => 'exclamation', 'message' => 'Sorry, no more than 10 datasets are permitted per account!!!');
+        print json_encode($JsonReq);
+        exit();
+    }
+
     $target_dir = "../Python/datasets/".$identity."/".$_POST['datasetType']."/";
 
     if (!is_dir($target_dir)) {

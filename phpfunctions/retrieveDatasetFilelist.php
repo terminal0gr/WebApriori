@@ -43,11 +43,15 @@
         exit();
     }
 
-    $type='1';
-    $log_directory="../Python/datasets/".$identity."/".$type."/";
     $filelist=array();
-    foreach(glob($log_directory.'*.*') as $file) {
-        $filelist[] = array('datasetType' => $type, 'filepath' => $file, 'filename' => basename($file));
+    for ($i = 1; $i < 5; $i++) {
+        $log_directory="../Python/datasets/".$identity."/".$i."/";
+        foreach(glob($log_directory.'*.*') as $file) {
+            $filelist[] = array('datasetType' => $i, 'filepath' => $file, 'filename' => basename($file));
+        };
+    }
+    if (count($filelist)>10) {
+        $filelist=array_slice($filelist, 0, 10);
     }
     if($filelist) {
         http_response_code(200);
