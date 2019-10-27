@@ -1,0 +1,11 @@
+Identity      :79d1727987f200802593e3599119c966
+min_support   :0.01
+min_confidence:0.02
+min_lift      :1.5
+max_length    :4
+SortIndex     :-3
+Dataset Name  :supermarket.txt
+Dataset Sep   :,
+Dataset Type  :3
+Output Type   :-1
+Dataset Args  :?
