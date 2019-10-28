@@ -156,8 +156,12 @@
 				$.ajax({
 					type: 'POST',
 					url: $('#retrieveRules').attr('action'),
-					data: $.param(formData) //serialize the array
-				}).done(function(response) {
+					data: $.param(formData), //serialize the array
+					beforeSend: function( xhr ) {
+						$('#submitBtn').html("<b>Retrieving rules...</b>");	
+  					}
+				})
+				.done(function(response) {
 					if (isJSON(response)) {
 						res=JSON.parse(response);
 						if (res.http_response_code==200) {
@@ -167,7 +171,8 @@
 						}
 					}
 					else alert(response);
-				}).fail(function(jqXHR) {
+				})
+				.fail(function(jqXHR) {
 					if (isJSON(jqXHR.responseText)) {
 						res=JSON.parse(jqXHR.responseText);
 						MyModal(res.title, res.message);
@@ -179,6 +184,9 @@
 						}
 					} 
 					else MyModal("Error", jqXHR.responseText);
+				})
+				.always(function() {
+					$('#submitBtn').html("Retrieve association rules");
 				});
 			});
 
@@ -692,7 +700,7 @@
 			</div>
 			<div class="form-row">
 				<div class="col-6">		
-					<input type="text" id="min_lift" name="min_lift" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The minimum lift that each association rule should have" >
+					<input type="text" id="min_lift" name="min_lift" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The minimum lift that each association rule should have" placeholder="1.5">
 				</div>
 				<div class="col-6">	
 					<input type="text" id="max_length" name="max_length" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The maximum items each association rule consist of" placeholder="2">
@@ -702,7 +710,7 @@
 				<label for="extra parameters">Extra parameters / item names</label>
 			</div>
 			<div class="form-col">	
-				<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The maximum items each association rule consist of">
+				<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The maximum items each association rule consist of" placeholder="special data (e.g item names)">
 			</div>
 			<div class="p-2 mx-auto" style="width: 300px;">
 				<button id="submitBtn" type="submit" class="btn btn-primary ">Retrieve association rules</button>

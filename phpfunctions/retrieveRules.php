@@ -43,15 +43,13 @@
         exit();
     }
 
-    $Fld=$_POST['dataset'];
-    if (!isset($Fld) || empty($Fld)) {
+    if (empty($_POST['dataset'])) {
         http_response_code(201);
         $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => 'Please declare a dataset!!!');
         print json_encode($JsonReq);
         exit();
     }
-    $Fld=$_POST['separator'];
-    if (empty($Fld)) {
+    if (empty($_POST['separator'])) {
         http_response_code(201);
         $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => 'Please declare a seperator!!!');
         print json_encode($JsonReq);
@@ -82,10 +80,53 @@
         exit();
     }
 
-    $output = "python Python/Main02.py $identity ".$_POST['min_support']." ".$_POST['min_confidence']." ".$_POST['min_lift']." ".$_POST['max_length']." -3 ".$_POST['dataset']." ".$_POST['seperator']." 1 -2";
-    //$output = passthru("python Python/Main02.py $identity ".$_POST['min_support']." ".$_POST['min_confidence']." ".$_POST['min_lift']." ".$_POST['max_length']." -3 ".$_POST['dataset']." ".$_POST['seperator']." 1 -2");
+    //pathinfo path and name info
+    $prmFile = pathinfo($_POST['dataset']);
+    //get the filename
+    $filename=basename($_POST['dataset']);
+    //get the last folder from the path
+    $datasetType=basename($prmFile['dirname']);
+
+    if (empty($filename)) {
+        http_response_code(201);
+        $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => 'inadequate dataset file!!!');
+        print json_encode($JsonReq);
+        exit();
+    }
+    if (empty($datasetType)) {
+        http_response_code(201);
+        $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => 'inadequate dataset type!!!');
+        print json_encode($JsonReq);
+        exit();
+    }
+    else {
+        switch($datasetType) {
+            case '1';
+            case '2';
+            case '3';
+            case '4';
+            break;        
+        default;
+            http_response_code(201);
+            $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => 'inadequate dataset!!!');
+            print json_encode($JsonReq);
+            exit();
+        }
+    }
+
+    $input = "python Main02.py $identity ".$_POST['min_support']." ".$_POST['min_confidence']." ".$_POST['min_lift']." ".$_POST['max_length']." -3 ".$filename." ".$_POST['separator']." ".$datasetType." -1";
+
+    chdir('../Python');
+    //asychronous call
+    //exec($input.' > /dev/null 2>&1 &');
+    exec($input, $output);
+    //exec($input);
+    //alternative to exec
+    //$output = passthru($input);
     http_response_code(200);
-    $JsonReq = array('http_response_code' => 200, 'title' => 'Success', 'message' => $output);
+    $JsonReq = array('http_response_code' => 200, 'title' => 'ok', 'message' => $output);
     print json_encode($JsonReq);
+    exit();   
+
 
 ?>

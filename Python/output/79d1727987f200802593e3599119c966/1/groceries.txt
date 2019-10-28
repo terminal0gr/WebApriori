@@ -1,0 +1,427 @@
+Records          :009835  Transformation time:0.021
+Association Rules:000212         Time elapsed:0.093
+---------------------------------------------------
+   1) {beef}([516]0.052) ==> {root vegetables}([1072]0.109)
+        Count:00171  Supp:0.017  Conf:0.331  Lift:3.040  Conv:1.333  Levr:0.012
+   2) {root vegetables}([1072]0.109) ==> {beef}([516]0.052)
+        Count:00171  Supp:0.017  Conf:0.160  Lift:3.040  Conv:1.127  Levr:0.012
+   3) {curd}([524]0.053) ==> {whipped/sour cream}([705]0.072)
+        Count:00103  Supp:0.010  Conf:0.197  Lift:2.742  Conv:1.155  Levr:0.007
+   4) {whipped/sour cream}([705]0.072) ==> {curd}([524]0.053)
+        Count:00103  Supp:0.010  Conf:0.146  Lift:2.742  Conv:1.109  Levr:0.007
+   5) {pip fruit}([744]0.076) ==> {tropical fruit}([1032]0.105)
+        Count:00201  Supp:0.020  Conf:0.270  Lift:2.575  Conv:1.226  Levr:0.012
+   6) {tropical fruit}([1032]0.105) ==> {pip fruit}([744]0.076)
+        Count:00201  Supp:0.020  Conf:0.195  Lift:2.575  Conv:1.148  Levr:0.012
+   7) {butter}([545]0.055) ==> {whipped/sour cream}([705]0.072)
+        Count:00100  Supp:0.010  Conf:0.183  Lift:2.560  Conv:1.137  Levr:0.006
+   8) {whipped/sour cream}([705]0.072) ==> {butter}([545]0.055)
+        Count:00100  Supp:0.010  Conf:0.142  Lift:2.560  Conv:1.101  Levr:0.006
+   9) {onions}([305]0.031) ==> {other vegetables}([1903]0.193)
+        Count:00140  Supp:0.014  Conf:0.459  Lift:2.372  Conv:1.491  Levr:0.008
+  10) {other vegetables}([1903]0.193) ==> {onions}([305]0.031)
+        Count:00140  Supp:0.014  Conf:0.074  Lift:2.372  Conv:1.046  Levr:0.008
+  11) {chicken}([422]0.043) ==> {root vegetables}([1072]0.109)
+        Count:00107  Supp:0.011  Conf:0.254  Lift:2.326  Conv:1.194  Levr:0.006
+  12) {root vegetables}([1072]0.109) ==> {chicken}([422]0.043)
+        Count:00107  Supp:0.011  Conf:0.100  Lift:2.326  Conv:1.063  Levr:0.006
+  13) {curd}([524]0.053) ==> {yogurt}([1372]0.140)
+        Count:00170  Supp:0.017  Conf:0.324  Lift:2.326  Conv:1.274  Levr:0.010
+  14) {yogurt}([1372]0.140) ==> {curd}([524]0.053)
+        Count:00170  Supp:0.017  Conf:0.124  Lift:2.326  Conv:1.081  Levr:0.010
+  15) {citrus fruit}([814]0.083) ==> {tropical fruit}([1032]0.105)
+        Count:00196  Supp:0.020  Conf:0.241  Lift:2.295  Conv:1.179  Levr:0.011
+  16) {tropical fruit}([1032]0.105) ==> {citrus fruit}([814]0.083)
+        Count:00196  Supp:0.020  Conf:0.190  Lift:2.295  Conv:1.132  Levr:0.011
+  17) {berries}([327]0.033) ==> {yogurt}([1372]0.140)
+        Count:00104  Supp:0.011  Conf:0.318  Lift:2.280  Conv:1.262  Levr:0.006
+  18) {yogurt}([1372]0.140) ==> {berries}([327]0.033)
+        Count:00104  Supp:0.011  Conf:0.076  Lift:2.280  Conv:1.046  Levr:0.006
+  19) {other vegetables}([1903]0.193) ==> {root vegetables}([1072]0.109)
+        Count:00466  Supp:0.047  Conf:0.245  Lift:2.247  Conv:1.180  Levr:0.026
+  20) {root vegetables}([1072]0.109) ==> {other vegetables}([1903]0.193)
+        Count:00466  Supp:0.047  Conf:0.435  Lift:2.247  Conv:1.427  Levr:0.026
+  21) {cream cheese}([390]0.040) ==> {yogurt}([1372]0.140)
+        Count:00122  Supp:0.012  Conf:0.313  Lift:2.242  Conv:1.252  Levr:0.007
+  22) {yogurt}([1372]0.140) ==> {cream cheese}([390]0.040)
+        Count:00122  Supp:0.012  Conf:0.089  Lift:2.242  Conv:1.054  Levr:0.007
+  23) {frozen vegetables}([473]0.048) ==> {root vegetables}([1072]0.109)
+        Count:00114  Supp:0.012  Conf:0.241  Lift:2.211  Conv:1.174  Levr:0.006
+  24) {root vegetables}([1072]0.109) ==> {frozen vegetables}([473]0.048)
+        Count:00114  Supp:0.012  Conf:0.106  Lift:2.211  Conv:1.065  Levr:0.006
+  25) {citrus fruit}([814]0.083) ==> {pip fruit}([744]0.076)
+        Count:00136  Supp:0.014  Conf:0.167  Lift:2.209  Conv:1.110  Levr:0.008
+  26) {pip fruit}([744]0.076) ==> {citrus fruit}([814]0.083)
+        Count:00136  Supp:0.014  Conf:0.183  Lift:2.209  Conv:1.122  Levr:0.008
+  27) {root vegetables}([1072]0.109) ==> {whipped/sour cream}([705]0.072)
+        Count:00168  Supp:0.017  Conf:0.157  Lift:2.186  Conv:1.101  Levr:0.009
+  28) {whipped/sour cream}([705]0.072) ==> {root vegetables}([1072]0.109)
+        Count:00168  Supp:0.017  Conf:0.238  Lift:2.186  Conv:1.170  Levr:0.009
+  29) {pork}([567]0.058) ==> {root vegetables}([1072]0.109)
+        Count:00134  Supp:0.014  Conf:0.236  Lift:2.168  Conv:1.167  Levr:0.007
+  30) {root vegetables}([1072]0.109) ==> {pork}([567]0.058)
+        Count:00134  Supp:0.014  Conf:0.125  Lift:2.168  Conv:1.077  Levr:0.007
+  31) {other vegetables}([1903]0.193) ==> {chicken}([422]0.043)
+        Count:00176  Supp:0.018  Conf:0.092  Lift:2.155  Conv:1.055  Levr:0.010
+  32) {chicken}([422]0.043) ==> {other vegetables}([1903]0.193)
+        Count:00176  Supp:0.018  Conf:0.417  Lift:2.155  Conv:1.384  Levr:0.010
+  33) {hamburger meat}([327]0.033) ==> {other vegetables}([1903]0.193)
+        Count:00136  Supp:0.014  Conf:0.416  Lift:2.149  Conv:1.381  Levr:0.007
+  34) {other vegetables}([1903]0.193) ==> {hamburger meat}([327]0.033)
+        Count:00136  Supp:0.014  Conf:0.071  Lift:2.149  Conv:1.041  Levr:0.007
+  35) {butter}([545]0.055) ==> {root vegetables}([1072]0.109)
+        Count:00127  Supp:0.013  Conf:0.233  Lift:2.138  Conv:1.162  Levr:0.007
+  36) {root vegetables}([1072]0.109) ==> {butter}([545]0.055)
+        Count:00127  Supp:0.013  Conf:0.118  Lift:2.138  Conv:1.072  Levr:0.007
+  37) {other vegetables}([1903]0.193) ==> {whipped/sour cream}([705]0.072)
+        Count:00284  Supp:0.029  Conf:0.149  Lift:2.082  Conv:1.091  Levr:0.015
+  38) {whipped/sour cream}([705]0.072) ==> {other vegetables}([1903]0.193)
+        Count:00284  Supp:0.029  Conf:0.403  Lift:2.082  Conv:1.351  Levr:0.015
+  39) {whipped/sour cream}([705]0.072) ==> {yogurt}([1372]0.140)
+        Count:00204  Supp:0.021  Conf:0.289  Lift:2.074  Conv:1.211  Levr:0.011
+  40) {yogurt}([1372]0.140) ==> {whipped/sour cream}([705]0.072)
+        Count:00204  Supp:0.021  Conf:0.149  Lift:2.074  Conv:1.090  Levr:0.011
+  41) {domestic eggs}([624]0.063) ==> {root vegetables}([1072]0.109)
+        Count:00141  Supp:0.014  Conf:0.226  Lift:2.073  Conv:1.151  Levr:0.007
+  42) {root vegetables}([1072]0.109) ==> {domestic eggs}([624]0.063)
+        Count:00141  Supp:0.014  Conf:0.132  Lift:2.073  Conv:1.078  Levr:0.007
+  43) {tropical fruit}([1032]0.105) ==> {yogurt}([1372]0.140)
+        Count:00288  Supp:0.029  Conf:0.279  Lift:2.000  Conv:1.194  Levr:0.015
+  44) {yogurt}([1372]0.140) ==> {tropical fruit}([1032]0.105)
+        Count:00288  Supp:0.029  Conf:0.210  Lift:2.000  Conv:1.133  Levr:0.015
+  45) {domestic eggs}([624]0.063) ==> {citrus fruit}([814]0.083)
+        Count:00102  Supp:0.010  Conf:0.163  Lift:1.975  Conv:1.096  Levr:0.005
+  46) {citrus fruit}([814]0.083) ==> {domestic eggs}([624]0.063)
+        Count:00102  Supp:0.010  Conf:0.125  Lift:1.975  Conv:1.071  Levr:0.005
+  47) {root vegetables}([1072]0.109) ==> {citrus fruit}([814]0.083)
+        Count:00174  Supp:0.018  Conf:0.162  Lift:1.961  Conv:1.095  Levr:0.009
+  48) {citrus fruit}([814]0.083) ==> {root vegetables}([1072]0.109)
+        Count:00174  Supp:0.018  Conf:0.214  Lift:1.961  Conv:1.133  Levr:0.009
+  49) {butter}([545]0.055) ==> {whole milk}([2513]0.256)
+        Count:00271  Supp:0.028  Conf:0.497  Lift:1.946  Conv:1.481  Levr:0.013
+  50) {whole milk}([2513]0.256) ==> {butter}([545]0.055)
+        Count:00271  Supp:0.028  Conf:0.108  Lift:1.946  Conv:1.059  Levr:0.013
+  51) {other vegetables}([1903]0.193) ==> {beef}([516]0.052)
+        Count:00194  Supp:0.020  Conf:0.102  Lift:1.943  Conv:1.055  Levr:0.010
+  52) {beef}([516]0.052) ==> {other vegetables}([1903]0.193)
+        Count:00194  Supp:0.020  Conf:0.376  Lift:1.943  Conv:1.292  Levr:0.010
+  53) {other vegetables}([1903]0.193) ==> {pork}([567]0.058)
+        Count:00213  Supp:0.022  Conf:0.112  Lift:1.941  Conv:1.061  Levr:0.011
+  54) {pork}([567]0.058) ==> {other vegetables}([1903]0.193)
+        Count:00213  Supp:0.022  Conf:0.376  Lift:1.941  Conv:1.292  Levr:0.011
+  55) {curd}([524]0.053) ==> {whole milk}([2513]0.256)
+        Count:00257  Supp:0.026  Conf:0.490  Lift:1.919  Conv:1.461  Levr:0.013
+  56) {whole milk}([2513]0.256) ==> {curd}([524]0.053)
+        Count:00257  Supp:0.026  Conf:0.102  Lift:1.919  Conv:1.055  Levr:0.013
+  57) {other vegetables}([1903]0.193) ==> {butter milk}([275]0.028)
+        Count:00102  Supp:0.010  Conf:0.054  Lift:1.917  Conv:1.027  Levr:0.005
+  58) {butter milk}([275]0.028) ==> {other vegetables}([1903]0.193)
+        Count:00102  Supp:0.010  Conf:0.371  Lift:1.917  Conv:1.282  Levr:0.005
+  59) {frozen vegetables}([473]0.048) ==> {other vegetables}([1903]0.193)
+        Count:00175  Supp:0.018  Conf:0.370  Lift:1.912  Conv:1.280  Levr:0.008
+  60) {other vegetables}([1903]0.193) ==> {frozen vegetables}([473]0.048)
+        Count:00175  Supp:0.018  Conf:0.092  Lift:1.912  Conv:1.048  Levr:0.008
+  61) {butter}([545]0.055) ==> {yogurt}([1372]0.140)
+        Count:00144  Supp:0.015  Conf:0.264  Lift:1.894  Conv:1.170  Levr:0.007
+  62) {yogurt}([1372]0.140) ==> {butter}([545]0.055)
+        Count:00144  Supp:0.015  Conf:0.105  Lift:1.894  Conv:1.055  Levr:0.007
+  63) {pip fruit}([744]0.076) ==> {root vegetables}([1072]0.109)
+        Count:00153  Supp:0.016  Conf:0.206  Lift:1.887  Conv:1.122  Levr:0.007
+  64) {root vegetables}([1072]0.109) ==> {pip fruit}([744]0.076)
+        Count:00153  Supp:0.016  Conf:0.143  Lift:1.887  Conv:1.078  Levr:0.007
+  65) {citrus fruit}([814]0.083) ==> {yogurt}([1372]0.140)
+        Count:00213  Supp:0.022  Conf:0.262  Lift:1.876  Conv:1.165  Levr:0.010
+  66) {yogurt}([1372]0.140) ==> {citrus fruit}([814]0.083)
+        Count:00213  Supp:0.022  Conf:0.155  Lift:1.876  Conv:1.086  Levr:0.010
+  67) {curd}([524]0.053) ==> {root vegetables}([1072]0.109)
+        Count:00107  Supp:0.011  Conf:0.204  Lift:1.873  Conv:1.120  Levr:0.005
+  68) {root vegetables}([1072]0.109) ==> {curd}([524]0.053)
+        Count:00107  Supp:0.011  Conf:0.100  Lift:1.873  Conv:1.052  Levr:0.005
+  69) {butter}([545]0.055) ==> {other vegetables}([1903]0.193)
+        Count:00197  Supp:0.020  Conf:0.361  Lift:1.868  Conv:1.263  Levr:0.009
+  70) {other vegetables}([1903]0.193) ==> {butter}([545]0.055)
+        Count:00197  Supp:0.020  Conf:0.104  Lift:1.868  Conv:1.054  Levr:0.009
+  71) {fruit/vegetable juice}([711]0.072) ==> {yogurt}([1372]0.140)
+        Count:00184  Supp:0.019  Conf:0.259  Lift:1.855  Conv:1.161  Levr:0.009
+  72) {yogurt}([1372]0.140) ==> {fruit/vegetable juice}([711]0.072)
+        Count:00184  Supp:0.019  Conf:0.134  Lift:1.855  Conv:1.071  Levr:0.009
+  73) {domestic eggs}([624]0.063) ==> {whole milk}([2513]0.256)
+        Count:00295  Supp:0.030  Conf:0.473  Lift:1.850  Conv:1.412  Levr:0.014
+  74) {whole milk}([2513]0.256) ==> {domestic eggs}([624]0.063)
+        Count:00295  Supp:0.030  Conf:0.117  Lift:1.850  Conv:1.061  Levr:0.014
+  75) {frozen vegetables}([473]0.048) ==> {yogurt}([1372]0.140)
+        Count:00122  Supp:0.012  Conf:0.258  Lift:1.849  Conv:1.160  Levr:0.006
+  76) {yogurt}([1372]0.140) ==> {frozen vegetables}([473]0.048)
+        Count:00122  Supp:0.012  Conf:0.089  Lift:1.849  Conv:1.045  Levr:0.006
+  77) {tropical fruit}([1032]0.105) ==> {root vegetables}([1072]0.109)
+        Count:00207  Supp:0.021  Conf:0.201  Lift:1.840  Conv:1.115  Levr:0.010
+  78) {root vegetables}([1072]0.109) ==> {tropical fruit}([1032]0.105)
+        Count:00207  Supp:0.021  Conf:0.193  Lift:1.840  Conv:1.109  Levr:0.010
+  79) {tropical fruit}([1032]0.105) ==> {whipped/sour cream}([705]0.072)
+        Count:00136  Supp:0.014  Conf:0.132  Lift:1.838  Conv:1.069  Levr:0.006
+  80) {whipped/sour cream}([705]0.072) ==> {tropical fruit}([1032]0.105)
+        Count:00136  Supp:0.014  Conf:0.193  Lift:1.838  Conv:1.109  Levr:0.006
+  81) {curd}([524]0.053) ==> {tropical fruit}([1032]0.105)
+        Count:00101  Supp:0.010  Conf:0.193  Lift:1.837  Conv:1.109  Levr:0.005
+  82) {tropical fruit}([1032]0.105) ==> {curd}([524]0.053)
+        Count:00101  Supp:0.010  Conf:0.098  Lift:1.837  Conv:1.049  Levr:0.005
+  83) {citrus fruit}([814]0.083) ==> {whipped/sour cream}([705]0.072)
+        Count:00107  Supp:0.011  Conf:0.131  Lift:1.834  Conv:1.069  Levr:0.005
+  84) {whipped/sour cream}([705]0.072) ==> {citrus fruit}([814]0.083)
+        Count:00107  Supp:0.011  Conf:0.152  Lift:1.834  Conv:1.081  Levr:0.005
+  85) {napkins}([515]0.052) ==> {tropical fruit}([1032]0.105)
+        Count:00099  Supp:0.010  Conf:0.192  Lift:1.832  Conv:1.108  Levr:0.005
+  86) {tropical fruit}([1032]0.105) ==> {napkins}([515]0.052)
+        Count:00099  Supp:0.010  Conf:0.096  Lift:1.832  Conv:1.048  Levr:0.005
+  87) {frankfurter}([580]0.059) ==> {sausage}([924]0.094)
+        Count:00099  Supp:0.010  Conf:0.171  Lift:1.817  Conv:1.093  Levr:0.005
+  88) {sausage}([924]0.094) ==> {frankfurter}([580]0.059)
+        Count:00099  Supp:0.010  Conf:0.107  Lift:1.817  Conv:1.054  Levr:0.005
+  89) {domestic eggs}([624]0.063) ==> {other vegetables}([1903]0.193)
+        Count:00219  Supp:0.022  Conf:0.351  Lift:1.814  Conv:1.243  Levr:0.010
+  90) {other vegetables}([1903]0.193) ==> {domestic eggs}([624]0.063)
+        Count:00219  Supp:0.022  Conf:0.115  Lift:1.814  Conv:1.058  Levr:0.010
+  91) {tropical fruit}([1032]0.105) ==> {fruit/vegetable juice}([711]0.072)
+        Count:00135  Supp:0.014  Conf:0.131  Lift:1.810  Conv:1.067  Levr:0.006
+  92) {fruit/vegetable juice}([711]0.072) ==> {tropical fruit}([1032]0.105)
+        Count:00135  Supp:0.014  Conf:0.190  Lift:1.810  Conv:1.105  Levr:0.006
+  93) {citrus fruit}([814]0.083) ==> {other vegetables}([1903]0.193)
+        Count:00284  Supp:0.029  Conf:0.349  Lift:1.803  Conv:1.239  Levr:0.013
+  94) {other vegetables}([1903]0.193) ==> {citrus fruit}([814]0.083)
+        Count:00284  Supp:0.029  Conf:0.149  Lift:1.803  Conv:1.078  Levr:0.013
+  95) {other vegetables}([1903]0.193) ==> {cream cheese}([390]0.040)
+        Count:00135  Supp:0.014  Conf:0.071  Lift:1.789  Conv:1.034  Levr:0.006
+  96) {cream cheese}([390]0.040) ==> {other vegetables}([1903]0.193)
+        Count:00135  Supp:0.014  Conf:0.346  Lift:1.789  Conv:1.233  Levr:0.006
+  97) {other vegetables}([1903]0.193) ==> {pip fruit}([744]0.076)
+        Count:00257  Supp:0.026  Conf:0.135  Lift:1.785  Conv:1.069  Levr:0.011
+  98) {pip fruit}([744]0.076) ==> {other vegetables}([1903]0.193)
+        Count:00257  Supp:0.026  Conf:0.345  Lift:1.785  Conv:1.232  Levr:0.011
+  99) {bottled water}([1087]0.111) ==> {fruit/vegetable juice}([711]0.072)
+        Count:00140  Supp:0.014  Conf:0.129  Lift:1.782  Conv:1.065  Levr:0.006
+ 100) {fruit/vegetable juice}([711]0.072) ==> {bottled water}([1087]0.111)
+        Count:00140  Supp:0.014  Conf:0.197  Lift:1.782  Conv:1.108  Levr:0.006
+ 101) {frankfurter}([580]0.059) ==> {rolls/buns}([1809]0.184)
+        Count:00189  Supp:0.019  Conf:0.326  Lift:1.772  Conv:1.211  Levr:0.008
+ 102) {rolls/buns}([1809]0.184) ==> {frankfurter}([580]0.059)
+        Count:00189  Supp:0.019  Conf:0.104  Lift:1.772  Conv:1.051  Levr:0.008
+ 103) {sausage}([924]0.094) ==> {rolls/buns}([1809]0.184)
+        Count:00301  Supp:0.031  Conf:0.326  Lift:1.771  Conv:1.210  Levr:0.013
+ 104) {rolls/buns}([1809]0.184) ==> {sausage}([924]0.094)
+        Count:00301  Supp:0.031  Conf:0.166  Lift:1.771  Conv:1.087  Levr:0.013
+ 105) {bottled beer}([792]0.081) ==> {bottled water}([1087]0.111)
+        Count:00155  Supp:0.016  Conf:0.196  Lift:1.771  Conv:1.106  Levr:0.007
+ 106) {bottled water}([1087]0.111) ==> {bottled beer}([792]0.081)
+        Count:00155  Supp:0.016  Conf:0.143  Lift:1.771  Conv:1.072  Levr:0.007
+ 107) {other vegetables}([1903]0.193) ==> {tropical fruit}([1032]0.105)
+        Count:00353  Supp:0.036  Conf:0.185  Lift:1.768  Conv:1.099  Levr:0.016
+ 108) {tropical fruit}([1032]0.105) ==> {other vegetables}([1903]0.193)
+        Count:00353  Supp:0.036  Conf:0.342  Lift:1.768  Conv:1.226  Levr:0.016
+ 109) {whipped/sour cream}([705]0.072) ==> {whole milk}([2513]0.256)
+        Count:00317  Supp:0.032  Conf:0.450  Lift:1.760  Conv:1.353  Levr:0.014
+ 110) {whole milk}([2513]0.256) ==> {whipped/sour cream}([705]0.072)
+        Count:00317  Supp:0.032  Conf:0.126  Lift:1.760  Conv:1.062  Levr:0.014
+ 111) {whole milk}([2513]0.256) ==> {root vegetables}([1072]0.109)
+        Count:00481  Supp:0.049  Conf:0.191  Lift:1.756  Conv:1.102  Levr:0.021
+ 112) {root vegetables}([1072]0.109) ==> {whole milk}([2513]0.256)
+        Count:00481  Supp:0.049  Conf:0.449  Lift:1.756  Conv:1.350  Levr:0.021
+ 113) {brown bread}([638]0.065) ==> {sausage}([924]0.094)
+        Count:00105  Supp:0.011  Conf:0.165  Lift:1.752  Conv:1.085  Levr:0.005
+ 114) {sausage}([924]0.094) ==> {brown bread}([638]0.065)
+        Count:00105  Supp:0.011  Conf:0.114  Lift:1.752  Conv:1.055  Levr:0.005
+ 115) {margarine}([576]0.059) ==> {yogurt}([1372]0.140)
+        Count:00140  Supp:0.014  Conf:0.243  Lift:1.742  Conv:1.137  Levr:0.006
+ 116) {yogurt}([1372]0.140) ==> {margarine}([576]0.059)
+        Count:00140  Supp:0.014  Conf:0.102  Lift:1.742  Conv:1.048  Levr:0.006
+ 117) {other vegetables}([1903]0.193) ==> {margarine}([576]0.059)
+        Count:00194  Supp:0.020  Conf:0.102  Lift:1.741  Conv:1.048  Levr:0.008
+ 118) {margarine}([576]0.059) ==> {other vegetables}([1903]0.193)
+        Count:00194  Supp:0.020  Conf:0.337  Lift:1.741  Conv:1.216  Levr:0.008
+ 119) {whole milk}([2513]0.256) ==> {sugar}([333]0.034)
+        Count:00148  Supp:0.015  Conf:0.059  Lift:1.739  Conv:1.027  Levr:0.006
+ 120) {sugar}([333]0.034) ==> {whole milk}([2513]0.256)
+        Count:00148  Supp:0.015  Conf:0.444  Lift:1.739  Conv:1.340  Levr:0.006
+ 121) {margarine}([576]0.059) ==> {root vegetables}([1072]0.109)
+        Count:00109  Supp:0.011  Conf:0.189  Lift:1.736  Conv:1.099  Levr:0.005
+ 122) {root vegetables}([1072]0.109) ==> {margarine}([576]0.059)
+        Count:00109  Supp:0.011  Conf:0.102  Lift:1.736  Conv:1.048  Levr:0.005
+ 123) {hamburger meat}([327]0.033) ==> {whole milk}([2513]0.256)
+        Count:00145  Supp:0.015  Conf:0.443  Lift:1.735  Conv:1.338  Levr:0.006
+ 124) {whole milk}([2513]0.256) ==> {hamburger meat}([327]0.033)
+        Count:00145  Supp:0.015  Conf:0.058  Lift:1.735  Conv:1.026  Levr:0.006
+ 125) {fruit/vegetable juice}([711]0.072) ==> {citrus fruit}([814]0.083)
+        Count:00102  Supp:0.010  Conf:0.143  Lift:1.733  Conv:1.071  Levr:0.004
+ 126) {citrus fruit}([814]0.083) ==> {fruit/vegetable juice}([711]0.072)
+        Count:00102  Supp:0.010  Conf:0.125  Lift:1.733  Conv:1.061  Levr:0.004
+ 127) {ham}([256]0.026) ==> {whole milk}([2513]0.256)
+        Count:00113  Supp:0.011  Conf:0.441  Lift:1.728  Conv:1.333  Levr:0.005
+ 128) {whole milk}([2513]0.256) ==> {ham}([256]0.026)
+        Count:00113  Supp:0.011  Conf:0.045  Lift:1.728  Conv:1.020  Levr:0.005
+ 129) {sliced cheese}([241]0.025) ==> {whole milk}([2513]0.256)
+        Count:00106  Supp:0.011  Conf:0.440  Lift:1.721  Conv:1.329  Levr:0.005
+ 130) {whole milk}([2513]0.256) ==> {sliced cheese}([241]0.025)
+        Count:00106  Supp:0.011  Conf:0.042  Lift:1.721  Conv:1.018  Levr:0.005
+ 131) {domestic eggs}([624]0.063) ==> {tropical fruit}([1032]0.105)
+        Count:00112  Supp:0.011  Conf:0.179  Lift:1.711  Conv:1.091  Levr:0.005
+ 132) {tropical fruit}([1032]0.105) ==> {domestic eggs}([624]0.063)
+        Count:00112  Supp:0.011  Conf:0.109  Lift:1.711  Conv:1.051  Levr:0.005
+ 133) {yogurt}([1372]0.140) ==> {pip fruit}([744]0.076)
+        Count:00177  Supp:0.018  Conf:0.129  Lift:1.705  Conv:1.061  Levr:0.007
+ 134) {pip fruit}([744]0.076) ==> {yogurt}([1372]0.140)
+        Count:00177  Supp:0.018  Conf:0.238  Lift:1.705  Conv:1.129  Levr:0.007
+ 135) {root vegetables}([1072]0.109) ==> {yogurt}([1372]0.140)
+        Count:00254  Supp:0.026  Conf:0.237  Lift:1.698  Conv:1.128  Levr:0.011
+ 136) {yogurt}([1372]0.140) ==> {root vegetables}([1072]0.109)
+        Count:00254  Supp:0.026  Conf:0.185  Lift:1.698  Conv:1.093  Levr:0.011
+ 137) {sausage}([924]0.094) ==> {shopping bags}([969]0.099)
+        Count:00154  Supp:0.016  Conf:0.167  Lift:1.692  Conv:1.082  Levr:0.006
+ 138) {shopping bags}([969]0.099) ==> {sausage}([924]0.094)
+        Count:00154  Supp:0.016  Conf:0.159  Lift:1.692  Conv:1.077  Levr:0.006
+ 139) {other vegetables}([1903]0.193) ==> {white bread}([414]0.042)
+        Count:00135  Supp:0.014  Conf:0.071  Lift:1.685  Conv:1.031  Levr:0.006
+ 140) {white bread}([414]0.042) ==> {other vegetables}([1903]0.193)
+        Count:00135  Supp:0.014  Conf:0.326  Lift:1.685  Conv:1.197  Levr:0.006
+ 141) {napkins}([515]0.052) ==> {yogurt}([1372]0.140)
+        Count:00121  Supp:0.012  Conf:0.235  Lift:1.684  Conv:1.125  Levr:0.005
+ 142) {yogurt}([1372]0.140) ==> {napkins}([515]0.052)
+        Count:00121  Supp:0.012  Conf:0.088  Lift:1.684  Conv:1.039  Levr:0.005
+ 143) {curd}([524]0.053) ==> {other vegetables}([1903]0.193)
+        Count:00169  Supp:0.017  Conf:0.323  Lift:1.667  Conv:1.190  Levr:0.007
+ 144) {other vegetables}([1903]0.193) ==> {curd}([524]0.053)
+        Count:00169  Supp:0.017  Conf:0.089  Lift:1.667  Conv:1.039  Levr:0.007
+ 145) {frozen vegetables}([473]0.048) ==> {whole milk}([2513]0.256)
+        Count:00201  Supp:0.020  Conf:0.425  Lift:1.663  Conv:1.295  Levr:0.008
+ 146) {whole milk}([2513]0.256) ==> {frozen vegetables}([473]0.048)
+        Count:00201  Supp:0.020  Conf:0.080  Lift:1.663  Conv:1.035  Levr:0.008
+ 147) {other vegetables}([1903]0.193) ==> {sugar}([333]0.034)
+        Count:00106  Supp:0.011  Conf:0.056  Lift:1.645  Conv:1.023  Levr:0.004
+ 148) {sugar}([333]0.034) ==> {other vegetables}([1903]0.193)
+        Count:00106  Supp:0.011  Conf:0.318  Lift:1.645  Conv:1.183  Levr:0.004
+ 149) {cream cheese}([390]0.040) ==> {whole milk}([2513]0.256)
+        Count:00162  Supp:0.016  Conf:0.415  Lift:1.626  Conv:1.273  Levr:0.006
+ 150) {whole milk}([2513]0.256) ==> {cream cheese}([390]0.040)
+        Count:00162  Supp:0.016  Conf:0.064  Lift:1.626  Conv:1.027  Levr:0.006
+ 151) {butter milk}([275]0.028) ==> {whole milk}([2513]0.256)
+        Count:00114  Supp:0.012  Conf:0.415  Lift:1.622  Conv:1.272  Levr:0.004
+ 152) {whole milk}([2513]0.256) ==> {butter milk}([275]0.028)
+        Count:00114  Supp:0.012  Conf:0.045  Lift:1.622  Conv:1.018  Levr:0.004
+ 153) {domestic eggs}([624]0.063) ==> {yogurt}([1372]0.140)
+        Count:00141  Supp:0.014  Conf:0.226  Lift:1.620  Conv:1.112  Levr:0.005
+ 154) {yogurt}([1372]0.140) ==> {domestic eggs}([624]0.063)
+        Count:00141  Supp:0.014  Conf:0.103  Lift:1.620  Conv:1.044  Levr:0.005
+ 155) {margarine}([576]0.059) ==> {whole milk}([2513]0.256)
+        Count:00238  Supp:0.024  Conf:0.413  Lift:1.617  Conv:1.269  Levr:0.009
+ 156) {whole milk}([2513]0.256) ==> {margarine}([576]0.059)
+        Count:00238  Supp:0.024  Conf:0.095  Lift:1.617  Conv:1.040  Levr:0.009
+ 157) {dessert}([365]0.037) ==> {other vegetables}([1903]0.193)
+        Count:00114  Supp:0.012  Conf:0.312  Lift:1.614  Conv:1.173  Levr:0.004
+ 158) {other vegetables}([1903]0.193) ==> {dessert}([365]0.037)
+        Count:00114  Supp:0.012  Conf:0.060  Lift:1.614  Conv:1.024  Levr:0.004
+ 159) {yogurt}([1372]0.140) ==> {other vegetables}([1903]0.193)
+        Count:00427  Supp:0.043  Conf:0.311  Lift:1.608  Conv:1.171  Levr:0.016
+ 160) {other vegetables}([1903]0.193) ==> {yogurt}([1372]0.140)
+        Count:00427  Supp:0.043  Conf:0.224  Lift:1.608  Conv:1.109  Levr:0.016
+ 161) {whole milk}([2513]0.256) ==> {hard cheese}([241]0.025)
+        Count:00099  Supp:0.010  Conf:0.039  Lift:1.608  Conv:1.016  Levr:0.004
+ 162) {hard cheese}([241]0.025) ==> {whole milk}([2513]0.256)
+        Count:00099  Supp:0.010  Conf:0.411  Lift:1.608  Conv:1.264  Levr:0.004
+ 163) {brown bread}([638]0.065) ==> {yogurt}([1372]0.140)
+        Count:00143  Supp:0.015  Conf:0.224  Lift:1.607  Conv:1.109  Levr:0.005
+ 164) {yogurt}([1372]0.140) ==> {brown bread}([638]0.065)
+        Count:00143  Supp:0.015  Conf:0.104  Lift:1.607  Conv:1.044  Levr:0.005
+ 165) {whole milk}([2513]0.256) ==> {chicken}([422]0.043)
+        Count:00173  Supp:0.018  Conf:0.069  Lift:1.604  Conv:1.028  Levr:0.007
+ 166) {chicken}([422]0.043) ==> {whole milk}([2513]0.256)
+        Count:00173  Supp:0.018  Conf:0.410  Lift:1.604  Conv:1.262  Levr:0.007
+ 167) {beef}([516]0.052) ==> {yogurt}([1372]0.140)
+        Count:00115  Supp:0.012  Conf:0.223  Lift:1.598  Conv:1.107  Levr:0.004
+ 168) {yogurt}([1372]0.140) ==> {beef}([516]0.052)
+        Count:00115  Supp:0.012  Conf:0.084  Lift:1.598  Conv:1.034  Levr:0.004
+ 169) {berries}([327]0.033) ==> {other vegetables}([1903]0.193)
+        Count:00101  Supp:0.010  Conf:0.309  Lift:1.596  Conv:1.167  Levr:0.004
+ 170) {other vegetables}([1903]0.193) ==> {berries}([327]0.033)
+        Count:00101  Supp:0.010  Conf:0.053  Lift:1.596  Conv:1.021  Levr:0.004
+ 171) {bottled water}([1087]0.111) ==> {tropical fruit}([1032]0.105)
+        Count:00182  Supp:0.019  Conf:0.167  Lift:1.596  Conv:1.075  Levr:0.007
+ 172) {tropical fruit}([1032]0.105) ==> {bottled water}([1087]0.111)
+        Count:00182  Supp:0.019  Conf:0.176  Lift:1.596  Conv:1.080  Levr:0.007
+ 173) {whole milk}([2513]0.256) ==> {white bread}([414]0.042)
+        Count:00168  Supp:0.017  Conf:0.067  Lift:1.588  Conv:1.027  Levr:0.006
+ 174) {white bread}([414]0.042) ==> {whole milk}([2513]0.256)
+        Count:00168  Supp:0.017  Conf:0.406  Lift:1.588  Conv:1.253  Levr:0.006
+ 175) {bottled water}([1087]0.111) ==> {margarine}([576]0.059)
+        Count:00101  Supp:0.010  Conf:0.093  Lift:1.587  Conv:1.038  Levr:0.004
+ 176) {margarine}([576]0.059) ==> {bottled water}([1087]0.111)
+        Count:00101  Supp:0.010  Conf:0.175  Lift:1.587  Conv:1.079  Levr:0.004
+ 177) {pastry}([875]0.089) ==> {pip fruit}([744]0.076)
+        Count:00105  Supp:0.011  Conf:0.120  Lift:1.586  Conv:1.050  Levr:0.004
+ 178) {pip fruit}([744]0.076) ==> {pastry}([875]0.089)
+        Count:00105  Supp:0.011  Conf:0.141  Lift:1.586  Conv:1.061  Levr:0.004
+ 179) {beef}([516]0.052) ==> {whole milk}([2513]0.256)
+        Count:00209  Supp:0.021  Conf:0.405  Lift:1.585  Conv:1.251  Levr:0.008
+ 180) {whole milk}([2513]0.256) ==> {beef}([516]0.052)
+        Count:00209  Supp:0.021  Conf:0.083  Lift:1.585  Conv:1.033  Levr:0.008
+ 181) {frankfurter}([580]0.059) ==> {root vegetables}([1072]0.109)
+        Count:00100  Supp:0.010  Conf:0.172  Lift:1.582  Conv:1.077  Levr:0.004
+ 182) {root vegetables}([1072]0.109) ==> {frankfurter}([580]0.059)
+        Count:00100  Supp:0.010  Conf:0.093  Lift:1.582  Conv:1.038  Levr:0.004
+ 183) {tropical fruit}([1032]0.105) ==> {whole milk}([2513]0.256)
+        Count:00416  Supp:0.042  Conf:0.403  Lift:1.578  Conv:1.247  Levr:0.015
+ 184) {whole milk}([2513]0.256) ==> {tropical fruit}([1032]0.105)
+        Count:00416  Supp:0.042  Conf:0.166  Lift:1.578  Conv:1.073  Levr:0.015
+ 185) {oil}([276]0.028) ==> {whole milk}([2513]0.256)
+        Count:00111  Supp:0.011  Conf:0.402  Lift:1.574  Conv:1.245  Levr:0.004
+ 186) {whole milk}([2513]0.256) ==> {oil}([276]0.028)
+        Count:00111  Supp:0.011  Conf:0.044  Lift:1.574  Conv:1.017  Levr:0.004
+ 187) {yogurt}([1372]0.140) ==> {whole milk}([2513]0.256)
+        Count:00551  Supp:0.056  Conf:0.402  Lift:1.572  Conv:1.244  Levr:0.020
+ 188) {whole milk}([2513]0.256) ==> {yogurt}([1372]0.140)
+        Count:00551  Supp:0.056  Conf:0.219  Lift:1.572  Conv:1.102  Levr:0.020
+ 189) {brown bread}([638]0.065) ==> {tropical fruit}([1032]0.105)
+        Count:00105  Supp:0.011  Conf:0.165  Lift:1.568  Conv:1.071  Levr:0.004
+ 190) {tropical fruit}([1032]0.105) ==> {brown bread}([638]0.065)
+        Count:00105  Supp:0.011  Conf:0.102  Lift:1.568  Conv:1.041  Levr:0.004
+ 191) {chocolate}([488]0.050) ==> {soda}([1715]0.174)
+        Count:00133  Supp:0.014  Conf:0.273  Lift:1.563  Conv:1.135  Levr:0.005
+ 192) {soda}([1715]0.174) ==> {chocolate}([488]0.050)
+        Count:00133  Supp:0.014  Conf:0.078  Lift:1.563  Conv:1.030  Levr:0.005
+ 193) {pip fruit}([744]0.076) ==> {whole milk}([2513]0.256)
+        Count:00296  Supp:0.030  Conf:0.398  Lift:1.557  Conv:1.236  Levr:0.011
+ 194) {whole milk}([2513]0.256) ==> {pip fruit}([744]0.076)
+        Count:00296  Supp:0.030  Conf:0.118  Lift:1.557  Conv:1.048  Levr:0.011
+ 195) {onions}([305]0.031) ==> {whole milk}([2513]0.256)
+        Count:00119  Supp:0.012  Conf:0.390  Lift:1.527  Conv:1.221  Levr:0.004
+ 196) {whole milk}([2513]0.256) ==> {onions}([305]0.031)
+        Count:00119  Supp:0.012  Conf:0.047  Lift:1.527  Conv:1.017  Levr:0.004
+ 197) {fruit/vegetable juice}([711]0.072) ==> {root vegetables}([1072]0.109)
+        Count:00118  Supp:0.012  Conf:0.166  Lift:1.523  Conv:1.068  Levr:0.004
+ 198) {root vegetables}([1072]0.109) ==> {fruit/vegetable juice}([711]0.072)
+        Count:00118  Supp:0.012  Conf:0.110  Lift:1.523  Conv:1.042  Levr:0.004
+ 199) {whole milk}([2513]0.256) ==> {hygiene articles}([324]0.033)
+        Count:00126  Supp:0.013  Conf:0.050  Lift:1.522  Conv:1.018  Levr:0.004
+ 200) {hygiene articles}([324]0.033) ==> {whole milk}([2513]0.256)
+        Count:00126  Supp:0.013  Conf:0.389  Lift:1.522  Conv:1.218  Levr:0.004
+ 201) {brown bread}([638]0.065) ==> {whole milk}([2513]0.256)
+        Count:00248  Supp:0.025  Conf:0.389  Lift:1.521  Conv:1.218  Levr:0.009
+ 202) {whole milk}([2513]0.256) ==> {brown bread}([638]0.065)
+        Count:00248  Supp:0.025  Conf:0.099  Lift:1.521  Conv:1.038  Levr:0.009
+ 203) {pip fruit}([744]0.076) ==> {sausage}([924]0.094)
+        Count:00106  Supp:0.011  Conf:0.142  Lift:1.516  Conv:1.057  Levr:0.004
+ 204) {sausage}([924]0.094) ==> {pip fruit}([744]0.076)
+        Count:00106  Supp:0.011  Conf:0.115  Lift:1.516  Conv:1.044  Levr:0.004
+ 205) {other vegetables}([1903]0.193) ==> {whole milk}([2513]0.256)
+        Count:00736  Supp:0.075  Conf:0.387  Lift:1.514  Conv:1.214  Levr:0.025
+ 206) {whole milk}([2513]0.256) ==> {other vegetables}([1903]0.193)
+        Count:00736  Supp:0.075  Conf:0.293  Lift:1.514  Conv:1.141  Levr:0.025
+ 207) {whole milk}([2513]0.256) ==> {pork}([567]0.058)
+        Count:00218  Supp:0.022  Conf:0.087  Lift:1.505  Conv:1.032  Levr:0.007
+ 208) {pork}([567]0.058) ==> {whole milk}([2513]0.256)
+        Count:00218  Supp:0.022  Conf:0.384  Lift:1.505  Conv:1.210  Levr:0.007
+ 209) {fruit/vegetable juice}([711]0.072) ==> {other vegetables}([1903]0.193)
+        Count:00207  Supp:0.021  Conf:0.291  Lift:1.505  Conv:1.138  Levr:0.007
+ 210) {other vegetables}([1903]0.193) ==> {fruit/vegetable juice}([711]0.072)
+        Count:00207  Supp:0.021  Conf:0.109  Lift:1.505  Conv:1.041  Levr:0.007
+ 211) {bottled water}([1087]0.111) ==> {soda}([1715]0.174)
+        Count:00285  Supp:0.029  Conf:0.262  Lift:1.504  Conv:1.119  Levr:0.010
+ 212) {soda}([1715]0.174) ==> {bottled water}([1087]0.111)
+        Count:00285  Supp:0.029  Conf:0.166  Lift:1.504  Conv:1.067  Levr:0.010
