@@ -114,7 +114,7 @@
         }
     }
 
-    $input = "python Main02.py $identity ".$_POST['min_support']." ".$_POST['min_confidence']." ".$_POST['min_lift']." ".$_POST['max_length']." -3 ".$filename." ".$_POST['separator']." ".$datasetType." -1";
+    $input = "python Main02.py $identity ".$_POST['min_support']." ".$_POST['min_confidence']." ".$_POST['min_lift']." ".$_POST['max_length']." -3 ".$filename." ".$_POST['separator']." ".$datasetType." -2";
 
     chdir('../Python');
     //asychronous call
@@ -126,6 +126,7 @@
     http_response_code(200);
     $JsonReq = array('http_response_code' => 200, 'title' => 'ok', 'message' => $output);
     print json_encode($JsonReq);
+    //print json_encode($output);
     exit();   
 
 
