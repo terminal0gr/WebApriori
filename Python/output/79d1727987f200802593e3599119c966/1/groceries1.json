@@ -1,0 +1,236 @@
+[
+    {
+        "LHS": [
+            "beef"
+        ],
+        "RHS": [
+            "root vegetables"
+        ],
+        "Confidence": 0.3313953488372093,
+        "Lift": 3.0403668431100312,
+        "Conviction": 1.3326283680732078,
+        "Leverage": 0.011668204065608208,
+        "LHS_Count": 516,
+        "LHS_Support": 0.05246568378240976,
+        "RHS_Count": 1072,
+        "RHS_Support": 0.10899847483477376,
+        "Support": 0.017386883579054397,
+        "Count": 171
+    },
+    {
+        "LHS": [
+            "root vegetables"
+        ],
+        "RHS": [
+            "beef"
+        ],
+        "Confidence": 0.15951492537313433,
+        "Lift": 3.0403668431100312,
+        "Conviction": 1.127366023291073,
+        "Leverage": 0.011668204065608208,
+        "LHS_Count": 1072,
+        "LHS_Support": 0.10899847483477376,
+        "RHS_Count": 516,
+        "RHS_Support": 0.05246568378240976,
+        "Support": 0.017386883579054397,
+        "Count": 171
+    },
+    {
+        "LHS": [
+            "curd"
+        ],
+        "RHS": [
+            "whipped/sour cream"
+        ],
+        "Confidence": 0.1965648854961832,
+        "Lift": 2.7421498565318605,
+        "Conviction": 1.1554352275732485,
+        "Leverage": 0.0066536076063383395,
+        "LHS_Count": 524,
+        "LHS_Support": 0.05327910523640061,
+        "RHS_Count": 705,
+        "RHS_Support": 0.07168276563294357,
+        "Support": 0.01047280122013218,
+        "Count": 103
+    },
+    {
+        "LHS": [
+            "whipped/sour cream"
+        ],
+        "RHS": [
+            "curd"
+        ],
+        "Confidence": 0.14609929078014183,
+        "Lift": 2.7421498565318605,
+        "Conviction": 1.108701380080295,
+        "Leverage": 0.0066536076063383395,
+        "LHS_Count": 705,
+        "LHS_Support": 0.07168276563294357,
+        "RHS_Count": 524,
+        "RHS_Support": 0.05327910523640061,
+        "Support": 0.01047280122013218,
+        "Count": 103
+    },
+    {
+        "LHS": [
+            "pip fruit"
+        ],
+        "RHS": [
+            "tropical fruit"
+        ],
+        "Confidence": 0.2701612903225806,
+        "Lift": 2.5746475681420353,
+        "Conviction": 1.2263923803531753,
+        "Leverage": 0.012499345453154474,
+        "LHS_Count": 744,
+        "LHS_Support": 0.07564819522114896,
+        "RHS_Count": 1032,
+        "RHS_Support": 0.10493136756481952,
+        "Support": 0.02043721403152008,
+        "Count": 201
+    },
+    {
+        "LHS": [
+            "tropical fruit"
+        ],
+        "RHS": [
+            "pip fruit"
+        ],
+        "Confidence": 0.1947674418604651,
+        "Lift": 2.5746475681420353,
+        "Conviction": 1.147931483191064,
+        "Leverage": 0.012499345453154474,
+        "LHS_Count": 1032,
+        "LHS_Support": 0.10493136756481952,
+        "RHS_Count": 744,
+        "RHS_Support": 0.07564819522114896,
+        "Support": 0.02043721403152008,
+        "Count": 201
+    },
+    {
+        "LHS": [
+            "butter"
+        ],
+        "RHS": [
+            "whipped/sour cream"
+        ],
+        "Confidence": 0.18348623853211007,
+        "Lift": 2.5596980935649682,
+        "Conviction": 1.1369278488315635,
+        "Leverage": 0.006195515275042781,
+        "LHS_Count": 545,
+        "LHS_Support": 0.05541433655312659,
+        "RHS_Count": 705,
+        "RHS_Support": 0.07168276563294357,
+        "Support": 0.010167768174885612,
+        "Count": 100
+    },
+    {
+        "LHS": [
+            "whipped/sour cream"
+        ],
+        "RHS": [
+            "butter"
+        ],
+        "Confidence": 0.14184397163120566,
+        "Lift": 2.5596980935649682,
+        "Conviction": 1.1007155251736294,
+        "Leverage": 0.006195515275042781,
+        "LHS_Count": 705,
+        "LHS_Support": 0.07168276563294357,
+        "RHS_Count": 545,
+        "RHS_Support": 0.05541433655312659,
+        "Support": 0.010167768174885612,
+        "Count": 100
+    },
+    {
+        "LHS": [
+            "onions"
+        ],
+        "RHS": [
+            "other vegetables"
+        ],
+        "Confidence": 0.45901639344262296,
+        "Lift": 2.372268118501417,
+        "Conviction": 1.4908166566529557,
+        "Leverage": 0.008234341469012472,
+        "LHS_Count": 305,
+        "LHS_Support": 0.031011692933401117,
+        "RHS_Count": 1903,
+        "RHS_Support": 0.1934926283680732,
+        "Support": 0.014234875444839857,
+        "Count": 140
+    },
+    {
+        "LHS": [
+            "other vegetables"
+        ],
+        "RHS": [
+            "onions"
+        ],
+        "Confidence": 0.07356805044666316,
+        "Lift": 2.372268118501417,
+        "Conviction": 1.0459357619669527,
+        "Leverage": 0.008234341469012472,
+        "LHS_Count": 1903,
+        "LHS_Support": 0.1934926283680732,
+        "RHS_Count": 305,
+        "RHS_Support": 0.031011692933401117,
+        "Support": 0.014234875444839857,
+        "Count": 140
+    },
+    {
+        "LHS": [
+            "chicken"
+        ],
+        "RHS": [
+            "root vegetables"
+        ],
+        "Confidence": 0.2535545023696682,
+        "Lift": 2.32622064440829,
+        "Conviction": 1.1936591860943664,
+        "Leverage": 0.0062026073838053345,
+        "LHS_Count": 422,
+        "LHS_Support": 0.04290798169801729,
+        "RHS_Count": 1072,
+        "RHS_Support": 0.10899847483477376,
+        "Support": 0.010879511947127605,
+        "Count": 107
+    },
+    {
+        "LHS": [
+            "root vegetables"
+        ],
+        "RHS": [
+            "chicken"
+        ],
+        "Confidence": 0.09981343283582089,
+        "Lift": 2.32622064440829,
+        "Conviction": 1.0632151747354668,
+        "Leverage": 0.0062026073838053345,
+        "LHS_Count": 1072,
+        "LHS_Support": 0.10899847483477376,
+        "RHS_Count": 422,
+        "RHS_Support": 0.04290798169801729,
+        "Support": 0.010879511947127605,
+        "Count": 107
+    },
+    {
+        "LHS": [
+            "curd"
+        ],
+        "RHS": [
+            "yogurt"
+        ],
+        "Confidence": 0.3244274809160305,
+        "Lift": 2.325615360648076,
+        "Conviction": 1.2737318294227638,
+        "Leverage": 0.009852675914149298,
+        "LHS_Count": 524,
+        "LHS_Support": 0.05327910523640061,
+        "RHS_Count": 1372,
+        "RHS_Support": 0.13950177935943062,
+        "Support": 0.01728520589730554,
+        "Count": 170
+    }
+]
