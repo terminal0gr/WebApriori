@@ -119,10 +119,15 @@
     chdir('../Python');
     //asychronous call
     //exec($input.' > /dev/null 2>&1 &');
-    exec($input, $output);
-    //exec($input);
+    //exec($input, $output);
     //alternative to exec
+
+    ob_start();
+    passthru($input);
+    $output = ob_get_contents();
+    ob_end_clean();
     //$output = passthru($input);
+
     http_response_code(200);
     $JsonReq = array('http_response_code' => 200, 'title' => 'ok', 'message' => $output);
     print json_encode($JsonReq);

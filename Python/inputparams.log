@@ -2,9 +2,9 @@ Identity      :79d1727987f200802593e3599119c966
 min_support   :0.01
 min_confidence:0.2
 min_lift      :1.5
-max_length    :2
+max_length    :4
 SortIndex     :-3
-Dataset Name  :aprioribase.sql
+Dataset Name  :groceries.csv
 Dataset Sep   :,
 Dataset Type  :1
 Output Type   :-2
