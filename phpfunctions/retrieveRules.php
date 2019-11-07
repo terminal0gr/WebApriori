@@ -129,7 +129,7 @@
     //$output = passthru($input);
 
     http_response_code(200);
-    $JsonReq = array('http_response_code' => 200, 'title' => 'ok', 'message' => $output);
+    $JsonReq = array('http_response_code' => 200, 'title' => $input, 'message' => $output);
     print json_encode($JsonReq);
     //print json_encode($output);
     exit();   
