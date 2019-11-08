@@ -27,7 +27,7 @@ function guestlogin() {
     });
 };
                         
-function MyModal(title="association rules mining",maincontext="") {
+function MyModal(title="association rules mining",maincontext="", ConfirmFunc=false) {
     if ($("#MyModal")) {
         var str = '<div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';
         str +=    '    <div class="modal-dialog" role="document">';
@@ -42,7 +42,13 @@ function MyModal(title="association rules mining",maincontext="") {
         str +=    '               ' + maincontext; 
         str +=    '            </div>';
         str +=    '            <div class="modal-footer">'; 
-        str +=    '                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>'; 
+        if (ConfirmFunc) {
+            str +=    '                <button type="button" id="MyModalYes" class="btn btn-primary">Yes</button>'; 
+            str +=    '                <button type="button" id="MyModalNo" class="btn btn-primary" data-dismiss="modal">No</button>'; 
+        }
+        else {
+            str +=    '                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>'; 
+        }
         str +=    '            </div>'; 
         str +=    '        </div>'; 
         str +=    '    </div>'; 

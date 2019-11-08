@@ -60,7 +60,7 @@
 			M_F();
 			VT();
 
-			GetDatasetFilelist();
+			GetDatasetFilelist();	
 
 			$('#SignOut').click(function() {
 				sessionStorage.clear();
@@ -172,20 +172,24 @@
 						
 
 //TODO
-//1. fetch right results
-//2. reload table
 //3. upload JSON or Text to the user
 //4. delete dataset
-						if (resultsTable) {
-							//resultsTable.rows().draw();
-							//$('#showResultsTbl').DataTable().ajax,reload()
-							//alert(res.title);
-						} else {
-							res=JSON.parse(res.message);
+                        //MyModal(res.title, res.message);
 
+						try {
+							resm=JSON.parse(res.message);
+						}
+						catch(err){
+							MyModal("Error", res.message);
+							return;
+						}
+
+						if (resultsTable) {
+							resultsTable.clear().rows.add(resm.rules).draw();
+						} else {
 							resultsTable = $('#showResultsTbl').DataTable( {
 								stateSave: true,
-								data: res.rules,
+								data: resm.rules,
 								columns: [
 									{ "title" : "#",
 										"data"  : function ( row, type, val, meta ) {
@@ -399,8 +403,15 @@
 			var x = document.getElementById("dataset");
 			if (!x.value) {
 				MyModal("Information","No dataset to delete.");
+				return;
+			}
+            var filename = x.value.split("/").pop();
+			if (confirm("Are you sure you want to delete dataset " + filename + ";")){
+				
 			}
 		};
+
+
 
 		//Load & delete filters ...start
 		// function SelectFilter() {
@@ -726,19 +737,19 @@
 
 	<!-- <div class="collapse" id="collapseInfo"> -->
 		<div id="infoForDS" class="udfwidth mx-auto border rounded p-2" style="display:none">
-				<p><b>1) Market Basket list.</b> No header is expected, The number of columns is undefined (Default). 
-				If header row exists, then participant columns must be declared in args starting from arg[1:], 
-				In arg[0] the string representing the absent item must be declared. If absent item is nothing or not exists then assign '' or 'nan'.
-				</br> 
-				<b>2) Order/Invoice detail.</b> Header line is mandatory in that type. Number of columns is fixed in the dataset. 
-				arg[0] represents the primary key column and arg[1] represent the items column and are both required in *args.
-				</br> 
-				<b>3) Sparce item Dataset.</b> Header line is mandatory in that type. Number of columns is fixed in the dataset. 
-				Item columns are mandatory to be declared in args[1:].
-				In arg[0] the string of absent item must be declared!!! If absent item is nothing then assign '' or 'nan'. 
-			    </br>
-			    <b>4) Columns with multiple categorized values.</b> Header line is optional. 
-				Number of columns is fixed, optionally, items columns are expected in args in case that header line exists.
+			<p><b>1) Market Basket list.</b> No header is expected, The number of columns is undefined (Default). 
+			If header row exists, then participant columns must be declared in extra paramaters field (comma separated) starting from the 2nd parameter, 
+			In 1st parameter the string representing the absent item must be declared. If absent item is nothing or not exists then assign '' or 'nan'.
+			</br> 
+			<b>2) Order/Invoice detail.</b> Header line is mandatory in that type. Number of columns is fixed in the dataset. 
+			In extra paramaters field (comma separated), 1st parameter represents the primary key column while 2nd parameter represents the items column and are both mandatory.
+			</br> 
+			<b>3) Sparce item Dataset.</b> Header line is mandatory in that type. Number of columns is fixed in the dataset. 
+			Item columns are mandatory to be declared from the 2nd parameter In extra paramaters field (comma separated).
+			In 1st parameter, the string of absent item must be declared!!! If absent item is nothing then assign '' or 'nan'. 
+			</br>
+			<b>4) Columns with multiple categorized values.</b> Header line is optional. 
+			Number of columns is fixed, optionally, items columns are expected in extra paramaters field (comma separated) in case that header line exists.
 		</div>
 	<!-- </div> -->
 
@@ -752,7 +763,7 @@
 					<label for="separator">Separator</label>			
 				</div>
 				<div class="col-1">	
-					<button type="button" id="deleteDataset" class="btn mt-n2 float-right" data-trigger="hover" data-toggle="tooltip" title="Delete the current dataset"  onclick="deletecurrentDataset()">
+					<button type="button" id="deleteDataset" class="btn mt-n2 float-right" data-trigger="hover" data-toggle="tooltip" title="Delete current dataset"  onclick="deletecurrentDataset()">
 						<img src="images/delete32grey.png" width="24" height="24" alt="">
 					</button>
 				</div>

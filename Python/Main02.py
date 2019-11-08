@@ -383,10 +383,18 @@ def prepare_records(datasetName, datasetSep, datasetType, *args):
     if datasetType==1:
         if len(args)==0:
             with open(filepath, mode='r') as f:
-                reader = csv.reader(f, delimiter=datasetSep)
-                return list(reader)
+                try:
+                    reader = csv.reader(f, delimiter=datasetSep)
+                    return list(reader)
+                except:
+                    return None
+
         else:
-            dataset = pd.read_csv(filepath, sep=datasetSep)
+            try:
+                dataset = pd.read_csv(filepath, sep=datasetSep)
+            except:
+                return None
+                
             #use only added columns
             if len(args)>1:
                 dataset = dataset[list(args[1:])]
@@ -397,7 +405,10 @@ def prepare_records(datasetName, datasetSep, datasetType, *args):
             return(records)
             
     elif datasetType==2:
-        dataset = pd.read_csv(filepath, sep=datasetSep)
+        try:
+            dataset = pd.read_csv(filepath, sep=datasetSep)
+        except:
+            return None
 
         groupCol = args[0]
         itemsCol = args[1]
@@ -425,7 +436,12 @@ def prepare_records(datasetName, datasetSep, datasetType, *args):
         return(records)
                 
     elif datasetType==3:
-        dataset = pd.read_csv(filepath, sep=datasetSep)
+    
+        try:
+            dataset = pd.read_csv(filepath, sep=datasetSep)
+        except:
+            return None
+        
         dataset = dataset[list(args[1:])]
         
         #put the name of product in item#
@@ -440,7 +456,12 @@ def prepare_records(datasetName, datasetSep, datasetType, *args):
                             
     elif datasetType==4:
         if len(args)>0:
-            dataset = pd.read_csv(filepath, sep=datasetSep)
+        
+            try:
+                dataset = pd.read_csv(filepath, sep=datasetSep)
+            except:
+                return None
+                
             dataset = dataset[list(args)]
             
             for arg in args:
@@ -451,7 +472,11 @@ def prepare_records(datasetName, datasetSep, datasetType, *args):
             
         else:
             with open(filepath, mode='r') as f:
-                reader = csv.reader(f, delimiter=datasetSep)
+                try:
+                    reader = csv.reader(f, delimiter=datasetSep)
+                except:
+                    return None
+                    
                 return list(reader)            
             
     else:
@@ -590,7 +615,7 @@ Dataset types:
 #1--> Market Basket list. No header is expected, The number of columns is undefined (Default)
 #sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "dataset.csv", ',', '1', '-1']
 #sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, 'store_data.csv', ',', '1', '1']
-sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries.csv", ",", "1", '-2']
+#sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries.csv", ",", "1", '-2']
 
 #1--> Market Basket list. There is a header, so the participant columns must be declared in args
 #sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries - groceries.csv", ",", "1", '2', 'nan', "Item 1","Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10", "Item 11", "Item 12", "Item 13", "Item 14", "Item 15", "Item 16", "Item 17", "Item 18", "Item 19", "Item 20", "Item 21", "Item 22", "Item 23", "Item 24", "Item 25", "Item 26", "Item 27", "Item 28", "Item 29", "Item 30", "Item 31", "Item 32"]
@@ -714,18 +739,23 @@ if len(sys.argv)>11:
     records=prepare_records(datasetName, datasetSep, datasetType, *sys.argv[11:])
 else:
     records=prepare_records(datasetName=datasetName, datasetSep=datasetSep, datasetType=datasetType)
-recordTime=time()-recordTime
     
-assocTime=time()
-association_results = list(apriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length))
-association_results = transform_association_rules(association_results)
-assocTime=time()-assocTime
+if records is not None:
 
-descending=False
-if ssort<0:
-    descending=True
+    recordTime=time()-recordTime
+        
+    assocTime=time()
+    association_results = list(apriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length))
+    association_results = transform_association_rules(association_results)
+    assocTime=time()-assocTime
 
-output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, outputType=outputType, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
+    descending=False
+    if ssort<0:
+        descending=True
 
+    output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, outputType=outputType, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
+
+else:
+    print("Couldn't retrieve detaset records")
     
     
