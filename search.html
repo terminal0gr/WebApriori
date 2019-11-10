@@ -2,6 +2,11 @@
 <html>
 <head>
 
+	<!-- TODO
+	> save/fetch apriori filters for each dataset
+	> upload JSON or Text to the user
+	-->
+
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130197414-1"></script>
 	<script>
@@ -167,15 +172,9 @@
 					if (isJSON(response)) {
 						res=JSON.parse(response);
 						if (res.http_response_code!=200) {
-							MyModal(res.http_response_code, res.message);
+							MyModal(res.title, res.message);
 						} else {					
 						
-
-//TODO
-//3. upload JSON or Text to the user
-//4. delete dataset
-                        //MyModal(res.title, res.message);
-
 						try {
 							resm=JSON.parse(res.message);
 						}
@@ -316,7 +315,7 @@
 					try {
 						str='<option value="" disabled selected >Choose a dataset or dblclick to upload a new</option>';
 						res.forEach(function(data, index){
-							str += '<option value="' + data.filepath + '">(' + data.datasetType + ') ' + data.filename + '</option>'   
+							str += '<option value="' + data.datasetType + data.filename + '">(' + data.datasetType + ') ' + data.filename + '</option>'   
 						});
 						$("#dataset").html(str);
 					}
@@ -400,14 +399,63 @@
 		};
 
 		function deletecurrentDataset() {
+			if (!sessionStorage.getItem('token')) {
+				MyModal("Error", "You are not signed in!!! Please sign in/up");
+				setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
+				return;
+			}
+
 			var x = document.getElementById("dataset");
 			if (!x.value) {
 				MyModal("Information","No dataset to delete.");
 				return;
 			}
-            var filename = x.value.split("/").pop();
-			if (confirm("Are you sure you want to delete dataset " + filename + ";")){
-				
+			if (confirm("Are you sure you want to delete dataset " + x.value.substr(1) + ";")){
+				var formData = new FormData();
+				formData.set("token",sessionStorage.getItem('token'));
+				formData.set("dataset",x.value);
+				$.ajax({
+					type: 'POST' ,
+					url: 'phpfunctions/deleteDataset.php',
+					data: formData,
+					contentType: false,
+                	cache: false,
+                	processData:false
+				}) 	
+				.done(function(response) {
+					if (isJSON(response)) {
+						res=JSON.parse(response);
+						try {
+							MyModal(res.title, res.message);
+							GetDatasetFilelist();
+						}
+						catch(err) {
+							MyModal("Error", err.message);
+						}
+					}
+					else {
+						MyModal("Error", response);
+					}
+				}).fail(function( jqXHR, textStatus, thrownError ) {
+					if (jqXHR.responseText) {
+						if (isJSON(jqXHR.responseText)) {
+							res=JSON.parse(jqXHR.responseText);
+							MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+							if (res.http_response_code>=400) {
+								setTimeout(function() {
+									sessionStorage.clear();
+									window.location.href='index.html';
+								}, 3000);	
+							}
+						}
+						else alert(jqXHR.responseText);
+					} else {
+						MyModal("association rules",'Unknown error occured!');
+					}
+				});
 			}
 		};
 
@@ -737,6 +785,8 @@
 
 	<!-- <div class="collapse" id="collapseInfo"> -->
 		<div id="infoForDS" class="udfwidth mx-auto border rounded p-2" style="display:none">
+			<h2>Supported dataset types</h2>
+			<br>
 			<p><b>1) Market Basket list.</b> No header is expected, The number of columns is undefined (Default). 
 			If header row exists, then participant columns must be declared in extra paramaters field (comma separated) starting from the 2nd parameter, 
 			In 1st parameter the string representing the absent item must be declared. If absent item is nothing or not exists then assign '' or 'nan'.
@@ -762,10 +812,8 @@
 				<div class="col-2">	
 					<label for="separator">Separator</label>			
 				</div>
-				<div class="col-1">	
-					<button type="button" id="deleteDataset" class="btn mt-n2 float-right" data-trigger="hover" data-toggle="tooltip" title="Delete current dataset"  onclick="deletecurrentDataset()">
-						<img src="images/delete32grey.png" width="24" height="24" alt="">
-					</button>
+				<div class="col-1">
+					<button type="button" class="btn mt-n2 float-right" onclick="toggleDisplay('#infoForDS')" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button>
 				</div>
 			</div>
 			<div class="form-row">
@@ -776,6 +824,11 @@
 				</div>	
 				<div class="col-2">	
 					<input type="text" id="separator" name="separator" class="form-control" data-trigger="hover" data-toggle="tooltip" title="the separator of the items in the CSV file. The most common characters are (,) and (;)" placeholder=",">		
+				</div>
+				<div class="col-1">	
+					<button type="button" id="deleteDataset" class="btn mt-n2 float-right" data-trigger="hover" data-toggle="tooltip" title="Delete current dataset"  onclick="deletecurrentDataset()">
+						<img src="images/delete32grey.png" width="24" height="24" alt="">
+					</button>
 				</div>
 			</div>	
 		</div>

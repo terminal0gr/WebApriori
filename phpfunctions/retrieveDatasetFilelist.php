@@ -47,7 +47,7 @@
     for ($i = 1; $i < 5; $i++) {
         $log_directory="../Python/datasets/".$identity."/".$i."/";
         foreach(glob($log_directory.'*.*') as $file) {
-            $filelist[] = array('datasetType' => $i, 'filepath' => $file, 'filename' => basename($file));
+            $filelist[] = array('datasetType' => $i, 'filename' => basename($file));
         };
     }
     if (count($filelist)>10) {

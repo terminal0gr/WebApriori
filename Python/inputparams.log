@@ -1,8 +1,8 @@
 Identity      :79d1727987f200802593e3599119c966
-min_support   :0.02
+min_support   :0.01
 min_confidence:0.2
 min_lift      :1.5
-max_length    :3
+max_length    :4
 SortIndex     :-3
 Dataset Name  :store_data.csv
 Dataset Sep   :,

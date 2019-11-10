@@ -80,12 +80,10 @@
         exit();
     }
 
-    //pathinfo path and name info
-    $prmFile = pathinfo($_POST['dataset']);
+    //get dataset type is the fisrt character of $_POST['dataset']
+    $datasetType=substr($_POST['dataset'],0,1);
     //get the filename
-    $filename=basename($_POST['dataset']);
-    //get the last folder from the path
-    $datasetType=basename($prmFile['dirname']);
+    $filename=substr($_POST['dataset'],1);
 
     if (empty($filename)) {
         http_response_code(201);
