@@ -487,7 +487,7 @@ def prepare_records(datasetName, datasetSep, datasetType, *args):
 # output operations
 ##################################################################################
 
-def output_association_rules(association_results, sort_index, descending=True, fileName=None, outputType=1, **kwargs):
+def output_association_rules(association_results, sort_index, descending=True, fileName=None, outputType=-1, **kwargs):
     association_results.sort(reverse=descending, key=lambda x: x[sort_index])
 
     records = kwargs.get('records')
@@ -495,7 +495,7 @@ def output_association_rules(association_results, sort_index, descending=True, f
     rulesCount = kwargs.get('rulesCount')
     assocTime = kwargs.get('assocTime')
     
-    if fileName:
+    if fileName and outputType>0:
         if not os.path.exists('output\\' + identity + '\\' + str(datasetType)):
             os.makedirs('output\\' + identity + '\\' + str(datasetType))
         
@@ -508,78 +508,25 @@ def output_association_rules(association_results, sort_index, descending=True, f
             
         file = open('output\\' + identity + '\\' + str(datasetType) + '\\' + os.path.splitext(fileName)[0] + ext,'w') 
         
-    if outputType==1:        
+    if abs(outputType)==1:        
     
-        Sline='Input Parameters\n'
-
-        #dictRules['datasetArgs'] = datasetArgs
-        
-        if min_support:
-            Sline+='Minimum Support   :' + '{0:.3f}'.format(min_support)
-        if min_confidence:
-            Sline+='     Minimum confidence:' + '{0:.3f}'.format(min_confidence)  
-        Sline+='\n'
-        if min_lift:
-            Sline+='Minimum Lift      :' + '{0:.3f}'.format(min_lift)
-        if max_length:
-            Sline+='     Maximum rule items:' + '{:05d}'.format(max_length)      
-        Sline+='\n'
-         
-        if ssort:
-            Sline+='Sort by '
-            #sort_order
-#0 by LHS, 1 by RHS, 2 by confidence, 3 by lift, 4 by conviction, 5 by LHS support, 6 by RHS support, 7 by rule support 
-#negatives meaning descending
-            if ssort==0:
-                Sline+='LHS (body) '
-            elif abs(ssort)==1:
-                Sline+='RHS (head) '           
-            elif abs(ssort)==2:
-                Sline+='confidence '
-            elif abs(ssort)==3:
-                Sline+='lift '            
-            elif abs(ssort)==4:
-                Sline+='conviction '    
-            elif abs(ssort)==5:
-                Sline+='LHS support '            
-            elif abs(ssort)==6:
-                Sline+='RHS support '  
-            elif abs(ssort)==7:
-                Sline+='Rule support '  
-            else:
-                Sline+='Unknown ' 
-
-            if ssort>0:
-                Sline+='acsending\n'
-            else:
-                Sline+='descending\n'
-        
-        if datasetName:
-            Sline+='Dataset file name :' + datasetName + '\n' 
-        if datasetSep:
-            Sline+='Dataset separator : ' + datasetSep + '\n' 
-        if datasetType:
-            Sline+='Dataset Type      :' + str(datasetType) + '\n' 
-        Sline+=    'Output Type       :Plain text\n'
-        if datasetArgs:
-            Sline+='Dataset parameters: ' + datasetArgs + '\n' 
-            
-        Sline+='-----------------------------------------------------\n\n' 
+        Sline=''
         if records:
-            Sline+='Records           :' + '{:06d}'.format(records)
+            Sline+='Records          :' + '{:06d}'.format(records)
         if recordTime:
-            Sline+='   Transformation time:' + '{0:.3f}'.format(recordTime)
+            Sline+='  Transformation time:' + '{0:.3f}'.format(recordTime)
         Sline+='\n'
         if rulesCount:
-            Sline+='Association Rules :' + '{:06d}'.format(len(association_results))
+            Sline+='Association Rules:' + '{:06d}'.format(len(association_results))
         if assocTime:
-            Sline+='          Time elapsed:' + '{0:.3f}'.format(assocTime)
+            Sline+='         Time elapsed:' + '{0:.3f}'.format(assocTime)
         Sline+='\n'
-        Sline+='-----------------------------------------------------\n'
+        Sline+='---------------------------------------------------\n'
  
-        if fileName:
+        if fileName and outputType>0:
             file.write(Sline)
-        print(Sline)
+        else:
+            print(Sline)
         
         Vr=0
         for item in association_results:
@@ -608,8 +555,7 @@ def output_association_rules(association_results, sort_index, descending=True, f
 
             str1 += "}([" + str(item[8]) + "]" + '{0:.3f}'.format(item[9]) + ")"
 
-            #output to filename
-            if fileName:
+            if fileName and outputType>0:
                 file.write(str1 + '\n')
                 file.write("        Count:" + '{:05d}'.format(item[11]) +
                       "  Supp:" + '{0:.3f}'.format(item[10]) + 
@@ -617,47 +563,35 @@ def output_association_rules(association_results, sort_index, descending=True, f
                       "  Lift:" + '{0:.3f}'.format(item[3]) +
                       "  Conv:" + '{0:.3f}'.format(item[4]) +
                       "  Levr:" + '{0:.3f}'.format(item[5]) + '\n')
-            #output to console          
-            print(str1)    
-            print("        Count:" + '{:05d}'.format(item[11]) +
-                  "  Supp:" + '{0:.3f}'.format(item[10]) + 
-                  "  Conf:" + '{0:.3f}'.format(item[2]) + 
-                  "  Lift:" + '{0:.3f}'.format(item[3]) +
-                  "  Conv:" + '{0:.3f}'.format(item[4]) +
-                  "  Levr:" + '{0:.3f}'.format(item[5]))               
+            else:
+                print(str1)    
+                print("        Count:" + '{:05d}'.format(item[11]) +
+                      "  Supp:" + '{0:.3f}'.format(item[10]) + 
+                      "  Conf:" + '{0:.3f}'.format(item[2]) + 
+                      "  Lift:" + '{0:.3f}'.format(item[3]) +
+                      "  Conv:" + '{0:.3f}'.format(item[4]) +
+                      "  Levr:" + '{0:.3f}'.format(item[5]))               
  
-    elif outputType==2:
+    elif abs(outputType)==2:
         Hlist = ['LHS', 'RHS', 'Confidence', 'Lift', 'Conviction', 'Leverage', 'LHS_Count', 'LHS_Support', 'RHS_Count', 'RHS_Support', 'Support', 'Count'] 
         dictRules = {}
-        
-        dictRules['min_support'] = min_support
-        dictRules['min_confidence'] = min_confidence
-        dictRules['min_lift'] = min_lift
-        dictRules['max_length'] = max_length
-        dictRules['ssort'] = ssort
-        dictRules['datasetName'] = datasetName
-        dictRules['datasetSep'] = datasetSep
-        dictRules['datasetType'] = datasetType
-        dictRules['outputType'] = outputType
-        dictRules['datasetArgs'] = datasetArgs
-        
         dictRules['Records'] = records
         dictRules['RecordsCreationTime'] = '{0:.3f}'.format(recordTime)
         dictRules['RulesCount'] = len(association_results)
         dictRules['RulesCreationTime'] = '{0:.3f}'.format(assocTime)
-        
         dictRules['rules'] = []
         for arule in association_results:
             dictRules['rules'].append(dict(zip(Hlist, arule)))
             
-        if fileName:
+        if outputType>0:
             json.dump(dictRules, file, indent=4)
-        print(json.dumps(dictRules, indent=4)) 
+        else:
+            print(json.dumps(dictRules, indent=4)) 
 
     else:
         print("Unknown output type")
  
-    if fileName:
+    if fileName and outputType>0:
         file.close()     
 
  
@@ -768,14 +702,14 @@ if len(sys.argv)>9:
 
 '''
 #1=text file, 2=json file
-#output to to both console and file if datasetName is given
+#negatives redirect output to console instead file
 '''
 outputType=1
 if len(sys.argv)>10:
 	try:
 		outputType=int(sys.argv[10])
 	except:
-		outputType=1 # Default is 1 print text in console.
+		outputType=-1 # Default is -1 print text in console.
 
 datasetArgs=''
 if len(sys.argv)>11:

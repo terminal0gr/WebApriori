@@ -5,6 +5,7 @@
 	<!-- TODO
 	> save/fetch apriori filters for each dataset
 	> upload JSON or Text to the user
+	> clean code
 	-->
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -459,6 +460,73 @@
 			}
 		};
 
+		function retrieveInputParameters() {
+			if (!sessionStorage.getItem('token')) {
+				MyModal("Error", "You are not signed in!!! Please sign in/up");
+				setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
+				return;
+			}
+
+			var x = document.getElementById("dataset");
+			if (!x.value) {
+				return;
+			}
+
+			var formData = new FormData();
+			formData.set("token",sessionStorage.getItem('token'));
+			formData.set("dataset",x.value);
+			$.ajax({
+				type: 'POST' ,
+				url: 'phpfunctions/retrieveInputParameters.php',
+				data: formData,
+				contentType: false,
+				cache: false,
+				processData:false
+			}) 	
+			.done(function(response) {
+				if (isJSON(response)) {
+					res=JSON.parse(response);
+					try {
+						if (res.http_response_code) {
+							MyModal(res.title, res.message);
+							return;
+						}
+						if (res.min_support) {
+							var x = document.getElementById("min_support");
+							alert(x.innerHTML);
+							x.innerHTML=res.min_support;
+						}
+					}
+					catch(err) {
+						MyModal("Error", err.message);
+					}
+				}
+				else {
+					MyModal("Error", response);
+				}
+			}).fail(function( jqXHR, textStatus, thrownError ) {
+				if (jqXHR.responseText) {
+					if (isJSON(jqXHR.responseText)) {
+						res=JSON.parse(jqXHR.responseText);
+						MyModal(res.title, res.message);
+						if (res.http_response_code>=400) {
+							setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
+						}
+					}
+					else alert(jqXHR.responseText);
+				} else {
+					MyModal("association rules",'Unknown error occured!');
+				}
+			});
+
+		};
+
 
 
 		//Load & delete filters ...start
@@ -730,13 +798,6 @@
 			</li>			
 		</ul>
 	</nav>
-
-	<!-- Select filter button - start -->
-	<!-- <div id="loadfilterdialog" title="Filter selection" style="display: none;">
-		<select class="form-control" id="Selfilters" name="Selfilters" >
-		</select>
-	</div> -->
-	<!-- Select filter button - end -->	
 	
 	<br>
 
@@ -818,7 +879,7 @@
 			</div>
 			<div class="form-row">
 				<div class="col-9">	
-					<select id="dataset" name="dataset" class="form-control browser-default custom-select" data-trigger="hover" data-toggle="tooltip" title="Pick the dataset for which association rules would be generated">
+					<select id="dataset" name="dataset" class="form-control browser-default custom-select" data-trigger="hover" data-toggle="tooltip" title="Pick the dataset for which association rules would be generated" onchange="retrieveInputParameters()">
 						<option value="" disabled selected>Choose a dataset from the list</option>
 					</select>
 				</div>	
