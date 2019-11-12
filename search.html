@@ -3,9 +3,8 @@
 <head>
 
 	<!-- TODO
-	> save/fetch apriori filters for each dataset
+	> check python running for datasets
 	> upload JSON or Text to the user
-	> clean code
 	-->
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -41,9 +40,9 @@
 
 	<script>
 
-		$(function() {
+		var resultsTable
 
-      		var resultsTable
+		$(function() {
 
 			// initialization of tooltips in page
 			$('[data-toggle="tooltip"]').tooltip()
@@ -184,89 +183,8 @@
 							return;
 						}
 
-						if (resultsTable) {
-							resultsTable.clear().rows.add(resm.rules).draw();
-						} else {
-							resultsTable = $('#showResultsTbl').DataTable( {
-								stateSave: true,
-								data: resm.rules,
-								columns: [
-									{ "title" : "#",
-										"data"  : function ( row, type, val, meta ) {
-										return meta.row+1;
-										}},
-									{ "title" : "LHS-Body",
-										"data"  : "LHS",
-										"render": "[, ]" },
-									{ "title" : "Count/Sup",
-										"data"  : function ( row, type, val, meta ) {
-											if (type === 'display') {
-												return row.LHS_Count + ' / ' + row.LHS_Support.toFixed(3);
-											}
-											else {
-												return row.LHS_Count
-											};
-										} },
-									{ "title" : "RHS-Head",
-										"data"  : "RHS",
-										"render": "[, ]" },
-									{ "title" : "Count/Sup",
-										"data"  : function ( row, type, val, meta ) {
-											if (type === 'display') {
-												return row.RHS_Count + ' / ' + row.RHS_Support.toFixed(3);
-											}
-											else {
-												return row.RHS_Count
-											};
-										} },
-									{ "title" : "Support",
-										"data"  : "Support",
-										"render": function ( data, type, row, meta ) {
-											if (type === 'display') {
-												return data.toFixed(3);
-											} else {
-												return data
-											}
-										} },										 
-									{ "title" : "Confidence",
-										"data"  : "Confidence",
-										"render": function ( data, type, row, meta ) {
-										if (type === 'display') {
-												return data.toFixed(3);
-											} else {
-												return data
-											}
-										} },
-									{ "title" : "Lift",
-										"data"  : "Lift",
-										"render": function ( data, type, row, meta ) {
-										if (type === 'display') {
-												return data.toFixed(3);
-											} else {
-												return data
-											}
-										} },										
-									{ "title" : "Conviction",
-										"data"  : "Conviction",
-										"render": function ( data, type, row, meta ) {
-										if (type === 'display') {
-												return data.toFixed(3);
-											} else {
-												return data
-											}
-										} },
-									{ "title" : "Leverage",
-										"data"  : "Leverage",
-										"render": function ( data, type, row, meta ) {
-										if (type === 'display') {
-												return data.toFixed(3);
-											} else {
-												return data
-											}
-										} },
-								]
-							} );
-						};
+                        fillTable(resm);
+
 					} 
 				}
 				else alert(response);
@@ -291,6 +209,94 @@
 
 
 		});
+
+        function fillTable(jsonData) {
+			if (resultsTable) {
+				resultsTable.clear().rows.add(jsonData.rules).draw();
+			} else {
+				resultsTable = $('#showResultsTbl').DataTable( {
+					stateSave: true,
+					data: jsonData.rules,
+					columns: [
+						{ "title" : "#",
+							"data"  : function ( row, type, val, meta ) {
+							return meta.row+1;
+							}},
+						{ "title" : "LHS-Body",
+							"data"  : "LHS",
+							"render": "[, ]" },
+						{ "title" : "Count/Sup",
+							"data"  : function ( row, type, val, meta ) {
+								if (type === 'display') {
+									return row.LHS_Count + ' / ' + row.LHS_Support.toFixed(3);
+								}
+								else {
+									return row.LHS_Count
+								};
+							} },
+						{ "title" : "RHS-Head",
+							"data"  : "RHS",
+							"render": "[, ]" },
+						{ "title" : "Count/Sup",
+							"data"  : function ( row, type, val, meta ) {
+								if (type === 'display') {
+									return row.RHS_Count + ' / ' + row.RHS_Support.toFixed(3);
+								}
+								else {
+									return row.RHS_Count
+								};
+							} },
+						{ "title" : "Support",
+							"data"  : "Support",
+							"render": function ( data, type, row, meta ) {
+								if (type === 'display') {
+									return data.toFixed(3);
+								} else {
+									return data
+								}
+							} },										 
+						{ "title" : "Confidence",
+							"data"  : "Confidence",
+							"render": function ( data, type, row, meta ) {
+							if (type === 'display') {
+									return data.toFixed(3);
+								} else {
+									return data
+								}
+							} },
+						{ "title" : "Lift",
+							"data"  : "Lift",
+							"render": function ( data, type, row, meta ) {
+							if (type === 'display') {
+									return data.toFixed(3);
+								} else {
+									return data
+								}
+							} },										
+						{ "title" : "Conviction",
+							"data"  : "Conviction",
+							"render": function ( data, type, row, meta ) {
+							if (type === 'display') {
+									return data.toFixed(3);
+								} else {
+									return data
+								}
+							} },
+						{ "title" : "Leverage",
+							"data"  : "Leverage",
+							"render": function ( data, type, row, meta ) {
+								if (type === 'display') {
+									return data.toFixed(3);
+								} else {
+									return data
+								}
+							} 
+						},
+					]
+				} );
+			};
+			$("#showResults").show("slow");
+		};
 
 		function GetDatasetFilelist() {
 			var formData = new FormData();
@@ -491,13 +497,24 @@
 					res=JSON.parse(response);
 					try {
 						if (res.http_response_code) {
-							MyModal(res.title, res.message);
-							return;
-						}
-						if (res.min_support) {
-							var x = document.getElementById("min_support");
-							alert(x.innerHTML);
-							x.innerHTML=res.min_support;
+							// not found input parameters
+							document.getElementById('separator').value=""; 
+							document.getElementById('min_support').value=""; 
+							document.getElementById('min_confidence').value=""; 
+							document.getElementById('min_lift').value=""; 
+							document.getElementById('max_length').value=""; 
+							document.getElementById('max_length').value=""; 
+							document.getElementById('extra_parameters').value=""; 
+                            $("#showResults").hide();
+						} else {
+							document.getElementById('separator').value=res.datasetSep; 
+							document.getElementById('min_support').value=res.min_support; 
+							document.getElementById('min_confidence').value=res.min_confidence; 
+							document.getElementById('min_lift').value=res.min_lift; 
+							document.getElementById('max_length').value=res.max_length; 
+							document.getElementById('max_length').value=res.max_length; 
+							document.getElementById('extra_parameters').value=res.datasetArgs; 
+							fillTable(res);
 						}
 					}
 					catch(err) {
@@ -524,237 +541,8 @@
 					MyModal("association rules",'Unknown error occured!');
 				}
 			});
-
 		};
-
-
-
-		//Load & delete filters ...start
-		// function SelectFilter() {
-				
-		// 	//request data from php
-		// 	var token = sessionStorage.getItem('token');
-		// 	$.post('/phpfunctions/loadfiltersname.php', {
-		// 		token: token
-		// 	}, function(data) { //data from php
-		// 		if (data != "0 results"){
-		// 			data = JSON.parse(data);
-		// 			$('#Selfilters').empty();
-		// 			$('#Selfilters').append('<option value="" selected disabled >select filter</option>'); //Default option
-		// 			data.forEach(function(FilterName){ //fill select options
-		// 				$('#Selfilters').append("<option id='" + FilterName.FilterName + "' value='"+ FilterName.FilterName + "'>"+ FilterName.FilterName + "   /   " + FilterName.FilterDate +"</option>");
-		// 			});
-		// 		}
-		// 		else {
-		// 			$('#Selfilters').empty();
-		// 			$('#Selfilters').append('<option value="" selected disabled >select filter</option>'); //Default option
-		// 		}		
-		// 	});
-			
-		// 	$( "#loadfilterdialog" ).show();
-		// 	$( "#loadfilterdialog" ).dialog({
-		// 		buttons: {
-		// 			"Load filter": function() {
-		// 				//get selection
-		// 				var doc = document.getElementById('Selfilters');
-		// 				var FilterName = doc.options[doc.selectedIndex].value;
-		// 				//request data from php
-		// 				var token = sessionStorage.getItem('token');
-		// 				if (FilterName != ""){
-		// 					$.post('/phpfunctions/loadfilter.php', {
-		// 						token: token,
-		// 						FilterName: FilterName
-		// 					}, function(data) { //data from php
-		// 						data = JSON.parse(data);
-		// 						//fill data
-		// 						data.forEach(function(Filter){ //fill form filters
-		// 							document.getElementsByName('direction')[(Filter.FilterOneway-1)].checked=true;
-		// 							if (Filter.FilterNonStop == 'on'){
-		// 								document.getElementById('nonstop').checked = true;
-		// 							}
-		// 							else {
-		// 								document.getElementById('nonstop').checked = false;
-		// 							}
-									
-		// 							document.getElementById('origin_descr').value = Filter.FilterOrigin;
-		// 							var matches = Filter.FilterOrigin.match(/\[(.*?)\]/);
-		// 							if (matches) {
-		// 								var submatch = matches[1];
-		// 							}							
-		// 							document.getElementById('origin').value = submatch;
-									
-		// 							document.getElementById('destination_descr').value = Filter.FilterDestination;
-		// 							var matches = Filter.FilterDestination.match(/\[(.*?)\]/);
-		// 							if (matches) {
-		// 								var submatch = matches[1];
-		// 							}								
-		// 							document.getElementById('destination').value = submatch;
-
-		// 							//parse tomorrow for comparison
-		// 							var today = new Date();
-		// 							var dd = today.getDate()+1;
-		// 							var mm = today.getMonth()+1; //January is 0!
-		// 							var yyyy = today.getFullYear();
-		// 							if(dd<10) {
-		// 								dd = '0'+dd
-		// 							} 
-		// 							if(mm<10) {
-		// 								mm = '0'+mm
-		// 							} 
-		// 							tomorrow =  yyyy + '-' + mm + '-' + dd;
-
-		// 							if (Filter.FilterDDate != '0000-00-00'){
-		// 								if (Filter.FilterDDate<tomorrow) {
-		// 									MyModal("Information","Departure date has passed. Tomorrow date will be used instead.");
-		// 									midDate=tomorrow;
-		// 								} else {
-		// 									midDate = Filter.FilterDDate;
-		// 								}
-		// 								var mySQLDate = midDate.split("-");
-		// 								var myJSDate =  mySQLDate[2]+ "/" +mySQLDate[1]+ "/" +mySQLDate[0];
-		// 								document.getElementById('departure_date').value = myJSDate;
-		// 								document.getElementById('ddate').value = midDate;
-		// 							}
-		// 							else {
-		// 								document.getElementById('departure_date').value = "";
-		// 							}
-									
-		// 							if (Filter.FilterRDate != '0000-00-00' && Filter.FilterOneway == '2'){
-		// 								if (Filter.FilterRDate<tomorrow) {
-		// 									MyModal("Information","Arrival date has passed. Tomorrow date will be used instead.");
-		// 									midDate=tomorrow;
-		// 								} else {
-		// 									midDate = Filter.FilterRDate;
-		// 								}
-		// 								var mySQLDate = midDate.split("-");
-		// 								var myJSDate =  mySQLDate[2]+ "/" +mySQLDate[1]+ "/" +mySQLDate[0];
-		// 								document.getElementById("return_date").type = "text";
-		// 								document.getElementById('return_date').value = myJSDate;
-		// 								document.getElementById('rdate').value = midDate;
-		// 							}
-		// 							else {
-		// 								document.getElementById("return_date").type = "hidden";
-		// 								document.getElementById('return_date').value = "";
-		// 							}
-									
-		// 						});						
-		// 					});
-		// 					$( this ).dialog( "close" );
-		// 				}
-		// 				else {
-		// 					MyModal("Association rules mining","Nothing to load");
-		// 				}
-		// 			},
-		// 			"Delete filter": function() {
-		// 				//get selection
-		// 				var doc = document.getElementById("Selfilters");
-		// 				var FilterName = doc.options[doc.selectedIndex].value;
-		// 				if (FilterName != ""){
-		// 					//request data from php
-		// 					var token = sessionStorage.getItem('token');
-		// 					$.post('/phpfunctions/deletefilter.php', {
-		// 						token: token,
-		// 						FilterName: FilterName
-		// 					}, function(data) { //data from php
-		// 						MyModal("Association rules mining",data);
-		// 					});
-		// 					$( this ).dialog( "close" );
-		// 				}
-		// 				else { //trying to delete default selection option
-		// 					MyModal("Association rules mining","Nothing to delete");
-		// 				}
-		// 			}
-		// 		},
-		// 		clickOutside: true, // clicking outside the dialog will close it
-		// 		clickOutsideTrigger: "#Selfilters"  // Element (id or class) that triggers the dialog opening 			
-		// 	});
-		// }
-		//Load & delete filters ...end
-	
-// 		function CheckFilters() {
-// 			if ($('#direction').val()!=1 && $('#direction').val()!=2) {
-// 				MyModal("Wrong filters!", "Declare One way or round trip please!");
-// 				return;
-// 			}
-// 			if (!$('#origin_descr').val()) {
-// 				MyModal("Wrong filters!", "Please choose departure airport please!");
-// 				return;
-// 			}
-// 			if (!$('#departure_date').val()) {
-// 				MyModal("Wrong filters!", "Please choose departure date please!");
-// 				return;
-// 			}
-// 			if (!$('#destination_descr').val()) {
-// 				MyModal("Wrong filters!", "Please choose destination airport please!");
-// 				return;
-// 			}
-// 			if ($('#direction').val()==2) {
-// 				if (!$('#return_date').val()) {
-// 					MyModal("Wrong filters!", "Please choose return date please!");
-// 					return;
-// 				}
-// 			}
-// 			$('#MyPrompt').modal('show')
-// 		};
-
-// 		//Save filter ...start
-// 		function SaveFilter(SaveFilterName) {
-// 			var msg;
-// 			var format = /[!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?]/;
-// 			var illegalC;
-// 			//var SaveFilterName = prompt("Give a name to save this record");
-// 			if (SaveFilterName != null) {
-// 				SaveFilterName = SaveFilterName.trim();
-// 				if(format.test(SaveFilterName)){
-// 					illegalC = "1";
-// 				} else {
-// 					illegalC = "0";
-// 				}
-// 				if (SaveFilterName == null || SaveFilterName == "" ){
-// 				msg = "Please fill a name";
-// 				MyModal("Association rules mining",msg);
-// 				}
-// 				else if (illegalC == "1"){
-// 					msg = "Please use only letters and numbers without special characters";
-// 					MyModal("Association rules mining",msg);
-// 					}
-// 				else {
-// 					var token = sessionStorage.getItem('token');
-// //					var playload = JSON.parse(atob(token.split('.')[1]));
-// //					var email = playload;
-
-// 					var direction = $('input[name="direction"]:checked').val();
-// 					var nonstop = $('input[name="nonstop"]:checked').val();
-// 					if (nonstop != "on") {
-// 						nonstop = "off";
-// 						}
-				
-// 					var origin_descr = $('input[name="origin_descr"]').val();
-// 					var destination_descr = $('input[name="destination_descr"]').val();
-// 					var departure_date = $('input[name="departure_date"]').val();
-// 					var return_date = $('input[name="return_date"]').val();
-					
-// 					$.post('/phpfunctions/savefilter.php', {
-// 						token: token,
-// 						SaveFilterName: SaveFilterName,
-// 						direction: direction,
-// 						nonstop: nonstop,
-// 						origin_descr: origin_descr,
-// 						destination_descr: destination_descr,
-// 						departure_date: departure_date,
-// 						return_date: return_date
-// 					}, function(data) {
-// 						MyModal("Association rules mining",data);
-// 					});
-// 				}
-// 			}
-
-// 		}
-
-	</script>
-	<!-- Save filter ...end -->
-
-	
+    </script>
 </head>
 
 <body>
@@ -789,8 +577,6 @@
                     <p id="person" class="text-primary text-center"></p>
 					<div class="dropdown-divider"></div>
 					<a id="uploadDatasetDD" class="dropdown-item" onclick="UploadDataset()" href="#"><img src="images/upload24Black.png" alt=""> Upload dataset</a>
-					<a id="savefilters" class="dropdown-item" onclick="CheckFilters()"    href="#"><img src="images/save24.png"     alt=""> Save search filters</a>
-					<a id="loadfilters" class="dropdown-item" onclick="SelectFilter()"    href="#"><img src="images/load24.png"     alt=""> Load search filters</a>
 					<div class="dropdown-divider"></div>
 					<a id="settings"    class="dropdown-item" href="profile.html"><img src="images/settings24.png" alt="">Profile</a>
 					<a id="SignOut"     class="dropdown-item" href="#"><img src="images/signout24.png" alt=""> Sign out</a>
@@ -941,16 +727,16 @@
 	<br>
 	<br>
 
-	<div id="showResults" class="table-responsive dataTables_wrapper dt-bootstrap4 ">
+	<div id="showResults" class="table-responsive dataTables_wrapper dt-bootstrap4 " style="display: none">
 		<table id="showResultsTbl" class="table table-striped table-bordered table-hover table-sm" style="width:100%">
 			<thead class="thead-dark">
 			</thead>
 		</table>
-  </div>
-  
-  <br>
-  <br>
-  <br>
+	</div>
+	
+	<br>
+	<br>
+	<br>
 	
 	<footer>
         <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">

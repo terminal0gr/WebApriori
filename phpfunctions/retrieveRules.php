@@ -112,7 +112,7 @@
         }
     }
 
-    $input = "python Main02.py $identity ".$_POST['min_support']." ".$_POST['min_confidence']." ".$_POST['min_lift']." ".$_POST['max_length']." -3 ".$filename." ".$_POST['separator']." ".$datasetType." -2";
+    $input = "python Main02.py $identity ".$_POST['min_support']." ".$_POST['min_confidence']." ".$_POST['min_lift']." ".$_POST['max_length']." -3 ".$filename." ".$_POST['separator']." ".$datasetType." 2 ".$_POST['extra_parameters'];
 
     chdir('../Python');
     //asychronous call
@@ -124,7 +124,13 @@
     passthru($input);
     $output = ob_get_contents();
     ob_end_clean();
-    //$output = passthru($input);
+
+    if (!$output) {
+        http_response_code(201);
+        $JsonReq = array('http_response_code' => 201, 'title' => $input, 'message' => 'Invalid parameters! Please check!');
+        print json_encode($JsonReq);
+        exit();
+    }
 
     http_response_code(200);
     $JsonReq = array('http_response_code' => 200, 'title' => $input, 'message' => $output);

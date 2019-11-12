@@ -10,9 +10,9 @@
     "outputType": 2,
     "datasetArgs": "",
     "Records": 9835,
-    "RecordsCreationTime": "0.016",
+    "RecordsCreationTime": "0.021",
     "RulesCount": 43,
-    "RulesCreationTime": "0.062",
+    "RulesCreationTime": "0.079",
     "rules": [
         {
             "LHS": [
@@ -53,8 +53,8 @@
         },
         {
             "LHS": [
-                "root vegetables",
-                "whole milk"
+                "whole milk",
+                "root vegetables"
             ],
             "RHS": [
                 "other vegetables"
@@ -291,8 +291,8 @@
         },
         {
             "LHS": [
-                "root vegetables",
-                "other vegetables"
+                "other vegetables",
+                "root vegetables"
             ],
             "RHS": [
                 "whole milk"
