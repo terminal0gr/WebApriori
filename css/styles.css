@@ -1,6 +1,6 @@
 
-.ui-autocomplete-loading {
-	background: white url("../images/loading02b.gif") right center no-repeat;
+.lightgraybackground {
+	background: #e9ecef;
 }
 
 .center-div

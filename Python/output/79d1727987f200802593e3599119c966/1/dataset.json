@@ -1,0 +1,569 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.4,
+    "max_length": 3,
+    "ssort": -3,
+    "datasetName": "dataset.csv",
+    "datasetSep": ",",
+    "datasetType": 1,
+    "outputType": 2,
+    "datasetArgs": "",
+    "Records": 1499,
+    "RecordsCreationTime": "0.010",
+    "RulesCount": 29,
+    "RulesCreationTime": "1.266",
+    "rules": [
+        {
+            "LHS": [
+                "mixes",
+                "juice"
+            ],
+            "RHS": [
+                "ketchup"
+            ],
+            "Confidence": 0.5229357798165137,
+            "Lift": 1.470695560872334,
+            "Conviction": 1.3508236260070814,
+            "Leverage": 0.024339998068536685,
+            "LHS_Count": 218,
+            "LHS_Support": 0.14543028685790527,
+            "RHS_Count": 533,
+            "RHS_Support": 0.35557038025350235,
+            "Support": 0.07605070046697798,
+            "Count": 114
+        },
+        {
+            "LHS": [
+                "shampoo",
+                "yogurt"
+            ],
+            "RHS": [
+                "juice"
+            ],
+            "Confidence": 0.5422222222222223,
+            "Lift": 1.4644884884884886,
+            "Conviction": 1.3756743978186108,
+            "Leverage": 0.02581351766198592,
+            "LHS_Count": 225,
+            "LHS_Support": 0.15010006671114076,
+            "RHS_Count": 555,
+            "RHS_Support": 0.37024683122081387,
+            "Support": 0.08138759172781855,
+            "Count": 122
+        },
+        {
+            "LHS": [
+                "ketchup",
+                "aluminumfoil"
+            ],
+            "RHS": [
+                "mixes"
+            ],
+            "Confidence": 0.5429864253393666,
+            "Lift": 1.4482858569105168,
+            "Conviction": 1.3677567223033178,
+            "Leverage": 0.02477880517187131,
+            "LHS_Count": 221,
+            "LHS_Support": 0.14743162108072047,
+            "RHS_Count": 562,
+            "RHS_Support": 0.3749166110740494,
+            "Support": 0.0800533689126084,
+            "Count": 120
+        },
+        {
+            "LHS": [
+                "sandwichbags",
+                "eggs"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.5476190476190476,
+            "Lift": 1.4477618207776937,
+            "Conviction": 1.3743899441733083,
+            "Leverage": 0.023727181251810746,
+            "LHS_Count": 210,
+            "LHS_Support": 0.1400933955970647,
+            "RHS_Count": 567,
+            "RHS_Support": 0.37825216811207474,
+            "Support": 0.07671781187458306,
+            "Count": 115
+        },
+        {
+            "LHS": [
+                "spaghettisauce",
+                "poultry"
+            ],
+            "RHS": [
+                "dinnerrolls"
+            ],
+            "Confidence": 0.5472440944881889,
+            "Lift": 1.4467705425710673,
+            "Conviction": 1.3732517330394174,
+            "Leverage": 0.02863505623718013,
+            "LHS_Count": 254,
+            "LHS_Support": 0.1694462975316878,
+            "RHS_Count": 567,
+            "RHS_Support": 0.37825216811207474,
+            "Support": 0.09272848565710473,
+            "Count": 139
+        },
+        {
+            "LHS": [
+                "beef",
+                "lunchmeat"
+            ],
+            "RHS": [
+                "shampoo"
+            ],
+            "Confidence": 0.5173913043478261,
+            "Lift": 1.4442636223787546,
+            "Conviction": 1.3297754058261062,
+            "Leverage": 0.024419659804334748,
+            "LHS_Count": 230,
+            "LHS_Support": 0.1534356237491661,
+            "RHS_Count": 537,
+            "RHS_Support": 0.35823882588392264,
+            "Support": 0.07938625750500333,
+            "Count": 119
+        },
+        {
+            "LHS": [
+                "dinnerrolls",
+                "pork"
+            ],
+            "RHS": [
+                "shampoo"
+            ],
+            "Confidence": 0.5165876777251185,
+            "Lift": 1.4420203517876211,
+            "Conviction": 1.3275647817499248,
+            "Leverage": 0.022289264668774067,
+            "LHS_Count": 211,
+            "LHS_Support": 0.14076050700466977,
+            "RHS_Count": 537,
+            "RHS_Support": 0.35823882588392264,
+            "Support": 0.07271514342895263,
+            "Count": 109
+        },
+        {
+            "LHS": [
+                "pasta",
+                "icecream"
+            ],
+            "RHS": [
+                "papertowels"
+            ],
+            "Confidence": 0.5265306122448979,
+            "Lift": 1.4402726053925219,
+            "Conviction": 1.3399450208184764,
+            "Leverage": 0.026306619356199656,
+            "LHS_Count": 245,
+            "LHS_Support": 0.16344229486324216,
+            "RHS_Count": 548,
+            "RHS_Support": 0.3655770513675784,
+            "Support": 0.08605737158105403,
+            "Count": 129
+        },
+        {
+            "LHS": [
+                "mixes",
+                "juice"
+            ],
+            "RHS": [
+                "spaghettisauce"
+            ],
+            "Confidence": 0.5275229357798166,
+            "Lift": 1.435130455052532,
+            "Conviction": 1.3385234169057691,
+            "Leverage": 0.023260781815406403,
+            "LHS_Count": 218,
+            "LHS_Support": 0.14543028685790527,
+            "RHS_Count": 551,
+            "RHS_Support": 0.3675783855903936,
+            "Support": 0.07671781187458306,
+            "Count": 115
+        },
+        {
+            "LHS": [
+                "shampoo",
+                "spaghettisauce"
+            ],
+            "RHS": [
+                "juice"
+            ],
+            "Confidence": 0.5311004784688996,
+            "Lift": 1.4344497607655506,
+            "Conviction": 1.3430450232127544,
+            "Leverage": 0.02242722633412269,
+            "LHS_Count": 209,
+            "LHS_Support": 0.13942628418945963,
+            "RHS_Count": 555,
+            "RHS_Support": 0.37024683122081387,
+            "Support": 0.07404936624416278,
+            "Count": 111
+        },
+        {
+            "LHS": [
+                "shampoo",
+                "cheeses"
+            ],
+            "RHS": [
+                "sandwichbags"
+            ],
+            "Confidence": 0.5158371040723982,
+            "Lift": 1.4319255907491204,
+            "Conviction": 1.3213731272561773,
+            "Leverage": 0.022939909684063335,
+            "LHS_Count": 221,
+            "LHS_Support": 0.14743162108072047,
+            "RHS_Count": 540,
+            "RHS_Support": 0.3602401601067378,
+            "Support": 0.07605070046697798,
+            "Count": 114
+        },
+        {
+            "LHS": [
+                "sandwichbags",
+                "sugar"
+            ],
+            "RHS": [
+                "cheeses"
+            ],
+            "Confidence": 0.553921568627451,
+            "Lift": 1.4316007437457743,
+            "Conviction": 1.3743667939798696,
+            "Leverage": 0.02272673665921822,
+            "LHS_Count": 204,
+            "LHS_Support": 0.13609072715143428,
+            "RHS_Count": 580,
+            "RHS_Support": 0.3869246164109406,
+            "Support": 0.07538358905937291,
+            "Count": 113
+        },
+        {
+            "LHS": [
+                "yogurt",
+                "ketchup"
+            ],
+            "RHS": [
+                "juice"
+            ],
+            "Confidence": 0.52803738317757,
+            "Lift": 1.426176643933653,
+            "Conviction": 1.334328496225206,
+            "Leverage": 0.022526469725647646,
+            "LHS_Count": 214,
+            "LHS_Support": 0.142761841227485,
+            "RHS_Count": 555,
+            "RHS_Support": 0.37024683122081387,
+            "Support": 0.07538358905937291,
+            "Count": 113
+        },
+        {
+            "LHS": [
+                "papertowels",
+                "eggs"
+            ],
+            "RHS": [
+                "pasta"
+            ],
+            "Confidence": 0.5371900826446281,
+            "Lift": 1.4252175820961017,
+            "Conviction": 1.3463022967692748,
+            "Leverage": 0.02587448781731739,
+            "LHS_Count": 242,
+            "LHS_Support": 0.16144096064042696,
+            "RHS_Count": 565,
+            "RHS_Support": 0.37691794529686456,
+            "Support": 0.0867244829886591,
+            "Count": 130
+        },
+        {
+            "LHS": [
+                "poultry",
+                "handsoap"
+            ],
+            "RHS": [
+                "dinnerrolls"
+            ],
+            "Confidence": 0.5371179039301309,
+            "Lift": 1.4199995379034678,
+            "Conviction": 1.3432099387012724,
+            "Leverage": 0.024269682122971897,
+            "LHS_Count": 229,
+            "LHS_Support": 0.15276851234156105,
+            "RHS_Count": 567,
+            "RHS_Support": 0.37825216811207474,
+            "Support": 0.08205470313542361,
+            "Count": 123
+        },
+        {
+            "LHS": [
+                "eggs",
+                "icecream"
+            ],
+            "RHS": [
+                "papertowels"
+            ],
+            "Confidence": 0.5188284518828451,
+            "Lift": 1.4192041046941328,
+            "Conviction": 1.3184963888969454,
+            "Leverage": 0.024434346046129922,
+            "LHS_Count": 239,
+            "LHS_Support": 0.15943962641761175,
+            "RHS_Count": 548,
+            "RHS_Support": 0.3655770513675784,
+            "Support": 0.08272181454302868,
+            "Count": 124
+        },
+        {
+            "LHS": [
+                "spaghettisauce",
+                "sandwichbags"
+            ],
+            "RHS": [
+                "cheeses"
+            ],
+            "Confidence": 0.5488372093023255,
+            "Lift": 1.418460304731355,
+            "Conviction": 1.3588784275427603,
+            "Leverage": 0.023222953616843067,
+            "LHS_Count": 215,
+            "LHS_Support": 0.14342895263509006,
+            "RHS_Count": 580,
+            "RHS_Support": 0.3869246164109406,
+            "Support": 0.07871914609739826,
+            "Count": 118
+        },
+        {
+            "LHS": [
+                "pasta",
+                "eggs"
+            ],
+            "RHS": [
+                "papertowels"
+            ],
+            "Confidence": 0.5179282868525896,
+            "Lift": 1.4167417919562624,
+            "Conviction": 1.3160343810474198,
+            "Leverage": 0.025510447035849114,
+            "LHS_Count": 251,
+            "LHS_Support": 0.16744496330887257,
+            "RHS_Count": 548,
+            "RHS_Support": 0.3655770513675784,
+            "Support": 0.0867244829886591,
+            "Count": 130
+        },
+        {
+            "LHS": [
+                "beef",
+                "juice"
+            ],
+            "RHS": [
+                "shampoo"
+            ],
+            "Confidence": 0.5067264573991032,
+            "Lift": 1.414493407153176,
+            "Conviction": 1.3010249257080477,
+            "Leverage": 0.02208988781046381,
+            "LHS_Count": 223,
+            "LHS_Support": 0.14876584389593062,
+            "RHS_Count": 537,
+            "RHS_Support": 0.35823882588392264,
+            "Support": 0.07538358905937291,
+            "Count": 113
+        },
+        {
+            "LHS": [
+                "milk",
+                "sugar"
+            ],
+            "RHS": [
+                "toiletpaper"
+            ],
+            "Confidence": 0.5299539170506912,
+            "Lift": 1.4110140704422487,
+            "Conviction": 1.328415021779225,
+            "Leverage": 0.022347119560694448,
+            "LHS_Count": 217,
+            "LHS_Support": 0.1447631754503002,
+            "RHS_Count": 563,
+            "RHS_Support": 0.37558372248165445,
+            "Support": 0.07671781187458306,
+            "Count": 115
+        },
+        {
+            "LHS": [
+                "milk",
+                "pasta"
+            ],
+            "RHS": [
+                "eggs"
+            ],
+            "Confidence": 0.5377777777777778,
+            "Lift": 1.4093162393162393,
+            "Conviction": 1.3379111715502643,
+            "Leverage": 0.023444137319031007,
+            "LHS_Count": 225,
+            "LHS_Support": 0.15010006671114076,
+            "RHS_Count": 572,
+            "RHS_Support": 0.3815877251501001,
+            "Support": 0.08072048032021348,
+            "Count": 121
+        },
+        {
+            "LHS": [
+                "ketchup",
+                "individualmeals"
+            ],
+            "RHS": [
+                "soap"
+            ],
+            "Confidence": 0.5320197044334976,
+            "Lift": 1.4090062490208708,
+            "Conviction": 1.3300024577788703,
+            "Leverage": 0.020914098391589503,
+            "LHS_Count": 203,
+            "LHS_Support": 0.13542361574382922,
+            "RHS_Count": 566,
+            "RHS_Support": 0.3775850567044696,
+            "Support": 0.07204803202134756,
+            "Count": 108
+        },
+        {
+            "LHS": [
+                "cereals",
+                "sandwichbags"
+            ],
+            "RHS": [
+                "cheeses"
+            ],
+            "Confidence": 0.5442477876106194,
+            "Lift": 1.4065990234971009,
+            "Conviction": 1.3451945309818196,
+            "Leverage": 0.023719170574467922,
+            "LHS_Count": 226,
+            "LHS_Support": 0.15076717811874582,
+            "RHS_Count": 580,
+            "RHS_Support": 0.3869246164109406,
+            "Support": 0.08205470313542361,
+            "Count": 123
+        },
+        {
+            "LHS": [
+                "waffles",
+                "juice"
+            ],
+            "RHS": [
+                "toiletpaper"
+            ],
+            "Confidence": 0.5276595744680851,
+            "Lift": 1.4049053323759495,
+            "Conviction": 1.3219623893406414,
+            "Leverage": 0.023841110885130884,
+            "LHS_Count": 235,
+            "LHS_Support": 0.15677118078719146,
+            "RHS_Count": 563,
+            "RHS_Support": 0.37558372248165445,
+            "Support": 0.08272181454302868,
+            "Count": 124
+        },
+        {
+            "LHS": [
+                "spaghettisauce",
+                "butter"
+            ],
+            "RHS": [
+                "cheeses"
+            ],
+            "Confidence": 0.5429864253393666,
+            "Lift": 1.4033390544546733,
+            "Conviction": 1.3414817799324965,
+            "Leverage": 0.023008445479107492,
+            "LHS_Count": 221,
+            "LHS_Support": 0.14743162108072047,
+            "RHS_Count": 580,
+            "RHS_Support": 0.3869246164109406,
+            "Support": 0.0800533689126084,
+            "Count": 120
+        },
+        {
+            "LHS": [
+                "spaghettisauce",
+                "aluminumfoil"
+            ],
+            "RHS": [
+                "juice"
+            ],
+            "Confidence": 0.5194805194805195,
+            "Lift": 1.4030654030654033,
+            "Conviction": 1.3105674052972254,
+            "Leverage": 0.022997319538353572,
+            "LHS_Count": 231,
+            "LHS_Support": 0.15410273515677117,
+            "RHS_Count": 555,
+            "RHS_Support": 0.37024683122081387,
+            "Support": 0.0800533689126084,
+            "Count": 120
+        },
+        {
+            "LHS": [
+                "shampoo",
+                "pork"
+            ],
+            "RHS": [
+                "juice"
+            ],
+            "Confidence": 0.5192307692307692,
+            "Lift": 1.4023908523908521,
+            "Conviction": 1.3098865910607072,
+            "Leverage": 0.020672887996044505,
+            "LHS_Count": 208,
+            "LHS_Support": 0.13875917278185457,
+            "RHS_Count": 555,
+            "RHS_Support": 0.37024683122081387,
+            "Support": 0.07204803202134756,
+            "Count": 108
+        },
+        {
+            "LHS": [
+                "juice",
+                "individualmeals"
+            ],
+            "RHS": [
+                "shampoo"
+            ],
+            "Confidence": 0.502283105022831,
+            "Lift": 1.4020900827359843,
+            "Conviction": 1.2894100654258802,
+            "Leverage": 0.02104449441722544,
+            "LHS_Count": 219,
+            "LHS_Support": 0.14609739826551035,
+            "RHS_Count": 537,
+            "RHS_Support": 0.35823882588392264,
+            "Support": 0.0733822548365577,
+            "Count": 110
+        },
+        {
+            "LHS": [
+                "papertowels",
+                "dinnerrolls"
+            ],
+            "RHS": [
+                "pasta"
+            ],
+            "Confidence": 0.5283842794759825,
+            "Lift": 1.4018549290876068,
+            "Conviction": 1.3211647271020188,
+            "Leverage": 0.023139286542373592,
+            "LHS_Count": 229,
+            "LHS_Support": 0.15276851234156105,
+            "RHS_Count": 565,
+            "RHS_Support": 0.37691794529686456,
+            "Support": 0.08072048032021348,
+            "Count": 121
+        }
+    ]
+}

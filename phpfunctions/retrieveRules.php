@@ -125,9 +125,15 @@
     $output = ob_get_contents();
     ob_end_clean();
 
+    // http_response_code(201);
+    // $JsonReq = array('http_response_code' => 201, 'title' => $input, 'message' => $output);
+    // print json_encode($JsonReq);
+    // exit();
+
+
     if (!$output) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => $input, 'message' => 'Invalid parameters! Please check!');
+        $JsonReq = array('http_response_code' => 201, 'title' => 'Invalid parameters! Please check!', 'message' => $input);
         print json_encode($JsonReq);
         exit();
     }

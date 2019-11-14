@@ -1,0 +1,14 @@
+Input Parameters
+Minimum Support   :0.010     Minimum confidence:0.200
+Minimum Lift      :1.500     Maximum rule items:00004
+Sort by lift descending
+Dataset file name :OrderDetails.csv
+Dataset separator : ;
+Dataset Type      :2
+Output Type       :Plain text
+Dataset parameters: InvoiceNo
+-----------------------------------------------------
+
+   Transformation time:85.755
+
+-----------------------------------------------------
