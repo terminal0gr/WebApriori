@@ -1,0 +1,205 @@
+Input Parameters
+Minimum Support   :0.010     Minimum confidence:0.200
+Minimum Lift      :1.500     Maximum rule items:00004
+Sort by lift descending
+Dataset file name :store_data.csv
+Dataset separator : ,
+Dataset Type      :1
+Output Type       :Plain text
+-----------------------------------------------------
+
+Records           :007501   Transformation time:0.027
+Association Rules :000096          Time elapsed:0.086
+-----------------------------------------------------
+   1) {herb & pepper}([371]0.049) ==> {ground beef}([737]0.098)
+        Count:00120  Supp:0.016  Conf:0.323  Lift:3.292  Conv:1.333  Levr:0.011
+   2) {mineral water, spaghetti}([448]0.060) ==> {ground beef}([737]0.098)
+        Count:00128  Supp:0.017  Conf:0.286  Lift:2.908  Conv:1.262  Levr:0.011
+   3) {tomatoes}([513]0.068) ==> {frozen vegetables}([715]0.095)
+        Count:00121  Supp:0.016  Conf:0.236  Lift:2.474  Conv:1.184  Levr:0.010
+   4) {shrimp}([536]0.071) ==> {frozen vegetables}([715]0.095)
+        Count:00125  Supp:0.017  Conf:0.233  Lift:2.447  Conv:1.180  Levr:0.010
+   5) {milk, mineral water}([360]0.048) ==> {frozen vegetables}([715]0.095)
+        Count:00083  Supp:0.011  Conf:0.231  Lift:2.419  Conv:1.176  Levr:0.006
+   6) {ground beef, mineral water}([307]0.041) ==> {spaghetti}([1306]0.174)
+        Count:00128  Supp:0.017  Conf:0.417  Lift:2.395  Conv:1.416  Levr:0.010
+   7) {mineral water, frozen vegetables}([268]0.036) ==> {milk}([972]0.130)
+        Count:00083  Supp:0.011  Conf:0.310  Lift:2.390  Conv:1.261  Levr:0.006
+   8) {milk, mineral water}([360]0.048) ==> {ground beef}([737]0.098)
+        Count:00083  Supp:0.011  Conf:0.231  Lift:2.347  Conv:1.172  Levr:0.006
+   9) {soup}([379]0.051) ==> {milk}([972]0.130)
+        Count:00114  Supp:0.015  Conf:0.301  Lift:2.321  Conv:1.245  Levr:0.009
+  10) {spaghetti}([1306]0.174) ==> {ground beef}([737]0.098)
+        Count:00294  Supp:0.039  Conf:0.225  Lift:2.291  Conv:1.164  Levr:0.022
+  11) {ground beef}([737]0.098) ==> {spaghetti}([1306]0.174)
+        Count:00294  Supp:0.039  Conf:0.399  Lift:2.291  Conv:1.374  Levr:0.022
+  12) {grated cheese}([393]0.052) ==> {ground beef}([737]0.098)
+        Count:00085  Supp:0.011  Conf:0.216  Lift:2.201  Conv:1.151  Levr:0.006
+  13) {olive oil}([494]0.066) ==> {ground beef}([737]0.098)
+        Count:00106  Supp:0.014  Conf:0.215  Lift:2.184  Conv:1.148  Levr:0.008
+  14) {chocolate, spaghetti}([294]0.039) ==> {milk}([972]0.130)
+        Count:00082  Supp:0.011  Conf:0.279  Lift:2.152  Conv:1.207  Levr:0.006
+  15) {mineral water, olive oil}([207]0.028) ==> {spaghetti}([1306]0.174)
+        Count:00077  Supp:0.010  Conf:0.372  Lift:2.136  Conv:1.315  Levr:0.005
+  16) {ground beef, eggs}([150]0.020) ==> {mineral water}([1788]0.238)
+        Count:00076  Supp:0.010  Conf:0.507  Lift:2.126  Conv:1.544  Levr:0.005
+  17) {mineral water, chocolate}([395]0.053) ==> {ground beef}([737]0.098)
+        Count:00082  Supp:0.011  Conf:0.208  Lift:2.113  Conv:1.138  Levr:0.006
+  18) {milk, ground beef}([165]0.022) ==> {mineral water}([1788]0.238)
+        Count:00083  Supp:0.011  Conf:0.503  Lift:2.110  Conv:1.533  Levr:0.006
+  19) {mineral water, spaghetti}([448]0.060) ==> {frozen vegetables}([715]0.095)
+        Count:00090  Supp:0.012  Conf:0.201  Lift:2.108  Conv:1.132  Levr:0.006
+  20) {red wine}([211]0.028) ==> {spaghetti}([1306]0.174)
+        Count:00077  Supp:0.010  Conf:0.365  Lift:2.096  Conv:1.300  Levr:0.005
+  21) {ground beef, mineral water}([307]0.041) ==> {milk}([972]0.130)
+        Count:00083  Supp:0.011  Conf:0.270  Lift:2.086  Conv:1.193  Levr:0.006
+  22) {mineral water, chocolate}([395]0.053) ==> {milk}([972]0.130)
+        Count:00105  Supp:0.014  Conf:0.266  Lift:2.051  Conv:1.186  Levr:0.007
+  23) {mineral water, spaghetti}([448]0.060) ==> {milk}([972]0.130)
+        Count:00118  Supp:0.016  Conf:0.263  Lift:2.033  Conv:1.182  Levr:0.008
+  24) {olive oil}([494]0.066) ==> {spaghetti}([1306]0.174)
+        Count:00172  Supp:0.023  Conf:0.348  Lift:2.000  Conv:1.267  Levr:0.011
+  25) {olive oil}([494]0.066) ==> {milk}([972]0.130)
+        Count:00128  Supp:0.017  Conf:0.259  Lift:2.000  Conv:1.175  Levr:0.009
+  26) {ground beef, chocolate}([173]0.023) ==> {mineral water}([1788]0.238)
+        Count:00082  Supp:0.011  Conf:0.474  Lift:1.988  Conv:1.448  Levr:0.005
+  27) {mineral water, eggs}([382]0.051) ==> {milk}([972]0.130)
+        Count:00098  Supp:0.013  Conf:0.257  Lift:1.980  Conv:1.171  Levr:0.006
+  28) {milk, frozen vegetables}([177]0.024) ==> {mineral water}([1788]0.238)
+        Count:00083  Supp:0.011  Conf:0.469  Lift:1.967  Conv:1.434  Levr:0.005
+  29) {milk, chocolate}([241]0.032) ==> {spaghetti}([1306]0.174)
+        Count:00082  Supp:0.011  Conf:0.340  Lift:1.954  Conv:1.252  Levr:0.005
+  30) {pancakes, mineral water}([253]0.034) ==> {spaghetti}([1306]0.174)
+        Count:00086  Supp:0.011  Conf:0.340  Lift:1.952  Conv:1.251  Levr:0.006
+  31) {mineral water, frozen vegetables}([268]0.036) ==> {spaghetti}([1306]0.174)
+        Count:00090  Supp:0.012  Conf:0.336  Lift:1.929  Conv:1.243  Levr:0.006
+  32) {soup}([379]0.051) ==> {mineral water}([1788]0.238)
+        Count:00173  Supp:0.023  Conf:0.456  Lift:1.915  Conv:1.401  Levr:0.011
+  33) {frozen vegetables}([715]0.095) ==> {milk}([972]0.130)
+        Count:00177  Supp:0.024  Conf:0.248  Lift:1.910  Conv:1.157  Levr:0.011
+  34) {pancakes, spaghetti}([189]0.025) ==> {mineral water}([1788]0.238)
+        Count:00086  Supp:0.011  Conf:0.455  Lift:1.909  Conv:1.398  Levr:0.005
+  35) {chicken}([450]0.060) ==> {milk}([972]0.130)
+        Count:00111  Supp:0.015  Conf:0.247  Lift:1.904  Conv:1.155  Levr:0.007
+  36) {shrimp}([536]0.071) ==> {milk}([972]0.130)
+        Count:00132  Supp:0.018  Conf:0.246  Lift:1.900  Conv:1.155  Levr:0.008
+  37) {herb & pepper}([371]0.049) ==> {spaghetti}([1306]0.174)
+        Count:00122  Supp:0.016  Conf:0.329  Lift:1.889  Conv:1.231  Levr:0.008
+  38) {milk, mineral water}([360]0.048) ==> {spaghetti}([1306]0.174)
+        Count:00118  Supp:0.016  Conf:0.328  Lift:1.883  Conv:1.229  Levr:0.007
+  39) {milk, spaghetti}([266]0.035) ==> {chocolate}([1229]0.164)
+        Count:00082  Supp:0.011  Conf:0.308  Lift:1.881  Conv:1.209  Levr:0.005
+  40) {spaghetti, olive oil}([172]0.023) ==> {mineral water}([1788]0.238)
+        Count:00077  Supp:0.010  Conf:0.448  Lift:1.878  Conv:1.379  Levr:0.005
+  41) {milk, spaghetti}([266]0.035) ==> {mineral water}([1788]0.238)
+        Count:00118  Supp:0.016  Conf:0.444  Lift:1.861  Conv:1.369  Levr:0.007
+  42) {burgers}([654]0.087) ==> {eggs}([1348]0.180)
+        Count:00216  Supp:0.029  Conf:0.330  Lift:1.838  Conv:1.225  Levr:0.013
+  43) {milk, chocolate}([241]0.032) ==> {mineral water}([1788]0.238)
+        Count:00105  Supp:0.014  Conf:0.436  Lift:1.828  Conv:1.350  Levr:0.006
+  44) {ground beef, spaghetti}([294]0.039) ==> {mineral water}([1788]0.238)
+        Count:00128  Supp:0.017  Conf:0.435  Lift:1.826  Conv:1.349  Levr:0.008
+  45) {chocolate, eggs}([249]0.033) ==> {spaghetti}([1306]0.174)
+        Count:00079  Supp:0.011  Conf:0.317  Lift:1.822  Conv:1.210  Levr:0.005
+  46) {salmon}([319]0.043) ==> {spaghetti}([1306]0.174)
+        Count:00101  Supp:0.013  Conf:0.317  Lift:1.818  Conv:1.209  Levr:0.006
+  47) {grated cheese}([393]0.052) ==> {spaghetti}([1306]0.174)
+        Count:00124  Supp:0.017  Conf:0.316  Lift:1.812  Conv:1.207  Levr:0.007
+  48) {spaghetti, frozen vegetables}([209]0.028) ==> {mineral water}([1788]0.238)
+        Count:00090  Supp:0.012  Conf:0.431  Lift:1.807  Conv:1.338  Levr:0.005
+  49) {cooking oil}([383]0.051) ==> {spaghetti}([1306]0.174)
+        Count:00119  Supp:0.016  Conf:0.311  Lift:1.785  Conv:1.198  Levr:0.007
+  50) {milk, mineral water}([360]0.048) ==> {chocolate}([1229]0.164)
+        Count:00105  Supp:0.014  Conf:0.292  Lift:1.780  Conv:1.180  Levr:0.006
+  51) {milk, eggs}([231]0.031) ==> {mineral water}([1788]0.238)
+        Count:00098  Supp:0.013  Conf:0.424  Lift:1.780  Conv:1.323  Levr:0.006
+  52) {spaghetti, eggs}([274]0.037) ==> {chocolate}([1229]0.164)
+        Count:00079  Supp:0.011  Conf:0.288  Lift:1.760  Conv:1.175  Levr:0.005
+  53) {olive oil}([494]0.066) ==> {mineral water}([1788]0.238)
+        Count:00207  Supp:0.028  Conf:0.419  Lift:1.758  Conv:1.311  Levr:0.012
+  54) {tomatoes}([513]0.068) ==> {spaghetti}([1306]0.174)
+        Count:00157  Supp:0.021  Conf:0.306  Lift:1.758  Conv:1.190  Levr:0.009
+  55) {ground beef}([737]0.098) ==> {mineral water}([1788]0.238)
+        Count:00307  Supp:0.041  Conf:0.417  Lift:1.748  Conv:1.305  Levr:0.018
+  56) {frozen smoothie}([475]0.063) ==> {milk}([972]0.130)
+        Count:00107  Supp:0.014  Conf:0.225  Lift:1.738  Conv:1.124  Levr:0.006
+  57) {cooking oil}([383]0.051) ==> {milk}([972]0.130)
+        Count:00086  Supp:0.011  Conf:0.225  Lift:1.733  Conv:1.122  Levr:0.005
+  58) {turkey}([469]0.063) ==> {eggs}([1348]0.180)
+        Count:00146  Supp:0.019  Conf:0.311  Lift:1.732  Conv:1.191  Levr:0.008
+  59) {mineral water, chocolate}([395]0.053) ==> {spaghetti}([1306]0.174)
+        Count:00119  Supp:0.016  Conf:0.301  Lift:1.730  Conv:1.182  Levr:0.007
+  60) {ground beef}([737]0.098) ==> {milk}([972]0.130)
+        Count:00165  Supp:0.022  Conf:0.224  Lift:1.728  Conv:1.121  Levr:0.009
+  61) {mineral water, french fries}([253]0.034) ==> {spaghetti}([1306]0.174)
+        Count:00076  Supp:0.010  Conf:0.300  Lift:1.725  Conv:1.181  Levr:0.004
+  62) {shrimp}([536]0.071) ==> {spaghetti}([1306]0.174)
+        Count:00159  Supp:0.021  Conf:0.297  Lift:1.704  Conv:1.174  Levr:0.009
+  63) {chocolate, eggs}([249]0.033) ==> {mineral water}([1788]0.238)
+        Count:00101  Supp:0.013  Conf:0.406  Lift:1.702  Conv:1.281  Levr:0.006
+  64) {chocolate, spaghetti}([294]0.039) ==> {mineral water}([1788]0.238)
+        Count:00119  Supp:0.016  Conf:0.405  Lift:1.698  Conv:1.280  Levr:0.007
+  65) {salmon}([319]0.043) ==> {mineral water}([1788]0.238)
+        Count:00128  Supp:0.017  Conf:0.401  Lift:1.683  Conv:1.272  Levr:0.007
+  66) {frozen vegetables}([715]0.095) ==> {spaghetti}([1306]0.174)
+        Count:00209  Supp:0.028  Conf:0.292  Lift:1.679  Conv:1.167  Levr:0.011
+  67) {cereals}([193]0.026) ==> {mineral water}([1788]0.238)
+        Count:00077  Supp:0.010  Conf:0.399  Lift:1.674  Conv:1.267  Levr:0.004
+  68) {cooking oil}([383]0.051) ==> {mineral water}([1788]0.238)
+        Count:00151  Supp:0.020  Conf:0.394  Lift:1.654  Conv:1.257  Levr:0.008
+  69) {chicken}([450]0.060) ==> {spaghetti}([1306]0.174)
+        Count:00129  Supp:0.017  Conf:0.287  Lift:1.646  Conv:1.158  Levr:0.007
+  70) {spaghetti, eggs}([274]0.037) ==> {mineral water}([1788]0.238)
+        Count:00107  Supp:0.014  Conf:0.391  Lift:1.638  Conv:1.250  Levr:0.006
+  71) {red wine}([211]0.028) ==> {mineral water}([1788]0.238)
+        Count:00082  Supp:0.011  Conf:0.389  Lift:1.630  Conv:1.246  Levr:0.004
+  72) {ground beef, mineral water}([307]0.041) ==> {chocolate}([1229]0.164)
+        Count:00082  Supp:0.011  Conf:0.267  Lift:1.630  Conv:1.141  Levr:0.004
+  73) {cooking oil}([383]0.051) ==> {chocolate}([1229]0.164)
+        Count:00102  Supp:0.014  Conf:0.266  Lift:1.625  Conv:1.140  Levr:0.005
+  74) {soup}([379]0.051) ==> {spaghetti}([1306]0.174)
+        Count:00107  Supp:0.014  Conf:0.282  Lift:1.622  Conv:1.151  Levr:0.005
+  75) {mineral water, spaghetti}([448]0.060) ==> {chocolate}([1229]0.164)
+        Count:00119  Supp:0.016  Conf:0.266  Lift:1.621  Conv:1.139  Levr:0.006
+  76) {mineral water, eggs}([382]0.051) ==> {chocolate}([1229]0.164)
+        Count:00101  Supp:0.013  Conf:0.264  Lift:1.614  Conv:1.137  Levr:0.005
+  77) {mineral water, eggs}([382]0.051) ==> {spaghetti}([1306]0.174)
+        Count:00107  Supp:0.014  Conf:0.280  Lift:1.609  Conv:1.147  Levr:0.005
+  78) {chicken}([450]0.060) ==> {mineral water}([1788]0.238)
+        Count:00171  Supp:0.023  Conf:0.380  Lift:1.594  Conv:1.228  Levr:0.008
+  79) {burgers}([654]0.087) ==> {milk}([972]0.130)
+        Count:00134  Supp:0.018  Conf:0.205  Lift:1.581  Conv:1.095  Levr:0.007
+  80) {tomatoes}([513]0.068) ==> {milk}([972]0.130)
+        Count:00105  Supp:0.014  Conf:0.205  Lift:1.580  Conv:1.094  Levr:0.005
+  81) {frozen vegetables}([715]0.095) ==> {mineral water}([1788]0.238)
+        Count:00268  Supp:0.036  Conf:0.375  Lift:1.572  Conv:1.218  Levr:0.013
+  82) {spaghetti}([1306]0.174) ==> {milk}([972]0.130)
+        Count:00266  Supp:0.035  Conf:0.204  Lift:1.572  Conv:1.093  Levr:0.013
+  83) {milk}([972]0.130) ==> {spaghetti}([1306]0.174)
+        Count:00266  Supp:0.035  Conf:0.274  Lift:1.572  Conv:1.137  Levr:0.013
+  84) {whole wheat rice}([439]0.059) ==> {milk}([972]0.130)
+        Count:00089  Supp:0.012  Conf:0.203  Lift:1.565  Conv:1.092  Levr:0.004
+  85) {milk}([972]0.130) ==> {mineral water}([1788]0.238)
+        Count:00360  Supp:0.048  Conf:0.370  Lift:1.554  Conv:1.210  Levr:0.017
+  86) {mineral water}([1788]0.238) ==> {milk}([972]0.130)
+        Count:00360  Supp:0.048  Conf:0.201  Lift:1.554  Conv:1.090  Levr:0.017
+  87) {spaghetti, french fries}([207]0.028) ==> {mineral water}([1788]0.238)
+        Count:00076  Supp:0.010  Conf:0.367  Lift:1.540  Conv:1.203  Levr:0.004
+  88) {shrimp}([536]0.071) ==> {chocolate}([1229]0.164)
+        Count:00135  Supp:0.018  Conf:0.252  Lift:1.537  Conv:1.118  Levr:0.006
+  89) {salmon}([319]0.043) ==> {chocolate}([1229]0.164)
+        Count:00080  Supp:0.011  Conf:0.251  Lift:1.531  Conv:1.116  Levr:0.004
+  90) {pancakes}([713]0.095) ==> {spaghetti}([1306]0.174)
+        Count:00189  Supp:0.025  Conf:0.265  Lift:1.522  Conv:1.124  Levr:0.009
+  91) {olive oil}([494]0.066) ==> {chocolate}([1229]0.164)
+        Count:00123  Supp:0.016  Conf:0.249  Lift:1.520  Conv:1.113  Levr:0.006
+  92) {turkey}([469]0.063) ==> {spaghetti}([1306]0.174)
+        Count:00124  Supp:0.017  Conf:0.264  Lift:1.519  Conv:1.123  Levr:0.006
+  93) {burgers}([654]0.087) ==> {green tea}([991]0.132)
+        Count:00131  Supp:0.017  Conf:0.200  Lift:1.516  Conv:1.085  Levr:0.006
+  94) {milk, mineral water}([360]0.048) ==> {eggs}([1348]0.180)
+        Count:00098  Supp:0.013  Conf:0.272  Lift:1.515  Conv:1.127  Levr:0.004
+  95) {milk}([972]0.130) ==> {chocolate}([1229]0.164)
+        Count:00241  Supp:0.032  Conf:0.248  Lift:1.513  Conv:1.112  Levr:0.011
+  96) {champagne}([351]0.047) ==> {chocolate}([1229]0.164)
+        Count:00087  Supp:0.012  Conf:0.248  Lift:1.513  Conv:1.112  Levr:0.004

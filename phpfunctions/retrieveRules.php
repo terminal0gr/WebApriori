@@ -112,7 +112,18 @@
         }
     }
 
-    $input = "python Main02.py $identity ".$_POST['min_support']." ".$_POST['min_confidence']." ".$_POST['min_lift']." ".$_POST['max_length']." -3 ".$filename." ".$_POST['separator']." ".$datasetType." 2 ".$_POST['extra_parameters'];
+    $input = 'python Main02.py ';
+    $input.= '"'.$identity.'" ';
+    $input.= '"'.$_POST['min_support'].'" ';
+    $input.= '"'.$_POST['min_confidence'].'" ';
+    $input.= '"'.$_POST['min_lift'].'" ';
+    $input.= '"'.$_POST['max_length'].'" ';
+    $input.= '"-3" ';
+    $input.= '"'.$filename.'" ';
+    $input.= '"'.$_POST['separator'].'" ';
+    $input.= '"'.$datasetType.'" ';
+    $input.= '"2" ';
+    $input.= $_POST['extra_parameters'];
 
     chdir('../Python');
     //asychronous call

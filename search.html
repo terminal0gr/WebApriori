@@ -3,7 +3,8 @@
 <head>
 
 	<!-- TODO
-	> check python running for datasets
+	> check all datasets to run from application
+	> It does not save changes to filters after the first save. It keep 1st save always.
 	> upload JSON or Text to the user
 	-->
 
@@ -639,18 +640,20 @@
 			<h2>Supported dataset types</h2>
 			<br>
 			<p><b>1) Market Basket list.</b> No header is expected, The number of columns is undefined (Default). 
-			If header row exists, then participant columns must be declared in extra paramaters field (comma separated) starting from the 2nd parameter, 
+			If header row exists, then participant columns must be declared in extra paramaters field starting from the 2nd parameter, 
 			In 1st parameter the string representing the absent item must be declared. If absent item is nothing or not exists then assign '' or 'nan'.
 			</br> 
 			<b>2) Order/Invoice detail.</b> Header line is mandatory in that type. Number of columns is fixed in the dataset. 
-			In extra paramaters field (comma separated), 1st parameter represents the primary key column while 2nd parameter represents the items column and are both mandatory.
+			In extra paramaters field, 1st parameter represents the primary key column while 2nd parameter represents the items column and are both mandatory.
 			</br> 
 			<b>3) Sparce item Dataset.</b> Header line is mandatory in that type. Number of columns is fixed in the dataset. 
-			Item columns are mandatory to be declared from the 2nd parameter In extra paramaters field (comma separated).
+			Item columns are mandatory to be declared from the 2nd parameter In extra paramaters field.
 			In 1st parameter, the string of absent item must be declared!!! If absent item is nothing then assign '' or 'nan'. 
 			</br>
 			<b>4) Columns with multiple categorized values.</b> Header line is optional. 
-			Number of columns is fixed, optionally, items columns are expected in extra paramaters field (comma separated) in case that header line exists.
+			Number of columns is fixed, optionally, items columns are expected in extra paramaters field in case that header line exists.
+			</br></br>
+			<b>Note:</b> In extra paramaters, the items must be enclosed in double quotes and be seperated with space (e.g. <b><i>"InvoiceID" "ProductID"</i></b>)
 		</div>
 	<!-- </div> -->
 
@@ -720,7 +723,7 @@
 				<label for="extra parameters">Extra parameters / item names</label>
 			</div>
 			<div class="form-col">	
-				<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The maximum items each association rule consist of" placeholder="special data (e.g item names)">
+				<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-trigger="hover" data-toggle="tooltip" title="In extra paramaters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
 			</div>
 			<div class="p-2 mx-auto" style="width: 300px;">
 				<button id="submitBtn" type="submit" class="btn btn-primary ">Retrieve association rules</button>
