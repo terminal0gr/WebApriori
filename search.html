@@ -3,8 +3,8 @@
 <head>
 
 	<!-- TODO
-	> check all datasets to run from application
-	> It does not save changes to filters after the first save. It keep 1st save always.
+	> titanic02 with maxlength 4 error in line 143 => conviction = Nan!!!
+	> button for abort ajax request.
 	> upload JSON or Text to the user
 	-->
 
@@ -206,6 +206,15 @@
 				});
 			});
 
+			$('#extra_parameters').blur(function() {
+				var regex = /[\[\]]/g;
+				var extraparams=this.value.replace(regex,''); 
+				var regex = /,/g;
+				extraparams=extraparams.replace(regex,' '); 
+				var regex = /'/g;
+				extraparams=extraparams.replace(regex,'"'); 
+				this.value=extraparams;
+			}); 
 
 		});
 
@@ -517,8 +526,18 @@
 							document.getElementById('min_confidence').value=res.min_confidence; 
 							document.getElementById('min_lift').value=res.min_lift; 
 							document.getElementById('max_length').value=res.max_length; 
-							document.getElementById('max_length').value=res.max_length; 
-							document.getElementById('extra_parameters').value=res.datasetArgs; 
+							document.getElementById('max_length').value=res.max_length;
+
+							//loads res.datasetArgs as a python list like =>['a', 'b'].
+							//but we need the format =>"a" "b" so, we apply the above regex!
+							var regex = /[\[\],]/g;
+							var extraparams=res.datasetArgs.replace(regex,'');
+							var regex = /,/g;
+							extraparams=extraparams.replace(regex,' ');  
+							var regex = /'/g;
+							extraparams=extraparams.replace(regex,'"'); 
+							document.getElementById('extra_parameters').value=extraparams; 
+
 							fillTable(res);
 						}
 					}

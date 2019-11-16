@@ -1,7 +1,7 @@
 {
     "min_support": 0.01,
     "min_confidence": 0.2,
-    "min_lift": 1.5,
+    "min_lift": 1.4,
     "max_length": 4,
     "ssort": -3,
     "datasetName": "groceries.csv",
@@ -10,14 +10,14 @@
     "outputType": 2,
     "datasetArgs": "",
     "Records": 9835,
-    "RecordsCreationTime": "0.033",
-    "RulesCount": 160,
-    "RulesCreationTime": "0.246",
+    "RecordsCreationTime": "0.023",
+    "RulesCount": 184,
+    "RulesCreationTime": "0.145",
     "rules": [
         {
             "LHS": [
-                "citrus fruit",
-                "other vegetables"
+                "other vegetables",
+                "citrus fruit"
             ],
             "RHS": [
                 "root vegetables"
@@ -35,8 +35,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "other vegetables"
+                "other vegetables",
+                "yogurt"
             ],
             "RHS": [
                 "whipped/sour cream"
@@ -91,8 +91,8 @@
         },
         {
             "LHS": [
-                "citrus fruit",
-                "root vegetables"
+                "root vegetables",
+                "citrus fruit"
             ],
             "RHS": [
                 "other vegetables"
@@ -110,8 +110,8 @@
         },
         {
             "LHS": [
-                "root vegetables",
-                "tropical fruit"
+                "tropical fruit",
+                "root vegetables"
             ],
             "RHS": [
                 "other vegetables"
@@ -129,8 +129,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "other vegetables"
+                "other vegetables",
+                "whole milk"
             ],
             "RHS": [
                 "root vegetables"
@@ -167,8 +167,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "other vegetables"
+                "other vegetables",
+                "yogurt"
             ],
             "RHS": [
                 "root vegetables"
@@ -186,8 +186,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "other vegetables"
+                "other vegetables",
+                "yogurt"
             ],
             "RHS": [
                 "tropical fruit"
@@ -224,8 +224,8 @@
         },
         {
             "LHS": [
-                "rolls/buns",
-                "other vegetables"
+                "other vegetables",
+                "rolls/buns"
             ],
             "RHS": [
                 "root vegetables"
@@ -243,8 +243,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "tropical fruit"
+                "tropical fruit",
+                "whole milk"
             ],
             "RHS": [
                 "root vegetables"
@@ -300,8 +300,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "yogurt"
+                "yogurt",
+                "whole milk"
             ],
             "RHS": [
                 "tropical fruit"
@@ -337,8 +337,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "tropical fruit"
+                "tropical fruit",
+                "whole milk"
             ],
             "RHS": [
                 "yogurt"
@@ -356,8 +356,8 @@
         },
         {
             "LHS": [
-                "whipped/sour cream",
-                "yogurt"
+                "yogurt",
+                "whipped/sour cream"
             ],
             "RHS": [
                 "other vegetables"
@@ -375,8 +375,8 @@
         },
         {
             "LHS": [
-                "whipped/sour cream",
-                "other vegetables"
+                "other vegetables",
+                "whipped/sour cream"
             ],
             "RHS": [
                 "yogurt"
@@ -489,8 +489,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "yogurt"
+                "yogurt",
+                "whole milk"
             ],
             "RHS": [
                 "root vegetables"
@@ -766,8 +766,8 @@
         },
         {
             "LHS": [
-                "root vegetables",
-                "tropical fruit"
+                "tropical fruit",
+                "root vegetables"
             ],
             "RHS": [
                 "whole milk"
@@ -859,8 +859,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "other vegetables"
+                "other vegetables",
+                "whole milk"
             ],
             "RHS": [
                 "tropical fruit"
@@ -878,8 +878,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "tropical fruit"
+                "tropical fruit",
+                "yogurt"
             ],
             "RHS": [
                 "other vegetables"
@@ -1007,8 +1007,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "other vegetables"
+                "other vegetables",
+                "whole milk"
             ],
             "RHS": [
                 "yogurt"
@@ -1064,8 +1064,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "tropical fruit"
+                "tropical fruit",
+                "whole milk"
             ],
             "RHS": [
                 "other vegetables"
@@ -1156,8 +1156,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "yogurt"
+                "yogurt",
+                "whole milk"
             ],
             "RHS": [
                 "other vegetables"
@@ -1175,8 +1175,8 @@
         },
         {
             "LHS": [
-                "whipped/sour cream",
-                "yogurt"
+                "yogurt",
+                "whipped/sour cream"
             ],
             "RHS": [
                 "whole milk"
@@ -1251,8 +1251,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "tropical fruit"
+                "tropical fruit",
+                "yogurt"
             ],
             "RHS": [
                 "whole milk"
@@ -1270,8 +1270,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "other vegetables"
+                "other vegetables",
+                "yogurt"
             ],
             "RHS": [
                 "whole milk"
@@ -1325,8 +1325,8 @@
         },
         {
             "LHS": [
-                "whipped/sour cream",
-                "other vegetables"
+                "other vegetables",
+                "whipped/sour cream"
             ],
             "RHS": [
                 "whole milk"
@@ -1400,8 +1400,8 @@
         },
         {
             "LHS": [
-                "fruit/vegetable juice",
-                "other vegetables"
+                "other vegetables",
+                "fruit/vegetable juice"
             ],
             "RHS": [
                 "whole milk"
@@ -1473,8 +1473,8 @@
         },
         {
             "LHS": [
-                "rolls/buns",
-                "other vegetables"
+                "other vegetables",
+                "rolls/buns"
             ],
             "RHS": [
                 "yogurt"
@@ -1693,8 +1693,8 @@
         },
         {
             "LHS": [
-                "citrus fruit",
-                "yogurt"
+                "yogurt",
+                "citrus fruit"
             ],
             "RHS": [
                 "whole milk"
@@ -1803,8 +1803,8 @@
         },
         {
             "LHS": [
-                "pastry",
-                "other vegetables"
+                "other vegetables",
+                "pastry"
             ],
             "RHS": [
                 "whole milk"
@@ -1931,8 +1931,8 @@
         },
         {
             "LHS": [
-                "rolls/buns",
-                "yogurt"
+                "yogurt",
+                "rolls/buns"
             ],
             "RHS": [
                 "whole milk"
@@ -1986,8 +1986,8 @@
         },
         {
             "LHS": [
-                "citrus fruit",
-                "other vegetables"
+                "other vegetables",
+                "citrus fruit"
             ],
             "RHS": [
                 "whole milk"
@@ -2023,8 +2023,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "sausage"
+                "sausage",
+                "whole milk"
             ],
             "RHS": [
                 "other vegetables"
@@ -2060,8 +2060,8 @@
         },
         {
             "LHS": [
-                "rolls/buns",
-                "tropical fruit"
+                "tropical fruit",
+                "rolls/buns"
             ],
             "RHS": [
                 "whole milk"
@@ -2151,8 +2151,8 @@
         },
         {
             "LHS": [
-                "rolls/buns",
-                "yogurt"
+                "yogurt",
+                "rolls/buns"
             ],
             "RHS": [
                 "other vegetables"
@@ -2315,8 +2315,8 @@
         },
         {
             "LHS": [
-                "soda",
-                "other vegetables"
+                "other vegetables",
+                "soda"
             ],
             "RHS": [
                 "whole milk"
@@ -2370,8 +2370,8 @@
         },
         {
             "LHS": [
-                "rolls/buns",
-                "other vegetables"
+                "other vegetables",
+                "rolls/buns"
             ],
             "RHS": [
                 "whole milk"
@@ -2896,8 +2896,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "yogurt"
+                "yogurt",
+                "whole milk"
             ],
             "RHS": [
                 "rolls/buns"
@@ -2966,6 +2966,444 @@
             "RHS_Support": 0.17437722419928825,
             "Support": 0.028978139298423997,
             "Count": 285
+        },
+        {
+            "LHS": [
+                "yogurt",
+                "soda"
+            ],
+            "RHS": [
+                "whole milk"
+            ],
+            "Confidence": 0.38289962825278806,
+            "Lift": 1.4985347568110507,
+            "Conviction": 1.2064228444025211,
+            "Leverage": 0.003484106982289628,
+            "LHS_Count": 269,
+            "LHS_Support": 0.027351296390442297,
+            "RHS_Count": 2513,
+            "RHS_Support": 0.25551601423487547,
+            "Support": 0.01047280122013218,
+            "Count": 103
+        },
+        {
+            "LHS": [
+                "sausage"
+            ],
+            "RHS": [
+                "yogurt"
+            ],
+            "Confidence": 0.2088744588744589,
+            "Lift": 1.4972888506051771,
+            "Conviction": 1.0876885853240577,
+            "Leverage": 0.0065175755843300594,
+            "LHS_Count": 924,
+            "LHS_Support": 0.09395017793594305,
+            "RHS_Count": 1372,
+            "RHS_Support": 0.13950177935943062,
+            "Support": 0.019623792577529234,
+            "Count": 193
+        },
+        {
+            "LHS": [
+                "brown bread"
+            ],
+            "RHS": [
+                "other vegetables"
+            ],
+            "Confidence": 0.28840125391849525,
+            "Lift": 1.490502539300263,
+            "Conviction": 1.1333737953770247,
+            "Leverage": 0.0061567567972719145,
+            "LHS_Count": 638,
+            "LHS_Support": 0.06487036095577021,
+            "RHS_Count": 1903,
+            "RHS_Support": 0.1934926283680732,
+            "Support": 0.018708693441789527,
+            "Count": 184
+        },
+        {
+            "LHS": [
+                "bottled water"
+            ],
+            "RHS": [
+                "yogurt"
+            ],
+            "Confidence": 0.20791168353265868,
+            "Lift": 1.4903873232825786,
+            "Conviction": 1.0863665108435527,
+            "Leverage": 0.0075609116254498135,
+            "LHS_Count": 1087,
+            "LHS_Support": 0.11052364006100661,
+            "RHS_Count": 1372,
+            "RHS_Support": 0.13950177935943062,
+            "Support": 0.022979156075241484,
+            "Count": 226
+        },
+        {
+            "LHS": [
+                "sausage"
+            ],
+            "RHS": [
+                "soda"
+            ],
+            "Confidence": 0.25865800865800864,
+            "Lift": 1.483324498630621,
+            "Conviction": 1.1136867807881132,
+            "Leverage": 0.007918194696477646,
+            "LHS_Count": 924,
+            "LHS_Support": 0.09395017793594305,
+            "RHS_Count": 1715,
+            "RHS_Support": 0.17437722419928825,
+            "Support": 0.024300965937976614,
+            "Count": 239
+        },
+        {
+            "LHS": [
+                "sausage"
+            ],
+            "RHS": [
+                "other vegetables"
+            ],
+            "Confidence": 0.2867965367965368,
+            "Lift": 1.4822091116100575,
+            "Conviction": 1.1308236895112296,
+            "Leverage": 0.008765918798973094,
+            "LHS_Count": 924,
+            "LHS_Support": 0.09395017793594305,
+            "RHS_Count": 1903,
+            "RHS_Support": 0.1934926283680732,
+            "Support": 0.026944585663446874,
+            "Count": 265
+        },
+        {
+            "LHS": [
+                "other vegetables",
+                "sausage"
+            ],
+            "RHS": [
+                "whole milk"
+            ],
+            "Confidence": 0.3773584905660377,
+            "Lift": 1.4768486887055234,
+            "Conviction": 1.1956864013803514,
+            "Leverage": 0.0032829950409514986,
+            "LHS_Count": 265,
+            "LHS_Support": 0.026944585663446874,
+            "RHS_Count": 2513,
+            "RHS_Support": 0.25551601423487547,
+            "Support": 0.010167768174885612,
+            "Count": 100
+        },
+        {
+            "LHS": [
+                "long life bakery product"
+            ],
+            "RHS": [
+                "other vegetables"
+            ],
+            "Confidence": 0.28532608695652173,
+            "Lift": 1.474609598117389,
+            "Conviction": 1.128497006694103,
+            "Leverage": 0.0034361680488611147,
+            "LHS_Count": 368,
+            "LHS_Support": 0.037417386883579054,
+            "RHS_Count": 1903,
+            "RHS_Support": 0.1934926283680732,
+            "Support": 0.010676156583629894,
+            "Count": 105
+        },
+        {
+            "LHS": [
+                "napkins"
+            ],
+            "RHS": [
+                "whole milk"
+            ],
+            "Confidence": 0.37669902912621356,
+            "Lift": 1.4742677880844848,
+            "Conviction": 1.1944213478786265,
+            "Leverage": 0.006345628131066509,
+            "LHS_Count": 515,
+            "LHS_Support": 0.05236400610066091,
+            "RHS_Count": 2513,
+            "RHS_Support": 0.25551601423487547,
+            "Support": 0.019725470259278087,
+            "Count": 194
+        },
+        {
+            "LHS": [
+                "salty snack"
+            ],
+            "RHS": [
+                "other vegetables"
+            ],
+            "Confidence": 0.28494623655913975,
+            "Lift": 1.472646472180315,
+            "Conviction": 1.1278975272446494,
+            "Leverage": 0.003459150203058135,
+            "LHS_Count": 372,
+            "LHS_Support": 0.03782409761057448,
+            "RHS_Count": 1903,
+            "RHS_Support": 0.1934926283680732,
+            "Support": 0.010777834265378749,
+            "Count": 106
+        },
+        {
+            "LHS": [
+                "pastry"
+            ],
+            "RHS": [
+                "whole milk"
+            ],
+            "Confidence": 0.3737142857142857,
+            "Lift": 1.4625865499403103,
+            "Conviction": 1.188728991869496,
+            "Leverage": 0.010515860451904824,
+            "LHS_Count": 875,
+            "LHS_Support": 0.08896797153024912,
+            "RHS_Count": 2513,
+            "RHS_Support": 0.25551601423487547,
+            "Support": 0.033248601931875954,
+            "Count": 327
+        },
+        {
+            "LHS": [
+                "fruit/vegetable juice"
+            ],
+            "RHS": [
+                "soda"
+            ],
+            "Confidence": 0.2545710267229255,
+            "Lift": 1.459886908349838,
+            "Conviction": 1.1075807426307662,
+            "Leverage": 0.0057974370711038215,
+            "LHS_Count": 711,
+            "LHS_Support": 0.0722928317234367,
+            "RHS_Count": 1715,
+            "RHS_Support": 0.17437722419928825,
+            "Support": 0.01840366039654296,
+            "Count": 181
+        },
+        {
+            "LHS": [
+                "dessert"
+            ],
+            "RHS": [
+                "whole milk"
+            ],
+            "Confidence": 0.3698630136986301,
+            "Lift": 1.4475140229709618,
+            "Conviction": 1.1814637165403061,
+            "Leverage": 0.004243686304450479,
+            "LHS_Count": 365,
+            "LHS_Support": 0.03711235383833249,
+            "RHS_Count": 2513,
+            "RHS_Support": 0.25551601423487547,
+            "Support": 0.013726487036095577,
+            "Count": 135
+        },
+        {
+            "LHS": [
+                "frankfurter"
+            ],
+            "RHS": [
+                "other vegetables"
+            ],
+            "Confidence": 0.2793103448275862,
+            "Lift": 1.44351930708319,
+            "Conviction": 1.1190772142261185,
+            "Leverage": 0.005060932948298683,
+            "LHS_Count": 580,
+            "LHS_Support": 0.058973055414336555,
+            "RHS_Count": 1903,
+            "RHS_Support": 0.1934926283680732,
+            "Support": 0.016471784443314694,
+            "Count": 162
+        },
+        {
+            "LHS": [
+                "citrus fruit"
+            ],
+            "RHS": [
+                "whole milk"
+            ],
+            "Confidence": 0.36855036855036855,
+            "Lift": 1.4423767905662055,
+            "Conviction": 1.179007712865392,
+            "Leverage": 0.009355359879289413,
+            "LHS_Count": 814,
+            "LHS_Support": 0.08276563294356888,
+            "RHS_Count": 2513,
+            "RHS_Support": 0.25551601423487547,
+            "Support": 0.030503304524656837,
+            "Count": 300
+        },
+        {
+            "LHS": [
+                "fruit/vegetable juice"
+            ],
+            "RHS": [
+                "whole milk"
+            ],
+            "Confidence": 0.36849507735583686,
+            "Lift": 1.4421604002366317,
+            "Conviction": 1.1789044852539055,
+            "Leverage": 0.008167576398475197,
+            "LHS_Count": 711,
+            "LHS_Support": 0.0722928317234367,
+            "RHS_Count": 2513,
+            "RHS_Support": 0.25551601423487547,
+            "Support": 0.026639552618200304,
+            "Count": 262
+        },
+        {
+            "LHS": [
+                "other vegetables",
+                "yogurt"
+            ],
+            "RHS": [
+                "rolls/buns"
+            ],
+            "Confidence": 0.26463700234192034,
+            "Lift": 1.4387534096366978,
+            "Conviction": 1.1097445429199628,
+            "Leverage": 0.003503791202528552,
+            "LHS_Count": 427,
+            "LHS_Support": 0.04341637010676157,
+            "RHS_Count": 1809,
+            "RHS_Support": 0.18393492628368074,
+            "Support": 0.011489578037620742,
+            "Count": 113
+        },
+        {
+            "LHS": [
+                "shopping bags"
+            ],
+            "RHS": [
+                "soda"
+            ],
+            "Confidence": 0.2497420020639835,
+            "Lift": 1.4321939302036606,
+            "Conviction": 1.1004518153382252,
+            "Leverage": 0.007425365505936931,
+            "LHS_Count": 969,
+            "LHS_Support": 0.09852567361464158,
+            "RHS_Count": 1715,
+            "RHS_Support": 0.17437722419928825,
+            "Support": 0.024605998983223184,
+            "Count": 242
+        },
+        {
+            "LHS": [
+                "napkins"
+            ],
+            "RHS": [
+                "other vegetables"
+            ],
+            "Confidence": 0.2757281553398058,
+            "Lift": 1.4250059946226958,
+            "Conviction": 1.1135423495722314,
+            "Leverage": 0.00430618163603887,
+            "LHS_Count": 515,
+            "LHS_Support": 0.05236400610066091,
+            "RHS_Count": 1903,
+            "RHS_Support": 0.1934926283680732,
+            "Support": 0.01443823080833757,
+            "Count": 142
+        },
+        {
+            "LHS": [
+                "long life bakery product"
+            ],
+            "RHS": [
+                "whole milk"
+            ],
+            "Confidence": 0.36141304347826086,
+            "Lift": 1.414443805256146,
+            "Conviction": 1.165830241538578,
+            "Leverage": 0.003962390113021437,
+            "LHS_Count": 368,
+            "LHS_Support": 0.037417386883579054,
+            "RHS_Count": 2513,
+            "RHS_Support": 0.25551601423487547,
+            "Support": 0.013523131672597865,
+            "Count": 133
+        },
+        {
+            "LHS": [
+                "root vegetables",
+                "whole milk"
+            ],
+            "RHS": [
+                "rolls/buns"
+            ],
+            "Confidence": 0.2598752598752599,
+            "Lift": 1.412865218835368,
+            "Conviction": 1.1026047765661504,
+            "Leverage": 0.003714011231067571,
+            "LHS_Count": 481,
+            "LHS_Support": 0.048906964921199794,
+            "RHS_Count": 1809,
+            "RHS_Support": 0.18393492628368074,
+            "Support": 0.012709710218607015,
+            "Count": 125
+        },
+        {
+            "LHS": [
+                "beef"
+            ],
+            "RHS": [
+                "rolls/buns"
+            ],
+            "Confidence": 0.2596899224806201,
+            "Lift": 1.4118575940281364,
+            "Conviction": 1.102328738318379,
+            "Leverage": 0.003974537675406276,
+            "LHS_Count": 516,
+            "LHS_Support": 0.05246568378240976,
+            "RHS_Count": 1809,
+            "RHS_Support": 0.18393492628368074,
+            "Support": 0.01362480935434672,
+            "Count": 134
+        },
+        {
+            "LHS": [
+                "tropical fruit",
+                "whole milk"
+            ],
+            "RHS": [
+                "rolls/buns"
+            ],
+            "Confidence": 0.25961538461538464,
+            "Lift": 1.4114523536165327,
+            "Conviction": 1.102217761902561,
+            "Leverage": 0.0032011256396531585,
+            "LHS_Count": 416,
+            "LHS_Support": 0.04229791560752415,
+            "RHS_Count": 1809,
+            "RHS_Support": 0.18393492628368074,
+            "Support": 0.010981189628876462,
+            "Count": 108
+        },
+        {
+            "LHS": [
+                "root vegetables",
+                "other vegetables"
+            ],
+            "RHS": [
+                "rolls/buns"
+            ],
+            "Confidence": 0.2575107296137339,
+            "Lift": 1.4000099644837327,
+            "Conviction": 1.0990934229820948,
+            "Leverage": 0.003486153975780861,
+            "LHS_Count": 466,
+            "LHS_Support": 0.047381799694966954,
+            "RHS_Count": 1809,
+            "RHS_Support": 0.18393492628368074,
+            "Support": 0.012201321809862735,
+            "Count": 120
         }
     ]
 }

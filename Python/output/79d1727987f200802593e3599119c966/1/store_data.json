@@ -1,0 +1,17 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "store_data.csv",
+    "datasetSep": ";",
+    "datasetType": 1,
+    "outputType": 2,
+    "datasetArgs": "",
+    "Records": 7501,
+    "RecordsCreationTime": "0.009",
+    "RulesCount": 0,
+    "RulesCreationTime": "0.021",
+    "rules": []
+}
