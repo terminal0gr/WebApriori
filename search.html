@@ -3,8 +3,6 @@
 <head>
 
 	<!-- TODO
-	> titanic02 with maxlength 4 error in line 143 => conviction = Nan!!!
-	> button for abort ajax request.
 	> upload JSON or Text to the user
 	-->
 
@@ -42,6 +40,7 @@
 	<script>
 
 		var resultsTable
+		var ajaxReq
 
 		$(function() {
 
@@ -142,6 +141,13 @@
 				// Stop the browser from submitting the form.
 				e.preventDefault();
 
+				if ($('#submitBtn').hasClass("btn-warning")) {
+					ajaxReq.abort();
+					ajaxreq=undefined;
+					MyModal("Exclamation","Function aborted by user.");
+					return;
+				};
+
 				//Prepare the data to send
 				var datasetType = document.getElementById("dataset");
 				if(!datasetType.value){
@@ -161,13 +167,14 @@
 				}
 
 				// Submit the form using AJAX.
-				$.ajax({
+				ajaxReq= $.ajax({
 					type: 'POST',
 					url: $('#retrieveRules').attr('action'),
 					data: $.param(formData), //serialize 	the array
 					beforeSend: function( xhr ) {
 						$('#showResults').hide("slow");
-						$('#submitBtn').html("<b>Retrieving rules...</b>");	
+						//$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" );
+						$('#submitBtn').html("<b>Retrieving rules. Click to abort</b>").removeClass( "btn-primary" ).addClass("btn-warning");	
   					}
 				})
 				.done(function(response) {
@@ -177,13 +184,20 @@
 							MyModal(res.title, res.message);
 						} else {					
 							try {
-								resm=JSON.parse(res.message);
-							}
-							catch(err){
-								MyModal("Error" + err.message, res.message);
+								if (res.message) {
+									resm=JSON.parse(res.message);
+									fillTable(resm);
+								} else {
+									if (err.message) {
+										MyModal("Error 10" , err.message);
+									} else {
+										return;
+									}
+								}
+							} catch(err){
+								MyModal("Error 20" + err.message, res.message);
 								return;
 							}
-							fillTable(resm);
 						} 
 					}
 					else alert(response);
@@ -191,7 +205,9 @@
 				.fail(function(jqXHR) {
 					if (isJSON(jqXHR.responseText)) {
 						res=JSON.parse(jqXHR.responseText);
-						MyModal(res.title, res.message);
+						if (res.title || res.message) {
+							MyModal(res.title, res.message);
+						}
 						if (res.http_response_code>=400 && sessionStorage.getItem('token')) {
 							setTimeout(function() {
 								sessionStorage.clear();
@@ -199,10 +215,14 @@
 							}, 3000);	
 						}
 					} 
-					else MyModal("Error", jqXHR.responseText);
+					if (jqXHR.responseText) {
+						MyModal("Error 30", jqXHR.responseText);						
+					} else {
+						return;
+					}
 				})
 				.always(function() {
-					$('#submitBtn').html("Retrieve association rules");
+					$('#submitBtn').html("Retrieve association rules").removeClass("btn-warning").addClass("btn-primary");
 				});
 			});
 
@@ -507,7 +527,8 @@
 				processData:false
 			}) 	
 			.done(function(response) {
-				if (isJSON(response)) {
+				//cover both null and undefined circumstanses and if it is a JSON obj
+				if (response!=undefined && response!=null && isJSON(response)) {
 					res=JSON.parse(response);
 					try {
 						if (res.http_response_code) {
@@ -546,7 +567,13 @@
 					}
 				}
 				else {
-					MyModal("Error", response);
+					//cover both null and undefined circumstanses
+					if (response!=undefined && response!=null) {
+						MyModal("Error", response);
+					} else {
+						MyModal("Error", "Unknown error occured");
+					}
+
 				}
 			}).fail(function( jqXHR, textStatus, thrownError ) {
 				if (jqXHR.responseText) {
@@ -744,8 +771,8 @@
 			<div class="form-col">	
 				<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-trigger="hover" data-toggle="tooltip" title="In extra paramaters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
 			</div>
-			<div class="p-2 mx-auto" style="width: 300px;">
-				<button id="submitBtn" type="submit" class="btn btn-primary ">Retrieve association rules</button>
+			<div align="center" class="p-2">
+				<button id="submitBtn" type="submit" class="btn btn-primary btn-center">Retrieve association rules</button>
 			</div>
 		</div>	
 	</form>
@@ -760,8 +787,11 @@
 				<div class="col-6">		
 					<label for="Records">Records count</label>
 				</div>
-				<div class="col-6">
+				<div class="col-4">
 					<label for="RecordsCreationTime">Dataset read Time</label>
+				</div>
+				<div class="col-2">
+					<button type="button" class="btn mt-n2 float-right" onclick="window.location='download.php';" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Download association rules in a json format file"><img src="./images/downArrow24grey.png" width="24" height="24" alt="">	</button>
 				</div>
 			</div>
 			<div class="row">
