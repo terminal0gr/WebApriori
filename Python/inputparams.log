@@ -4,8 +4,8 @@ min_confidence:0.2
 min_lift      :1.5
 max_length    :4
 SortIndex     :-3
-Dataset Name  :titanic02WithoutHeader.csv
+Dataset Name  :dataset.csv
 Dataset Sep   :,
-Dataset Type  :4
+Dataset Type  :1
 Output Type   :2
 Dataset Args  :
