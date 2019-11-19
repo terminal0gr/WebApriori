@@ -706,14 +706,14 @@
 	<form id="retrieveRules" action="phpfunctions/retrieveRules.php" method="post" >
 		<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
 			<div class="form-row">
-				<div class="col-9">	
-					<label for="dataset">Select dataset or <a href="#" onclick="toggleDisplay('#uploadDatasetform');return false;" data-toggle="tooltip" title="Upload a new dataset on our server. Uploaded dataset limit is 10">upload</a> one:</label>			
-				</div>
+				<span class="col-9 align-bottom">	
+					<label class="align-bottom" for="dataset">Select dataset or <a href="#" onclick="toggleDisplay('#uploadDatasetform');return false;" data-toggle="tooltip" title="Upload a new dataset on our server. Uploaded dataset limit is 10">upload</a> one:</label>			
+				</span>
 				<div class="col-2">	
 					<label for="separator">Separator</label>			
 				</div>
-				<div class="col-1">
-					<button type="button" class="btn mt-n2 float-right" onclick="toggleDisplay('#infoForDS')" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button>
+      		    <div class="col-1 ">
+					<button type="button" class="btn btn-primary btn-inline" style="height:100%; width:100%"  onclick="toggleDisplay('#infoForDS')" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help32white.png" width="24" height="24" alt="">	</button>
 				</div>
 			</div>
 			<div class="form-row">
