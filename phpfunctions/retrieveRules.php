@@ -127,20 +127,36 @@
 
     chdir('../Python');
     //asychronous call
-    //exec($input.' > /dev/null 2>&1 &');
+    //exec($input.' > /dev/null 2>&1');
     //exec($input, $output);
     //alternative to exec
 
-    ob_start();
-    passthru($input);
-    $output = ob_get_contents();
-    ob_end_clean();
+
+    //$input = escapeshellcmd($input);
+    //$output = shell_exec($input);
+    //echo $output;
+
+    // http_response_code(200);
+    // $JsonReq = array('http_response_code' => 201, 'title' => $input, 'message' => $output);
+    // print json_encode($JsonReq);
+    // exit();   
+
+    try {
+        ob_start();
+        passthru($input);
+        $output = ob_get_contents();
+        ob_end_clean();
+    } catch (Exception $e) {
+        http_response_code(201);
+        $JsonReq = array('http_response_code' => 201, 'title' => 'Error', 'message' => $e->getMessage());
+        print json_encode($JsonReq);
+        exit();
+    }
 
     // http_response_code(201);
     // $JsonReq = array('http_response_code' => 201, 'title' => $input, 'message' => $output);
     // print json_encode($JsonReq);
     // exit();
-
 
     if (!$output) {
         http_response_code(201);

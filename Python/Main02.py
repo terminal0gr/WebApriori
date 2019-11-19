@@ -697,7 +697,7 @@ Dataset types:
 # sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.02, 1.5, 4, -3, "supermarket.txt", ",", "3", '1', "?", 'department1','department2','department3','department4','department5','department6','department7','department8','department9','grocery misc']
 
 # sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "titanic02WithoutHeader.csv", ",", "4", '2']
-sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 3, -3, "titanic02.csv", ",", "4", '2', "class", "age", "sex", "survived"]
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 3, -3, "titanic02.csv", ",", "4", '2', "class", "age", "sex", "survived"]
 
 #identity
 identity=None

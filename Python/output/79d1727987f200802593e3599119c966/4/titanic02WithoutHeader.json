@@ -2,25 +2,25 @@
     "min_support": 0.01,
     "min_confidence": 0.2,
     "min_lift": 1.5,
-    "max_length": 3,
+    "max_length": 4,
     "ssort": -3,
-    "datasetName": "titanic02.csv",
+    "datasetName": "titanic02WithoutHeader.csv",
     "datasetSep": ",",
     "datasetType": 4,
     "outputType": 2,
-    "datasetArgs": "['class', 'age', 'sex', 'survived']",
+    "datasetArgs": "",
     "Records": 2201,
-    "RecordsCreationTime": "0.027",
-    "RulesCount": 37,
-    "RulesCreationTime": "0.012",
+    "RecordsCreationTime": "0.000",
+    "RulesCount": 46,
+    "RulesCreationTime": "0.000",
     "rules": [
         {
             "LHS": [
-                "survived=yes",
-                "class=2nd"
+                "yes",
+                "2nd"
             ],
             "RHS": [
-                "age=child"
+                "child"
             ],
             "Confidence": 0.2033898305084746,
             "Lift": 4.10698180687296,
@@ -35,11 +35,31 @@
         },
         {
             "LHS": [
-                "survived=yes",
-                "class=2nd"
+                "yes",
+                "adult",
+                "2nd"
             ],
             "RHS": [
-                "sex=female"
+                "female"
+            ],
+            "Confidence": 0.851063829787234,
+            "Lift": 3.9855138071525578,
+            "Conviction": 5.28052184072175,
+            "Leverage": 0.027227308391687643,
+            "LHS_Count": 94,
+            "LHS_Support": 0.04270786006360745,
+            "RHS_Count": 470,
+            "RHS_Support": 0.21353930031803725,
+            "Support": 0.03634711494775102,
+            "Count": 80
+        },
+        {
+            "LHS": [
+                "yes",
+                "2nd"
+            ],
+            "RHS": [
+                "female"
             ],
             "Confidence": 0.788135593220339,
             "Lift": 3.690822214208439,
@@ -54,11 +74,31 @@
         },
         {
             "LHS": [
-                "class=1st",
-                "survived=yes"
+                "yes",
+                "1st",
+                "adult"
             ],
             "RHS": [
-                "sex=female"
+                "female"
+            ],
+            "Confidence": 0.7106598984771573,
+            "Lift": 3.3280051841451557,
+            "Conviction": 2.7181185585499406,
+            "Leverage": 0.0444946650783038,
+            "LHS_Count": 197,
+            "LHS_Support": 0.08950477055883689,
+            "RHS_Count": 470,
+            "RHS_Support": 0.21353930031803725,
+            "Support": 0.06360745115856428,
+            "Count": 140
+        },
+        {
+            "LHS": [
+                "yes",
+                "1st"
+            ],
+            "RHS": [
+                "female"
             ],
             "Confidence": 0.6945812807881773,
             "Lift": 3.252709359605911,
@@ -73,11 +113,11 @@
         },
         {
             "LHS": [
-                "age=child",
-                "survived=yes"
+                "yes",
+                "child"
             ],
             "RHS": [
-                "class=2nd"
+                "2nd"
             ],
             "Confidence": 0.4210526315789474,
             "Lift": 3.251708217913204,
@@ -92,11 +132,11 @@
         },
         {
             "LHS": [
-                "age=child",
-                "survived=no"
+                "no",
+                "child"
             ],
             "RHS": [
-                "class=3rd"
+                "3rd"
             ],
             "Confidence": 1.0,
             "Lift": 3.1175637393767706,
@@ -111,11 +151,31 @@
         },
         {
             "LHS": [
-                "age=child",
-                "class=2nd"
+                "male",
+                "no",
+                "child"
             ],
             "RHS": [
-                "survived=yes"
+                "3rd"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.1175637393767706,
+            "Conviction": 100,
+            "Leverage": 0.01080112897342726,
+            "LHS_Count": 35,
+            "LHS_Support": 0.01590186278964107,
+            "RHS_Count": 706,
+            "RHS_Support": 0.32076328941390275,
+            "Support": 0.01590186278964107,
+            "Count": 35
+        },
+        {
+            "LHS": [
+                "child",
+                "2nd"
+            ],
+            "RHS": [
+                "yes"
             ],
             "Confidence": 1.0,
             "Lift": 3.09563994374121,
@@ -130,11 +190,11 @@
         },
         {
             "LHS": [
-                "class=1st",
-                "sex=female"
+                "female",
+                "1st"
             ],
             "RHS": [
-                "survived=yes"
+                "yes"
             ],
             "Confidence": 0.9724137931034481,
             "Lift": 3.0102429797759345,
@@ -149,11 +209,51 @@
         },
         {
             "LHS": [
-                "sex=female",
-                "survived=yes"
+                "female",
+                "1st",
+                "adult"
             ],
             "RHS": [
-                "class=1st"
+                "yes"
+            ],
+            "Confidence": 0.9722222222222221,
+            "Lift": 3.0096499453039534,
+            "Conviction": 24.37074057246695,
+            "Leverage": 0.04247294970007644,
+            "LHS_Count": 144,
+            "LHS_Support": 0.06542480690595184,
+            "RHS_Count": 711,
+            "RHS_Support": 0.3230349840981372,
+            "Support": 0.06360745115856428,
+            "Count": 140
+        },
+        {
+            "LHS": [
+                "yes",
+                "female",
+                "adult"
+            ],
+            "RHS": [
+                "1st"
+            ],
+            "Confidence": 0.4430379746835443,
+            "Lift": 3.0003894839337875,
+            "Conviction": 1.530337449919458,
+            "Leverage": 0.04240771975730332,
+            "LHS_Count": 316,
+            "LHS_Support": 0.14357110404361653,
+            "RHS_Count": 325,
+            "RHS_Support": 0.14766015447523853,
+            "Support": 0.06360745115856428,
+            "Count": 140
+        },
+        {
+            "LHS": [
+                "yes",
+                "female"
+            ],
+            "RHS": [
+                "1st"
             ],
             "Confidence": 0.4098837209302325,
             "Lift": 2.775858676207513,
@@ -168,11 +268,11 @@
         },
         {
             "LHS": [
-                "sex=female",
-                "class=2nd"
+                "female",
+                "2nd"
             ],
             "RHS": [
-                "survived=yes"
+                "yes"
             ],
             "Confidence": 0.8773584905660378,
             "Lift": 2.7159859883767217,
@@ -187,11 +287,31 @@
         },
         {
             "LHS": [
-                "survived=no",
-                "sex=female"
+                "female",
+                "adult",
+                "2nd"
             ],
             "RHS": [
-                "class=3rd"
+                "yes"
+            ],
+            "Confidence": 0.8602150537634409,
+            "Lift": 2.6629160806375998,
+            "Conviction": 4.8429035752979415,
+            "Leverage": 0.02269774942247762,
+            "LHS_Count": 93,
+            "LHS_Support": 0.04225352112676056,
+            "RHS_Count": 711,
+            "RHS_Support": 0.3230349840981372,
+            "Support": 0.03634711494775102,
+            "Count": 80
+        },
+        {
+            "LHS": [
+                "no",
+                "female"
+            ],
+            "RHS": [
+                "3rd"
             ],
             "Confidence": 0.8412698412698413,
             "Lift": 2.622712352174109,
@@ -206,11 +326,31 @@
         },
         {
             "LHS": [
-                "survived=yes",
-                "class=3rd"
+                "no",
+                "female",
+                "adult"
             ],
             "RHS": [
-                "sex=female"
+                "3rd"
+            ],
+            "Confidence": 0.81651376146789,
+            "Lift": 2.5455336954544276,
+            "Conviction": 3.701840072694232,
+            "Leverage": 0.024551022923164294,
+            "LHS_Count": 109,
+            "LHS_Support": 0.049522944116310766,
+            "RHS_Count": 706,
+            "RHS_Support": 0.32076328941390275,
+            "Support": 0.040436165379373015,
+            "Count": 89
+        },
+        {
+            "LHS": [
+                "yes",
+                "3rd"
+            ],
+            "RHS": [
+                "female"
             ],
             "Confidence": 0.5056179775280898,
             "Lift": 2.3677982309347354,
@@ -225,11 +365,31 @@
         },
         {
             "LHS": [
-                "age=child",
-                "sex=male"
+                "yes",
+                "3rd",
+                "adult"
             ],
             "RHS": [
-                "class=3rd"
+                "female"
+            ],
+            "Confidence": 0.5033112582781457,
+            "Lift": 2.3569959137663803,
+            "Conviction": 1.5834075420263518,
+            "Leverage": 0.019879857179453148,
+            "LHS_Count": 151,
+            "LHS_Support": 0.06860517946388005,
+            "RHS_Count": 470,
+            "RHS_Support": 0.21353930031803725,
+            "Support": 0.03452975920036347,
+            "Count": 76
+        },
+        {
+            "LHS": [
+                "male",
+                "child"
+            ],
+            "RHS": [
+                "3rd"
             ],
             "Confidence": 0.75,
             "Lift": 2.338172804532578,
@@ -244,11 +404,11 @@
         },
         {
             "LHS": [
-                "sex=female",
-                "age=adult"
+                "female",
+                "adult"
             ],
             "RHS": [
-                "survived=yes"
+                "yes"
             ],
             "Confidence": 0.7435294117647059,
             "Lift": 2.301699346405229,
@@ -263,11 +423,11 @@
         },
         {
             "LHS": [
-                "age=child",
-                "survived=yes"
+                "yes",
+                "child"
             ],
             "RHS": [
-                "sex=female"
+                "female"
             ],
             "Confidence": 0.4912280701754386,
             "Lift": 2.3004106009705114,
@@ -282,11 +442,11 @@
         },
         {
             "LHS": [
-                "sex=female",
-                "age=adult"
+                "female",
+                "adult"
             ],
             "RHS": [
-                "class=1st"
+                "1st"
             ],
             "Confidence": 0.3388235294117647,
             "Lift": 2.2946171945701357,
@@ -301,10 +461,10 @@
         },
         {
             "LHS": [
-                "sex=female"
+                "female"
             ],
             "RHS": [
-                "survived=yes"
+                "yes"
             ],
             "Confidence": 0.7319148936170213,
             "Lift": 2.2657449800999494,
@@ -319,10 +479,10 @@
         },
         {
             "LHS": [
-                "survived=yes"
+                "yes"
             ],
             "RHS": [
-                "sex=female"
+                "female"
             ],
             "Confidence": 0.48382559774964845,
             "Lift": 2.2657449800999494,
@@ -337,11 +497,11 @@
         },
         {
             "LHS": [
-                "survived=yes",
-                "age=adult"
+                "yes",
+                "adult"
             ],
             "RHS": [
-                "sex=female"
+                "female"
             ],
             "Confidence": 0.4831804281345565,
             "Lift": 2.2627236645194873,
@@ -356,10 +516,10 @@
         },
         {
             "LHS": [
-                "age=child"
+                "child"
             ],
             "RHS": [
-                "class=3rd"
+                "3rd"
             ],
             "Confidence": 0.7247706422018348,
             "Lift": 2.2595186734932557,
@@ -374,11 +534,11 @@
         },
         {
             "LHS": [
-                "age=child",
-                "sex=female"
+                "female",
+                "child"
             ],
             "RHS": [
-                "class=3rd"
+                "3rd"
             ],
             "Confidence": 0.6888888888888889,
             "Lift": 2.147655020459553,
@@ -393,11 +553,11 @@
         },
         {
             "LHS": [
-                "class=1st",
-                "age=adult"
+                "1st",
+                "adult"
             ],
             "RHS": [
-                "sex=female"
+                "female"
             ],
             "Confidence": 0.4514106583072101,
             "Lift": 2.1139465083705735,
@@ -412,10 +572,10 @@
         },
         {
             "LHS": [
-                "class=1st"
+                "1st"
             ],
             "RHS": [
-                "sex=female"
+                "female"
             ],
             "Confidence": 0.4461538461538462,
             "Lift": 2.089328968903437,
@@ -430,10 +590,10 @@
         },
         {
             "LHS": [
-                "sex=female"
+                "female"
             ],
             "RHS": [
-                "class=1st"
+                "1st"
             ],
             "Confidence": 0.3085106382978724,
             "Lift": 2.089328968903437,
@@ -448,11 +608,11 @@
         },
         {
             "LHS": [
-                "sex=female",
-                "survived=yes"
+                "yes",
+                "female"
             ],
             "RHS": [
-                "class=2nd"
+                "2nd"
             ],
             "Confidence": 0.2703488372093023,
             "Lift": 2.087851897184822,
@@ -467,11 +627,11 @@
         },
         {
             "LHS": [
-                "survived=yes",
-                "age=adult"
+                "yes",
+                "adult"
             ],
             "RHS": [
-                "class=1st"
+                "1st"
             ],
             "Confidence": 0.301223241590214,
             "Lift": 2.0399764761232646,
@@ -486,10 +646,30 @@
         },
         {
             "LHS": [
-                "class=1st"
+                "yes",
+                "female",
+                "adult"
             ],
             "RHS": [
-                "survived=yes"
+                "2nd"
+            ],
+            "Confidence": 0.25316455696202533,
+            "Lift": 1.9551410170997112,
+            "Conviction": 1.1656026921507174,
+            "Leverage": 0.017756581257414486,
+            "LHS_Count": 316,
+            "LHS_Support": 0.14357110404361653,
+            "RHS_Count": 285,
+            "RHS_Support": 0.12948659700136303,
+            "Support": 0.03634711494775102,
+            "Count": 80
+        },
+        {
+            "LHS": [
+                "1st"
+            ],
+            "RHS": [
+                "yes"
             ],
             "Confidence": 0.6246153846153846,
             "Lift": 1.933584334090663,
@@ -504,10 +684,10 @@
         },
         {
             "LHS": [
-                "survived=yes"
+                "yes"
             ],
             "RHS": [
-                "class=1st"
+                "1st"
             ],
             "Confidence": 0.28551336146272854,
             "Lift": 1.933584334090663,
@@ -522,10 +702,10 @@
         },
         {
             "LHS": [
-                "age=child"
+                "child"
             ],
             "RHS": [
-                "sex=female"
+                "female"
             ],
             "Confidence": 0.41284403669724773,
             "Lift": 1.9333398399375368,
@@ -540,11 +720,11 @@
         },
         {
             "LHS": [
-                "age=child",
-                "sex=female"
+                "female",
+                "child"
             ],
             "RHS": [
-                "survived=yes"
+                "yes"
             ],
             "Confidence": 0.6222222222222222,
             "Lift": 1.9261759649945305,
@@ -559,11 +739,11 @@
         },
         {
             "LHS": [
-                "class=1st",
-                "age=adult"
+                "1st",
+                "adult"
             ],
             "RHS": [
-                "survived=yes"
+                "yes"
             ],
             "Confidence": 0.6175548589341693,
             "Lift": 1.9117274887680826,
@@ -578,11 +758,11 @@
         },
         {
             "LHS": [
-                "age=child",
-                "class=3rd"
+                "3rd",
+                "child"
             ],
             "RHS": [
-                "sex=female"
+                "female"
             ],
             "Confidence": 0.3924050632911393,
             "Lift": 1.8376245623485055,
@@ -597,10 +777,10 @@
         },
         {
             "LHS": [
-                "class=2nd"
+                "2nd"
             ],
             "RHS": [
-                "sex=female"
+                "female"
             ],
             "Confidence": 0.37192982456140344,
             "Lift": 1.7417394550205298,
@@ -615,10 +795,10 @@
         },
         {
             "LHS": [
-                "sex=female"
+                "female"
             ],
             "RHS": [
-                "class=2nd"
+                "2nd"
             ],
             "Confidence": 0.225531914893617,
             "Lift": 1.7417394550205298,
@@ -633,10 +813,10 @@
         },
         {
             "LHS": [
-                "age=child"
+                "child"
             ],
             "RHS": [
-                "class=2nd"
+                "2nd"
             ],
             "Confidence": 0.22018348623853212,
             "Lift": 1.7004345726702075,
@@ -651,11 +831,11 @@
         },
         {
             "LHS": [
-                "sex=female",
-                "age=adult"
+                "female",
+                "adult"
             ],
             "RHS": [
-                "class=2nd"
+                "2nd"
             ],
             "Confidence": 0.2188235294117647,
             "Lift": 1.6899318885448913,
@@ -670,11 +850,11 @@
         },
         {
             "LHS": [
-                "class=2nd",
-                "age=adult"
+                "adult",
+                "2nd"
             ],
             "RHS": [
-                "sex=female"
+                "female"
             ],
             "Confidence": 0.3563218390804598,
             "Lift": 1.668647591098068,
@@ -689,10 +869,10 @@
         },
         {
             "LHS": [
-                "age=child"
+                "child"
             ],
             "RHS": [
-                "survived=yes"
+                "yes"
             ],
             "Confidence": 0.5229357798165137,
             "Lift": 1.6188208880114583,
