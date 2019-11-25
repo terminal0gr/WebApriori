@@ -254,10 +254,10 @@
 							"data"  : function ( row, type, val, meta ) {
 							return meta.row+1;
 							}},
-						{ "title" : "LHS-Body",
+						{ "title" : "LHS/Body",
 							"data"  : "LHS",
 							"render": "[, ]" },
-						{ "title" : "Count/Sup",
+						{ "title" : "LHS Count/Sup",
 							"data"  : function ( row, type, val, meta ) {
 								if (type === 'display') {
 									return row.LHS_Count + ' / ' + row.LHS_Support.toFixed(3);
@@ -266,10 +266,10 @@
 									return row.LHS_Count
 								};
 							} },
-						{ "title" : "RHS-Head",
+						{ "title" : "RHS/Head",
 							"data"  : "RHS",
 							"render": "[, ]" },
-						{ "title" : "Count/Sup",
+						{ "title" : "RHS Count/Sup",
 							"data"  : function ( row, type, val, meta ) {
 								if (type === 'display') {
 									return row.RHS_Count + ' / ' + row.RHS_Support.toFixed(3);
@@ -278,15 +278,15 @@
 									return row.RHS_Count
 								};
 							} },
-						{ "title" : "Support",
-							"data"  : "Support",
-							"render": function ( data, type, row, meta ) {
+						{ "title" : "Rule Count/Sup",
+						  "data"  : function ( row, type, val, meta ) {
 								if (type === 'display') {
-									return data.toFixed(3);
-								} else {
-									return data
+									return row.Count + ' / ' + row.Support.toFixed(3);
 								}
-							} },										 
+								else {
+									return row.Count
+								};
+							} },									 
 						{ "title" : "Confidence",
 							"data"  : "Confidence",
 							"render": function ( data, type, row, meta ) {
@@ -640,6 +640,7 @@
                     <p id="person" class="text-primary text-center"></p>
 					<div class="dropdown-divider"></div>
 					<a id="uploadDatasetDD" class="dropdown-item" onclick="UploadDataset()" href="#"><img src="images/upload24Black.png" alt=""> Upload dataset</a>
+					<a id="webApiDD" class="dropdown-item" href="webAPI.html"><img src="images/upload24Black.png" alt=""> API Settings</a>
 					<div class="dropdown-divider"></div>
 					<a id="settings"    class="dropdown-item" href="profile.html"><img src="images/settings24.png" alt="">Profile</a>
 					<a id="SignOut"     class="dropdown-item" href="#"><img src="images/signout24.png" alt=""> Sign out</a>

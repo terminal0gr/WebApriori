@@ -347,7 +347,7 @@ def apriori(transactions, **kwargs):
            
         rules_counter+=1
         if rules_counter>=max_rules:
-            print('Maximum itemsets count limit reached!!!(' + str(max_rules) + ') No more rules can be found')
+            print('Maximum itemsets count limit reached!!!(' + str(max_rules) + ')')
             break
         
         yield RelationRecord(

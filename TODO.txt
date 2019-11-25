@@ -6,3 +6,7 @@
 2) Upload dataset function
 3) Retrieve association rules in JSON format
 
+4) Check message if maximum rules exceeded or time limit exceeded
+
+API key creation
+$key = implode('-', str_split(substr(strtolower(md5(microtime().rand(1000, 9999))), 0, 30), 6));

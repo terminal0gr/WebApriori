@@ -142,6 +142,7 @@
     // exit();   
 
     try {
+        set_time_limit(1800); //in seconds
         ob_start();
         passthru($input);
         $output = ob_get_contents();
