@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130197414-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-130197414-1');
+	</script> -->
+
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+	<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+	<script src="scripts/jquery-3.4.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<script src="scripts/scripts.js"></script>
+
+    <link rel="icon" type="image/png" href="images/basketwhite.svg"/>
+
+    <title>Association rules WebAPI</title>
+
+	<script>
+
+        var MyModalAnsw=false;
+		var ajaxReq;	
+
+		$(function() {
+
+			// initialization of tooltips in page
+			$('[data-toggle="tooltip"]').tooltip()
+
+			if (!sessionStorage.getItem('token') || sessionStorage.getItem('token')==0) {
+				MyModal("Association rules",'Please Sign in, or Sign up if you are a new user, in order to use our new association rules mining engine!');
+				setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
+			}
+
+			if (sessionStorage.getItem('version')) {
+				$('#navbar-brand').html('<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="24" height="24" alt="">Association rules ' +  sessionStorage.getItem('version'));
+			}
+			else {
+				sessionStorage.clear();
+				window.location.href='index.html';
+			}
+			M_F();
+			VT();
+
+			$('#SignOut').click(function() {
+				sessionStorage.clear();
+				window.location.href='index.html';
+			});		
+
+			$('#MyModalYes').click(function() {
+				$('#myModal').modal('hide');
+				alert(callingRoutine);
+			});	
+			$('#MyModalNo').click(function() {
+				callingRoutine="";
+				alert("Abort");
+			});	
+
+
+			//Regenerate WebAPI Key
+			$('#APIKeyForm').submit(function(e) {
+				// Stop the browser from submitting the form.
+				e.preventDefault();
+
+				if (!confirm("Regenerate your webAPI key?")) {
+					return;
+				}
+				
+				//Prepare the data to send
+				var formData = new FormData();
+				if (sessionStorage.getItem('token')) {
+					formData.set("token",sessionStorage.getItem('token'));
+				}
+				// Submit the form using AJAX.
+				$.ajax({
+					type: 'POST',
+					url: $('#APIKeyForm').attr('action'),
+					contentType: false,
+                    cache: false,
+                    processData:false,
+					data: formData
+				}).done(function(response, textStatus, jqXHR ) {
+					if (isJSON(response)) {
+						res=JSON.parse(response);
+						if (jqXHR.status==200) {
+							document.getElementById('WebAPIKey').value=res.key;
+						} else {
+							MyModal(res.title, res.message);
+						}
+					}
+					else alert(response);
+				}).fail(function( jqXHR, textStatus, thrownError ) {
+					if (isJSON(jqXHR.responseText)) {
+						res=JSON.parse(jqXHR.responseText);
+						MyModal(res.title, res.message);
+						if (res.http_response_code>=400 && sessionStorage.getItem('token')) {
+							setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
+						}
+					} 
+					else MyModal("Error", jqXHR.responseText);
+				});
+			});
+
+
+		});
+
+        // It handles the footer when the size of the window changes.
+        function M_F() {
+			if ($(window).width() <= 600) {
+				$('.udfwidth').css("width", "98%");
+			}
+			else if ($(window).width() > 600 && $(window).width() <= 1500) {
+				var pos1=Math.round(Math.abs($(window).width()-1500)*0.055+50);
+				$('.udfwidth').css("width", pos1 + "%");
+			}
+			else {	
+				$('.udfwidth').css("width", "50%");
+			}
+			style="width: 329px;"
+            if ($(window).width() <= 800 || $(window).height() <= 600) {
+                $('#c-footer').removeClass('fixed-bottom');
+            }
+            else {
+                $('#c-footer').addClass('fixed-bottom')
+            }
+        };
+
+        // handle the interface when guest or logged in
+        function VT() {
+            if (sessionStorage.getItem('token') && sessionStorage.getItem('token')!='0') {
+                $('#SignUp').hide();
+				$('#SignIn').hide();
+                if (sessionStorage.getItem('username')) {
+                    $('#person').html('<img src="images/person24.png" alt="p">' + sessionStorage.getItem('username'));
+                    $('#person').show;
+                } else {
+                    $('#person').hide;
+                }                    
+                $('#sdropdown').show();
+            } else {
+                $('#SignUp').show();
+                $('#SignIn').show();
+                $('#sdropdown').hide();
+            }
+        };
+
+        $( window ).resize(function() {
+            M_F();
+        });		
+
+    </script>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+		<a id="navbar-brand" class="navbar-brand d-none d-sm-block" data-toggle="modal" onclick="credits()" data-target="#Credits" href="#">
+			<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="24" height="24" alt="">Association rules mining
+        </a>		
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="index.html">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link">Rules search</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav ml-auto">
+			<li id="Rate" class="nav-item">
+				<a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLScLYL2nig3jOst4QNx-ojEawqks9j3yrVP0AHSkBTIXJAEr0w/viewform" target="_blank">Rate us!</a>
+			</li>			
+			<li id="SignUp" class="nav-item">
+				<a class="nav-link" href="SignUp.html">Sign Up</a>
+			</li>
+			<li id="SignIn" class="nav-item active">
+				<a class="nav-link" href="Login.html">Sign In</a>
+			</li>
+			<li id=sdropdown class="nav-item dropdown">
+				<a class="nav-item nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="images/settings24.png" alt="">
+				</a>
+				<div class="dropdown-menu dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                    <p id="person" class="text-primary text-center"></p>
+					<div class="dropdown-divider"></div>
+					<a id="uploadDatasetDD" class="dropdown-item" onclick="UploadDataset()" href="#"><img src="images/upload24Black.png" alt=""> Upload dataset</a>
+					<a id="webApiDD" class="dropdown-item" href="webAPI.html"><img src="images/upload24Black.png" alt=""> API Settings</a>
+					<div class="dropdown-divider"></div>
+					<a id="settings"    class="dropdown-item" href="profile.html"><img src="images/settings24.png" alt="">Profile</a>
+					<a id="SignOut"     class="dropdown-item" href="#"><img src="images/signout24.png" alt=""> Sign out</a>
+				</div>
+			</li>			
+		</ul>
+	</nav>
+	
+	<br>
+
+	<h3 class="text-center text-primary">WebAPI settings</h3>
+
+	<form id="uploadDatasetform" action="phpfunctions/uploadDataset.php" method="post" enctype="multipart/form-data" style="display: none">
+		<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
+			<div class="form-row">
+				<div class="col-11">
+					<div class="form-row">
+						<div class="col-5">
+							<label class="float-right">Select dataset to upload:</label>
+						</div>
+						<div class="col-7">
+							<input type="file" class="form-control-file" name="fileToUpload" id="fileToUpload" accept=".csv, .txt" >
+						</div>						
+					</div>
+					<div class="form-row">
+						<div class="col-1">
+							<button type="button" class="btn btn-sm" id="hideUpload" onclick="toggleDisplay('#uploadDatasetform')" data-trigger="hover" data-toggle="tooltip" title="Hides upload new dataset section"><img src="./images/close24grey.png" width="24" height="24" alt="">	</button>
+						</div>
+						<div class="col-1">
+							<!-- <button type="button" class="btn btn-sm" data-toggle="collapse" data-target="#collapseInfo" aria-expanded="false" aria-controls="collapseInfo" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button> -->
+							<button type="button" class="btn btn-sm" onclick="toggleDisplay('#infoForDS')" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button>
+						</div>
+						<div class="col-3">
+							<label class="col-form-label float-right">dataset type:</label>
+						</div>
+						<div class="col-7">
+							<select id="datasetType" class="browser-default custom-select" data-html="true" data-trigger="hover" data-toggle="tooltip" 
+							    title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparce item Dataset<br>4) Columns with multiple nomimal values</p>"
+						    >
+								<option value="" disabled selected>Choose a dataset type</option>
+								<option value="1">Market basket list</option>
+								<option value="2">Order/Invoice detail</option>
+								<option value="3">Sparce item dataset</option>
+								<option value="4">Multiple nomimal values</option>
+							</select>
+						</div>
+					</div>		
+				</div>
+				<div class="col-1 border border-primary rounded p-1	">
+					<button class="btn btn-primary btn-inline" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" data-trigger="hover" data-toggle="tooltip" title="Upload the Dataset!"><img src="./images/upload32White.png" width="32" height="32" alt=""></button>
+				</div>
+			</div>
+		</div>
+	</form>		
+
+	<form id="APIKeyForm" action="phpfunctions/regenerateAPIKey.php" method="post" >
+		<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
+			<div class="form-row">
+				<div class="col">	
+					<label for="WebAPIKey">WebAPI Key</label>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col">		
+					<input type="text" readonly id="WebAPIKey" name="WebAPIKey" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The key which grants access to our WebAPI functions.<br>Please keep this key secret." >
+				</div>
+			</div>
+			<div class="form-row pt-2">
+				<div class="col-6">	
+					<button id="regenerateKey" type="submit" class="btn btn-primary btn-inline" style="height:100%; width:100%" data-trigger="hover" data-toggle="tooltip" title="Replaces webAPI key with a new one">Regenerate Key</button>
+				</div>
+				<div class="col-6">	
+					<button id="copyKey" type="button" class="btn btn-primary btn-inline"  data-toggle="tooltip" title="Copy webAPI key to the clipboard"><img src="./images/copy-document32white.png" width="32" height="32" alt="copy key"></button>
+				</div>
+			</div>
+		</div>	
+	</form>
+
+	<br>
+	<br>
+	<br>
+
+	<footer>
+        <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
+            <span class="text-muted">Association rules mining based on Apriori algorithm &middot; MSc in Web Intelligence &copy; 2019-2020</span>
+        </nav>
+	</footer> 
+
+</body>
+</html>

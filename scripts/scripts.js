@@ -26,9 +26,21 @@ function guestlogin() {
         }
     });
 };
-                        
+       
+function executeFunctionByName(functionName, context /*, args */) {
+    var args = Array.prototype.slice.call(arguments, 2);
+    var namespaces = functionName.split(".");
+    var func = namespaces.pop();
+    for(var i = 0; i < namespaces.length; i++) {
+      context = context[namespaces[i]];
+    }
+    return context[func].apply(context, args);
+  }
+
+var callingRoutine = "";
 function MyModal(title="association rules mining",maincontext="", ConfirmFunc=false) {
     if ($("#MyModal")) {
+        MyModalAnsw=false;
         var str = '<div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';
         str +=    '    <div class="modal-dialog" role="document">';
         str +=    '        <div class="modal-content">';
@@ -43,8 +55,8 @@ function MyModal(title="association rules mining",maincontext="", ConfirmFunc=fa
         str +=    '            </div>';
         str +=    '            <div class="modal-footer">'; 
         if (ConfirmFunc) {
-            str +=    '                <button type="button" id="MyModalYes" class="btn btn-primary">Yes</button>'; 
-            str +=    '                <button type="button" id="MyModalNo" class="btn btn-primary" data-dismiss="modal">No</button>'; 
+            str +=    '                <button type="button" class="btn btn-primary" >Yes</button>'; 
+            str +=    '                <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>'; 
         }
         else {
             str +=    '                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>'; 
@@ -55,10 +67,8 @@ function MyModal(title="association rules mining",maincontext="", ConfirmFunc=fa
         str +=    '</div>'; 
     }
     $("body").prepend(str);
-    $( "#MyModal").modal('show')    
+    $( "#MyModal").modal('show');
 }
-
-
 
 function credits() {
     if ($("#Credits")) {

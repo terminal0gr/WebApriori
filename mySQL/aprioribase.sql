@@ -47,7 +47,9 @@ CREATE TABLE `usertable` (
   `email` varchar(30) NOT NULL,
   `passwd` varchar(60) NOT NULL,
   `oname` varchar(30) NOT NULL,
-  `fname` varchar(30) NOT NULL
+  `fname` varchar(30) NOT NULL,
+  `webAPIKey` varchar(64) NULL,
+  `key_created_at` timestamp NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
