@@ -19,5 +19,6 @@
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
-    };
+	};
+	
 ?>

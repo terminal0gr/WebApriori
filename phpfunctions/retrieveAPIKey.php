@@ -32,7 +32,7 @@
         $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
         print json_encode($JsonReq);
         exit();
-    };
+    }
 
     $identity=md5($email);
 
@@ -43,26 +43,46 @@
         $JsonReq = array('title' => 'Error', 'message' => "Connection Error" . $con1->connect_error);
         print json_encode($JsonReq);
         exit();
-    };
+    }
 
     if ( empty($email) or !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         http_response_code(400);
         $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
         print json_encode($JsonReq);
         exit();
-    };
+    }
 
     try {
-        $key=generateRandomString(64);
-        $date=date("d/m/Y");
-        $sql="UPDATE usertable SET webAPIKey='$key', key_created_at=CURDATE() WHERE email='$email'";
-        $result = mysqli_query($con1,$sql);
-        
-        if (!$result) {
+        $s="SELECT webAPIKey, key_created_at FROM usertable WHERE email='$email'";
+		$result = mysqli_query($con1,$s);
+		$num=mysqli_num_rows($result);
+
+		// If result matched $myusername and $mypassword, table row must be 1 row
+		if($num!=1){
             http_response_code(400);
-            $JsonReq = array('title' => 'Error', 'message' => 'Error writing to base!!!');
+            $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
             print json_encode($JsonReq);
             exit();
+        }
+
+        $row = $result->fetch_object();
+
+        if ($row->webAPIKey === null || $row->key_created_at === null) {
+            $key=generateRandomString(64); 
+            $date=date("d/m/Y");
+            $sql="UPDATE usertable SET webAPIKey='$key', key_created_at=CURDATE() WHERE email='$email'";
+            $result = mysqli_query($con1,$sql);
+            
+            if (!$result) {
+                http_response_code(400);
+                $JsonReq = array('title' => 'Error', 'message' => 'Error writing to base!!!');
+                print json_encode($JsonReq);
+                exit();
+            }
+        }
+        else {
+            $key=$row->webAPIKey;
+            $date=$row->key_created_at;
         }
     }
     catch (Exception $e) { 

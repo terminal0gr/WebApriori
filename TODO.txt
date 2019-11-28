@@ -1,7 +1,5 @@
 1) Web API Page
-   1.1) API Key creation
-   1.2) API Key regeneration
-   1.3) Valid for ?? days info
+   1.3) Valid for ?? days info (It function fot today only now)
    1.4) Demo of Wep API functions usage
 2) Upload dataset function
 3) Retrieve association rules in JSON format

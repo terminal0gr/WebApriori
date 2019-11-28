@@ -62,15 +62,7 @@
 				window.location.href='index.html';
 			});		
 
-			$('#MyModalYes').click(function() {
-				$('#myModal').modal('hide');
-				alert(callingRoutine);
-			});	
-			$('#MyModalNo').click(function() {
-				callingRoutine="";
-				alert("Abort");
-			});	
-
+			retrieveWebAPIKey();
 
 			//Regenerate WebAPI Key
 			$('#APIKeyForm').submit(function(e) {
@@ -99,6 +91,7 @@
 						res=JSON.parse(response);
 						if (jqXHR.status==200) {
 							document.getElementById('WebAPIKey').value=res.key;
+							document.getElementById('keyExpiresAt').value=res.kdate;
 						} else {
 							MyModal(res.title, res.message);
 						}
@@ -118,7 +111,6 @@
 					else MyModal("Error", jqXHR.responseText);
 				});
 			});
-
 
 		});
 
@@ -166,6 +158,49 @@
             M_F();
         });		
 
+        function retrieveWebAPIKey() {
+			var formData = new FormData();
+			if (sessionStorage.getItem('token')) {
+				formData.set("token",sessionStorage.getItem('token'));
+			}
+			else {
+				MyModal("Error", "You are not signed in!!! Please sign in/up");
+				return;
+			}
+
+			$.ajax({
+				type: 'POST' ,
+				url: 'phpfunctions/retrieveAPIKey.php',
+				contentType: false,
+                cache: false,
+                processData:false,
+				data: formData
+			}).done(function(response, textStatus, jqXHR ) {
+				if (isJSON(response)) {
+					res=JSON.parse(response);
+					if (jqXHR.status==200) {
+						document.getElementById('WebAPIKey').value=res.key;
+						document.getElementById('keyExpiresAt').value=res.kdate.substring(0,10).split("-").reverse().join("-").replace(/-/g,"/");
+					} else {
+						MyModal(res.title, res.message);
+					}
+				}
+				else alert(response);
+			}).fail(function( jqXHR, textStatus, thrownError ) {
+				if (isJSON(jqXHR.responseText)) {
+					res=JSON.parse(jqXHR.responseText);
+					MyModal(res.title, res.message);
+					if (res.http_response_code>=400 && sessionStorage.getItem('token')) {
+						setTimeout(function() {
+							sessionStorage.clear();
+							window.location.href='index.html';
+						}, 3000);	
+					}
+				} 
+				else MyModal("Error", jqXHR.responseText);
+			});
+		};
+
     </script>
 </head>
 
@@ -180,7 +215,7 @@
 				<a class="nav-link" href="index.html">Home</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link">Rules search</a>
+				<a class="nav-link" href="search.html">Rules search</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
@@ -212,61 +247,24 @@
 	
 	<br>
 
-	<h3 class="text-center text-primary">WebAPI settings</h3>
-
-	<form id="uploadDatasetform" action="phpfunctions/uploadDataset.php" method="post" enctype="multipart/form-data" style="display: none">
-		<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
-			<div class="form-row">
-				<div class="col-11">
-					<div class="form-row">
-						<div class="col-5">
-							<label class="float-right">Select dataset to upload:</label>
-						</div>
-						<div class="col-7">
-							<input type="file" class="form-control-file" name="fileToUpload" id="fileToUpload" accept=".csv, .txt" >
-						</div>						
-					</div>
-					<div class="form-row">
-						<div class="col-1">
-							<button type="button" class="btn btn-sm" id="hideUpload" onclick="toggleDisplay('#uploadDatasetform')" data-trigger="hover" data-toggle="tooltip" title="Hides upload new dataset section"><img src="./images/close24grey.png" width="24" height="24" alt="">	</button>
-						</div>
-						<div class="col-1">
-							<!-- <button type="button" class="btn btn-sm" data-toggle="collapse" data-target="#collapseInfo" aria-expanded="false" aria-controls="collapseInfo" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button> -->
-							<button type="button" class="btn btn-sm" onclick="toggleDisplay('#infoForDS')" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button>
-						</div>
-						<div class="col-3">
-							<label class="col-form-label float-right">dataset type:</label>
-						</div>
-						<div class="col-7">
-							<select id="datasetType" class="browser-default custom-select" data-html="true" data-trigger="hover" data-toggle="tooltip" 
-							    title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparce item Dataset<br>4) Columns with multiple nomimal values</p>"
-						    >
-								<option value="" disabled selected>Choose a dataset type</option>
-								<option value="1">Market basket list</option>
-								<option value="2">Order/Invoice detail</option>
-								<option value="3">Sparce item dataset</option>
-								<option value="4">Multiple nomimal values</option>
-							</select>
-						</div>
-					</div>		
-				</div>
-				<div class="col-1 border border-primary rounded p-1	">
-					<button class="btn btn-primary btn-inline" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" data-trigger="hover" data-toggle="tooltip" title="Upload the Dataset!"><img src="./images/upload32White.png" width="32" height="32" alt=""></button>
-				</div>
-			</div>
-		</div>
-	</form>		
+	<h3 class="text-center text-primary">WebAPI settings</h3>	
 
 	<form id="APIKeyForm" action="phpfunctions/regenerateAPIKey.php" method="post" >
 		<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
 			<div class="form-row">
-				<div class="col">	
-					<label for="WebAPIKey">WebAPI Key</label>
+				<div class="col-xl-10 col-md-9 col-sm-8">	
+					<label id="lExpiredkey" for="WebAPIKey">WebAPI Key</label>
+				</div>
+				<div class="col-xl-2 col-md-3 col-sm-4">	
+					<label for="keyExpiresAt">Expires at</label>
 				</div>
 			</div>
 			<div class="form-row">
-				<div class="col">		
+				<div class="col-xl-10 col-md-9 col-sm-8">		
 					<input type="text" readonly id="WebAPIKey" name="WebAPIKey" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The key which grants access to our WebAPI functions.<br>Please keep this key secret." >
+				</div>
+				<div class="col-xl-2 col-md-3 col-sm-4">		
+					<input type="text" readonly id="keyExpiresAt" name="keyExpiresAt" class="form-control" data-trigger="hover" data-toggle="tooltip" title="When the WebAPI key expires (or expired)" >
 				</div>
 			</div>
 			<div class="form-row pt-2">
