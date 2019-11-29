@@ -8,11 +8,10 @@
 	define( 'DB', 'aprioriBase' );   
 	define( 'HOST', 'localhost' ); 
 	define( 'SERVERKEY', 'e486n8wn76v7n69v7as678z7n674b7zx7vb7' ); 
-	define( 'apikey', 'TZXCihIgRAkexLGxXtsVmfuyJpwHlp82');
 
 	//////////////////////////////////////////////
 	//Site settings
-	define('siteRoot','http://localhost/apriori/');
+	define('siteRoot','http://localhost/webapriori/');
 
 
 	//////////////////////////////////////////////
