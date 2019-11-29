@@ -15,7 +15,7 @@ max_rules=9999
 max_items=999
 
 # Meta informations.
-__Version__ = '01.00.00 02/10/2019'
+__Version__ = '01.00.01 30/11/2019'
 __Modificator__ = 'Malliaridis konstantinos'
 __Modificator_email__= 'terminal_gr@yahoo.com'
 
@@ -220,23 +220,26 @@ def gen_ordered_statistics(transaction_manager, record):
         record -- A support record as a SupportRecord instance.
     """
     items = record.items
-    for combination_set in combinations(sorted(items), len(items) - 1):
-        LHS = frozenset(combination_set)
-        RHS = frozenset(items.difference(LHS))
-        LHS_count = transaction_manager.calc_count(LHS)
-        RHS_count = transaction_manager.calc_count(RHS)
-        LHS_support = float(LHS_count / transaction_manager.num_transaction)
-        RHS_support = float(RHS_count / transaction_manager.num_transaction)                   
-        confidence = (record.support / LHS_support)
-        lift = confidence / RHS_support
-        levarage = record.support - (LHS_support * RHS_support)
-        if confidence!=1:
-            conviction = (1 - RHS_support) / (1 - confidence)
-        else:
-            conviction = 100
-            
-        yield OrderedStatistic(
-            frozenset(LHS), frozenset(RHS), confidence, lift, conviction, levarage, LHS_count, LHS_support, RHS_count, RHS_support)
+    #for combination_set in combinations(sorted(items), len(items) - 1):
+    sorted_items = sorted(items)
+    for base_length in range(len(items)):
+        for combination_set in combinations(sorted_items, base_length):
+            LHS = frozenset(combination_set)
+            RHS = frozenset(items.difference(LHS))
+            LHS_count = transaction_manager.calc_count(LHS)
+            RHS_count = transaction_manager.calc_count(RHS)
+            LHS_support = float(LHS_count / transaction_manager.num_transaction)
+            RHS_support = float(RHS_count / transaction_manager.num_transaction)                   
+            confidence = (record.support / LHS_support)
+            lift = confidence / RHS_support
+            levarage = record.support - (LHS_support * RHS_support)
+            if confidence!=1:
+                conviction = (1 - RHS_support) / (1 - confidence)
+            else:
+                conviction = 100
+                
+            yield OrderedStatistic(
+                frozenset(LHS), frozenset(RHS), confidence, lift, conviction, levarage, LHS_count, LHS_support, RHS_count, RHS_support)
 
 
 def filter_ordered_statistics(ordered_statistics, **kwargs):
@@ -374,8 +377,8 @@ Dataset types:
 def prepare_records(datasetName, datasetSep, datasetType, *args):
 
     global max_items
-    filepath='datasets\\' + identity + '\\' + str(datasetType) + '\\' + datasetName
-    
+    filepath=os.path.join('datasets',identity, str(datasetType), datasetName)
+
     if len(args)>max_items:
         print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' columns will be processed.')
         args=args[0:max_items+1]
@@ -498,8 +501,9 @@ def output_association_rules(association_results, sort_index, descending=True, f
     assocTime = kwargs.get('assocTime')
     
     if fileName:
-        if not os.path.exists('output\\' + identity + '\\' + str(datasetType)):
-            os.makedirs('output\\' + identity + '\\' + str(datasetType))
+        filepath=os.path.join('output', identity, str(datasetType))
+        if not os.path.exists(filepath):
+            os.makedirs(filepath)
         
         if outputType==1:
             ext='.txt'
@@ -508,7 +512,7 @@ def output_association_rules(association_results, sort_index, descending=True, f
         else:
             ext=''
             
-        file = open('output\\' + identity + '\\' + str(datasetType) + '\\' + os.path.splitext(fileName)[0] + ext,'w') 
+        file = open(os.path.join('output', identity, str(datasetType), os.path.splitext(fileName)[0] + ext),'w') 
         
     if outputType==1:        
     

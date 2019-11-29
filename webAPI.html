@@ -198,6 +198,10 @@
 					}
 				} 
 				else MyModal("Error", jqXHR.responseText);
+				setTimeout(function() {
+							sessionStorage.clear();
+							window.location.href='index.html';
+				}, 3000);	
 			});
 		};
 

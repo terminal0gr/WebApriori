@@ -5,7 +5,7 @@
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		http_response_code(200);
-        $JsonReq = array('http_response_code' => 200, 'token' => '0', 'apikey' => apikey, 'name' => 'guest', 'message' => 'success');
+        $JsonReq = array('http_response_code' => 200, 'token' => '0', 'name' => 'guest', 'message' => 'success');
         print json_encode($JsonReq);
 
 	} else {
