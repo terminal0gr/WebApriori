@@ -362,7 +362,9 @@
 					}
 				}
 				else {
-					MyModal("Error", response);
+					if (response) {
+						MyModal("Error", response);
+					}
 				}
 			}).fail(function( jqXHR, textStatus, thrownError ) {
 				if (jqXHR.responseText) {
@@ -467,7 +469,6 @@
 					if (isJSON(response)) {
 						res=JSON.parse(response);
 						try {
-							MyModal(res.title, res.message);
 							GetDatasetFilelist();
 						}
 						catch(err) {

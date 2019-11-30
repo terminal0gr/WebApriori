@@ -24,6 +24,7 @@ if($result1){
 	$count=mysqli_num_rows($result1);
 
 	// if found this passkey in our database, retrieve data from table "temp_usertable"
+	$result2=null;
 	if($count==1){
 		$rows=mysqli_fetch_array($result1);
 		$oname=$rows['toname'];

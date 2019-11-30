@@ -55,6 +55,9 @@
     }
     if($filelist) {
         http_response_code(200);
+        if (count($filelist)==0) {
+            exit();
+        }
         print json_encode($filelist);
         exit();
     }

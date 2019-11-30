@@ -2,12 +2,13 @@
 	include("config.php");
 
 	//Import the PHPMailer class into the global namespace
+	require './PHPMailer/src/PHPMailer.php';
+	require './PHPMailer/src/Exception.php';
+	require './PHPMailer/src/SMTP.php';
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\SMTP;
 	use PHPMailer\PHPMailer\Exception;
-	require '.\PHPMailer\src\PHPMailer.php';
-	require '.\PHPMailer\src\Exception.php';
-	require '.\PHPMailer\src\SMTP.php';
+
 
 	session_start();
 	$con1 = new mysqli(HOST, USERNAME, PWD, DB);
@@ -88,10 +89,10 @@
 			$mail->Body  = 	
 				"<p>Your Confirmation link for the Association rules mining engine is,</p>
 				<br>
-				<h2><a href=\"".siteRoot."/phpfunctions/confirmation.php?passkey=$confirm_code\">here</a></h2>
+				<h2><a href=\"{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code\">here</a></h2>
 				<br>
 				<p>and it would be valid for 5 minutes.</p>"; 
-			$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\nlocalhost/phpfunctions/confirmation.php?passkey=$confirm_code\r\nand it would be valid for 5 minutes.";
+			$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\n{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code\r\nand it would be valid for 5 minutes.";
 			if(!$mail->send()) {
 				http_response_code(401);
 				$JsonReq = array('http_response_code' => 401, 'title' => 'Error', 'message' => 'Email has not been sent. '.$mail->ErrorInfo);
