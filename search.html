@@ -181,18 +181,18 @@
 							MyModal(res.title, res.message);
 						} else {					
 							try {
-								if (res.message) {
+								if (isJSON(res.message)) { 
 									resm=JSON.parse(res.message);
 									fillTable(resm);
 								} else {
-									if (err.message) {
-										MyModal("Error 10" , err.message);
+									if (res.message) {
+										MyModal("Error 10" , res.message);
 									} else {
 										return;
 									}
 								}
 							} catch(err){
-								MyModal("Error 20" + err.message, res.message);
+								MyModal("Error 20<br>" + err.message, res.message);
 								return;
 							}
 						} 

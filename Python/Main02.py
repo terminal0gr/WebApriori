@@ -3,6 +3,7 @@
 import sys
 import csv
 import os
+import os
 import json
 from collections import namedtuple
 from itertools import combinations
@@ -220,7 +221,6 @@ def gen_ordered_statistics(transaction_manager, record):
         record -- A support record as a SupportRecord instance.
     """
     items = record.items
-    #for combination_set in combinations(sorted(items), len(items) - 1):
     sorted_items = sorted(items)
     for base_length in range(len(items)):
         for combination_set in combinations(sorted_items, base_length):
@@ -377,7 +377,7 @@ Dataset types:
 def prepare_records(datasetName, datasetSep, datasetType, *args):
 
     global max_items
-    filepath=os.path.join('datasets',identity, str(datasetType), datasetName)
+    filepath=os.path.join('datasets', identity, str(datasetType), datasetName)
 
     if len(args)>max_items:
         print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' columns will be processed.')
@@ -394,7 +394,7 @@ def prepare_records(datasetName, datasetSep, datasetType, *args):
                 return None
 
         else:
-            try:
+            try:           
                 dataset = pd.read_csv(filepath, sep=datasetSep)
             except:
                 return None
@@ -686,7 +686,6 @@ Dataset types:
 
 #1--> Market Basket list. No header is expected, The number of columns is undefined (Default)
 # sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "dataset.csv", ',', '1', '2']
-# sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "dataset.csv", ',', '1', '2']
 # sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, 'store_data.csv', ',', '1', '1']
 # sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries.csv", ",", "1", '2']
 
@@ -787,20 +786,20 @@ datasetArgs=''
 if len(sys.argv)>11:
     if len(sys.argv[11])>0:
 	    datasetArgs=str(sys.argv[11:])
-	
-paramFile = open('inputparams.log', 'w') 
-print("Identity      :" + str(identity), file = paramFile)
-print("min_support   :" + str(min_support), file = paramFile)
-print("min_confidence:" + str(min_confidence), file = paramFile)
-print("min_lift      :" + str(min_lift), file = paramFile)
-print("max_length    :" + str(max_length), file = paramFile)
-print("SortIndex     :" + str(ssort), file = paramFile)
-print("Dataset Name  :" + datasetName, file = paramFile)
-print("Dataset Sep   :" + str(datasetSep), file = paramFile)
-print("Dataset Type  :" + str(datasetType), file = paramFile)
-print("Output Type   :" + str(outputType), file = paramFile)
-print("Dataset Args  :" + str(datasetArgs), file = paramFile)
-paramFile.close()  
+
+# paramFile = open(os.path.join('datasets', identity, 'inputparams.log'), 'w') 
+# print("Identity      :" + str(identity), file = paramFile)
+# print("min_support   :" + str(min_support), file = paramFile)
+# print("min_confidence:" + str(min_confidence), file = paramFile)
+# print("min_lift      :" + str(min_lift), file = paramFile)
+# print("max_length    :" + str(max_length), file = paramFile)
+# print("SortIndex     :" + str(ssort), file = paramFile)
+# print("Dataset Name  :" + datasetName, file = paramFile)
+# print("Dataset Sep   :" + str(datasetSep), file = paramFile)
+# print("Dataset Type  :" + str(datasetType), file = paramFile)
+# print("Output Type   :" + str(outputType), file = paramFile)
+# print("Dataset Args  :" + str(datasetArgs), file = paramFile)
+# paramFile.close()  
 
 if not identity:
     print("Unknown identity")
@@ -828,6 +827,6 @@ if records:
     output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, outputType=outputType, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
 
 else:
-    print("Couldn't retrieve detaset records")
+    print("Could not retrieve any record from the dataset")
     
     

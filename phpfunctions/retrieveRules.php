@@ -149,7 +149,7 @@
         ob_end_clean();
     } catch (Exception $e) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => 'Error', 'message' => $e->getMessage());
+        $JsonReq = array('title' => $input.'Error', 'message' => $e->getMessage());
         print json_encode($JsonReq);
         exit();
     }

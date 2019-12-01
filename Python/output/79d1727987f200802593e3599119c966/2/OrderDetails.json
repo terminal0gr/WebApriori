@@ -10,9 +10,9 @@
     "outputType": 2,
     "datasetArgs": "['InvoiceNo', 'Description']",
     "Records": 20007,
-    "RecordsCreationTime": "92.567",
+    "RecordsCreationTime": "84.518",
     "RulesCount": 1301,
-    "RulesCreationTime": "6.580",
+    "RulesCreationTime": "6.320",
     "rules": [
         {
             "LHS": [
