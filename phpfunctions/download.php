@@ -42,7 +42,12 @@
     if (!isset($_REQUEST['dataset'])) {
         http_response_code(201);
         echo('No filename has been provided!');
-        print json_encode($JsonReq);
+        exit();
+    }
+    
+    if (!isset($_REQUEST['kind'])) {
+        http_response_code(201);
+        echo('Bad call arguments!');
         exit();
     }
 
@@ -53,9 +58,20 @@
     //get the filename
     $filename=substr($postdata,1);
     //Create dataset path
-    $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;   
-    $fpatho_parts = pathinfo($fpatho);
-    $filepath=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".json";
+    $kind=$_REQUEST["kind"];
+
+    $filepath='';
+    if ($kind=='result') {
+        $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;   
+        $fpatho_parts = pathinfo($fpatho);
+        $filepath=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".json";
+    } elseif ($kind=='dataset') {
+        $filepath="../Python/datasets/".$identity."/".$datasetType."/".$filename;   
+    } else {
+        http_response_code(201);
+        echo('Bad call arguments!');
+        exit();
+    }
 
     // Process download
     if(file_exists($filepath)) {

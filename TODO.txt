@@ -4,12 +4,12 @@
 2) Upload dataset function
 3) Retrieve association rules in JSON format
 
-4) Check message if maximum rules exceeded or time limit exceeded
-- Download dataset
+- Check message if maximum rules exceeded or time limit exceeded
+DONE Download dataset
 - Delete user in profile
-- Google Analytics
+DONE - Google Analytics
 
 Nireas Issues
 DONE - Can't upload file more than 8M
 - When uploading file, updating image must be shown
-- Capcha check functions
+DONE - Capcha check functions

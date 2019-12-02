@@ -2,14 +2,15 @@
 <html>
 <head>
 
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130197414-1"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'UA-130197414-1');
-	</script> -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130197414-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-130197414-2');
+    </script>
 
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -592,17 +593,16 @@
 			});
 		};
 
-		function DoDownload() {
+		function DoDownload(kind="result") {
 			var str='phpfunctions/download.php?'
 			const data = { 'token': sessionStorage.getItem('token'), 
-			               'dataset': document.getElementById("dataset").value };
+			               'dataset': document.getElementById("dataset").value,
+						   'kind': kind };
 			const ret = [];
    			for (let d in data)
      			ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
    			str+=ret.join('&');
 
-			// str+='token='+sessionStorage.getItem('token');
-			// str+='&dataset='+document.getElementById("dataset").value;
 			window.location=str;
 		};
     </script>
@@ -739,7 +739,10 @@
 					<input type="text" id="separator" name="separator" class="form-control" data-trigger="hover" data-toggle="tooltip" title="the separator of the items in the CSV file. The most common characters are (,) and (;)" placeholder=",">		
 				</div>
 				<div class="col-1">	
-					<button type="button" id="deleteDataset" class="btn mt-n1 float-right" data-trigger="hover" data-toggle="tooltip" title="Delete current dataset"  onclick="deletecurrentDataset()">
+					<button type="button" id="downloadDataset" class="btn mt-n2 float-right" onclick="DoDownload('dataset')"    data-trigger="hover" data-toggle="tooltip" title="Download current dataset">
+						<img src="./images/downArrow24grey.png" width="24" height="24" alt="">	
+					</button>
+					<button type="button" id="deleteDataset"   class="btn mt-n1 float-right" onclick="deletecurrentDataset()" data-trigger="hover" data-toggle="tooltip" title="Delete current dataset" >
 						<img src="images/delete32grey.png" width="24" height="24" alt="">
 					</button>
 				</div>
