@@ -18,14 +18,14 @@
 
 	<script src="scripts/scripts.js"></script>
 	
-    <title>Association rules mining</title>
+    <title>WebApriori Association rules mining</title>
 
 	<script>
     	$(function() {
             M_F();
 			VT();
 			if (sessionStorage.getItem('version')) {
-				$('#navbar-brand').html('<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="24" height="24" alt="">Association rules ' +  sessionStorage.getItem('version'));
+				$('#navbar-brand').html('<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="24" height="24" alt="">WebApriori ' +  sessionStorage.getItem('version'));
 			} else {
 				window.location.href='index.html';
 			}
@@ -48,9 +48,9 @@
 				// In case of capcha working uncomment the lines below
 				// In case of capcha working uncomment the lines below
 				// In case of capcha working uncomment the lines below
-				// if (!checkForm()) {
-				// 	return;
-				// }
+				if (!checkForm()) {
+				 	return;
+				}
 
 				// Serialize the form data.
 				var formData = $(form).serialize();
@@ -267,7 +267,7 @@
 
     <footer>
         <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
-            <span class="text-muted">Association rules mining based on Apriori algorithm &middot; MSc in Web Intelligence &copy; 2019-2020</span>
+            <span class="text-muted">WebApriori Association rules mining based on Apriori algorithm &middot; MSc in Web Intelligence &copy; 2019-2020</span>
         </nav>
 	</footer> 
 

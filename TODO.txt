@@ -1,14 +1,15 @@
 1) Web API Page
-   1.3) Valid for ?? days info (It function fot today only now)
+   1.3) Valid for ?? days info (It function for today only now)
    1.4) Demo of Wep API functions usage
 2) Upload dataset function
 3) Retrieve association rules in JSON format
 
 4) Check message if maximum rules exceeded or time limit exceeded
-5) Download dataset
-
+- Download dataset
+- Delete user in profile
+- Google Analytics
 
 Nireas Issues
-- Can't upload file more than 8M
+DONE - Can't upload file more than 8M
 - When uploading file, updating image must be shown
 - Capcha check functions

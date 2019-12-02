@@ -1,6 +1,14 @@
 <?php
 	include("config.php");
 	
+	//Import the PHPMailer class into the global namespace
+	require './PHPMailer/src/PHPMailer.php';
+	require './PHPMailer/src/Exception.php';
+	require './PHPMailer/src/SMTP.php';
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\SMTP;
+	use PHPMailer\PHPMailer\Exception;
+
 	session_start();
 	$con1 = new mysqli(HOST, USERNAME, PWD, DB);
 	
@@ -61,20 +69,28 @@
                      values ('$confirm_code', '$email' ,'','','')";
                 $result = mysqli_query($con1,$sql);
 
-                require_once("class.phpmailer.php");
-                $mail = new PHPMailer;
-                $mail -> IsSMTP();
-                $mail->CharSet="UTF-8";       
-                $mail->Host = 'smtp.teithe.gr';
-                $mail->Port = 25;       
-                $mail->From = 'ait242018@ait.teithe.gr';   
-                $mail->FromName = 'Flights';
+				$mail = new PHPMailer(TRUE);
+				$mail->IsSMTP();
+				$mail->CharSet="UTF-8";     
+				$mail->Host = smtpHost;
+				$mail->Port = smtpPort; 
+				$mail->SMTPAuth = smtpAuth;                 
+				$mail->Username = smtpUsername;  
+				$mail->Password = smtpPassword;    
+				$mail->SMTPSecure = smtpSecure; 
+				$mail->setFrom(smtpFrom, smtpFromName);   
                 $mail->addAddress($email);               
-				$mail->Subject  = "Flights Scanner. Reset password";
-                $message = "Please follow the link to reset your password. \r\nhttp://nireas.it.teithe.gr/webeng7/flights/phpfunctions/forgot1.php?passkey=$confirm_code ";                   
-                $mail->Body  = $message;
+				$mail->Subject  = "WebApriori. Reset password";
+				$mail->Body  = 	
+				"<p>WebApriori association rules mining reset password procedure.</p>
+				<br>
+				<h2>Click <a href=\"{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/forgot1.php?passkey=$confirm_code\">here</a></h2>
+				<p>to reset password. This procedure would be valid for the next 5 minutes.</p>"; 
+				$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\n{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/forgot1.php?passkey=$confirm_code\r\nand it would be valid for the next 5 minutes.";
+                //$message = "Please follow the link to reset your password. \r\n<a href="http://nireas.it.teithe.gr/WebApriori/phpfunctions/forgot1.php?passkey=$confirm_code"> ";                   
+                //$mail->Body  = $message;
                 if($mail->send()) {
-					$message = "Your Confirmation link Has Been Sent To Your Email Address ".$email.", and will be valid for 5 minutes";
+					$message = "Your Reset password confirmation link has been sent to your email address ".$email.", and will be valid for the next 5 minutes.";
 					echo "<script>alert('$message');
 					window.location.href='../index.html';
 					</script>";
@@ -91,7 +107,7 @@
 		}
 	} else {
 		header($_SERVER['SERVER_PROTOCOL'] . ' 403 forbitten', true, 403);
-		echo "<script>alert('Flight Scanner. Access denied!!!');
+		echo "<script>alert('WebApriori. Access denied!!!');
 		window.location.href='../index.html';</script>";
 	}
 ?>
