@@ -22,6 +22,9 @@
     <title>WebApriori Association rules mining</title>
 
 	<script>
+
+        var JsonProfile=null;
+
     	$(function() {
             M_F();
 			VT();
@@ -96,8 +99,68 @@
 					$('#vpasswd').removeClass("border border-success");
 				}
 			});
-
         });
+
+		function deleteUserf() {
+
+			if (!confirm("Are you sure you want to delete user " + JsonProfile.oname + " " + JsonProfile.fname + "\nWarning!!! This action is irreversible!")) {
+				return
+			};
+
+			var formData = new FormData();
+			if (sessionStorage.getItem('token')) {
+				formData.set("token",sessionStorage.getItem('token'));
+			}
+			else {
+				sessionStorage.clear();
+				window.location.href='index.html';
+			}
+
+			$.ajax({
+				type: 'POST' ,
+				url: 'phpfunctions/deleteUser.php',
+				contentType: false,
+				cache: false,
+				processData:false ,
+				data: formData
+			}) 	
+			.done(function(response) {
+				if (isJSON(response)) {
+					res=JSON.parse(response);
+					try {
+						MyModal(res.title, res.message);
+						setTimeout(function() {
+							sessionStorage.clear();
+							window.location.href='index.html';
+						}, 3000);	
+					}
+					catch(err) {
+						MyModal("Error", err.message);
+					}
+				}
+				else {
+					if (response) {
+						MyModal("Error", response);
+					}
+				}
+			}).fail(function( jqXHR, textStatus, thrownError ) {
+				if (jqXHR.responseText) {
+					if (isJSON(jqXHR.responseText)) {
+						res=JSON.parse(jqXHR.responseText);
+						MyModal(res.title, res.message);
+						if (res.http_response_code>=400 && sessionStorage.getItem('token')) {
+							setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
+						}
+					}
+					else alert(jqXHR.responseText);
+				} else {
+					MyModal("WebApriori",'Unknown error occured!');
+				}
+			});
+		};
 
         function M_F() {
             if ($(window).width() <= 800 || $(window).height() <= 600) {
@@ -222,6 +285,7 @@
 			</div>
 			<div class="p-1">
 				<button id="submitBtn" type="submit" class="btn btn-primary ">Save profile changes</button>
+				<button id="deleteUser" type="button" class="btn btn-danger" onclick="deleteUserf()"><img src="./images/close24white.png" width="20" height="20" alt=""></button>
 				<button id="cancelbtm" type="button" onclick="window.location.href='index.html'" style="float: right" class="btn btn-secondary">Cancel</button>
 			</div>
 		</form>	

@@ -107,7 +107,10 @@
 					contentType: false,
                     cache: false,
                     processData:false,
-					data: formData
+					data: formData,
+					beforeSend: function( xhr ) {
+						$('#uploadDataset').html("<img src='./images/spinning-circle-1.gif' width='32' height='32' alt=''>").removeClass( "btn-primary" ).addClass("btn-warning");	
+  					}
 				}).done(function(response) {
 					if (isJSON(response)) {
 						res=JSON.parse(response);
@@ -483,7 +486,7 @@
 					if (jqXHR.responseText) {
 						if (isJSON(jqXHR.responseText)) {
 							res=JSON.parse(jqXHR.responseText);
-							MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+							MyModal(res.title, res.message);
 							if (res.http_response_code>=400) {
 								setTimeout(function() {
 									sessionStorage.clear();
@@ -493,7 +496,7 @@
 						}
 						else alert(jqXHR.responseText);
 					} else {
-						MyModal("association rules",'Unknown error occured!');
+						MyModal("WebApriori",'Unknown error occured!');
 					}
 				});
 			}
@@ -688,7 +691,7 @@
 					</div>		
 				</div>
 				<div class="col-1 border border-primary rounded p-1	">
-					<button class="btn btn-primary btn-inline" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" data-trigger="hover" data-toggle="tooltip" title="Upload the Dataset!"><img src="./images/upload32White.png" width="32" height="32" alt=""></button>
+					<button id="uploadDataset" class="btn btn-primary btn-inline" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" data-trigger="hover" data-toggle="tooltip" title="Upload the Dataset!"><img src="./images/upload32White.png" width="32" height="32" alt=""></button>
 				</div>
 			</div>
 		</div>
