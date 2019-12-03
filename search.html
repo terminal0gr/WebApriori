@@ -101,7 +101,7 @@
 				}
 
 				// Submit the form using AJAX.
-				$.ajax({
+				ajaxReq = $.ajax({
 					type: 'POST',
 					url: $('#uploadDatasetform').attr('action'),
 					contentType: false,
@@ -109,12 +109,12 @@
                     processData:false,
 					data: formData,
 					beforeSend: function( xhr ) {
-						$('#uploadDataset').html("<img src='./images/spinning-circle-1.gif' width='32' height='32' alt=''>").removeClass( "btn-primary" ).addClass("btn-warning");	
+						$('#uploadDataset').removeClass( "btn-primary" ).addClass("btn-warning");	
   					}
-				}).done(function(response) {
+				}).done(function(response, textStatus, jqXHR) {
 					if (isJSON(response)) {
 						res=JSON.parse(response);
-						if (res.http_response_code==200) {
+						if (jqXHR.status==200) {
 							MyModal(res.title,res.message);
 							GetDatasetFilelist();
 						} else {
@@ -126,7 +126,7 @@
 					if (isJSON(jqXHR.responseText)) {
 						res=JSON.parse(jqXHR.responseText);
 						MyModal(res.title, res.message);
-						if (res.http_response_code>=400 && sessionStorage.getItem('token')) {
+						if (jqXHR.status>=400 && sessionStorage.getItem('token')) {
 							setTimeout(function() {
 								sessionStorage.clear();
 								window.location.href='index.html';
@@ -134,6 +134,8 @@
 						}
 					} 
 					else MyModal("Error", jqXHR.responseText);
+				}).always(function() {
+					$('#uploadDataset').removeClass("btn-warning").addClass("btn-primary");
 				});
 			});
 
@@ -178,10 +180,10 @@
 						$('#submitBtn').html("<b>Retrieving rules. Click to abort</b>").removeClass( "btn-primary" ).addClass("btn-warning");	
   					}
 				})
-				.done(function(response) {
+				.done(function(response, textStatus, jqXHR) {
 					if (isJSON(response)) {
 						res=JSON.parse(response);
-						if (res.http_response_code!=200) {
+						if (jqXHR.status!=200) {
 							MyModal(res.title, res.message);
 						} else {					
 							try {
@@ -209,7 +211,7 @@
 						if (res.title || res.message) {
 							MyModal(res.title, res.message);
 						}
-						if (res.http_response_code>=400 && sessionStorage.getItem('token')) {
+						if (jqXHR.status>=400 && sessionStorage.getItem('token')) {
 							setTimeout(function() {
 								sessionStorage.clear();
 								window.location.href='index.html';
@@ -374,8 +376,8 @@
 				if (jqXHR.responseText) {
 					if (isJSON(jqXHR.responseText)) {
 						res=JSON.parse(jqXHR.responseText);
-						MyModal(res.title + '(' + res.http_response_code + ')', res.message);
-						if (res.http_response_code>=400 && sessionStorage.getItem('token')) {
+						MyModal(res.title, res.message);
+						if (jqXHR.status>=400 && sessionStorage.getItem('token')) {
 							setTimeout(function() {
 								sessionStorage.clear();
 								window.location.href='index.html';
@@ -487,7 +489,7 @@
 						if (isJSON(jqXHR.responseText)) {
 							res=JSON.parse(jqXHR.responseText);
 							MyModal(res.title, res.message);
-							if (res.http_response_code>=400) {
+							if ( jqXHR.status>=400) {
 								setTimeout(function() {
 									sessionStorage.clear();
 									window.location.href='index.html';
@@ -528,12 +530,12 @@
 				cache: false,
 				processData:false
 			}) 	
-			.done(function(response) {
+			.done(function(response, textStatus, jqXHR) {
 				//cover both null and undefined circumstanses and if it is a JSON obj
 				if (response!=undefined && response!=null && isJSON(response)) {
 					res=JSON.parse(response);
 					try {
-						if (res.http_response_code) {
+						if (jqXHR.status!=200) {
 							// not found input parameters
 							document.getElementById('separator').value=""; 
 							document.getElementById('min_support').value=""; 
@@ -575,14 +577,13 @@
 					} else {
 						MyModal("Error", "Unknown error occured");
 					}
-
 				}
 			}).fail(function( jqXHR, textStatus, thrownError ) {
 				if (jqXHR.responseText) {
 					if (isJSON(jqXHR.responseText)) {
 						res=JSON.parse(jqXHR.responseText);
 						MyModal(res.title, res.message);
-						if (res.http_response_code>=400) {
+						if (jqXHR.status>=400) {
 							setTimeout(function() {
 								sessionStorage.clear();
 								window.location.href='index.html';
@@ -691,7 +692,7 @@
 					</div>		
 				</div>
 				<div class="col-1 border border-primary rounded p-1	">
-					<button id="uploadDataset" class="btn btn-primary btn-inline" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" data-trigger="hover" data-toggle="tooltip" title="Upload the Dataset!"><img src="./images/upload32White.png" width="32" height="32" alt=""></button>
+					<button id="uploadDataset" class="btn btn-primary btn-inline p-1 m-0" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" data-trigger="hover" data-toggle="tooltip" title="Upload the Dataset!"><img src="./images/upload32White.png" class="img-responsive" width="32" height="32" alt=""></button>
 				</div>
 			</div>
 		</div>

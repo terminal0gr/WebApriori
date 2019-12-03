@@ -7,7 +7,7 @@
 
     if (!isset($_POST['token'])) {
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'You are not signed in!!! Please sign in/up');
+        $JsonReq = array('title' => 'Error', 'message' => 'You are not signed in!!! Please sign in/up');
         print json_encode($JsonReq);
         exit();
     }
@@ -20,14 +20,14 @@
     }
     catch (Exception $e) {  //hide $key on error
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Authentication error!!!');
+        $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
         print json_encode($JsonReq);
         exit();
     }			
 
     if (!$auth) {
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Authentication error!!!');
+        $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
         print json_encode($JsonReq);
         exit();
     }
@@ -38,7 +38,7 @@
     $con1 = new mysqli(HOST, USERNAME, PWD, DB);
     if ($con1->connect_error) {
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => "Connection Error" . $con1->connect_error);
+        $JsonReq = array('title' => 'Error', 'message' => "Connection Error" . $con1->connect_error);
         print json_encode($JsonReq);
         exit();
     }

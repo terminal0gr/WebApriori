@@ -17,17 +17,16 @@ $(function() {
 			url: $(form).attr('action'),
 			data: formData
 		})
-		.done(function(response) {
+		.done(function(response, textStatus, jqXHR) {
 			if (isJSON(response)) {
 				res=JSON.parse(response);
 
-				if (res.http_response_code==200) {
+				if (jqXHR.status==200) {
 					sessionStorage.setItem('token', res.token);
-					sessionStorage.setItem('apikey', res.apikey);
 					sessionStorage.setItem('username', res.name);
 					window.location.href='search.html';
 				} else {
-					MyModal("An error occured",res.http_response_code + ' ' + res.message);
+					MyModal("An error occured",res.message);
 				}
 			} else {
 				MyModal("Information", response)
@@ -38,12 +37,12 @@ $(function() {
 			if (jqXHR.responseText) {
 				if (isJSON(jqXHR.responseText)) {
 					res=JSON.parse(jqXHR.responseText);
-					MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+					MyModal(res.title, res.message);
 				}
 				else alert(jqXHR.responseText);
 
 			} else {
-				MyModal("association rules",'Unknown error occured!');
+				MyModal("WebApriori",'Unknown error occured!');
 			}
 		});
 

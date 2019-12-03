@@ -10,7 +10,7 @@
 		/* check connection */
 		if (mysqli_connect_errno()) {
 			http_response_code(401);
-			$JsonReq = array('http_response_code' => 401, 'title' => 'Error', 'message' => 'Fatal Error: '.mysqli_connect_error());
+			$JsonReq = array('title' => 'Error', 'message' => 'Fatal Error: '.mysqli_connect_error());
 			print json_encode($JsonReq);
 			exit();
 		}
@@ -24,7 +24,7 @@
         if ( empty($email) OR empty($passwd) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Set a 400 (bad request) response code and exit.
             http_response_code(401);
-			$JsonReq = array('http_response_code' => 401, 'title' => 'Error', 'message' => 'There was a problem with your email and/or password. Please correct the form and try again.');
+			$JsonReq = array('title' => 'Error', 'message' => 'There was a problem with your email and/or password. Please correct the form and try again.');
 			print json_encode($JsonReq);
             exit;
         }
@@ -44,13 +44,13 @@
 			$key=SERVERKEY.date("m.d.y");
 
 			http_response_code(200);
-            $JsonReq = array('http_response_code' => 200, 'token' => JWT::encode($email, $key), 'name' => $rowobj->fname." ".$rowobj->oname, 'message' => 'success');
+            $JsonReq = array('token' => JWT::encode($email, $key), 'name' => $rowobj->fname." ".$rowobj->oname, 'message' => 'success');
             print json_encode($JsonReq);
 
 		} else {
 			//set a 403 (forbidden) response code.	
 			http_response_code(403);
-			$JsonReq = array('http_response_code' => 403, 'title' => 'Error', 'message' => 'Username and/or Password incorrect.\nPlease try again.');
+			$JsonReq = array('title' => 'Error', 'message' => 'Username and/or Password incorrect.\nPlease try again.');
 			print json_encode($JsonReq);
             exit;
 		}
@@ -58,7 +58,7 @@
 	} else {
 		// Not a POST request, set a 403 (forbidden) response code.
 		http_response_code(403);
-		$JsonReq = array('http_response_code' => 403, 'title' => 'Error', 'message' => 'There was a problem with your submission, please try again.');
+		$JsonReq = array('title' => 'Error', 'message' => 'There was a problem with your submission, please try again.');
 		print json_encode($JsonReq);
 		exit;
 

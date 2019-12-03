@@ -69,8 +69,7 @@
 
         if ($row->webAPIKey === null || $row->key_created_at === null) {
             $key=generateRandomString(64); 
-            $date=date("d/m/Y");
-            $sql="UPDATE usertable SET webAPIKey='$key', key_created_at=CURDATE() WHERE email='$email'";
+            $sql="UPDATE usertable SET webAPIKey='$key', key_created_at=DATE_ADD(CURDATE(), INTERVAL 1 MONTH) WHERE email='$email'";
             $result = mysqli_query($con1,$sql);
             
             if (!$result) {
@@ -82,6 +81,7 @@
         }
         else {
             $key=$row->webAPIKey;
+            $date=date("d/m/Y");
             $date=$row->key_created_at;
         }
     }

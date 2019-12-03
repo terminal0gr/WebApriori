@@ -148,7 +148,7 @@
 					if (isJSON(jqXHR.responseText)) {
 						res=JSON.parse(jqXHR.responseText);
 						MyModal(res.title, res.message);
-						if (res.http_response_code>=400 && sessionStorage.getItem('token')) {
+						if (jqXHR.status>=400 && sessionStorage.getItem('token')) {
 							setTimeout(function() {
 								sessionStorage.clear();
 								window.location.href='index.html';

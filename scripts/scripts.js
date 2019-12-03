@@ -4,25 +4,25 @@ function guestlogin() {
         type: 'POST',
         url: 'phpfunctions/guestlogin.php'
     })
-    .done(function(response) {
+    .done(function(response, textStatus, jqXHR) {
 
         res=JSON.parse(response);
 
-        if (res.http_response_code==200) {
+        if (jqXHR.status==200) {
             sessionStorage.setItem('token', res.token);
             sessionStorage.setItem('apikey', res.apikey);
             sessionStorage.setItem('username', res.name);
         } else {
-            MyModal("An error occured",res.http_response_code + ' ' + res.message);
+            MyModal("An error occured",res.message);
         }
 
     })
     .fail(function(data) {
 
         if (data.responseText) {
-            MyModal("Association rules mining",data.responseText);
+            MyModal("WebApriori",data.responseText);
         } else {
-            MyModal("Association rules mining",'Unknown error occured!');
+            MyModal("WebApriori",'Unknown error occured!');
         }
     });
 };
@@ -38,7 +38,7 @@ function executeFunctionByName(functionName, context /*, args */) {
   }
 
 var callingRoutine = "";
-function MyModal(title="association rules mining",maincontext="", ConfirmFunc=false) {
+function MyModal(title="WebApriori",maincontext="", ConfirmFunc=false) {
     if ($("#MyModal")) {
         MyModalAnsw=false;
         var str = '<div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';

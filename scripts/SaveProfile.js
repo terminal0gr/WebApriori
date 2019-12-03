@@ -43,11 +43,11 @@ $(function() {
 			url: $(form).attr('action'),
 			data: formData + '&token=' + sessionStorage.getItem('token') + '&oldemail=' + JsonProfile.email
 		})
-		.done(function(response) {
+		.done(function(response, textStatus, jqXHR) {
 
 			res=JSON.parse(response);
 
-			if (res.http_response_code==200) {
+			if (jqXHR.status==200) {
 				sessionStorage.setItem('token', res.token);
 				sessionStorage.setItem('apikey', res.apikey);
 				sessionStorage.setItem('username', res.name);
@@ -59,7 +59,7 @@ $(function() {
 				}, 3000);	
 				 		
 			} else {
-				MyModal(res.title + '(' + res.http_response_code + ')',  res.message);
+				MyModal(res.title,  res.message);
 			}
 
 		})

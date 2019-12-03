@@ -62,18 +62,18 @@
 					data: formData
 				});
 
-				request.done(function(response) {
+				request.done(function(response, textStatus, jqXHR) {
                     
 					res=JSON.parse(response);
 
-					if (res.http_response_code==200) {
+					if (jqXHR.status==200) {
 						MyModal(res.title,res.message);
 						setTimeout(function()
    						{
 							window.location.href='Login.html';
     					}, 3000);
 					} else {
-						MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+						MyModal(res.title, res.message);
 					}
 				});
  
@@ -81,7 +81,7 @@
 					if (jqXHR.responseText) {
 						if (isJSON(jqXHR.responseText)) {
 							res=JSON.parse(jqXHR.responseText);
-							MyModal(res.title + '(' + res.http_response_code + ')', res.message);
+							MyModal(res.title, res.message);
 						}
 						else alert(jqXHR.responseText);
 

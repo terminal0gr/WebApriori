@@ -55,7 +55,7 @@
     try {
         $key=generateRandomString(64);
         $date=date("d/m/Y");
-        $sql="UPDATE usertable SET webAPIKey='$key', key_created_at=CURDATE() WHERE email='$email'";
+        $sql="UPDATE usertable SET webAPIKey='$key', key_created_at=DATE_ADD(CURDATE(), INTERVAL 1 MONTH) WHERE email='$email'";
         $result = mysqli_query($con1,$sql);
         
         if (!$result) {
@@ -64,6 +64,28 @@
             print json_encode($JsonReq);
             exit();
         }
+
+        $s="SELECT key_created_at FROM usertable WHERE email='$email'";
+		$result = mysqli_query($con1,$s);
+		$num=mysqli_num_rows($result);
+		// If result matched $myusername and $mypassword, table row must be 1 row
+		if($num!=1){
+            http_response_code(400);
+            $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
+            print json_encode($JsonReq);
+            exit();
+        }
+
+        $row = $result->fetch_object();
+
+        $date=date("d/m/Y");
+        $date=$row->key_created_at;
+        
+        http_response_code(200);
+        $JsonReq = array('title' => "Information" , 'message' => "New WebAPI key generated.", 'key' => $key, 'kdate' => $date);
+        print json_encode($JsonReq);
+        exit(); 
+
     }
     catch (Exception $e) { 
         http_response_code(400);
@@ -71,10 +93,5 @@
         print json_encode($JsonReq);
         exit();
     }
-
-    http_response_code(200);
-    $JsonReq = array('title' => "Information" , 'message' => "New WebAPI key generated.", 'key' => $key, 'kdate' => $date);
-    print json_encode($JsonReq);
-    exit(); 
-    
+   
 ?>

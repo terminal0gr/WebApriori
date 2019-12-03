@@ -8,21 +8,21 @@
 	
     if (!isset($_FILES['fileToUpload'])) {
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'No file for upload detected!!!');
+        $JsonReq = array('title' => 'Error', 'message' => 'No file for upload detected!!!');
         print json_encode($JsonReq);
         exit();
     }
 
     if (!isset($_POST['datasetType'])) {
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Dataset type not provided!!!');
+        $JsonReq = array('title' => 'Error', 'message' => 'Dataset type not provided!!!');
         print json_encode($JsonReq);
         exit();
     }
 
     if (!isset($_POST['token'])) {
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'You are not signed in!!! Please sign in/up');
+        $JsonReq = array('title' => 'Error', 'message' => 'You are not signed in!!! Please sign in/up');
         print json_encode($JsonReq);
         exit();
     }
@@ -35,14 +35,14 @@
     }
     catch (Exception $e) {  //hide $key on error
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Authentication error!!!');
+        $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
         print json_encode($JsonReq);
         exit();
     }			
         
     if (!$auth) {
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Authentication error!!!');
+        $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
         print json_encode($JsonReq);
         exit();
     }
@@ -53,14 +53,14 @@
     $con1 = new mysqli(HOST, USERNAME, PWD, DB);
 	if ($con1->connect_error) {
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => "Connection Error" . $con1->connect_error);
+        $JsonReq = array('title' => 'Error', 'message' => "Connection Error" . $con1->connect_error);
         print json_encode($JsonReq);
         exit();
 	}
 
     if ($_FILES["fileToUpload"]["error"] > 0) {
-        http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Return Code: ' . $_FILES["fileToUpload"]["error"]);
+        http_response_code(201);
+        $JsonReq = array('title' => 'Error', 'message' => 'Return Code: ' . $_FILES["fileToUpload"]["error"]);
         print json_encode($JsonReq);
         exit();
     }
@@ -75,7 +75,7 @@
     }
     if ($Vi>10) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => 'exclamation', 'message' => 'Sorry, no more than 10 datasets are permitted per account!!!');
+        $JsonReq = array('title' => 'exclamation', 'message' => 'Sorry, no more than 10 datasets are permitted per account!!!');
         print json_encode($JsonReq);
         exit();
     }
@@ -84,8 +84,8 @@
 
     if (!is_dir($target_dir)) {
         if (!mkdir($target_dir, 0777, true)) {
-            http_response_code(400);
-            $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Failed to store file!');
+            http_response_code(201);
+            $JsonReq = array('title' => 'Error', 'message' => 'Failed to store file!');
             print json_encode($JsonReq);
             exit();
         }
@@ -95,7 +95,7 @@
     //if file already exists
     if (file_exists($target_file)) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => $_FILES["fileToUpload"]["name"] . " already exists. ");
+        $JsonReq = array('title' => 'Exclamation', 'message' => $_FILES["fileToUpload"]["name"] . " already exists. ");
         print json_encode($JsonReq);
         exit();
     }
@@ -104,12 +104,12 @@
             move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
 
             http_response_code(200);
-            $JsonReq = array('http_response_code' => 200, 'title' => 'Information', 'message' => 'File stored successfully.');
+            $JsonReq = array('title' => 'Information', 'message' => 'File stored successfully.');
             print json_encode($JsonReq);
             exit();
         } catch (Exception $e) {
             http_response_code(400);
-            $JsonReq = array('http_response_code' => 400, 'title' => 'Exception', 'message' =>'Caught exception: ',  $e->getMessage(), "\n");
+            $JsonReq = array('title' => 'Exception', 'message' =>'Caught exception: ',  $e->getMessage(), "\n");
             print json_encode($JsonReq);
             exit();
         }

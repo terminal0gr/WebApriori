@@ -15,7 +15,7 @@
 	/* check connection */
 	if ($con1->connect_error) {
 		http_response_code(403);
-		$JsonReq = array('http_response_code' => 403, 'title' => 'Error', 'message' => 'Connection Error');
+		$JsonReq = array('title' => 'Error', 'message' => 'Connection Error');
 		print json_encode($JsonReq);
 		die("Connection Error" . $con1->connect_error);
 	}
@@ -60,7 +60,7 @@
 	/* User is registered */
 	if($num==1) {
 		http_response_code(201);
-		$JsonReq = array('http_response_code' => 201, 'title' => 'Information', 'message' => 'You are already registered user!');
+		$JsonReq = array('title' => 'Information', 'message' => 'You are already registered user!');
 		print json_encode($JsonReq);
 		exit();
 	} 
@@ -93,7 +93,7 @@
 			$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\n{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code\r\nand it would be valid for 5 minutes.";
 			if(!$mail->send()) {
 				http_response_code(401);
-				$JsonReq = array('http_response_code' => 401, 'title' => 'Error', 'message' => 'Email has not been sent. '.$mail->ErrorInfo);
+				$JsonReq = array('title' => 'Error', 'message' => 'Email has not been sent. '.$mail->ErrorInfo);
 				print json_encode($JsonReq);
 				exit();
 			} 
@@ -102,13 +102,13 @@
 		    $result = mysqli_query($con1,$sql);
 		    if($result) {
 				http_response_code(200);
-				$JsonReq = array('http_response_code' => 200, 'title' => 'Information', 'message' => 'Your Confirmation link Has Been Sent To Your Email Address.');
+				$JsonReq = array('title' => 'Information', 'message' => 'Your Confirmation link Has Been Sent To Your Email Address.');
 				print json_encode($JsonReq);
 				exit();
 			}
 			else {
 				http_response_code(401);
-				$JsonReq = array('http_response_code' => 401, 'title' => 'Error', 'message' => 'Database error!!!');
+				$JsonReq = array('title' => 'Error', 'message' => 'Database error!!!');
 				print json_encode($JsonReq);
 				exit();
 			}
@@ -118,7 +118,7 @@
 		else { /* Confirmation email has been already sent */
 
 			http_response_code(201);
-			$JsonReq = array('http_response_code' => 201, 'title' => 'Information', 'message' => 'Your confirmation link has been already sent to your email address '.$email.'. Please check your email again!');
+			$JsonReq = array('title' => 'Information', 'message' => 'Your confirmation link has been already sent to your email address '.$email.'. Please check your email again!');
 			print json_encode($JsonReq);
 			exit;
 

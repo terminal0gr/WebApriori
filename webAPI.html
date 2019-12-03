@@ -92,7 +92,7 @@
 						res=JSON.parse(response);
 						if (jqXHR.status==200) {
 							document.getElementById('WebAPIKey').value=res.key;
-							document.getElementById('keyExpiresAt').value=res.kdate;
+							document.getElementById('keyExpiresAt').value=res.kdate.substring(0,10).split("-").reverse().join("-").replace(/-/g,"/");
 						} else {
 							MyModal(res.title, res.message);
 						}
@@ -102,7 +102,7 @@
 					if (isJSON(jqXHR.responseText)) {
 						res=JSON.parse(jqXHR.responseText);
 						MyModal(res.title, res.message);
-						if (res.http_response_code>=400 && sessionStorage.getItem('token')) {
+						if (jqXHR.status>=400 && sessionStorage.getItem('token')) {
 							setTimeout(function() {
 								sessionStorage.clear();
 								window.location.href='index.html';
@@ -191,7 +191,7 @@
 				if (isJSON(jqXHR.responseText)) {
 					res=JSON.parse(jqXHR.responseText);
 					MyModal(res.title, res.message);
-					if (res.http_response_code>=400 && sessionStorage.getItem('token')) {
+					if (jqXHR.status>=400 && sessionStorage.getItem('token')) {
 						setTimeout(function() {
 							sessionStorage.clear();
 							window.location.href='index.html';
@@ -266,7 +266,7 @@
 			</div>
 			<div class="form-row">
 				<div class="col-xl-10 col-md-9 col-sm-8">		
-					<input type="text" readonly id="WebAPIKey" name="WebAPIKey" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The key which grants access to our WebAPI functions.<br>Please keep this key secret." >
+					<input type="text" readonly id="WebAPIKey" name="WebAPIKey" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The key which grants access to our WebAPI functions. Please keep this key secret." >
 				</div>
 				<div class="col-xl-2 col-md-3 col-sm-4">		
 					<input type="text" readonly id="keyExpiresAt" name="keyExpiresAt" class="form-control" data-trigger="hover" data-toggle="tooltip" title="When the WebAPI key expires (or expired)" >

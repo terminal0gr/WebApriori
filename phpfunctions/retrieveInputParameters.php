@@ -7,7 +7,7 @@
 
     if (!isset($_POST['token'])) {
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'You are not signed in!!! Please sign in/up');
+        $JsonReq = array('title' => 'Error', 'message' => 'You are not signed in!!! Please sign in/up');
         print json_encode($JsonReq);
         exit();
     }
@@ -20,14 +20,14 @@
     }
     catch (Exception $e) {  //hide $key on error
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Authentication error!!!');
+        $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
         print json_encode($JsonReq);
         exit();
     }			
 
     if (!$auth) {
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Authentication error!!!');
+        $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
         print json_encode($JsonReq);
         exit();
     }
@@ -38,14 +38,14 @@
     $con1 = new mysqli(HOST, USERNAME, PWD, DB);
     if ($con1->connect_error) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => 'Error', 'message' => "Connection Error" . $con1->connect_error);
+        $JsonReq = array('title' => 'Error', 'message' => "Connection Error" . $con1->connect_error);
         print json_encode($JsonReq);
         exit();
     }
 
     if (!isset($_POST['dataset'])) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => 'Error', 'message' => 'No dataset name has been declared!');
+        $JsonReq = array('title' => 'Error', 'message' => 'No dataset name has been declared!');
         print json_encode($JsonReq);
         exit();
     }
@@ -68,7 +68,7 @@
 
     if ($message) {
         http_response_code(201);
-        $jsonReq = array('http_response_code' => 201, 'title' => "exclamation" , 'message' => $message);
+        $jsonReq = array('title' => "exclamation" , 'message' => $message);
         print json_encode($jsonReq);
         exit();        
     }

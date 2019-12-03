@@ -42,7 +42,8 @@
 	
 	/* User is registered */
 	if($num==0) {
-		$JsonReq = array('http_response_code' => 201, 'title' => 'Error', 'message' => 'Sorry...You are not a registered user...');
+		http_response_code(201);
+		$JsonReq = array('title' => 'Error', 'message' => 'Sorry...You are not a registered user...');
 		print json_encode($JsonReq);
 		exit();
 	}
@@ -52,7 +53,8 @@
 	$rowobj = $result->fetch_object();
 	if (isset($passwd)) {
 		if ($rowobj->passwd==$passwd) {
-            $JsonReq = array('http_response_code' => 201, 'title' => 'Information', 'message' => 'Sorry...you have used that password...');
+			http_response_code(201);
+            $JsonReq = array('title' => 'Information', 'message' => 'Sorry...you have used that password...');
             print json_encode($JsonReq);
 			exit();
 		}
@@ -79,13 +81,13 @@
 			$key=SERVERKEY.date("m.d.y");
 
 			http_response_code(200);
-            $JsonReq = array('http_response_code' => 200, 'token' => JWT::encode($email, $key), 'name' => $rowobj->fname." ".$rowobj->oname, 'message' => 'success');
+            $JsonReq = array('token' => JWT::encode($email, $key), 'name' => $rowobj->fname." ".$rowobj->oname, 'message' => 'success');
             print json_encode($JsonReq);
 
 		} else {
 			//set a 403 (forbidden) response code.	
 			http_response_code(403);
-            $JsonReq = array('http_response_code' => 201, 'title' => 'Error', 'message' => 'Authentication error occured');
+            $JsonReq = array('title' => 'Error', 'message' => 'Authentication error occured');
             print json_encode($JsonReq);
 			exit();
 		}

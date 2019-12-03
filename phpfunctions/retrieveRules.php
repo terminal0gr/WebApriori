@@ -7,7 +7,7 @@
 
     if (!isset($_POST['token'])) {
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'You are not signed in!!! Please sign in/up');
+        $JsonReq = array('title' => 'Error', 'message' => 'You are not signed in!!! Please sign in/up');
         print json_encode($JsonReq);
         exit();
     }
@@ -20,14 +20,14 @@
     }
     catch (Exception $e) {  //hide $key on error
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Authentication error!!!');
+        $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
         print json_encode($JsonReq);
         exit();
     }			
 
     if (!$auth) {
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => 'Authentication error!!!');
+        $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
         print json_encode($JsonReq);
         exit();
     }
@@ -38,44 +38,44 @@
     $con1 = new mysqli(HOST, USERNAME, PWD, DB);
     if ($con1->connect_error) {
         http_response_code(400);
-        $JsonReq = array('http_response_code' => 400, 'title' => 'Error', 'message' => "Connection Error" . $con1->connect_error);
+        $JsonReq = array('title' => 'Error', 'message' => "Connection Error" . $con1->connect_error);
         print json_encode($JsonReq);
         exit();
     }
 
     if (empty($_POST['dataset'])) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => 'Please declare a dataset!!!');
+        $JsonReq = array('title' => 'Exclamation', 'message' => 'Please declare a dataset!!!');
         print json_encode($JsonReq);
         exit();
     }
     if (empty($_POST['separator'])) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => 'Please declare a seperator!!!');
+        $JsonReq = array('title' => 'Exclamation', 'message' => 'Please declare a seperator!!!');
         print json_encode($JsonReq);
         exit();
     }
     if (empty($_POST['min_support'])) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => 'Please declare minimum support!!!');
+        $JsonReq = array('title' => 'Exclamation', 'message' => 'Please declare minimum support!!!');
         print json_encode($JsonReq);
         exit();
     }
     if (empty($_POST['min_confidence'])) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => 'Please declare minimum confidence!!!');
+        $JsonReq = array('title' => 'Exclamation', 'message' => 'Please declare minimum confidence!!!');
         print json_encode($JsonReq);
         exit();
     }
     if (empty($_POST['min_lift'])) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => 'Please declare minimum lift!!!');
+        $JsonReq = array('title' => 'Exclamation', 'message' => 'Please declare minimum lift!!!');
         print json_encode($JsonReq);
         exit();
     }    
     if (empty($_POST['max_length'])) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => 'Please declare maximum rule items!!!');
+        $JsonReq = array('title' => 'Exclamation', 'message' => 'Please declare maximum rule items!!!');
         print json_encode($JsonReq);
         exit();
     }
@@ -87,13 +87,13 @@
 
     if (empty($filename)) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => 'inadequate dataset file!!!');
+        $JsonReq = array('title' => 'Exclamation', 'message' => 'inadequate dataset file!!!');
         print json_encode($JsonReq);
         exit();
     }
     if (empty($datasetType)) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => 'inadequate dataset type!!!');
+        $JsonReq = array('title' => 'Exclamation', 'message' => 'inadequate dataset type!!!');
         print json_encode($JsonReq);
         exit();
     }
@@ -106,7 +106,7 @@
             break;        
         default;
             http_response_code(201);
-            $JsonReq = array('http_response_code' => 201, 'title' => 'Exclamation', 'message' => 'inadequate dataset!!!');
+            $JsonReq = array('title' => 'Exclamation', 'message' => 'inadequate dataset!!!');
             print json_encode($JsonReq);
             exit();
         }
@@ -137,7 +137,7 @@
     //echo $output;
 
     // http_response_code(200);
-    // $JsonReq = array('http_response_code' => 201, 'title' => $input, 'message' => $output);
+    // $JsonReq = array('title' => $input, 'message' => $output);
     // print json_encode($JsonReq);
     // exit();   
 
@@ -154,20 +154,15 @@
         exit();
     }
 
-    // http_response_code(201);
-    // $JsonReq = array('http_response_code' => 201, 'title' => $input, 'message' => $output);
-    // print json_encode($JsonReq);
-    // exit();
-
     if (!$output) {
         http_response_code(201);
-        $JsonReq = array('http_response_code' => 201, 'title' => 'Invalid parameters! Please check!', 'message' => $input);
+        $JsonReq = array('title' => 'Invalid parameters! Please check!', 'message' => $input);
         print json_encode($JsonReq);
         exit();
     }
 
     http_response_code(200);
-    $JsonReq = array('http_response_code' => 200, 'title' => $input, 'message' => $output);
+    $JsonReq = array('title' => $input, 'message' => $output);
     print json_encode($JsonReq);
     //print json_encode($output);
     exit();   

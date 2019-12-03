@@ -38,7 +38,7 @@
     //Connect to mysql
     $con1 = new mysqli(HOST, USERNAME, PWD, DB);
     if ($con1->connect_error) {
-        http_response_code(201);
+        http_response_code(400);
         $JsonReq = array('title' => 'Error', 'message' => "Connection Error" . $con1->connect_error);
         print json_encode($JsonReq);
         exit();
