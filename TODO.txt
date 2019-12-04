@@ -7,7 +7,6 @@ WEB API
 4) Retrieve association rules in JSON format
 
 GENERAL ISSUES
-- Check message if maximum rules exceeded or time limit exceeded
 DONE - Download dataset
 DONE - Delete user in profile
 DONE - Google Analytics
@@ -16,4 +15,5 @@ DONE - When uploading file, updating image must be shown
 NIREAS ISSUES
 DONE - Can't upload file more than 8M
 DONE - Capcha check functions
-Check Delete user in profile
+DONE - Check Delete user in profile
+- Create user with nireas smtp

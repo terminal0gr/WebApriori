@@ -31,20 +31,30 @@
 	// In case of capcha working uncomment the lines below
 	// In case of capcha working uncomment the lines below
 	// In case of capcha working uncomment the lines below
-	$captcha_error = "";
 	$captcha = $_POST['g-recaptcha-response'];
 	if (!isset($_POST['g-recaptcha-response'])||empty($_POST['g-recaptcha-response'])) {
-        $captcha_error = "Verification check has not been done";
+		http_response_code(201);
+		$JsonReq = array('title' => 'Exclamation', 'message' => 'Verification check has not been done!');
+		print json_encode($JsonReq);
+		exit();
 	} else {
-	 	$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdP7H8UAAAAAFZ5qAl0_FmLAqzdBUeD0G3ZaX0p&response=".$_POST['g-recaptcha-response'], False);
-		
-	 	$jresponse = json_decode($response, true);
-	 	if(!$jresponse["success"] === true)
-	 	{
-	 		$captcha_error = true;
-	 		echo "<script type='text/javascript'>alert('Verification check failed');
-	 		window.location.href='../SignUp.html';</script>";
-	 	}
+		try {
+			$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdP7H8UAAAAAFZ5qAl0_FmLAqzdBUeD0G3ZaX0p&response=".$_POST['g-recaptcha-response'], False);
+			$jresponse = json_decode($response, true);
+			if(!$jresponse["success"] === true)
+			{
+				http_response_code(400);
+				$JsonReq = array('title' => 'Error', 'message' => 'Verification check failed');
+				print json_encode($JsonReq);
+				exit();
+			}
+		}
+		catch (Exception $e) { 
+			http_response_code(400);
+			$JsonReq = array('title' => 'Error', 'message' => $e->getMessage);
+			print json_encode($JsonReq);
+			exit();
+		}
 	}
 	
 	/* Connection succesful*/
@@ -64,7 +74,7 @@
 		print json_encode($JsonReq);
 		exit();
 	} 
-	elseif(!$captcha_error) { /* New user @temp_usertable & send confirmation email */
+	else { 
 
 		$query ="SELECT * FROM temp_usertable WHERE temail='$email'";
 		$result = mysqli_query($con1,$query);

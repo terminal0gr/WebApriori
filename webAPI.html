@@ -181,7 +181,9 @@
 					res=JSON.parse(response);
 					if (jqXHR.status==200) {
 						document.getElementById('WebAPIKey').value=res.key;
-						document.getElementById('keyExpiresAt').value=res.kdate.substring(0,10).split("-").reverse().join("-").replace(/-/g,"/");
+						if (res.kdate) {
+							document.getElementById('keyExpiresAt').value=res.kdate.substring(0,10).split("-").reverse().join("-").replace(/-/g,"/");
+						}
 					} else {
 						MyModal(res.title, res.message);
 					}
@@ -277,7 +279,7 @@
 					<button id="regenerateKey" type="submit" class="btn btn-primary btn-inline" style="height:100%; width:100%" data-trigger="hover" data-toggle="tooltip" title="Replaces webAPI key with a new one">Regenerate Key</button>
 				</div>
 				<div class="col-6">	
-					<button id="copyKey" type="button" class="btn btn-primary btn-inline"  data-toggle="tooltip" title="Copy webAPI key to the clipboard"><img src="./images/copy-document32white.png" width="32" height="32" alt="copy key"></button>
+					<button id="copyKey" type="button" class="btn btn-primary btn-inline" onclick="copyToClipboard('WebAPIKey')" data-toggle="tooltip" title="Copy webAPI key to the clipboard"><img src="./images/copy-document32white.png" width="32" height="32" alt="copy key"></button>
 				</div>
 			</div>
 		</div>	

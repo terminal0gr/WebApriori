@@ -1,6 +1,5 @@
 <?php
     include("config.php");
-    include("jwt_helper.php");
 
     session_start(); 
     
@@ -8,61 +7,67 @@
 	
     if (!isset($_FILES['fileToUpload'])) {
         http_response_code(400);
-        $JsonReq = array('title' => 'Error', 'message' => 'No file for upload detected!!!');
+        $JsonReq = array('code' => 10, 'message' => 'No file for upload detected!!!');
+        print json_encode($JsonReq);
+        exit();
+    }
+
+    if (!isset($_POST['email'])) {
+        http_response_code(400);
+        $JsonReq = array('code' => 20, 'message' => 'Unauthorized!!!');
+        print json_encode($JsonReq);
+        exit();
+    }
+
+    if (!isset($_POST['apiKey'])) {
+        http_response_code(400);
+        $JsonReq = array('code' => 30, 'message' => 'Unauthorized!!!');
         print json_encode($JsonReq);
         exit();
     }
 
     if (!isset($_POST['datasetType'])) {
         http_response_code(400);
-        $JsonReq = array('title' => 'Error', 'message' => 'Dataset type not provided!!!');
+        $JsonReq = array('code' => 40, 'message' => 'Dataset type not provided!!!');
         print json_encode($JsonReq);
         exit();
     }
 
-    if (!isset($_POST['token'])) {
+    if (!isset($_POST['fileName'])) {
         http_response_code(400);
-        $JsonReq = array('title' => 'Error', 'message' => 'You are not signed in!!! Please sign in/up');
+        $JsonReq = array('code' => 50, 'message' => 'No filename Provided!!!');
         print json_encode($JsonReq);
         exit();
     }
-
-    try {
-        // Get email
-        $key=SERVERKEY.date("m.d.y");
-        $email = JWT::decode($_POST['token'], $key);
-        $auth = true;
-    }
-    catch (Exception $e) {  //hide $key on error
-        http_response_code(400);
-        $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
-        print json_encode($JsonReq);
-        exit();
-    }			
-        
-    if (!$auth) {
-        http_response_code(400);
-        $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
-        print json_encode($JsonReq);
-        exit();
-    }
-
-    $identity=md5($email);
 
   	//Connect to mysql
     $con1 = new mysqli(HOST, USERNAME, PWD, DB);
 	if ($con1->connect_error) {
         http_response_code(400);
-        $JsonReq = array('title' => 'Error', 'message' => "Connection Error" . $con1->connect_error);
+        $JsonReq = array('code' => 60, 'message' => "Connection Error!!!");
         print json_encode($JsonReq);
         exit();
 	}
 
     if ($_FILES["fileToUpload"]["error"] > 0) {
         http_response_code(201);
-        $JsonReq = array('title' => 'Error', 'message' => 'Return Code: ' . $_FILES["fileToUpload"]["error"]);
+        $JsonReq = array('code' => 70, 'message' => 'Return Code: ' . $_FILES["fileToUpload"]["error"]);
         print json_encode($JsonReq);
         exit();
+    }
+
+    //The FILTER_SANITIZE_EMAIL filter removes all illegal characters from an email address
+    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+    //mysqli_real_escape_string function is used to create a legal SQL string that you can use in an SQL statement.
+	$email = mysqli_real_escape_string($con, $_POST['email']);
+    $apiKey = mysqli_real_escape_string($con, $_POST['apiKey']);
+    $identity=md5($email);
+
+    if (empty($email) OR empty($apiKey) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        http_response_code(400);
+        $JsonReq = array('code' => 80, 'message' => 'Unauthorized!!!');
+        print json_encode($JsonReq);
+        exit;
     }
 
     $filelist=array();
@@ -75,7 +80,7 @@
     }
     if ($Vi>MaxDatasets) {
         http_response_code(201);
-        $JsonReq = array('title' => 'exclamation', 'message' => "Sorry, no more than ".MaxDatasets." datasets are permitted per account!!!");
+        $JsonReq = array('code' => 90, 'message' => 'Sorry, no more than 10 datasets are permitted per account!!!');
         print json_encode($JsonReq);
         exit();
     }
