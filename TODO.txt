@@ -1,10 +1,10 @@
 WEB API
-1) Web API Page
-   DONE - Valid for ?? days info (It function for today only now)
-   1.4) Demo of Wep API functions usage
-2) Upload dataset function
+DONE - Valid for ?? days info (It function for today only now)
+DONE - Upload dataset function
+
 3) Request association rules
 4) Retrieve association rules in JSON format
+5) Demo of Wep API functions usage
 
 GENERAL ISSUES
 DONE - Download dataset
