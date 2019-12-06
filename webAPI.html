@@ -113,6 +113,10 @@
 				});
 			});
 
+			$('#callExamples1').click(function(e) {
+				toggleDisplay('#example1');
+			});
+
 		});
 
         // It handles the footer when the size of the window changes.
@@ -275,15 +279,130 @@
 				</div>
 			</div>
 			<div class="form-row pt-2">
-				<div class="col-6">	
-					<button id="regenerateKey" type="submit" class="btn btn-primary btn-inline" style="height:100%; width:100%" data-trigger="hover" data-toggle="tooltip" title="Replaces webAPI key with a new one">Regenerate Key</button>
+				<div class="col-xl-10 col-md-9 col-sm-8">	
+					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
+						<button id="regenerateKey" type="submit" class="btn btn-primary btn-inline" style="height:100%; width:100%" data-trigger="hover" data-toggle="tooltip" title="Replaces webAPI key with a new one">Regenerate Key</button>
+					</div>
 				</div>
-				<div class="col-6">	
-					<button id="copyKey" type="button" class="btn btn-primary btn-inline" onclick="copyToClipboard('WebAPIKey')" data-toggle="tooltip" title="Copy webAPI key to the clipboard"><img src="./images/copy-document32white.png" width="32" height="32" alt="copy key"></button>
+				<div class="col-xl-2 col-md-3 col-sm-4">	
+					<div class="p-1 mt-0 mx-auto border border-primary rounded">
+						<button id="copyKey" type="button" style="width:100%; height:100%" class="btn btn-primary btn-inline" onclick="copyToClipboard($('#WebAPIKey').val())" data-toggle="tooltip" title="Copy webAPI key to the clipboard"><img src="./images/copy-document32white.png" width="21" height="21" alt="copy key"></button>
+					</div>
 				</div>
 			</div>
 		</div>	
 	</form>
+
+	<br>
+
+	<h3 class="text-center text-primary">WebAPI calls</h3>	
+
+	<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
+		<div class="accordion" id="webApiAccordion">
+			<div class="card lightgraybackground">
+				<div class="card-header" id="headingOne">
+					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							Upload dataset call <b>(POST)</b>
+						</button>
+					</div>
+				</div>
+				<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#webApiAccordion">
+					<div class="card-body">
+						<h5 class="text-primary">Parameters</h5>
+						<div class="form-group row">
+							<label for="email1" class="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control" id="email1" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="APIKey1" class="col-sm-2 col-form-label">WebAPI key</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="APIKey1" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="datasetType1" class="col-sm-2 col-form-label">Dataset Type</label>
+							<div class="col-sm-10">
+								<select id="datasetType1" class="browser-default custom-select" data-html="true" data-trigger="hover" data-toggle="tooltip" title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparce item Dataset<br>4) Columns with multiple nomimal values</p>">
+									<option value="" disabled selected>Choose a dataset type</option>
+									<option value="1">1) Market basket list</option>
+									<option value="2">2) Order/Invoice detail</option>
+									<option value="3">3) Sparce item dataset</option>
+									<option value="4">4) Multiple nomimal values</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="file1" class="col-sm-2 col-form-label">File</label>
+							<div class="col-sm-10">
+								<input type="file" id="file1" class="form-control-file" name="fileToUpload" id="fileToUpload" accept=".csv, .txt" >
+							</div>
+						</div>
+						<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
+							<button id="callExamples1" type="button" class="btn btn-primary btn-inline" style="height:100%; width:100%">Web call examples</button>
+						</div>
+					</div>
+				</div>
+				<div id="example1" class="border rounded p-2" style="display:none">
+					<div class="btn-group" role="group" aria-label="Basic example">
+						<button type="button" class="btn btn-secondary">curl</button>
+						<button type="button" class="btn btn-secondary">Middle</button>
+						<button type="button" class="btn btn-secondary">Right</button>
+					</div>
+					<pre id="precode1"><code id="code1">
+curl -X POST \
+https://nireas.it.teithe.gr/webapriori/webAPI/APIuploadDataset.php \
+-H 'Accept: */*' \
+-H 'Accept-Encoding: gzip, deflate' \
+-H 'Cache-Control: no-cache' \
+-H 'Connection: keep-alive' \
+-H 'Content-Length: 281279' \
+-H 'Content-Type: multipart/form-data; boundary=--------------------------972913124100483591878894' \
+-H 'Cookie: PHPSESSID=22uothgici9l4jeaalab8he4b5' \
+-H 'Host: nireas.it.teithe.gr' \
+-H 'cache-control: no-cache' \
+-H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+-F email=terminal_gr@yahoo.com \
+-F fileToUpload=@/C:/xampp/htdocs/apriori/Python/datasets/79d1727987f200802593e3599119c966/1/dataset.csv \
+-F apiKey=5pqPwBII7u73zyNGe7sx4Bn3CmCvGpCMP3ClEk4MObQoKE5ZMxwQ9TULgwgXWTJL \
+-F datasetType=1
+						</code></pre>
+						<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code1').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
+					</div>
+				</div>
+			</div>
+			<div class="card lightgraybackground">
+				<div class="card-header" id="headingTwo">
+					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							Request association rules <b>(POST)</b>
+						</button>
+					</div>
+				</div>
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#webApiAccordion">
+					<div class="card-body">
+						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+					</div>
+				</div>
+			</div>
+			<div class="card lightgraybackground">
+				<div class="card-header" id="headingThree">
+					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%"  type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							Retrieve association rules <b>(POST)</b>
+						</button>
+					</div>
+				</div>
+				<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#webApiAccordion">
+					<div class="card-body">
+						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<br>
 	<br>

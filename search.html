@@ -40,6 +40,7 @@
 
 		var resultsTable;
 		var ajaxReq;
+		var tmpHtml;
 
 		$(function() {
 
@@ -109,7 +110,8 @@
                     processData:false,
 					data: formData,
 					beforeSend: function( xhr ) {
-						$('#uploadDataset').removeClass( "btn-primary" ).addClass("btn-warning");	
+						tmpHtml=$('#uploadDataset').html();
+						$('#uploadDataset').removeClass( "btn-primary" ).addClass("btn-warning").html('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');	
   					}
 				}).done(function(response, textStatus, jqXHR) {
 					if (isJSON(response)) {
@@ -135,7 +137,7 @@
 					} 
 					else MyModal("Error", jqXHR.responseText);
 				}).always(function() {
-					$('#uploadDataset').removeClass("btn-warning").addClass("btn-primary");
+					$('#uploadDataset').removeClass("btn-warning").addClass("btn-primary").html(tmpHtml);
 				});
 			});
 
@@ -683,10 +685,10 @@
 							    title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparce item Dataset<br>4) Columns with multiple nomimal values</p>"
 						    >
 								<option value="" disabled selected>Choose a dataset type</option>
-								<option value="1">Market basket list</option>
-								<option value="2">Order/Invoice detail</option>
-								<option value="3">Sparce item dataset</option>
-								<option value="4">Multiple nomimal values</option>
+								<option value="1">1) Market basket list</option>
+								<option value="2">2) Order/Invoice detail</option>
+								<option value="3">3) Sparce item dataset</option>
+								<option value="4">4) Multiple nomimal values</option>
 							</select>
 						</div>
 					</div>		
