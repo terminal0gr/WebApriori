@@ -25,6 +25,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 	<script src="scripts/scripts.js"></script>
+	<!-- <script src="scripts/APIText.js"></script> -->
 
     <link rel="icon" type="image/png" href="images/basketwhite.svg"/>
 
@@ -34,8 +35,11 @@
 
         var MyModalAnsw=false;
 		var ajaxReq;	
+		var curl1;
 
 		$(function() {
+
+			curl1 = $('#code1').text();
 
 			// initialization of tooltips in page
 			$('[data-toggle="tooltip"]').tooltip()
@@ -93,6 +97,8 @@
 						if (jqXHR.status==200) {
 							document.getElementById('WebAPIKey').value=res.key;
 							document.getElementById('keyExpiresAt').value=res.kdate.substring(0,10).split("-").reverse().join("-").replace(/-/g,"/");
+							$('#keyExpiresAt').removeClass("border-danger").addClass("border-primary")
+							$('#lkeyExpiresAt').text("Expires at")	
 						} else {
 							MyModal(res.title, res.message);
 						}
@@ -114,7 +120,85 @@
 			});
 
 			$('#callExamples1').click(function(e) {
+				if ($('#example1').is(":hidden")) {
+					var tcode=curl1;
+					tcode=tcode.replace("##1##", document.getElementById('email1').value);
+					tcode=tcode.replace("##2##", document.getElementById('APIKey1').value);
+					tcode=tcode.replace("##3##", document.getElementById('datasetType1').value);
+					$('#code1').text(tcode);
+				}
 				toggleDisplay('#example1');
+			});
+
+			$('#response1').click(function(e) {
+				//Prepare the data to send
+				var formData = new FormData();
+				var fileSelect = document.getElementById("file1");
+				if(fileSelect.files && fileSelect.files.length == 1){
+                    var file = fileSelect.files[0]
+                    formData.set("fileToUpload", file , file.name);
+				}
+				else {
+					MyModal("Information", "You have not chosen a file for upload.<br>Please choose one.");
+					return;
+				}
+
+				var datasetType = document.getElementById("datasetType1");
+				if(!datasetType.value){
+					MyModal("Exclamation", "You have not chosen datasetType!!!");
+					return;
+				}
+				formData.set("datasetType1", datasetType.value);
+
+				if (!document.getElementById("email1").value) {
+					MyModal("Exclamation", "Please write a valid email!!!");
+					return;
+				}
+				formData.set("email",document.getElementById("email1").value);
+
+				if (!document.getElementById("APIKey1").value) {
+					MyModal("Exclamation", "Please write a valid API Key!!!");
+					return;
+				}
+				formData.set("apiKey",document.getElementById("email1").value);
+
+				// Submit the form using AJAX.
+				ajaxReq = $.ajax({
+					type: 'POST',
+					url: 'https://nireas.it.teithe.gr/webapriori/webAPI/APIuploadDataset.php',
+					contentType: false,
+                    cache: false,
+                    processData:false,
+					data: formData,
+					beforeSend: function( xhr ) {
+						tmpHtml=$('#uploadDataset').html();
+						$('#uploadDataset').removeClass( "btn-primary" ).addClass("btn-warning").html('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');	
+  					}
+				}).done(function(response, textStatus, jqXHR) {
+					if (isJSON(response)) {
+						res=JSON.parse(response);
+						if (jqXHR.status==200) {
+							MyModal(res.title,res.message);
+						} else {
+							MyModal(res.title, res.message);
+						}
+					}
+					else alert(response);
+				}).fail(function( jqXHR, textStatus, thrownError ) {
+					if (isJSON(jqXHR.responseText)) {
+						res=JSON.parse(jqXHR.responseText);
+						MyModal(res.title, res.message);
+						if (jqXHR.status>=400 && sessionStorage.getItem('token')) {
+							setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
+						}
+					} 
+					else MyModal("Error", jqXHR.responseText);
+				}).always(function() {
+					$('#uploadDataset').removeClass("btn-warning").addClass("btn-primary").html(tmpHtml);
+				});
 			});
 
 		});
@@ -185,8 +269,20 @@
 					res=JSON.parse(response);
 					if (jqXHR.status==200) {
 						document.getElementById('WebAPIKey').value=res.key;
+						document.getElementById('email1').value=res.email;
+						document.getElementById('APIKey1').value=res.key;
 						if (res.kdate) {
 							document.getElementById('keyExpiresAt').value=res.kdate.substring(0,10).split("-").reverse().join("-").replace(/-/g,"/");
+							var today = new Date();
+							var edate = new Date(res.kdate);
+							if (edate>=today) {
+								$('#keyExpiresAt').removeClass("border-danger").addClass("border-primary")
+								$('#lkeyExpiresAt').text("Expires at")								
+							}else {
+								$('#keyExpiresAt').removeClass("border-primary").addClass("border-danger");
+								$('#lkeyExpiresAt').text("Expired! at")
+							}
+
 						}
 					} else {
 						MyModal(res.title, res.message);
@@ -267,7 +363,7 @@
 					<label id="lExpiredkey" for="WebAPIKey">WebAPI Key</label>
 				</div>
 				<div class="col-xl-2 col-md-3 col-sm-4">	
-					<label for="keyExpiresAt">Expires at</label>
+					<label id="lkeyExpiresAt" for="keyExpiresAt">Expires at</label>
 				</div>
 			</div>
 			<div class="form-row">
@@ -275,7 +371,7 @@
 					<input type="text" readonly id="WebAPIKey" name="WebAPIKey" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The key which grants access to our WebAPI functions. Please keep this key secret." >
 				</div>
 				<div class="col-xl-2 col-md-3 col-sm-4">		
-					<input type="text" readonly id="keyExpiresAt" name="keyExpiresAt" class="form-control" data-trigger="hover" data-toggle="tooltip" title="When the WebAPI key expires (or expired)" >
+					<input type="text" readonly id="keyExpiresAt" name="keyExpiresAt" class="form-control border" data-trigger="hover" data-toggle="tooltip" title="When the WebAPI key expires (or expired)" >
 				</div>
 			</div>
 			<div class="form-row pt-2">
@@ -341,35 +437,24 @@
 							</div>
 						</div>
 						<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
-							<button id="callExamples1" type="button" class="btn btn-primary btn-inline" style="height:100%; width:100%">Web call examples</button>
+							<button id="callExamples1" type="button" class="btn btn-primary btn-inline" style="height:100%; width:100%">Web call example</button>
 						</div>
 					</div>
 				</div>
 				<div id="example1" class="border rounded p-2" style="display:none">
-					<div class="btn-group" role="group" aria-label="Basic example">
-						<button type="button" class="btn btn-secondary">curl</button>
-						<button type="button" class="btn btn-secondary">Middle</button>
-						<button type="button" class="btn btn-secondary">Right</button>
-					</div>
 					<pre id="precode1"><code id="code1">
 curl -X POST \
 https://nireas.it.teithe.gr/webapriori/webAPI/APIuploadDataset.php \
--H 'Accept: */*' \
--H 'Accept-Encoding: gzip, deflate' \
--H 'Cache-Control: no-cache' \
--H 'Connection: keep-alive' \
--H 'Content-Length: 281279' \
--H 'Content-Type: multipart/form-data; boundary=--------------------------972913124100483591878894' \
--H 'Cookie: PHPSESSID=22uothgici9l4jeaalab8he4b5' \
--H 'Host: nireas.it.teithe.gr' \
 -H 'cache-control: no-cache' \
 -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
--F email=terminal_gr@yahoo.com \
--F fileToUpload=@/C:/xampp/htdocs/apriori/Python/datasets/79d1727987f200802593e3599119c966/1/dataset.csv \
--F apiKey=5pqPwBII7u73zyNGe7sx4Bn3CmCvGpCMP3ClEk4MObQoKE5ZMxwQ9TULgwgXWTJL \
--F datasetType=1
-						</code></pre>
-						<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code1').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
+-F email=##1## \
+-F apiKey=##2## \
+-F fileToUpload=@/TheAbsoluteFilePath.csv \
+-F datasetType=##3##						
+					</code></pre>
+					<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code1').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
+					<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
+						<button id="response1" type="button" class="btn btn-primary rounded" style="width:100%; height:100%">Show response data</button>
 					</div>
 				</div>
 			</div>

@@ -93,7 +93,7 @@
     }
 
     http_response_code(200);
-    $JsonReq = array('title' => "Information" , 'message' => "New WebAPI key generated.", 'key' => $key, 'kdate' => $date);
+    $JsonReq = array('title' => "Information" , 'message' => "New WebAPI key generated.", 'email' => $email, 'key' => $key, 'kdate' => $date);
     print json_encode($JsonReq);
     exit(); 
     

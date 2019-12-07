@@ -1,12 +1,12 @@
 WEB API
+- Demo of Wep API functions usage
+- htaccess to calls- Delete dataset request
+- Request association rules
+- Retrieve association rules in JSON format
+
 DONE - Valid for ?? days info (It function for today only now)
 DONE - Upload dataset function
 
-3) Request association rules
-4) Retrieve association rules in JSON format
-5) Demo of Wep API functions usage
-
-GENERAL ISSUES
 DONE - Download dataset
 DONE - Delete user in profile
 DONE - Google Analytics
