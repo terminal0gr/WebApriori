@@ -1,0 +1,8 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+Options -Indexes
+
+RewriteRule ^uploadDataset/?$ uploadDataset.php [nc,qsa]
+RewriteRule ^deleteDataset/?$ deleteDataset.php [nc,qsa]
+

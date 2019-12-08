@@ -33,9 +33,11 @@
 
 	<script>
 
-        var MyModalAnsw=false;
 		var ajaxReq;	
 		var curl1;
+		var srv="localhost/";
+		var call1="webService/uploadDataset.php";
+		var call2="webService/deleteDataset.php";
 
 		$(function() {
 
@@ -122,6 +124,7 @@
 			$('#callExamples1').click(function(e) {
 				if ($('#example1').is(":hidden")) {
 					var tcode=curl1;
+					tcode=tcode.replace("##0##", srv + call1);
 					tcode=tcode.replace("##1##", document.getElementById('email1').value);
 					tcode=tcode.replace("##2##", document.getElementById('APIKey1').value);
 					tcode=tcode.replace("##3##", document.getElementById('datasetType1').value);
@@ -146,48 +149,55 @@
 				var datasetType = document.getElementById("datasetType1");
 				if(!datasetType.value){
 					MyModal("Exclamation", "You have not chosen datasetType!!!");
+					document.getElementById("datasetType1").focus();
 					return;
 				}
-				formData.set("datasetType1", datasetType.value);
+				formData.set("datasetType", datasetType.value);
 
 				if (!document.getElementById("email1").value) {
 					MyModal("Exclamation", "Please write a valid email!!!");
+					document.getElementById("email1").focus();
 					return;
 				}
 				formData.set("email",document.getElementById("email1").value);
 
 				if (!document.getElementById("APIKey1").value) {
 					MyModal("Exclamation", "Please write a valid API Key!!!");
+					document.getElementById("APIKey1").focus();
 					return;
 				}
-				formData.set("apiKey",document.getElementById("email1").value);
+				formData.set("apiKey",document.getElementById("APIKey1").value);
 
 				// Submit the form using AJAX.
 				ajaxReq = $.ajax({
 					type: 'POST',
-					url: 'https://nireas.it.teithe.gr/webapriori/webAPI/APIuploadDataset.php',
+					url: 'webService/uploadDataset.php',
 					contentType: false,
                     cache: false,
                     processData:false,
 					data: formData,
 					beforeSend: function( xhr ) {
-						tmpHtml=$('#uploadDataset').html();
-						$('#uploadDataset').removeClass( "btn-primary" ).addClass("btn-warning").html('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');	
+						$('#code1r').hide();
+						$('#code1r').text('');
+						tmpHtml=$('#response1').html();
+						$('#response1').removeClass( "btn-primary" ).addClass("btn-warning").html('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');	
   					}
 				}).done(function(response, textStatus, jqXHR) {
 					if (isJSON(response)) {
 						res=JSON.parse(response);
+						res=JSON.stringify(res, null, 4);
 						if (jqXHR.status==200) {
-							MyModal(res.title,res.message);
+							$('#code1r').text(res);
 						} else {
-							MyModal(res.title, res.message);
+							$('#code1r').text(res);
 						}
 					}
-					else alert(response);
+					else MyModal("Error", response);
 				}).fail(function( jqXHR, textStatus, thrownError ) {
 					if (isJSON(jqXHR.responseText)) {
 						res=JSON.parse(jqXHR.responseText);
-						MyModal(res.title, res.message);
+						res=JSON.stringify(res, null, 4);
+						$('#code1r').text(res);
 						if (jqXHR.status>=400 && sessionStorage.getItem('token')) {
 							setTimeout(function() {
 								sessionStorage.clear();
@@ -195,9 +205,10 @@
 							}, 3000);	
 						}
 					} 
-					else MyModal("Error", jqXHR.responseText);
+					else $('#code1r').text(jqXHR.responseText);
 				}).always(function() {
-					$('#uploadDataset').removeClass("btn-warning").addClass("btn-primary").html(tmpHtml);
+					$('#response1').removeClass("btn-warning").addClass("btn-primary").html(tmpHtml);
+					$('#code1r').show( "slow" );
 				});
 			});
 
@@ -268,6 +279,8 @@
 				if (isJSON(response)) {
 					res=JSON.parse(response);
 					if (jqXHR.status==200) {
+						srv=res.srv
+						document.getElementById('endpoint1').value=res.srv + call1
 						document.getElementById('WebAPIKey').value=res.key;
 						document.getElementById('email1').value=res.email;
 						document.getElementById('APIKey1').value=res.key;
@@ -405,7 +418,27 @@
 				</div>
 				<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#webApiAccordion">
 					<div class="card-body">
-						<h5 class="text-primary">Parameters</h5>
+						<h5 class="text-primary">Endpoint</h5>
+						<div class="form-group row">
+							<label for="endpoint1" class="col-sm-2 col-form-label">Url</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" id="endpoint1">
+							</div>
+						</div>
+						<h5 class="text-primary">Parameters (Header section)</h5>
+						<div class="form-group row">
+							<label for="cacheControl1" class="col-sm-2 col-form-label">cache-control</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" id="cacheControl1" value="no-cache">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="contentType1" class="col-sm-2 col-form-label">content-type</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" id="contentType1" value="multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW">
+							</div>
+						</div>
+						<h5 class="text-primary">Parameters (Body section)</h5>
 						<div class="form-group row">
 							<label for="email1" class="col-sm-2 col-form-label">Email</label>
 							<div class="col-sm-10">
@@ -439,22 +472,27 @@
 						<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
 							<button id="callExamples1" type="button" class="btn btn-primary btn-inline" style="height:100%; width:100%">Web call example</button>
 						</div>
-					</div>
-				</div>
-				<div id="example1" class="border rounded p-2" style="display:none">
-					<pre id="precode1"><code id="code1">
+
+						<div id="example1" class="border rounded p-2" style="display:none">
+							<pre id="precode1"><code id="code1">
 curl -X POST \
-https://nireas.it.teithe.gr/webapriori/webAPI/APIuploadDataset.php \
+##0## \
 -H 'cache-control: no-cache' \
 -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
 -F email=##1## \
 -F apiKey=##2## \
 -F fileToUpload=@/TheAbsoluteFilePath.csv \
 -F datasetType=##3##						
-					</code></pre>
-					<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code1').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
-					<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
-						<button id="response1" type="button" class="btn btn-primary rounded" style="width:100%; height:100%">Show response data</button>
+							</code></pre>
+							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code1').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
+							<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
+								<button id="response1" type="button" class="btn btn-primary rounded" style="width:100%; height:100%">Show response data JSON</button>
+							</div>
+							<pre id="precode1r"><code id="code1r">
+
+							</code></pre>
+							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code1r').text())" title="" data-original-title="Copy to clipboard">Copy response</button>
+						</div>
 					</div>
 				</div>
 			</div>
