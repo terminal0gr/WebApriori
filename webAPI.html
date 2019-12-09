@@ -35,13 +35,16 @@
 
 		var ajaxReq;	
 		var curl1;
+		var curl2;
 		var srv="localhost/";
 		var call1="webService/uploadDataset.php";
-		var call2="webService/deleteDataset.php";
+		var call2="webService/showDatasets.php";
+		var call3="webService/deleteDataset.php";
 
 		$(function() {
 
 			curl1 = $('#code1').text();
+			curl2 = $('#code2').text();
 
 			// initialization of tooltips in page
 			$('[data-toggle="tooltip"]').tooltip()
@@ -132,6 +135,16 @@
 				}
 				toggleDisplay('#example1');
 			});
+			$('#callExample2').click(function(e) {
+				if ($('#example2').is(":hidden")) {
+					var tcode=curl2;
+					tcode=tcode.replace("##0##", srv + call2);
+					tcode=tcode.replace("##1##", document.getElementById('email2').value);
+					tcode=tcode.replace("##2##", document.getElementById('APIKey2').value);
+					$('#code2').text(tcode);
+				}
+				toggleDisplay('#example2');
+			});
 
 			$('#response1').click(function(e) {
 				//Prepare the data to send
@@ -212,6 +225,69 @@
 				});
 			});
 
+			$('#response2').click(function(e) {
+				//Prepare the data to send
+				var formData = new FormData();
+
+				if (!document.getElementById("email2").value) {
+					MyModal("Exclamation", "Please write a valid email!!!");
+					document.getElementById("email2").focus();
+					return;
+				}
+				formData.set("email",document.getElementById("email2").value);
+
+				if (!document.getElementById("APIKey2").value) {
+					MyModal("Exclamation", "Please write a valid API Key!!!");
+					document.getElementById("APIKey2").focus();
+					return;
+				}
+				formData.set("apiKey",document.getElementById("APIKey2").value);
+
+				// Submit the form using AJAX.
+				ajaxReq = $.ajax({
+					type: 'GET',
+					url: 'webService/showDatasets.php',
+					contentType: false,
+                    cache: false,
+                    processData:false,
+					data: formData,
+					beforeSend: function( xhr ) {
+						$('#code2r').hide();
+						$('#code2r').text('');
+						tmpHtml=$('#response2').html();
+						$('#response2').removeClass( "btn-primary" ).addClass("btn-warning").html('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');	
+  					}
+				}).done(function(response, textStatus, jqXHR) {
+					if (isJSON(response)) {
+						res=JSON.parse(response);
+						res=JSON.stringify(res, null, 4);
+						if (jqXHR.status==200) {
+							$('#code2r').text(res);
+						} else {
+							$('#code2r').text(res);
+						}
+					}
+					else MyModal("Error", response);
+				}).fail(function( jqXHR, textStatus, thrownError ) {
+					if (isJSON(jqXHR.responseText)) {
+						res=JSON.parse(jqXHR.responseText);
+						res=JSON.stringify(res, null, 4);
+						$('#code2r').text(res);
+						if (jqXHR.status>=400 && sessionStorage.getItem('token')) {
+							setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
+						}
+					} 
+					else $('#code2r').text(jqXHR.responseText);
+				}).always(function() {
+					$('#response2').removeClass("btn-warning").addClass("btn-primary").html(tmpHtml);
+					$('#code2r').show( "slow" );
+				});
+			});
+
+
 		});
 
         // It handles the footer when the size of the window changes.
@@ -280,10 +356,15 @@
 					res=JSON.parse(response);
 					if (jqXHR.status==200) {
 						srv=res.srv
-						document.getElementById('endpoint1').value=res.srv + call1
 						document.getElementById('WebAPIKey').value=res.key;
+
+						document.getElementById('endpoint1').value=res.srv + call1
+						document.getElementById('endpoint2').value=res.srv + call2
 						document.getElementById('email1').value=res.email;
+						document.getElementById('email2').value=res.email;
 						document.getElementById('APIKey1').value=res.key;
+						document.getElementById('APIKey2').value=res.key;
+
 						if (res.kdate) {
 							document.getElementById('keyExpiresAt').value=res.kdate.substring(0,10).split("-").reverse().join("-").replace(/-/g,"/");
 							var today = new Date();
@@ -355,8 +436,7 @@
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDropdown">
                     <p id="person" class="text-primary text-center"></p>
 					<div class="dropdown-divider"></div>
-					<a id="uploadDatasetDD" class="dropdown-item" onclick="UploadDataset()" href="#"><img src="images/upload24Black.png" alt=""> Upload dataset</a>
-					<a id="webApiDD" class="dropdown-item" href="webAPI.html"><img src="images/upload24Black.png" alt=""> API Settings</a>
+					<a id="webApiDD" class="dropdown-item" href="#"><img src="images/upload24Black.png" alt=""> API Settings</a>
 					<div class="dropdown-divider"></div>
 					<a id="settings"    class="dropdown-item" href="profile.html"><img src="images/settings24.png" alt="">Profile</a>
 					<a id="SignOut"     class="dropdown-item" href="#"><img src="images/signout24.png" alt=""> Sign out</a>
@@ -408,6 +488,7 @@
 
 	<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
 		<div class="accordion" id="webApiAccordion">
+
 			<div class="card lightgraybackground">
 				<div class="card-header" id="headingOne">
 					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
@@ -496,34 +577,122 @@ curl -X POST \
 					</div>
 				</div>
 			</div>
+
 			<div class="card lightgraybackground">
-				<div class="card-header" id="headingTwo">
+				<div class="card-header" id="headingDatasets">
 					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
-						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapseDatasets" aria-expanded="false" aria-controls="collapseDatasets">
+							Request Dataset Ids <b>(GET)</b>
+						</button>
+					</div>
+				</div>
+				<div id="collapseDatasets" class="collapse" aria-labelledby="headingDatasets" data-parent="#webApiAccordion">
+					<div class="card-body">
+						<h5 class="text-primary">Endpoint</h5>
+						<div class="form-group row">
+							<label for="endpoint2" class="col-sm-2 col-form-label">Url</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" id="endpoint2">
+							</div>
+						</div>
+						<h5 class="text-primary">Parameters (Header section)</h5>
+						<div class="form-group row">
+							<label for="cacheControl2" class="col-sm-2 col-form-label">cache-control</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" id="cacheControl2" value="no-cache">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="contentType2" class="col-sm-2 col-form-label">content-type</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" id="contentType2" value="form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW">
+							</div>
+						</div>
+						<h5 class="text-primary">Parameters (Body section)</h5>
+						<div class="form-group row">
+							<label for="email2" class="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control" id="email2" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="APIKey2" class="col-sm-2 col-form-label">WebAPI key</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="APIKey2" required>
+							</div>
+						</div>
+						<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
+							<button id="callExample2" type="button" class="btn btn-primary btn-inline" style="height:100%; width:100%">Web call example</button>
+						</div>
+
+						<div id="example2" class="border rounded p-2" style="display:none">
+							<pre id="precode2"><code id="code2">
+curl -X POST \
+##0## \
+-H 'cache-control: no-cache' \
+-H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+-F email=##1## \
+-F apiKey=##2## \
+							</code></pre>
+							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code2').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
+							<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
+								<button id="response2" type="button" class="btn btn-primary rounded" style="width:100%; height:100%">Show response data JSON</button>
+							</div>
+							<pre id="precode2r"><code id="code2r">
+
+							</code></pre>
+							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code2r').text())" title="" data-original-title="Copy to clipboard">Copy response</button>
+						</div>
+					</div>
+		
+				</div>
+			</div>
+
+			<div class="card lightgraybackground">
+				<div class="card-header" id="headingDeleteDataset">
+					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%"  type="button" data-toggle="collapse" data-target="#collapseDeleteDataset" aria-expanded="false" aria-controls="collapseDeleteDataset">
+							Delete dataset <b>(POST)</b>
+						</button>
+					</div>
+				</div>
+				<div id="collapseDeleteDataset" class="collapse" aria-labelledby="headingDeleteDataset" data-parent="#webApiAccordion">
+					<div class="card-body">
+						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+					</div>
+				</div>
+			</div>
+
+			<div class="card lightgraybackground">
+				<div class="card-header" id="headingRAR">
+					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapseRAR" aria-expanded="false" aria-controls="collapseRAR">
 							Request association rules <b>(POST)</b>
 						</button>
 					</div>
 				</div>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#webApiAccordion">
+				<div id="collapseRAR" class="collapse" aria-labelledby="headingRAR" data-parent="#webApiAccordion">
 					<div class="card-body">
 						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
 					</div>
 				</div>
 			</div>
+
 			<div class="card lightgraybackground">
-				<div class="card-header" id="headingThree">
+				<div class="card-header" id="headingGAR">
 					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
-						<button class="btn btn-primary collapsed" style="width:100%; height:100%"  type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapseGAR" aria-expanded="false" aria-controls="collapseGAR">
 							Retrieve association rules <b>(POST)</b>
 						</button>
 					</div>
 				</div>
-				<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#webApiAccordion">
+				<div id="collapseGAR" class="collapse" aria-labelledby="headingGAR" data-parent="#webApiAccordion">
 					<div class="card-body">
 						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
 

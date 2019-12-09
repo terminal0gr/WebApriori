@@ -7,7 +7,7 @@
 
 	//Site settings
 	define( 'SERVERKEY', 'e486n8wn76v7n69v7as678z7n674b7zx7vb7' ); 
-	define('siteRoot','localhost/apriori/');
+	define('siteRoot','localhost/M301/');
 	define('MaxDatasets', 10);
 	
 	//SMTP Settings
