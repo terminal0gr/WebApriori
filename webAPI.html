@@ -34,8 +34,7 @@
 	<script>
 
 		var ajaxReq;	
-		var curl1;
-		var curl2;
+		var curl1, curl2, curl3, curl4, curl5;
 		var srv="localhost/";
 		var call1="webService/uploadDataset.php";
 		var call2="webService/showDatasets.php";
@@ -45,6 +44,7 @@
 
 			curl1 = $('#code1').text();
 			curl2 = $('#code2').text();
+			curl3 = $('#code3').text();
 
 			// initialization of tooltips in page
 			$('[data-toggle="tooltip"]').tooltip()
@@ -144,6 +144,17 @@
 					$('#code2').text(tcode);
 				}
 				toggleDisplay('#example2');
+			});
+			$('#callExample3').click(function(e) {
+				if ($('#example3').is(":hidden")) {
+					var tcode=curl3;
+					tcode=tcode.replace("##0##", srv + call3);
+					tcode=tcode.replace("##1##", document.getElementById('email3').value);
+					tcode=tcode.replace("##2##", document.getElementById('APIKey3').value);
+					tcode=tcode.replace("##3##", document.getElementById('datasetId3').value);
+					$('#code3').text(tcode);
+				}
+				toggleDisplay('#example3');
 			});
 
 			$('#response1').click(function(e) {
@@ -245,7 +256,7 @@
 
 				// Submit the form using AJAX.
 				ajaxReq = $.ajax({
-					type: 'GET',
+					type: 'POST',
 					url: 'webService/showDatasets.php',
 					contentType: false,
                     cache: false,
@@ -258,27 +269,13 @@
 						$('#response2').removeClass( "btn-primary" ).addClass("btn-warning").html('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');	
   					}
 				}).done(function(response, textStatus, jqXHR) {
-					if (isJSON(response)) {
-						res=JSON.parse(response);
-						res=JSON.stringify(res, null, 4);
-						if (jqXHR.status==200) {
-							$('#code2r').text(res);
-						} else {
-							$('#code2r').text(res);
-						}
-					}
-					else MyModal("Error", response);
+						res=JSON.stringify(response, null, 4);
+						$('#code2r').text(res);
 				}).fail(function( jqXHR, textStatus, thrownError ) {
 					if (isJSON(jqXHR.responseText)) {
 						res=JSON.parse(jqXHR.responseText);
 						res=JSON.stringify(res, null, 4);
 						$('#code2r').text(res);
-						if (jqXHR.status>=400 && sessionStorage.getItem('token')) {
-							setTimeout(function() {
-								sessionStorage.clear();
-								window.location.href='index.html';
-							}, 3000);	
-						}
 					} 
 					else $('#code2r').text(jqXHR.responseText);
 				}).always(function() {
@@ -287,6 +284,60 @@
 				});
 			});
 
+			$('#response3').click(function(e) {
+				//Prepare the data to send
+				var formData = new FormData();
+
+				if (!document.getElementById("email3").value) {
+					MyModal("Exclamation", "Please write a valid email!!!");
+					document.getElementById("email3").focus();
+					return;
+				}
+				formData.set("email",document.getElementById("email3").value);
+
+				if (!document.getElementById("APIKey3").value) {
+					MyModal("Exclamation", "Please write a valid API Key!!!");
+					document.getElementById("APIKey3").focus();
+					return;
+				}
+				formData.set("apiKey",document.getElementById("APIKey3").value);
+
+				if (!document.getElementById("datasetId3").value) {
+					MyModal("Exclamation", "Please write a dataset Id!!!");
+					document.getElementById("datasetId3").focus();
+					return;
+				}
+				formData.set("datasetId",document.getElementById("datasetId3").value);
+
+				// Submit the form using AJAX.
+				ajaxReq = $.ajax({
+					type: 'POST',
+					url: 'webService/deleteDataset.php',
+					contentType: false,
+                    cache: false,
+                    processData:false,
+					data: formData,
+					beforeSend: function( xhr ) {
+						$('#code3r').hide();
+						$('#code3r').text('');
+						tmpHtml=$('#response3').html();
+						$('#response3').removeClass( "btn-primary" ).addClass("btn-warning").html('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');	
+  					}
+				}).done(function(response, textStatus, jqXHR) {
+						res=JSON.stringify(response, null, 4);
+						$('#code3r').text(res);
+				}).fail(function( jqXHR, textStatus, thrownError ) {
+					if (isJSON(jqXHR.responseText)) {
+						res=JSON.parse(jqXHR.responseText);
+						res=JSON.stringify(res, null, 4);
+						$('#code3r').text(res);
+					} 
+					else $('#code3r').text(jqXHR.responseText);
+				}).always(function() {
+					$('#response3').removeClass("btn-warning").addClass("btn-primary").html(tmpHtml);
+					$('#code3r').show( "slow" );
+				});
+			});
 
 		});
 
@@ -360,10 +411,13 @@
 
 						document.getElementById('endpoint1').value=res.srv + call1
 						document.getElementById('endpoint2').value=res.srv + call2
+						document.getElementById('endpoint3').value=res.srv + call3
 						document.getElementById('email1').value=res.email;
 						document.getElementById('email2').value=res.email;
+						document.getElementById('email3').value=res.email;
 						document.getElementById('APIKey1').value=res.key;
 						document.getElementById('APIKey2').value=res.key;
+						document.getElementById('APIKey3').value=res.key;
 
 						if (res.kdate) {
 							document.getElementById('keyExpiresAt').value=res.kdate.substring(0,10).split("-").reverse().join("-").replace(/-/g,"/");
@@ -582,7 +636,7 @@ curl -X POST \
 				<div class="card-header" id="headingDatasets">
 					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
 						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapseDatasets" aria-expanded="false" aria-controls="collapseDatasets">
-							Request Dataset Ids <b>(GET)</b>
+							Request Dataset Ids <b>(POST)</b>
 						</button>
 					</div>
 				</div>
@@ -644,21 +698,82 @@ curl -X POST \
 							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code2r').text())" title="" data-original-title="Copy to clipboard">Copy response</button>
 						</div>
 					</div>
-		
+
 				</div>
 			</div>
 
 			<div class="card lightgraybackground">
-				<div class="card-header" id="headingDeleteDataset">
+				<div class="card-header" id="heading3">
 					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
-						<button class="btn btn-primary collapsed" style="width:100%; height:100%"  type="button" data-toggle="collapse" data-target="#collapseDeleteDataset" aria-expanded="false" aria-controls="collapseDeleteDataset">
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
 							Delete dataset <b>(POST)</b>
 						</button>
 					</div>
 				</div>
-				<div id="collapseDeleteDataset" class="collapse" aria-labelledby="headingDeleteDataset" data-parent="#webApiAccordion">
+				<div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#webApiAccordion">
 					<div class="card-body">
-						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						<h5 class="text-primary">Endpoint</h5>
+						<div class="form-group row">
+							<label for="endpoint3" class="col-sm-2 col-form-label">Url</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" id="endpoint3">
+							</div>
+						</div>
+						<h5 class="text-primary">Parameters (Header section)</h5>
+						<div class="form-group row">
+							<label for="cacheControl3" class="col-sm-2 col-form-label">cache-control</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" id="cacheControl3" value="no-cache">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="contentType3" class="col-sm-2 col-form-label">content-type</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" id="contentType3" value="form-data">
+							</div>
+						</div>
+						<h5 class="text-primary">Parameters (Body section)</h5>
+						<div class="form-group row">
+							<label for="email3" class="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control" id="email3" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="APIKey3" class="col-sm-2 col-form-label">WebAPI key</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="APIKey3" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="datasetId3" class="col-sm-2 col-form-label">Dataset Id</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="datasetId3" required>
+							</div>
+						</div>
+						<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
+							<button id="callExample3" type="button" class="btn btn-primary btn-inline" style="height:100%; width:100%">Web call example</button>
+						</div>
+
+						<div id="example3" class="border rounded p-2" style="display:none">
+							<pre id="precode3"><code id="code3">
+curl -X POST \
+##0## \
+-H 'cache-control: no-cache' \
+-H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+-F email=##1## \
+-F apiKey=##2## \
+-F datasetId=##3## \
+							</code></pre>
+							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code3').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
+							<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
+								<button id="response3" type="button" class="btn btn-primary rounded" style="width:100%; height:100%">Show response data JSON</button>
+							</div>
+							<pre id="precode3r"><code id="code3r">
+
+							</code></pre>
+							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code3r').text())" title="" data-original-title="Copy to clipboard">Copy response</button>
+						</div>
 					</div>
 				</div>
 			</div>

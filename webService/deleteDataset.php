@@ -30,6 +30,13 @@
         exit();
 	}
 
+    if (!isset($_POST['datasetId'])) {
+        http_response_code(202);
+        $JsonReq = array('code' => 40, 'message' => 'No dataset Id!!!');
+        print json_encode($JsonReq);
+        exit();
+    }
+
     //The FILTER_SANITIZE_EMAIL filter removes all illegal characters from an email address
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     //mysqli_real_escape_string function is used to create a legal SQL string that you can use in an SQL statement.
@@ -39,7 +46,7 @@
 
     if (empty($email) OR empty($apiKey) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         http_response_code(400);
-        $JsonReq = array('code' => 40, 'message' => 'Unauthorized!!!');
+        $JsonReq = array('code' => 50, 'message' => 'Unauthorized!!!');
         print json_encode($JsonReq);
         exit;
     }
@@ -52,7 +59,7 @@
     // If result matched $myusername and $webAPIKey, table row must be 1 row
     if(!$num==1){
         http_response_code(400);
-        $JsonReq = array('code' => 50, 'message' => 'Unauthorized!!!');
+        $JsonReq = array('code' => 60, 'message' => 'Unauthorized!!!');
         print json_encode($JsonReq);
         exit; 
     }
@@ -62,28 +69,44 @@
     $dateTimestamp2=strtotime(date('Y/m/d'));
     if ($dateTimestamp1<$dateTimestamp2) {
         http_response_code(201);
-        $JsonReq = array('code' => 60, 'message' => 'ApiKey expired!!!');
+        $JsonReq = array('code' => 70, 'message' => 'ApiKey expired!!!');
         print json_encode($JsonReq);
         exit; 
     }
 
-    $filelist=array();
-    for ($i = 1; $i < 5; $i++) {
-        $log_directory="../Python/datasets/".$identity."/".$i."/";
-        foreach(glob($log_directory.'*.*') as $file) {
-            $filelist[] = array('datasetType' => $i, 'filename' => basename($file), 'datasetId' => $i.'_'.basename($file));
-        };
-    }
-    if (count($filelist)>10) {
-        $filelist=array_slice($filelist, 0, 10);
-    }
-    if($filelist) {
-        http_response_code(200);
-        if (count($filelist)==0) {
-            exit();
+        //get dataset type is the fisrt character of $_POST['dataset']
+        $datasetType=substr($_POST['datasetId'],0,1);
+        //get the filename
+        $filename=substr($_POST['datasetId'],2);
+        //Create dataset path
+        $fpath="../Python/datasets/".$identity."/".$datasetType."/".$filename;
+        $message = '';
+        if (is_file($fpath)) {
+            if (!unlink($fpath)) {
+                $message = "Could not delete dataset!!!\n";
+            }
+        } else {
+            $message = "Could not find dataset!!!\n";
         }
-        print json_encode($filelist);
-        exit();
-    }
+        $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;   
+        $fpatho_parts = pathinfo($fpatho);
+        $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".json";
+        if (is_file($fpath)) {
+            if (!unlink($fpatho)) {
+                $message = $message."Could not find/delete dataset results!!!\n";
+            }
+        }
+    
+        if ($message) {
+            http_response_code(202);
+            $JsonReq = array('code' => 70, 'message' => $message);
+            print json_encode($JsonReq);
+            exit();        
+        }
+    
+        http_response_code(200);
+        $JsonReq = array('code' => 0 , 'message' => "Dataset deleted successfully.");
+        print json_encode($JsonReq);
+        exit();  
     
 ?>

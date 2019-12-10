@@ -94,7 +94,7 @@
             $Vi++;
         };
     }
-    if ($Vi>MaxDatasets) {
+    if ($Vi>=MaxDatasets) {
         http_response_code(201);
         $JsonReq = array('code' => 110, 'message' => 'Sorry, no more than '.MaxDatasets.' datasets are permitted per account!!!');
         print json_encode($JsonReq);

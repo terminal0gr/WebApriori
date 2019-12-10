@@ -1,9 +1,8 @@
 WEB API
-- Demo of Wep API functions usage (Done for 1st call)
-- Delete dataset request
+DONE - Delete dataset request
+DONE - show Dataset request
 - Request association rules
 - Retrieve association rules in JSON format
-
 
 DONE - Valid for ?? days info (It function for today only now)
 DONE - Upload dataset function
