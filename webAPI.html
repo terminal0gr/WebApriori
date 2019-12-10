@@ -779,16 +779,107 @@ curl -X POST \
 			</div>
 
 			<div class="card lightgraybackground">
-				<div class="card-header" id="headingRAR">
+				<div class="card-header" id="heading4">
 					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
-						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapseRAR" aria-expanded="false" aria-controls="collapseRAR">
-							Request association rules <b>(POST)</b>
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+							Delete dataset <b>(POST)</b>
 						</button>
 					</div>
 				</div>
-				<div id="collapseRAR" class="collapse" aria-labelledby="headingRAR" data-parent="#webApiAccordion">
+				<div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#webApiAccordion">
 					<div class="card-body">
-						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						<h5 class="text-primary">Endpoint</h5>
+						<div class="form-group row">
+							<label for="endpoint4" class="col-sm-2 col-form-label">Url</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" id="endpoint4">
+							</div>
+						</div>
+						<h5 class="text-primary">Parameters (Header section)</h5>
+						<div class="form-group row">
+							<label for="cacheControl4" class="col-sm-2 col-form-label">cache-control</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" id="cacheControl4" value="no-cache">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="contentType4" class="col-sm-2 col-form-label">content-type</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" id="contentType4" value="form-data">
+							</div>
+						</div>
+						<h5 class="text-primary">Parameters (Body section)</h5>
+						<div class="form-group row">
+							<label for="email4" class="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control" id="email4" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="APIKey4" class="col-sm-2 col-form-label">WebAPI key</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="APIKey4" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="datasetId4" class="col-sm-2 col-form-label">Dataset Id</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="datasetId4" required>
+							</div>
+							<label for="separator4" class="col-sm-1 col-form-label m-0 pl-0 pr-0">sep</label>
+							<div class="col-sm-1 pl-0">
+								<input type="text" class="form-control" id="separator4" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="minSupp4" class="col-sm-2 col-form-label">Min supp</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="minSupp4" required>
+							</div>
+							<label for="minConf4" class="col-sm-2 col-form-label ">Min conf</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="minConf4" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="minLift4" class="col-sm-2 col-form-label">Min lift</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="minLift4" required>
+							</div>
+							<label for="maxRuleItems4" class="col-sm-2 col-form-label">Max Items</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" id="maxRuleItems4" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="extra4" class="col-sm-2 col-form-label">Parameters</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="extra4" required>
+							</div>
+						</div>
+						<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
+							<button id="callExample4" type="button" class="btn btn-primary btn-inline" style="height:100%; width:100%">Request rules example</button>
+						</div>
+
+						<div id="example4" class="border rounded p-2" style="display:none">
+							<pre id="precode4"><code id="code4">
+curl -X POST \
+##0## \
+-H 'cache-control: no-cache' \
+-H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+-F email=##1## \
+-F apiKey=##2## \
+-F datasetId=##3## \
+							</code></pre>
+							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code4').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
+							<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
+								<button id="response4" type="button" class="btn btn-primary rounded" style="width:100%; height:100%">Show response data JSON</button>
+							</div>
+							<pre id="precode4r"><code id="code4r">
+
+							</code></pre>
+							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code4r').text())" title="" data-original-title="Copy to clipboard">Copy response</button>
+						</div>
 					</div>
 				</div>
 			</div>
