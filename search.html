@@ -190,6 +190,7 @@
 						} else {					
 							try {
 								if (isJSON(res.message)) { 
+									alert(res.title);
 									resm=JSON.parse(res.message);
 									fillTable(resm);
 								} else {
@@ -544,7 +545,6 @@
 							document.getElementById('min_confidence').value=""; 
 							document.getElementById('min_lift').value=""; 
 							document.getElementById('max_length').value=""; 
-							document.getElementById('max_length').value=""; 
 							document.getElementById('extra_parameters').value=""; 
                             $("#showResults").hide();
 						} else {
@@ -553,7 +553,6 @@
 							document.getElementById('min_confidence').value=res.min_confidence; 
 							document.getElementById('min_lift').value=res.min_lift; 
 							document.getElementById('max_length').value=res.max_length; 
-							document.getElementById('max_length').value=res.max_length;
 
 							//loads res.datasetArgs as a python list like =>['a', 'b'].
 							//but we need the format =>"a" "b" so, we apply the above regex!

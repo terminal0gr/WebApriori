@@ -31,8 +31,8 @@
 	}
 
     if (!isset($_POST['datasetId'])) {
-        http_response_code(202);
-        $JsonReq = array('code' => 40, 'message' => 'No dataset Id!!!');
+        http_response_code(201);
+        $JsonReq = array('code' => 40, 'message' => 'No dataset Id declared!!!');
         print json_encode($JsonReq);
         exit();
     }
@@ -74,39 +74,39 @@
         exit; 
     }
 
-        //get dataset type is the fisrt character of $_POST['dataset']
-        $datasetType=substr($_POST['datasetId'],0,1);
-        //get the filename
-        $filename=substr($_POST['datasetId'],2);
-        //Create dataset path
-        $fpath="../Python/datasets/".$identity."/".$datasetType."/".$filename;
-        $message = '';
-        if (is_file($fpath)) {
-            if (!unlink($fpath)) {
-                $message = "Could not delete dataset!!!\n";
-            }
-        } else {
-            $message = "Could not find dataset!!!\n";
+    //get dataset type is the fisrt character of $_POST['dataset']
+    $datasetType=substr($_POST['datasetId'],0,1);
+    //get the filename
+    $filename=substr($_POST['datasetId'],2);
+    //Create dataset path
+    $fpath="../Python/datasets/".$identity."/".$datasetType."/".$filename;
+    $message = '';
+    if (is_file($fpath)) {
+        if (!unlink($fpath)) {
+            $message = "Could not delete dataset!!!\n";
         }
-        $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;   
-        $fpatho_parts = pathinfo($fpatho);
-        $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".json";
-        if (is_file($fpath)) {
-            if (!unlink($fpatho)) {
-                $message = $message."Could not find/delete dataset results!!!\n";
-            }
+    } else {
+        $message = "Could not find dataset!!!\n";
+    }
+    $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;   
+    $fpatho_parts = pathinfo($fpatho);
+    $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".json";
+    if (is_file($fpatho)) {
+        if (!unlink($fpatho)) {
+            $message = $message."Could not find/delete dataset results!!!\n";
         }
-    
-        if ($message) {
-            http_response_code(202);
-            $JsonReq = array('code' => 70, 'message' => $message);
-            print json_encode($JsonReq);
-            exit();        
-        }
-    
-        http_response_code(200);
-        $JsonReq = array('code' => 0 , 'message' => "Dataset deleted successfully.");
+    }
+
+    if ($message) {
+        http_response_code(202);
+        $JsonReq = array('code' => 70, 'message' => $message);
         print json_encode($JsonReq);
-        exit();  
+        exit();        
+    }
+
+    http_response_code(200);
+    $JsonReq = array('code' => 0 , 'message' => "Dataset deleted successfully.");
+    print json_encode($JsonReq);
+    exit();  
     
 ?>

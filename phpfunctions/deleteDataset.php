@@ -67,7 +67,7 @@
     $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;   
     $fpatho_parts = pathinfo($fpatho);
     $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".json";
-    if (is_file($fpath)) {
+    if (is_file($fpatho)) {
         if (!unlink($fpatho)) {
             $message = $message."Could not find/delete dataset results!!!\n";
         }

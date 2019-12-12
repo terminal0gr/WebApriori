@@ -39,12 +39,14 @@
 		var call1="webService/uploadDataset.php";
 		var call2="webService/showDatasets.php";
 		var call3="webService/deleteDataset.php";
+		var call4="webService/requestRules.php";
 
 		$(function() {
 
 			curl1 = $('#code1').text();
 			curl2 = $('#code2').text();
 			curl3 = $('#code3').text();
+			curl3 = $('#code4').text();
 
 			// initialization of tooltips in page
 			$('[data-toggle="tooltip"]').tooltip()
@@ -155,6 +157,28 @@
 					$('#code3').text(tcode);
 				}
 				toggleDisplay('#example3');
+			});
+			$('#callExample4').click(function(e) {
+				if ($('#example4').is(":hidden")) {
+					var tcode=curl3;
+					tcode=tcode.replace("##0##", srv + call3);
+					tcode=tcode.replace("##1##", document.getElementById('email4').value);
+					tcode=tcode.replace("##2##", document.getElementById('APIKey4').value);
+					tcode=tcode.replace("##3##", document.getElementById('datasetId4').value);
+					tcode=tcode.replace("##4##", document.getElementById('separator4').value);
+					tcode=tcode.replace("##5##", document.getElementById('minSupp4').value);
+					tcode=tcode.replace("##6##", document.getElementById('minConf4').value);
+					tcode=tcode.replace("##7##", document.getElementById('minLift4').value);
+					tcode=tcode.replace("##8##", document.getElementById('maxRuleItems4').value);
+					if (document.getElementById('extra4').value) {
+						tcode=tcode.replace("##9##", '-F extra_parameters=' + document.getElementById('extra4').value + ' \\');
+					} else {
+						tcode=tcode.replace("##9##",'')
+					}
+
+					$('#code4').text(tcode);
+				}
+				toggleDisplay('#example4');
 			});
 
 			$('#response1').click(function(e) {
@@ -339,6 +363,113 @@
 				});
 			});
 
+			$('#response4').click(function(e) {
+				//Prepare the data to send
+				var formData = new FormData();
+
+				if (!document.getElementById("email4").value) {
+					MyModal("Exclamation", "Please write a valid email!!!");
+					document.getElementById("email4").focus();
+					return;
+				}
+				formData.set("email",document.getElementById("email4").value);
+
+				if (!document.getElementById("APIKey4").value) {
+					MyModal("Exclamation", "Please write a valid API Key!!!");
+					document.getElementById("APIKey4").focus();
+					return;
+				}
+				formData.set("apiKey",document.getElementById("APIKey4").value);
+
+				if (!document.getElementById("datasetId4").value) {
+					MyModal("Exclamation", "Please write a dataset Id!!!");
+					document.getElementById("datasetId4").focus();
+					return;
+				}
+				formData.set("datasetId",document.getElementById("datasetId4").value);
+
+				if (!document.getElementById("separator4").value) {
+					MyModal("Exclamation", "Please declare a seperator!!!");
+					document.getElementById("separator4").focus();
+					return;
+				}
+				formData.set("separator",document.getElementById("separator4").value);
+
+				if (!document.getElementById("minSupp4").value) {
+					MyModal("Exclamation", "Please declare the minimum support for the rules!!!");
+					document.getElementById("minSupp4").focus();
+					return;
+				}
+				formData.set("min_support",document.getElementById("minSupp4").value);
+
+				if (!document.getElementById("minSupp4").value) {
+					MyModal("Exclamation", "Please declare the minimum support value for the rules!!!");
+					document.getElementById("minSupp4").focus();
+					return;
+				}
+				formData.set("min_support",document.getElementById("minSupp4").value);
+
+				if (!document.getElementById("minConf4").value) {
+					MyModal("Exclamation", "Please declare the minimum confidence value for the rules!!!");
+					document.getElementById("minConf4").focus();
+					return;
+				}
+				formData.set("min_confidence",document.getElementById("minConf4").value);
+
+				if (!document.getElementById("minLift4").value) {
+					MyModal("Exclamation", "Please declare the minimum lift value for the rules!!!");
+					document.getElementById("minLift4").focus();
+					return;
+				}
+				formData.set("min_lift",document.getElementById("minLift4").value);
+
+				if (!document.getElementById("maxRuleItems4").value) {
+					MyModal("Exclamation", "Please declare the maximun items participating in rules!!!");
+					document.getElementById("maxRuleItems4").focus();
+					return;
+				}
+				formData.set("max_length",document.getElementById("maxRuleItems4").value);
+				
+				// Submit the form using AJAX.
+				ajaxReq = $.ajax({
+					type: 'POST',
+					url: 'webService/requestRules.php',
+					contentType: false,
+                    cache: false,
+                    processData:false,
+					data: formData,
+					beforeSend: function( xhr ) {
+						$('#code4r').hide();
+						$('#code4r').text('');
+						tmpHtml=$('#response4').html();
+						$('#response4').removeClass( "btn-primary" ).addClass("btn-warning").html('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');	
+  					}
+				}).done(function(response, textStatus, jqXHR) {
+						res=JSON.stringify(response, null, 4);
+						$('#code4r').text(res);
+				}).fail(function( jqXHR, textStatus, thrownError ) {
+					if (isJSON(jqXHR.responseText)) {
+						res=JSON.parse(jqXHR.responseText);
+						res=JSON.stringify(res, null, 4);
+						$('#code4r').text(res);
+					} 
+					else $('#code4r').text(jqXHR.responseText);
+				}).always(function() {
+					$('#response4').removeClass("btn-warning").addClass("btn-primary").html(tmpHtml);
+					$('#code4r').show( "slow" );
+				});
+			});
+
+			$('#extra4').blur(function() {
+				var regex = /[\[\]]/g;
+				var extraparams=this.value.replace(regex,''); 
+				var regex = /,/g;
+				extraparams=extraparams.replace(regex,' '); 
+				var regex = /'/g;
+				extraparams=extraparams.replace(regex,'"'); 
+				this.value=extraparams;
+			}); 
+
 		});
 
         // It handles the footer when the size of the window changes.
@@ -412,12 +543,15 @@
 						document.getElementById('endpoint1').value=res.srv + call1
 						document.getElementById('endpoint2').value=res.srv + call2
 						document.getElementById('endpoint3').value=res.srv + call3
+						document.getElementById('endpoint4').value=res.srv + call3
 						document.getElementById('email1').value=res.email;
 						document.getElementById('email2').value=res.email;
 						document.getElementById('email3').value=res.email;
+						document.getElementById('email4').value=res.email;
 						document.getElementById('APIKey1').value=res.key;
 						document.getElementById('APIKey2').value=res.key;
 						document.getElementById('APIKey3').value=res.key;
+						document.getElementById('APIKey4').value=res.key;
 
 						if (res.kdate) {
 							document.getElementById('keyExpiresAt').value=res.kdate.substring(0,10).split("-").reverse().join("-").replace(/-/g,"/");
@@ -782,7 +916,7 @@ curl -X POST \
 				<div class="card-header" id="heading4">
 					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
 						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-							Delete dataset <b>(POST)</b>
+							Request association rules <b>(POST)</b>
 						</button>
 					</div>
 				</div>
@@ -828,33 +962,33 @@ curl -X POST \
 							</div>
 							<label for="separator4" class="col-sm-1 col-form-label m-0 pl-0 pr-0">sep</label>
 							<div class="col-sm-1 pl-0">
-								<input type="text" class="form-control" id="separator4" required>
+								<input type="text" class="form-control" id="separator4" required placeholder=",">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="minSupp4" class="col-sm-2 col-form-label">Min supp</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="minSupp4" required>
+								<input type="text" class="form-control" id="minSupp4" required placeholder="0.01">
 							</div>
 							<label for="minConf4" class="col-sm-2 col-form-label ">Min conf</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="minConf4" required>
+								<input type="text" class="form-control" id="minConf4" required placeholder="0.2">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="minLift4" class="col-sm-2 col-form-label">Min lift</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="minLift4" required>
+								<input type="text" class="form-control" id="minLift4" required placeholder="1.5">
 							</div>
 							<label for="maxRuleItems4" class="col-sm-2 col-form-label">Max Items</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="maxRuleItems4" required>
+								<input type="text" class="form-control" id="maxRuleItems4" required placeholder="2">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="extra4" class="col-sm-2 col-form-label">Parameters</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="extra4" required>
+								<input type="text" class="form-control" id="extra4" >
 							</div>
 						</div>
 						<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
@@ -870,6 +1004,12 @@ curl -X POST \
 -F email=##1## \
 -F apiKey=##2## \
 -F datasetId=##3## \
+-F separator=##4## \
+-F min_support=##5## \
+-F min_confidence=##6## \
+-F min_lift=##7## \
+-F max_length=##8## \
+##9##
 							</code></pre>
 							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code4').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
 							<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
