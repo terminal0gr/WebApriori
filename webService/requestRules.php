@@ -162,7 +162,7 @@
         execInBackground($input);
 
         http_response_code(200);
-        $JsonReq = array('code' => 0 , 'message' => "Processing request...");
+        $JsonReq = array('code' => 0 , 'message' => "Processing request...", 'datasetId' => $_POST['datasetId']);
         print json_encode($JsonReq);
         exit();  
     

@@ -130,9 +130,9 @@
 				if ($('#example1').is(":hidden")) {
 					var tcode=curl1;
 					tcode=tcode.replace("##0##", srv + call1);
-					tcode=tcode.replace("##1##", document.getElementById('email1').value);
-					tcode=tcode.replace("##2##", document.getElementById('APIKey1').value);
-					tcode=tcode.replace("##3##", document.getElementById('datasetType1').value);
+					tcode=tcode.replace("##1##", encodeURIComponent(document.getElementById('email1').value));
+					tcode=tcode.replace("##2##", encodeURIComponent(document.getElementById('APIKey1').value));
+					tcode=tcode.replace("##3##", encodeURIComponent(document.getElementById('datasetType1').value));
 					$('#code1').text(tcode);
 				}
 				toggleDisplay('#example1');
@@ -141,8 +141,8 @@
 				if ($('#example2').is(":hidden")) {
 					var tcode=curl2;
 					tcode=tcode.replace("##0##", srv + call2);
-					tcode=tcode.replace("##1##", document.getElementById('email2').value);
-					tcode=tcode.replace("##2##", document.getElementById('APIKey2').value);
+					tcode=tcode.replace("##1##", encodeURIComponent(document.getElementById('email2').value));
+					tcode=tcode.replace("##2##", encodeURIComponent(document.getElementById('APIKey2').value));
 					$('#code2').text(tcode);
 				}
 				toggleDisplay('#example2');
@@ -151,9 +151,9 @@
 				if ($('#example3').is(":hidden")) {
 					var tcode=curl3;
 					tcode=tcode.replace("##0##", srv + call3);
-					tcode=tcode.replace("##1##", document.getElementById('email3').value);
-					tcode=tcode.replace("##2##", document.getElementById('APIKey3').value);
-					tcode=tcode.replace("##3##", document.getElementById('datasetId3').value);
+					tcode=tcode.replace("##1##", encodeURIComponent(document.getElementById('email3').value));
+					tcode=tcode.replace("##2##", encodeURIComponent(document.getElementById('APIKey3').value));
+					tcode=tcode.replace("##3##", encodeURIComponent(document.getElementById('datasetId3').value));
 					$('#code3').text(tcode);
 				}
 				toggleDisplay('#example3');
@@ -162,16 +162,16 @@
 				if ($('#example4').is(":hidden")) {
 					var tcode=curl3;
 					tcode=tcode.replace("##0##", srv + call3);
-					tcode=tcode.replace("##1##", document.getElementById('email4').value);
-					tcode=tcode.replace("##2##", document.getElementById('APIKey4').value);
-					tcode=tcode.replace("##3##", document.getElementById('datasetId4').value);
-					tcode=tcode.replace("##4##", document.getElementById('separator4').value);
-					tcode=tcode.replace("##5##", document.getElementById('minSupp4').value);
-					tcode=tcode.replace("##6##", document.getElementById('minConf4').value);
-					tcode=tcode.replace("##7##", document.getElementById('minLift4').value);
-					tcode=tcode.replace("##8##", document.getElementById('maxRuleItems4').value);
+					tcode=tcode.replace("##1##", encodeURIComponent(document.getElementById('email4').value));
+					tcode=tcode.replace("##2##", encodeURIComponent(document.getElementById('APIKey4').value));
+					tcode=tcode.replace("##3##", encodeURIComponent(document.getElementById('datasetId4').value));
+					tcode=tcode.replace("##4##", encodeURIComponent(document.getElementById('separator4').value));
+					tcode=tcode.replace("##5##", encodeURIComponent(document.getElementById('minSupp4').value));
+					tcode=tcode.replace("##6##", encodeURIComponent(document.getElementById('minConf4').value));
+					tcode=tcode.replace("##7##", encodeURIComponent(document.getElementById('minLift4').value));
+					tcode=tcode.replace("##8##", encodeURIComponent(document.getElementById('maxRuleItems4').value));
 					if (document.getElementById('extra4').value) {
-						tcode=tcode.replace("##9##", '-F extra_parameters=' + document.getElementById('extra4').value + ' \\');
+						tcode=tcode.replace("##9##", '&extra_parameters=' + encodeURIComponent(document.getElementById('extra4').value));
 					} else {
 						tcode=tcode.replace("##9##",'')
 					}
@@ -696,17 +696,35 @@
 						</div>
 						<h5 class="text-primary">Parameters (Header section)</h5>
 						<div class="form-group row">
-							<label for="cacheControl1" class="col-sm-2 col-form-label">cache-control</label>
+							<label class="col-sm-2 col-form-label">content-type</label>
 							<div class="col-sm-10">
-								<input type="text" readonly class="form-control" id="cacheControl1" value="no-cache">
+								<input type="text" readonly class="form-control" value="multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="contentType1" class="col-sm-2 col-form-label">content-type</label>
+							<label class="col-sm-2 col-form-label">cache-control</label>
 							<div class="col-sm-10">
-								<input type="text" readonly class="form-control" id="contentType1" value="multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW">
+								<input type="text" readonly class="form-control" value="no-cache">
 							</div>
 						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="*/*">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept-Encoding</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="gzip, deflate">
+							</div>
+						</div>	
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Connection</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="keep-alive">
+							</div>
+						</div>		
 						<h5 class="text-primary">Parameters (Body section)</h5>
 						<div class="form-group row">
 							<label for="email1" class="col-sm-2 col-form-label">Email</label>
@@ -751,7 +769,7 @@ curl -X POST \
 -F email=##1## \
 -F apiKey=##2## \
 -F fileToUpload=@/TheAbsoluteFilePath.csv \
--F datasetType=##3##						
+-F datasetType=##3##
 							</code></pre>
 							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code1').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
 							<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
@@ -785,17 +803,35 @@ curl -X POST \
 						</div>
 						<h5 class="text-primary">Parameters (Header section)</h5>
 						<div class="form-group row">
-							<label for="cacheControl2" class="col-sm-2 col-form-label">cache-control</label>
+							<label class="col-sm-2 col-form-label">content-type</label>
 							<div class="col-sm-10">
-								<input type="text" readonly class="form-control" id="cacheControl2" value="no-cache">
+								<input type="text" readonly class="form-control" value="application/x-www-form-urlencoded">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="contentType2" class="col-sm-2 col-form-label">content-type</label>
+							<label class="col-sm-2 col-form-label">cache-control</label>
 							<div class="col-sm-10">
-								<input type="text" readonly class="form-control" id="contentType2" value="form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW">
+								<input type="text" readonly class="form-control" value="no-cache">
 							</div>
 						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="*/*">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept-Encoding</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="gzip, deflate">
+							</div>
+						</div>	
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Connection</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="keep-alive">
+							</div>
+						</div>											
 						<h5 class="text-primary">Parameters (Body section)</h5>
 						<div class="form-group row">
 							<label for="email2" class="col-sm-2 col-form-label">Email</label>
@@ -815,12 +851,14 @@ curl -X POST \
 
 						<div id="example2" class="border rounded p-2" style="display:none">
 							<pre id="precode2"><code id="code2">
-curl -X POST \
-##0## \
--H 'cache-control: no-cache' \
--H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
--F email=##1## \
--F apiKey=##2## \
+POST ##0## HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Cache-Control: no-cache
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+
+email=##1##&apiKey=##2##
 							</code></pre>
 							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code2').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
 							<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
@@ -855,17 +893,35 @@ curl -X POST \
 						</div>
 						<h5 class="text-primary">Parameters (Header section)</h5>
 						<div class="form-group row">
-							<label for="cacheControl3" class="col-sm-2 col-form-label">cache-control</label>
+							<label class="col-sm-2 col-form-label">content-type</label>
 							<div class="col-sm-10">
-								<input type="text" readonly class="form-control" id="cacheControl3" value="no-cache">
+								<input type="text" readonly class="form-control" value="application/x-www-form-urlencoded">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="contentType3" class="col-sm-2 col-form-label">content-type</label>
+							<label class="col-sm-2 col-form-label">cache-control</label>
 							<div class="col-sm-10">
-								<input type="text" readonly class="form-control" id="contentType3" value="form-data">
+								<input type="text" readonly class="form-control" value="no-cache">
 							</div>
 						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="*/*">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept-Encoding</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="gzip, deflate">
+							</div>
+						</div>	
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Connection</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="keep-alive">
+							</div>
+						</div>											
 						<h5 class="text-primary">Parameters (Body section)</h5>
 						<div class="form-group row">
 							<label for="email3" class="col-sm-2 col-form-label">Email</label>
@@ -891,13 +947,14 @@ curl -X POST \
 
 						<div id="example3" class="border rounded p-2" style="display:none">
 							<pre id="precode3"><code id="code3">
-curl -X POST \
-##0## \
--H 'cache-control: no-cache' \
--H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
--F email=##1## \
--F apiKey=##2## \
--F datasetId=##3## \
+POST ##0## HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Cache-Control: no-cache
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+
+email=##1##&apiKey=##2##&datasetId=##3##
 							</code></pre>
 							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code3').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
 							<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
@@ -931,17 +988,35 @@ curl -X POST \
 						</div>
 						<h5 class="text-primary">Parameters (Header section)</h5>
 						<div class="form-group row">
-							<label for="cacheControl4" class="col-sm-2 col-form-label">cache-control</label>
+							<label class="col-sm-2 col-form-label">content-type</label>
 							<div class="col-sm-10">
-								<input type="text" readonly class="form-control" id="cacheControl4" value="no-cache">
+								<input type="text" readonly class="form-control" value="application/x-www-form-urlencoded">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="contentType4" class="col-sm-2 col-form-label">content-type</label>
+							<label class="col-sm-2 col-form-label">cache-control</label>
 							<div class="col-sm-10">
-								<input type="text" readonly class="form-control" id="contentType4" value="form-data">
+								<input type="text" readonly class="form-control" value="no-cache">
 							</div>
 						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="*/*">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept-Encoding</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="gzip, deflate">
+							</div>
+						</div>	
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Connection</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="keep-alive">
+							</div>
+						</div>											
 						<h5 class="text-primary">Parameters (Body section)</h5>
 						<div class="form-group row">
 							<label for="email4" class="col-sm-2 col-form-label">Email</label>
@@ -997,19 +1072,14 @@ curl -X POST \
 
 						<div id="example4" class="border rounded p-2" style="display:none">
 							<pre id="precode4"><code id="code4">
-curl -X POST \
-##0## \
--H 'cache-control: no-cache' \
--H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
--F email=##1## \
--F apiKey=##2## \
--F datasetId=##3## \
--F separator=##4## \
--F min_support=##5## \
--F min_confidence=##6## \
--F min_lift=##7## \
--F max_length=##8## \
-##9##
+POST ##0## HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Cache-Control: no-cache
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+
+email=##1##&apiKey=##2##&datasetId=##3##&separator=##4##&min_support=##5##&min_confidence=##6##&min_lift=##7##&max_length=##8####9##
 							</code></pre>
 							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code4').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
 							<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
@@ -1025,20 +1095,99 @@ curl -X POST \
 			</div>
 
 			<div class="card lightgraybackground">
-				<div class="card-header" id="headingGAR">
+				<div class="card-header" id="heading5">
 					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
-						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapseGAR" aria-expanded="false" aria-controls="collapseGAR">
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
 							Retrieve association rules <b>(POST)</b>
 						</button>
 					</div>
 				</div>
-				<div id="collapseGAR" class="collapse" aria-labelledby="headingGAR" data-parent="#webApiAccordion">
+				<div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#webApiAccordion">
 					<div class="card-body">
-						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						<h5 class="text-primary">Endpoint</h5>
+						<div class="form-group row">
+							<label for="endpoint5" class="col-sm-2 col-form-label">Url</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" id="endpoint5">
+							</div>
+						</div>
+						<h5 class="text-primary">Parameters (Header section)</h5>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">content-type</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="application/x-www-form-urlencoded">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">cache-control</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="no-cache">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="*/*">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept-Encoding</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="gzip, deflate">
+							</div>
+						</div>	
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Connection</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="keep-alive">
+							</div>
+						</div>											
+						<h5 class="text-primary">Parameters (Body section)</h5>
+						<div class="form-group row">
+							<label for="email5" class="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control" id="email5" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="APIKey5" class="col-sm-2 col-form-label">WebAPI key</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="APIKey5" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="datasetId5" class="col-sm-2 col-form-label">Dataset Id</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="datasetId5" required>
+							</div>
+						</div>
+						<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
+							<button id="callExample5" type="button" class="btn btn-primary btn-inline" style="height:100%; width:100%">Web call example</button>
+						</div>
+
+						<div id="example5" class="border rounded p-2" style="display:none">
+							<pre id="precode5"><code id="code5">
+POST ##0## HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Cache-Control: no-cache
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+
+email=##1##&apiKey=##2##&datasetId=##3##
+							</code></pre>
+							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code5').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
+							<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
+								<button id="response5" type="button" class="btn btn-primary rounded" style="width:100%; height:100%">Show response data JSON</button>
+							</div>
+							<pre id="precode5r"><code id="code5r">
+
+							</code></pre>
+							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code5r').text())" title="" data-original-title="Copy to clipboard">Copy response</button>
+						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 

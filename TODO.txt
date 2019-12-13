@@ -1,12 +1,12 @@
 WEB API
 
-- Request association rules
 - Retrieve association rules in JSON format
 
-DONE - Valid for 30 days info (It function for today only now)
+DONE - Valid for 30 days info
 DONE - Upload dataset function
 DONE - show Dataset request
 DONE - Delete dataset request
+DONE - Request association rules
 
 
 DONE - Download dataset
