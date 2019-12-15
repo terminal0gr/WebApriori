@@ -609,6 +609,7 @@
 
 			window.location=str;
 		};
+
     </script>
 </head>
 
@@ -698,27 +699,142 @@
 		</div>
 	</form>		
 
-	<!-- <div class="collapse" id="collapseInfo"> -->
-		<div id="infoForDS" class="lightgraybackground udfwidth mx-auto border rounded p-2" style="display:none">
-			<h2>Supported dataset types</h2>
-			<br>
-			<p><b>1) Market Basket list.</b> No header is expected, The number of columns is undefined (Default). 
-			If header row exists, then participant columns must be declared in extra paramaters field starting from the 2nd parameter, 
-			In 1st parameter the string representing the absent item must be declared. If absent item is nothing or not exists then assign '' or 'nan'.
-			</br> 
-			<b>2) Order/Invoice detail.</b> Header line is mandatory in that type. Number of columns is fixed in the dataset. 
-			In extra paramaters field, 1st parameter represents the primary key column while 2nd parameter represents the items column and are both mandatory.
-			</br> 
-			<b>3) Sparce item Dataset.</b> Header line is mandatory in that type. Number of columns is fixed in the dataset. 
-			Item columns are mandatory to be declared from the 2nd parameter In extra paramaters field.
-			In 1st parameter, the string of absent item must be declared!!! If absent item is nothing then assign '' or 'nan'. 
-			</br>
-			<b>4) Columns with multiple categorized values.</b> Header line is optional. 
-			Number of columns is fixed, optionally, items columns are expected in extra paramaters field in case that header line exists.
-			</br></br>
-			<b>Note:</b> In extra paramaters, the items must be enclosed in double quotes and be seperated with space (e.g. <b><i>"InvoiceID" "ProductID"</i></b>)
+	<div id="infoForDS" class="lightgraybackground udfwidth mx-auto border rounded p-2" style="display:none">
+		<h2>Supported dataset types</h2>
+		<br>
+		<p><b>1) Market Basket list.</b> No header is expected, The number of columns is undefined (Default). 
+		If header row exists then in 1st parameter of the extra paramaters field the string representing the absent item must be declared. If absent item is nothing or not exists then assign "" or "nan".
+		The participant columns must be declared in extra paramaters field starting from the 2nd parameter.<br> 
+		<a href="javascript:toggleDisplay('#hexample1');">Examples</a></p>
+		<div id="hexample1" style="display:none">
+			<div class="card text-white bg-secondary mb-3">
+				<div class="card-header"><b>Sample of dataset with no header line. Nothing must be declared in extra parameters field</b></div>
+				<div class="card-body">
+					<p class="card-text">
+citrus fruit,semi-finished bread,margarine,ready soups<br>
+tropical fruit,yogurt,coffee<br>
+whole milk<br>
+pip fruit,yogurt,cream cheese,meat spreads<br>
+other vegetables,whole milk,condensed milk,long life bakery product<br>
+...<br></p>
+				</div>
+			</div>
+			<div class="card text-white bg-secondary mb-3">
+				<div class="card-header"><b>Sample of dataset with header line. If you are interested for the first 8 items then in extra parameters field you must declare: <p style="color:yellow;"><i>"nan" "Item 1" "Item 2" "Item 3" "Item 4" "Item 5" "Item 6" "Item 7" "Item 8"</i></p></b></div>
+				<div class="card-body">
+					<p class="card-text">Item(s),Item 1,Item 2,Item 3,Item 4,Item 5,Item 6,Item 7,Item 8,Item 9,Item 10,Item 11,Item 12<br>
+4,citrus fruit,semi-finished bread,margarine,ready soups,,,,,,,,,,<br>
+3,tropical fruit,yogurt,coffee,,,,,,,,,,,,,<br>
+1,whole milk,,,,,,,,,,,,<br>
+4,pip fruit,yogurt,cream cheese,meat spreads,,,,,,,,,,,,,,,<br>
+4,other vegetables,whole milk,condensed milk,long life bakery product,,,,,,,,,,,,,,,,,,<br>
+...<br></p>
+				</div>
+			</div>
 		</div>
-	<!-- </div> -->
+		<p><b>2) Order/Invoice detail.</b> Header line is mandatory in that type. Number of columns is fixed in the dataset. 
+		In extra paramaters field, 1st parameter represents the primary key column while 2nd parameter represents the items column and are both mandatory.<br>
+		<a href="javascript:toggleDisplay('#hexample2');">Example</a></p>
+		<div id="hexample2" style="display:none">
+			<div class="card text-white bg-secondary mb-3">
+				<div class="card-header"><b>Sample of dataset of invoice type. In extra parameters field you can declare:
+					<p style="color:yellow;"><i>"InvoiceNo" "StockCode"</i></p> or <p style="color:yellow;"><i>"InvoiceNo" "Description"</i></p>
+				</b></div>
+				<div class="card-body">
+					<p class="card-text">
+InvoiceNo;StockCode;Description;Quantity;InvoiceDate;UnitPrice;CustomerID<br>
+536365;85123A;WHITE HANGING HEART T-LIGHT HOLDER;6;1/12/2010 8:26;2,55;17850<br>
+536365;71053;WHITE METAL LANTERN;6;1/12/2010 8:26;3,39;17850<br>
+536365;84406B;CREAM CUPID HEARTS COAT HANGER;8;1/12/2010 8:26;2,75;17850<br>
+536365;84029G;KNITTED UNION FLAG HOT WATER BOTTLE;6;1/12/2010 8:26;3,39;17850<br>
+536366;22633;HAND WARMER UNION JACK;6;1/12/2010 8:28;1,85;17850<br>
+536366;22632;HAND WARMER RED POLKA DOT;6;1/12/2010 8:28;1,85;17850<br>
+536367;84879;ASSORTED COLOUR BIRD ORNAMENT;32;1/12/2010 8:34;1,69;13047<br>
+536367;22745;POPPY'S PLAYHOUSE BEDROOM ;6;1/12/2010 8:34;2,1;13047<br>
+536367;22748;POPPY'S PLAYHOUSE KITCHEN;6;1/12/2010 8:34;2,1;13047<br>
+...<br></p>
+				</div>
+			</div>
+		</div>
+		<p><b>3) Sparce item Dataset.</b> Header line is mandatory in that type of dataset and the number of columns/items is fixed. 
+		Item columns are mandatory to be declared from the 2nd parameter and above in extra paramaters field.
+		In 1st parameter, the string of absent item must be declared!!! If absent item is nothing then assign '' or 'nan'. <br>
+		<a href="javascript:toggleDisplay('#hexample3');">Examples</a></p>
+		<div id="hexample3" style="display:none">
+			<div class="card text-white bg-secondary mb-3">
+				<div class="card-header"><b>1st sample. In extra parameters field you could declare:
+					<p style="color:yellow;"><i>"?" "d1" "d2" "diapers" "d4" "beers" "d6" "d7" "d8" "d9" "grocery" "d11" "baby needs" "bread" "coupons" "juice"</i></p>
+				</b></div>
+				<div class="card-body">
+					<p class="card-text">
+d1,d2,d3,d4,d5,d6,d7,d8,d9,grocery,d11,baby needs,bread,coupons,juice,...<br>
+?,?,?,?,?,?,?,?,?,?,?,t,t,t,?,t,...<br>
+t,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,...<br>
+?,?,?,?,?,?,?,?,?,?,?,?,t,t,?,t,...<br>
+t,?,?,?,?,?,?,?,?,?,?,?,t,t,?,t,...<br>
+?,?,?,?,?,?,?,?,?,?,?,?,t,t,?,t,...<br>
+?,?,t,?,?,?,t,?,?,?,?,?,t,t,?,t,...<br>
+t,?,?,?,?,?,?,?,?,?,?,?,t,t,?,t,...<br>
+?,?,?,?,?,?,?,?,?,?,?,t,t,t,?,t,...<br>
+...<br></p>
+				</div>
+			</div>
+			<div class="card text-white bg-secondary mb-3">
+				<div class="card-header"><b>2nd sample. In extra parameters field you could declare:
+					<p style="color:yellow;"><i>"0" "air fresheners candles" "asian foods" "baby accessories" "baby bath" "body care"</i></p>
+				</b></div>
+				<div class="card-body">
+					<p class="card-text">
+order_id,pay_method,arrival_timestamp,air fresheners candles,asian foods,baby accessories,baby bath body care,...<br>
+930878,2,0:00:22,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,...<br>
+149444,2,0:02:45,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,...<br>
+327583,1,0:03:17,3,0,0,0,0,0,1,4,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,...<br>
+576050,2,0:03:33,3,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,...<br>
+200249,1,0:03:59,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,...<br>
+608770,2,0:04:29,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,1,0,0,0,1,...<br>
+...<br></p>
+				</div>
+			</div>
+		</div>
+		<b>4) Columns with multiple categorized values.</b> Header line is optional. 
+		Number of columns is fixed, optionally, items columns are expected in extra paramaters field in case that header line exists.<br>
+		<a href="javascript:toggleDisplay('#hexample4');">Example</a></p>
+		<div id="hexample4" style="display:none">
+			<div class="card text-white bg-secondary mb-3">
+				<div class="card-header"><b>Sample of dataset without header. Nothing must be declared in extra parameters field.</b></div>
+				<div class="card-body">
+					<p class="card-text">
+1st,adult,male,yes<br>
+1st,adult,male,yes<br>
+1st,adult,male,yes<br>
+1st,adult,male,no<br>
+1st,adult,female,yes<br>
+1st,adult,female,yes<br>
+1st,adult,female,yes<br>
+...<br></p>
+				</div>
+			</div>
+			<div class="card text-white bg-secondary mb-3">
+				<div class="card-header"><b>Sample of dataset with header. In extra parameters field you could declare:					
+					<p style="color:yellow;"><i>"class" "age" "sex" "survived"</i></p>
+				</b></div>
+				<div class="card-body">
+					<p class="card-text">
+class,age,sex,survived<br>
+1st,adult,male,yes<br>
+1st,adult,male,yes<br>
+1st,adult,male,yes<br>
+1st,adult,male,no<br>
+1st,adult,female,yes<br>
+1st,adult,female,yes<br>
+1st,adult,female,yes<br>
+...<br></p>
+				</div>
+			</div>
+		</div>
+		</br>
+		<div class="bg-warning rounded"><b>Note:</b> In extra paramaters, the items must be enclosed in double quotes and be seperated with space (e.g. <b><i>"InvoiceID" "ProductID"</i></b>)</div>
+	</div>
 
 	<form id="retrieveRules" action="phpfunctions/retrieveRules.php" method="post" >
 		<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
@@ -782,7 +898,7 @@
 					<input type="text" id="min_lift" name="min_lift" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The minimum lift that each association rule should have" placeholder="1.5">
 				</div>
 				<div class="col-6">	
-					<input type="text" id="max_length" name="max_length" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The maximum items each association rule consist of" placeholder="2">
+					<input type="text" id="max_length" name="max_length" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The maximum items each association rule consist of" placeholder="4">
 				</div>
 			</div>	
 			<div class="form-col">	

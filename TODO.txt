@@ -2,21 +2,70 @@ WEB API
 
 - Retrieve association rules in JSON format
 
-DONE - Valid for 30 days info
-DONE - Upload dataset function
-DONE - show Dataset request
-DONE - Delete dataset request
-DONE - Request association rules
+DONE - 01/12/2019 Valid for 30 days info
+DONE - 06/12/2019 Upload dataset function
+DONE - 09/12/2019 show Dataset request
+DONE - 11/12/2019 Delete dataset request
+DONE - 13/12/2019 Request association rules
 
-
-DONE - Download dataset
-DONE - Delete user in profile
-DONE - Google Analytics
-DONE - When uploading file, updating image must be shown
+DONE - 27/11/2019 Download dataset
+DONE - 29/11/2019 Delete user in profile
+DONE - 29/11/2019 Google Analytics
+DONE - 26/11/2019 When uploading file, updating image must be shown
+DONE - 15/12/2019 Στο dataset 2 να εχει παραδειγμα ιδιως στις παραμετρους
+DONE - 15/12/2019 το εξ'ορισμου 2 στο max items να γινει 4
+DONE - 15/12/2019 Οδηγίες για τους τύπους των dataset στα web calls
 
 NIREAS ISSUES
-DONE - Can't upload file more than 8M
-DONE - Capcha check functions
-DONE - Check Delete user in profile
-DONE - htaccess to calls (Need adjustment for use in Debian)
+DONE - 30/11/2019 Can't upload file more than 8M
+DONE - 30/11/2019Capcha check functions
+DONE - 30/11/2019Check Delete user in profile
+NOT DONE - 30/11/2019 htaccess to calls (Need adjustment for use in Debian)
 - Create user with nireas smtp
+
+
+
+
+
+Private & public dataset but different output
+
+An den exei api key βγαζει μηνυμα
+
+
+
+Περίληψη ελληνικά
+Abstact Αγγλικά
+
+1. Section 1
+1.1 Introduction
+1.2 Motivation - Contribution
+1.2 Thesis Organazition
+
+2. Relted Work
+2.1
+2.2
+
+3. Section 3
+3.1. Association rules mining
+3.2. apriori
+
+4. Section 4
+3.1 ar datasets
+3.2 web application architecture diagram (dia)
+3.3 dadabase
+3.4 απαιτήσεις σε excel
+
+5. Τεχνολογιες
+
+6. webapriori
+6.1 python server
+6.2 web interface
+6.3 web services
+
+7. Conclusions and future work
+
+40-50 σελίδες
+
+
+Τέλος συζήτησης
+Γράψτε ένα μήνυμα...
