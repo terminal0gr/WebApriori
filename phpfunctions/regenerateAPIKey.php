@@ -89,7 +89,7 @@
     }
     catch (Exception $e) { 
         http_response_code(400);
-        $JsonReq = array('title' => 'Error', 'message' => $e->getMessage);
+        $JsonReq = array('title' => 'Error', 'message' => $e->getMessage());
         print json_encode($JsonReq);
         exit();
     }

@@ -51,7 +51,7 @@
 		}
 		catch (Exception $e) { 
 			http_response_code(400);
-			$JsonReq = array('title' => 'Error', 'message' => $e->getMessage);
+			$JsonReq = array('title' => 'Error', 'message' => $e->getMessage());
 			print json_encode($JsonReq);
 			exit();
 		}
@@ -81,49 +81,55 @@
 		$num=mysqli_num_rows($result);
 		if($num==0) {                  
 
-			$mail = new PHPMailer(TRUE);
-			$mail->IsSMTP();
-			$mail->CharSet="UTF-8";     
-			$mail->Host = smtpHost;
-			$mail->Port = smtpPort; 
-			$mail->SMTPAuth = smtpAuth;                 
-            $mail->Username = smtpUsername;  
-            $mail->Password = smtpPassword;    
-            $mail->SMTPSecure = smtpSecure; 
-			$mail->setFrom(smtpFrom, smtpFromName);   
-			$mail->addAddress($email);               
-			$mail->Subject  = "Association rules mining. Please confirm your verification!";
-			$mail->IsHTML(true);
-			$mail->Body  = 	
-				"<p>Your Confirmation link for the Association rules mining engine is,</p>
-				<br>
-				<h2><a href=\"{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code\">here</a></h2>
-				<br>
-				<p>and it would be valid for 5 minutes.</p>"; 
-			$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\n{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code\r\nand it would be valid for 5 minutes.";
-			if(!$mail->send()) {
-				http_response_code(401);
-				$JsonReq = array('title' => 'Error', 'message' => 'Email has not been sent. '.$mail->ErrorInfo);
-				print json_encode($JsonReq);
-				exit();
-			} 
+			try {
 
-		    $sql="INSERT INTO temp_usertable(confirm_code,temail,tpasswd,toname,tfname)VALUES('$confirm_code','$email','$passwd','$oname','$fname')";
-		    $result = mysqli_query($con1,$sql);
-		    if($result) {
-				http_response_code(200);
-				$JsonReq = array('title' => 'Information', 'message' => 'Your Confirmation link Has Been Sent To Your Email Address.');
+				$mail = new PHPMailer(TRUE);
+				$mail->IsSMTP();
+				$mail->CharSet="UTF-8";     
+				$mail->Host = smtpHost;
+				$mail->Port = smtpPort; 
+				if (defined('smtpAuth')) {$mail->SMTPAuth = smtpAuth;};           
+				if (defined('smtpUsername')) {$mail->Username = smtpUsername;};  
+				if (defined('smtpPassword')) {$mail->Password = smtpPassword;};   
+				if (defined('smtpSecure')) {$mail->SMTPSecure = smtpSecure;};
+				if (defined('smtpFrom') && defined('smtpFromName')) {$mail->setFrom(smtpFrom, smtpFromName);};
+				$mail->addAddress($email);               
+				$mail->Subject  = "Association rules mining. Please confirm your verification!";
+				$mail->IsHTML(true);
+				$mail->Body  = 	
+					"<p>Your Confirmation link for the Association rules mining engine is,</p>
+					<br>
+					<h2><a href=\"{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code\">here</a></h2>
+					<br>
+					<p>and it would be valid for 5 minutes.</p>"; 
+				$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\n{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code\r\nand it would be valid for 5 minutes.";
+				if(!$mail->send()) {
+					http_response_code(401);
+					$JsonReq = array('title' => 'Error', 'message' => 'Email has not been sent. '.$mail->ErrorInfo);
+					print json_encode($JsonReq);
+					exit();
+				} 
+
+				$sql="INSERT INTO temp_usertable(confirm_code,temail,tpasswd,toname,tfname)VALUES('$confirm_code','$email','$passwd','$oname','$fname')";
+				$result = mysqli_query($con1,$sql);
+				if($result) {
+					http_response_code(200);
+					$JsonReq = array('title' => 'Information', 'message' => 'Your Confirmation link Has Been Sent To Your Email Address.');
+					print json_encode($JsonReq);
+					exit();
+				}else{
+					http_response_code(401);
+					$JsonReq = array('title' => 'Error', 'message' => 'Database error!!!');
+					print json_encode($JsonReq);
+					exit();
+				}
+			}
+			catch (Exception $e) { 
+				http_response_code(400);
+				$JsonReq = array('title' => 'Error', 'message' => $e->getMessage());
 				print json_encode($JsonReq);
 				exit();
 			}
-			else {
-				http_response_code(401);
-				$JsonReq = array('title' => 'Error', 'message' => 'Database error!!!');
-				print json_encode($JsonReq);
-				exit();
-			}
-
-
 		}
 		else { /* Confirmation email has been already sent */
 

@@ -25,11 +25,10 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 	<script src="scripts/scripts.js"></script>
-	<!-- <script src="scripts/APIText.js"></script> -->
 
     <link rel="icon" type="image/png" href="images/basketwhite.svg"/>
 
-    <title>Association rules WebAPI</title>
+    <title>WebApriori WebAPI</title>
 
 	<script>
 
@@ -40,14 +39,17 @@
 		var call2="webService/showDatasets.php";
 		var call3="webService/deleteDataset.php";
 		var call4="webService/requestRules.php";
+		var call5="webService/retrieveRules.php";
 
 		$(function() {
 
 			curl1 = $('#code1').text();
 			curl2 = $('#code2').text();
 			curl3 = $('#code3').text();
-			curl3 = $('#code4').text();
+			curl4 = $('#code4').text();
+			curl5 = $('#code5').text();
 
+			//For toggling help for dataset definition and initialization
 			$( "#collapse4" ).prepend($('#infoForDS'));
 
 			// initialization of tooltips in page
@@ -162,8 +164,8 @@
 			});
 			$('#callExample4').click(function(e) {
 				if ($('#example4').is(":hidden")) {
-					var tcode=curl3;
-					tcode=tcode.replace("##0##", srv + call3);
+					var tcode=curl4;
+					tcode=tcode.replace("##0##", srv + call4);
 					tcode=tcode.replace("##1##", encodeURIComponent(document.getElementById('email4').value));
 					tcode=tcode.replace("##2##", encodeURIComponent(document.getElementById('APIKey4').value));
 					tcode=tcode.replace("##3##", encodeURIComponent(document.getElementById('datasetId4').value));
@@ -181,6 +183,17 @@
 					$('#code4').text(tcode);
 				}
 				toggleDisplay('#example4');
+			});
+			$('#callExample5').click(function(e) {
+				if ($('#example5').is(":hidden")) {
+					var tcode=curl5;
+					tcode=tcode.replace("##0##", srv + call5);
+					tcode=tcode.replace("##1##", encodeURIComponent(document.getElementById('email5').value));
+					tcode=tcode.replace("##2##", encodeURIComponent(document.getElementById('APIKey5').value));
+					tcode=tcode.replace("##3##", encodeURIComponent(document.getElementById('datasetId5').value));
+					$('#code5').text(tcode);
+				}
+				toggleDisplay('#example5');
 			});
 
 			$('#response1').click(function(e) {
@@ -472,6 +485,61 @@
 				this.value=extraparams;
 			}); 
 
+			$('#response5').click(function(e) {
+				//Prepare the data to send
+				var formData = new FormData();
+
+				if (!document.getElementById("email5").value) {
+					MyModal("Exclamation", "Please write a valid email!!!");
+					document.getElementById("email5").focus();
+					return;
+				}
+				formData.set("email",document.getElementById("email5").value);
+
+				if (!document.getElementById("APIKey5").value) {
+					MyModal("Exclamation", "Please write a valid API Key!!!");
+					document.getElementById("APIKey5").focus();
+					return;
+				}
+				formData.set("apiKey",document.getElementById("APIKey5").value);
+
+				if (!document.getElementById("datasetId5").value) {
+					MyModal("Exclamation", "Please write a dataset Id!!!");
+					document.getElementById("datasetId5").focus();
+					return;
+				}
+				formData.set("datasetId",document.getElementById("datasetId5").value);
+
+				// Submit the form using AJAX.
+				ajaxReq = $.ajax({
+					type: 'POST',
+					url: 'webService/retrieveRules.php',
+					contentType: false,
+                    cache: false,
+                    processData:false,
+					data: formData,
+					beforeSend: function( xhr ) {
+						$('#code5r').hide();
+						$('#code5r').text('');
+						tmpHtml=$('#response5').html();
+						$('#response5').removeClass( "btn-primary" ).addClass("btn-warning").html('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');	
+  					}
+				}).done(function(response, textStatus, jqXHR) {
+						res=JSON.stringify(response, null, 4);
+						$('#code5r').text(res);
+				}).fail(function( jqXHR, textStatus, thrownError ) {
+					if (isJSON(jqXHR.responseText)) {
+						res=JSON.parse(jqXHR.responseText);
+						res=JSON.stringify(res, null, 4);
+						$('#code5r').text(res);
+					} 
+					else $('#code5r').text(jqXHR.responseText);
+				}).always(function() {
+					$('#response5').removeClass("btn-warning").addClass("btn-primary").html(tmpHtml);
+					$('#code5r').show( "slow" );
+				});
+			});
+
 		});
 
         // It handles the footer when the size of the window changes.
@@ -545,15 +613,18 @@
 						document.getElementById('endpoint1').value=res.srv + call1
 						document.getElementById('endpoint2').value=res.srv + call2
 						document.getElementById('endpoint3').value=res.srv + call3
-						document.getElementById('endpoint4').value=res.srv + call3
+						document.getElementById('endpoint4').value=res.srv + call4
+						document.getElementById('endpoint5').value=res.srv + call5
 						document.getElementById('email1').value=res.email;
 						document.getElementById('email2').value=res.email;
 						document.getElementById('email3').value=res.email;
 						document.getElementById('email4').value=res.email;
+						document.getElementById('email5').value=res.email;
 						document.getElementById('APIKey1').value=res.key;
 						document.getElementById('APIKey2').value=res.key;
 						document.getElementById('APIKey3').value=res.key;
 						document.getElementById('APIKey4').value=res.key;
+						document.getElementById('APIKey5').value=res.key;
 
 						if (res.kdate) {
 							document.getElementById('keyExpiresAt').value=res.kdate.substring(0,10).split("-").reverse().join("-").replace(/-/g,"/");

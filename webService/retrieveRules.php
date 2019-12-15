@@ -80,33 +80,29 @@
     $filename=substr($_POST['datasetId'],2);
     //Create dataset path
     $fpath="../Python/datasets/".$identity."/".$datasetType."/".$filename;
-    $message = '';
-    if (is_file($fpath)) {
-        if (!unlink($fpath)) {
-            $message = "Could not delete dataset!!!\n";
-        }
-    } else {
-        $message = "Could not find dataset!!!\n";
+    if (!is_file($fpath)) {
+        //TODO here for public datasets
+        http_response_code(201);
+        $JsonReq = array('code' => 80, 'message' => 'Could not find dataset!!!');
+        print json_encode($JsonReq);
+        exit; 
     }
+
     $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;   
     $fpatho_parts = pathinfo($fpatho);
     $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".json";
-    if (is_file($fpatho)) {
-        if (!unlink($fpatho)) {
-            $message = $message."Could not find/delete dataset results!!!\n";
-        }
-    }
-
-    if ($message) {
-        http_response_code(202);
-        $JsonReq = array('code' => 80, 'message' => $message);
+    if (!is_file($fpatho)) {
+        //TODO here for public datasets
+        http_response_code(201);
+        $JsonReq = array('code' => 80, 'message' => 'Rules not yet available or have never been requested!!!');
         print json_encode($JsonReq);
-        exit();        
+        exit; 
     }
 
+    $json = file_get_contents($fpatho);
+    $jsonReq = json_decode($json, true);
     http_response_code(200);
-    $JsonReq = array('code' => 0 , 'message' => "Dataset deleted successfully.");
-    print json_encode($JsonReq);
-    exit();  
+    print json_encode($jsonReq);
+    exit();   
     
 ?>

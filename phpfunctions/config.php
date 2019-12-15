@@ -10,19 +10,19 @@
 	define('siteRoot','localhost/M301/');
 	define('MaxDatasets', 10);
 	
-	//SMTP Settings
-	//$mail->Host = 'smtp.teithe.gr';
-	//$mail->Port = 25; 
-	// define('smtpHost','smtp.office365.com');
-	// define('smtpPort',587);
+    //SMTP Settings
+    define('smtpHost','smtp.teithe.gr');
+    define('smtpPort',25);
+    define('smtpFrom','noc@teithe.gr');
+    define('smtpFromName','WebApriori association rules');
 
-	define('smtpHost','smtp.office365.com');
-	define('smtpPort',587);
-	define('smtpAuth',true);
-	define('smtpUsername','malliaridis@mentor.com.gr');
-	define('smtpPassword','sakhs13!');
-	define('smtpSecure','tls');
-	define('smtpFrom','malliaridis@mentor.com.gr');	
-	define('smtpFromName','Association rules mining engine');		
+     //define('smtpHost','smtp.office365.com');
+	//define('smtpPort',587);
+	//define('smtpAuth',true);
+	//define('smtpUsername','malliaridis@mentor.com.gr');
+	//define('smtpPassword','sakhs13!');
+	//define('smtpSecure','tls');
+	//define('smtpFrom','malliaridis@mentor.com.gr');	
+	//define('smtpFromName','WebApriori association rules');		
 
 ?>

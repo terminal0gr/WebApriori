@@ -66,7 +66,7 @@
         }
 
         $row = $result->fetch_object();
-
+        
         if ($row->webAPIKey === null || $row->key_created_at === null) {
             $key=generateRandomString(64); 
             $sql="UPDATE usertable SET webAPIKey='$key', key_created_at=DATE_ADD(CURDATE(), INTERVAL 1 MONTH) WHERE email='$email'";
@@ -78,16 +78,22 @@
                 print json_encode($JsonReq);
                 exit();
             }
+
+            $s="SELECT webAPIKey, key_created_at FROM usertable WHERE email='$email'";
+            $result = mysqli_query($con1,$s);
+            $num=mysqli_num_rows($result);
+            $row = $result->fetch_object();
+            $key=$row->webAPIKey;
+            $date=$row->key_created_at;
         }
         else {
             $key=$row->webAPIKey;
-            $date=date("d/m/Y");
             $date=$row->key_created_at;
         }
     }
     catch (Exception $e) { 
         http_response_code(400);
-        $JsonReq = array('title' => 'Error', 'message' => $e->getMessage);
+        $JsonReq = array('title' => 'Error', 'message' => $e->getMessage());
         print json_encode($JsonReq);
         exit();
     }
