@@ -20,7 +20,8 @@
 	<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/> -->
 	<link rel="stylesheet" type="text/css" href="DataTables/DataTables-1.10.20/css/jquery.dataTables.min.css"/>
 
-    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+	<link rel="stylesheet" href="css/styles.css" type="text/css" />
+	<link rel="stylesheet" href="css/switch.css" type="text/css" />
 
 	<script src="scripts/jquery-3.4.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -691,6 +692,17 @@
 							</select>
 						</div>
 					</div>		
+					<div class="form-row">
+						<div class="col-5">
+							<label class="col-form-label float-right">Public dataset:</label>
+						</div>
+						<div class="col-2 mt-1">
+                            <label class="switch">
+								<input type="checkbox" class="primary">
+								<span class="slider round"></span>
+	    				    </label>
+						</div>
+					</div>
 				</div>
 				<div class="col-1 border border-primary rounded p-1	">
 					<button id="uploadDataset" class="btn btn-primary btn-inline p-1 m-0" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" data-trigger="hover" data-toggle="tooltip" title="Upload the Dataset!"><img src="./images/upload32White.png" class="img-responsive" width="32" height="32" alt=""></button>
