@@ -24,6 +24,8 @@ $(function() {
 				if (jqXHR.status==200) {
 					sessionStorage.setItem('token', res.token);
 					sessionStorage.setItem('username', res.name);
+					sessionStorage.setItem('administrator', res.administrator);		
+					sessionStorage.setItem('grandPublicDatasets', res.grandPublicDatasets);
 					window.location.href='search.html';
 				} else {
 					MyModal("An error occured",res.message);

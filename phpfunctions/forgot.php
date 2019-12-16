@@ -74,17 +74,19 @@
 				$mail->CharSet="UTF-8";     
 				$mail->Host = smtpHost;
 				$mail->Port = smtpPort; 
-				$mail->SMTPAuth = smtpAuth;                 
-				$mail->Username = smtpUsername;  
-				$mail->Password = smtpPassword;    
-				$mail->SMTPSecure = smtpSecure; 
-				$mail->setFrom(smtpFrom, smtpFromName);   
+				if (defined('smtpAuth')) {$mail->SMTPAuth = smtpAuth;};           
+				if (defined('smtpUsername')) {$mail->Username = smtpUsername;};  
+				if (defined('smtpPassword')) {$mail->Password = smtpPassword;};   
+				if (defined('smtpSecure')) {$mail->SMTPSecure = smtpSecure;};
+				if (defined('smtpFrom') && defined('smtpFromName')) {$mail->setFrom(smtpFrom, smtpFromName);};
                 $mail->addAddress($email);               
 				$mail->Subject  = "WebApriori. Reset password";
 				$mail->Body  = 	
 				"<p>WebApriori association rules mining reset password procedure.</p>
 				<br>
 				<h2>Click <a href=\"{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/forgot1.php?passkey=$confirm_code\">here</a></h2>
+				<h2>Or as an alternative, copy & paste the link above to your explorer</h2>
+				<h2>{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/forgot1.php?passkey=$confirm_code</h2>
 				<p>to reset password. This procedure would be valid for the next 5 minutes.</p>"; 
 				$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\n{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/forgot1.php?passkey=$confirm_code\r\nand it would be valid for the next 5 minutes.";
                 //$message = "Please follow the link to reset your password. \r\n<a href="http://nireas.it.teithe.gr/WebApriori/phpfunctions/forgot1.php?passkey=$confirm_code"> ";                   

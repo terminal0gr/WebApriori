@@ -374,10 +374,14 @@ Dataset types:
 ###################################################################
 # preprocessing section
 ###################################################################
-def prepare_records(datasetName, datasetSep, datasetType, *args):
+def prepare_records(datasetName, datasetSep, datasetType, public, *args):
 
     global max_items
-    filepath=os.path.join('datasets', identity, str(datasetType), datasetName)
+
+    if public==0:
+        filepath=os.path.join('datasets', identity, str(datasetType), datasetName)
+    else:
+        filepath=os.path.join('public', str(datasetType), datasetName)
 
     if len(args)>max_items:
         print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' columns will be processed.')
@@ -501,18 +505,25 @@ def output_association_rules(association_results, sort_index, descending=True, f
     assocTime = kwargs.get('assocTime')
     
     if fileName:
+
         filepath=os.path.join('output', identity, str(datasetType))
         if not os.path.exists(filepath):
             os.makedirs(filepath)
-        
+
         if outputType==1:
             ext='.txt'
         elif outputType==2:
             ext='.json'
+        elif outputType==3:
+            ext='.json'
+            publicFilePath=os.path.join('output', identity, 'p'+str(datasetType))
+            if not os.path.exists(publicFilePath):
+                os.makedirs(publicFilePath)
+            publicFile = open(os.path.join('output', identity, 'p'+str(datasetType), os.path.splitext(fileName)[0] + ext),'w')
         else:
             ext=''
             
-        file = open(os.path.join('output', identity, str(datasetType), os.path.splitext(fileName)[0] + ext),'w') 
+        file = open(os.path.join('output', identity, str(datasetType), os.path.splitext(fileName)[0] + ext),'w')
         
     if outputType==1:        
     
@@ -632,7 +643,7 @@ def output_association_rules(association_results, sort_index, descending=True, f
                   "  Conv:" + '{0:.3f}'.format(item[4]) +
                   "  Levr:" + '{0:.3f}'.format(item[5]))               
  
-    elif outputType==2:
+    elif (2<=outputType<=3):
         Hlist = ['LHS', 'RHS', 'Confidence', 'Lift', 'Conviction', 'Leverage', 'LHS_Count', 'LHS_Support', 'RHS_Count', 'RHS_Support', 'Support', 'Count'] 
         dictRules = {}
         
@@ -658,6 +669,8 @@ def output_association_rules(association_results, sort_index, descending=True, f
             
         if fileName:
             json.dump(dictRules, file, indent=4)
+            if outputType==3:
+                json.dump(dictRules, publicFile, indent=4)
         print(json.dumps(dictRules, indent=4)) 
 
     else:
@@ -780,7 +793,7 @@ if len(sys.argv)>10:
 	try:
 		outputType=int(sys.argv[10])
 	except:
-		outputType=1 # Default is 1 print text in console.
+		outputType=1 # Default is 1 print text.
 
 datasetArgs=''
 if len(sys.argv)>11:
@@ -806,10 +819,15 @@ if not identity:
     sys.exit()
 
 recordTime=time()
+
+public=0
+if outputType==3:
+    public=1
+
 if len(sys.argv)>11:
-    records=prepare_records(datasetName, datasetSep, datasetType, *sys.argv[11:])
+    records=prepare_records(datasetName, datasetSep, datasetType, public, *sys.argv[11:])
 else:
-    records=prepare_records(datasetName=datasetName, datasetSep=datasetSep, datasetType=datasetType)
+    records=prepare_records(datasetName=datasetName, datasetSep=datasetSep, datasetType=datasetType, public=public)
     
 if records:
 

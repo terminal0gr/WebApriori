@@ -3,6 +3,7 @@
 import sys
 import csv
 import os
+import os
 import json
 from collections import namedtuple
 from itertools import combinations
@@ -15,7 +16,7 @@ max_rules=9999
 max_items=999
 
 # Meta informations.
-__Version__ = '01.00.00 02/10/2019'
+__Version__ = '01.00.01 30/11/2019'
 __Modificator__ = 'Malliaridis konstantinos'
 __Modificator_email__= 'terminal_gr@yahoo.com'
 
@@ -220,23 +221,25 @@ def gen_ordered_statistics(transaction_manager, record):
         record -- A support record as a SupportRecord instance.
     """
     items = record.items
-    for combination_set in combinations(sorted(items), len(items) - 1):
-        LHS = frozenset(combination_set)
-        RHS = frozenset(items.difference(LHS))
-        LHS_count = transaction_manager.calc_count(LHS)
-        RHS_count = transaction_manager.calc_count(RHS)
-        LHS_support = float(LHS_count / transaction_manager.num_transaction)
-        RHS_support = float(RHS_count / transaction_manager.num_transaction)                   
-        confidence = (record.support / LHS_support)
-        lift = confidence / RHS_support
-        levarage = record.support - (LHS_support * RHS_support)
-        if confidence!=1:
-            conviction = (1 - RHS_support) / (1 - confidence)
-        else:
-            conviction = np.nan
-            
-        yield OrderedStatistic(
-            frozenset(LHS), frozenset(RHS), confidence, lift, conviction, levarage, LHS_count, LHS_support, RHS_count, RHS_support)
+    sorted_items = sorted(items)
+    for base_length in range(len(items)):
+        for combination_set in combinations(sorted_items, base_length):
+            LHS = frozenset(combination_set)
+            RHS = frozenset(items.difference(LHS))
+            LHS_count = transaction_manager.calc_count(LHS)
+            RHS_count = transaction_manager.calc_count(RHS)
+            LHS_support = float(LHS_count / transaction_manager.num_transaction)
+            RHS_support = float(RHS_count / transaction_manager.num_transaction)                   
+            confidence = (record.support / LHS_support)
+            lift = confidence / RHS_support
+            levarage = record.support - (LHS_support * RHS_support)
+            if confidence!=1:
+                conviction = (1 - RHS_support) / (1 - confidence)
+            else:
+                conviction = 100
+                
+            yield OrderedStatistic(
+                frozenset(LHS), frozenset(RHS), confidence, lift, conviction, levarage, LHS_count, LHS_support, RHS_count, RHS_support)
 
 
 def filter_ordered_statistics(ordered_statistics, **kwargs):
@@ -347,7 +350,7 @@ def apriori(transactions, **kwargs):
            
         rules_counter+=1
         if rules_counter>=max_rules:
-            print('Maximum itemsets count limit reached!!!(' + str(max_rules) + ') No more rules can be found')
+            print('Maximum itemsets count limit reached!!!(' + str(max_rules) + ')')
             break
         
         yield RelationRecord(
@@ -374,23 +377,24 @@ Dataset types:
 def prepare_records(datasetName, datasetSep, datasetType, *args):
 
     global max_items
-    filepath='datasets\\' + identity + '\\' + str(datasetType) + '\\' + datasetName
-    
+    filepath=os.path.join('datasets', identity, str(datasetType), datasetName)
+
     if len(args)>max_items:
         print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' columns will be processed.')
         args=args[0:max_items+1]
     
     if datasetType==1:
         if len(args)==0:
-            with open(filepath, mode='r') as f:
-                try:
+            try:
+                with open(filepath, mode='r') as f:
                     reader = csv.reader(f, delimiter=datasetSep)
                     return list(reader)
-                except:
-                    return None
+            except:
+                print('Could not open or find dataset file!!!')
+                return None
 
         else:
-            try:
+            try:           
                 dataset = pd.read_csv(filepath, sep=datasetSep)
             except:
                 return None
@@ -412,7 +416,7 @@ def prepare_records(datasetName, datasetSep, datasetType, *args):
 
         groupCol = args[0]
         itemsCol = args[1]
-    
+
         dataset = dataset[[groupCol, itemsCol]]
         
         dataset.sort_values(by=groupCol)
@@ -420,7 +424,7 @@ def prepare_records(datasetName, datasetSep, datasetType, *args):
         TempInv=''
         records=[]
         setrec=set()
-        for row in dataset.iterrows():
+        for index, row in dataset.iterrows():
             if TempInv!=row[groupCol]:
                 if len(setrec)>1:
                     records.append(sorted(setrec))
@@ -430,6 +434,7 @@ def prepare_records(datasetName, datasetSep, datasetType, *args):
             else:
                 setrec.add(str(row[itemsCol]).strip())
                 
+
         if len(setrec)>1:
             records.append(sorted(setrec))
             
@@ -487,7 +492,7 @@ def prepare_records(datasetName, datasetSep, datasetType, *args):
 # output operations
 ##################################################################################
 
-def output_association_rules(association_results, sort_index, descending=True, fileName=None, outputType=-1, **kwargs):
+def output_association_rules(association_results, sort_index, descending=True, fileName=None, outputType=1, **kwargs):
     association_results.sort(reverse=descending, key=lambda x: x[sort_index])
 
     records = kwargs.get('records')
@@ -495,38 +500,99 @@ def output_association_rules(association_results, sort_index, descending=True, f
     rulesCount = kwargs.get('rulesCount')
     assocTime = kwargs.get('assocTime')
     
-    if fileName and outputType>0:
-        if not os.path.exists('output\\' + identity + '\\' + str(datasetType)):
-            os.makedirs('output\\' + identity + '\\' + str(datasetType))
-        
+    if fileName:
+
+        filepath=os.path.join('output', identity, str(datasetType))
+        if not os.path.exists(filepath):
+            os.makedirs(filepath)
+
         if outputType==1:
             ext='.txt'
         elif outputType==2:
             ext='.json'
+        elif outputType==3:
+            ext='.json'
+            publicFilePath=os.path.join('public', str(datasetType))
+            if not os.path.exists(publicFilePath):
+                os.makedirs(publicFilePath)
+            publicFile = open(os.path.join('public', str(datasetType), os.path.splitext(fileName)[0] + ext),'w')
         else:
             ext=''
             
-        file = open('output\\' + identity + '\\' + str(datasetType) + '\\' + os.path.splitext(fileName)[0] + ext,'w') 
+        file = open(os.path.join('output', identity, str(datasetType), os.path.splitext(fileName)[0] + ext),'w')
         
-    if abs(outputType)==1:        
+    if outputType==1:        
     
-        Sline=''
+        Sline='Input Parameters\n'
+
+        #dictRules['datasetArgs'] = datasetArgs
+        
+        if min_support:
+            Sline+='Minimum Support   :' + '{0:.3f}'.format(min_support)
+        if min_confidence:
+            Sline+='     Minimum confidence:' + '{0:.3f}'.format(min_confidence)  
+        Sline+='\n'
+        if min_lift:
+            Sline+='Minimum Lift      :' + '{0:.3f}'.format(min_lift)
+        if max_length:
+            Sline+='     Maximum rule items:' + '{:05d}'.format(max_length)      
+        Sline+='\n'
+         
+        if ssort:
+            Sline+='Sort by '
+            #sort_order
+#0 by LHS, 1 by RHS, 2 by confidence, 3 by lift, 4 by conviction, 5 by LHS support, 6 by RHS support, 7 by rule support 
+#negatives meaning descending
+            if ssort==0:
+                Sline+='LHS (body) '
+            elif abs(ssort)==1:
+                Sline+='RHS (head) '           
+            elif abs(ssort)==2:
+                Sline+='confidence '
+            elif abs(ssort)==3:
+                Sline+='lift '            
+            elif abs(ssort)==4:
+                Sline+='conviction '    
+            elif abs(ssort)==5:
+                Sline+='LHS support '            
+            elif abs(ssort)==6:
+                Sline+='RHS support '  
+            elif abs(ssort)==7:
+                Sline+='Rule support '  
+            else:
+                Sline+='Unknown ' 
+
+            if ssort>0:
+                Sline+='acsending\n'
+            else:
+                Sline+='descending\n'
+        
+        if datasetName:
+            Sline+='Dataset file name :' + datasetName + '\n' 
+        if datasetSep:
+            Sline+='Dataset separator : ' + datasetSep + '\n' 
+        if datasetType:
+            Sline+='Dataset Type      :' + str(datasetType) + '\n' 
+        Sline+=    'Output Type       :Plain text\n'
+        if datasetArgs:
+            Sline+='Dataset parameters: ' + datasetArgs + '\n' 
+            
+        Sline+='-----------------------------------------------------\n\n' 
         if records:
-            Sline+='Records          :' + '{:06d}'.format(records)
+            Sline+='Records           :' + '{:06d}'.format(records)
         if recordTime:
-            Sline+='  Transformation time:' + '{0:.3f}'.format(recordTime)
+            Sline+='   Transformation time:' + '{0:.3f}'.format(recordTime)
         Sline+='\n'
         if rulesCount:
-            Sline+='Association Rules:' + '{:06d}'.format(len(association_results))
+            Sline+='Association Rules :' + '{:06d}'.format(len(association_results))
         if assocTime:
-            Sline+='         Time elapsed:' + '{0:.3f}'.format(assocTime)
+            Sline+='          Time elapsed:' + '{0:.3f}'.format(assocTime)
         Sline+='\n'
-        Sline+='---------------------------------------------------\n'
+        Sline+='-----------------------------------------------------\n'
  
-        if fileName and outputType>0:
+        if fileName:
             file.write(Sline)
-        else:
-            print(Sline)
+        print(Sline)
         
         Vr=0
         for item in association_results:
@@ -555,7 +621,8 @@ def output_association_rules(association_results, sort_index, descending=True, f
 
             str1 += "}([" + str(item[8]) + "]" + '{0:.3f}'.format(item[9]) + ")"
 
-            if fileName and outputType>0:
+            #output to filename
+            if fileName:
                 file.write(str1 + '\n')
                 file.write("        Count:" + '{:05d}'.format(item[11]) +
                       "  Supp:" + '{0:.3f}'.format(item[10]) + 
@@ -563,35 +630,49 @@ def output_association_rules(association_results, sort_index, descending=True, f
                       "  Lift:" + '{0:.3f}'.format(item[3]) +
                       "  Conv:" + '{0:.3f}'.format(item[4]) +
                       "  Levr:" + '{0:.3f}'.format(item[5]) + '\n')
-            else:
-                print(str1)    
-                print("        Count:" + '{:05d}'.format(item[11]) +
-                      "  Supp:" + '{0:.3f}'.format(item[10]) + 
-                      "  Conf:" + '{0:.3f}'.format(item[2]) + 
-                      "  Lift:" + '{0:.3f}'.format(item[3]) +
-                      "  Conv:" + '{0:.3f}'.format(item[4]) +
-                      "  Levr:" + '{0:.3f}'.format(item[5]))               
+            #output to console          
+            print(str1)    
+            print("        Count:" + '{:05d}'.format(item[11]) +
+                  "  Supp:" + '{0:.3f}'.format(item[10]) + 
+                  "  Conf:" + '{0:.3f}'.format(item[2]) + 
+                  "  Lift:" + '{0:.3f}'.format(item[3]) +
+                  "  Conv:" + '{0:.3f}'.format(item[4]) +
+                  "  Levr:" + '{0:.3f}'.format(item[5]))               
  
-    elif abs(outputType)==2:
+    elif (2<=outputType<=3):
         Hlist = ['LHS', 'RHS', 'Confidence', 'Lift', 'Conviction', 'Leverage', 'LHS_Count', 'LHS_Support', 'RHS_Count', 'RHS_Support', 'Support', 'Count'] 
         dictRules = {}
+        
+        dictRules['min_support'] = min_support
+        dictRules['min_confidence'] = min_confidence
+        dictRules['min_lift'] = min_lift
+        dictRules['max_length'] = max_length
+        dictRules['ssort'] = ssort
+        dictRules['datasetName'] = datasetName
+        dictRules['datasetSep'] = datasetSep
+        dictRules['datasetType'] = datasetType
+        dictRules['outputType'] = outputType
+        dictRules['datasetArgs'] = datasetArgs
+        
         dictRules['Records'] = records
         dictRules['RecordsCreationTime'] = '{0:.3f}'.format(recordTime)
         dictRules['RulesCount'] = len(association_results)
         dictRules['RulesCreationTime'] = '{0:.3f}'.format(assocTime)
+        
         dictRules['rules'] = []
         for arule in association_results:
             dictRules['rules'].append(dict(zip(Hlist, arule)))
             
-        if outputType>0:
+        if fileName:
             json.dump(dictRules, file, indent=4)
-        else:
-            print(json.dumps(dictRules, indent=4)) 
+            if outputType==3:
+                json.dump(dictRules, publicFile, indent=4)
+        print(json.dumps(dictRules, indent=4)) 
 
     else:
         print("Unknown output type")
  
-    if fileName and outputType>0:
+    if fileName:
         file.close()     
 
  
@@ -613,23 +694,22 @@ Dataset types:
 '''
 
 #1--> Market Basket list. No header is expected, The number of columns is undefined (Default)
-#sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "dataset.csv", ',', '1', '-1']
-#sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, 'store_data.csv', ',', '1', '1']
-#sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries.csv", ",", "1", '-2']
+# sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "dataset.csv", ',', '1', '2']
+# sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, 'store_data.csv', ',', '1', '1']
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries.csv", ",", "1", '2']
 
 #1--> Market Basket list. There is a header, so the participant columns must be declared in args
-#sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries - groceries.csv", ",", "1", '2', 'nan', "Item 1","Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10", "Item 11", "Item 12", "Item 13", "Item 14", "Item 15", "Item 16", "Item 17", "Item 18", "Item 19", "Item 20", "Item 21", "Item 22", "Item 23", "Item 24", "Item 25", "Item 26", "Item 27", "Item 28", "Item 29", "Item 30", "Item 31", "Item 32"]
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries - groceries.csv", ",", "1", '2', 'nan', "Item 1","Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10", "Item 11", "Item 12", "Item 13", "Item 14", "Item 15", "Item 16", "Item 17", "Item 18", "Item 19", "Item 20", "Item 21", "Item 22", "Item 23", "Item 24", "Item 25", "Item 26", "Item 27", "Item 28", "Item 29", "Item 30", "Item 31", "Item 32"]
 
 #sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "OrderDetails.csv", ";", "2", '1', "InvoiceNo", "Description"]
-#sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "invoice.csv", ";", "2", '-1', "IDInvoice", "ProduitID"]
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.02, 1.0, 4, -3, "invoice.csv", ";", "2", '1', "IDInvoice", "ProduitID"]
 
 #sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.02, 1.5, 4, -3, "grocery_timestamp.csv", ",", "3", '2', "0", "air fresheners candles", "asian foods", "baby accessories", "baby bath body care", "baby food formula", "bakery desserts", "baking ingredients", "baking supplies decor", "beauty", "beers coolers", "body lotions soap", "bread", "breakfast bakery", "breakfast bars pastries", "bulk dried fruits vegetables", "bulk grains rice dried goods", "buns rolls", "butter", "candy chocolate", "canned fruit applesauce", "canned jarred vegetables", "canned meals beans", "canned meat seafood", "cat food care", "cereal", "chips pretzels", "cleaning products", "cocoa drink mixes", "coffee", "cold flu allergy", "condiments", "cookies cakes", "crackers", "cream", "deodorants", "diapers wipes", "digestion", "dish detergents", "dog food care", "doughs gelatins bake mixes", "dry pasta", "eggs", "energy granola bars", "energy sports drinks", "eye ear care", "facial care", "feminine care", "first aid", "food storage", "fresh dips tapenades", "fresh fruits", "fresh herbs", "fresh pasta", "fresh vegetables", "frozen appetizers sides", "frozen breads doughs", "frozen breakfast", "frozen dessert", "frozen juice", "frozen meals", "frozen meat seafood", "frozen pizza", "frozen produce", "frozen vegan vegetarian", "fruit vegetable snacks", "grains rice dried goods", "granola", "hair care", "honeys syrups nectars", "hot cereal pancake mixes", "hot dogs bacon sausage", "ice cream ice", "ice cream toppings", "indian foods", "instant foods", "juice nectars", "kitchen supplies", "kosher foods", "latino foods", "laundry", "lunch meat", "marinades meat preparation", "meat counter", "milk", "mint gum", "missing", "more household", "muscles joints pain relief", "nuts seeds dried fruit", "oils vinegars", "oral hygiene", "other", "other creams cheeses", "packaged cheese", "packaged meat", "packaged poultry", "packaged produce", "packaged seafood", "packaged vegetables fruits", "paper goods", "pasta sauce", "pickled goods olives", "plates bowls cups flatware", "popcorn jerky", "poultry counter", "prepared meals", "prepared soups salads", "preserved dips spreads", "protein meal replacements", "red wines", "refrigerated", "refrigerated pudding desserts", "salad dressing toppings", "seafood counter", "shave needs", "skin care", "soap", "soft drinks", "soup broth bouillon", "soy lactosefree", "specialty cheeses", "specialty wines champagnes", "spices seasonings", "spirits", "spreads", "tea", "tofu meat alternatives", "tortillas flat bread", "trail mix snack mix", "trash bags liners", "vitamins supplements", "water seltzer sparkling water", "white wines", "yogurt"]
-#sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.02, 1.5, 4, -3, "supermarket.txt", ",", "3", '-1', "?", 'department1','department2','department3','department4','department5','department6','department7','department8','department9','grocery misc','department11','baby needs','bread and cake','baking needs','coupons','juice-sat-cord-ms','tea','biscuits','canned fish-meat','canned fruit','canned vegetables','breakfast food','cigs-tobacco pkts','cigarette cartons','cleaners-polishers','coffee','sauces-gravy-pkle','confectionary','puddings-deserts','dishcloths-scour','deod-disinfectant','frozen foods','razor blades','fuels-garden aids','spices','jams-spreads','insecticides','pet foods','laundry needs','party snack foods','tissues-paper prd','wrapping','dried vegetables','pkt-canned soup','soft drinks','health food other','beverages hot','health&beauty misc','deodorants-soap','mens toiletries','medicines','haircare','dental needs','lotions-creams','sanitary pads','cough-cold-pain','department57','meat misc','cheese','chickens','milk-cream','cold-meats','deli gourmet','margarine','salads','small goods','dairy foods','fruit drinks','delicatessen misc','department70','beef','hogget','lamb','pet food','pork','poultry','veal','gourmet meat','department79','department80','department81','produce misc','fruit','plants','potatoes','vegetables','flowers','department88','department89','variety misc','brushware','electrical','haberdashery','kitchen','manchester','pantyhose','plasticware','department98','stationary','department100','department101','department102','prepared meals','preserving needs','condiments','cooking oils','department107','department108','department109','department110','department111','department112','department113','department114','health food bulk','department116','department117','department118','department119','department120','bake off products','department122','department123','department124','department125','department126','department127','department128','department129','department130','small goods2','offal','mutton','trim pork','trim lamb','imported cheese','department137','department138','department139','department140','department141','department142','department143','department144','department145','department146','department147','department148','department149','department150','department151','department152','department153','department154','department155','department156','department157','department158','department159','department160','department161','department162','department163','department164','department165','department166','department167','department168','department169','department170','department171','department172','department173','department174','department175','department176','department177','department178','department179','casks white wine','casks red wine','750ml white nz','750ml red nz','750ml white imp','750ml red imp','sparkling nz','sparkling imp','brew kits/accesry','department189','port and sherry','ctrled label wine','department192','department193','department194','department195','department196','department197','department198','department199','non host support','department201','department202','department203','department204','department205','department206','department207','department208','department209','department210','department211','department212','department213','department214','department215','department216']
-#sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.02, 1.5, 4, -3, "supermarket.txt", ",", "3", '-1', "?", 'department1','department2','department3','department4','department5','department6','department7','department8','department9','grocery misc']
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.02, 1.5, 4, -3, "supermarket.txt", ",", "3", '1', "?", 'department1','department2','department3','department4','department5','department6','department7','department8','department9','grocery misc','department11','baby needs','bread and cake','baking needs','coupons','juice-sat-cord-ms','tea','biscuits','canned fish-meat','canned fruit','canned vegetables','breakfast food','cigs-tobacco pkts','cigarette cartons','cleaners-polishers','coffee','sauces-gravy-pkle','confectionary','puddings-deserts','dishcloths-scour','deod-disinfectant','frozen foods','razor blades','fuels-garden aids','spices','jams-spreads','insecticides','pet foods','laundry needs','party snack foods','tissues-paper prd','wrapping','dried vegetables','pkt-canned soup','soft drinks','health food other','beverages hot','health&beauty misc','deodorants-soap','mens toiletries','medicines','haircare','dental needs','lotions-creams','sanitary pads','cough-cold-pain','department57','meat misc','cheese','chickens','milk-cream','cold-meats','deli gourmet','margarine','salads','small goods','dairy foods','fruit drinks','delicatessen misc','department70','beef','hogget','lamb','pet food','pork','poultry','veal','gourmet meat','department79','department80','department81','produce misc','fruit','plants','potatoes','vegetables','flowers','department88','department89','variety misc','brushware','electrical','haberdashery','kitchen','manchester','pantyhose','plasticware','department98','stationary','department100','department101','department102','prepared meals','preserving needs','condiments','cooking oils','department107','department108','department109','department110','department111','department112','department113','department114','health food bulk','department116','department117','department118','department119','department120','bake off products','department122','department123','department124','department125','department126','department127','department128','department129','department130','small goods2','offal','mutton','trim pork','trim lamb','imported cheese','department137','department138','department139','department140','department141','department142','department143','department144','department145','department146','department147','department148','department149','department150','department151','department152','department153','department154','department155','department156','department157','department158','department159','department160','department161','department162','department163','department164','department165','department166','department167','department168','department169','department170','department171','department172','department173','department174','department175','department176','department177','department178','department179','casks white wine','casks red wine','750ml white nz','750ml red nz','750ml white imp','750ml red imp','sparkling nz','sparkling imp','brew kits/accesry','department189','port and sherry','ctrled label wine','department192','department193','department194','department195','department196','department197','department198','department199','non host support','department201','department202','department203','department204','department205','department206','department207','department208','department209','department210','department211','department212','department213','department214','department215','department216']
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.02, 1.5, 4, -3, "supermarket.txt", ",", "3", '1', "?", 'department1','department2','department3','department4','department5','department6','department7','department8','department9','grocery misc']
 
-
-#sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "titanic02WithoutHeader.csv", ",", "4", '-2']
-#sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "titanic02.csv", ",", "4", '1', "class", "age", "sex", "survived"]
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "titanic02WithoutHeader.csv", ",", "4", '2']
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 3, -3, "titanic02.csv", ",", "4", '2', "class", "age", "sex", "survived"]
 
 #identity
 identity=None
@@ -702,33 +782,33 @@ if len(sys.argv)>9:
 
 '''
 #1=text file, 2=json file
-#negatives redirect output to console instead file
+#output to to both console and file if datasetName is given
 '''
 outputType=1
 if len(sys.argv)>10:
 	try:
 		outputType=int(sys.argv[10])
 	except:
-		outputType=-1 # Default is -1 print text in console.
+		outputType=1 # Default is 1 print text in console.
 
 datasetArgs=''
 if len(sys.argv)>11:
     if len(sys.argv[11])>0:
-	    datasetArgs=str(sys.argv[11])
-	
-paramFile = open('inputparams.log', 'w') 
-print("Identity      :" + str(identity), file = paramFile)
-print("min_support   :" + str(min_support), file = paramFile)
-print("min_confidence:" + str(min_confidence), file = paramFile)
-print("min_lift      :" + str(min_lift), file = paramFile)
-print("max_length    :" + str(max_length), file = paramFile)
-print("SortIndex     :" + str(ssort), file = paramFile)
-print("Dataset Name  :" + datasetName, file = paramFile)
-print("Dataset Sep   :" + str(datasetSep), file = paramFile)
-print("Dataset Type  :" + str(datasetType), file = paramFile)
-print("Output Type   :" + str(outputType), file = paramFile)
-print("Dataset Args  :" + str(datasetArgs), file = paramFile)
-paramFile.close()  
+	    datasetArgs=str(sys.argv[11:])
+
+# paramFile = open(os.path.join('datasets', identity, 'inputparams.log'), 'w') 
+# print("Identity      :" + str(identity), file = paramFile)
+# print("min_support   :" + str(min_support), file = paramFile)
+# print("min_confidence:" + str(min_confidence), file = paramFile)
+# print("min_lift      :" + str(min_lift), file = paramFile)
+# print("max_length    :" + str(max_length), file = paramFile)
+# print("SortIndex     :" + str(ssort), file = paramFile)
+# print("Dataset Name  :" + datasetName, file = paramFile)
+# print("Dataset Sep   :" + str(datasetSep), file = paramFile)
+# print("Dataset Type  :" + str(datasetType), file = paramFile)
+# print("Output Type   :" + str(outputType), file = paramFile)
+# print("Dataset Args  :" + str(datasetArgs), file = paramFile)
+# paramFile.close()  
 
 if not identity:
     print("Unknown identity")
@@ -740,10 +820,10 @@ if len(sys.argv)>11:
 else:
     records=prepare_records(datasetName=datasetName, datasetSep=datasetSep, datasetType=datasetType)
     
-if records is not None:
+if records:
 
     recordTime=time()-recordTime
-        
+
     assocTime=time()
     association_results = list(apriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length))
     association_results = transform_association_rules(association_results)
@@ -756,6 +836,6 @@ if records is not None:
     output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, outputType=outputType, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
 
 else:
-    print("Couldn't retrieve detaset records")
+    print("Could not retrieve any record from the dataset")
     
     

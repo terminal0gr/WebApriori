@@ -94,14 +94,14 @@
 
     <footer>
         <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
-        	<span class="navbar-text ">Low fare flights search engine &middot; MSc in Web Intelligence &copy; 2018-2019</span>
+            <span class="text-muted">WebApriori Association rules mining based on Apriori algorithm &middot; MSc in Web Intelligence &copy; 2019-2020</span>
         </nav>
-	</footer>
+	</footer> 
 
 </body>
 </html>
 <?php
     } else{
-        header("Location: http://nireas.it.teithe.gr/webeng7/flights/index.html");
+        header("Location: {$_SERVER['SERVER_NAME']}/webapriori/index.html");
     }
 ?>

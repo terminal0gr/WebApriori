@@ -44,7 +44,7 @@
 			$key=SERVERKEY.date("m.d.y");
 
 			http_response_code(200);
-            $JsonReq = array('token' => JWT::encode($email, $key), 'name' => $rowobj->fname." ".$rowobj->oname, 'message' => 'success');
+            $JsonReq = array('token' => JWT::encode($email, $key), 'name' => $rowobj->fname." ".$rowobj->oname, 'message' => 'success', 'administrator' => $rowobj->administrator, 'grandPublicDatasets' => $rowobj->grandPublicDatasets );
             print json_encode($JsonReq);
 
 		} else {

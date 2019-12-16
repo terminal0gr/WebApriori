@@ -50,11 +50,18 @@
         exit();
     }
 
-    //get dataset type is the fisrt character of $_POST['dataset']
-    $datasetType=substr($_POST['dataset'],0,1);
-    //get the filename
-    $filename=substr($_POST['dataset'],1);
-    //Create dataset path
+    //get dataset type is the first character of $_POST['dataset']
+    if (substr($_POST['dataset'],0,2)=='p|') {
+        // public dataset
+        $datasetType='p'.substr($_POST['dataset'],2,1);
+        $filename=substr($_POST['dataset'],3);
+    }else{
+        // private dataset
+        $datasetType=substr($_POST['dataset'],0,1);
+        $filename=substr($_POST['dataset'],1);
+    }
+
+    //Create output path
     $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;
     $fpatho_parts = pathinfo($fpatho);
     $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".json";

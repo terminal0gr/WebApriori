@@ -66,6 +66,13 @@
 			M_F();
 			VT();
 
+			if (sessionStorage.getItem('grandPublicDatasets')) {
+				$(element).show();
+			}else{
+				$(element).hide();
+			};
+
+
 			GetDatasetFilelist();	
 
 			$('#SignOut').click(function() {
@@ -362,7 +369,11 @@
 					try {
 						str='<option value="" disabled selected >Choose a dataset or dblclick to upload a new</option>';
 						res.forEach(function(data, index){
-							str += '<option value="' + data.datasetType + data.filename + '">(' + data.datasetType + ') ' + data.filename + '</option>'   
+							if (data.public===0) {
+								str += '<option value="' + data.datasetType + data.filename + '">(' + data.datasetType + ') ' + data.filename + '</option>' 
+							}else{
+								str += '<option value="' + 'p|' + data.datasetType + data.filename + '" style="background-color: powderblue;">(public ' + data.datasetType + ') ' + data.filename + '</option>' 
+							}	  
 						});
 						$("#dataset").html(str);
 					}
@@ -692,7 +703,7 @@
 							</select>
 						</div>
 					</div>		
-					<div class="form-row">
+					<div class="form-row" id="publicDataset" style="display:none">
 						<div class="col-5">
 							<label class="col-form-label float-right">Public dataset:</label>
 						</div>
@@ -852,7 +863,7 @@ class,age,sex,survived<br>
 		<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
 			<div class="form-row">
 				<div class="col-9">	
-					<label style="position:absolute;bottom:0" for="dataset">Select dataset or <a href="#" onclick="toggleDisplay('#uploadDatasetform');return false;" data-toggle="tooltip" title="Upload a new dataset on our server. Uploaded dataset limit is 10">upload</a> one:</label>			
+					<label style="position:absolute;bottom:0" for="dataset">Select dataset or <a href="#" onclick="toggleDisplay('#uploadDatasetform');return false;" data-toggle="tooltip" title="Upload a new dataset on our server">upload</a> one:</label>			
 				</div>
 				<div class="col-2">	
 					<label style="position:absolute;bottom:0" for="separator">Separator</label>			
@@ -863,7 +874,7 @@ class,age,sex,survived<br>
 			</div>
 			<div class="form-row">
 				<div class="col-9">	
-					<select id="dataset" name="dataset" class="form-control browser-default custom-select" data-trigger="hover" data-toggle="tooltip" title="Pick the dataset for which association rules would be generated" onchange="retrieveInputParameters()">
+					<select id="dataset" name="dataset" class="form-control browser-default custom-select" data-html="true" data-trigger="hover" data-toggle="tooltip" title="Pick a dataset for which association rules would be generated.<br>Datasets in blue background are public" onchange="retrieveInputParameters()">
 						<option value="" disabled selected>Choose a dataset from the list</option>
 					</select>
 				</div>	

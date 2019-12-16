@@ -81,9 +81,17 @@
     }
 
     //get dataset type is the fisrt character of $_POST['dataset']
-    $datasetType=substr($_POST['dataset'],0,1);
-    //get the filename
-    $filename=substr($_POST['dataset'],1);
+    if (substr($_POST['dataset'],0,2)=='p|') {
+        // public dataset
+        $outputType=3;
+        $datasetType=substr($_POST['dataset'],2,1);
+        $filename=substr($_POST['dataset'],3);
+    }else{
+        // private dataset
+        $outputType=2;
+        $datasetType=substr($_POST['dataset'],0,1);
+        $filename=substr($_POST['dataset'],1);
+    }
 
     if (empty($filename)) {
         http_response_code(201);
@@ -122,7 +130,7 @@
     $input.= '"'.$filename.'" ';
     $input.= '"'.$_POST['separator'].'" ';
     $input.= '"'.$datasetType.'" ';
-    $input.= '"2" ';
+    $input.= '"'.$outputType.'" ';
     $input.= $_POST['extra_parameters'];
 
     chdir('../Python');
@@ -164,8 +172,6 @@
     http_response_code(200);
     $JsonReq = array('title' => $input, 'message' => $output);
     print json_encode($JsonReq);
-    //print json_encode($output);
     exit();   
-
 
 ?>
