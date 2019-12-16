@@ -1,7 +1,6 @@
 WEB API
 
 - Private & public dataset but different output
-- Not showing the head of json output properly. Shown in 1_groceries.scv in webAPI RetrieveRules 5th call
 
 DONE - 15/12/2019 WebAPI -> Retrieve association rules in JSON format
 DONE = 15/12/2019 Στην σελίδα WebAPI αν δεν έχει APIKey ή ημερομηνία λήξης χτυπάει μηνυμα

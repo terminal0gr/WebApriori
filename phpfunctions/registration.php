@@ -100,6 +100,8 @@
 					"<p>Your Confirmation link for the Association rules mining engine is,</p>
 					<br>
 					<h2><a href=\"{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code\">here</a></h2>
+					<h2>Or as an alternative, copy & paste the link above to your explorer</h2>
+					<h2>{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code
 					<br>
 					<p>and it would be valid for 5 minutes.</p>"; 
 				$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\n{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code\r\nand it would be valid for 5 minutes.";
