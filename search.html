@@ -66,10 +66,10 @@
 			M_F();
 			VT();
 
-			if (sessionStorage.getItem('grandPublicDatasets')) {
-				$(element).show();
+			if (!sessionStorage.getItem('grandPublicDatasets') || sessionStorage.getItem('grandPublicDatasets')==0) {
+				$('#publicDataset').hide();
 			}else{
-				$(element).hide();
+				$('#publicDataset').show();
 			};
 
 
@@ -89,7 +89,7 @@
 				var fileSelect = document.getElementById("fileToUpload");
 				if(fileSelect.files && fileSelect.files.length == 1){
                     var file = fileSelect.files[0]
-                    formData.set("fileToUpload", file , file.name);
+					formData.set("fileToUpload", file , file.name);
 				}
 				else {
 					MyModal("Information", "You have not chosen a file for upload.<br>Please choose one.");
@@ -108,6 +108,8 @@
 					MyModal("Error", "You are not signed in!!! Please sign in/up");
 					return;
 				}
+				
+				formData.set("isPublic", $("#isPublicCheckbox").is(":checked"));
 
 				// Submit the form using AJAX.
 				ajaxReq = $.ajax({
@@ -473,7 +475,13 @@
 				MyModal("Information","No dataset to delete.");
 				return;
 			}
-			if (confirm("Are you sure you want to delete dataset " + x.value.substr(1) + ";")){
+			pbl=x.value.substr(0,2);	
+			if (pbl=="p|") {
+				pbl="public dataset " + x.value.substr(3);
+			}else{
+				pbl="dataset " + x.value.substr(1);
+			}
+			if (confirm("Are you sure you want to delete " + pbl + ";")){
 				var formData = new FormData();
 				formData.set("token",sessionStorage.getItem('token'));
 				formData.set("dataset",x.value);
@@ -709,7 +717,7 @@
 						</div>
 						<div class="col-2 mt-1">
                             <label class="switch">
-								<input type="checkbox" class="primary">
+								<input type="checkbox" id="isPublicCheckbox" class="primary">
 								<span class="slider round"></span>
 	    				    </label>
 						</div>
@@ -819,7 +827,7 @@ order_id,pay_method,arrival_timestamp,air fresheners candles,asian foods,baby ac
 				</div>
 			</div>
 		</div>
-		<b>4) Columns with multiple categorized values.</b> Header line is optional. 
+		<p><b>4) Columns with multiple categorized values.</b> Header line is optional. 
 		Number of columns is fixed, optionally, items columns are expected in extra paramaters field in case that header line exists.<br>
 		<a href="javascript:toggleDisplay('#hexample4');">Example</a></p>
 		<div id="hexample4" style="display:none">
@@ -855,7 +863,7 @@ class,age,sex,survived<br>
 				</div>
 			</div>
 		</div>
-		</br>
+		<br>
 		<div class="bg-warning rounded"><b>Note:</b> In extra paramaters, the items must be enclosed in double quotes and be seperated with space (e.g. <b><i>"InvoiceID" "ProductID"</i></b>)</div>
 	</div>
 

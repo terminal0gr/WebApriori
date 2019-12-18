@@ -1,6 +1,9 @@
 WEB API
 
 - Private & public dataset but different output
+- Έλεγχος διαγραφών Dataset Private & public
+- Έλεγχος Δημιουργίας Dataset Private & public
+- Web service -> να μπορεί να τρέξει public query
 
 DONE - 15/12/2019 WebAPI -> Retrieve association rules in JSON format
 DONE = 15/12/2019 Στην σελίδα WebAPI αν δεν έχει APIKey ή ημερομηνία λήξης χτυπάει μηνυμα

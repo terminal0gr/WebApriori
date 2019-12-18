@@ -43,6 +43,17 @@
         exit();
     }
 
+    $s="SELECT email FROM usertable WHERE email='$email'";
+    $result = mysqli_query($con1,$s);
+    $num=mysqli_num_rows($result);
+    // If result matched $myusername and $mypassword, table row must be 1 row
+    if($num!=1){
+        http_response_code(400);
+        $JsonReq = array('title' => 'Error (code 70)', 'message' => 'Authentication error!!!');
+        print json_encode($JsonReq);
+        exit();        
+    }
+
     if (!isset($_POST['dataset'])) {
         http_response_code(201);
         $JsonReq = array('title' => 'Error', 'message' => 'No dataset name has been declared!');
@@ -51,11 +62,27 @@
     }
 
     //get dataset type is the fisrt character of $_POST['dataset']
-    $datasetType=substr($_POST['dataset'],0,1);
-    //get the filename
-    $filename=substr($_POST['dataset'],1);
+    if (substr($_POST['dataset'],0,2)=='p|') {
+        // public dataset
+        $outputType=3;
+        $datasetType=substr($_POST['dataset'],2,1);
+        $filename=substr($_POST['dataset'],3);
+    }else{
+        // private dataset
+        $outputType=2;
+        $datasetType=substr($_POST['dataset'],0,1);
+        $filename=substr($_POST['dataset'],1);
+    }
+
     //Create dataset path
-    $fpath="../Python/datasets/".$identity."/".$datasetType."/".$filename;
+    if ($outputType==2) {
+        //private dataset
+        $fpath="../Python/datasets/".$identity."/".$datasetType."/".$filename;
+    }else{
+        //public dataset
+        $fpath="../Python/public/".$datasetType."/".$filename;   
+    }
+
     $message = '';
     if (is_file($fpath)) {
         if (!unlink($fpath)) {
@@ -64,7 +91,13 @@
     } else {
         $message = "Could not find dataset!!!\n";
     }
-    $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;   
+
+    if ($outputType==2) {
+        $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;
+    }else{
+        $fpatho="../Python/output/".$identity."/p".$datasetType."/".$filename;
+    } 
+      
     $fpatho_parts = pathinfo($fpatho);
     $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".json";
     if (is_file($fpatho)) {
