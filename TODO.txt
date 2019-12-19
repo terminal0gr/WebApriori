@@ -1,20 +1,20 @@
 WEB API
 
-- Private & public dataset but different output
-- Έλεγχος διαγραφών Dataset Private & public
-- Έλεγχος Δημιουργίας Dataset Private & public
-- Web service -> να μπορεί να τρέξει public query
+- page for giving priviledges for public queries
 
-DONE - 15/12/2019 WebAPI -> Retrieve association rules in JSON format
-DONE = 15/12/2019 Στην σελίδα WebAPI αν δεν έχει APIKey ή ημερομηνία λήξης χτυπάει μηνυμα
-DONE - 15/12/2019 Οδηγίες για τους τύπους των dataset στα web calls
-DONE - 15/12/2019 το εξ'ορισμου 2 στο max items να γινει 4
-DONE - 15/12/2019 Στα datasets να εχει παραδείγματα ιδιως στις παραμετρους
-DONE - 13/12/2019 WebAPI -> Request association rules
-DONE - 11/12/2019 WebAPI -> Delete dataset request
-DONE - 09/12/2019 WebAPI -> show Dataset request
-DONE - 06/12/2019 WebAPI -> Upload dataset function
-DONE - 01/12/2019 WebAPI -> Valid for 30 days info
+DONE - 19/12/2019 V01.00.00 WebAPI -> Run public queries
+DONE - 19/12/2019 V01.00.00 Check Dataset deletion Private & public
+DONE - 19/12/2019 V01.00.00 Check dataset creation Private & public
+DONE - 15/12/2019 V00.00.05 WebAPI -> Retrieve association rules in JSON format
+DONE = 15/12/2019 V00.00.05 Στην σελίδα WebAPI αν δεν έχει APIKey ή ημερομηνία λήξης χτυπάει μηνυμα
+DONE - 15/12/2019 V00.00.05 Οδηγίες για τους τύπους των dataset στα web calls
+DONE - 15/12/2019 V00.00.05 το εξ'ορισμου 2 στο max items να γινει 4
+DONE - 15/12/2019 V00.00.05 Στα datasets να εχει παραδείγματα ιδιως στις παραμετρους
+DONE - 13/12/2019 V00.00.04 WebAPI -> Request association rules
+DONE - 11/12/2019 V00.00.03 WebAPI -> Delete dataset request
+DONE - 09/12/2019 V00.00.02 WebAPI -> show Dataset request
+DONE - 06/12/2019 V00.00.01 WebAPI -> Upload dataset function
+DONE - 01/12/2019 V00.00.00 WebAPI -> Valid for 30 days info
 DONE - 29/11/2019 Delete user in profile
 DONE - 29/11/2019 Google Analytics
 DONE - 27/11/2019 Download dataset
@@ -22,11 +22,11 @@ DONE - 26/11/2019 When uploading file, updating image must be shon
 
 
 NIREAS ISSUES
-DONE - 15/12/2019 Create user with nireas smtp
+DONE - 15/12/2019 V00.00.05 Create user with nireas smtp
 DONE - 30/11/2019 Can't upload file more than 8M
 DONE - 30/11/2019Capcha check functions
 DONE - 30/11/2019Check Delete user in profile
-NOT DONE - 30/11/2019 htaccess to calls (Need adjustment for use in Debian)
+NOT DONE - 30/11/2019 htaccess to calls (Need adjustment with root privileges for use in Debian)
 
 
 

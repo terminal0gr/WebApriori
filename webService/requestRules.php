@@ -39,7 +39,7 @@
             exit();
         }
 
-      if (isset($_POST['email'])) {
+        if (isset($_POST['email'])) {
             //The FILTER_SANITIZE_EMAIL filter removes all illegal characters from an email address
             $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
             //mysqli_real_escape_string function is used to create a legal SQL string that you can use in an SQL statement.
@@ -116,15 +116,28 @@
         }
 
         //get dataset type is the fisrt character of $_POST['dataset']
-        $datasetType=substr($_POST['datasetId'],0,1);
-        //get the filename
-        $filename=substr($_POST['datasetId'],2);
+        if (substr($_POST['datasetId'],0,2)=='p|') {
+            // public dataset
+            $outputType=3;
+            $datasetType=substr($_POST['datasetId'],2,1);
+            $filename=substr($_POST['datasetId'],4);
+        }else{
+            // private dataset
+            $outputType=2;
+            $datasetType=substr($_POST['datasetId'],0,1);
+            $filename=substr($_POST['datasetId'],2);
+        }
+
         //Create dataset path
-        $fpath="../Python/datasets/".$identity."/".$datasetType."/".$filename;
+        if ($outputType==2) { //private dataset
+            $fpath="../Python/datasets/".$identity."/".$datasetType."/".$filename;
+        }else{ //public dataset
+            $fpath="../Python/public/".$datasetType."/".$filename;            
+        }
 
         if (!is_file($fpath)) {
             http_response_code(201);
-            $JsonReq = array('code' => 110, 'message' => 'no dataset with this id found!!!');
+            $JsonReq = array('code' => 110, 'message' => $fpath.'no dataset with this id found!!!');
             print json_encode($JsonReq);
             exit;
         }
@@ -139,13 +152,18 @@
         $input.= escapeshellarg($filename).' ';
         $input.= $separator.' ';
         $input.= '"'.$datasetType.'" ';
-        $input.= '"2" ';
+        $input.= $outputType.' ';
 
         if (isset($_POST['extra_parameters'])) {
             $input.= $_POST['extra_parameters'];
         }
 
-        $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;   
+        
+        if ($outputType==2) { //private dataset       
+            $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;  
+        }else{
+            $fpatho="../Python/output/".$identity."/p".$datasetType."/".$filename;  
+        }  
         $fpatho_parts = pathinfo($fpatho);
         $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".json";
         if (is_file($fpatho)) {

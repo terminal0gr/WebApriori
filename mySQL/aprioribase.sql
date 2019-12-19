@@ -51,7 +51,7 @@ CREATE TABLE `usertable` (
   `webAPIKey` varchar(64) NULL,
   `key_created_at` timestamp NULL,
   `administrator` bit NOT NULL DEFAULT 0,
-  `grantpublicdatasets` bit NOT NULL DEFAULT 0
+  `grandPublicDatasets` bit NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

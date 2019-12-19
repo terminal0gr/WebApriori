@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130197414-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-130197414-2');
+    </script>
+
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+	<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+	<script src="scripts/jquery-3.4.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<script src="scripts/scripts.js"></script>
+
+    <link rel="icon" type="image/png" href="images/basketwhite.svg"/>
+
+    <title>WebApriori Administrator</title>
+
+	<script>
+
+		var ajaxReq;
+		var srv="localhost/";
+
+		$(function() {
+
+			// initialization of tooltips in page
+			$('[data-toggle="tooltip"]').tooltip()
+
+			if (!sessionStorage.getItem('token') || sessionStorage.getItem('token')==0) {
+				sessionStorage.clear();
+				window.location.href='index.html';
+			}
+
+			if (sessionStorage.getItem('version')) {
+				$('#navbar-brand').html('<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="24" height="24" alt="">WebApriori ' +  sessionStorage.getItem('version'));
+			}
+			else {
+				sessionStorage.clear();
+				window.location.href='index.html';
+			}
+			M_F();
+			VT();
+
+			$('#SignOut').click(function() {
+				sessionStorage.clear();
+				window.location.href='index.html';
+			});		
+
+			//retrieveUsers();
+
+		});
+
+        // It handles the footer when the size of the window changes.
+        function M_F() {
+			if ($(window).width() <= 600) {
+				$('.udfwidth').css("width", "98%");
+			}
+			else if ($(window).width() > 600 && $(window).width() <= 1500) {
+				var pos1=Math.round(Math.abs($(window).width()-1500)*0.055+50);
+				$('.udfwidth').css("width", pos1 + "%");
+			}
+			else {	
+				$('.udfwidth').css("width", "50%");
+			}
+			style="width: 329px;"
+            if ($(window).width() <= 800 || $(window).height() <= 600) {
+                $('#c-footer').removeClass('fixed-bottom');
+            }
+            else {
+                $('#c-footer').addClass('fixed-bottom')
+            }
+        };
+
+        // handle the interface when guest or logged in
+        function VT() {
+            if (sessionStorage.getItem('token') && sessionStorage.getItem('token')!='0') {
+                $('#SignUp').hide();
+				$('#SignIn').hide();
+                if (sessionStorage.getItem('username')) {
+                    $('#person').html('<img src="images/person24.png" alt="p">' + sessionStorage.getItem('username'));
+                    $('#person').show;
+                } else {
+                    $('#person').hide;
+                }                    
+                $('#sdropdown').show();
+            } else {
+                $('#SignUp').show();
+                $('#SignIn').show();
+                $('#sdropdown').hide();
+            }
+        };
+
+        $( window ).resize(function() {
+            M_F();
+        });		
+
+        function retrieveUsers() {
+			var formData = new FormData();
+			if (sessionStorage.getItem('token')) {
+				formData.set("token",sessionStorage.getItem('token'));
+			}
+			else {
+				sessionStorage.clear();
+				window.location.href='index.html';
+				return;
+			}
+
+			$.ajax({
+				type: 'POST' ,
+				url: 'phpfunctions/retrieveUsers.php',
+				contentType: false,
+                cache: false,
+                processData:false,
+				data: formData
+			}).done(function(response, textStatus, jqXHR ) {
+				if (isJSON(response)) {
+					res=JSON.parse(response);
+					if (jqXHR.status==200) {
+						srv=res.srv
+						document.getElementById('WebAPIKey').value=res.key;
+
+						document.getElementById('endpoint1').value=res.srv + call1
+
+						document.getElementById('email1').value=res.email;
+						document.getElementById('APIKey1').value=res.key;
+
+						if (res.kdate) {
+							document.getElementById('keyExpiresAt').value=res.kdate.substring(0,10).split("-").reverse().join("-").replace(/-/g,"/");
+							var today = new Date();
+							var edate = new Date(res.kdate);
+							if (edate>=today) {
+								$('#keyExpiresAt').removeClass("border-danger").addClass("border-primary")
+								$('#lkeyExpiresAt').text("Expires at")								
+							}else {
+								$('#keyExpiresAt').removeClass("border-primary").addClass("border-danger");
+								$('#lkeyExpiresAt').text("Expired! at")
+							}
+
+						}
+					} else {
+						MyModal(res.title, res.message);
+					}
+				}
+				else alert(response);
+			}).fail(function( jqXHR, textStatus, thrownError ) {
+				if (isJSON(jqXHR.responseText)) {
+					res=JSON.parse(jqXHR.responseText);
+					MyModal(res.title, res.message);
+					if (jqXHR.status>=400 && sessionStorage.getItem('token')) {
+						setTimeout(function() {
+							sessionStorage.clear();
+							window.location.href='index.html';
+						}, 3000);	
+					}
+				} 
+				else MyModal("Error", jqXHR.responseText);
+				setTimeout(function() {
+							sessionStorage.clear();
+							window.location.href='index.html';
+				}, 3000);	
+			});
+		};
+
+		function showHide() {
+			toggleDisplay('#Users');
+			if ($('#showUsersBtn').html()=="Hide Users") {
+				$('#showUsersBtn').html("Show Users");
+			}else{
+				$('#showUsersBtn').html("Hide Users");
+			}
+
+		}
+
+
+    </script>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+		<a id="navbar-brand" class="navbar-brand d-none d-sm-block" data-toggle="modal" onclick="credits()" data-target="#Credits" href="#">
+			<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="24" height="24" alt="">WebApriori
+        </a>		
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="index.html">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="search.html">Rules search</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav ml-auto">
+			<li id="Rate" class="nav-item">
+				<a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLScLYL2nig3jOst4QNx-ojEawqks9j3yrVP0AHSkBTIXJAEr0w/viewform" target="_blank">Rate us!</a>
+			</li>			
+			<li id="SignUp" class="nav-item">
+				<a class="nav-link" href="SignUp.html">Sign Up</a>
+			</li>
+			<li id="SignIn" class="nav-item active">
+				<a class="nav-link" href="Login.html">Sign In</a>
+			</li>
+			<li id=sdropdown class="nav-item dropdown">
+				<a class="nav-item nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="images/settings24.png" alt="">
+				</a>
+				<div class="dropdown-menu dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                    <p id="person" class="text-primary text-center"></p>
+					<div class="dropdown-divider"></div>
+                    <a id="webApiDD" class="dropdown-item" href="webAPI.html"><img src="images/upload24Black.png" alt=""> API Settings</a>
+					<div class="dropdown-divider"></div>
+					<a id="settings"    class="dropdown-item" href="profile.html"><img src="images/settings24.png" alt="">Profile</a>
+					<a id="SignOut"     class="dropdown-item" href="#"><img src="images/signout24.png" alt=""> Sign out</a>
+				</div>
+			</li>			
+		</ul>
+	</nav>
+	
+	<br>
+
+	<h3 class="text-center text-primary">Public dataset Authorization</h3>	
+
+	<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
+
+		<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
+			<button id="showUsersBtn" onclick="showHide()" class="btn btn-primary collapsed" style="width:100%; height:100%" type="button">
+				Show Users
+			</button>
+		</div>	
+		<div Id="Users" style="display:none">
+			Mpla
+		</div>
+	</div>
+
+	<br>
+	<br>
+	<br>
+
+	<footer>
+        <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
+            <span class="text-muted">WebApriori Association rules mining based on Apriori algorithm &middot; MSc in Web Intelligence &copy; 2019-2020</span>
+        </nav>
+	</footer> 
+
+</body>
+</html>
