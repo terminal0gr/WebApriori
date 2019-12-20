@@ -53,7 +53,9 @@
     }
 
     try {
-        $s="SELECT email, fname, oname, CAST(grandPublicDatasets AS unsigned integer) as gPD FROM usertable WHERE email='$email'";
+        $s="SELECT email,  CAST(administrator AS unsigned integer) as administrator
+            FROM usertable 
+            WHERE email='$email'";
 		$result = mysqli_query($con1,$s);
 		$num=mysqli_num_rows($result);
 
@@ -65,10 +67,28 @@
             exit();
         }
 
-        $row = $result->fetch_object();
+        $rowobj = $result->fetch_object();
+        if ($rowobj->administrator!==1) {
+            http_response_code(400);
+            $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
+            print json_encode($JsonReq);
+            exit();            
+        }
 
-        
-        
+        $s="SELECT email, fname, oname, CAST(grandPublicDatasets AS unsigned integer) as gPD 
+            FROM usertable 
+            ORDER BY email";
+		$result = mysqli_query($con1,$s);
+
+        while($row = mysqli_fetch_assoc( $result)) {
+            $JsonReq[] = $row; 
+        }
+
+        http_response_code(200);
+        //$JsonReq = array('title' => "List retrieved" , 'message' => "New WebAPI key generated.", 'srv' => siteRoot, 'email' => $email, 'key' => $key, 'kdate' => $date);
+        print json_encode($JsonReq);
+        exit(); 
+
     }
     catch (Exception $e) { 
         http_response_code(400);
@@ -77,9 +97,6 @@
         exit();
     }
 
-    http_response_code(200);
-    $JsonReq = array('title' => "Information" , 'message' => "New WebAPI key generated.", 'srv' => siteRoot, 'email' => $email, 'key' => $key, 'kdate' => $date);
-    print json_encode($JsonReq);
-    exit(); 
+
     
 ?>

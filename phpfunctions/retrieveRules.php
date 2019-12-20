@@ -45,6 +45,17 @@
         exit();
     }
 
+    $s="SELECT email FROM usertable WHERE email='$email'";
+    $result = mysqli_query($con1,$s);
+    $num=mysqli_num_rows($result);
+    // If result matched $myusername and $mypassword, table row must be 1 row
+    if($num!=1){
+        http_response_code(400);
+        $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
+        print json_encode($JsonReq);
+        exit();
+    }
+
     if (empty($_POST['dataset'])) {
         http_response_code(201);
         $JsonReq = array('title' => 'Exclamation', 'message' => 'Please declare a dataset!!!');

@@ -95,6 +95,14 @@
                 $('#JumbotronMsg').html('Try our new <a href="search.html">association rules mining</a> engine!');
                 $('#extracomment').html('For advanced experience, please <a href="Login.html">Sign In</a>, or if you are a new user, please <a href="SignUp.html">Sign up</a>');
             }
+
+            if (sessionStorage.getItem('administrator') && sessionStorage.getItem('administrator')==1) {
+                $('#grandPublicDatasets').show();
+            }else{
+                $('#grandPublicDatasets').hide();
+            }
+
+
         }
 
         $( window ).resize(function() {
@@ -137,7 +145,7 @@
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDropdown">
                     <p id="person" class="text-primary text-center"></p>
                     <div class="dropdown-divider"></div>
-                    <a id="webApiDD" class="dropdown-item" href="webAPI.html"><img src="images/upload24Black.png" alt=""> API Settings</a>
+                    <a id="webApiDD" class="dropdown-item" href="webAPI.html"><img src="images/settings24black.png" alt=""> API Settings</a>
                     <a id="grandPublicDatasets" class="dropdown-item" href="grandPublicDatasets.html"><img src="images/admin24black.png" alt=""> Grand public Datasets</a>
 					<div class="dropdown-divider"></div>
                     <a id="settings" class="dropdown-item" href="profile.html"><img src="images/settings24.png" alt="">Profile</a>

@@ -579,6 +579,12 @@
                 $('#SignUp').show();
                 $('#SignIn').show();
                 $('#sdropdown').hide();
+			}
+			
+			if (sessionStorage.getItem('administrator') && sessionStorage.getItem('administrator')==1) {
+                $('#grandPublicDatasets').show();
+            }else{
+                $('#grandPublicDatasets').hide();
             }
         };
 
@@ -697,7 +703,7 @@
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDropdown">
                     <p id="person" class="text-primary text-center"></p>
 					<div class="dropdown-divider"></div>
-					<a id="webApiDD" class="dropdown-item" href="#"><img src="images/upload24Black.png" alt=""> API Settings</a>
+					<a id="grandPublicDatasets" class="dropdown-item" href="grandPublicDatasets.html"><img src="images/admin24black.png" alt=""> Grand public Datasets</a>
 					<div class="dropdown-divider"></div>
 					<a id="settings"    class="dropdown-item" href="profile.html"><img src="images/settings24.png" alt="">Profile</a>
 					<a id="SignOut"     class="dropdown-item" href="#"><img src="images/signout24.png" alt=""> Sign out</a>

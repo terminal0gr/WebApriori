@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   
 	<link rel="stylesheet" href="css/styles.css" type="text/css" />
+	<link rel="stylesheet" href="css/switch.css" type="text/css" />
 
 	<script src="scripts/jquery-3.4.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -60,7 +61,7 @@
 				window.location.href='index.html';
 			});		
 
-			//retrieveUsers();
+			retrieveUsers();
 
 		});
 
@@ -130,28 +131,7 @@
 				if (isJSON(response)) {
 					res=JSON.parse(response);
 					if (jqXHR.status==200) {
-						
-
-						document.getElementById('WebAPIKey').value=res.key;
-
-						document.getElementById('endpoint1').value=res.srv + call1
-
-						document.getElementById('email1').value=res.email;
-						document.getElementById('APIKey1').value=res.key;
-
-						if (res.kdate) {
-							document.getElementById('keyExpiresAt').value=res.kdate.substring(0,10).split("-").reverse().join("-").replace(/-/g,"/");
-							var today = new Date();
-							var edate = new Date(res.kdate);
-							if (edate>=today) {
-								$('#keyExpiresAt').removeClass("border-danger").addClass("border-primary")
-								$('#lkeyExpiresAt').text("Expires at")								
-							}else {
-								$('#keyExpiresAt').removeClass("border-primary").addClass("border-danger");
-								$('#lkeyExpiresAt').text("Expired! at")
-							}
-
-						}
+						fillUsers(res);
 					} else {
 						MyModal(res.title, res.message);
 					}
@@ -162,22 +142,53 @@
 					res=JSON.parse(jqXHR.responseText);
 					MyModal(res.title, res.message);
 					if (jqXHR.status>=400 && sessionStorage.getItem('token')) {
-						setTimeout(function() {
-							sessionStorage.clear();
-							window.location.href='index.html';
-						}, 3000);	
+						sessionStorage.clear();
+						window.location.href='index.html';
 					}
-				} 
-				else MyModal("Error", jqXHR.responseText);
-				setTimeout(function() {
-							sessionStorage.clear();
-							window.location.href='index.html';
-				}, 3000);	
+				} else {
+					sessionStorage.clear();
+					window.location.href='index.html';
+				}	
 			});
 		};
 
+		function fillUsers(res) {
+			var retval=`<br>`;
+			retval += `
+					<table class="table table-striped">
+  						<thead class="thead-dark">
+    						<tr>
+								<th scope="col">#</th>
+								<th scope="col">Email</th>
+								<th scope="col">Surname</th>
+								<th scope="col">First name</th>
+								<th scope="col">Grand access</th>
+							</tr>
+  						</thead>
+  						<tbody>
+					`;
+			for(var i = 0; i < res.length; i++) {
+				retval += `
+					<tr>
+      					<th scope="row">` + (i+1) + `</th>
+						<td>` + res[i].email + `</td>
+						<td>` + res[i].fname + `</td>
+						<td>` + res[i].oname + `</td>
+						<td><label class="switch">
+								<input type="checkbox" id="isPublicCheckbox` + i + `" `+ (res[i].gPD==0 ? '' : 'checked') + ` class="primary">
+								<span class="slider round"></span>
+	    				    </label></td>
+					</tr>`;
+			}
+			retval += `
+						</tbody>
+					</table>`;
+			
+			$('#users').html(retval);
+		};
+
 		function showHide() {
-			toggleDisplay('#Users');
+			toggleDisplay('#users');
 			if ($('#showUsersBtn').html()=="Hide Users") {
 				$('#showUsersBtn').html("Show Users");
 			}else{
@@ -221,7 +232,7 @@
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-dark" aria-labelledby="navbarDropdown">
                     <p id="person" class="text-primary text-center"></p>
 					<div class="dropdown-divider"></div>
-                    <a id="webApiDD" class="dropdown-item" href="webAPI.html"><img src="images/upload24Black.png" alt=""> API Settings</a>
+                    <a id="webApiDD" class="dropdown-item" href="webAPI.html"><img src="images/settings24black.png" alt=""> API Settings</a>
 					<div class="dropdown-divider"></div>
 					<a id="settings"    class="dropdown-item" href="profile.html"><img src="images/settings24.png" alt="">Profile</a>
 					<a id="SignOut"     class="dropdown-item" href="#"><img src="images/signout24.png" alt=""> Sign out</a>
@@ -241,7 +252,7 @@
 				Show Users
 			</button>
 		</div>	
-		<div Id="Users" style="display:none">
+		<div Id="users" class="table-responsive" style="display:none">
 			Mpla
 		</div>
 	</div>
