@@ -1,6 +1,8 @@
 <?php
 	include("config.php");
 	include("jwt_helper.php");
+	include_once("functions.php");
+	
 	session_start(); 
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -23,8 +25,8 @@
         
         if ( empty($email) OR empty($passwd) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Set a 400 (bad request) response code and exit.
-            http_response_code(401);
-			$JsonReq = array('title' => 'Error', 'message' => 'There was a problem with your email and/or password. Please correct the form and try again.');
+			http_response_code(403);
+			$JsonReq = array('title' => 'Error', 'message' => 'Username and/or Password incorrect.\nPlease try again.');
 			print json_encode($JsonReq);
             exit;
         }

@@ -1,4 +1,6 @@
 <?php
+    include_once("functions.php");
+
     $passkey = $_GET['passkey'];
     include("config.php");
     $con1 = new mysqli(HOST, USERNAME, PWD, DB);

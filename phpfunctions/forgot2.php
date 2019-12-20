@@ -1,5 +1,6 @@
 <?php
 	include("config.php");
+	include_once("functions.php");
 	
 	//session_start();
 	$con1 = new mysqli(HOST, USERNAME, PWD, DB);

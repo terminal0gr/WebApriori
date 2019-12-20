@@ -1,6 +1,6 @@
 <?php
-    include("config.php");
-    include("jwt_helper.php");
+    include_once("config.php");
+    include_once("jwt_helper.php");
     include_once("functions.php");
     
     session_start(); 
@@ -45,32 +45,41 @@
         exit();
     }
 
-    $filelist=array();
-    for ($i = 1; $i < 5; $i++) {
-        $log_directory="../Python/datasets/".$identity."/".$i."/";
-        foreach(glob($log_directory.'*.*') as $file) {
-            $filelist[] = array('public' => 0, 'datasetType' => $i, 'filename' => basename($file));
-        };
-    }
-    if (count($filelist)>10) {
-        $filelist=array_slice($filelist, 0, 10);
-    }
-
-    // collect public datasets
-    for ($i = 1; $i < 5; $i++) {
-        $log_directory="../Python/public/".$i."/";
-        foreach(glob($log_directory.'*.*') as $file) {
-            $filelist[] = array('public' => 1, 'datasetType' => $i, 'filename' => basename($file));
-        };
-    }
-
-    if($filelist) {
-        http_response_code(200);
-        if (count($filelist)==0) {
-            exit();
-        }
-        print json_encode($filelist);
+    if ( empty($email) or !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        http_response_code(400);
+        $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
+        print json_encode($JsonReq);
         exit();
     }
 
+    try {
+        $s="SELECT email, fname, oname, CAST(grandPublicDatasets AS unsigned integer) as gPD FROM usertable WHERE email='$email'";
+		$result = mysqli_query($con1,$s);
+		$num=mysqli_num_rows($result);
+
+		// If result matched $myusername and $mypassword, table row must be 1 row
+		if($num!=1){
+            http_response_code(400);
+            $JsonReq = array('title' => 'Error', 'message' => 'Authentication error!!!');
+            print json_encode($JsonReq);
+            exit();
+        }
+
+        $row = $result->fetch_object();
+
+        
+        
+    }
+    catch (Exception $e) { 
+        http_response_code(400);
+        $JsonReq = array('title' => 'Error', 'message' => $e->getMessage());
+        print json_encode($JsonReq);
+        exit();
+    }
+
+    http_response_code(200);
+    $JsonReq = array('title' => "Information" , 'message' => "New WebAPI key generated.", 'srv' => siteRoot, 'email' => $email, 'key' => $key, 'kdate' => $date);
+    print json_encode($JsonReq);
+    exit(); 
+    
 ?>

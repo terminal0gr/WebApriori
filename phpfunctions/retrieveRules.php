@@ -1,6 +1,8 @@
 <?php
     include("config.php");
-	include("jwt_helper.php");
+    include("jwt_helper.php");
+    include_once("functions.php");
+    
     session_start(); 
 
     $auth = false;

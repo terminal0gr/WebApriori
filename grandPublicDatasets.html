@@ -130,7 +130,8 @@
 				if (isJSON(response)) {
 					res=JSON.parse(response);
 					if (jqXHR.status==200) {
-						srv=res.srv
+						
+
 						document.getElementById('WebAPIKey').value=res.key;
 
 						document.getElementById('endpoint1').value=res.srv + call1

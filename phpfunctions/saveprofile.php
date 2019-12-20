@@ -1,6 +1,7 @@
 <?php
 	include("config.php");
 	include("jwt_helper.php");
+	include_once("functions.php");
 	
 	session_start();
 	$con1 = new mysqli(HOST, USERNAME, PWD, DB);
@@ -12,17 +13,28 @@
 		
 	try {
 		// Get email
-		$key=SERVERKEY.date("m.d.y");
-		$voldemail = JWT::decode($_POST['token'], $key);
+		if (isset($_POST['token'])) {
+			$key=SERVERKEY.date("m.d.y");
+			$voldemail = JWT::decode($_POST['token'], $key);
+		}else {
+			http_response_code(400);
+			$JsonReq = array('title' => 'Error', 'message' => 'Authentication error...');
+			print json_encode($JsonReq);
+			exit();
+		}
 	}
 	catch (Exception $e) {  //hide $key on error
-		echo 'Authentication error!!!';
+		http_response_code(400);
+		$JsonReq = array('title' => 'Error', 'message' => 'Authentication error...');
+		print json_encode($JsonReq);
 		exit();
 	}	
 
 	$oldemail=mysqli_real_escape_string($con1, $_POST['oldemail']);
 	if ($oldemail!=$voldemail) {
-		echo 'Authentication error!!!';
+		http_response_code(400);
+		$JsonReq = array('title' => 'Error', 'message' => 'Authentication error...');
+		print json_encode($JsonReq);
 		exit();
 	}
 
