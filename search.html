@@ -66,12 +66,17 @@
 			M_F();
 			VT();
 
-			if (!sessionStorage.getItem('grandPublicDatasets') || sessionStorage.getItem('grandPublicDatasets')==0) {
-				$('#publicDataset').hide();
-			}else{
-				$('#publicDataset').show();
-			};
+            if (sessionStorage.getItem('administrator') && sessionStorage.getItem('administrator')==1) {
+                $('#grandPublicDatasets').show();
+            }else{
+                $('#grandPublicDatasets').hide();
+            }
 
+			if (sessionStorage.getItem('grandPublicDatasets') && sessionStorage.getItem('grandPublicDatasets')==1) {
+				$('#publicDataset').show();
+            }else{
+                $('#publicDataset').hide();
+            }
 
 			GetDatasetFilelist();	
 

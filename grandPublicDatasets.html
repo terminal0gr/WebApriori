@@ -35,6 +35,7 @@
 
 		var ajaxReq;
 		var srv="localhost/";
+		var tmpHtml;
 
 		$(function() {
 
@@ -124,9 +125,9 @@
 				type: 'POST' ,
 				url: 'phpfunctions/retrieveUsers.php',
 				contentType: false,
-                cache: false,
-                processData:false,
-				data: formData
+                    cache: false,
+                    processData:false,
+					data: formData
 			}).done(function(response, textStatus, jqXHR ) {
 				if (isJSON(response)) {
 					res=JSON.parse(response);
@@ -150,12 +151,85 @@
 					window.location.href='index.html';
 				}	
 			});
+
+			$('#cancelButton').click(function() {
+				window.location.href='index.html';
+			});
+
+			$('#saveButton').click(function() {
+				var userRows = [];
+				var table1 = document.getElementById("tableUsers");
+				for (var i = 0, row; row = table1.rows[i]; i++) {
+					if (i!=0) {
+
+						var ch=0;
+						if (document.getElementById("isPublicCheckbox" + (i-1)).checked) {
+							ch=1;
+						};
+
+						userRows.push({email:row.cells[1].innerHTML, gPD:ch});
+					}				
+				}
+
+				if (userRows.length==0) {
+					res = {title:"Fatal Error", message:"No records!!!"};
+					MyModal(res.title, res.message);
+				}
+
+				if (sessionStorage.getItem('token')) {
+					formdata = {token:sessionStorage.getItem('token'), recs:userRows}
+				}
+				else {
+					sessionStorage.clear();
+					window.location.href='index.html';
+					return;
+				}
+
+				$.ajax({
+					type: 'POST' ,
+					url: 'phpfunctions/saveUsers.php',
+					contentType: "application/json; charset=utf-8",
+					cache: false,
+					processData:false,
+					data: JSON.stringify(formdata),
+					beforeSend: function( xhr ) {
+						tmpHtml=$('#saveButton').html();
+						$('#saveButton').removeClass( "btn-primary" ).addClass("btn-warning").html('<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>');	
+  					}
+				}).done(function(response, textStatus, jqXHR ) {
+					if (isJSON(response)) {
+						res=JSON.parse(response);
+						if (jqXHR.status==200) {
+							MyModal(res.title, res.message);
+						} else {
+							MyModal(res.title, res.message);
+						}
+					}
+					else alert(response);
+				}).fail(function( jqXHR, textStatus, thrownError ) {
+					if (isJSON(jqXHR.responseText)) {
+						res=JSON.parse(jqXHR.responseText);
+						MyModal(res.title, res.message);
+						if (jqXHR.status>=400 && sessionStorage.getItem('token')) {
+							sessionStorage.clear();
+							window.location.href='index.html';
+						}
+					} else {
+						sessionStorage.clear();
+						window.location.href='index.html';
+					}	
+				}).always(function() {
+					$('#saveButton').removeClass("btn-warning").addClass("btn-primary").html(tmpHtml);
+				});			
+
+			});
+
 		};
 
 		function fillUsers(res) {
 			var retval=`<br>`;
 			retval += `
-					<table class="table table-striped">
+					<table id="tableUsers" class="table table-striped">
   						<thead class="thead-dark">
     						<tr>
 								<th scope="col">#</th>
@@ -189,6 +263,7 @@
 
 		function showHide() {
 			toggleDisplay('#users');
+			toggleDisplay('#answdiv');
 			if ($('#showUsersBtn').html()=="Hide Users") {
 				$('#showUsersBtn').html("Show Users");
 			}else{
@@ -253,8 +328,15 @@
 			</button>
 		</div>	
 		<div Id="users" class="table-responsive" style="display:none">
-			Mpla
 		</div>
+
+		<br>
+
+		<div id="answdiv" class="clearfix" style="display:none">
+			<button type="button" id="saveButton"   class="btn btn-primary float-left">Save changes</button>
+			<button type="button" id="cancelButton" class="btn btn-secondary float-right">Cancel</button>
+		</div>
+
 	</div>
 
 	<br>

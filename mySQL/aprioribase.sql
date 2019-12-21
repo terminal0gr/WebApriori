@@ -50,8 +50,8 @@ CREATE TABLE `usertable` (
   `fname` varchar(30) NOT NULL,
   `webAPIKey` varchar(64) NULL,
   `key_created_at` timestamp NULL,
-  `administrator` bit NOT NULL DEFAULT 0,
-  `grandPublicDatasets` bit NOT NULL DEFAULT 0
+  `administrator` INT NOT NULL DEFAULT 0,
+  `grandPublicDatasets` INT NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -60,10 +60,6 @@ CREATE TABLE `usertable` (
 
 INSERT INTO `usertable` (`email`, `passwd`, `oname`, `fname`) VALUES
 ('terminal_gr@yahoo.com', '19d6a3cd17bb2d786533535403136163', 'Malliaridis', 'Konstantinos');
-
---
--- Ευρετήρια για άχρηστους πίνακες
---
 
 --
 -- Ευρετήρια για πίνακα `temp_usertable`

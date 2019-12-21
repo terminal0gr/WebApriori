@@ -7,7 +7,9 @@
 
     $auth = false;
 
-    if (!isset($_POST['token'])) {
+    $inRecs = (array) json_decode(file_get_contents('php://input'), TRUE);
+ 
+    if (!isset($inRecs["token"])) {
         http_response_code(400);
         $JsonReq = array('title' => 'Error', 'message' => 'You are not signed in!!! Please sign QQQ');
         print json_encode($JsonReq);
@@ -17,7 +19,7 @@
     try {
         // Get email
         $key=SERVERKEY.date("m.d.y");
-        $email = JWT::decode($_POST['token'], $key);
+        $email = JWT::decode($inRecs["token"], $key);
         $auth = true;
     }
     catch (Exception $e) {  //hide $key on error
@@ -53,6 +55,7 @@
     }
 
     try {
+
         $s="SELECT email, administrator
             FROM usertable 
             WHERE email='$email'";
@@ -75,19 +78,29 @@
             exit();            
         }
 
-        $s="SELECT email, fname, oname, grandPublicDatasets AS gPD 
-            FROM usertable 
-            ORDER BY email";
-		$result = mysqli_query($con1,$s);
-
-        while($row = mysqli_fetch_assoc( $result)) {
-            $JsonReq[] = $row; 
+        for ($i = 0; $i < count($inRecs['recs']); $i++) {
+            $gPD=$inRecs['recs'][$i]['gPD'];
+            $userEmail=$inRecs['recs'][$i]['email'];
+            $sql="UPDATE usertable 
+                  SET grandPublicDatasets=$gPD
+                  WHERE email='$userEmail'";
+            $result = mysqli_query($con1,$sql);
+            if(!$result) {
+                break;
+            }
         }
 
-        http_response_code(200);
-        //$JsonReq = array('title' => "List retrieved" , 'message' => "New WebAPI key generated.", 'srv' => siteRoot, 'email' => $email, 'key' => $key, 'kdate' => $date);
-        print json_encode($JsonReq);
-        exit(); 
+        if($result) {
+            http_response_code(200);
+            $JsonReq = array('title' => 'Information', 'message' => 'Changes saved.');
+            print json_encode($JsonReq);
+            exit();
+        }else{
+            http_response_code(201);
+            $JsonReq = array('title' => 'Error', 'message' => 'Database error!!!');
+            print json_encode($JsonReq);
+            exit();
+        }
 
     }
     catch (Exception $e) { 
@@ -97,6 +110,4 @@
         exit();
     }
 
-
-    
 ?>
