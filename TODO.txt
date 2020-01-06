@@ -1,7 +1,7 @@
 WEB API
 
-- page for giving priviledges for public queries
-
+DONE - 22/12/2019 V01.02.00 First complete edition
+DONE - 22/12/2019 V01.02.00 page for giving priviledges for public queries
 DONE - 19/12/2019 V01.00.00 WebAPI -> Run public queries
 DONE - 19/12/2019 V01.00.00 Check Dataset deletion Private & public
 DONE - 19/12/2019 V01.00.00 Check dataset creation Private & public
@@ -34,6 +34,12 @@ NOT DONE - 30/11/2019 htaccess to calls (Need adjustment with root privileges fo
 
 
 
+EasyMiner 
+https://br-dev.lmcloud.vse.cz/easyminercenter/
+Not as easy as its name promises!
+
+
+
 
 Περίληψη ελληνικά
 Abstact Αγγλικά
@@ -52,10 +58,10 @@ Abstact Αγγλικά
 3.2. apriori
 
 4. Section 4
-3.1 ar datasets
-3.2 web application architecture diagram (dia)
-3.3 dadabase
-3.4 απαιτήσεις σε excel
+4.1 ar datasets
+4.2 web application architecture diagram (dia)
+4.3 database
+4.4 απαιτήσεις σε excel
 
 5. Τεχνολογιες
 
@@ -69,5 +75,32 @@ Abstact Αγγλικά
 40-50 σελίδες
 
 
-Τέλος συζήτησης
-Γράψτε ένα μήνυμα...
+
+
+
+https://www.edureka.co/blog/apriori-algorithm/#python-implementation
+
+
+
+
+Papers that describe the Apriori algorithm and some implementation aspects of this program:
+
+Frequent Item Set Mining
+Christian Borgelt
+Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery 2(6):437-456.
+J. Wiley & Sons, Chichester, United Kingdom 2012
+doi:10.1002/widm.1074 wiley.com
+(20 pages)
+Recursion Pruning for the Apriori Algorithm
+Christian Borgelt
+2nd Workshop of Frequent Item Set Mining Implementations (FIMI 2004, Brighton, UK).
+fimi_04.pdf (41 kb) fimi_04.ps.gz (29 kb) (2 pages)
+Efficient Implementations of Apriori and Eclat
+Christian Borgelt
+Workshop of Frequent Item Set Mining Implementations (FIMI 2003, Melbourne, FL, USA).
+fimi_03.pdf (304 kb) fimi_03.ps.gz (197 kb) (9 pages)
+Induction of Association Rules: Apriori Implementation
+Christian Borgelt and Rudolf Kruse
+15th Conference on Computational Statistics (Compstat 2002, Berlin, Germany), 395-400
+Physica Verlag, Heidelberg, Germany 2002
+cstat_02.pdf (105 kb) cstat_02.ps.gz (91 kb) (6 pages)
