@@ -1,9 +1,8 @@
 #implementation of the Apriori algorithm
 
 import sys
+import os
 import csv
-import os
-import os
 import json
 from collections import namedtuple
 from itertools import combinations
@@ -374,10 +373,14 @@ Dataset types:
 ###################################################################
 # preprocessing section
 ###################################################################
-def prepare_records(datasetName, datasetSep, datasetType, *args):
+def prepare_records(datasetName, datasetSep, datasetType, public, *args):
 
     global max_items
-    filepath=os.path.join('datasets', identity, str(datasetType), datasetName)
+
+    if public==0:
+        filepath=os.path.join('datasets', identity, str(datasetType), datasetName)
+    else:
+        filepath=os.path.join('public', str(datasetType), datasetName)
 
     if len(args)>max_items:
         print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' columns will be processed.')
@@ -512,10 +515,10 @@ def output_association_rules(association_results, sort_index, descending=True, f
             ext='.json'
         elif outputType==3:
             ext='.json'
-            publicFilePath=os.path.join('public', str(datasetType))
+            publicFilePath=os.path.join('output', identity, 'p'+str(datasetType))
             if not os.path.exists(publicFilePath):
                 os.makedirs(publicFilePath)
-            publicFile = open(os.path.join('public', str(datasetType), os.path.splitext(fileName)[0] + ext),'w')
+            publicFile = open(os.path.join('output', identity, 'p'+str(datasetType), os.path.splitext(fileName)[0] + ext),'w')
         else:
             ext=''
             
@@ -789,7 +792,7 @@ if len(sys.argv)>10:
 	try:
 		outputType=int(sys.argv[10])
 	except:
-		outputType=1 # Default is 1 print text in console.
+		outputType=1 # Default is 1 print text.
 
 datasetArgs=''
 if len(sys.argv)>11:
@@ -815,10 +818,15 @@ if not identity:
     sys.exit()
 
 recordTime=time()
+
+public=0
+if outputType==3:
+    public=1
+
 if len(sys.argv)>11:
-    records=prepare_records(datasetName, datasetSep, datasetType, *sys.argv[11:])
+    records=prepare_records(datasetName, datasetSep, datasetType, public, *sys.argv[11:])
 else:
-    records=prepare_records(datasetName=datasetName, datasetSep=datasetSep, datasetType=datasetType)
+    records=prepare_records(datasetName=datasetName, datasetSep=datasetSep, datasetType=datasetType, public=public)
     
 if records:
 

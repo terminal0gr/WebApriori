@@ -746,8 +746,8 @@
 		<h2>Supported dataset types</h2>
 		<br>
 		<p><b>1) Market Basket list.</b> No header is expected, The number of columns is undefined (Default). 
-		If header row exists then in 1st parameter of the extra paramaters field the string representing the absent item must be declared. If absent item is nothing or not exists then assign "" or "nan".
-		The participant columns must be declared in extra paramaters field starting from the 2nd parameter.<br> 
+		If header row exists then in 1st parameter of the extra parameters field the string representing the absent item must be declared. If absent item is nothing or not exists then assign "" or "nan".
+		The participant columns must be declared in extra parameters field starting from the 2nd parameter.<br> 
 		<a href="javascript:toggleDisplay('#hexample1');">Examples</a></p>
 		<div id="hexample1" style="display:none">
 			<div class="card text-white bg-secondary mb-3">
@@ -776,7 +776,7 @@ other vegetables,whole milk,condensed milk,long life bakery product<br>
 			</div>
 		</div>
 		<p><b>2) Order/Invoice detail.</b> Header line is mandatory in that type. Number of columns is fixed in the dataset. 
-		In extra paramaters field, 1st parameter represents the primary key column while 2nd parameter represents the items column and are both mandatory.<br>
+		In extra parameters field, 1st parameter represents the primary key column while 2nd parameter represents the items column and are both mandatory.<br>
 		<a href="javascript:toggleDisplay('#hexample2');">Example</a></p>
 		<div id="hexample2" style="display:none">
 			<div class="card text-white bg-secondary mb-3">
@@ -800,7 +800,7 @@ InvoiceNo;StockCode;Description;Quantity;InvoiceDate;UnitPrice;CustomerID<br>
 			</div>
 		</div>
 		<p><b>3) Sparse item Dataset.</b> Header line is mandatory in that type of dataset and the number of columns/items is fixed. 
-		Item columns are mandatory to be declared from the 2nd parameter and above in extra paramaters field.
+		Item columns are mandatory to be declared from the 2nd parameter and above in extra parameters field.
 		In 1st parameter, the string of absent item must be declared!!! If absent item is nothing then assign '' or 'nan'. <br>
 		<a href="javascript:toggleDisplay('#hexample3');">Examples</a></p>
 		<div id="hexample3" style="display:none">
@@ -840,7 +840,7 @@ order_id,pay_method,arrival_timestamp,air fresheners candles,asian foods,baby ac
 			</div>
 		</div>
 		<p><b>4) Columns with multiple categorized values.</b> Header line is optional. 
-		Number of columns is fixed, optionally, items columns are expected in extra paramaters field in case that header line exists.<br>
+		Number of columns is fixed, optionally, items columns are expected in extra parameters field in case that header line exists.<br>
 		<a href="javascript:toggleDisplay('#hexample4');">Example</a></p>
 		<div id="hexample4" style="display:none">
 			<div class="card text-white bg-secondary mb-3">
@@ -876,7 +876,7 @@ class,age,sex,survived<br>
 			</div>
 		</div>
 		<br>
-		<div class="bg-warning rounded"><b>Note:</b> In extra paramaters, the items must be enclosed in double quotes and be seperated with space (e.g. <b><i>"InvoiceID" "ProductID"</i></b>)</div>
+		<div class="bg-warning rounded"><b>Note:</b> In extra parameters, the items must be enclosed in double quotes and be seperated with space (e.g. <b><i>"InvoiceID" "ProductID"</i></b>)</div>
 	</div>
 
 	<form id="retrieveRules" action="phpfunctions/retrieveRules.php" method="post" >
@@ -948,7 +948,7 @@ class,age,sex,survived<br>
 				<label for="extra parameters">Extra parameters / item names</label>
 			</div>
 			<div class="form-col">	
-				<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-trigger="hover" data-toggle="tooltip" title="In extra paramaters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
+				<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-trigger="hover" data-toggle="tooltip" title="In extra parameters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
 			</div>
 			<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
 				<button id="submitBtn" type="submit" class="btn btn-primary btn-inline" style="height:100%; width:100%">Retrieve association rules</button>

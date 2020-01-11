@@ -1,9 +1,8 @@
 #implementation of the Apriori algorithm
 
 import sys
+import os
 import csv
-import os
-import os
 import json
 from collections import namedtuple
 from itertools import combinations
@@ -17,8 +16,8 @@ max_items=999
 
 # Meta informations.
 __Version__ = '01.00.01 30/11/2019'
-__Modificator__ = 'Malliaridis konstantinos'
-__Modificator_email__= 'terminal_gr@yahoo.com'
+__Developer__ = 'Malliaridis konstantinos'
+__Developer_Email__= 'terminal_gr@yahoo.com'
 
 # general purpose functions
 ######################
@@ -126,15 +125,12 @@ class TransactionManager(object):
             return transactions
         return TransactionManager(transactions)
 
-
-# Ignore name errors because these names are namedtuples.
-SupportRecord = namedtuple( # pylint: disable=C0103
+SupportRecord = namedtuple( 
     'SupportRecord', ('items', 'support', 'count'))
-RelationRecord = namedtuple( # pylint: disable=C0103
+RelationRecord = namedtuple( 
     'RelationRecord', SupportRecord._fields + ('ordered_statistics',))
-OrderedStatistic = namedtuple( # pylint: disable=C0103
+OrderedStatistic = namedtuple( 
     'OrderedStatistic', ('LHS', 'RHS', 'confidence', 'lift', 'conviction', 'levarage', 'LHS_count', 'LHS_support', 'RHS_count', 'RHS_support'))
-
 
 ################################################################################
 # Inner functions.
