@@ -1,5 +1,9 @@
 WEB API
 
+- Fully asychronous call for ARM / results in user interface
+- Default parameters not placeholder but ready to use values.
+
+
 DONE - 22/12/2019 V01.02.00 First complete edition
 DONE - 22/12/2019 V01.02.00 page for giving priviledges for public queries
 DONE - 19/12/2019 V01.00.00 WebAPI -> Run public queries
@@ -54,8 +58,9 @@ Abstact Αγγλικά
 2.2
 
 3. Section 3
-3.1. Association rules mining
-3.2. apriori
+3.1 Association rules mining
+3.2 apriori
+3.3 Usage sections
 
 4. Section 4
 4.1 ar datasets
@@ -72,13 +77,9 @@ Abstact Αγγλικά
 
 7. Conclusions and future work
 
+
 40-50 σελίδες
 
-
-
-
-
-https://www.edureka.co/blog/apriori-algorithm/#python-implementation
 
 
 
@@ -104,3 +105,51 @@ Christian Borgelt and Rudolf Kruse
 15th Conference on Computational Statistics (Compstat 2002, Berlin, Germany), 395-400
 Physica Verlag, Heidelberg, Germany 2002
 cstat_02.pdf (105 kb) cstat_02.ps.gz (91 kb) (6 pages)
+
+
+
+
+
+\clearpage
+\section{Requirements \& technologies}
+
+\subsection{Ar Datasets}
+
+\subsection{web application architecture diagram (dia)}
+
+\subsection{Mysql database}
+
+\subsection{Requirements}
+
+\subsection{Technologies}
+
+\subsubsection{General}
+
+\subsubsection{Python}
+
+\subsubsection{PHP}
+
+\subsubsection{HTML}
+
+\subsubsection{Javascript}
+
+\subsubsection{JQuery functions}
+
+\subsubsection{bootstrap framework}
+
+\subsubsection{Rest API's}
+
+\clearpage
+\section{WebApriori}
+
+\subsection{General}
+
+\subsection{Dataset types} \label{Dataset types}
+
+\subsection{Apriori program}
+
+\subsection{Back-end web development}
+
+\subsection{Front-end web development}
+
+\subsection{Web services}

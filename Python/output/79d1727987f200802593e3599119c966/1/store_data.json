@@ -1,0 +1,1789 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "store_data.csv",
+    "datasetSep": ",",
+    "datasetType": 1,
+    "outputType": 2,
+    "datasetArgs": "",
+    "Records": 7501,
+    "RecordsCreationTime": "0.021",
+    "RulesCount": 96,
+    "RulesCreationTime": "0.093",
+    "rules": [
+        {
+            "LHS": [
+                "herb & pepper"
+            ],
+            "RHS": [
+                "ground beef"
+            ],
+            "Confidence": 0.3234501347708895,
+            "Lift": 3.2919938411349285,
+            "Conviction": 1.3328602667054752,
+            "Leverage": 0.011138238493944044,
+            "LHS_Count": 371,
+            "LHS_Support": 0.04946007199040128,
+            "RHS_Count": 737,
+            "RHS_Support": 0.09825356619117451,
+            "Support": 0.015997866951073192,
+            "Count": 120
+        },
+        {
+            "LHS": [
+                "spaghetti",
+                "mineral water"
+            ],
+            "RHS": [
+                "ground beef"
+            ],
+            "Confidence": 0.2857142857142857,
+            "Lift": 2.90792789300252,
+            "Conviction": 1.2624450073323557,
+            "Leverage": 0.01119616082473721,
+            "LHS_Count": 448,
+            "LHS_Support": 0.05972536995067324,
+            "RHS_Count": 737,
+            "RHS_Support": 0.09825356619117451,
+            "Support": 0.017064391414478068,
+            "Count": 128
+        },
+        {
+            "LHS": [
+                "tomatoes"
+            ],
+            "RHS": [
+                "frozen vegetables"
+            ],
+            "Confidence": 0.23586744639376217,
+            "Lift": 2.4744639376218323,
+            "Conviction": 1.1839298977823367,
+            "Leverage": 0.009612121041284616,
+            "LHS_Count": 513,
+            "LHS_Support": 0.06839088121583789,
+            "RHS_Count": 715,
+            "RHS_Support": 0.09532062391681109,
+            "Support": 0.0161311825089988,
+            "Count": 121
+        },
+        {
+            "LHS": [
+                "shrimp"
+            ],
+            "RHS": [
+                "frozen vegetables"
+            ],
+            "Confidence": 0.23320895522388058,
+            "Lift": 2.44657394843962,
+            "Conviction": 1.1798251717289276,
+            "Leverage": 0.009853105663323458,
+            "LHS_Count": 536,
+            "LHS_Support": 0.07145713904812692,
+            "RHS_Count": 715,
+            "RHS_Support": 0.09532062391681109,
+            "Support": 0.01666444474070124,
+            "Count": 125
+        },
+        {
+            "LHS": [
+                "milk",
+                "mineral water"
+            ],
+            "RHS": [
+                "frozen vegetables"
+            ],
+            "Confidence": 0.23055555555555557,
+            "Lift": 2.418737373737374,
+            "Conviction": 1.175756589855408,
+            "Leverage": 0.0064904113304823366,
+            "LHS_Count": 360,
+            "LHS_Support": 0.04799360085321957,
+            "RHS_Count": 715,
+            "RHS_Support": 0.09532062391681109,
+            "Support": 0.011065191307825623,
+            "Count": 83
+        },
+        {
+            "LHS": [
+                "mineral water",
+                "ground beef"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.41693811074918563,
+            "Lift": 2.3946805273580716,
+            "Conviction": 1.416470355163073,
+            "Leverage": 0.009938434018689522,
+            "LHS_Count": 307,
+            "LHS_Support": 0.040927876283162246,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.017064391414478068,
+            "Count": 128
+        },
+        {
+            "LHS": [
+                "mineral water",
+                "frozen vegetables"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.3097014925373134,
+            "Lift": 2.3899906332534853,
+            "Conviction": 1.2609288130951908,
+            "Leverage": 0.006435386004880725,
+            "LHS_Count": 268,
+            "LHS_Support": 0.03572856952406346,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.011065191307825623,
+            "Count": 83
+        },
+        {
+            "LHS": [
+                "milk",
+                "mineral water"
+            ],
+            "RHS": [
+                "ground beef"
+            ],
+            "Confidence": 0.23055555555555557,
+            "Lift": 2.3465362581034226,
+            "Conviction": 1.1719448237226613,
+            "Leverage": 0.0063496488696410044,
+            "LHS_Count": 360,
+            "LHS_Support": 0.04799360085321957,
+            "RHS_Count": 737,
+            "RHS_Support": 0.09825356619117451,
+            "Support": 0.011065191307825623,
+            "Count": 83
+        },
+        {
+            "LHS": [
+                "soup"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.3007915567282322,
+            "Lift": 2.3212319619531585,
+            "Conviction": 1.2448609367807564,
+            "Leverage": 0.008650599686295217,
+            "LHS_Count": 379,
+            "LHS_Support": 0.05052659645380616,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.015197973603519531,
+            "Count": 114
+        },
+        {
+            "LHS": [
+                "spaghetti"
+            ],
+            "RHS": [
+                "ground beef"
+            ],
+            "Confidence": 0.22511485451761104,
+            "Lift": 2.2911621760333793,
+            "Conviction": 1.1637162475833263,
+            "Leverage": 0.022087833962715117,
+            "LHS_Count": 1306,
+            "LHS_Support": 0.17411011865084655,
+            "RHS_Count": 737,
+            "RHS_Support": 0.09825356619117451,
+            "Support": 0.03919477403012932,
+            "Count": 294
+        },
+        {
+            "LHS": [
+                "ground beef"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.3989145183175034,
+            "Lift": 2.291162176033379,
+            "Conviction": 1.3739973872558149,
+            "Leverage": 0.022087833962715117,
+            "LHS_Count": 737,
+            "LHS_Support": 0.09825356619117451,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.03919477403012932,
+            "Count": 294
+        },
+        {
+            "LHS": [
+                "grated cheese"
+            ],
+            "RHS": [
+                "ground beef"
+            ],
+            "Confidence": 0.2162849872773537,
+            "Lift": 2.201294015695292,
+            "Conviction": 1.1506050275547675,
+            "Leverage": 0.006184021928658635,
+            "LHS_Count": 393,
+            "LHS_Support": 0.0523930142647647,
+            "RHS_Count": 737,
+            "RHS_Support": 0.09825356619117451,
+            "Support": 0.011331822423676844,
+            "Count": 85
+        },
+        {
+            "LHS": [
+                "olive oil"
+            ],
+            "RHS": [
+                "ground beef"
+            ],
+            "Confidence": 0.2145748987854251,
+            "Lift": 2.183889166607156,
+            "Conviction": 1.1480998409834016,
+            "Leverage": 0.007660677016605759,
+            "LHS_Count": 494,
+            "LHS_Support": 0.0658578856152513,
+            "RHS_Count": 737,
+            "RHS_Support": 0.09825356619117451,
+            "Support": 0.014131449140114652,
+            "Count": 106
+        },
+        {
+            "LHS": [
+                "chocolate",
+                "spaghetti"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.2789115646258503,
+            "Lift": 2.152382352117802,
+            "Conviction": 1.2070881115222372,
+            "Leverage": 0.005852910230997773,
+            "LHS_Count": 294,
+            "LHS_Support": 0.03919477403012932,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.010931875749900012,
+            "Count": 82
+        },
+        {
+            "LHS": [
+                "olive oil",
+                "mineral water"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.3719806763285024,
+            "Lift": 2.13646788142427,
+            "Conviction": 1.3150708110713443,
+            "Leverage": 0.005460499325326592,
+            "LHS_Count": 207,
+            "LHS_Support": 0.027596320490601255,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.010265297960271964,
+            "Count": 77
+        },
+        {
+            "LHS": [
+                "eggs",
+                "ground beef"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.5066666666666667,
+            "Lift": 2.125563012677107,
+            "Conviction": 1.5438482076263709,
+            "Leverage": 0.005365253614764888,
+            "LHS_Count": 150,
+            "LHS_Support": 0.019997333688841486,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.010131982402346354,
+            "Count": 76
+        },
+        {
+            "LHS": [
+                "chocolate",
+                "mineral water"
+            ],
+            "RHS": [
+                "ground beef"
+            ],
+            "Confidence": 0.20759493670886073,
+            "Lift": 2.112848874156261,
+            "Conviction": 1.1379867135926072,
+            "Leverage": 0.005757877796891889,
+            "LHS_Count": 395,
+            "LHS_Support": 0.05265964538061592,
+            "RHS_Count": 737,
+            "RHS_Support": 0.09825356619117451,
+            "Support": 0.010931875749900012,
+            "Count": 82
+        },
+        {
+            "LHS": [
+                "milk",
+                "ground beef"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.503030303030303,
+            "Lift": 2.1103077757440176,
+            "Conviction": 1.5325517573266656,
+            "Leverage": 0.00582178964148601,
+            "LHS_Count": 165,
+            "LHS_Support": 0.021997067057725635,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.011065191307825623,
+            "Count": 83
+        },
+        {
+            "LHS": [
+                "spaghetti",
+                "mineral water"
+            ],
+            "RHS": [
+                "frozen vegetables"
+            ],
+            "Confidence": 0.20089285714285715,
+            "Lift": 2.1075487012987013,
+            "Conviction": 1.1321127387856667,
+            "Leverage": 0.006305340685944358,
+            "LHS_Count": 448,
+            "LHS_Support": 0.05972536995067324,
+            "RHS_Count": 715,
+            "RHS_Support": 0.09532062391681109,
+            "Support": 0.011998400213304892,
+            "Count": 90
+        },
+        {
+            "LHS": [
+                "red wine"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.36492890995260663,
+            "Lift": 2.095966120638976,
+            "Conviction": 1.3004683952587415,
+            "Leverage": 0.005367652974892865,
+            "LHS_Count": 211,
+            "LHS_Support": 0.028129582722303693,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.010265297960271964,
+            "Count": 77
+        },
+        {
+            "LHS": [
+                "mineral water",
+                "ground beef"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.2703583061889251,
+            "Lift": 2.0863761879867564,
+            "Conviction": 1.1929379654141352,
+            "Leverage": 0.005761645680944714,
+            "LHS_Count": 307,
+            "LHS_Support": 0.040927876283162246,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.011065191307825623,
+            "Count": 83
+        },
+        {
+            "LHS": [
+                "chocolate",
+                "mineral water"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.26582278481012656,
+            "Lift": 2.0513752148773245,
+            "Conviction": 1.1855683610001424,
+            "Leverage": 0.007174353378221748,
+            "LHS_Count": 395,
+            "LHS_Support": 0.05265964538061592,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.013998133582189041,
+            "Count": 105
+        },
+        {
+            "LHS": [
+                "spaghetti",
+                "mineral water"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.26339285714285715,
+            "Lift": 2.032623273074662,
+            "Conviction": 1.1816573951755929,
+            "Leverage": 0.00799185980641856,
+            "LHS_Count": 448,
+            "LHS_Support": 0.05972536995067324,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.01573123583522197,
+            "Count": 118
+        },
+        {
+            "LHS": [
+                "olive oil"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.3481781376518219,
+            "Lift": 1.999758201015556,
+            "Conviction": 1.267048451510813,
+            "Leverage": 0.01146375168463962,
+            "LHS_Count": 494,
+            "LHS_Support": 0.0658578856152513,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.022930275963204905,
+            "Count": 172
+        },
+        {
+            "LHS": [
+                "olive oil"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.2591093117408907,
+            "Lift": 1.9995668182802688,
+            "Conviction": 1.1748255059616823,
+            "Leverage": 0.008530347311288593,
+            "LHS_Count": 494,
+            "LHS_Support": 0.0658578856152513,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.017064391414478068,
+            "Count": 128
+        },
+        {
+            "LHS": [
+                "chocolate",
+                "ground beef"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.47398843930635837,
+            "Lift": 1.988471634920019,
+            "Conviction": 1.4479373446177872,
+            "Leverage": 0.005434248548222722,
+            "LHS_Count": 173,
+            "LHS_Support": 0.023063591521130515,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.010931875749900012,
+            "Count": 82
+        },
+        {
+            "LHS": [
+                "eggs",
+                "mineral water"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.25654450261780104,
+            "Lift": 1.979773985736755,
+            "Conviction": 1.1707725354929202,
+            "Leverage": 0.006465724580721148,
+            "LHS_Count": 382,
+            "LHS_Support": 0.05092654312758299,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.013064924676709772,
+            "Count": 98
+        },
+        {
+            "LHS": [
+                "milk",
+                "frozen vegetables"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.46892655367231634,
+            "Lift": 1.9672360621342533,
+            "Conviction": 1.434136441382284,
+            "Leverage": 0.0054404513384794925,
+            "LHS_Count": 177,
+            "LHS_Support": 0.023596853752832957,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.011065191307825623,
+            "Count": 83
+        },
+        {
+            "LHS": [
+                "chocolate",
+                "milk"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.34024896265560167,
+            "Lift": 1.954217051209547,
+            "Conviction": 1.2518205119820502,
+            "Leverage": 0.005337883136267961,
+            "LHS_Count": 241,
+            "LHS_Support": 0.03212904946007199,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.010931875749900012,
+            "Count": 82
+        },
+        {
+            "LHS": [
+                "pancakes",
+                "mineral water"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.33992094861660077,
+            "Lift": 1.9523331053392974,
+            "Conviction": 1.2511984430020109,
+            "Leverage": 0.0055926063166692195,
+            "LHS_Count": 253,
+            "LHS_Support": 0.03372883615517931,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.011465137981602452,
+            "Count": 86
+        },
+        {
+            "LHS": [
+                "mineral water",
+                "frozen vegetables"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.33582089552238803,
+            "Lift": 1.9287844849260587,
+            "Conviction": 1.2434746528178264,
+            "Leverage": 0.005777694734245183,
+            "LHS_Count": 268,
+            "LHS_Support": 0.03572856952406346,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.011998400213304892,
+            "Count": 90
+        },
+        {
+            "LHS": [
+                "soup"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.45646437994722955,
+            "Lift": 1.9149548735929356,
+            "Conviction": 1.4012545900028865,
+            "Leverage": 0.01101965678450801,
+            "LHS_Count": 379,
+            "LHS_Support": 0.05052659645380616,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.023063591521130515,
+            "Count": 173
+        },
+        {
+            "LHS": [
+                "frozen vegetables"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.24755244755244757,
+            "Lift": 1.9103815937149273,
+            "Conviction": 1.1567813263064306,
+            "Leverage": 0.011244947814006083,
+            "LHS_Count": 715,
+            "LHS_Support": 0.09532062391681109,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.023596853752832957,
+            "Count": 177
+        },
+        {
+            "LHS": [
+                "spaghetti",
+                "pancakes"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.455026455026455,
+            "Lift": 1.908922505119373,
+            "Conviction": 1.3975573483406096,
+            "Leverage": 0.005459059709249805,
+            "LHS_Count": 189,
+            "LHS_Support": 0.025196640447940274,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.011465137981602452,
+            "Count": 86
+        },
+        {
+            "LHS": [
+                "chicken"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.24666666666666667,
+            "Lift": 1.9035459533607684,
+            "Conviction": 1.1554211650835937,
+            "Leverage": 0.007024100115096418,
+            "LHS_Count": 450,
+            "LHS_Support": 0.05999200106652446,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.014798026929742702,
+            "Count": 111
+        },
+        {
+            "LHS": [
+                "shrimp"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.2462686567164179,
+            "Lift": 1.900474479454579,
+            "Conviction": 1.1548110416960906,
+            "Leverage": 0.008338043040290713,
+            "LHS_Count": 536,
+            "LHS_Support": 0.07145713904812692,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.01759765364618051,
+            "Count": 132
+        },
+        {
+            "LHS": [
+                "herb & pepper"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.32884097035040427,
+            "Lift": 1.8886953434903389,
+            "Conviction": 1.2305427549419112,
+            "Leverage": 0.007652999064196229,
+            "LHS_Count": 371,
+            "LHS_Support": 0.04946007199040128,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.01626449806692441,
+            "Count": 122
+        },
+        {
+            "LHS": [
+                "milk",
+                "mineral water"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.3277777777777778,
+            "Lift": 1.882588905904373,
+            "Conviction": 1.2285965177094844,
+            "Leverage": 0.007375064296186541,
+            "LHS_Count": 360,
+            "LHS_Support": 0.04799360085321957,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.01573123583522197,
+            "Count": 118
+        },
+        {
+            "LHS": [
+                "spaghetti",
+                "milk"
+            ],
+            "RHS": [
+                "chocolate"
+            ],
+            "Confidence": 0.3082706766917293,
+            "Lift": 1.8814795328435,
+            "Conviction": 1.2087895526973216,
+            "Leverage": 0.005121620810066277,
+            "LHS_Count": 266,
+            "LHS_Support": 0.03546193840821224,
+            "RHS_Count": 1229,
+            "RHS_Support": 0.1638448206905746,
+            "Support": 0.010931875749900012,
+            "Count": 82
+        },
+        {
+            "LHS": [
+                "spaghetti",
+                "olive oil"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.4476744186046512,
+            "Lift": 1.8780793142916603,
+            "Conviction": 1.3789543850293646,
+            "Leverage": 0.004799448950511883,
+            "LHS_Count": 172,
+            "LHS_Support": 0.022930275963204905,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.010265297960271964,
+            "Count": 77
+        },
+        {
+            "LHS": [
+                "spaghetti",
+                "milk"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.44360902255639095,
+            "Lift": 1.8610242048073202,
+            "Conviction": 1.3688787440953818,
+            "Leverage": 0.0072782367852441705,
+            "LHS_Count": 266,
+            "LHS_Support": 0.03546193840821224,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.01573123583522197,
+            "Count": 118
+        },
+        {
+            "LHS": [
+                "burgers"
+            ],
+            "RHS": [
+                "eggs"
+            ],
+            "Confidence": 0.33027522935779813,
+            "Lift": 1.8378297443715457,
+            "Conviction": 1.224817512916086,
+            "Leverage": 0.013127592408644938,
+            "LHS_Count": 654,
+            "LHS_Support": 0.0871883748833489,
+            "RHS_Count": 1348,
+            "RHS_Support": 0.17970937208372217,
+            "Support": 0.02879616051193174,
+            "Count": 216
+        },
+        {
+            "LHS": [
+                "chocolate",
+                "milk"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.43568464730290457,
+            "Lift": 1.827779943746693,
+            "Conviction": 1.3496563203337595,
+            "Leverage": 0.006339589330141486,
+            "LHS_Count": 241,
+            "LHS_Support": 0.03212904946007199,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.013998133582189041,
+            "Count": 105
+        },
+        {
+            "LHS": [
+                "spaghetti",
+                "ground beef"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.4353741496598639,
+            "Lift": 1.8264773470909614,
+            "Conviction": 1.3489141206875228,
+            "Leverage": 0.007721602990818394,
+            "LHS_Count": 294,
+            "LHS_Support": 0.03919477403012932,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.017064391414478068,
+            "Count": 128
+        },
+        {
+            "LHS": [
+                "chocolate",
+                "eggs"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.3172690763052209,
+            "Lift": 1.8222322675080107,
+            "Conviction": 1.2096857673878776,
+            "Leverage": 0.004752243761623677,
+            "LHS_Count": 249,
+            "LHS_Support": 0.03319557392347687,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.010531929076123183,
+            "Count": 79
+        },
+        {
+            "LHS": [
+                "salmon"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.3166144200626959,
+            "Lift": 1.8184722548930183,
+            "Conviction": 1.2085269364696327,
+            "Leverage": 0.006060374903396873,
+            "LHS_Count": 319,
+            "LHS_Support": 0.04252766297826956,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.013464871350486601,
+            "Count": 101
+        },
+        {
+            "LHS": [
+                "grated cheese"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.3155216284987277,
+            "Lift": 1.8121958157495839,
+            "Conviction": 1.2065974846476477,
+            "Leverage": 0.007408975252661952,
+            "LHS_Count": 393,
+            "LHS_Support": 0.0523930142647647,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.01653112918277563,
+            "Count": 124
+        },
+        {
+            "LHS": [
+                "spaghetti",
+                "frozen vegetables"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.43062200956937796,
+            "Lift": 1.806541215760573,
+            "Conviction": 1.3376558195601933,
+            "Leverage": 0.005356758102608049,
+            "LHS_Count": 209,
+            "LHS_Support": 0.027862951606452472,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.011998400213304892,
+            "Count": 90
+        },
+        {
+            "LHS": [
+                "cooking oil"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.31070496083550914,
+            "Lift": 1.7845313255950643,
+            "Conviction": 1.1981660021088096,
+            "Leverage": 0.006974513339118221,
+            "LHS_Count": 383,
+            "LHS_Support": 0.0510598586855086,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.01586455139314758,
+            "Count": 119
+        },
+        {
+            "LHS": [
+                "milk",
+                "mineral water"
+            ],
+            "RHS": [
+                "chocolate"
+            ],
+            "Confidence": 0.2916666666666667,
+            "Lift": 1.7801396799566043,
+            "Conviction": 1.1804543707897772,
+            "Leverage": 0.006134630656098273,
+            "LHS_Count": 360,
+            "LHS_Support": 0.04799360085321957,
+            "RHS_Count": 1229,
+            "RHS_Support": 0.1638448206905746,
+            "Support": 0.013998133582189041,
+            "Count": 105
+        },
+        {
+            "LHS": [
+                "eggs",
+                "milk"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.42424242424242425,
+            "Lift": 1.7797776421937497,
+            "Conviction": 1.3228341484293324,
+            "Leverage": 0.005724162343834314,
+            "LHS_Count": 231,
+            "LHS_Support": 0.03079589388081589,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.013064924676709772,
+            "Count": 98
+        },
+        {
+            "LHS": [
+                "spaghetti",
+                "eggs"
+            ],
+            "RHS": [
+                "chocolate"
+            ],
+            "Confidence": 0.28832116788321166,
+            "Lift": 1.7597209766411477,
+            "Conviction": 1.1749052263117052,
+            "Leverage": 0.0045469296268207645,
+            "LHS_Count": 274,
+            "LHS_Support": 0.036528462871617116,
+            "RHS_Count": 1229,
+            "RHS_Support": 0.1638448206905746,
+            "Support": 0.010531929076123183,
+            "Count": 79
+        },
+        {
+            "LHS": [
+                "olive oil"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.4190283400809717,
+            "Lift": 1.7579035676439423,
+            "Conviction": 1.3109620227175287,
+            "Leverage": 0.011897893683499625,
+            "LHS_Count": 494,
+            "LHS_Support": 0.0658578856152513,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.027596320490601255,
+            "Count": 207
+        },
+        {
+            "LHS": [
+                "tomatoes"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.3060428849902534,
+            "Lift": 1.7577547322449394,
+            "Conviction": 1.1901165986857183,
+            "Leverage": 0.009022998151195267,
+            "LHS_Count": 513,
+            "LHS_Support": 0.06839088121583789,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.020930542594320756,
+            "Count": 157
+        },
+        {
+            "LHS": [
+                "ground beef"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.41655359565807326,
+            "Lift": 1.7475215442008991,
+            "Conviction": 1.305401450349256,
+            "Leverage": 0.01750734884017864,
+            "LHS_Count": 737,
+            "LHS_Support": 0.09825356619117451,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.040927876283162246,
+            "Count": 307
+        },
+        {
+            "LHS": [
+                "frozen smoothie"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.22526315789473686,
+            "Lift": 1.7383734026424087,
+            "Conviction": 1.1235005622438747,
+            "Leverage": 0.006058953060358073,
+            "LHS_Count": 475,
+            "LHS_Support": 0.06332489001466471,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.014264764698040262,
+            "Count": 107
+        },
+        {
+            "LHS": [
+                "cooking oil"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.22454308093994776,
+            "Lift": 1.732816512479988,
+            "Conviction": 1.122457297500625,
+            "Leverage": 0.004848662492692393,
+            "LHS_Count": 383,
+            "LHS_Support": 0.0510598586855086,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.011465137981602452,
+            "Count": 86
+        },
+        {
+            "LHS": [
+                "turkey"
+            ],
+            "RHS": [
+                "eggs"
+            ],
+            "Confidence": 0.31130063965884863,
+            "Lift": 1.7322448798820649,
+            "Conviction": 1.1910721501323045,
+            "Leverage": 0.0082277435665557,
+            "LHS_Count": 469,
+            "LHS_Support": 0.06252499666711105,
+            "RHS_Count": 1348,
+            "RHS_Support": 0.17970937208372217,
+            "Support": 0.01946407145713905,
+            "Count": 146
+        },
+        {
+            "LHS": [
+                "chocolate",
+                "mineral water"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.3012658227848101,
+            "Lift": 1.7303177157035687,
+            "Conviction": 1.1819800838149117,
+            "Leverage": 0.00669597428781704,
+            "LHS_Count": 395,
+            "LHS_Support": 0.05265964538061592,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.01586455139314758,
+            "Count": 119
+        },
+        {
+            "LHS": [
+                "ground beef"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.22388059701492538,
+            "Lift": 1.7277040722314356,
+            "Conviction": 1.121499184724088,
+            "Leverage": 0.009265102474627166,
+            "LHS_Count": 737,
+            "LHS_Support": 0.09825356619117451,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.021997067057725635,
+            "Count": 165
+        },
+        {
+            "LHS": [
+                "french fries",
+                "mineral water"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.30039525691699603,
+            "Lift": 1.7253176279742628,
+            "Conviction": 1.1805092654312759,
+            "Leverage": 0.004259450737413121,
+            "LHS_Count": 253,
+            "LHS_Support": 0.03372883615517931,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.010131982402346354,
+            "Count": 76
+        },
+        {
+            "LHS": [
+                "shrimp"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.2966417910447761,
+            "Lift": 1.7037596283513519,
+            "Conviction": 1.174209486480494,
+            "Leverage": 0.008755762752052558,
+            "LHS_Count": 536,
+            "LHS_Support": 0.07145713904812692,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.021197173710171976,
+            "Count": 159
+        },
+        {
+            "LHS": [
+                "chocolate",
+                "eggs"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.40562248995983935,
+            "Lift": 1.7016634771749188,
+            "Conviction": 1.2813940123298875,
+            "Leverage": 0.005552101563101368,
+            "LHS_Count": 249,
+            "LHS_Support": 0.03319557392347687,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.013464871350486601,
+            "Count": 101
+        },
+        {
+            "LHS": [
+                "chocolate",
+                "spaghetti"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.40476190476190477,
+            "Lift": 1.6980531586236285,
+            "Conviction": 1.2795413944807361,
+            "Leverage": 0.006521762969487907,
+            "LHS_Count": 294,
+            "LHS_Support": 0.03919477403012932,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.01586455139314758,
+            "Count": 119
+        },
+        {
+            "LHS": [
+                "salmon"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.4012539184952978,
+            "Lift": 1.6833364891684726,
+            "Conviction": 1.2720447046850996,
+            "Leverage": 0.006927148192888149,
+            "LHS_Count": 319,
+            "LHS_Support": 0.04252766297826956,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.017064391414478068,
+            "Count": 128
+        },
+        {
+            "LHS": [
+                "frozen vegetables"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.29230769230769227,
+            "Lift": 1.678866768759571,
+            "Conviction": 1.1670183106020646,
+            "Leverage": 0.011266666466423773,
+            "LHS_Count": 715,
+            "LHS_Support": 0.09532062391681109,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.027862951606452472,
+            "Count": 209
+        },
+        {
+            "LHS": [
+                "cereals"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.3989637305699482,
+            "Lift": 1.6737287153272828,
+            "Conviction": 1.2671977069724039,
+            "Leverage": 0.004132106920250477,
+            "LHS_Count": 193,
+            "LHS_Support": 0.025729902679642713,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.010265297960271964,
+            "Count": 77
+        },
+        {
+            "LHS": [
+                "cooking oil"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.3942558746736292,
+            "Lift": 1.6539783646123563,
+            "Conviction": 1.2573490201306492,
+            "Leverage": 0.007959601742475753,
+            "LHS_Count": 383,
+            "LHS_Support": 0.0510598586855086,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.020130649246767097,
+            "Count": 151
+        },
+        {
+            "LHS": [
+                "chicken"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.2866666666666667,
+            "Lift": 1.6464675855028077,
+            "Conviction": 1.1577895532932057,
+            "Leverage": 0.006752492548609391,
+            "LHS_Count": 450,
+            "LHS_Support": 0.05999200106652446,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.01719770697240368,
+            "Count": 129
+        },
+        {
+            "LHS": [
+                "spaghetti",
+                "eggs"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.3905109489051095,
+            "Lift": 1.6382676888910663,
+            "Conviction": 1.2496234035062792,
+            "Leverage": 0.005557540112724784,
+            "LHS_Count": 274,
+            "LHS_Support": 0.036528462871617116,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.014264764698040262,
+            "Count": 107
+        },
+        {
+            "LHS": [
+                "red wine"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.38862559241706157,
+            "Lift": 1.6303582599107265,
+            "Conviction": 1.2457698146707055,
+            "Leverage": 0.00422667725536875,
+            "LHS_Count": 211,
+            "LHS_Support": 0.028129582722303693,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.010931875749900012,
+            "Count": 82
+        },
+        {
+            "LHS": [
+                "mineral water",
+                "ground beef"
+            ],
+            "RHS": [
+                "chocolate"
+            ],
+            "Confidence": 0.267100977198697,
+            "Lift": 1.6302070219425762,
+            "Conviction": 1.1408872891021935,
+            "Leverage": 0.004226055199039273,
+            "LHS_Count": 307,
+            "LHS_Support": 0.040927876283162246,
+            "RHS_Count": 1229,
+            "RHS_Support": 0.1638448206905746,
+            "Support": 0.010931875749900012,
+            "Count": 82
+        },
+        {
+            "LHS": [
+                "cooking oil"
+            ],
+            "RHS": [
+                "chocolate"
+            ],
+            "Confidence": 0.26631853785900783,
+            "Lift": 1.6254315317171828,
+            "Conviction": 1.1396705824751243,
+            "Leverage": 0.0052322935175989765,
+            "LHS_Count": 383,
+            "LHS_Support": 0.0510598586855086,
+            "RHS_Count": 1229,
+            "RHS_Support": 0.1638448206905746,
+            "Support": 0.013598186908412212,
+            "Count": 102
+        },
+        {
+            "LHS": [
+                "soup"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.2823218997361478,
+            "Lift": 1.6215134532318871,
+            "Conviction": 1.1507803861445927,
+            "Leverage": 0.0054675729944446295,
+            "LHS_Count": 379,
+            "LHS_Support": 0.05052659645380616,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.014264764698040262,
+            "Count": 107
+        },
+        {
+            "LHS": [
+                "spaghetti",
+                "mineral water"
+            ],
+            "RHS": [
+                "chocolate"
+            ],
+            "Confidence": 0.265625,
+            "Lift": 1.621198637103336,
+            "Conviction": 1.1385942867192176,
+            "Leverage": 0.006078858862901292,
+            "LHS_Count": 448,
+            "LHS_Support": 0.05972536995067324,
+            "RHS_Count": 1229,
+            "RHS_Support": 0.1638448206905746,
+            "Support": 0.01586455139314758,
+            "Count": 119
+        },
+        {
+            "LHS": [
+                "eggs",
+                "mineral water"
+            ],
+            "RHS": [
+                "chocolate"
+            ],
+            "Confidence": 0.2643979057591623,
+            "Lift": 1.6137092685919252,
+            "Conviction": 1.1366949412676175,
+            "Leverage": 0.005120821023356953,
+            "LHS_Count": 382,
+            "LHS_Support": 0.05092654312758299,
+            "RHS_Count": 1229,
+            "RHS_Support": 0.1638448206905746,
+            "Support": 0.013464871350486601,
+            "Count": 101
+        },
+        {
+            "LHS": [
+                "eggs",
+                "mineral water"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.2801047120418848,
+            "Lift": 1.608779054384516,
+            "Conviction": 1.1472361260922785,
+            "Leverage": 0.005397938231619333,
+            "LHS_Count": 382,
+            "LHS_Support": 0.05092654312758299,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.014264764698040262,
+            "Count": 107
+        },
+        {
+            "LHS": [
+                "chicken"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.38000000000000006,
+            "Lift": 1.5941722595078303,
+            "Conviction": 1.2284383587564671,
+            "Leverage": 0.0084967740425349,
+            "LHS_Count": 450,
+            "LHS_Support": 0.05999200106652446,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.022796960405279298,
+            "Count": 171
+        },
+        {
+            "LHS": [
+                "burgers"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.20489296636085627,
+            "Lift": 1.581175041844427,
+            "Conviction": 1.0947171146411248,
+            "Leverage": 0.0065661777914124645,
+            "LHS_Count": 654,
+            "LHS_Support": 0.0871883748833489,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.01786428476203173,
+            "Count": 134
+        },
+        {
+            "LHS": [
+                "tomatoes"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.2046783625730994,
+            "Lift": 1.5795189276345871,
+            "Conviction": 1.0944217241622687,
+            "Leverage": 0.005135857013492277,
+            "LHS_Count": 513,
+            "LHS_Support": 0.06839088121583789,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.013998133582189041,
+            "Count": 105
+        },
+        {
+            "LHS": [
+                "frozen vegetables"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.37482517482517486,
+            "Lift": 1.57246288387228,
+            "Conviction": 1.2182700770396908,
+            "Leverage": 0.013007162303258473,
+            "LHS_Count": 715,
+            "LHS_Support": 0.09532062391681109,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.03572856952406346,
+            "Count": 268
+        },
+        {
+            "LHS": [
+                "spaghetti"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.20367534456355285,
+            "Lift": 1.57177855922964,
+            "Conviction": 1.0930432352609396,
+            "Leverage": 0.012900275252816583,
+            "LHS_Count": 1306,
+            "LHS_Support": 0.17411011865084655,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.03546193840821224,
+            "Count": 266
+        },
+        {
+            "LHS": [
+                "milk"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.27366255144032925,
+            "Lift": 1.5717785592296398,
+            "Conviction": 1.1370608564750384,
+            "Leverage": 0.012900275252816583,
+            "LHS_Count": 972,
+            "LHS_Support": 0.12958272230369283,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.03546193840821224,
+            "Count": 266
+        },
+        {
+            "LHS": [
+                "whole wheat rice"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.2027334851936219,
+            "Lift": 1.5645101568285575,
+            "Conviction": 1.0917519568819396,
+            "Leverage": 0.004281187162868798,
+            "LHS_Count": 439,
+            "LHS_Support": 0.058525529929342755,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.011865084655379284,
+            "Count": 89
+        },
+        {
+            "LHS": [
+                "milk"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.3703703703703704,
+            "Lift": 1.5537741320739085,
+            "Conviction": 1.209650477975486,
+            "Leverage": 0.01710519830969167,
+            "LHS_Count": 972,
+            "LHS_Support": 0.12958272230369283,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.04799360085321957,
+            "Count": 360
+        },
+        {
+            "LHS": [
+                "mineral water"
+            ],
+            "RHS": [
+                "milk"
+            ],
+            "Confidence": 0.20134228187919462,
+            "Lift": 1.5537741320739085,
+            "Conviction": 1.0898502048466365,
+            "Leverage": 0.01710519830969167,
+            "LHS_Count": 1788,
+            "LHS_Support": 0.23836821757099053,
+            "RHS_Count": 972,
+            "RHS_Support": 0.12958272230369283,
+            "Support": 0.04799360085321957,
+            "Count": 360
+        },
+        {
+            "LHS": [
+                "spaghetti",
+                "french fries"
+            ],
+            "RHS": [
+                "mineral water"
+            ],
+            "Confidence": 0.36714975845410625,
+            "Lift": 1.54026305266457,
+            "Conviction": 1.2034944958992746,
+            "Leverage": 0.00355389667548393,
+            "LHS_Count": 207,
+            "LHS_Support": 0.027596320490601255,
+            "RHS_Count": 1788,
+            "RHS_Support": 0.23836821757099053,
+            "Support": 0.010131982402346354,
+            "Count": 76
+        },
+        {
+            "LHS": [
+                "shrimp"
+            ],
+            "RHS": [
+                "chocolate"
+            ],
+            "Confidence": 0.251865671641791,
+            "Lift": 1.5372208323719074,
+            "Conviction": 1.1176538057602294,
+            "Leverage": 0.0062897181855555255,
+            "LHS_Count": 536,
+            "LHS_Support": 0.07145713904812692,
+            "RHS_Count": 1229,
+            "RHS_Support": 0.1638448206905746,
+            "Support": 0.017997600319957337,
+            "Count": 135
+        },
+        {
+            "LHS": [
+                "salmon"
+            ],
+            "RHS": [
+                "chocolate"
+            ],
+            "Confidence": 0.2507836990595611,
+            "Lift": 1.5306171901104701,
+            "Conviction": 1.1160397581577686,
+            "Leverage": 0.003697307318985029,
+            "LHS_Count": 319,
+            "LHS_Support": 0.04252766297826956,
+            "RHS_Count": 1229,
+            "RHS_Support": 0.1638448206905746,
+            "Support": 0.010665244634048793,
+            "Count": 80
+        },
+        {
+            "LHS": [
+                "pancakes"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.2650771388499299,
+            "Lift": 1.522468314328732,
+            "Conviction": 1.1237776438968443,
+            "Leverage": 0.008646778483128437,
+            "LHS_Count": 713,
+            "LHS_Support": 0.09505399280095987,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.025196640447940274,
+            "Count": 189
+        },
+        {
+            "LHS": [
+                "olive oil"
+            ],
+            "RHS": [
+                "chocolate"
+            ],
+            "Confidence": 0.24898785425101214,
+            "Lift": 1.5196565457582114,
+            "Conviction": 1.1133710473823615,
+            "Leverage": 0.005607340165158799,
+            "LHS_Count": 494,
+            "LHS_Support": 0.0658578856152513,
+            "RHS_Count": 1229,
+            "RHS_Support": 0.1638448206905746,
+            "Support": 0.01639781362485002,
+            "Count": 123
+        },
+        {
+            "LHS": [
+                "turkey"
+            ],
+            "RHS": [
+                "spaghetti"
+            ],
+            "Confidence": 0.26439232409381663,
+            "Lift": 1.5185350865449607,
+            "Conviction": 1.1227314618920377,
+            "Leverage": 0.00564489459442114,
+            "LHS_Count": 469,
+            "LHS_Support": 0.06252499666711105,
+            "RHS_Count": 1306,
+            "RHS_Support": 0.17411011865084655,
+            "Support": 0.01653112918277563,
+            "Count": 124
+        },
+        {
+            "LHS": [
+                "burgers"
+            ],
+            "RHS": [
+                "green tea"
+            ],
+            "Confidence": 0.2003058103975535,
+            "Lift": 1.5161391360161947,
+            "Conviction": 1.0852702112630999,
+            "Leverage": 0.005945383347633816,
+            "LHS_Count": 654,
+            "LHS_Support": 0.0871883748833489,
+            "RHS_Count": 991,
+            "RHS_Support": 0.13211571790427942,
+            "Support": 0.0174643380882549,
+            "Count": 131
+        },
+        {
+            "LHS": [
+                "milk",
+                "mineral water"
+            ],
+            "RHS": [
+                "eggs"
+            ],
+            "Confidence": 0.27222222222222225,
+            "Lift": 1.514791460600066,
+            "Conviction": 1.1271168933200764,
+            "Leverage": 0.004440024803340891,
+            "LHS_Count": 360,
+            "LHS_Support": 0.04799360085321957,
+            "RHS_Count": 1348,
+            "RHS_Support": 0.17970937208372217,
+            "Support": 0.013064924676709772,
+            "Count": 98
+        },
+        {
+            "LHS": [
+                "milk"
+            ],
+            "RHS": [
+                "chocolate"
+            ],
+            "Confidence": 0.2479423868312757,
+            "Lift": 1.5132757067708698,
+            "Conviction": 1.111823302720604,
+            "Leverage": 0.010897591559626912,
+            "LHS_Count": 972,
+            "LHS_Support": 0.12958272230369283,
+            "RHS_Count": 1229,
+            "RHS_Support": 0.1638448206905746,
+            "Support": 0.03212904946007199,
+            "Count": 241
+        },
+        {
+            "LHS": [
+                "champagne"
+            ],
+            "RHS": [
+                "chocolate"
+            ],
+            "Confidence": 0.24786324786324784,
+            "Lift": 1.5127926950546964,
+            "Conviction": 1.111706317945486,
+            "Leverage": 0.003931538186589563,
+            "LHS_Count": 351,
+            "LHS_Support": 0.04679376083188908,
+            "RHS_Count": 1229,
+            "RHS_Support": 0.1638448206905746,
+            "Support": 0.011598453539528063,
+            "Count": 87
+        }
+    ]
+}

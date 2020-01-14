@@ -17,7 +17,6 @@ max_items=999
 __Version__ = '01.00.01 30/11/2019'
 __Developer__ = 'Malliaridis konstantinos'
 __DeveloperEmail__= 'terminal_gr@yahoo.com'
-__University__= 'International Hellenic University'
 
 ###########################
 # general purpose functions
@@ -34,53 +33,56 @@ def mid(s, offset, amount):
 ################################################################################
 # Data structures.
 ################################################################################
-class itemsetManager(object):
+class TransactionManager(object):
+    """
+    Transaction managers.
+    """
 
-    def __init__(self, itemsets):
+    def __init__(self, transactions):
         """
-        Initialization
+        Initialize.
 
         Arguments:
-            itemsets -- A itemset iterable object
-                            (example [['A', 'B', 'C'], ['B', 'C']]).
+            transactions -- A transaction iterable object
+                            (eg. [['A', 'B'], ['B', 'C']]).
         """
-        self.__num_itemset = 0
+        self.__num_transaction = 0
         self.__items = []
-        self.__itemset_index_map = {}
+        self.__transaction_index_map = {}
 
-        for itemset in itemsets:
-            self.add_itemset(itemset)
+        for transaction in transactions:
+            self.add_transaction(transaction)
 
-    def add_itemset(self, itemset):
+    def add_transaction(self, transaction):
         """
-        Add a itemset.
+        Add a transaction.
 
         Arguments:
-            itemset -- A itemset as an iterable object (['A', 'B', 'C']).
+            transaction -- A transaction as an iterable object (eg. ['A', 'B']).
         """
-        for item in itemset:
-            if item not in self.__itemset_index_map:
+        for item in transaction:
+            if item not in self.__transaction_index_map:
                 self.__items.append(item)
-                self.__itemset_index_map[item] = set()
-            self.__itemset_index_map[item].add(self.__num_itemset)
-        self.__num_itemset += 1
+                self.__transaction_index_map[item] = set()
+            self.__transaction_index_map[item].add(self.__num_transaction)
+        self.__num_transaction += 1
 
     def calc_count(self, items):
         """
         Returns the number of items.
         Arguments:
-            items -- Items as an iterable object (['A', 'B', 'C']).
+            items -- Items as an iterable object (eg. ['A', 'B']).
         """
-        # Empty items is supported by all itemsets.
+        # Empty items is supported by all transactions.
         if not items:
-            return self.__num_itemset
-        # Empty itemsets supports no items.
-        if not self.num_itemset:
+            return self.__num_transaction
+        # Empty transactions supports no items.
+        if not self.num_transaction:
             return 0
-        # Create the itemset index intersection.
+        # Create the transaction index intersection.
         sum_indexes = None
         for item in items:
-            indexes = self.__itemset_index_map.get(item)
+            indexes = self.__transaction_index_map.get(item)
             if indexes is None:
                 # No support for any set that contains a not existing item.
                 return 0
@@ -100,37 +102,37 @@ class itemsetManager(object):
         return [frozenset([item]) for item in self.items]
 
     @property
-    def num_itemset(self):
+    def num_transaction(self):
         """
-        Returns the count of itemsets.
+        Returns the number of transactions.
         """
-        return self.__num_itemset
+        return self.__num_transaction
 
     @property
     def items(self):
         """
-        Returns the items list that the itemset is consisted of.
+        Returns the item list that the transaction is consisted of.
         """
         return sorted(self.__items)
 
     @staticmethod
-    def create(itemsets):
+    def create(transactions):
         """
-        Create the itemsetManager with an itemset instance.
-        If the given instance is a itemsetManager then it returns itself.
+        Create the TransactionManager with a transaction instance.
+        If the given instance is a TransactionManager, this returns itself.
         """
-        if isinstance(itemsets, itemsetManager):
-            return itemsets
-        return itemsetManager(itemsets)
+        if isinstance(transactions, TransactionManager):
+            return transactions
+        return TransactionManager(transactions)
 
-FrequentItemset = namedtuple('FrequentItemset', ('items', 'support', 'count'))
-Association_rule = namedtuple('Association_rule', FrequentItemset._fields + ('rule_statistics',))
-ruleStatistic = namedtuple('ruleStatistic', ('LHS', 'RHS', 'confidence', 'lift', 'conviction', 'levarage', 'LHS_count', 'LHS_support', 'RHS_count', 'RHS_support'))
+SupportRecord = namedtuple('SupportRecord', ('items', 'support', 'count'))
+Association_rule = namedtuple('Association_rule', SupportRecord._fields + ('ordered_statistics',))
+OrderedStatistic = namedtuple('OrderedStatistic', ('LHS', 'RHS', 'confidence', 'lift', 'conviction', 'levarage', 'LHS_count', 'LHS_support', 'RHS_count', 'RHS_support'))
 
 ################################################################################
 # Inner core functions.
 ################################################################################
-def extract_next_candidates(prev_candidates, length):
+def create_next_candidates(prev_candidates, length):
     """
     Returns the association rules candidates as a list.
 
@@ -164,67 +166,67 @@ def extract_next_candidates(prev_candidates, length):
     ]
     return next_candidates
 
-def generate_frequent_itemsets(itemset_manager, min_support, **kwargs):
+def gen_support_records(transaction_manager, min_support, **kwargs):
     """
-    Returns a generator of support records with given itemsets.
+    Returns a generator of support records with given transactions.
 
     Arguments:
-        itemset_manager -- itemsets as a itemsetManager instance.
+        transaction_manager -- Transactions as a TransactionManager instance.
         min_support -- A minimum support (float).
 
     Keyword arguments:
-        max_length -- The maximum length of association_rules (integer).
+        max_length -- The maximum length of relations (integer).
     """
     # Parse arguments.
     max_length = kwargs.get('max_length')
     
     # Process.
-    candidates = itemset_manager.initial_candidates()
+    candidates = transaction_manager.initial_candidates()
     length = 1
     while candidates:
-        association_rules = set()
-        for association_rule_candidate in candidates:
-            count = itemset_manager.calc_count(association_rule_candidate)
-            support = float(count/itemset_manager.num_itemset)
+        relations = set()
+        for relation_candidate in candidates:
+            count = transaction_manager.calc_count(relation_candidate)
+            support = float(count/transaction_manager.num_transaction)
             if support < min_support:
                 continue
                 
-            candidate_set = frozenset(association_rule_candidate)
-            association_rules.add(candidate_set)
+            candidate_set = frozenset(relation_candidate)
+            relations.add(candidate_set)
             
-            yield FrequentItemset(candidate_set, support, count)
+            yield SupportRecord(candidate_set, support, count)
         length += 1
         if max_length and length > max_length:
             break
-        candidates = extract_next_candidates(association_rules, length)
+        candidates = create_next_candidates(relations, length)
 
-def gen_rule_statistics(itemset_manager, itemset):
+def gen_ordered_statistics(transaction_manager, record):
     """
-    Returns a generator of rule statistics as ruleStatistic instances.
+    Returns a generator of ordered statistics as OrderedStatistic instances.
 
     Arguments:
-        itemset_manager -- itemsets as a itemsetManager instance.
-        itemset -- An itemset as a Supportitemset instance.
+        transaction_manager -- Transactions as a TransactionManager instance.
+        record -- A support record as a SupportRecord instance.
     """
-    items = itemset.items
+    items = record.items
     sorted_items = sorted(items)
     for base_length in range(len(items)):
         for combination_set in combinations(sorted_items, base_length):
             LHS = frozenset(combination_set)
             RHS = frozenset(items.difference(LHS))
-            LHS_count = itemset_manager.calc_count(LHS)
-            RHS_count = itemset_manager.calc_count(RHS)
-            LHS_support = float(LHS_count / itemset_manager.num_itemset)
-            RHS_support = float(RHS_count / itemset_manager.num_itemset)                   
-            confidence = (itemset.support / LHS_support)
+            LHS_count = transaction_manager.calc_count(LHS)
+            RHS_count = transaction_manager.calc_count(RHS)
+            LHS_support = float(LHS_count / transaction_manager.num_transaction)
+            RHS_support = float(RHS_count / transaction_manager.num_transaction)                   
+            confidence = (record.support / LHS_support)
             lift = confidence / RHS_support
-            levarage = itemset.support - (LHS_support * RHS_support)
+            levarage = record.support - (LHS_support * RHS_support)
             if confidence!=1:
                 conviction = (1 - RHS_support) / (1 - confidence)
             else:
                 conviction = 100
                 
-            yield ruleStatistic(
+            yield OrderedStatistic(
                                     frozenset(LHS), 
                                     frozenset(RHS), 
                                     confidence, lift, conviction, levarage, 
@@ -232,28 +234,28 @@ def gen_rule_statistics(itemset_manager, itemset):
                                 )
 
 
-def filter_rule_statistics(rule_statistics, **kwargs):
+def filter_ordered_statistics(ordered_statistics, **kwargs):
     """
-    Filter ruleStatistic objects.
+    Filter OrderedStatistic objects.
 
     Arguments:
-        rule_statistics -- A ruleStatistic iterable object.
+        ordered_statistics -- A OrderedStatistic iterable object.
 
     Keyword arguments:
-        min_confidence -- The minimum confidence of association_rules (float).
-        min_lift -- The minimum lift of association_rules (float).
+        min_confidence -- The minimum confidence of relations (float).
+        min_lift -- The minimum lift of relations (float).
     """
     
     min_confidence = kwargs.get('min_confidence', 0.0)
     min_lift = kwargs.get('min_lift', 0.0)
 
-    for rule_statistic in rule_statistics:
-        if rule_statistic.confidence < min_confidence:
+    for ordered_statistic in ordered_statistics:
+        if ordered_statistic.confidence < min_confidence:
             continue
-        if rule_statistic.lift < min_lift:
+        if ordered_statistic.lift < min_lift:
             continue
             
-        yield rule_statistic
+        yield ordered_statistic
 
         
 #####################################        
@@ -276,19 +278,19 @@ def transform_association_rules(A_R):
 ################################################################################
 # Main Apriori engine.
 ################################################################################
-def webApriori(itemsets, **kwargs):
+def webApriori(transactions, **kwargs):
     """
     Executes Apriori algorithm and returns an association rules generator.
 
     Arguments:
-        itemsets -- A itemset iterable object
+        transactions -- A transaction iterable object
                         (eg. [['A', 'B'], ['B', 'C']]).
 
     Keyword arguments:
-        min_support -- The minimum support of association_rules (float).
-        min_confidence -- The minimum confidence of association_rules (float).
-        min_lift -- The minimum lift of association_rules (float).
-        max_length -- The maximum length of the association_rule (integer).
+        min_support -- The minimum support of relations (float).
+        min_confidence -- The minimum confidence of relations (float).
+        min_lift -- The minimum lift of relations (float).
+        max_length -- The maximum length of the relation (integer).
     """
     # Parse the arguments.
     min_support = kwargs.get('min_support', 0.1)
@@ -310,20 +312,20 @@ def webApriori(itemsets, **kwargs):
         raise ValueError('Rules max length can''t be negative number!!!') 
 
     # Calculate supports.
-    itemset_manager = itemsetManager.create(itemsets)
-    frequent_itemsets = generate_frequent_itemsets(itemset_manager, min_support, max_length=max_length)
+    transaction_manager = TransactionManager.create(transactions)
+    support_records = gen_support_records(transaction_manager, min_support, max_length=max_length)
     
-    # Calculate rule stats.
-    for frequent_itemset in frequent_itemsets:
-        rule_statistics = list(
-            filter_rule_statistics(
-                gen_rule_statistics(itemset_manager, frequent_itemset),
+    # Calculate ordered stats.
+    for support_record in support_records:
+        ordered_statistics = list(
+            filter_ordered_statistics(
+                gen_ordered_statistics(transaction_manager, support_record),
                 min_confidence=min_confidence,
                 min_lift=min_lift,
             )            
         )
         
-        if not rule_statistics:
+        if not ordered_statistics:
             continue
            
         rules_counter+=1
@@ -331,7 +333,7 @@ def webApriori(itemsets, **kwargs):
             print('Maximum itemsets count limit reached!!!(' + str(max_rules) + ')')
             break
         
-        yield Association_rule(frequent_itemset.items, frequent_itemset.support, frequent_itemset.count, rule_statistics)
+        yield Association_rule(support_record.items, support_record.support, support_record.count, ordered_statistics)
             
 
   
