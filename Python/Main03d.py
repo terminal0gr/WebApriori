@@ -233,7 +233,7 @@ def gen_rule_statistics(itemset_manager, itemset, **kwargs):
             if lift < min_lift:
                continue
 
-            print('', frozenset(LHS), '<=>', frozenset(RHS))
+            # print('', frozenset(LHS), '<=>', frozenset(RHS))
 
             yield ruleStatistic(
                                     frozenset(LHS), 
@@ -333,12 +333,14 @@ def webApriori(itemsets, **kwargs):
         if not rule_statistics:
             continue
 
-        # print(len(rule_statistics), ' - ' ,rule_statistics)   
+        print(len(rule_statistics), ' - ' ,rule_statistics)   
 
         rules_counter+=len(rule_statistics)
         if rules_counter>=max_rules:
             print('Maximum itemsets count limit reached!!!(' + str(max_rules) + ')')
             break
+
+        print(rules_counter)
         
         yield Association_rule(frequent_itemset.items, frequent_itemset.support, frequent_itemset.count, rule_statistics)
             
