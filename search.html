@@ -897,7 +897,7 @@ class,age,sex,survived<br>
 					</select>
 				</div>	
 				<div class="col-2">	
-					<input type="text" id="separator" name="separator" class="form-control" data-trigger="hover" data-toggle="tooltip" title="the separator of the items in the CSV file. The most common characters are (,) and (;)" value=",">		
+					<input type="text" id="separator" name="separator" class="form-control" data-trigger="hover" data-toggle="tooltip" title="the separator of the items in the CSV file. The most common characters are (,) and (;)" value="," placeholder=",">		
 				</div>
 				<div class="col-1">	
 					<button type="button" id="downloadDataset" class="btn mt-n2 float-right" onclick="DoDownload('dataset')"    data-trigger="hover" data-toggle="tooltip" title="Download current dataset">
@@ -920,10 +920,10 @@ class,age,sex,survived<br>
 			</div>
 			<div class="form-row">
 				<div class="col-6">		
-					<input type="text" id="min_support" name="min_support" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The minimum support that each association rule should have" value="0.01">
+					<input type="text" id="min_support" name="min_support" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The minimum support that each association rule should have" value="0.01" placeholder="0.01">
 				</div>
 				<div class="col-6">	
-					<input type="text" id="min_confidence" name="min_confidence" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The minimum confidence that each association rule should have" value="0.2">
+					<input type="text" id="min_confidence" name="min_confidence" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The minimum confidence that each association rule should have" value="0.2" placeholder="0.2">
 				</div>
 			</div>
 			<div class="form-row">
@@ -936,10 +936,10 @@ class,age,sex,survived<br>
 			</div>
 			<div class="form-row">
 				<div class="col-6">		
-					<input type="text" id="min_lift" name="min_lift" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The minimum lift that each association rule should have" value="1.5">
+					<input type="text" id="min_lift" name="min_lift" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The minimum lift that each association rule should have" value="1.5" placeholder="1.5">
 				</div>
 				<div class="col-6">	
-					<input type="text" id="max_length" name="max_length" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The maximum items each association rule consist of" value="4">
+					<input type="text" id="max_length" name="max_length" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The maximum items each association rule consist of" value="4" placeholder="4">
 				</div>
 			</div>	
 			<div class="form-col">	
