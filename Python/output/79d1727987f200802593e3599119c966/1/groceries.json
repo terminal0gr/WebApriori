@@ -10,9 +10,9 @@
     "outputType": 2,
     "datasetArgs": "",
     "Records": 9835,
-    "RecordsCreationTime": "0.021",
+    "RecordsCreationTime": "0.026",
     "RulesCount": 163,
-    "RulesCreationTime": "0.270",
+    "RulesCreationTime": "0.349",
     "rules": [
         {
             "LHS": [
@@ -35,8 +35,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "yogurt"
+                "yogurt",
+                "other vegetables"
             ],
             "RHS": [
                 "whipped/sour cream"
@@ -148,8 +148,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "whole milk"
+                "whole milk",
+                "other vegetables"
             ],
             "RHS": [
                 "root vegetables"
@@ -186,8 +186,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "curd"
+                "curd",
+                "whole milk"
             ],
             "RHS": [
                 "yogurt"
@@ -224,8 +224,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "yogurt"
+                "yogurt",
+                "other vegetables"
             ],
             "RHS": [
                 "root vegetables"
@@ -243,8 +243,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "yogurt"
+                "yogurt",
+                "other vegetables"
             ],
             "RHS": [
                 "tropical fruit"
@@ -262,8 +262,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "root vegetables"
+                "root vegetables",
+                "other vegetables"
             ],
             "RHS": [
                 "citrus fruit"
@@ -338,8 +338,8 @@
         },
         {
             "LHS": [
-                "root vegetables",
-                "yogurt"
+                "yogurt",
+                "root vegetables"
             ],
             "RHS": [
                 "other vegetables"
@@ -357,8 +357,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "yogurt"
+                "yogurt",
+                "whole milk"
             ],
             "RHS": [
                 "tropical fruit"
@@ -413,8 +413,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "whipped/sour cream"
+                "whipped/sour cream",
+                "yogurt"
             ],
             "RHS": [
                 "other vegetables"
@@ -432,8 +432,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "whipped/sour cream"
+                "whipped/sour cream",
+                "other vegetables"
             ],
             "RHS": [
                 "yogurt"
@@ -451,8 +451,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "root vegetables"
+                "root vegetables",
+                "other vegetables"
             ],
             "RHS": [
                 "tropical fruit"
@@ -489,8 +489,8 @@
         },
         {
             "LHS": [
-                "root vegetables",
-                "whole milk"
+                "whole milk",
+                "root vegetables"
             ],
             "RHS": [
                 "other vegetables"
@@ -508,8 +508,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "whipped/sour cream"
+                "whipped/sour cream",
+                "whole milk"
             ],
             "RHS": [
                 "yogurt"
@@ -546,8 +546,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "yogurt"
+                "yogurt",
+                "whole milk"
             ],
             "RHS": [
                 "root vegetables"
@@ -602,8 +602,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "whipped/sour cream"
+                "whipped/sour cream",
+                "whole milk"
             ],
             "RHS": [
                 "other vegetables"
@@ -621,8 +621,8 @@
         },
         {
             "LHS": [
-                "root vegetables",
-                "whole milk"
+                "whole milk",
+                "root vegetables"
             ],
             "RHS": [
                 "tropical fruit"
@@ -676,8 +676,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "pip fruit"
+                "pip fruit",
+                "whole milk"
             ],
             "RHS": [
                 "other vegetables"
@@ -731,8 +731,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "curd"
+                "curd",
+                "yogurt"
             ],
             "RHS": [
                 "whole milk"
@@ -786,8 +786,8 @@
         },
         {
             "LHS": [
-                "butter",
-                "other vegetables"
+                "other vegetables",
+                "butter"
             ],
             "RHS": [
                 "whole milk"
@@ -879,8 +879,8 @@
         },
         {
             "LHS": [
-                "root vegetables",
-                "yogurt"
+                "yogurt",
+                "root vegetables"
             ],
             "RHS": [
                 "whole milk"
@@ -916,8 +916,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "whole milk"
+                "whole milk",
+                "other vegetables"
             ],
             "RHS": [
                 "tropical fruit"
@@ -972,8 +972,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "domestic eggs"
+                "domestic eggs",
+                "other vegetables"
             ],
             "RHS": [
                 "whole milk"
@@ -1009,8 +1009,8 @@
         },
         {
             "LHS": [
-                "butter",
-                "whole milk"
+                "whole milk",
+                "butter"
             ],
             "RHS": [
                 "other vegetables"
@@ -1064,8 +1064,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "whole milk"
+                "whole milk",
+                "other vegetables"
             ],
             "RHS": [
                 "yogurt"
@@ -1083,8 +1083,8 @@
         },
         {
             "LHS": [
-                "root vegetables",
-                "whole milk"
+                "whole milk",
+                "root vegetables"
             ],
             "RHS": [
                 "yogurt"
@@ -1102,8 +1102,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "domestic eggs"
+                "domestic eggs",
+                "whole milk"
             ],
             "RHS": [
                 "other vegetables"
@@ -1213,8 +1213,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "yogurt"
+                "yogurt",
+                "whole milk"
             ],
             "RHS": [
                 "other vegetables"
@@ -1232,8 +1232,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "whipped/sour cream"
+                "whipped/sour cream",
+                "yogurt"
             ],
             "RHS": [
                 "whole milk"
@@ -1289,8 +1289,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "pip fruit"
+                "pip fruit",
+                "other vegetables"
             ],
             "RHS": [
                 "whole milk"
@@ -1327,8 +1327,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "yogurt"
+                "yogurt",
+                "other vegetables"
             ],
             "RHS": [
                 "whole milk"
@@ -1382,8 +1382,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "whipped/sour cream"
+                "whipped/sour cream",
+                "other vegetables"
             ],
             "RHS": [
                 "whole milk"
@@ -1438,8 +1438,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "root vegetables"
+                "root vegetables",
+                "other vegetables"
             ],
             "RHS": [
                 "yogurt"
@@ -1585,8 +1585,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "root vegetables"
+                "root vegetables",
+                "other vegetables"
             ],
             "RHS": [
                 "whole milk"
@@ -1676,8 +1676,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "soda"
+                "soda",
+                "whole milk"
             ],
             "RHS": [
                 "yogurt"
@@ -1860,8 +1860,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "pastry"
+                "pastry",
+                "other vegetables"
             ],
             "RHS": [
                 "whole milk"
@@ -1915,8 +1915,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "soda"
+                "soda",
+                "whole milk"
             ],
             "RHS": [
                 "other vegetables"
@@ -2080,8 +2080,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "sausage"
+                "sausage",
+                "whole milk"
             ],
             "RHS": [
                 "other vegetables"
@@ -2117,8 +2117,8 @@
         },
         {
             "LHS": [
-                "tropical fruit",
-                "rolls/buns"
+                "rolls/buns",
+                "tropical fruit"
             ],
             "RHS": [
                 "whole milk"
@@ -2281,8 +2281,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "bottled water"
+                "bottled water",
+                "other vegetables"
             ],
             "RHS": [
                 "whole milk"
@@ -2372,8 +2372,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "soda"
+                "soda",
+                "other vegetables"
             ],
             "RHS": [
                 "whole milk"
@@ -2520,8 +2520,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "bottled water"
+                "bottled water",
+                "whole milk"
             ],
             "RHS": [
                 "other vegetables"
@@ -2953,8 +2953,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "yogurt"
+                "yogurt",
+                "whole milk"
             ],
             "RHS": [
                 "rolls/buns"
