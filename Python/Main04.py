@@ -124,8 +124,8 @@ class itemsetManager(object):
         return itemsetManager(itemsets)
 
 FrequentItemset = namedtuple('FrequentItemset', ('items', 'support', 'count'))
-Association_rule = namedtuple('Association_rule', FrequentItemset._fields + ('rule_statistics',))
-ruleStatistic = namedtuple('ruleStatistic', ('LHS', 'RHS', 'confidence', 'lift', 'conviction', 'levarage', 'LHS_count', 'LHS_support', 'RHS_count', 'RHS_support'))
+# Association_rule = namedtuple('Association_rule', FrequentItemset._fields + ('rule_statistics',))
+ruleStatistic = namedtuple('ruleStatistic', ('itemset', 'support', 'count', 'LHS', 'RHS', 'confidence', 'lift', 'conviction', 'levarage', 'LHS_count', 'LHS_support', 'RHS_count', 'RHS_support'))
 
 ################################################################################
 # Inner core functions.
@@ -235,37 +235,12 @@ def gen_rule_statistics(itemset_manager, itemset, **kwargs):
 
             # print('', frozenset(LHS), '<=>', frozenset(RHS))
 
-            yield ruleStatistic(
+            yield ruleStatistic(sorted_items, itemset.support, itemset.count,
                                     frozenset(LHS), 
                                     frozenset(RHS), 
                                     confidence, lift, conviction, levarage, 
                                     LHS_count, LHS_support, RHS_count, RHS_support
                                 )
-
-
-# def filter_rule_statistics(rule_statistics, **kwargs):
-#     """
-#     Filter ruleStatistic objects.
-
-#     Arguments:
-#         rule_statistics -- A ruleStatistic iterable object.
-
-#     Keyword arguments:
-#         min_confidence -- The minimum confidence of association_rules (float).
-#         min_lift -- The minimum lift of association_rules (float).
-#     """
-    
-#     min_confidence = kwargs.get('min_confidence', 0.0)
-#     min_lift = kwargs.get('min_lift', 0.0)
-
-#     for rule_statistic in rule_statistics:
-#         if rule_statistic.confidence < min_confidence:
-#             continue
-#         if rule_statistic.lift < min_lift:
-#             continue
-            
-#         yield rule_statistic
-
         
 #####################################        
 #Special purpose functions        
@@ -273,27 +248,24 @@ def gen_rule_statistics(itemset_manager, itemset, **kwargs):
 def transform_association_rules(A_R):
     rules=[]
     for item in A_R:
-        #rule=[]
-        for k in range(0, len(item[3])):
-
-            if len(item[3][k][0])>1:
-                ssets = (set(x) for x in combinations(item[3][k][0], 1) )
-                print(item[3][k][0],'=>',item[3][k][1])
+        for k in range(0, len(item)):
+            a = item[k][3]
+            LHS = [x for x in a]
+            a = item[k][4]
+            RHS = [x for x in a]
+            rule=[]
+            rule.extend((LHS, RHS, item[k][5], item[k][6], item[k][7], item[k][8], item[k][9], item[k][10], item[k][11], item[k][12], item[k][1], item[k][2], item[k][0]))
+            rules.append(rule)
+            
+            # if len(item[3][k][0])>1:
+            #     ssets = (set(x) for x in combinations(item[3][k][0], 1) )
+            #     print(item[3][k][0],'=>',item[3][k][1])
                 #for c in ssets:
                 #    matchRule = [x for x in A_R if x[3][k][0]==c and x[3][k][1]==item[3][k][1]]
 
                     # print(matchRule)
                 #     #print(matchRule[3][k][0],'=>',matchRule[3][k][1],'  ...  ',item[3][k][0],'=>',item[3][k][1])
 
-
-            a = item[3][k][0]
-            LHS = [x for x in a]
-            a = item[3][k][1]
-            RHS = [x for x in a]
-            rule=[]
-            rule.extend((LHS, RHS, item[3][k][2], item[3][k][3], item[3][k][4], item[3][k][5], item[3][k][6], item[3][k][7], item[3][k][8], item[3][k][9], item[1], item[2]))
-            rules.append(rule)
-            
 
 
     # a = [[1, 2, 3], [4, 5, 6]]
@@ -348,9 +320,7 @@ def webApriori(itemsets, **kwargs):
     
     # Calculate rule stats.
     for frequent_itemset in frequent_itemsets:
-        rule_statistics = list(
-                gen_rule_statistics(itemset_manager, frequent_itemset, min_confidence=min_confidence, min_lift=min_lift)
-        )
+        rule_statistics = list(gen_rule_statistics(itemset_manager, frequent_itemset, min_confidence=min_confidence, min_lift=min_lift))
         
         if not rule_statistics:
             continue  
@@ -360,7 +330,7 @@ def webApriori(itemsets, **kwargs):
             # print('Maximum itemsets count limit reached!!!(' + str(max_rules) + ')')
             break
         
-        yield Association_rule(frequent_itemset.items, frequent_itemset.support, frequent_itemset.count, rule_statistics)
+        yield rule_statistics
             
 
   
@@ -840,7 +810,7 @@ if records:
     recordTime=time()-recordTime
 
     assocTime=time()
-    association_results = list(webApriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length))
+    association_results = webApriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length)
     association_results = transform_association_rules(association_results)
     assocTime=time()-assocTime
 
