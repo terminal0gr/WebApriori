@@ -249,6 +249,15 @@ def transform_association_rules(A_R):
     rules=[]
     for item in A_R:
         for k in range(0, len(item)):
+
+            if len(item[k][3])>1:
+                ssets = (set(x) for x in combinations(item[k][3], len(item[k][3])-1) )
+                print(item[k][3],'=>',item[k][4])
+                for c in ssets:
+                    matchRule = [x for x in A_R for y in range(0, len(x)) if x[y][3]==c and x[y][4]==item[k][4]]
+                    print(matchRule)
+                #     #print(matchRule[3][k][0],'=>',matchRule[3][k][1],'  ...  ',item[3][k][0],'=>',item[3][k][1])
+
             a = item[k][3]
             LHS = [x for x in a]
             a = item[k][4]
@@ -257,14 +266,7 @@ def transform_association_rules(A_R):
             rule.extend((LHS, RHS, item[k][5], item[k][6], item[k][7], item[k][8], item[k][9], item[k][10], item[k][11], item[k][12], item[k][1], item[k][2], item[k][0]))
             rules.append(rule)
             
-            # if len(item[3][k][0])>1:
-            #     ssets = (set(x) for x in combinations(item[3][k][0], 1) )
-            #     print(item[3][k][0],'=>',item[3][k][1])
-                #for c in ssets:
-                #    matchRule = [x for x in A_R if x[3][k][0]==c and x[3][k][1]==item[3][k][1]]
 
-                    # print(matchRule)
-                #     #print(matchRule[3][k][0],'=>',matchRule[3][k][1],'  ...  ',item[3][k][0],'=>',item[3][k][1])
 
 
 
