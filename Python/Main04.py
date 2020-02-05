@@ -249,20 +249,19 @@ def transform_association_rules(A_R):
     rules=[]
     for item in A_R:
         for k in range(0, len(item)):
-
             if len(item[k][3])>1:
                 ssets = (set(x) for x in combinations(item[k][3], len(item[k][3])-1) )
-                print(item[k][3],'=>',item[k][4])
                 for c in ssets:
-                    matchRule = [x for x in A_R for y in range(0, len(x)) if x[y][3]==c and x[y][4]==item[k][4]]
-                    print(matchRule)
-                #     #print(matchRule[3][k][0],'=>',matchRule[3][k][1],'  ...  ',item[3][k][0],'=>',item[3][k][1])
+                    matchRule = [x[y] for x in A_R for y in range(0, len(x)) if x[y][3]==c and x[y][4]==item[k][4]]
+                    if len(matchRule)>0:
+                        print(matchRule[0][3],'=>',matchRule[0][4],' supp:',matchRule[0][1],' conf:',matchRule[0][5],'  ...  ',item[k][3],'=>',item[k][4],' supp:',item[k][1],' conf:',item[k][5],)
 
             a = item[k][3]
             LHS = [x for x in a]
             a = item[k][4]
             RHS = [x for x in a]
             rule=[]
+            # [0]:sorted_items, [1]:itemset.support, [2]:itemset.count, [3]:frozenset(LHS), [4]:frozenset(RHS), [5]:confidence, [6]:lift, [7]:conviction, [8]:levarage, [9]:LHS_count, [10]:LHS_support, [11]:RHS_count, [12]:RHS_support
             rule.extend((LHS, RHS, item[k][5], item[k][6], item[k][7], item[k][8], item[k][9], item[k][10], item[k][11], item[k][12], item[k][1], item[k][2], item[k][0]))
             rules.append(rule)
             
@@ -678,10 +677,11 @@ Dataset types:
 #1--> Market Basket list. No header is expected, The number of columns is undefined (Default)
 # sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "dataset.csv", ',', '1', '2']
 # sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, 'store_data.csv', ',', '1', '1']
-sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries.csv", ",", "1", '2']
-
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries.csv", ",", "1", '2']
 #1--> Market Basket list. There is a header, so the participant columns must be declared in args
 # sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries - groceries.csv", ",", "1", '2', 'nan', "Item 1","Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10", "Item 11", "Item 12", "Item 13", "Item 14", "Item 15", "Item 16", "Item 17", "Item 18", "Item 19", "Item 20", "Item 21", "Item 22", "Item 23", "Item 24", "Item 25", "Item 26", "Item 27", "Item 28", "Item 29", "Item 30", "Item 31", "Item 32"]
+sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.005, 0.2, 1.0, 10, -3, "retail.txt", " ", "1", '2']
+
 
 #sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "OrderDetails.csv", ";", "2", '1', "InvoiceNo", "Description"]
 # sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.02, 1.0, 4, -3, "invoice.csv", ";", "2", '1', "IDInvoice", "ProduitID"]
@@ -812,7 +812,7 @@ if records:
     recordTime=time()-recordTime
 
     assocTime=time()
-    association_results = webApriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length)
+    association_results = list(webApriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length))
     association_results = transform_association_rules(association_results)
     assocTime=time()-assocTime
 
@@ -820,7 +820,7 @@ if records:
     if ssort<0:
         descending=True
 
-    output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, outputType=outputType, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
+    #output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, outputType=outputType, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
 
 else:
     print("Could not retrieve any record from the dataset")
