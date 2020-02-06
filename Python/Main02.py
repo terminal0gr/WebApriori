@@ -11,7 +11,7 @@ import pandas as pd
 import numpy as np
 
 # global variables section
-max_rules=9999
+max_rules=1000
 max_items=999
 
 __Version__ = '01.00.01 30/11/2019'
@@ -328,7 +328,7 @@ def webApriori(itemsets, **kwargs):
            
         rules_counter+=len(rule_statistics)
         if rules_counter>=max_rules:
-            print('Maximum itemsets count limit reached!!!(' + str(max_rules) + ')')
+            print('@' + '{:04d}'.format(max_rules))
             break
         
         yield Association_rule(frequent_itemset.items, frequent_itemset.support, frequent_itemset.count, rule_statistics)
@@ -467,6 +467,7 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
             
     else:
         print("Unknown dataset type")
+        sys.exit()
 
 
 ##################################################################################

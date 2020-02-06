@@ -11,7 +11,7 @@ import pandas as pd
 import numpy as np
 
 # global variables section
-max_rules=9999
+max_rules=1000
 max_items=999
 
 __Version__ = '01.00.01 30/11/2019'
@@ -328,7 +328,7 @@ def webApriori(itemsets, **kwargs):
 
         rules_counter+=len(rule_statistics)
         if rules_counter>=max_rules:
-            # print('Maximum itemsets count limit reached!!!(' + str(max_rules) + ')')
+            print('@' + '{:04d}'.format(max_rules))
             break
         
         yield rule_statistics
@@ -820,7 +820,7 @@ if records:
     if ssort<0:
         descending=True
 
-    #output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, outputType=outputType, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
+    output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, outputType=outputType, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
 
 else:
     print("Could not retrieve any record from the dataset")

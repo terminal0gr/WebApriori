@@ -205,6 +205,9 @@
 								if (isJSON(res.message)) { 
 									resm=JSON.parse(res.message);
 									fillTable(resm);
+									if (res.error_text) {
+										MyModal("Warning" , res.error_text);
+									}
 								} else {
 									if (res.message) {
 										MyModal("Error 10" , res.message);

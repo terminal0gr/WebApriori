@@ -183,7 +183,13 @@
     }
 
     http_response_code(200);
-    $JsonReq = array('title' => $input, 'message' => $output);
+    if (substr($output, 0, 1)=='@') {
+        $MaxRules=intval(substr($output, 1, 4));
+        $JsonReq = array('title' => $input, 'message' => substr($output,5), 'error_text'=>"Maximum association rules limit reached!!!($MaxRules). Please try adjusting minimum support, confidence or lift to reduce generated rules.");
+    }
+    else {
+        $JsonReq = array('title' => $input, 'message' => $output);
+    };
     print json_encode($JsonReq);
     exit();   
 
