@@ -245,37 +245,72 @@ def gen_rule_statistics(itemset_manager, itemset, **kwargs):
 #####################################        
 #Special purpose functions        
 #####################################
-def transform_association_rules(A_R):
+def transform_association_rules(A_R,RedundantType=0):
     rules=[]
-    for item in A_R:
-        for k in range(0, len(item)):
-            if len(item[k][3])>1:
-                ssets = (set(x) for x in combinations(item[k][3], len(item[k][3])-1) )
+
+    # Bitwising
+    x=5
+    y=1
+    print(x & y == y)
+
+    for item in [x[y] for x in A_R for y in range(0, len(x))]:
+    # We don't have the initial list sorted because matchRule happens in A_R not in the created list (rules.append(rule))
+    #  the next line is kept only for learning purposes
+    # for item in sorted([x[y] for x in A_R for y in range(0, len(x))],key=lambda l: len(l[3]),reverse=True):
+
+        # Interchange the antecedent and consequence case. The rule with smaller confidence is removed (support and lift are equal in this case)
+        # Case 00000001
+        if RedundantType & 1 == 1:
+            matchRule = [x[y] for x in A_R for y in range(0, len(x)) if x[y][3]==item[4] and x[y][4]==item[3] and x[y][5]>=item[5]]
+            if len(matchRule)>0:
+                # Redundant do not add it to interesting association rules
+                continue
+
+        # Redundant Rules with Fixed Consequence Rules
+        # Case 00000010
+        if RedundantType & 2 == 2:
+            # If LHS length > 1
+            if len(item[3])>1:
+                # Find all the LHS length-1 sub itemsets 
+                ssets = (set(x) for x in combinations(item[3], len(item[3])-1) )
+                i=0
+                # Count how many are the LHS length-1 sub itemsets participating to the A_R
                 for c in ssets:
-                    matchRule = [x[y] for x in A_R for y in range(0, len(x)) if x[y][3]==c and x[y][4]==item[k][4]]
+                    matchRule = [x[y] for x in A_R for y in range(0, len(x)) if x[y][3]==c and x[y][4]==item[4]]
                     if len(matchRule)>0:
-                        print(matchRule[0][3],'=>',matchRule[0][4],' supp:',matchRule[0][1],' conf:',matchRule[0][5],'  ...  ',item[k][3],'=>',item[k][4],' supp:',item[k][1],' conf:',item[k][5],)
+                        i+=1
+                # If LHS length-1 sub itemsets count is equal to LHS length then rule is redundant
+                if i==len(item[3]):
+                    # Redundant do not add it to interesting association rules
+                    continue
 
-            a = item[k][3]
-            LHS = [x for x in a]
-            a = item[k][4]
-            RHS = [x for x in a]
-            rule=[]
-            # [0]:sorted_items, [1]:itemset.support, [2]:itemset.count, [3]:frozenset(LHS), [4]:frozenset(RHS), [5]:confidence, [6]:lift, [7]:conviction, [8]:levarage, [9]:LHS_count, [10]:LHS_support, [11]:RHS_count, [12]:RHS_support
-            rule.extend((LHS, RHS, item[k][5], item[k][6], item[k][7], item[k][8], item[k][9], item[k][10], item[k][11], item[k][12], item[k][1], item[k][2], item[k][0]))
-            rules.append(rule)
-            
+        # Redundant Rules with Fixed Antecedent Rules
+        # Case 00000100
+        if RedundantType & 4 == 4:
+            # If RHS length > 1
+            if len(item[4])>1:
+                # Find all the RHS length-1 sub itemsets 
+                ssets = (set(x) for x in combinations(item[4], len(item[4])-1) )
+                i=0
+                # Count how many are the RHS length-1 sub itemsets participating to the A_R
+                for c in ssets:
+                    matchRule = [x[y] for x in A_R for y in range(0, len(x)) if x[y][4]==c and x[y][3]==item[3]]
+                    if len(matchRule)>0:
+                        i+=1   
+                # If RHS length-1 sub itemsets count is equal to LHS length then rule is redundant
+                if i==len(item[4]):
+                    # Redundant do not add it to interesting association rules
+                    continue
 
-
-
-
-    # a = [[1, 2, 3], [4, 5, 6]]
-    # [item for item in a if sum(item) > 10]
-    #  [[4, 5, 6]]
-
-    # [item for item in A_R if item[3][k][0] > 10]
-
-
+        # non redundant. Add it to the final collection
+        a = item[3]
+        LHS = [x for x in a]
+        a = item[4]
+        RHS = [x for x in a]
+        rule=[]
+        # [0]:sorted_items, [1]:itemset.support, [2]:itemset.count, [3]:frozenset(LHS), [4]:frozenset(RHS), [5]:confidence, [6]:lift, [7]:conviction, [8]:levarage, [9]:LHS_count, [10]:LHS_support, [11]:RHS_count, [12]:RHS_support
+        rule.extend((LHS, RHS, item[5], item[6], item[7], item[8], item[9], item[10], item[11], item[12], item[1], item[2], item[0]))
+        rules.append(rule)
 
     return rules
         
@@ -505,8 +540,6 @@ def output_association_rules(association_results, sort_index, descending=True, f
     if outputType==1:        
     
         Sline='Input Parameters\n'
-
-        #dictRules['datasetArgs'] = datasetArgs
         
         if min_support:
             Sline+='Minimum Support   :' + '{0:.3f}'.format(min_support)
@@ -677,10 +710,10 @@ Dataset types:
 #1--> Market Basket list. No header is expected, The number of columns is undefined (Default)
 # sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "dataset.csv", ',', '1', '2']
 # sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, 'store_data.csv', ',', '1', '1']
-# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries.csv", ",", "1", '2']
+sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries.csv", ",", "1", '2']
 #1--> Market Basket list. There is a header, so the participant columns must be declared in args
 # sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries - groceries.csv", ",", "1", '2', 'nan', "Item 1","Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10", "Item 11", "Item 12", "Item 13", "Item 14", "Item 15", "Item 16", "Item 17", "Item 18", "Item 19", "Item 20", "Item 21", "Item 22", "Item 23", "Item 24", "Item 25", "Item 26", "Item 27", "Item 28", "Item 29", "Item 30", "Item 31", "Item 32"]
-sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.005, 0.2, 1.0, 10, -3, "retail.txt", " ", "1", '2']
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.005, 0.2, 1.0, 10, -3, "retail.txt", " ", "1", '2']
 
 
 #sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "OrderDetails.csv", ";", "2", '1', "InvoiceNo", "Description"]
@@ -813,7 +846,7 @@ if records:
 
     assocTime=time()
     association_results = list(webApriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length))
-    association_results = transform_association_rules(association_results)
+    association_results = transform_association_rules(association_results,7)
     assocTime=time()-assocTime
 
     descending=False
