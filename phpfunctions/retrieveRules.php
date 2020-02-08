@@ -92,6 +92,12 @@
         print json_encode($JsonReq);
         exit();
     }
+    if (empty($_POST['redundantType'])) {
+        http_response_code(201);
+        $JsonReq = array('title' => 'Exclamation', 'message' => 'Not redundant Type found!!!');
+        print json_encode($JsonReq);
+        exit();
+    }
 
     //get dataset type is the fisrt character of $_POST['dataset']
     if (substr($_POST['dataset'],0,2)=='p|') {
@@ -133,7 +139,7 @@
         }
     }
 
-    $input = 'python Main02.py ';
+    $input = 'python Main04.py ';
     $input.= '"'.$identity.'" ';
     $input.= '"'.$_POST['min_support'].'" ';
     $input.= '"'.$_POST['min_confidence'].'" ';
@@ -144,6 +150,7 @@
     $input.= '"'.$_POST['separator'].'" ';
     $input.= '"'.$datasetType.'" ';
     $input.= '"'.$outputType.'" ';
+    $input.= '"'.$_POST['redundantType'].'" ';
     $input.= $_POST['extra_parameters'];
 
     chdir('../Python');

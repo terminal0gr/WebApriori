@@ -176,6 +176,14 @@
                 // Serialize the form data first in array form so to add more elements.
 				var formData = $('#retrieveRules').serializeArray(); // convert form to array
 
+                //Redundant rules process
+				bws=0;
+				if ($("#Redundant1").is(":checked")) bws+=1;
+				if ($("#Redundant2").is(":checked")) bws+=2;			
+				if ($("#Redundant3").is(":checked")) bws+=4;		
+				formData.push({name: "redundantType", value: bws});
+				alert(bws);
+
 				if (sessionStorage.getItem('token')) {
 					formData.push({name: "token", value: sessionStorage.getItem('token')});
 				}
@@ -951,6 +959,41 @@ class,age,sex,survived<br>
 			<div class="form-col">	
 				<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-trigger="hover" data-toggle="tooltip" title="In extra parameters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
 			</div>
+			<br>
+			<div class="form-col ">	
+				<h4 class="text-center text-primary">Redundant rule elimination</h43>
+			</div>
+			<div class="form-row">
+				<div class="col-4">		
+					<label for="min_lift">Interchange LHS and RHS case</label>
+				</div>
+				<div class="col-4">
+					<label for="max_length">Redundant Rules with Fixed RHS</label>
+				</div>
+				<div class="col-4">
+					<label for="max_length">Redundant Rules with Fixed LHS</label>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-4 mx-auto mt-1" data-trigger="hover" data-toggle="tooltip" title="The comparable rules are the ones that have reversed their LHS and RHS (e.g. A->B & B->A). The rule with the smaller confidence value is removed.">
+					<label class="switch">
+						<input type="checkbox" id="Redundant1" class="primary">
+						<span class="slider round"></span>
+					</label>
+				</div>
+				<div class="col-4 mt-1" data-trigger="hover" data-toggle="tooltip" title="Removes redundant rules that have multiple items in LHS but have the same RHS itemset. If n number of (n-1) LHS-itemset with the same RHS rules are found in the retrieved rule set, the rule is removed otherwise remains. Example: If XY->Z, X->Z, Y->Z exist in the rule set then XY->Z is removed">
+					<label class="switch" >
+						<input type="checkbox" id="Redundant2" class="primary" >
+						<span class="slider round"></span>
+					</label>
+				</div>
+				<div class="col-4 mt-1" data-trigger="hover" data-toggle="tooltip" title="Removes redundant rules that have multiple items in RHS but have the same LHS itemset. If n number of (n-1) RHS-itemset with the same LHS rules are found in the retrieved rule set, the rule is removed otherwise remains. Example: If X->YZ, X->Y, X->Z exist in the rule set then X->YZ is removed">
+					<label class="switch">
+						<input type="checkbox" id="Redundant3" class="primary">
+						<span class="slider round"></span>
+					</label>
+				</div>
+			</div>	
 			<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
 				<button id="submitBtn" type="submit" class="btn btn-primary btn-inline" style="height:100%; width:100%">Retrieve association rules</button>
 			</div>
