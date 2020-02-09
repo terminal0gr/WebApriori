@@ -174,10 +174,11 @@
 					tcode=tcode.replace("##6##", encodeURIComponent(document.getElementById('minConf4').value));
 					tcode=tcode.replace("##7##", encodeURIComponent(document.getElementById('minLift4').value));
 					tcode=tcode.replace("##8##", encodeURIComponent(document.getElementById('maxRuleItems4').value));
+					tcode=tcode.replace("##9##", encodeURIComponent(document.getElementById('Redundant4').value));
 					if (document.getElementById('extra4').value) {
-						tcode=tcode.replace("##9##", '&extra_parameters=' + encodeURIComponent(document.getElementById('extra4').value));
+						tcode=tcode.replace("##10##", '&extra_parameters=' + encodeURIComponent(document.getElementById('extra4').value));
 					} else {
-						tcode=tcode.replace("##9##",'')
+						tcode=tcode.replace("##10##",'')
 					}
 
 					$('#code4').text(tcode);
@@ -444,6 +445,7 @@
 					return;
 				}
 				formData.set("max_length",document.getElementById("maxRuleItems4").value);
+				formData.set("redundantType",document.getElementById("Redundant4").value);
 				
 				// Submit the form using AJAX.
 				ajaxReq = $.ajax({
@@ -1152,6 +1154,15 @@ email=##1##&apiKey=##2##&datasetId=##3##
 								<input type="text" class="form-control" id="extra4" >
 							</div>
 						</div>
+						<div class="form-group row" data-trigger="hover" data-toggle="tooltip" title="In this section you can remove redundant association rules optionally. All association rules are retrieved by choosing 0. For more details please press the question mark.">
+							<label for="Redundant4" class="col-sm-6 col-form-label float-right">Redundant rules elimination type</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="Redundant4" required value="0" placeholder="0" >
+							</div>
+							<div class="col-1">
+								<button type="button" class="btn mt-n1 float-right"  onclick="MyModal('Redundant rules elimination', document.getElementById('infoForRedundant').innerHTML)" id="helpForRedundantType"><img src="./images/help24grey.png" width="24" height="24" alt=""></button>
+							</div>
+						</div>
 						<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
 							<button id="callExample4" type="button" class="btn btn-primary btn-inline" style="height:100%; width:100%">Request rules example</button>
 						</div>
@@ -1165,7 +1176,7 @@ Accept: */*
 Accept-Encoding: gzip, deflate
 Connection: keep-alive
 
-email=##1##&apiKey=##2##&datasetId=##3##&separator=##4##&min_support=##5##&min_confidence=##6##&min_lift=##7##&max_length=##8####9##
+email=##1##&apiKey=##2##&datasetId=##3##&separator=##4##&min_support=##5##&min_confidence=##6##&min_lift=##7##&max_length=##8##&redundantType=##9####10##
 							</code></pre>
 							<button type="button" class="btn-clipboard btn-dark rounded" onclick="copyToClipboard($('#code4').text())" title="" data-original-title="Copy to clipboard">Copy request</button>
 							<div class="p-1 mt-2 mx-auto border border-primary rounded" style="width:220px">
@@ -1423,6 +1434,17 @@ class,age,sex,survived<br>
 		</div>
 		<br>
 		<div class="bg-warning rounded"><b>Note:</b> In extra parameters, the items must be enclosed in double quotes and be seperated with space (e.g. <b><i>"InvoiceID" "ProductID"</i></b>)</div>
+	</div>
+
+	<div id="infoForRedundant" class="lightgraybackground border rounded p-2" style="display:none">
+		<p>The supported types for excluding redundant rules from the association rule set are listed below. <br> 
+		<ol>
+			<li><b>Interchange LHS and RHS case:</b> The comparable rules are the ones that have reversed their LHS and RHS (e.g. A->B & B->A). The rule with the smaller confidence value is removed.</li><br>
+			<li><b>Redundant Rules with Fixed RHS</b> Removes redundant rules that have multiple items in LHS but have the same RHS itemset. If n number of (n-1) LHS-itemset with the same RHS rules are found in the retrieved rule set, the rule is removed otherwise remains. Example: If XY->Z, X->Z, Y->Z exist in the rule set then XY->Z is removed</li><br>
+			<li><b>Redundant Rules with Fixed LHS</b> Removes redundant rules that have multiple items in RHS but have the same LHS itemset. If n number of (n-1) RHS-itemset with the same LHS rules are found in the retrieved rule set, the rule is removed otherwise remains. Example: If X->YZ, X->Y, X->Z exist in the rule set then X->YZ is removed</li><br>
+		</ol>
+		The types are selected using the <b>bitwise AND (&) operator</b>. For example, if it is desirable to select the first case then select the value <b>1</b> (001); If it is desirable the third one then select <b>4</b> (100); If it is desirable the second and third type then select <b>6</b> (110). With <b>0</b> (000) it does not remove the redundant rules.
+		</p>
 	</div>
 
 </body>

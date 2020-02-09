@@ -2,7 +2,8 @@ WEB API
     
 - Fully asychronous call for ARM / results in user interface
 
-DONE - 21/01/2020 V01.04.00 Use of value instead of placeholder in basic parameters.
+DONE - 10/02/2020 V01.05.00 Redundant rules elimination (3 cases) implemented
+DONE - 21/01/2020 V01.04.00 Use of value instead of placeholder in basic parameters
 DONE - 16/01/2020 V01.03.00 Correct spelling and spelling in all parts of the application
 DONE - 22/12/2019 V01.02.00 First complete edition
 DONE - 22/12/2019 V01.02.00 page for giving priviledges for public queries

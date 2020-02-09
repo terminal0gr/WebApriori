@@ -92,9 +92,9 @@
         print json_encode($JsonReq);
         exit();
     }
-    if (empty($_POST['redundantType'])) {
+    if (!isset($_POST['redundantType'])) {
         http_response_code(201);
-        $JsonReq = array('title' => 'Exclamation', 'message' => 'Not redundant Type found!!!');
+        $JsonReq = array('title' => 'Exclamation', 'message' => 'Not redundant rules type declared!!!');
         print json_encode($JsonReq);
         exit();
     }

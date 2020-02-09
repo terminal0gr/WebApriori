@@ -231,9 +231,7 @@ def gen_rule_statistics(itemset_manager, itemset, **kwargs):
             if confidence < min_confidence:
                 continue
             if lift < min_lift:
-               continue
-
-            # print('', frozenset(LHS), '<=>', frozenset(RHS))
+                continue
 
             yield ruleStatistic(sorted_items, itemset.support, itemset.count,
                                     frozenset(LHS), 
@@ -247,11 +245,6 @@ def gen_rule_statistics(itemset_manager, itemset, **kwargs):
 #####################################
 def transform_association_rules(A_R,RedundantType=0):
     rules=[]
-
-    # Bitwising
-    x=5
-    y=1
-    print(x & y == y)
 
     for item in [x[y] for x in A_R for y in range(0, len(x))]:
     # We don't have the initial list sorted because matchRule happens in A_R not in the created list (rules.append(rule))
@@ -830,21 +823,6 @@ datasetArgs=''
 if len(sys.argv)>12:
     if len(sys.argv[12])>0:
 	    datasetArgs=str(sys.argv[12:])
-
-# paramFile = open(os.path.join('datasets', identity, 'inputparams.log'), 'w') 
-# print("Identity      :" + str(identity), file = paramFile)
-# print("min_support   :" + str(min_support), file = paramFile)
-# print("min_confidence:" + str(min_confidence), file = paramFile)
-# print("min_lift      :" + str(min_lift), file = paramFile)
-# print("max_length    :" + str(max_length), file = paramFile)
-# print("SortIndex     :" + str(ssort), file = paramFile)
-# print("Dataset Name  :" + datasetName, file = paramFile)
-# print("Dataset Sep   :" + str(datasetSep), file = paramFile)
-# print("Dataset Type  :" + str(datasetType), file = paramFile)
-# print("Output Type   :" + str(outputType), file = paramFile)
-# print("reduntantRemoveType :" + str(reduntantRemoveType), file = paramFile)
-# print("Dataset Args  :" + str(datasetArgs), file = paramFile)
-# paramFile.close()  
 
 if not identity:
     print("Unknown identity")

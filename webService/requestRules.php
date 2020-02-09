@@ -51,6 +51,7 @@
         if (isset($_POST['min_confidence'])) {$min_confidence =escapeshellarg($_POST['min_confidence']);}
         if (isset($_POST['min_lift'])) {$min_lift =escapeshellarg($_POST['min_lift']);}
         if (isset($_POST['max_length'])) {$max_length =escapeshellarg($_POST['max_length']);}
+        if (isset($_POST['redundantType'])) {$redundantType =escapeshellarg($_POST['redundantType']);}
 
         $identity=md5($email);
 
@@ -114,6 +115,12 @@
             print json_encode($JsonReq);
             exit;
         }
+        if (empty($redundantType)) {
+            http_response_code(201);
+            $JsonReq = array('code' => 109, 'message' => 'Not redundant rules type declared!!!');
+            print json_encode($JsonReq);
+            exit();
+        }
 
         //get dataset type is the fisrt character of $_POST['dataset']
         if (substr($_POST['datasetId'],0,2)=='p|') {
@@ -142,7 +149,7 @@
             exit;
         }
 
-        $input = 'python Main02.py ';
+        $input = 'python Main04.py ';
         $input.= '"'.$identity.'" ';
         $input.= $min_support.' ';
         $input.= $min_confidence.' ';
@@ -153,12 +160,12 @@
         $input.= $separator.' ';
         $input.= '"'.$datasetType.'" ';
         $input.= $outputType.' ';
+        $input.= '"'.$redundantType.'" ';
 
         if (isset($_POST['extra_parameters'])) {
             $input.= $_POST['extra_parameters'];
         }
-
-        
+    
         if ($outputType==2) { //private dataset       
             $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;  
         }else{

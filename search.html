@@ -155,7 +155,7 @@
 			});
 
 			// Set up an event listener for the form.
-			$('#retrieveRules').submit(function(e) {
+			ajaxReq = $('#retrieveRules').submit(function(e) {
 				// Stop the browser from submitting the form.
 				e.preventDefault();
 
@@ -182,7 +182,6 @@
 				if ($("#Redundant2").is(":checked")) bws+=2;			
 				if ($("#Redundant3").is(":checked")) bws+=4;		
 				formData.push({name: "redundantType", value: bws});
-				alert(bws);
 
 				if (sessionStorage.getItem('token')) {
 					formData.push({name: "token", value: sessionStorage.getItem('token')});
@@ -547,6 +546,7 @@
 		};
 
 		function retrieveInputParameters() {
+
 			if (!sessionStorage.getItem('token')) {
 				MyModal("Error", "You are not signed in!!! Please sign in/up");
 				setTimeout(function() {
@@ -570,7 +570,11 @@
 				data: formData,
 				contentType: false,
 				cache: false,
-				processData:false
+				processData:false,
+				beforeSend: function( xhr ) {
+					$('#showResults').hide("slow");
+					$('#submitBtn').html("<b>Retrieving last mining for this dataset.<br>Please wait...</b>").removeClass( "btn-primary" ).addClass("btn-warning");	
+  				}
 			}) 	
 			.done(function(response, textStatus, jqXHR) {
 				//cover both null and undefined circumstanses and if it is a JSON obj
@@ -579,11 +583,11 @@
 					try {
 						if (jqXHR.status!=200) {
 							// not found input parameters
-							document.getElementById('separator').value=""; 
-							document.getElementById('min_support').value=""; 
-							document.getElementById('min_confidence').value=""; 
-							document.getElementById('min_lift').value=""; 
-							document.getElementById('max_length').value=""; 
+							document.getElementById('separator').value=","; 
+							document.getElementById('min_support').value="0.01"; 
+							document.getElementById('min_confidence').value="0.2"; 
+							document.getElementById('min_lift').value="1.5"; 
+							document.getElementById('max_length').value="4"; 
 							document.getElementById('extra_parameters').value=""; 
                             $("#showResults").hide();
 						} else {
@@ -592,6 +596,16 @@
 							document.getElementById('min_confidence').value=res.min_confidence; 
 							document.getElementById('min_lift').value=res.min_lift; 
 							document.getElementById('max_length').value=res.max_length; 
+
+							if (typeof res.reduntantRemoveType !== 'undefined') {
+								document.getElementById("Redundant1").checked=(res.reduntantRemoveType & 1) == 1
+								document.getElementById("Redundant2").checked=(res.reduntantRemoveType & 2) == 2
+								document.getElementById("Redundant3").checked=(res.reduntantRemoveType & 4) == 4
+							} else {
+								document.getElementById("Redundant1").checked=false;
+								document.getElementById("Redundant2").checked=false;
+								document.getElementById("Redundant3").checked=false;
+							}
 
 							//loads res.datasetArgs as a python list like =>['a', 'b'].
 							//but we need the format =>"a" "b" so, we apply the above regex!
@@ -634,6 +648,8 @@
 				} else {
 					MyModal("association rules",'Unknown error occured!');
 				}
+			}).always(function() {
+				$('#submitBtn').html("Retrieve association rules").removeClass("btn-warning").addClass("btn-primary");
 			});
 		};
 
@@ -732,7 +748,7 @@
 							</select>
 						</div>
 					</div>		
-					<div class="form-row" id="publicDataset" style="display:none">
+					<div class="form-row" id="publicDataset" style="display:none" data-trigger="hover" data-toggle="tooltip" title="Activating this switch, the uploaded dataset becomes public and therefore visible to all users. Otherwise it is private and only visible to you.">
 						<div class="col-5">
 							<label class="col-form-label float-right">Public dataset:</label>
 						</div>
@@ -961,7 +977,7 @@ class,age,sex,survived<br>
 			</div>
 			<br>
 			<div class="form-col ">	
-				<h4 class="text-center text-primary">Redundant rule elimination</h43>
+				<h4 class="text-center text-primary" data-trigger="hover" data-toggle="tooltip" title="In this section you can remove redundant association rules optionally. Please hover over the switches to get information for each case.">Redundant association rule elimination</h4>
 			</div>
 			<div class="form-row">
 				<div class="col-4">		
