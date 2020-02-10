@@ -11,9 +11,9 @@
     "reduntantRemoveType": 3,
     "datasetArgs": "",
     "Records": 9835,
-    "RecordsCreationTime": "0.023",
+    "RecordsCreationTime": "0.021",
     "RulesCount": 118,
-    "RulesCreationTime": "0.217",
+    "RulesCreationTime": "0.161",
     "rules": [
         {
             "LHS": [
@@ -187,8 +187,8 @@
         },
         {
             "LHS": [
-                "tropical fruit",
-                "whole milk"
+                "whole milk",
+                "tropical fruit"
             ],
             "RHS": [
                 "root vegetables"
@@ -719,8 +719,8 @@
         },
         {
             "LHS": [
-                "fruit/vegetable juice",
-                "other vegetables"
+                "other vegetables",
+                "fruit/vegetable juice"
             ],
             "RHS": [
                 "whole milk"
@@ -1248,8 +1248,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "citrus fruit"
+                "citrus fruit",
+                "other vegetables"
             ],
             "RHS": [
                 "whole milk"
@@ -1322,8 +1322,8 @@
         },
         {
             "LHS": [
-                "tropical fruit",
-                "rolls/buns"
+                "rolls/buns",
+                "tropical fruit"
             ],
             "RHS": [
                 "whole milk"

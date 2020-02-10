@@ -382,7 +382,7 @@
 				if (isJSON(response)) {
 					res=JSON.parse(response);
 					try {
-						str='<option value="" disabled selected >Choose a dataset or dblclick to upload a new</option>';
+						str='<option value="" disabled selected >Choose a dataset or click to the link to upload a new one</option>';
 						res.forEach(function(data, index){
 							if (data.public===0) {
 								str += '<option value="' + data.datasetType + data.filename + '">(' + data.datasetType + ') ' + data.filename + '</option>' 
@@ -937,6 +937,9 @@ class,age,sex,survived<br>
 			</div>	
 		</div>
 		<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
+			<div class="form-col ">	
+				<h4 class="text-center text-primary">Apriori engine parameterization</h4>
+			</div>
 			<div class="form-row">
 				<div class="col-6">		
 					<label for="min_support">Minimum support</label>

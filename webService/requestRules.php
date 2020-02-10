@@ -160,7 +160,7 @@
         $input.= $separator.' ';
         $input.= '"'.$datasetType.'" ';
         $input.= $outputType.' ';
-        $input.= '"'.$redundantType.'" ';
+        $input.= $redundantType.' ';
 
         if (isset($_POST['extra_parameters'])) {
             $input.= $_POST['extra_parameters'];
