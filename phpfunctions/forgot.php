@@ -41,7 +41,7 @@
 		echo "<script type='text/javascript'>alert('Verification check failed');window.location.href='../SignUp.html';</script>";
 		exit();
 	} else {
-		$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdP7H8UAAAAAFZ5qAl0_FmLAqzdBUeD0G3ZaX0p&response=".$_POST['g-recaptcha-response'], False);
+		$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfbnNgUAAAAAALlBsuZoP6hjYvU98Utv1epeyqh&response=".$_POST['g-recaptcha-response'], False);
 		
 		$jresponse = json_decode($response, true);
 		if(!$jresponse["success"] === true)
@@ -97,11 +97,11 @@
 				$mail->Body  = 	
 				"<p>WebApriori association rules mining reset password procedure.</p>
 				<br>
-				<h2>Click <a href=\"{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/forgot1.php?passkey=$confirm_code\">here</a></h2>
+				<h2>Click <a href=\"{$_SERVER['SERVER_NAME']}/phpfunctions/forgot1.php?passkey=$confirm_code\">here</a></h2>
 				<h2>Or as an alternative, copy & paste the link above to your explorer</h2>
-				<h2>{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/forgot1.php?passkey=$confirm_code</h2>
+				<h2>{$_SERVER['SERVER_NAME']}/phpfunctions/forgot1.php?passkey=$confirm_code</h2>
 				<p>to reset password. This procedure would be valid for the next 5 minutes.</p>"; 
-				$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\n{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/forgot1.php?passkey=$confirm_code\r\nand it would be valid for the next 5 minutes.";
+				$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\n{$_SERVER['SERVER_NAME']}/phpfunctions/forgot1.php?passkey=$confirm_code\r\nand it would be valid for the next 5 minutes.";
                 //$message = "Please follow the link to reset your password. \r\n<a href="http://nireas.it.teithe.gr/WebApriori/phpfunctions/forgot1.php?passkey=$confirm_code"> ";                   
                 //$mail->Body  = $message;
                 if($mail->send()) {

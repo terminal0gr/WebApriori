@@ -38,7 +38,7 @@
 	} else {
 		try {
 			$captcha = $_POST['g-recaptcha-response'];
-			$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdP7H8UAAAAAFZ5qAl0_FmLAqzdBUeD0G3ZaX0p&response=".$captcha, False);
+			$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfbnNgUAAAAAALlBsuZoP6hjYvU98Utv1epeyqh&response=".$captcha, False);
 			$jresponse = json_decode($response, true);
 			if(!$jresponse["success"] === true)
 			{
@@ -95,15 +95,29 @@
 				$mail->addAddress($email);               
 				$mail->Subject  = "WebApriori. Please confirm your registration!";
 				$mail->IsHTML(true);
+
+				//for nireas
+				// $mail->Body  = 	
+				// "<p>Your Confirmation link for the Association rules mining engine is,</p>
+				// <br>
+				// <h2><a href=\"{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code\">here</a></h2>
+				// <h2>Or as an alternative, copy & paste the link above to your explorer</h2>
+				// <h2>{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code</h2>
+				// <br>
+				// <p>and it would be valid for 5 minutes.</p>"; 
+				//$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\n{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code\r\nand it would be valid for 5 minutes.";
+
+				//for webapriori.iee.ihu.gr
 				$mail->Body  = 	
 					"<p>Your Confirmation link for the Association rules mining engine is,</p>
 					<br>
-					<h2><a href=\"{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code\">here</a></h2>
+					<h2><a href=\"{$_SERVER['SERVER_NAME']}/phpfunctions/confirmation.php?passkey=$confirm_code\">here</a></h2>
 					<h2>Or as an alternative, copy & paste the link above to your explorer</h2>
-					<h2>{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code</h2>
+					<h2>{$_SERVER['SERVER_NAME']}/phpfunctions/confirmation.php?passkey=$confirm_code</h2>
 					<br>
 					<p>and it would be valid for 5 minutes.</p>"; 
-				$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\n{$_SERVER['SERVER_NAME']}/webapriori/phpfunctions/confirmation.php?passkey=$confirm_code\r\nand it would be valid for 5 minutes.";
+				$mail->AltBody="Your Confirmation link for the Association rules mining engine is\r\n{$_SERVER['SERVER_NAME']}/phpfunctions/confirmation.php?passkey=$confirm_code\r\nand it would be valid for 5 minutes.";
+
 				if(!$mail->send()) {
 					http_response_code(401);
 					$JsonReq = array('title' => 'Error', 'message' => 'Email has not been sent. '.$mail->ErrorInfo);
