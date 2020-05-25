@@ -768,7 +768,7 @@
 	</form>		
 
 	<div id="infoForDS" class="lightgraybackground udfwidth mx-auto border rounded p-2" style="display:none">
-		<h2>Supported dataset types</h2>
+		<h2 class="text-primary">Supported dataset types</h2>
 		<br>
 		<p><b>1) Market Basket list.</b> No header is expected, The number of columns is undefined (Default). 
 		If header row exists then in 1st parameter of the extra parameters field the string representing the absent item must be declared. If absent item is nothing or not exists then assign "" or "nan".
@@ -902,6 +902,13 @@ class,age,sex,survived<br>
 		</div>
 		<br>
 		<div class="bg-warning rounded"><b>Note:</b> In extra parameters, the items must be enclosed in double quotes and be seperated with space (e.g. <b><i>"InvoiceID" "ProductID"</i></b>)</div>
+		<br>
+		<h2 class="text-primary">Public datasets and User Roles</h2>
+		<br>
+		<p>Public datasets are the ones that can freely be used by all the users that are registered to WebApriori application. For security reasons, the researchers who can upload public datasets must have advanced privileges. If so, they can choose if they will upload a private dataset - visible only to them and to their web service client - or a public one - visible to all users. The public ones are very useful for professors who need to share datasets with their students for learning or experimental purposes.</p>
+		<p>If you are interested in uploading a public dataset please send an email to the WebApriori Administrator.</p>
+		<p><b>stoug@ihu.gr</b></p>
+		<br>
 	</div>
 
 	<form id="retrieveRules" action="phpfunctions/retrieveRules.php" method="post" >
