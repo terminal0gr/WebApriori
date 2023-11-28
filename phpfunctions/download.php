@@ -16,7 +16,7 @@
     try {
         // Get email
         $key=SERVERKEY.date("m.d.y");
-        $email = JWT::decode($_REQUEST['token'], $key);
+        $email = (string) JWT::decode($_REQUEST['token'], $key);
         $auth = true;
     }
     catch (Exception $e) {  //hide $key on error
@@ -55,10 +55,24 @@
 
     // Get parameters
     $postdata = urldecode($_REQUEST["dataset"]); // Decode URL-encoded string
-    //get dataset type is the fisrt character of $_POST['dataset']
+
+    // Lets assume that it is simple dataset. (not public)
+    //get dataset type from the first character of $_POST['dataset']
     $datasetType=substr($postdata,0,1);
-    //get the filename
+    //get the filename from the 2nd character to the end
     $filename=substr($postdata,1);
+    $isPublicDataset=false;
+    //if the first character of $_POST['dataset'] is p the dataset is public.
+    if (substr($postdata,0,1)=='p') {
+        //get dataset type from the third character of $_POST['dataset']
+        $datasetType=substr($postdata,2,1);
+        //get the filename from the 4th character to the end
+        $filename=substr($postdata,3);
+        $isPublicDataset=true;
+    }
+
+
+
     //Create dataset path
     $kind=$_REQUEST["kind"];
 
@@ -68,7 +82,11 @@
         $fpatho_parts = pathinfo($fpatho);
         $filepath=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".json";
     } elseif ($kind=='dataset') {
-        $filepath="../Python/datasets/".$identity."/".$datasetType."/".$filename;   
+        if ($isPublicDataset) {
+            $filepath="../Python/public/".$datasetType."/".$filename; 
+        } else {
+            $filepath="../Python/datasets/".$identity."/".$datasetType."/".$filename;  
+        } 
     } else {
         http_response_code(201);
         echo('Bad call arguments!');

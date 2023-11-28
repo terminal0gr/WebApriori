@@ -11,9 +11,9 @@
     "reduntantRemoveType": 3,
     "datasetArgs": "",
     "Records": 9835,
-    "RecordsCreationTime": "0.021",
+    "RecordsCreationTime": "0.020",
     "RulesCount": 118,
-    "RulesCreationTime": "0.161",
+    "RulesCreationTime": "0.187",
     "rules": [
         {
             "LHS": [
@@ -54,8 +54,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "whole milk"
+                "whole milk",
+                "other vegetables"
             ],
             "RHS": [
                 "root vegetables"
@@ -76,8 +76,8 @@
                 "butter"
             ],
             "RHS": [
-                "other vegetables",
-                "whole milk"
+                "whole milk",
+                "other vegetables"
             ],
             "Confidence": 0.2073394495412844,
             "Lift": 2.7706297367371358,
@@ -95,8 +95,8 @@
                 "whipped/sour cream"
             ],
             "RHS": [
-                "other vegetables",
-                "whole milk"
+                "whole milk",
+                "other vegetables"
             ],
             "Confidence": 0.20425531914893616,
             "Lift": 2.7294172062904716,
@@ -187,8 +187,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "tropical fruit"
+                "tropical fruit",
+                "whole milk"
             ],
             "RHS": [
                 "root vegetables"
@@ -206,8 +206,8 @@
         },
         {
             "LHS": [
-                "rolls/buns",
-                "root vegetables"
+                "root vegetables",
+                "rolls/buns"
             ],
             "RHS": [
                 "other vegetables"
@@ -481,8 +481,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "whole milk"
+                "whole milk",
+                "other vegetables"
             ],
             "RHS": [
                 "tropical fruit"
@@ -645,8 +645,8 @@
         },
         {
             "LHS": [
-                "rolls/buns",
-                "root vegetables"
+                "root vegetables",
+                "rolls/buns"
             ],
             "RHS": [
                 "whole milk"
@@ -1193,8 +1193,8 @@
         },
         {
             "LHS": [
-                "rolls/buns",
-                "yogurt"
+                "yogurt",
+                "rolls/buns"
             ],
             "RHS": [
                 "whole milk"
@@ -1248,8 +1248,8 @@
         },
         {
             "LHS": [
-                "citrus fruit",
-                "other vegetables"
+                "other vegetables",
+                "citrus fruit"
             ],
             "RHS": [
                 "whole milk"
@@ -1285,8 +1285,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "sausage"
+                "sausage",
+                "whole milk"
             ],
             "RHS": [
                 "other vegetables"
@@ -1322,8 +1322,8 @@
         },
         {
             "LHS": [
-                "rolls/buns",
-                "tropical fruit"
+                "tropical fruit",
+                "rolls/buns"
             ],
             "RHS": [
                 "whole milk"
@@ -1413,8 +1413,8 @@
         },
         {
             "LHS": [
-                "rolls/buns",
-                "yogurt"
+                "yogurt",
+                "rolls/buns"
             ],
             "RHS": [
                 "other vegetables"
@@ -1486,8 +1486,8 @@
         },
         {
             "LHS": [
-                "other vegetables",
-                "bottled water"
+                "bottled water",
+                "other vegetables"
             ],
             "RHS": [
                 "whole milk"
@@ -1725,8 +1725,8 @@
         },
         {
             "LHS": [
-                "whole milk",
-                "bottled water"
+                "bottled water",
+                "whole milk"
             ],
             "RHS": [
                 "other vegetables"

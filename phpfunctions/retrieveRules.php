@@ -17,7 +17,7 @@
     try {
         // Get email
         $key=SERVERKEY.date("m.d.y");
-        $email = JWT::decode($_POST['token'], $key);
+        $email = (string) JWT::decode($_POST['token'], $key);
         $auth = true;
     }
     catch (Exception $e) {  //hide $key on error
@@ -139,7 +139,7 @@
         }
     }
 
-    $input = 'python Main04.py ';
+    $input = 'python3 Main04.py ';
     $input.= '"'.$identity.'" ';
     $input.= '"'.$_POST['min_support'].'" ';
     $input.= '"'.$_POST['min_confidence'].'" ';

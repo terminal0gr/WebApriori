@@ -83,7 +83,9 @@ function credits() {
         str    +=    '           </div>';
         str    +=    '           <div class="modal-body">';
         str    +=    '               <h5 class="modal-title text-primary">Developer</h5>';
-        str    +=    '               <p>Malliaridis Konstantinos</p>';
+        str    +=    '               <p>Malliaridis Konstantinos</p><hr>';
+        str    +=    '               <h5 class="modal-title text-primary">Application Version</h5>';
+        str    +=    '               <p>V01.06.00 28/11/2023</p>';
         str    +=    '            </div>';
         str    +=    '            <div class="modal-footer">';
         str    +=    '               <p class="text-center" >MSc in Web Intelligence &copy; 2019-2020</p>';
