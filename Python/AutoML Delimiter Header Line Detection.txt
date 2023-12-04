@@ -1,0 +1,53 @@
+AutoML Delimiter detection
+
+    If the dataset is of type
+        1) Market Basket list
+    then the delimiter won't occur the same number of times on each row. In that case the delimiter 
+    is the most frequent char in the sample (first 100 lines) between |¦,; and [tab]
+    Moreover, If the dataset is 1) Market Basket list, then it has no header line.
+
+    On the contrary, the delimiter /should/ occur the same number of times on
+    each row if the dataset is of the type: 
+        2) Order/Invoice detail
+        3) Sparse item Dataset
+        4) Columns with multiple categorized values
+    However, due to malformed data, it may not. We don't want
+    an all or nothing approach, so we allow for small variations in this
+    number.
+    The steps in order to detect delimiter are:
+      1) build a table of the frequency of each character on every line.
+      2) build a table of frequencies of this frequency (meta-frequency?),
+         e.g.  'x occurred 5 times in 10 rows, 6 times in 1000 rows,
+         7 times in 2 rows'
+      3) use the mode of the meta-frequency to determine the /expected/
+         frequency for that character
+      4) find out how often the character actually meets that goal
+      5) the character that best meets its goal is the delimiter
+    For performance reasons, the data is evaluated in chunks, so it can
+    try and evaluate the smallest portion of the data possible, evaluating
+    additional chunks as necessary.
+
+    The library used to achieve delimiter detection is the csv.py. Its source code can be found in
+    https://github.com/python/cpython/blob/3.12/Lib/csv.py
+    The above library has been modified by us in order to extend delimiter detection capability for the 
+        1) Market Basket list datasets
+    which was not included in the original library.
+    The modified subroutine is:
+        _guess_delimiter 
+
+----------------------------
+AutoML Header line detection
+
+    The header line detection procedure according to csv.py python library occurs as follows:
+        1. A dictionary of types of data in each column is created at first. 
+        2. If any column is of a single type (say, integers), *except* for the first row, 
+           then the first row is presumed to be labels. 
+        3. If the dataset is 1) Market Basket list, then there is no header line 
+        4. If the type can't be determined, it is assumed to be a string in which case
+           the length of the string is the determining factor: 
+           4.1. If all of the rows except for the first are the same length, it's a header.
+           4.2. Finally, a 'vote' is taken at the end for each column, adding or
+                subtracting from the likelihood of the first row being a header.
+    
+    From the above rules, the 3rd one added by us to improve header line detection for
+            1) Market Basket list datasets

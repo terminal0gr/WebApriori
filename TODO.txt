@@ -1,5 +1,7 @@
-26/11/2023 public dataset downloading is not working
-
+DONE - V01.06.00 28/11/2023 26/11/2023 Public dataset downloading is not working
+28/11/2023 python3.bat
+28/11/2023 determine if dataset has header or not. DONE must be experimended
+03/12/2023 delimiter and header determination documentation needed.
 
 WEB API
     

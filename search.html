@@ -770,13 +770,12 @@
 	<div id="infoForDS" class="lightgraybackground udfwidth mx-auto border rounded p-2" style="display:none">
 		<h2 class="text-primary">Supported dataset types</h2>
 		<br>
-		<p><b>1) Market Basket list.</b> No header is expected, The number of columns is undefined (Default). 
-		If header row exists then in 1st parameter of the extra parameters field the string representing the absent item must be declared. If absent item is nothing or not exists then assign "" or "nan".
-		The participant columns must be declared in extra parameters field starting from the 2nd parameter.<br> 
+		<p><b>1) Market Basket list.</b> No header is expected, The number of columns in each record is unspecified. 
+		In extra parameters, participant columns can be declared for filtering and tuning puproses.<br> 
 		<a href="javascript:toggleDisplay('#hexample1');">Examples</a></p>
 		<div id="hexample1" style="display:none">
 			<div class="card text-white bg-secondary mb-3">
-				<div class="card-header"><b>Sample of dataset with no header line. Nothing must be declared in extra parameters field</b></div>
+				<div class="card-header"><b>Sample of dataset.</b></div>
 				<div class="card-body">
 					<p class="card-text">
 citrus fruit,semi-finished bread,margarine,ready soups<br>
@@ -788,14 +787,16 @@ other vegetables,whole milk,condensed milk,long life bakery product<br>
 				</div>
 			</div>
 			<div class="card text-white bg-secondary mb-3">
-				<div class="card-header"><b>Sample of dataset with header line. If you are interested for the first 8 items then in extra parameters field you must declare: <p style="color:yellow;"><i>"nan" "Item 1" "Item 2" "Item 3" "Item 4" "Item 5" "Item 6" "Item 7" "Item 8"</i></p></b></div>
+				<div class="card-header"><b>Sample of dataset using extra parameters field to filter the items participating in association rules mining while excluding all the other items from the procedure. 
+					If you are interested for the items [citrus, yogurt, cream cheese, other vegetables, whole milk, tropical fruit] then in extra parameters field you must declare: 
+					<p style="color:yellow;"><i>"citrus" "yogurt" "cream cheese" "other vegetables" "whole milk" "tropical fruit"</i></p></b></div>
 				<div class="card-body">
-					<p class="card-text">Item(s),Item 1,Item 2,Item 3,Item 4,Item 5,Item 6,Item 7,Item 8,Item 9,Item 10,Item 11,Item 12<br>
-4,citrus fruit,semi-finished bread,margarine,ready soups,,,,,,,,,,<br>
-3,tropical fruit,yogurt,coffee,,,,,,,,,,,,,<br>
-1,whole milk,,,,,,,,,,,,<br>
-4,pip fruit,yogurt,cream cheese,meat spreads,,,,,,,,,,,,,,,<br>
-4,other vegetables,whole milk,condensed milk,long life bakery product,,,,,,,,,,,,,,,,,,<br>
+					<p class="card-text">
+citrus fruit,semi-finished bread,margarine,ready soups<br>
+tropical fruit,yogurt,coffee<br>
+whole milk<br>
+pip fruit,yogurt,cream cheese,meat spreads<br>
+other vegetables,whole milk,condensed milk,long life bakery product<br>
 ...<br></p>
 				</div>
 			</div>

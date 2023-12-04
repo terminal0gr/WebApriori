@@ -5,10 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
+            "type": "python",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${file}"
+            "program": "${file}",
+            "cwd": "${fileDirname}",
+            "justMyCode": false
         }
     ]
 }
