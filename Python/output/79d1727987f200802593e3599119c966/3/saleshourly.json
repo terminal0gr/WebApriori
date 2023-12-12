@@ -1,0 +1,18 @@
+{
+    "min_support": 0.1,
+    "min_confidence": 0.1,
+    "min_lift": 1.01,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "saleshourly.csv",
+    "datasetSep": ",",
+    "datasetType": 3,
+    "outputType": 2,
+    "reduntantRemoveType": 0,
+    "datasetArgs": "['0', 'M01AB', 'M01AE', 'N02BA', 'N02BE', 'N05B', 'N05C', 'R03', 'R06']",
+    "Records": 50532,
+    "RecordsCreationTime": "0.562",
+    "RulesCount": 0,
+    "RulesCreationTime": "7.439",
+    "rules": []
+}

@@ -170,7 +170,10 @@ class Sniffer:
     '''
     def __init__(self):
         # in case there is more than one possible delimiter
-        self.preferred = [',', '\t', ';', ' ', ':']
+        # Malliaridis 20231209 changed preferred character order, because in some countries ',' is used as decimal separator
+        # leadding to wrong delimiter detection. 
+        self.preferred = [';', ',', '\t', ' ', ':']
+        #self.preferred = [',', '\t', ';', ' ', ':']
 
 
     def sniff(self, sample, delimiters=None):
@@ -385,13 +388,23 @@ class Sniffer:
             #return('',0)
                     
 
-        # if there's more than one, fall back to a 'preferred' list
         if len(delims) > 1:
-            for d in self.preferred:
-                if d in delims.keys():
+            # Malliaridis 20231209  
+            # if there's more than one, fall back to a 'preferred' list
+            # However, ofr better detection, the dict is beeing sorted by the highest frequency character
+            SortDelimsByFrequency=dict(sorted(delims.items(), key=lambda x:x[1][0], reverse=True))
+            for d in SortDelimsByFrequency.keys():
+                if d in self.preferred:
                     skipinitialspace = (data[0].count(d) ==
-                                        data[0].count("%c " % d))
+                                        data[0].count("%c " % d))             
                     return (d, skipinitialspace)
+            # Original code replace by the above
+            # for d in self.preferred:
+            #     if d in delims.keys():
+            #         skipinitialspace = (data[0].count(d) ==
+            #                             data[0].count("%c " % d))
+            #         print(type(delims[';']))                
+            #         return (d, skipinitialspace)
 
         # nothing else indicates a preference, pick the character that
         # dominates(?)

@@ -23,6 +23,9 @@ AutoML Delimiter detection
          frequency for that character
       4) find out how often the character actually meets that goal
       5) the character that best meets its goal is the delimiter
+      6) Malliaridis 20231209 If more than one delimiters found as candidates then the 'Winner' is
+         the delimiter thaw has the highest frequency and is one of the 'preferred' 
+         in that order [';', ',', '\t', ' ', ':']
     For performance reasons, the data is evaluated in chunks, so it can
     try and evaluate the smallest portion of the data possible, evaluating
     additional chunks as necessary.

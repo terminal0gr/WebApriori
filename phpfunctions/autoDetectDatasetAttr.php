@@ -62,38 +62,53 @@
         print json_encode($JsonReq);
         exit();
     }
-
+    
     //get dataset type is the first character of $_POST['dataset']
     if (substr($_POST['dataset'],0,2)=='p|') {
         // public dataset
+        $isPublic=1;
         $datasetType='p'.substr($_POST['dataset'],2,1);
         $filename=substr($_POST['dataset'],3);
     }else{
         // private dataset
+        $isPublic=0;
         $datasetType=substr($_POST['dataset'],0,1);
         $filename=substr($_POST['dataset'],1);
     }
 
-    //Create output path
-    $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;
-    $fpatho_parts = pathinfo($fpatho);
-    $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".json";
-    $message = '';
-    if (is_file($fpatho)) {
-        $json = file_get_contents($fpatho);
-        $jsonReq = json_decode($json, true);
-    } else {
-        $message = "No input parameters are saved!!!\n";
+    $input = PYTHON;
+    $input.= ' autoDetectDatasetAttr.py ';
+    $input.= '"'.$identity.'" ';
+    $input.= '"'.$filename.'" ';
+    $input.= '"'.$datasetType.'" ';
+    $input.= '"'.$isPublic.'"';
+
+    chdir('../Python');
+
+    try {
+        set_time_limit(60); //in seconds
+        ob_start();
+        passthru($input);
+        $output = ob_get_contents();
+        ob_end_clean();
+    } catch (Exception $e) {
+        http_response_code(201);
+        $JsonReq = array('title' => $input.'Error', 'message' => $e->getMessage());
+        print json_encode($JsonReq);
+        exit();
     }
 
-    if ($message) {
+    if (!$output) {
         http_response_code(201);
-        $jsonReq = array('title' => "exclamation" , 'message' => $message);
-        print json_encode($jsonReq);
-        exit();        
+        $JsonReq = array('title' => 'Invalid parameters! Please check!', 'message' => $input);
+        print json_encode($JsonReq);
+        exit();
     }
 
     http_response_code(200);
-    print json_encode($jsonReq);
-    exit();  
+    $JsonReq = array('title' => $input, 'message' => $output);
+    print json_encode($JsonReq);
+    
+    exit();
+
 ?>

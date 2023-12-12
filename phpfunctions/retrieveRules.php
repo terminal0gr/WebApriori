@@ -139,7 +139,7 @@
         }
     }
 
-    $input = 'python3 Main04.py ';
+    $input = 'python Main04.py ';
     $input.= '"'.$identity.'" ';
     $input.= '"'.$_POST['min_support'].'" ';
     $input.= '"'.$_POST['min_confidence'].'" ';

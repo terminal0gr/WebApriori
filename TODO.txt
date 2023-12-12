@@ -1,12 +1,15 @@
+09/12/2023 Moreover, Extra parameters / item names field must be AutoML initialized (e.g. name of the dataset's columns)
+09/12/2023 delimiter and header detection must be included in webapriori
+28/11/2023 python3.bat PENDING...
+DONE - V01.06.00 09/12/2023 03/12/2023 delimiter and header determination documentation needed.
+DONE - V01.06.00 09/12/2023 28/11/2023 determine if dataset has header or not.
 DONE - V01.06.00 28/11/2023 26/11/2023 Public dataset downloading is not working
-28/11/2023 python3.bat
-28/11/2023 determine if dataset has header or not. DONE must be experimended
-03/12/2023 delimiter and header determination documentation needed.
 
-WEB API
-    
+
+
+
+WEB API    
 - Fully asychronous call for ARM / results in user interface
-
 DONE - 10/02/2020 V01.05.00 Redundant rules elimination (3 cases) implemented
 DONE - 21/01/2020 V01.04.00 Use of value instead of placeholder in basic parameters
 DONE - 16/01/2020 V01.03.00 Correct spelling and spelling in all parts of the application
