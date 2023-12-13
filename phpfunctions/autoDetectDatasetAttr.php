@@ -7,11 +7,17 @@
     
     $auth = false;
 
+
     if (!isset($_POST['token'])) {
         http_response_code(400);
         $JsonReq = array('title' => 'Error', 'message' => 'You are not signed in!!! Please sign in/up');
         print json_encode($JsonReq);
         exit();
+    }
+
+    $forceAutoDetect=false;
+    if (isset($_POST['forceAutoDetect'])) {
+        $forceAutoDetect = $_POST['forceAutoDetect'];
     }
 
     try {
@@ -76,6 +82,34 @@
         $filename=substr($_POST['dataset'],1);
     }
 
+    //Read dataset's attributes from save file (dataset).metadata and not autodetect
+    if (!$forceAutoDetect) {
+        //Create output path
+        $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;
+        $fpatho_parts = pathinfo($fpatho);
+        $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".metadata";
+        $message = '';
+        if (is_file($fpatho)) {
+            try {
+                $json = file_get_contents($fpatho);
+                $jsonReq = json_decode($json, true);
+                http_response_code(200);
+                $jsonReq = json_decode($output, true);
+                print json_encode($jsonReq);
+                exit();
+            }
+            catch (Exception $e) {  
+                $forceAutoDetect=true;
+            }	
+        } else {
+            $forceAutoDetect=true;
+        }
+    }
+
+    if (!$forceAutoDetect) {
+        exit();
+    }
+
     $input = PYTHON;
     $input.= ' autoDetectDatasetAttr.py ';
     $input.= '"'.$identity.'" ';
@@ -106,8 +140,10 @@
     }
 
     http_response_code(200);
-    $JsonReq = array('title' => $input, 'message' => $output);
-    print json_encode($JsonReq);
+    $jsonReq = json_decode($output, true);
+    // $JsonReq = array('title' => $input, 'message' => $output);
+    // print json_encode($JsonReq);
+    print json_encode($jsonReq);
     
     exit();
 

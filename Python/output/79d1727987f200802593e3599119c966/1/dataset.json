@@ -11,18 +11,18 @@
     "reduntantRemoveType": 7,
     "datasetArgs": "",
     "Records": 1499,
-    "RecordsCreationTime": "0.010",
+    "RecordsCreationTime": "0.012",
     "RulesCount": 150,
-    "RulesCreationTime": "22.515",
+    "RulesCreationTime": "17.872",
     "rules": [
         {
             "LHS": [
-                "papertowels",
-                "eggs"
+                "eggs",
+                "papertowels"
             ],
             "RHS": [
-                "pasta",
-                "icecream"
+                "icecream",
+                "pasta"
             ],
             "Confidence": 0.32231404958677684,
             "Lift": 1.9720357564513407,
@@ -37,8 +37,8 @@
         },
         {
             "LHS": [
-                "icecream",
-                "eggs"
+                "eggs",
+                "icecream"
             ],
             "RHS": [
                 "papertowels",
@@ -57,8 +57,8 @@
         },
         {
             "LHS": [
-                "dinnerrolls",
-                "laundrydetergent"
+                "laundrydetergent",
+                "dinnerrolls"
             ],
             "RHS": [
                 "poultry",
@@ -77,12 +77,12 @@
         },
         {
             "LHS": [
-                "papertowels",
-                "icecream"
+                "icecream",
+                "papertowels"
             ],
             "RHS": [
-                "pasta",
-                "eggs"
+                "eggs",
+                "pasta"
             ],
             "Confidence": 0.3157894736842105,
             "Lift": 1.885929964353114,
@@ -101,8 +101,8 @@
                 "spaghettisauce"
             ],
             "RHS": [
-                "poultry",
-                "laundrydetergent"
+                "laundrydetergent",
+                "poultry"
             ],
             "Confidence": 0.32510288065843623,
             "Lift": 1.8529628064904788,
@@ -117,12 +117,12 @@
         },
         {
             "LHS": [
-                "spaghettisauce",
-                "laundrydetergent"
+                "laundrydetergent",
+                "spaghettisauce"
             ],
             "RHS": [
-                "poultry",
-                "dinnerrolls"
+                "dinnerrolls",
+                "poultry"
             ],
             "Confidence": 0.32916666666666666,
             "Lift": 1.7877566425120772,
@@ -137,9 +137,9 @@
         },
         {
             "LHS": [
-                "pasta",
+                "eggs",
                 "icecream",
-                "eggs"
+                "pasta"
             ],
             "RHS": [
                 "papertowels"
@@ -157,9 +157,9 @@
         },
         {
             "LHS": [
+                "eggs",
                 "papertowels",
-                "icecream",
-                "eggs"
+                "icecream"
             ],
             "RHS": [
                 "pasta"
@@ -197,9 +197,9 @@
         },
         {
             "LHS": [
+                "laundrydetergent",
                 "dinnerrolls",
-                "spaghettisauce",
-                "laundrydetergent"
+                "spaghettisauce"
             ],
             "RHS": [
                 "poultry"
@@ -217,8 +217,8 @@
         },
         {
             "LHS": [
-                "shampoo",
-                "yogurt"
+                "yogurt",
+                "shampoo"
             ],
             "RHS": [
                 "juice",
@@ -237,12 +237,12 @@
         },
         {
             "LHS": [
-                "poultry",
-                "aluminumfoil"
+                "aluminumfoil",
+                "poultry"
             ],
             "RHS": [
-                "vegetables",
-                "mixes"
+                "mixes",
+                "vegetables"
             ],
             "Confidence": 0.4671814671814672,
             "Lift": 1.6248376317981887,
@@ -257,9 +257,9 @@
         },
         {
             "LHS": [
+                "laundrydetergent",
                 "poultry",
-                "spaghettisauce",
-                "laundrydetergent"
+                "spaghettisauce"
             ],
             "RHS": [
                 "dinnerrolls"
@@ -277,9 +277,9 @@
         },
         {
             "LHS": [
-                "poultry",
+                "laundrydetergent",
                 "dinnerrolls",
-                "laundrydetergent"
+                "poultry"
             ],
             "RHS": [
                 "spaghettisauce"
@@ -297,8 +297,8 @@
         },
         {
             "LHS": [
-                "papertowels",
-                "eggs"
+                "eggs",
+                "papertowels"
             ],
             "RHS": [
                 "pasta",
@@ -317,12 +317,12 @@
         },
         {
             "LHS": [
-                "shampoo",
-                "cheeses"
+                "cheeses",
+                "shampoo"
             ],
             "RHS": [
-                "vegetables",
-                "sandwichbags"
+                "sandwichbags",
+                "vegetables"
             ],
             "Confidence": 0.4570135746606335,
             "Lift": 1.6043638136212874,
@@ -337,8 +337,8 @@
         },
         {
             "LHS": [
-                "juice",
-                "ketchup"
+                "ketchup",
+                "juice"
             ],
             "RHS": [
                 "coffee/tea",
@@ -397,12 +397,12 @@
         },
         {
             "LHS": [
-                "ketchup",
-                "aluminumfoil"
+                "aluminumfoil",
+                "ketchup"
             ],
             "RHS": [
-                "vegetables",
-                "mixes"
+                "mixes",
+                "vegetables"
             ],
             "Confidence": 0.4570135746606335,
             "Lift": 1.5894741262558925,
@@ -417,8 +417,8 @@
         },
         {
             "LHS": [
-                "dinnerrolls",
-                "eggs"
+                "eggs",
+                "dinnerrolls"
             ],
             "RHS": [
                 "soda",
@@ -437,8 +437,8 @@
         },
         {
             "LHS": [
-                "papertowels",
                 "icecream",
+                "papertowels",
                 "pasta"
             ],
             "RHS": [
@@ -457,8 +457,8 @@
         },
         {
             "LHS": [
-                "shampoo",
-                "sandwichbags"
+                "sandwichbags",
+                "shampoo"
             ],
             "RHS": [
                 "cheeses",
@@ -477,8 +477,8 @@
         },
         {
             "LHS": [
-                "juice",
-                "coffee/tea"
+                "coffee/tea",
+                "juice"
             ],
             "RHS": [
                 "ketchup",
@@ -497,8 +497,8 @@
         },
         {
             "LHS": [
-                "sugar",
-                "sandwichbags"
+                "sandwichbags",
+                "sugar"
             ],
             "RHS": [
                 "cheeses",
@@ -517,8 +517,8 @@
         },
         {
             "LHS": [
-                "sugar",
-                "milk"
+                "milk",
+                "sugar"
             ],
             "RHS": [
                 "toiletpaper",
@@ -537,8 +537,8 @@
         },
         {
             "LHS": [
-                "papertowels",
-                "dinnerrolls"
+                "dinnerrolls",
+                "papertowels"
             ],
             "RHS": [
                 "pasta",
@@ -557,8 +557,8 @@
         },
         {
             "LHS": [
-                "pasta",
-                "eggs"
+                "eggs",
+                "pasta"
             ],
             "RHS": [
                 "papertowels",
@@ -597,8 +597,8 @@
         },
         {
             "LHS": [
-                "beef",
-                "eggs"
+                "eggs",
+                "beef"
             ],
             "RHS": [
                 "soda",
@@ -657,8 +657,8 @@
         },
         {
             "LHS": [
-                "shampoo",
-                "icecream"
+                "icecream",
+                "shampoo"
             ],
             "RHS": [
                 "sandwichloaves",
@@ -677,8 +677,8 @@
         },
         {
             "LHS": [
-                "poultry",
-                "eggs"
+                "eggs",
+                "poultry"
             ],
             "RHS": [
                 "dinnerrolls",
@@ -697,8 +697,8 @@
         },
         {
             "LHS": [
-                "poultry",
-                "papertowels"
+                "papertowels",
+                "poultry"
             ],
             "RHS": [
                 "pasta",
@@ -717,12 +717,12 @@
         },
         {
             "LHS": [
-                "poultry",
-                "eggs"
+                "eggs",
+                "poultry"
             ],
             "RHS": [
-                "soda",
-                "vegetables"
+                "vegetables",
+                "soda"
             ],
             "Confidence": 0.464,
             "Lift": 1.5490779510022272,
@@ -737,8 +737,8 @@
         },
         {
             "LHS": [
-                "spaghettisauce",
-                "sandwichbags"
+                "sandwichbags",
+                "spaghettisauce"
             ],
             "RHS": [
                 "cheeses",
@@ -781,8 +781,8 @@
                 "laundrydetergent"
             ],
             "RHS": [
-                "vegetables",
-                "sandwichbags"
+                "sandwichbags",
+                "vegetables"
             ],
             "Confidence": 0.4393305439330544,
             "Lift": 1.5422868509499965,
@@ -797,8 +797,8 @@
         },
         {
             "LHS": [
-                "dinnerrolls",
-                "laundrydetergent"
+                "laundrydetergent",
+                "dinnerrolls"
             ],
             "RHS": [
                 "poultry",
@@ -817,8 +817,8 @@
         },
         {
             "LHS": [
-                "dinnerrolls",
-                "eggs"
+                "eggs",
+                "dinnerrolls"
             ],
             "RHS": [
                 "pasta",
@@ -837,8 +837,8 @@
         },
         {
             "LHS": [
-                "poultry",
-                "aluminumfoil"
+                "aluminumfoil",
+                "poultry"
             ],
             "RHS": [
                 "juice",
@@ -857,8 +857,8 @@
         },
         {
             "LHS": [
-                "individualmeals",
-                "handsoap"
+                "handsoap",
+                "individualmeals"
             ],
             "RHS": [
                 "beef",
@@ -897,8 +897,8 @@
         },
         {
             "LHS": [
-                "papertowels",
                 "eggs",
+                "papertowels",
                 "pasta"
             ],
             "RHS": [
@@ -917,12 +917,12 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "laundrydetergent"
+                "laundrydetergent",
+                "yogurt"
             ],
             "RHS": [
-                "vegetables",
-                "all-purpose"
+                "all-purpose",
+                "vegetables"
             ],
             "Confidence": 0.43965517241379304,
             "Lift": 1.5398203351595228,
@@ -937,8 +937,8 @@
         },
         {
             "LHS": [
-                "poultry",
-                "aluminumfoil"
+                "aluminumfoil",
+                "poultry"
             ],
             "RHS": [
                 "beef",
@@ -1037,8 +1037,8 @@
         },
         {
             "LHS": [
-                "poultry",
-                "laundrydetergent"
+                "laundrydetergent",
+                "poultry"
             ],
             "RHS": [
                 "dinnerrolls",
@@ -1057,8 +1057,8 @@
         },
         {
             "LHS": [
-                "juice",
-                "aluminumfoil"
+                "aluminumfoil",
+                "juice"
             ],
             "RHS": [
                 "coffee/tea",
@@ -1117,8 +1117,8 @@
         },
         {
             "LHS": [
-                "shampoo",
-                "laundrydetergent"
+                "laundrydetergent",
+                "shampoo"
             ],
             "RHS": [
                 "juice",
@@ -1137,9 +1137,9 @@
         },
         {
             "LHS": [
+                "vegetables",
                 "beef",
-                "soda",
-                "vegetables"
+                "soda"
             ],
             "RHS": [
                 "eggs"
@@ -1197,8 +1197,8 @@
         },
         {
             "LHS": [
-                "ketchup",
-                "milk"
+                "milk",
+                "ketchup"
             ],
             "RHS": [
                 "coffee/tea",
@@ -1217,8 +1217,8 @@
         },
         {
             "LHS": [
-                "soda",
-                "sandwichloaves"
+                "sandwichloaves",
+                "soda"
             ],
             "RHS": [
                 "shampoo",
@@ -1257,8 +1257,8 @@
         },
         {
             "LHS": [
-                "juice",
-                "mixes"
+                "mixes",
+                "juice"
             ],
             "RHS": [
                 "ketchup",
@@ -1297,8 +1297,8 @@
         },
         {
             "LHS": [
-                "individualmeals",
-                "sandwichbags"
+                "sandwichbags",
+                "individualmeals"
             ],
             "RHS": [
                 "cheeses",
@@ -1317,8 +1317,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "handsoap"
+                "handsoap",
+                "yogurt"
             ],
             "RHS": [
                 "sandwichloaves",
@@ -1337,8 +1337,8 @@
         },
         {
             "LHS": [
-                "dishwashingliquid/detergent",
-                "eggs"
+                "eggs",
+                "dishwashingliquid/detergent"
             ],
             "RHS": [
                 "bagels",
@@ -1377,12 +1377,12 @@
         },
         {
             "LHS": [
-                "spaghettisauce",
-                "eggs"
+                "eggs",
+                "spaghettisauce"
             ],
             "RHS": [
-                "vegetables",
-                "all-purpose"
+                "all-purpose",
+                "vegetables"
             ],
             "Confidence": 0.4364406779661017,
             "Lift": 1.528562094091557,
@@ -1397,8 +1397,8 @@
         },
         {
             "LHS": [
-                "pasta",
-                "sandwichbags"
+                "sandwichbags",
+                "pasta"
             ],
             "RHS": [
                 "cheeses",
@@ -1417,8 +1417,8 @@
         },
         {
             "LHS": [
-                "juice",
-                "laundrydetergent"
+                "laundrydetergent",
+                "juice"
             ],
             "RHS": [
                 "shampoo",
@@ -1537,8 +1537,8 @@
         },
         {
             "LHS": [
-                "soda",
-                "handsoap"
+                "handsoap",
+                "soda"
             ],
             "RHS": [
                 "pasta",
@@ -1557,8 +1557,8 @@
         },
         {
             "LHS": [
-                "shampoo",
-                "eggs"
+                "eggs",
+                "shampoo"
             ],
             "RHS": [
                 "soap",
@@ -1597,8 +1597,8 @@
         },
         {
             "LHS": [
-                "icecream",
-                "eggs"
+                "eggs",
+                "icecream"
             ],
             "RHS": [
                 "papertowels",
@@ -1617,8 +1617,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "sandwichbags"
+                "sandwichbags",
+                "yogurt"
             ],
             "RHS": [
                 "cheeses",
@@ -1657,8 +1657,8 @@
         },
         {
             "LHS": [
-                "juice",
-                "beef"
+                "beef",
+                "juice"
             ],
             "RHS": [
                 "shampoo",
@@ -1697,8 +1697,8 @@
         },
         {
             "LHS": [
-                "individualmeals",
-                "dinnerrolls"
+                "dinnerrolls",
+                "individualmeals"
             ],
             "RHS": [
                 "soda",
@@ -1721,8 +1721,8 @@
                 "papertowels"
             ],
             "RHS": [
-                "vegetables",
-                "all-purpose"
+                "all-purpose",
+                "vegetables"
             ],
             "Confidence": 0.43396226415094336,
             "Lift": 1.5198818550520188,
@@ -1757,8 +1757,8 @@
         },
         {
             "LHS": [
-                "soap",
-                "eggs"
+                "eggs",
+                "soap"
             ],
             "RHS": [
                 "soda",
@@ -1797,8 +1797,8 @@
         },
         {
             "LHS": [
-                "shampoo",
-                "eggs"
+                "eggs",
+                "shampoo"
             ],
             "RHS": [
                 "papertowels",
@@ -1817,8 +1817,8 @@
         },
         {
             "LHS": [
-                "beef",
-                "aluminumfoil"
+                "aluminumfoil",
+                "beef"
             ],
             "RHS": [
                 "icecream",
@@ -1897,12 +1897,12 @@
         },
         {
             "LHS": [
-                "fruits",
-                "eggs"
+                "eggs",
+                "fruits"
             ],
             "RHS": [
-                "vegetables",
-                "dishwashingliquid/detergent"
+                "dishwashingliquid/detergent",
+                "vegetables"
             ],
             "Confidence": 0.4622222222222222,
             "Lift": 1.516129345976173,
@@ -1917,8 +1917,8 @@
         },
         {
             "LHS": [
-                "shampoo",
                 "cheeses",
+                "shampoo",
                 "vegetables"
             ],
             "RHS": [
@@ -1937,8 +1937,8 @@
         },
         {
             "LHS": [
-                "pasta",
-                "icecream"
+                "icecream",
+                "pasta"
             ],
             "RHS": [
                 "papertowels",
@@ -1957,8 +1957,8 @@
         },
         {
             "LHS": [
-                "shampoo",
-                "aluminumfoil"
+                "aluminumfoil",
+                "shampoo"
             ],
             "RHS": [
                 "juice",
@@ -1997,8 +1997,8 @@
         },
         {
             "LHS": [
-                "juice",
-                "dinnerrolls"
+                "dinnerrolls",
+                "juice"
             ],
             "RHS": [
                 "shampoo",
@@ -2021,8 +2021,8 @@
                 "dishwashingliquid/detergent"
             ],
             "RHS": [
-                "vegetables",
-                "eggs"
+                "eggs",
+                "vegetables"
             ],
             "Confidence": 0.4705882352941177,
             "Lift": 1.5137591517293614,
@@ -2077,8 +2077,8 @@
         },
         {
             "LHS": [
-                "spaghettisauce",
-                "eggs"
+                "eggs",
+                "spaghettisauce"
             ],
             "RHS": [
                 "soda",
@@ -2097,8 +2097,8 @@
         },
         {
             "LHS": [
-                "poultry",
                 "dinnerrolls",
+                "poultry",
                 "spaghettisauce"
             ],
             "RHS": [
@@ -2117,8 +2117,8 @@
         },
         {
             "LHS": [
-                "milk",
-                "butter"
+                "butter",
+                "milk"
             ],
             "RHS": [
                 "toiletpaper",
@@ -2137,12 +2137,12 @@
         },
         {
             "LHS": [
-                "beef",
-                "individualmeals"
+                "individualmeals",
+                "beef"
             ],
             "RHS": [
-                "vegetables",
-                "handsoap"
+                "handsoap",
+                "vegetables"
             ],
             "Confidence": 0.4035874439461884,
             "Lift": 1.512443946188341,
@@ -2157,8 +2157,8 @@
         },
         {
             "LHS": [
-                "shampoo",
                 "icecream",
+                "shampoo",
                 "vegetables"
             ],
             "RHS": [
@@ -2197,12 +2197,12 @@
         },
         {
             "LHS": [
-                "aluminumfoil",
-                "butter"
+                "butter",
+                "aluminumfoil"
             ],
             "RHS": [
-                "vegetables",
-                "mixes"
+                "mixes",
+                "vegetables"
             ],
             "Confidence": 0.43478260869565216,
             "Lift": 1.5121557550691012,
@@ -2217,8 +2217,8 @@
         },
         {
             "LHS": [
-                "soda",
-                "eggs"
+                "eggs",
+                "soda"
             ],
             "RHS": [
                 "dinnerrolls",
@@ -2241,8 +2241,8 @@
                 "soda"
             ],
             "RHS": [
-                "vegetables",
-                "eggs"
+                "eggs",
+                "vegetables"
             ],
             "Confidence": 0.4700854700854701,
             "Lift": 1.5121418876783683,
@@ -2257,12 +2257,12 @@
         },
         {
             "LHS": [
-                "bagels",
-                "eggs"
+                "eggs",
+                "bagels"
             ],
             "RHS": [
-                "vegetables",
-                "dishwashingliquid/detergent"
+                "dishwashingliquid/detergent",
+                "vegetables"
             ],
             "Confidence": 0.46090534979423875,
             "Lift": 1.5118098891500305,
@@ -2297,8 +2297,8 @@
         },
         {
             "LHS": [
-                "individualmeals",
-                "eggs"
+                "eggs",
+                "individualmeals"
             ],
             "RHS": [
                 "soda",
@@ -2337,12 +2337,12 @@
         },
         {
             "LHS": [
-                "juice",
-                "eggs"
+                "eggs",
+                "juice"
             ],
             "RHS": [
-                "vegetables",
-                "all-purpose"
+                "all-purpose",
+                "vegetables"
             ],
             "Confidence": 0.43103448275862066,
             "Lift": 1.5096277795681596,
@@ -2377,8 +2377,8 @@
         },
         {
             "LHS": [
-                "dinnerrolls",
-                "eggs"
+                "eggs",
+                "dinnerrolls"
             ],
             "RHS": [
                 "papertowels",
@@ -2397,8 +2397,8 @@
         },
         {
             "LHS": [
-                "juice",
-                "soda"
+                "soda",
+                "juice"
             ],
             "RHS": [
                 "shampoo",
@@ -2497,8 +2497,8 @@
         },
         {
             "LHS": [
-                "spaghettisauce",
-                "eggs"
+                "eggs",
+                "spaghettisauce"
             ],
             "RHS": [
                 "cheeses",
@@ -2517,8 +2517,8 @@
         },
         {
             "LHS": [
-                "individualmeals",
                 "ketchup",
+                "individualmeals",
                 "vegetables"
             ],
             "RHS": [
@@ -2537,8 +2537,8 @@
         },
         {
             "LHS": [
-                "coffee/tea",
-                "laundrydetergent"
+                "laundrydetergent",
+                "coffee/tea"
             ],
             "RHS": [
                 "ketchup",
@@ -2577,9 +2577,9 @@
         },
         {
             "LHS": [
+                "yogurt",
                 "shampoo",
-                "vegetables",
-                "yogurt"
+                "vegetables"
             ],
             "RHS": [
                 "juice"
@@ -2597,8 +2597,8 @@
         },
         {
             "LHS": [
-                "sugar",
-                "eggs"
+                "eggs",
+                "sugar"
             ],
             "RHS": [
                 "soda",
@@ -2681,8 +2681,8 @@
                 "aluminumfoil"
             ],
             "RHS": [
-                "vegetables",
-                "sandwichbags"
+                "sandwichbags",
+                "vegetables"
             ],
             "Confidence": 0.42857142857142855,
             "Lift": 1.5045165607226498,
@@ -2697,8 +2697,8 @@
         },
         {
             "LHS": [
-                "spaghettisauce",
-                "dishwashingliquid/detergent"
+                "dishwashingliquid/detergent",
+                "spaghettisauce"
             ],
             "RHS": [
                 "bagels",
@@ -2761,8 +2761,8 @@
                 "sandwichbags"
             ],
             "RHS": [
-                "vegetables",
-                "mixes"
+                "mixes",
+                "vegetables"
             ],
             "Confidence": 0.4323144104803493,
             "Lift": 1.5035714647564817,
@@ -2777,8 +2777,8 @@
         },
         {
             "LHS": [
-                "spaghettisauce",
-                "eggs"
+                "eggs",
+                "spaghettisauce"
             ],
             "RHS": [
                 "pasta",
@@ -2817,8 +2817,8 @@
         },
         {
             "LHS": [
-                "bagels",
-                "eggs"
+                "eggs",
+                "bagels"
             ],
             "RHS": [
                 "pasta",
@@ -2857,12 +2857,12 @@
         },
         {
             "LHS": [
-                "poultry",
-                "ketchup"
+                "ketchup",
+                "poultry"
             ],
             "RHS": [
-                "vegetables",
-                "mixes"
+                "mixes",
+                "vegetables"
             ],
             "Confidence": 0.43162393162393164,
             "Lift": 1.501170008130565,
@@ -2881,8 +2881,8 @@
                 "spaghettisauce"
             ],
             "RHS": [
-                "vegetables",
-                "all-purpose"
+                "all-purpose",
+                "vegetables"
             ],
             "Confidence": 0.4285714285714286,
             "Lift": 1.5010013351134845,
@@ -2897,9 +2897,9 @@
         },
         {
             "LHS": [
-                "juice",
                 "coffee/tea",
-                "vegetables"
+                "vegetables",
+                "juice"
             ],
             "RHS": [
                 "ketchup"
@@ -2961,8 +2961,8 @@
                 "soda"
             ],
             "RHS": [
-                "vegetables",
-                "sandwichbags"
+                "sandwichbags",
+                "vegetables"
             ],
             "Confidence": 0.42738589211618255,
             "Lift": 1.500354689185381,
@@ -2981,8 +2981,8 @@
                 "lunchmeat"
             ],
             "RHS": [
-                "vegetables",
-                "dishwashingliquid/detergent"
+                "dishwashingliquid/detergent",
+                "vegetables"
             ],
             "Confidence": 0.45739910313901344,
             "Lift": 1.5003090932284053,
@@ -2997,8 +2997,8 @@
         },
         {
             "LHS": [
-                "handsoap",
-                "eggs"
+                "eggs",
+                "handsoap"
             ],
             "RHS": [
                 "dinnerrolls",

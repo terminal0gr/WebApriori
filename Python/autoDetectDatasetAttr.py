@@ -49,7 +49,7 @@ with open(filepath, encoding='utf8') as f:
 
     datasetAttributes['hasHeader'] = csv.Sniffer().has_header(s10)
     dialect = csv.Sniffer().sniff(s10)  # Check what kind of csv/tsv file we have.
-    datasetAttributes['delimiter']=repr(dialect.delimiter)
+    datasetAttributes['delimiter']=dialect.delimiter
 
 #file = open(os.path.splitext(filepath)[0] + '.metadata','w')
 with open(os.path.splitext(filepath)[0] + '.metadata','w') as file:

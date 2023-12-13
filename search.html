@@ -666,7 +666,7 @@
 			window.location=str;
 		};
 
-		function autoDetectDatasetAttr() {
+		function autoDetectDatasetAttr(forceAutoDetect=false) {
 			if (!sessionStorage.getItem('token')) {
 				MyModal("Error", "You are not signed in!!! Please sign in/up");
 				setTimeout(function() {
@@ -685,6 +685,7 @@
 			var formData = new FormData();
 			formData.set("token",sessionStorage.getItem('token'));
 			formData.set("dataset",x.value);
+			formData.set("forceAutoDetect",forceAutoDetect)
 
 			$.ajax({
 				type: 'POST' ,
@@ -707,20 +708,7 @@
 							MyModal(res.title, res.message)
 						} else {
 							document.getElementById('separator').value=res.delimiter; 
-							document.getElementById('header').value=res.hasHeader; 
-
-
-							// //loads res.datasetArgs as a python list like =>['a', 'b'].
-							// //but we need the format =>"a" "b" so, we apply the above regex!
-							// var regex = /[\[\],]/g;
-							// var extraparams=res.datasetArgs.replace(regex,'');
-							// var regex = /,/g;
-							// extraparams=extraparams.replace(regex,' ');  
-							// var regex = /'/g;
-							// extraparams=extraparams.replace(regex,'"'); 
-							// document.getElementById('extra_parameters').value=extraparams; 
-
-							//fillTable(res);
+							document.getElementById("header1").checked=res.hasHeader; 
 						}
 					}
 					catch(err) {
@@ -1022,7 +1010,7 @@ class,age,sex,survived<br>
 			</div>
 			<div class="form-row">
 				<div class="col-8">	
-					<select id="dataset" name="dataset" class="form-control browser-default custom-select" data-html="true" data-trigger="hover" data-toggle="tooltip" title="Pick a dataset for which association rules would be generated.<br>Datasets in blue background are public" onchange="retrieveInputParameters()">
+					<select id="dataset" name="dataset" class="form-control browser-default custom-select" data-html="true" data-trigger="hover" data-toggle="tooltip" title="Pick a dataset for which association rules would be generated.<br>Datasets in blue background are public" onchange="autoDetectDatasetAttr(false);retrieveInputParameters()">
 						<option value="" disabled selected>Choose a dataset from the list</option>
 					</select>
 				</div>	
@@ -1046,7 +1034,7 @@ class,age,sex,survived<br>
 			</div>	
 			<div id="autoDetect1" class="form-row">
 				<div class="col-12">
-					<label style="position:absolute;bottom:0" for="autodetect"><a href="#" onclick="autoDetectDatasetAttr()" data-trigger="hover" data-toggle="tooltip" title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> attributes</label>			
+					<label style="position:absolute;bottom:0" for="autodetect"><a href="#" onclick="autoDetectDatasetAttr(true)" data-trigger="hover" data-toggle="tooltip" title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			
 				</div>
 			</div>	
 			<div id="autoDetecting" class="form-row" style="display:none">

@@ -1,6 +1,8 @@
 09/12/2023 Moreover, Extra parameters / item names field must be AutoML initialized (e.g. name of the dataset's columns)
 09/12/2023 delimiter and header detection must be included in webapriori
-28/11/2023 python3.bat PENDING...
+13/12/2023 manual delimiter and header detection must be saved in .metadata
+13/12/2023 dataset type must be utilized
+DONE - V01.07.00 13/12/2023 28/11/2023 python executable is declared in config.php as PYTHON
 DONE - V01.06.00 09/12/2023 03/12/2023 delimiter and header determination documentation needed.
 DONE - V01.06.00 09/12/2023 28/11/2023 determine if dataset has header or not.
 DONE - V01.06.00 28/11/2023 26/11/2023 Public dataset downloading is not working
