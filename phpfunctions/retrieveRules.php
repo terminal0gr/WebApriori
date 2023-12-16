@@ -180,6 +180,12 @@
     $input.= '"'.$_POST['redundantType'].'" ';
     $input.= $_POST['extra_parameters'];
 
+    //for debug purposes
+    // http_response_code(201);
+    // $JsonReq = array('title' => 'Debug', 'message' => $input);
+    // print json_encode($JsonReq);
+    // exit();
+
     chdir('../Python');
     //asychronous call
     //exec($input.' > /dev/null 2>&1');

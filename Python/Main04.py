@@ -398,8 +398,9 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
                 with open(filepath, mode='r') as f:
                     reader = csv.reader(f, delimiter=datasetSep)
                     return list(reader)
-            except:
-                print('Could not open or find dataset file!!!')
+            except Exception as e:
+                vbcrlf = '<br>'
+                print(f"Could not open/read or find dataset file!!!.{vbcrlf}Unexpected error: {e}{vbcrlf}")
                 return None
 
         else:
