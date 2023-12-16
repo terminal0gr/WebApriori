@@ -99,15 +99,18 @@
         exit();
     }
 
+    $isPublic=0;
     //get dataset type is the fisrt character of $_POST['dataset']
     if (substr($_POST['dataset'],0,2)=='p|') {
         // public dataset
         $outputType=3;
+        $isPublic==1;
         $datasetType=substr($_POST['dataset'],2,1);
         $filename=substr($_POST['dataset'],3);
     }else{
         // private dataset
         $outputType=2;
+        $isPublic=0;
         $datasetType=substr($_POST['dataset'],0,1);
         $filename=substr($_POST['dataset'],1);
     }
@@ -139,6 +142,29 @@
         }
     }
 
+    //WritedatasetAttrs
+    //translate string value to bool value
+    $header1=filter_var($_POST['header1'], FILTER_VALIDATE_BOOLEAN);
+    // JSON data to be written to the file
+    $json_data = [
+        "hasHeader" => $header1,
+        "delimiter" => $_POST['separator']
+    ];
+    // Convert the PHP array to a JSON string
+    $json_string = json_encode($json_data, JSON_PRETTY_PRINT);
+    // File path where you want to write the JSON data
+    //assemble output path
+    if ($isPublic==0) {
+        $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;
+    } else {
+        $fpatho="../Python/output/".$identity."/p".$datasetType."/".$filename;            
+    }
+    $fpatho_parts = pathinfo($fpatho);
+    $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".metadata";
+    // Write the JSON data to the file
+    file_put_contents($fpatho, $json_string);
+
+    //Call Python for Association rules mining
     $input = PYTHON;
     $input.= ' Main04.py ';
     $input.= '"'.$identity.'" ';

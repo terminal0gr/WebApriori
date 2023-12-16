@@ -657,7 +657,6 @@ def output_association_rules(association_results, sort_index, descending=True, f
         dictRules['max_length'] = max_length
         dictRules['ssort'] = ssort
         dictRules['datasetName'] = datasetName
-        dictRules['datasetSep'] = datasetSep
         dictRules['datasetType'] = datasetType
         dictRules['outputType'] = outputType
         dictRules['reduntantRemoveType'] = reduntantRemoveType

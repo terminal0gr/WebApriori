@@ -176,6 +176,11 @@
                 // Serialize the form data first in array form so to add more elements.
 				var formData = $('#retrieveRules').serializeArray(); // convert form to array
 
+				//header existence
+				hd1=0;
+				if ($("#header1").is(":checked")) hd1=1;
+				formData.push({name: "header1", value: hd1});
+
                 //Redundant rules process
 				bws=0;
 				if ($("#Redundant1").is(":checked")) bws+=1;
@@ -583,7 +588,6 @@
 					try {
 						if (jqXHR.status!=200) {
 							// not found input parameters
-							document.getElementById('separator').value=","; 
 							document.getElementById('min_support').value="0.01"; 
 							document.getElementById('min_confidence').value="0.2"; 
 							document.getElementById('min_lift').value="1.5"; 
@@ -591,7 +595,6 @@
 							document.getElementById('extra_parameters').value=""; 
                             $("#showResults").hide();
 						} else {
-							document.getElementById('separator').value=res.datasetSep; 
 							document.getElementById('min_support').value=res.min_support; 
 							document.getElementById('min_confidence').value=res.min_confidence; 
 							document.getElementById('min_lift').value=res.min_lift; 
@@ -689,7 +692,7 @@
 
 			$.ajax({
 				type: 'POST' ,
-				url: 'phpfunctions/autoDetectDatasetAttr.php',
+				url: 'phpfunctions/datasetAttrAutoDetect.php',
 				data: formData,
 				contentType: false,
 				cache: false,
@@ -1034,12 +1037,12 @@ class,age,sex,survived<br>
 			</div>	
 			<div id="autoDetect1" class="form-row">
 				<div class="col-12">
-					<label style="position:absolute;bottom:0" for="autodetect"><a href="#" onclick="autoDetectDatasetAttr(true)" data-trigger="hover" data-toggle="tooltip" title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			
+					<label style="position:absolute;bottom:0" ><a href="#" onclick="autoDetectDatasetAttr(true)" data-trigger="hover" data-toggle="tooltip" title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			
 				</div>
 			</div>	
 			<div id="autoDetecting" class="form-row" style="display:none">
 				<div class="col-12">
-					<label style="position:absolute;bottom:0" for="autodetect">Autodetecting attributes... Please wait</label>			
+					<label style="position:absolute;bottom:0" >Autodetecting attributes... Please wait</label>			
 				</div>
 			</div>	
 		</div>

@@ -51,6 +51,11 @@ with open(filepath, encoding='utf8') as f:
     dialect = csv.Sniffer().sniff(s10)  # Check what kind of csv/tsv file we have.
     datasetAttributes['delimiter']=dialect.delimiter
 
+if public=='0':
+    filepath=os.path.join('output', identity, str(datasetType), datasetName)
+else:
+    filepath=os.path.join('output', identity, 'p', str(datasetType), datasetName)	
+
 #file = open(os.path.splitext(filepath)[0] + '.metadata','w')
 with open(os.path.splitext(filepath)[0] + '.metadata','w') as file:
     json.dump(datasetAttributes, file, indent=4)
