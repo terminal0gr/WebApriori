@@ -2,6 +2,7 @@ import sys
 import os
 import json
 import csvMy as csv
+import datasetFeatures as df
 #import csv
 
 #------------------------------
@@ -42,19 +43,24 @@ else:
 datasetAttributes = {}
 
 with open(filepath, encoding='utf8') as f:
-    s10=''
+    s100=''
 
     for x in range(100):
-        s10+=f.readline()
+        s100+=f.readline()
 
-    datasetAttributes['hasHeader'] = csv.Sniffer().has_header(s10)
-    dialect = csv.Sniffer().sniff(s10)  # Check what kind of csv/tsv file we have.
+    datasetAttributes['hasHeader'] = csv.Sniffer().has_header(s100)
+    dialect = csv.Sniffer().sniff(s100)  # Check what kind of csv/tsv file we have.
     datasetAttributes['delimiter']=dialect.delimiter
+
+    df.datasetFeatures()._datasetFeatures_x(filepath,dialect.delimiter,datasetAttributes['hasHeader'])
+
+
+    datasetAttributes['datasetType']=dialect.datasetType
 
 if public=='0':
     filepath=os.path.join('output', identity, str(datasetType), datasetName)
 else:
-    filepath=os.path.join('output', identity, 'p', str(datasetType), datasetName)	
+    filepath=os.path.join('output', identity, 'p' + str(datasetType), datasetName)	
 
 #file = open(os.path.splitext(filepath)[0] + '.metadata','w')
 with open(os.path.splitext(filepath)[0] + '.metadata','w') as file:

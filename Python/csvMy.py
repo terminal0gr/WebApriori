@@ -14,6 +14,9 @@ from _csv import Dialect as _Dialect
 from collections import OrderedDict
 from io import StringIO
 
+# Malliaridis 23/12/2023
+import datasetFeatures
+
 __all__ = ["QUOTE_MINIMAL", "QUOTE_ALL", "QUOTE_NONNUMERIC", "QUOTE_NONE",
            "Error", "Dialect", "__doc__", "excel", "excel_tab",
            "field_size_limit", "reader", "writer",
@@ -39,6 +42,7 @@ class Dialect:
     skipinitialspace = None
     lineterminator = None
     quoting = None
+    datasetType = 0 # 0:Unspecified, 1:Market Basket List
 
     def __init__(self):
         if self.__class__ != Dialect:
@@ -181,11 +185,14 @@ class Sniffer:
         Returns a dialect (or None) corresponding to the sample
         """
 
-        quotechar, doublequote, delimiter, skipinitialspace = \
-                   self._guess_quote_and_delimiter(sample, delimiters)
+        quotechar, doublequote, delimiter, skipinitialspace = self._guess_quote_and_delimiter(sample, delimiters)
         if not delimiter:
-            delimiter, skipinitialspace = self._guess_delimiter(sample,
-                                                                delimiters)
+            delimiter, skipinitialspace, datasetType = self._guess_delimiter(sample, delimiters)
+        else: #Malliaridis 23/12/2023
+            # we use _guess_delimiter only for examine if it is dataset of type 1) Market Basket list.
+            # This is neseccary because that king of dataset has indistinct number of columns in each line
+            # and thus can't be merged in a pandas dataframe or a numpy's array
+            temp_delimiter, temp_skipinitialspace, datasetType = self._guess_delimiter(sample, delimiters)
 
         if not delimiter:
             raise Error("Could not determine delimiter")
@@ -201,9 +208,9 @@ class Sniffer:
         # _csv.reader won't accept a quotechar of ''
         dialect.quotechar = quotechar or '"'
         dialect.skipinitialspace = skipinitialspace
+        dialect.datasetType = datasetType
 
         return dialect
-
 
     def _guess_quote_and_delimiter(self, data, delimiters):
         """
@@ -281,7 +288,7 @@ class Sniffer:
         return (quotechar, doublequote, delim, skipinitialspace)
 
 
-    def _guess_delimiter(self, data, delimiters):
+    def     _guess_delimiter(self, data, delimiters):
         """
         The delimiter /should/ occur the same number of times on
         each row. However, due to malformed data, it may not. We don't want
@@ -356,7 +363,7 @@ class Sniffer:
                 delim = list(delims.keys())[0]
                 skipinitialspace = (data[0].count(delim) ==
                                     data[0].count("%c " % delim))
-                return (delim, skipinitialspace)
+                return (delim, skipinitialspace, 0)
 
             # analyze another chunkLength lines
             start = end
@@ -365,7 +372,9 @@ class Sniffer:
         if not delims:
             
             #Malliaridis 03/12/2023 start
-            possibles = "|¦,;\t"  # \t represents Tab
+            #Dataset Type 1
+
+            possibles = "|¦,; \t"  # \t represents Tab
 
             min_count = 0
             result = ''
@@ -382,7 +391,7 @@ class Sniffer:
                     min_count = count
                     result=char
 
-            return (result, 0)
+            return (result, 0, 1)
             #Malliaridis 03/12/2023 end
             #Malliaridis 03/12/2023 replaced
             #return('',0)
@@ -397,7 +406,7 @@ class Sniffer:
                 if d in self.preferred:
                     skipinitialspace = (data[0].count(d) ==
                                         data[0].count("%c " % d))             
-                    return (d, skipinitialspace)
+                    return (d, skipinitialspace, 0)
             # Original code replace by the above
             # for d in self.preferred:
             #     if d in delims.keys():
@@ -414,7 +423,7 @@ class Sniffer:
 
         skipinitialspace = (data[0].count(delim) ==
                             data[0].count("%c " % delim))
-        return (delim, skipinitialspace)
+        return (delim, skipinitialspace, 0)
 
 
     def has_header(self, sample):

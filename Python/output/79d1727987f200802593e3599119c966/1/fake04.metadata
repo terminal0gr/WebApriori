@@ -1,5 +1,5 @@
 {
     "hasHeader": true,
-    "delimiter": ",",
+    "delimiter": ";",
     "datasetType": 0
 }

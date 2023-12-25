@@ -16,7 +16,7 @@
             "webRoot": "${workspaceFolder}"
         },
         {
-            "name": "Run Python...",
+            "name": "Run Attr Detection",
             "type": "python",
             "request": "launch",
             "program": "${file}",
@@ -24,12 +24,26 @@
             "justMyCode": false,
             "args": [
                 "79d1727987f200802593e3599119c966",
-                "Fake01.csv",
+                "fake04.csv",
                 "1",
                 "0"
             ],
             "console": "integratedTerminal"
         },
+        {
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${fileDirname}",
+            "justMyCode": false,
+            "args": [
+                "79d1727987f200802593e3599119c966",
+                "0.01",
+                "0.2",
+                "1.5","4","-3","Fake01.csv",",","1","2","0"
+            ],
+            "console": "integratedTerminal"
+        },        
         {
             "name": "Run Main04...",
             "type": "python",
@@ -46,14 +60,14 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Run Main04 dataset.csv...",
+            "name": "Run Main04 2...",
             "type": "python",
             "request": "launch",
             "program": "${file}",
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "args": [
-                "79d1727987f200802593e3599119c966","0.05","0.3","1.5","4","-3","dataset.csv",",","1","2","7"
+                "79d1727987f200802593e3599119c966","0.05","0.3","1.5","4","-3","supermarket.txt",",","3","2","0"
             ],
             "console": "integratedTerminal"
         }

@@ -50,6 +50,7 @@ with open(filepath, encoding='utf8') as f:
     datasetAttributes['hasHeader'] = csv.Sniffer().has_header(s10)
     dialect = csv.Sniffer().sniff(s10)  # Check what kind of csv/tsv file we have.
     datasetAttributes['delimiter']=dialect.delimiter
+    datasetAttributes['datasetType']=dialect.datasetType
 
 if public=='0':
     filepath=os.path.join('output', identity, str(datasetType), datasetName)

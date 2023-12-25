@@ -54,3 +54,29 @@ AutoML Header line detection
     
     From the above rules, the 3rd one added by us to improve header line detection for
             1) Market Basket list datasets
+
+
+
+Dataset classification
+Dataset Categories:
+1) Market Basket list: Easy to be identified with almost 100% accuracy without AutoML
+   The main characteristic is that it has its delimiter ΝΟΤ occur the same number of times on each row.
+2) Order/Invoice detail: Its main characteristic is to identify the column that plays the role of the order id 
+                         and to identify the column that plays the role of product.
+3) Sparse item Dataset: Its main characteristic is to find the value that describes the absence of column
+4) Columns with multiple categorized values: The only category after 1) Market Basket list that cna have no header line
+0) Dataset that are of no interest for association rules mining. Usually has numerical data in high range
+
+2,3,4,0 type of datasets are candidates for ML techniques
+
+Features candidates
+1) Avg of different values per column
+2) Avg of different values over all Columns
+3) Avg of different values per row
+4) frequency of the most frequent value
+5) frequency of the second most frequent value
+6) Number of Columns
+7) Number of Number Columns
+8) Number of Date Columns
+9) Number of string Columns
+10) Number of boolean columns
