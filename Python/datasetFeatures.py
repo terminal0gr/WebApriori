@@ -47,11 +47,27 @@ class datasetFeatures:
             df_1d = df_1d.reset_index(drop=True)
             #nunique counts the unique values of a dataframe column
             datasetFeaturesInst.AvgOfDistinctValuesOverAll=df_1d.nunique()/(df.shape[0]*df.shape[1])
-
+            #Freq of the most frequent value
+            most_frequent_item=df_1d.value_counts()[:3]
+            i=0
+            for si in most_frequent_item[:3]:
+                i+=1
+                if i==1:
+                    datasetFeaturesInst.FreqoFTop1FreqValue=si/(df.shape[0]*df.shape[1])
+                elif i==2:
+                    datasetFeaturesInst.FreqoFTop2FreqValue=si/(df.shape[0]*df.shape[1])
+                elif i==3:
+                    datasetFeaturesInst.FreqoFTop3FreqValue=si/(df.shape[0]*df.shape[1])
+        
             freq=0
             for i in range(df.shape[0]):
                 freq+=df.loc[i].nunique()/df.shape[1] #df.shape[0]->#rows
             datasetFeaturesInst.AvgOfDistinctValuesPerRow=freq/df.shape[0] #df.shape[1]->#Columns
+
+            datasetFeaturesInst.NumberOfColumns=df.shape[1]
+
+            datasetFeaturesInst.FreqOfNumberCol = len(df.select_dtypes(include=np.number).columns)/df.shape[1]
+            datasetFeaturesInst.FreqOfNumberCol = len(df.select_dtypes(include=['datetime', 'datetime64']))/df.shape[1]
 
             # list_of_lists = [line.split(delimiter) for line in data.split('\n')]
             # print(list_of_lists)

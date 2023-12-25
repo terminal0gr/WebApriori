@@ -31,6 +31,7 @@
             "console": "integratedTerminal"
         },
         {
+            "name": "Run python...",
             "type": "python",
             "request": "launch",
             "program": "${file}",
