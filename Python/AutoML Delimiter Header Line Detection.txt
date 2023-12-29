@@ -77,10 +77,11 @@ Features candidates
 5) V frequency of the second most frequent value
 6) V frequency of the third most frequent value
 7) V Number of Columns
-8) Number of Number Columns
-9) Number of Date Columns
-10) Number of string Columns
-11) Number of boolean columns
-12) Min item length
-13) Max item length
-14) Ang item length
+8) V Freq Number of Number Columns
+9) V Freq Number of Date Columns
+10)V Freq Number of string Columns
+11)V Freq Number of boolean columns
+12)V Min item length
+13)V Max item length
+14)V Avg item length
+15) Freq of 1 character columns

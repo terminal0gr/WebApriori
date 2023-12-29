@@ -22,7 +22,11 @@ class datasetFeatures:
     FreqOfNumberCol = 0 #Range [0...1]
     FreqOfDateCol = 0 #Range [0...1]    
     FreqOfStringCol = 0 #Range [0...1]
-    sFreqOfBoolCol = 0 #Range [0...1]
+    FreqOfBoolCol = 0 #Range [0...1]
+    MinItemLen = 9999 #Range [0...infinite]
+    MaxItemLen = 0 #Range [0...infinite]
+    AvgItemLen = 0 #Range [0...infinite]
+    Freq1CharColumns = 0 #Range [0...1]
 
 
     def _datasetFeatures_x(self, filepath, delimiter, hasHeader, nrows=100):
@@ -37,10 +41,39 @@ class datasetFeatures:
                 _name="Sniffed"
 
             freqplus=0
+            numericColumns=0
+            datetimeColumns=0
             for myCol in df.columns:
                 freq=df[myCol].nunique()/df.shape[0] #df.shape[0]->#rows
                 freqplus+=freq
+                
+                try:
+                    # At first check if you can recognise the column as number
+                    df[myCol] = pd.to_numeric(df[myCol])
+                    numericColumns+=1
+                except ValueError:
+                    try:
+                        # If not then try to chack if it is a number but with comma as delimiter e.g. like greek regional settings
+                        df[myCol] = pd.to_numeric(df[myCol].str.replace(',', '.'), errors='raise')
+                        numericColumns+=1  
+                    except ValueError:
+                        try:
+                            # If not a number the try to check if it is a date.
+                            # to_datetime ensures that it will find that a column is datetime even if it has 
+                            # other format than the expected (expected format yyy-mm-dd)
+                            df[myCol] = pd.to_datetime(df[myCol])
+                            datetimeColumns+=1
+                        except ValueError:
+                            # Ok it is not a datetime Column. So what!!!
+                            datetimeColumns+=0
+
             datasetFeaturesInst.AvgOfDistinctValuesPerCol=freqplus/df.shape[1] #df.shape[1]->#Columns
+
+            #From numeric columns we want to substract the columns that have only items 0 or 1 because we consider them to be boolean columns
+            #(df.isin([0, 1]).all()).sum() --> count the columns that have as values 0 or 1
+            datasetFeaturesInst.FreqOfNumberCol=(numericColumns-(df.isin([0, 1]).all()).sum())/df.shape[1]
+
+            datasetFeaturesInst.FreqOfDateCol=datetimeColumns/df.shape[1]
 
             #transform the 2-dimensional dataframe to 1-dimensional dataframe e.g. (100,7)->(700) rows
             df_1d = df.stack()
@@ -66,8 +99,33 @@ class datasetFeatures:
 
             datasetFeaturesInst.NumberOfColumns=df.shape[1]
 
-            datasetFeaturesInst.FreqOfNumberCol = len(df.select_dtypes(include=np.number).columns)/df.shape[1]
-            datasetFeaturesInst.FreqOfNumberCol = len(df.select_dtypes(include=['datetime', 'datetime64']))/df.shape[1]
+            #len(df.select_dtypes(include='bool').columns) --> count the columns that have as Values True/False
+            #(df.isin([0, 1]).all()).sum() --> count the columns that have as values 0 or 1
+            datasetFeaturesInst.FreqOfBoolCol = (len(df.select_dtypes(include='bool').columns)+(df.isin([0, 1]).all()).sum())/df.shape[1]
+
+            #All the other columns are of String/Object type 
+            datasetFeaturesInst.FreqOfStringCol = 1-datasetFeaturesInst.FreqOfNumberCol-datasetFeaturesInst.FreqOfBoolCol-datasetFeaturesInst.FreqOfDateCol
+
+            datasetFeaturesInst.MinItemLen = (df.applymap(lambda x: len(str(x)) if x is not None else 0).min()).min()
+            datasetFeaturesInst.MaxItemLen = (df.applymap(lambda x: len(str(x)) if x is not None else 0).max()).max()
+            datasetFeaturesInst.AvgItemLen = (df.applymap(lambda x: len(str(x)) if x is not None else 0).mean()).mean()
+
+
+            # for dfColumn in df.columns:
+
+            # data1= pd.to_datetime(df['Date'])
+
+            # print(df.info())
+ 
+            # # display
+            # print(data1.head())
+
+            # datetime_columns = df.select_dtypes(include=['datetime', 'datetime64'])
+
+            # Count the number of datetime columns
+            # num_datetime_columns = len(datetime_columns.columns)
+
+            datasetFeaturesInst.FreqOfDateCol = len(df.select_dtypes(include=['datetime', 'datetime64']))/df.shape[1]
 
             # list_of_lists = [line.split(delimiter) for line in data.split('\n')]
             # print(list_of_lists)
