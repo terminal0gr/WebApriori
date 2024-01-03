@@ -3,8 +3,10 @@ datasetFeatures.py - create the features of a given dataset or dataset sample
 Owner: Malliaridis Konstantinos PHd candidate
 """
 
+import os
 import pandas as pd
 import numpy as np
+import mysql.connector
 
 class datasetFeatures:
     """Creates the features of a given dataset or dataset sample that can be used 
@@ -27,9 +29,11 @@ class datasetFeatures:
     MaxItemLen = 0 #Range [0...infinite]
     AvgItemLen = 0 #Range [0...infinite]
     Freq1CharColumns = 0 #Range [0...1]
+    Freq2ValuesItemColumns = 0 #Range [0...1]
+    HasHeader=None  
+    datasetType=None
 
-
-    def _datasetFeatures_x(self, filepath, delimiter, hasHeader, nrows=100):
+    def _datasetFeatures_x(self, filepath, delimiter, hasHeader, nrows=100, datasetType=None):
         # Creates the features of the dataset in order to determine datasetType via ML
         try:
             if hasHeader:
@@ -38,14 +42,18 @@ class datasetFeatures:
                 df = pd.read_csv(filepath, sep=delimiter, nrows=nrows, header=None)
 
             class datasetFeaturesInst(datasetFeatures):
-                _name="Sniffed"
+                _name=os.path.basename(filepath)
 
             freqplus=0
             numericColumns=0
             datetimeColumns=0
+            twoValuesItemColumn=0
             for myCol in df.columns:
-                freq=df[myCol].nunique()/df.shape[0] #df.shape[0]->#rows
+                uniqueValues=df[myCol].nunique()
+                freq=uniqueValues/df.shape[0] #df.shape[0]->#rows
                 freqplus+=freq
+                if uniqueValues==2:
+                    twoValuesItemColumn+=1
                 
                 try:
                     # At first check if you can recognise the column as number
@@ -74,6 +82,8 @@ class datasetFeatures:
             datasetFeaturesInst.FreqOfNumberCol=(numericColumns-(df.isin([0, 1]).all()).sum())/df.shape[1]
 
             datasetFeaturesInst.FreqOfDateCol=datetimeColumns/df.shape[1]
+
+            datasetFeaturesInst.Freq2ValuesItemColumns=twoValuesItemColumn/df.shape[1]
 
             #transform the 2-dimensional dataframe to 1-dimensional dataframe e.g. (100,7)->(700) rows
             df_1d = df.stack()
@@ -110,39 +120,61 @@ class datasetFeatures:
             datasetFeaturesInst.MaxItemLen = (df.applymap(lambda x: len(str(x)) if x is not None else 0).max()).max()
             datasetFeaturesInst.AvgItemLen = (df.applymap(lambda x: len(str(x)) if x is not None else 0).mean()).mean()
 
+            # Count columns with only 1-character items
+            datasetFeaturesInst.Freq1CharColumns = (df.applymap(lambda x: len(str(x)) == 1 if x is not None else False).all()).sum()/df.shape[1]
 
-            # for dfColumn in df.columns:
+            datasetFeaturesInst.HasHeader=hasHeader
 
-            # data1= pd.to_datetime(df['Date'])
+            datasetFeaturesInst.datasetType=datasetType
 
-            # print(df.info())
- 
-            # # display
-            # print(data1.head())
+            self._WriteToDatabase(datasetFeaturesInst)
 
-            # datetime_columns = df.select_dtypes(include=['datetime', 'datetime64'])
-
-            # Count the number of datetime columns
-            # num_datetime_columns = len(datetime_columns.columns)
-
-            datasetFeaturesInst.FreqOfDateCol = len(df.select_dtypes(include=['datetime', 'datetime64']))/df.shape[1]
-
-            # list_of_lists = [line.split(delimiter) for line in data.split('\n')]
-            # print(list_of_lists)
-            # if hasHeader:
-
-            # else:
-
-            # # Convert the string array into a list of lists
-            # list_of_lists = [line.split("\n") for line in data]
-            # # Create a Pandas DataFrame
-            # columns = ["Name", "Age", "Occupation"]
-            # df = pd.DataFrame(list_of_lists, columns=columns)
-
-            # pd.DataFrame=data
-            # print(pd)
-            # data = pd.read_csv(filepath, sep=datasetSep)
         except Exception as e:
             vbcrlf = '\n'
             print(f"Could not open/read or find dataset file!!!.{vbcrlf}Unexpected error: {e}{vbcrlf}")
             return None
+        
+    def _WriteToDatabase(self, dFI):
+        
+        # Replace these with your MySQL server and database information
+        host = "localhost"
+        user = "aprioriUser"
+        password = "aprioripwd"
+        database = "aprioriBase"
+
+        # Create a connection to the MySQL server
+        try:
+            connection = mysql.connector.connect(
+                host=host,
+                user=user,
+                password=password,
+                database=database
+            )
+
+            if connection.is_connected():
+                strsql="INSERT INTO `datasetfeatures` (`name`, `AvgOfDistinctValuesPerCol`, `AvgOfDistinctValuesOverAll`, `AvgOfDistinctValuesPerRow`, `FreqoFTop1FreqValue`, `FreqoFTop2FreqValue`, `FreqoFTop3FreqValue`, `NumberOfColumns`, `FreqOfNumberCol`, `FreqOfDateCol`, `FreqOfStringCol`, `FreqOfBoolCol`, `MinItemLen`, `MaxItemLen`, `AvgItemLen`, `Freq1CharColumns`, `Freq2ValuesItemColumns`, `datasetType`) \
+                        VALUES ('" + dFI._name + "', \
+                                '" + dFI.AvgOfDistinctValuesPerCol + "', \
+                                '" + dFI.AvgOfDistinctValuesOverAll + "', \
+                                '" + dFI.AvgOfDistinctValuesPerRow + "', \
+                                '" + dFI.FreqoFTop1FreqValue + "', \
+                                '" + dFI.FreqoFTop1FreqValue + "', \
+                                '" + dFI.FreqoFTop3FreqValue + "', \
+                                '" + dFI.NumberOfColumns + "', \
+                                '" + dFI.FreqOfNumberCol + "', \
+                                '" + dFI.FreqOfDateCol + "', \
+                                '" + dFI.FreqOfStringCol + "', \
+                                '" + dFI.FreqOfBoolCol + "', \
+                                '" + dFI.MinItemLen + "', \
+                                '" + dFI.MaxItemLen + "', \
+                                '" + dFI.AvgItemLen + "', \
+                                '" + dFI.Freq1CharColumns + "', \
+                                '" + dFI.Freq2ValuesItemColumns + "', \
+                                '" + dFI.HasHeader + "', \
+                                '" + dFI.datasetType + "')"  
+                cursor = connection.cursor()
+                cursor.execute(strsql)                                    
+
+        except mysql.connector.Error as e:
+            print(f"Error: {e}")
+

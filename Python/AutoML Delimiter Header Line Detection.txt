@@ -84,4 +84,10 @@ Features candidates
 12)V Min item length
 13)V Max item length
 14)V Avg item length
-15) Freq of 1 character columns
+15)V Freq of 1 character columns
+16)V Freq of Columns that have items with only 2 values
+17)V Has reader
+
+Installation of MySQL Connector is needed in order to link Python with mySQL database 
+Run the command below in cmd
+pip install mysql-connector-python
