@@ -73,7 +73,7 @@
     if (substr($_POST['dataset'],0,2)=='p|') {
         // public dataset
         $isPublic=1;
-        $datasetType='p'.substr($_POST['dataset'],2,1);
+        $datasetType=substr($_POST['dataset'],2,1);
         $filename=substr($_POST['dataset'],3);
     }else{
         // private dataset

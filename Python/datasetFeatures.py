@@ -152,29 +152,47 @@ class datasetFeatures:
             )
 
             if connection.is_connected():
-                strsql="INSERT INTO `datasetfeatures` (`name`, `AvgOfDistinctValuesPerCol`, `AvgOfDistinctValuesOverAll`, `AvgOfDistinctValuesPerRow`, `FreqoFTop1FreqValue`, `FreqoFTop2FreqValue`, `FreqoFTop3FreqValue`, `NumberOfColumns`, `FreqOfNumberCol`, `FreqOfDateCol`, `FreqOfStringCol`, `FreqOfBoolCol`, `MinItemLen`, `MaxItemLen`, `AvgItemLen`, `Freq1CharColumns`, `Freq2ValuesItemColumns`, `datasetType`) \
-                        VALUES ('" + dFI._name + "', \
-                                '" + dFI.AvgOfDistinctValuesPerCol + "', \
-                                '" + dFI.AvgOfDistinctValuesOverAll + "', \
-                                '" + dFI.AvgOfDistinctValuesPerRow + "', \
-                                '" + dFI.FreqoFTop1FreqValue + "', \
-                                '" + dFI.FreqoFTop1FreqValue + "', \
-                                '" + dFI.FreqoFTop3FreqValue + "', \
-                                '" + dFI.NumberOfColumns + "', \
-                                '" + dFI.FreqOfNumberCol + "', \
-                                '" + dFI.FreqOfDateCol + "', \
-                                '" + dFI.FreqOfStringCol + "', \
-                                '" + dFI.FreqOfBoolCol + "', \
-                                '" + dFI.MinItemLen + "', \
-                                '" + dFI.MaxItemLen + "', \
-                                '" + dFI.AvgItemLen + "', \
-                                '" + dFI.Freq1CharColumns + "', \
-                                '" + dFI.Freq2ValuesItemColumns + "', \
-                                '" + dFI.HasHeader + "', \
-                                '" + dFI.datasetType + "')"  
+
                 cursor = connection.cursor()
-                cursor.execute(strsql)                                    
+
+                strsql = "Delete From `datasetfeatures` \
+                          Where `name`=%s"
+                #parameters are given as a tuple
+                recorddata = (dFI._name,) 
+                # Execute the query with the data
+                cursor.execute(strsql, recorddata) 
+                # Commit the changes
+                connection.commit() 
+
+                strsql = "INSERT INTO `datasetfeatures` (`name`, `AvgOfDistinctValuesPerCol`, `AvgOfDistinctValuesOverAll`, \
+                                `AvgOfDistinctValuesPerRow`, `FreqoFTop1FreqValue`, `FreqoFTop2FreqValue`, \
+                                `FreqoFTop3FreqValue`, `NumberOfColumns`, `FreqOfNumberCol`, \
+                                `FreqOfDateCol`, `FreqOfStringCol`, `FreqOfBoolCol`, \
+                                `MinItemLen`, `MaxItemLen`, `AvgItemLen`, \
+                                `Freq1CharColumns`, `Freq2ValuesItemColumns`, `hasHeader`, \
+                                `datasetType`) \
+                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) "
+                #parameters are given as a tuple
+                recorddata = (dFI._name, dFI.AvgOfDistinctValuesPerCol, dFI.AvgOfDistinctValuesOverAll, 
+                              dFI.AvgOfDistinctValuesPerRow, dFI.FreqoFTop1FreqValue, dFI.FreqoFTop2FreqValue, 
+                              dFI.FreqoFTop3FreqValue, dFI.NumberOfColumns, dFI.FreqOfNumberCol,
+                              dFI.FreqOfDateCol, dFI.FreqOfStringCol, dFI.FreqOfBoolCol,
+                              dFI.MinItemLen, dFI.MaxItemLen, dFI.AvgItemLen, 
+                              dFI.Freq1CharColumns, dFI.Freq2ValuesItemColumns, dFI.HasHeader, 
+                              dFI.datasetType)
+                # Execute the query with the data
+                cursor.execute(strsql, recorddata) 
+                # Commit the changes
+                connection.commit()                                  
 
         except mysql.connector.Error as e:
             print(f"Error: {e}")
+
+        finally:
+            # Close the cursor and connection when done
+            if 'cursor' in locals() and cursor.is_open():
+                cursor.close()
+            if 'connection' in locals() and connection.is_connected():
+                connection.close()
+                print("Connection closed")
 

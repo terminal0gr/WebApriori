@@ -708,14 +708,14 @@
 					res=JSON.parse(response);
 					try {
 						if (jqXHR.status!=200) {
-							MyModal(res.title, res.message)
+							MyModal(jqXHR.status+res.title, res.message)
 						} else {
 							document.getElementById('separator').value=res.delimiter; 
 							document.getElementById("header1").checked=res.hasHeader; 
 						}
 					}
 					catch(err) {
-						MyModal("Error", err.message);
+						MyModal("Error1", err.message);
 					}
 				}
 				else {

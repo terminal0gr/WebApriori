@@ -31,6 +31,21 @@
             "console": "integratedTerminal"
         },
         {
+            "name": "Run Attr Detection2",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${fileDirname}",
+            "justMyCode": false,
+            "args": [
+                "79d1727987f200802593e3599119c966",
+                "Fake02.csv",
+                "4",
+                "1"
+            ],
+            "console": "integratedTerminal"
+        },        
+        {
             "name": "Run python...",
             "type": "python",
             "request": "launch",
