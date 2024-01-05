@@ -86,8 +86,23 @@ Features candidates
 14)V Avg item length
 15)V Freq of 1 character columns
 16)V Freq of Columns that have items with only 2 values
-17)V Has reader
+17)V Has header
 
 Installation of MySQL Connector is needed in order to link Python with mySQL database 
 Run the command below in cmd
 pip install mysql-connector-python
+
+
+keel dataset 
+uci repo
+
+
+Decition Tree
+Random Forest
+SVM
+Knn (IbK)
+
+
+ΕΛΙΔΕΚ
+stoug@ihu.gr
+Mpalalaika$1
