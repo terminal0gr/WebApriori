@@ -1,7 +1,9 @@
+06/01/2024 In type 4 datasets there is the nesessity to tranform columns putting as a prefix the column name 
+           in order to distinct same values from other columns (e.g mammographic.dat, car.dat)
 17/12/2023 Dataset description section must be created
 09/12/2023 Extra parameters / item names field must be AutoML initialized (e.g. name of the dataset's columns)
 13/12/2023 AutoML dataset type must be utilized
-25/12/2023 Number decimal separator must be determined
+DONE - V01.07.00 25/12/2023 Number decimal separator must be determined
 DONE - V01.07.00 16/12/2023 09/12/2023 delimiter and header detection must be included in webapriori
 DONE - V01.07.00 16/12/2023 13/12/2023 manual delimiter and header detection must be saved in .metadata.
 DONE - V01.07.00 13/12/2023 28/11/2023 python executable is declared in config.php as PYTHON

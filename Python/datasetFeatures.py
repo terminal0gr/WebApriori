@@ -190,9 +190,7 @@ class datasetFeatures:
 
         finally:
             # Close the cursor and connection when done
-            if 'cursor' in locals() and cursor.is_open():
+            if 'cursor' in locals() and not cursor.closed():
                 cursor.close()
             if 'connection' in locals() and connection.is_connected():
                 connection.close()
-                print("Connection closed")
-
