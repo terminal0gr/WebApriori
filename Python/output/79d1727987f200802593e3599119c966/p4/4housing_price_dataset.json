@@ -1,0 +1,899 @@
+{
+    "min_support": 0.0001,
+    "min_confidence": 0.002,
+    "min_lift": 1.0,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "4housing_price_dataset.csv",
+    "datasetType": 4,
+    "outputType": 3,
+    "reduntantRemoveType": 7,
+    "datasetArgs": "['Bedrooms', 'Bathrooms', 'Neighborhood']",
+    "Records": 50000,
+    "RecordsCreationTime": "0.234",
+    "RulesCount": 49,
+    "RulesCreationTime": "0.383",
+    "rules": [
+        {
+            "LHS": [
+                "Bathrooms=2",
+                "Bedrooms=2"
+            ],
+            "RHS": [
+                "Neighborhood=Rural"
+            ],
+            "Confidence": 0.34162084628257233,
+            "Lift": 1.024288937042973,
+            "Conviction": 1.0123042265795206,
+            "Leverage": 0.0006777168000000021,
+            "LHS_Count": 4183,
+            "LHS_Support": 0.08366,
+            "RHS_Count": 16676,
+            "RHS_Support": 0.33352,
+            "Support": 0.02858,
+            "Count": 1429
+        },
+        {
+            "LHS": [
+                "Neighborhood=Rural",
+                "Bathrooms=2"
+            ],
+            "RHS": [
+                "Bedrooms=2"
+            ],
+            "Confidence": 0.2546783104615933,
+            "Lift": 1.0239558960340676,
+            "Conviction": 1.0079942802486848,
+            "Leverage": 0.0006686416000000021,
+            "LHS_Count": 5611,
+            "LHS_Support": 0.11222,
+            "RHS_Count": 12436,
+            "RHS_Support": 0.24872,
+            "Support": 0.02858,
+            "Count": 1429
+        },
+        {
+            "LHS": [
+                "Bathrooms=1",
+                "Neighborhood=Rural"
+            ],
+            "RHS": [
+                "Bedrooms=5"
+            ],
+            "Confidence": 0.25383517659650373,
+            "Lift": 1.0179466498095273,
+            "Conviction": 1.0059975711212048,
+            "Leverage": 0.0005017567999999993,
+            "LHS_Count": 5606,
+            "LHS_Support": 0.11212,
+            "RHS_Count": 12468,
+            "RHS_Support": 0.24936,
+            "Support": 0.02846,
+            "Count": 1423
+        },
+        {
+            "LHS": [
+                "Bedrooms=3"
+            ],
+            "RHS": [
+                "Neighborhood=Suburb"
+            ],
+            "Confidence": 0.340099518205513,
+            "Lift": 1.0169831894190329,
+            "Conviction": 1.0086066283662478,
+            "Leverage": 0.0014381675999999982,
+            "LHS_Count": 12661,
+            "LHS_Support": 0.25322,
+            "RHS_Count": 16721,
+            "RHS_Support": 0.33442,
+            "Support": 0.08612,
+            "Count": 4306
+        },
+        {
+            "LHS": [
+                "Bedrooms=4",
+                "Bathrooms=3"
+            ],
+            "RHS": [
+                "Neighborhood=Rural"
+            ],
+            "Confidence": 0.3388110198163364,
+            "Lift": 1.0158641755107232,
+            "Conviction": 1.0080022807017541,
+            "Leverage": 0.00043788479999999977,
+            "LHS_Count": 4138,
+            "LHS_Support": 0.08276,
+            "RHS_Count": 16676,
+            "RHS_Support": 0.33352,
+            "Support": 0.02804,
+            "Count": 1402
+        },
+        {
+            "LHS": [
+                "Bathrooms=1",
+                "Neighborhood=Rural"
+            ],
+            "RHS": [
+                "Bedrooms=4"
+            ],
+            "Confidence": 0.25258651444880487,
+            "Lift": 1.0156273198584835,
+            "Conviction": 1.0051999522673032,
+            "Leverage": 0.0004357560000000024,
+            "LHS_Count": 5606,
+            "LHS_Support": 0.11212,
+            "RHS_Count": 12435,
+            "RHS_Support": 0.2487,
+            "Support": 0.02832,
+            "Count": 1416
+        },
+        {
+            "LHS": [
+                "Bedrooms=5",
+                "Neighborhood=Rural"
+            ],
+            "RHS": [
+                "Bathrooms=1"
+            ],
+            "Confidence": 0.34002389486260454,
+            "Lift": 1.0146938074085483,
+            "Conviction": 1.0074607168718321,
+            "Leverage": 0.00041213000000000014,
+            "LHS_Count": 4185,
+            "LHS_Support": 0.0837,
+            "RHS_Count": 16755,
+            "RHS_Support": 0.3351,
+            "Support": 0.02846,
+            "Count": 1423
+        },
+        {
+            "LHS": [
+                "Bedrooms=2"
+            ],
+            "RHS": [
+                "Bathrooms=1"
+            ],
+            "Confidence": 0.3399002894821486,
+            "Lift": 1.0143249462314192,
+            "Conviction": 1.0072720672432696,
+            "Leverage": 0.0011939279999999969,
+            "LHS_Count": 12436,
+            "LHS_Support": 0.24872,
+            "RHS_Count": 16755,
+            "RHS_Support": 0.3351,
+            "Support": 0.08454,
+            "Count": 4227
+        },
+        {
+            "LHS": [
+                "Bathrooms=1",
+                "Neighborhood=Suburb"
+            ],
+            "RHS": [
+                "Bedrooms=2"
+            ],
+            "Confidence": 0.2521629416005768,
+            "Lift": 1.0138426407228078,
+            "Conviction": 1.0046038659918053,
+            "Leverage": 0.0003820287999999998,
+            "LHS_Count": 5548,
+            "LHS_Support": 0.11096,
+            "RHS_Count": 12436,
+            "RHS_Support": 0.24872,
+            "Support": 0.02798,
+            "Count": 1399
+        },
+        {
+            "LHS": [
+                "Bathrooms=3",
+                "Bedrooms=2"
+            ],
+            "RHS": [
+                "Neighborhood=Suburb"
+            ],
+            "Confidence": 0.33904619970193745,
+            "Lift": 1.013833501889652,
+            "Conviction": 1.0069992784667419,
+            "Leverage": 0.0003725016000000053,
+            "LHS_Count": 4026,
+            "LHS_Support": 0.08052,
+            "RHS_Count": 16721,
+            "RHS_Support": 0.33442,
+            "Support": 0.0273,
+            "Count": 1365
+        },
+        {
+            "LHS": [
+                "Bedrooms=3",
+                "Bathrooms=1"
+            ],
+            "RHS": [
+                "Neighborhood=Urban"
+            ],
+            "Confidence": 0.3364595545134818,
+            "Lift": 1.0132492757739016,
+            "Conviction": 1.0066304240282686,
+            "Leverage": 0.0003752819999999976,
+            "LHS_Count": 4265,
+            "LHS_Support": 0.0853,
+            "RHS_Count": 16603,
+            "RHS_Support": 0.33206,
+            "Support": 0.0287,
+            "Count": 1435
+        },
+        {
+            "LHS": [
+                "Bedrooms=4"
+            ],
+            "RHS": [
+                "Neighborhood=Rural"
+            ],
+            "Confidence": 0.33775633293124246,
+            "Lift": 1.0127018857377144,
+            "Conviction": 1.0063969398907104,
+            "Leverage": 0.0010535760000000144,
+            "LHS_Count": 12435,
+            "LHS_Support": 0.2487,
+            "RHS_Count": 16676,
+            "RHS_Support": 0.33352,
+            "Support": 0.084,
+            "Count": 4200
+        },
+        {
+            "LHS": [
+                "Bedrooms=2"
+            ],
+            "RHS": [
+                "Neighborhood=Urban"
+            ],
+            "Confidence": 0.33620135091669345,
+            "Lift": 1.0124716946235421,
+            "Conviction": 1.0062388661417323,
+            "Leverage": 0.0010300367999999949,
+            "LHS_Count": 12436,
+            "LHS_Support": 0.24872,
+            "RHS_Count": 16603,
+            "RHS_Support": 0.33206,
+            "Support": 0.08362,
+            "Count": 4181
+        },
+        {
+            "LHS": [
+                "Neighborhood=Urban",
+                "Bathrooms=1"
+            ],
+            "RHS": [
+                "Bedrooms=3"
+            ],
+            "Confidence": 0.25620424924120694,
+            "Lift": 1.0117852035431913,
+            "Conviction": 1.004012189150264,
+            "Leverage": 0.0003342955999999994,
+            "LHS_Count": 5601,
+            "LHS_Support": 0.11202,
+            "RHS_Count": 12661,
+            "RHS_Support": 0.25322,
+            "Support": 0.0287,
+            "Count": 1435
+        },
+        {
+            "LHS": [
+                "Bedrooms=4",
+                "Neighborhood=Rural"
+            ],
+            "RHS": [
+                "Bathrooms=3"
+            ],
+            "Confidence": 0.3338095238095238,
+            "Lift": 1.0099525711288992,
+            "Conviction": 1.004937812723374,
+            "Leverage": 0.00027632000000000004,
+            "LHS_Count": 4200,
+            "LHS_Support": 0.084,
+            "RHS_Count": 16526,
+            "RHS_Support": 0.33052,
+            "Support": 0.02804,
+            "Count": 1402
+        },
+        {
+            "LHS": [
+                "Neighborhood=Suburb",
+                "Bedrooms=2"
+            ],
+            "RHS": [
+                "Bathrooms=1"
+            ],
+            "Confidence": 0.3381677544114093,
+            "Lift": 1.0091547430958199,
+            "Conviction": 1.0046352447041638,
+            "Leverage": 0.00025382600000000213,
+            "LHS_Count": 4137,
+            "LHS_Support": 0.08274,
+            "RHS_Count": 16755,
+            "RHS_Support": 0.3351,
+            "Support": 0.02798,
+            "Count": 1399
+        },
+        {
+            "LHS": [
+                "Bedrooms=3"
+            ],
+            "RHS": [
+                "Bathrooms=3"
+            ],
+            "Confidence": 0.33291209225179685,
+            "Lift": 1.0072373600744187,
+            "Conviction": 1.0035858726024154,
+            "Leverage": 0.0006057256000000094,
+            "LHS_Count": 12661,
+            "LHS_Support": 0.25322,
+            "RHS_Count": 16526,
+            "RHS_Support": 0.33052,
+            "Support": 0.0843,
+            "Count": 4215
+        },
+        {
+            "LHS": [
+                "Bedrooms=3",
+                "Neighborhood=Rural"
+            ],
+            "RHS": [
+                "Bathrooms=3"
+            ],
+            "Confidence": 0.3328540618260244,
+            "Lift": 1.0070617869600158,
+            "Conviction": 1.0034985775862069,
+            "Leverage": 0.00019480079999999872,
+            "LHS_Count": 4173,
+            "LHS_Support": 0.08346,
+            "RHS_Count": 16526,
+            "RHS_Support": 0.33052,
+            "Support": 0.02778,
+            "Count": 1389
+        },
+        {
+            "LHS": [
+                "Bedrooms=4"
+            ],
+            "RHS": [
+                "Bathrooms=3"
+            ],
+            "Confidence": 0.33277040611178127,
+            "Lift": 1.00680868362514,
+            "Conviction": 1.0033727612390022,
+            "Leverage": 0.0005596760000000089,
+            "LHS_Count": 12435,
+            "LHS_Support": 0.2487,
+            "RHS_Count": 16526,
+            "RHS_Support": 0.33052,
+            "Support": 0.08276,
+            "Count": 4138
+        },
+        {
+            "LHS": [
+                "Bedrooms=3",
+                "Bathrooms=1"
+            ],
+            "RHS": [
+                "Neighborhood=Suburb"
+            ],
+            "Confidence": 0.3366940211019929,
+            "Lift": 1.0067998956461723,
+            "Conviction": 1.0034283138918345,
+            "Leverage": 0.00019397399999999954,
+            "LHS_Count": 4265,
+            "LHS_Support": 0.0853,
+            "RHS_Count": 16721,
+            "RHS_Support": 0.33442,
+            "Support": 0.02872,
+            "Count": 1436
+        },
+        {
+            "LHS": [
+                "Neighborhood=Urban"
+            ],
+            "RHS": [
+                "Bathrooms=1"
+            ],
+            "Confidence": 0.3373486719267602,
+            "Lift": 1.0067104503931967,
+            "Conviction": 1.0033934466460643,
+            "Leverage": 0.0007466939999999783,
+            "LHS_Count": 16603,
+            "LHS_Support": 0.33206,
+            "RHS_Count": 16755,
+            "RHS_Support": 0.3351,
+            "Support": 0.11202,
+            "Count": 5601
+        },
+        {
+            "LHS": [
+                "Bedrooms=5"
+            ],
+            "RHS": [
+                "Neighborhood=Rural"
+            ],
+            "Confidence": 0.33565928777670834,
+            "Lift": 1.0064142713381756,
+            "Conviction": 1.003220166606302,
+            "Leverage": 0.0005334528000000005,
+            "LHS_Count": 12468,
+            "LHS_Support": 0.24936,
+            "RHS_Count": 16676,
+            "RHS_Support": 0.33352,
+            "Support": 0.0837,
+            "Count": 4185
+        },
+        {
+            "LHS": [
+                "Bedrooms=5"
+            ],
+            "RHS": [
+                "Bathrooms=3"
+            ],
+            "Confidence": 0.33261148540263075,
+            "Lift": 1.0063278633747754,
+            "Conviction": 1.003133834875616,
+            "Leverage": 0.0005215328000000019,
+            "LHS_Count": 12468,
+            "LHS_Support": 0.24936,
+            "RHS_Count": 16526,
+            "RHS_Support": 0.33052,
+            "Support": 0.08294,
+            "Count": 4147
+        },
+        {
+            "LHS": [
+                "Neighborhood=Rural"
+            ],
+            "RHS": [
+                "Bathrooms=2"
+            ],
+            "Confidence": 0.3364715759174862,
+            "Lift": 1.0062550867799696,
+            "Conviction": 1.0031522024401265,
+            "Leverage": 0.0006975824000000075,
+            "LHS_Count": 16676,
+            "LHS_Support": 0.33352,
+            "RHS_Count": 16719,
+            "RHS_Support": 0.33438,
+            "Support": 0.11222,
+            "Count": 5611
+        },
+        {
+            "LHS": [
+                "Bedrooms=4",
+                "Neighborhood=Rural"
+            ],
+            "RHS": [
+                "Bathrooms=1"
+            ],
+            "Confidence": 0.33714285714285713,
+            "Lift": 1.0060962612439783,
+            "Conviction": 1.0030818965517243,
+            "Leverage": 0.00017159999999999745,
+            "LHS_Count": 4200,
+            "LHS_Support": 0.084,
+            "RHS_Count": 16755,
+            "RHS_Support": 0.3351,
+            "Support": 0.02832,
+            "Count": 1416
+        },
+        {
+            "LHS": [
+                "Bedrooms=5"
+            ],
+            "RHS": [
+                "Neighborhood=Urban"
+            ],
+            "Confidence": 0.33405518126403594,
+            "Lift": 1.0060084962477742,
+            "Conviction": 1.0029960158978684,
+            "Leverage": 0.0004975183999999938,
+            "LHS_Count": 12468,
+            "LHS_Support": 0.24936,
+            "RHS_Count": 16603,
+            "RHS_Support": 0.33206,
+            "Support": 0.0833,
+            "Count": 4165
+        },
+        {
+            "LHS": [
+                "Bedrooms=2"
+            ],
+            "RHS": [
+                "Bathrooms=2"
+            ],
+            "Confidence": 0.3363621743325828,
+            "Lift": 1.0059279093623505,
+            "Conviction": 1.0029868314552284,
+            "Leverage": 0.0004930063999999956,
+            "LHS_Count": 12436,
+            "LHS_Support": 0.24872,
+            "RHS_Count": 16719,
+            "RHS_Support": 0.33438,
+            "Support": 0.08366,
+            "Count": 4183
+        },
+        {
+            "LHS": [
+                "Bathrooms=3"
+            ],
+            "RHS": [
+                "Neighborhood=Suburb"
+            ],
+            "Confidence": 0.33637903908991895,
+            "Lift": 1.005858020124152,
+            "Conviction": 1.002952045226589,
+            "Leverage": 0.0006475016000000028,
+            "LHS_Count": 16526,
+            "LHS_Support": 0.33052,
+            "RHS_Count": 16721,
+            "RHS_Support": 0.33442,
+            "Support": 0.11118,
+            "Count": 5559
+        },
+        {
+            "LHS": [
+                "Bedrooms=4"
+            ],
+            "RHS": [
+                "Bathrooms=2"
+            ],
+            "Confidence": 0.33622838761560114,
+            "Lift": 1.005527805537416,
+            "Conviction": 1.0027846740974073,
+            "Leverage": 0.0004596939999999966,
+            "LHS_Count": 12435,
+            "LHS_Support": 0.2487,
+            "RHS_Count": 16719,
+            "RHS_Support": 0.33438,
+            "Support": 0.08362,
+            "Count": 4181
+        },
+        {
+            "LHS": [
+                "Bedrooms=3"
+            ],
+            "RHS": [
+                "Bathrooms=1"
+            ],
+            "Confidence": 0.33686122739120133,
+            "Lift": 1.0052558262942444,
+            "Conviction": 1.0026558956646021,
+            "Leverage": 0.00044597799999999965,
+            "LHS_Count": 12661,
+            "LHS_Support": 0.25322,
+            "RHS_Count": 16755,
+            "RHS_Support": 0.3351,
+            "Support": 0.0853,
+            "Count": 4265
+        },
+        {
+            "LHS": [
+                "Bathrooms=3",
+                "Neighborhood=Rural"
+            ],
+            "RHS": [
+                "Bedrooms=3"
+            ],
+            "Confidence": 0.25444220553214875,
+            "Lift": 1.0048266548145832,
+            "Conviction": 1.0016393169533169,
+            "Leverage": 0.00013344040000000043,
+            "LHS_Count": 5459,
+            "LHS_Support": 0.10918,
+            "RHS_Count": 12661,
+            "RHS_Support": 0.25322,
+            "Support": 0.02778,
+            "Count": 1389
+        },
+        {
+            "LHS": [
+                "Bathrooms=2"
+            ],
+            "RHS": [
+                "Neighborhood=Suburb"
+            ],
+            "Confidence": 0.33578563311202825,
+            "Lift": 1.0040835868429767,
+            "Conviction": 1.002056012606934,
+            "Leverage": 0.0004566403999999996,
+            "LHS_Count": 16719,
+            "LHS_Support": 0.33438,
+            "RHS_Count": 16721,
+            "RHS_Support": 0.33442,
+            "Support": 0.11228,
+            "Count": 5614
+        },
+        {
+            "LHS": [
+                "Bathrooms=3"
+            ],
+            "RHS": [
+                "Neighborhood=Urban"
+            ],
+            "Confidence": 0.3332929928597362,
+            "Lift": 1.0037131628613387,
+            "Conviction": 1.001849377382465,
+            "Leverage": 0.00040752879999998715,
+            "LHS_Count": 16526,
+            "LHS_Support": 0.33052,
+            "RHS_Count": 16603,
+            "RHS_Support": 0.33206,
+            "Support": 0.11016,
+            "Count": 5508
+        },
+        {
+            "LHS": [
+                "Bedrooms=4",
+                "Neighborhood=Urban"
+            ],
+            "RHS": [
+                "Bathrooms=2"
+            ],
+            "Confidence": 0.33546012269938646,
+            "Lift": 1.0032302251910594,
+            "Conviction": 1.0016253692762187,
+            "Leverage": 8.802999999999936e-05,
+            "LHS_Count": 4075,
+            "LHS_Support": 0.0815,
+            "RHS_Count": 16719,
+            "RHS_Support": 0.33438,
+            "Support": 0.02734,
+            "Count": 1367
+        },
+        {
+            "LHS": [
+                "Neighborhood=Rural"
+            ],
+            "RHS": [
+                "Bathrooms=1"
+            ],
+            "Confidence": 0.3361717438234589,
+            "Lift": 1.0031982805832853,
+            "Conviction": 1.0016144896115629,
+            "Leverage": 0.0003574479999999963,
+            "LHS_Count": 16676,
+            "LHS_Support": 0.33352,
+            "RHS_Count": 16755,
+            "RHS_Support": 0.3351,
+            "Support": 0.11212,
+            "Count": 5606
+        },
+        {
+            "LHS": [
+                "Bathrooms=2",
+                "Neighborhood=Suburb"
+            ],
+            "RHS": [
+                "Bedrooms=3"
+            ],
+            "Confidence": 0.25400783754898465,
+            "Lift": 1.0031112769488375,
+            "Conviction": 1.0010560936007642,
+            "Leverage": 8.8458399999998e-05,
+            "LHS_Count": 5614,
+            "LHS_Support": 0.11228,
+            "RHS_Count": 12661,
+            "RHS_Support": 0.25322,
+            "Support": 0.02852,
+            "Count": 1426
+        },
+        {
+            "LHS": [
+                "Bedrooms=5"
+            ],
+            "RHS": [
+                "Bathrooms=2"
+            ],
+            "Confidence": 0.3347770291947385,
+            "Lift": 1.0011873592760885,
+            "Conviction": 1.000596836267181,
+            "Leverage": 9.900320000000296e-05,
+            "LHS_Count": 12468,
+            "LHS_Support": 0.24936,
+            "RHS_Count": 16719,
+            "RHS_Support": 0.33438,
+            "Support": 0.08348,
+            "Count": 4174
+        },
+        {
+            "LHS": [
+                "Neighborhood=Urban",
+                "Bathrooms=2"
+            ],
+            "RHS": [
+                "Bedrooms=4"
+            ],
+            "Confidence": 0.24881689115398614,
+            "Lift": 1.0004700086609817,
+            "Conviction": 1.000155609401502,
+            "Leverage": 1.2843999999997968e-05,
+            "LHS_Count": 5494,
+            "LHS_Support": 0.10988,
+            "RHS_Count": 12435,
+            "RHS_Support": 0.2487,
+            "Support": 0.02734,
+            "Count": 1367
+        },
+        {
+            "LHS": [
+                "Bedrooms=4"
+            ],
+            "RHS": [
+                "Neighborhood=Suburb"
+            ],
+            "Confidence": 0.3345396059509449,
+            "Lift": 1.0003576519076158,
+            "Conviction": 1.0001797341389729,
+            "Leverage": 2.9745999999997164e-05,
+            "LHS_Count": 12435,
+            "LHS_Support": 0.2487,
+            "RHS_Count": 16721,
+            "RHS_Support": 0.33442,
+            "Support": 0.0832,
+            "Count": 4160
+        },
+        {
+            "LHS": [],
+            "RHS": [
+                "Bathrooms=1"
+            ],
+            "Confidence": 0.3351,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 50000,
+            "LHS_Support": 1.0,
+            "RHS_Count": 16755,
+            "RHS_Support": 0.3351,
+            "Support": 0.3351,
+            "Count": 16755
+        },
+        {
+            "LHS": [],
+            "RHS": [
+                "Bathrooms=2"
+            ],
+            "Confidence": 0.33438,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 50000,
+            "LHS_Support": 1.0,
+            "RHS_Count": 16719,
+            "RHS_Support": 0.33438,
+            "Support": 0.33438,
+            "Count": 16719
+        },
+        {
+            "LHS": [],
+            "RHS": [
+                "Bathrooms=3"
+            ],
+            "Confidence": 0.33052,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 50000,
+            "LHS_Support": 1.0,
+            "RHS_Count": 16526,
+            "RHS_Support": 0.33052,
+            "Support": 0.33052,
+            "Count": 16526
+        },
+        {
+            "LHS": [],
+            "RHS": [
+                "Bedrooms=2"
+            ],
+            "Confidence": 0.24872,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 50000,
+            "LHS_Support": 1.0,
+            "RHS_Count": 12436,
+            "RHS_Support": 0.24872,
+            "Support": 0.24872,
+            "Count": 12436
+        },
+        {
+            "LHS": [],
+            "RHS": [
+                "Bedrooms=3"
+            ],
+            "Confidence": 0.25322,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 50000,
+            "LHS_Support": 1.0,
+            "RHS_Count": 12661,
+            "RHS_Support": 0.25322,
+            "Support": 0.25322,
+            "Count": 12661
+        },
+        {
+            "LHS": [],
+            "RHS": [
+                "Bedrooms=4"
+            ],
+            "Confidence": 0.2487,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 50000,
+            "LHS_Support": 1.0,
+            "RHS_Count": 12435,
+            "RHS_Support": 0.2487,
+            "Support": 0.2487,
+            "Count": 12435
+        },
+        {
+            "LHS": [],
+            "RHS": [
+                "Bedrooms=5"
+            ],
+            "Confidence": 0.24936,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 50000,
+            "LHS_Support": 1.0,
+            "RHS_Count": 12468,
+            "RHS_Support": 0.24936,
+            "Support": 0.24936,
+            "Count": 12468
+        },
+        {
+            "LHS": [],
+            "RHS": [
+                "Neighborhood=Rural"
+            ],
+            "Confidence": 0.33352,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 50000,
+            "LHS_Support": 1.0,
+            "RHS_Count": 16676,
+            "RHS_Support": 0.33352,
+            "Support": 0.33352,
+            "Count": 16676
+        },
+        {
+            "LHS": [],
+            "RHS": [
+                "Neighborhood=Suburb"
+            ],
+            "Confidence": 0.33442,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 50000,
+            "LHS_Support": 1.0,
+            "RHS_Count": 16721,
+            "RHS_Support": 0.33442,
+            "Support": 0.33442,
+            "Count": 16721
+        },
+        {
+            "LHS": [],
+            "RHS": [
+                "Neighborhood=Urban"
+            ],
+            "Confidence": 0.33206,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 50000,
+            "LHS_Support": 1.0,
+            "RHS_Count": 16603,
+            "RHS_Support": 0.33206,
+            "Support": 0.33206,
+            "Count": 16603
+        }
+    ]
+}

@@ -397,16 +397,25 @@ class Sniffer:
             #return('',0)
                     
 
-        if len(delims) > 1:
+        if len(delims) > 0:
             # Malliaridis 20231209  
             # if there's more than one, fall back to a 'preferred' list
             # However, ofr better detection, the dict is beeing sorted by the highest frequency character
-            SortDelimsByFrequency=dict(sorted(delims.items(), key=lambda x:x[1][0], reverse=True))
-            for d in SortDelimsByFrequency.keys():
-                if d in self.preferred:
+            max_value = max(item[1][0] for item in delims.items())
+            FilterDelimsByMaxFrequency = dict([item for item in delims.items() if item[1][0] == max_value])
+            for d in self.preferred: #For every character in the ordered preferred list
+                if d in FilterDelimsByMaxFrequency.keys(): #see if the character exists in the dataset's delimiter candidates'
+                    #Match! return it!
                     skipinitialspace = (data[0].count(d) ==
                                         data[0].count("%c " % d))             
-                    return (d, skipinitialspace, 0)
+                    return (d, skipinitialspace, 0)                    
+
+            #None of the characters in the dataset's delimiter candidates is in preferred list
+            #OoooK! return the most frequent
+            skipinitialspace = (data[0].count(data[0][0]) ==
+                                data[0].count("%c " % data[0][0]))             
+            return (data[0][0], skipinitialspace, 0)      
+                
             # Original code replace by the above
             # for d in self.preferred:
             #     if d in delims.keys():
@@ -415,16 +424,15 @@ class Sniffer:
             #         print(type(delims[';']))                
             #         return (d, skipinitialspace)
 
+        # Malliaridis 20240121. Replaced original lines
+        # Delimiter could not be detected.
+        return(None, None, 0)
+        # Malliaridis 20240121. Replaced original lines
         # nothing else indicates a preference, pick the character that
         # dominates(?)
-        items = [(v,k) for (k,v) in delims.items()]
-        items.sort()
-        delim = items[-1][1]
-
-        skipinitialspace = (data[0].count(delim) ==
-                            data[0].count("%c " % delim))
-        return (delim, skipinitialspace, 0)
-
+        # items = [(v,k) for (k,v) in delims.items()]
+        # items.sort()
+        # delim = items[-1][1]
 
     def has_header(self, sample):
         # Creates a dictionary of types of data in each column. If any

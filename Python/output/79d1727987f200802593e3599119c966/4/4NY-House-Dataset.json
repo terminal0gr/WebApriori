@@ -1,0 +1,4372 @@
+{
+    "min_support": 0.02,
+    "min_confidence": 0.2,
+    "min_lift": 2.0,
+    "max_length": 3,
+    "ssort": -3,
+    "datasetName": "4NY-House-Dataset.csv",
+    "datasetType": 4,
+    "outputType": 3,
+    "reduntantRemoveType": 7,
+    "datasetArgs": "",
+    "Records": 4802,
+    "RecordsCreationTime": "0.043",
+    "RulesCount": 230,
+    "RulesCreationTime": "0.524",
+    "rules": [
+        {
+            "LHS": [
+                "3",
+                "The Bronx"
+            ],
+            "RHS": [
+                "Bronx County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 9.681451612903226,
+            "Conviction": 100,
+            "Leverage": 0.03566671251965159,
+            "LHS_Count": 191,
+            "LHS_Support": 0.03977509371095377,
+            "RHS_Count": 496,
+            "RHS_Support": 0.10329029571012079,
+            "Support": 0.03977509371095377,
+            "Count": 191
+        },
+        {
+            "LHS": [
+                "The Bronx",
+                "House for sale"
+            ],
+            "RHS": [
+                "Bronx County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 9.681451612903226,
+            "Conviction": 100,
+            "Leverage": 0.022781879201034,
+            "LHS_Count": 122,
+            "LHS_Support": 0.025406080799666806,
+            "RHS_Count": 496,
+            "RHS_Support": 0.10329029571012079,
+            "Support": 0.025406080799666806,
+            "Count": 122
+        },
+        {
+            "LHS": [
+                "Multi-family home for sale",
+                "The Bronx"
+            ],
+            "RHS": [
+                "Bronx County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 9.681451612903226,
+            "Conviction": 100,
+            "Leverage": 0.025022719778184887,
+            "LHS_Count": 134,
+            "LHS_Support": 0.02790503956684715,
+            "RHS_Count": 496,
+            "RHS_Support": 0.10329029571012079,
+            "Support": 0.02790503956684715,
+            "Count": 134
+        },
+        {
+            "LHS": [
+                "The Bronx",
+                "2"
+            ],
+            "RHS": [
+                "Bronx County"
+            ],
+            "Confidence": 0.9957446808510638,
+            "Lift": 9.64025394646534,
+            "Conviction": 210.7267805081213,
+            "Leverage": 0.04367488140527314,
+            "LHS_Count": 235,
+            "LHS_Support": 0.048937942523948355,
+            "RHS_Count": 496,
+            "RHS_Support": 0.10329029571012079,
+            "Support": 0.04872969596001666,
+            "Count": 234
+        },
+        {
+            "LHS": [
+                "3",
+                "Bronx County"
+            ],
+            "RHS": [
+                "The Bronx"
+            ],
+            "Confidence": 1.0,
+            "Lift": 9.623246492985972,
+            "Conviction": 100,
+            "Leverage": 0.03564186343986549,
+            "LHS_Count": 191,
+            "LHS_Support": 0.03977509371095377,
+            "RHS_Count": 499,
+            "RHS_Support": 0.10391503540191586,
+            "Support": 0.03977509371095377,
+            "Count": 191
+        },
+        {
+            "LHS": [
+                "Bronx County",
+                "House for sale"
+            ],
+            "RHS": [
+                "The Bronx"
+            ],
+            "Confidence": 1.0,
+            "Lift": 9.623246492985972,
+            "Conviction": 100,
+            "Leverage": 0.022766007013945495,
+            "LHS_Count": 122,
+            "LHS_Support": 0.025406080799666806,
+            "RHS_Count": 499,
+            "RHS_Support": 0.10391503540191586,
+            "Support": 0.025406080799666806,
+            "Count": 122
+        },
+        {
+            "LHS": [
+                "United States",
+                "The Bronx"
+            ],
+            "RHS": [
+                "Bronx County"
+            ],
+            "Confidence": 0.9903225806451614,
+            "Lift": 9.587760145681584,
+            "Conviction": 92.6600027766222,
+            "Leverage": 0.05726364188460279,
+            "LHS_Count": 310,
+            "LHS_Support": 0.06455643481882549,
+            "RHS_Count": 496,
+            "RHS_Support": 0.10329029571012079,
+            "Support": 0.06393169512703041,
+            "Count": 307
+        },
+        {
+            "LHS": [
+                "Bronx County"
+            ],
+            "RHS": [
+                "The Bronx"
+            ],
+            "Confidence": 0.9959677419354839,
+            "Lift": 9.584443079707803,
+            "Conviction": 222.22907122032507,
+            "Leverage": 0.09214038784686583,
+            "LHS_Count": 496,
+            "LHS_Support": 0.10329029571012079,
+            "RHS_Count": 499,
+            "RHS_Support": 0.10391503540191586,
+            "Support": 0.1028738025822574,
+            "Count": 494
+        },
+        {
+            "LHS": [
+                "Bronx County",
+                "New York"
+            ],
+            "RHS": [
+                "The Bronx"
+            ],
+            "Confidence": 0.9959266802443992,
+            "Lift": 9.584047932933077,
+            "Conviction": 219.98885880883216,
+            "Leverage": 0.0912073547725238,
+            "LHS_Count": 491,
+            "LHS_Support": 0.1022490628904623,
+            "RHS_Count": 499,
+            "RHS_Support": 0.10391503540191586,
+            "Support": 0.10183256976259891,
+            "Count": 489
+        },
+        {
+            "LHS": [
+                "The Bronx",
+                "New York"
+            ],
+            "RHS": [
+                "Bronx County"
+            ],
+            "Confidence": 0.9898785425101214,
+            "Lift": 9.58346121196291,
+            "Conviction": 88.59491878383972,
+            "Leverage": 0.09120670427305295,
+            "LHS_Count": 494,
+            "LHS_Support": 0.1028738025822574,
+            "RHS_Count": 496,
+            "RHS_Support": 0.10329029571012079,
+            "Support": 0.10183256976259891,
+            "Count": 489
+        },
+        {
+            "LHS": [
+                "Bronx County",
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "The Bronx"
+            ],
+            "Confidence": 0.9938271604938271,
+            "Lift": 9.563843736856429,
+            "Conviction": 145.165764264889,
+            "Leverage": 0.030022025044750027,
+            "LHS_Count": 162,
+            "LHS_Support": 0.03373594335693461,
+            "RHS_Count": 499,
+            "RHS_Support": 0.10391503540191586,
+            "Support": 0.033527696793002916,
+            "Count": 161
+        },
+        {
+            "LHS": [
+                "1",
+                "Bronx County"
+            ],
+            "RHS": [
+                "The Bronx"
+            ],
+            "Confidence": 0.9936305732484076,
+            "Lift": 9.56195192933638,
+            "Conviction": 140.68533944189926,
+            "Leverage": 0.029088991970408,
+            "LHS_Count": 157,
+            "LHS_Support": 0.032694710537276135,
+            "RHS_Count": 499,
+            "RHS_Support": 0.10391503540191586,
+            "Support": 0.03248646397334444,
+            "Count": 156
+        },
+        {
+            "LHS": [
+                "United States",
+                "Bronx County"
+            ],
+            "RHS": [
+                "The Bronx"
+            ],
+            "Confidence": 0.9935275080906149,
+            "Lift": 9.5609601079181,
+            "Conviction": 138.44512703040328,
+            "Leverage": 0.05724495086647397,
+            "LHS_Count": 309,
+            "LHS_Support": 0.0643481882548938,
+            "RHS_Count": 499,
+            "RHS_Support": 0.10391503540191586,
+            "Support": 0.06393169512703041,
+            "Count": 307
+        },
+        {
+            "LHS": [
+                "Multi-family home for sale",
+                "Bronx County"
+            ],
+            "RHS": [
+                "The Bronx"
+            ],
+            "Confidence": 0.9925925925925926,
+            "Lift": 9.551963185630521,
+            "Conviction": 120.9714702207412,
+            "Leverage": 0.024983646443303073,
+            "LHS_Count": 135,
+            "LHS_Support": 0.028113286130778844,
+            "RHS_Count": 499,
+            "RHS_Support": 0.10391503540191586,
+            "Support": 0.02790503956684715,
+            "Count": 134
+        },
+        {
+            "LHS": [
+                "Bronx County",
+                "2"
+            ],
+            "RHS": [
+                "The Bronx"
+            ],
+            "Confidence": 0.9915254237288136,
+            "Lift": 9.541693556604736,
+            "Conviction": 105.73802582257422,
+            "Leverage": 0.04362266798108035,
+            "LHS_Count": 236,
+            "LHS_Support": 0.04914618908788005,
+            "RHS_Count": 499,
+            "RHS_Support": 0.10391503540191586,
+            "Support": 0.04872969596001666,
+            "Count": 234
+        },
+        {
+            "LHS": [
+                "Co-op for sale",
+                "The Bronx"
+            ],
+            "RHS": [
+                "Bronx County"
+            ],
+            "Confidence": 0.9698795180722891,
+            "Lift": 9.389841624562766,
+            "Conviction": 29.770762182423947,
+            "Leverage": 0.02995706183092877,
+            "LHS_Count": 166,
+            "LHS_Support": 0.03456892961266139,
+            "RHS_Count": 496,
+            "RHS_Support": 0.10329029571012079,
+            "Support": 0.033527696793002916,
+            "Count": 161
+        },
+        {
+            "LHS": [
+                "1",
+                "The Bronx"
+            ],
+            "RHS": [
+                "Bronx County"
+            ],
+            "Confidence": 0.9689440993788819,
+            "Lift": 9.38078541374474,
+            "Conviction": 28.874052478134054,
+            "Leverage": 0.0290233782571159,
+            "LHS_Count": 161,
+            "LHS_Support": 0.033527696793002916,
+            "RHS_Count": 496,
+            "RHS_Support": 0.10329029571012079,
+            "Support": 0.03248646397334444,
+            "Count": 156
+        },
+        {
+            "LHS": [
+                "Richmond County",
+                "2"
+            ],
+            "RHS": [
+                "Staten Island"
+            ],
+            "Confidence": 0.9931740614334471,
+            "Lift": 8.848278001861619,
+            "Conviction": 130.05612244897978,
+            "Leverage": 0.053750988108696204,
+            "LHS_Count": 293,
+            "LHS_Support": 0.06101624323198667,
+            "RHS_Count": 539,
+            "RHS_Support": 0.11224489795918367,
+            "Support": 0.06059975010412328,
+            "Count": 291
+        },
+        {
+            "LHS": [
+                "Staten Island"
+            ],
+            "RHS": [
+                "Richmond County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 8.762773722627738,
+            "Conviction": 100,
+            "Leverage": 0.09943560931244634,
+            "LHS_Count": 539,
+            "LHS_Support": 0.11224489795918367,
+            "RHS_Count": 548,
+            "RHS_Support": 0.11411911703456892,
+            "Support": 0.11224489795918367,
+            "Count": 539
+        },
+        {
+            "LHS": [
+                "Staten Island",
+                "2"
+            ],
+            "RHS": [
+                "Richmond County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 8.762773722627738,
+            "Conviction": 100,
+            "Leverage": 0.053684160129725204,
+            "LHS_Count": 291,
+            "LHS_Support": 0.06059975010412328,
+            "RHS_Count": 548,
+            "RHS_Support": 0.11411911703456892,
+            "Support": 0.06059975010412328,
+            "Count": 291
+        },
+        {
+            "LHS": [
+                "3",
+                "Staten Island"
+            ],
+            "RHS": [
+                "Richmond County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 8.762773722627738,
+            "Conviction": 100,
+            "Leverage": 0.050547972080909644,
+            "LHS_Count": 274,
+            "LHS_Support": 0.05705955851728446,
+            "RHS_Count": 548,
+            "RHS_Support": 0.11411911703456892,
+            "Support": 0.05705955851728446,
+            "Count": 274
+        },
+        {
+            "LHS": [
+                "Staten Island",
+                "4"
+            ],
+            "RHS": [
+                "Richmond County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 8.762773722627738,
+            "Conviction": 100,
+            "Leverage": 0.03062395388843431,
+            "LHS_Count": 166,
+            "LHS_Support": 0.03456892961266139,
+            "RHS_Count": 548,
+            "RHS_Support": 0.11411911703456892,
+            "Support": 0.03456892961266139,
+            "Count": 166
+        },
+        {
+            "LHS": [
+                "Staten Island"
+            ],
+            "RHS": [
+                "Richmond County",
+                "New York"
+            ],
+            "Confidence": 1.0,
+            "Lift": 8.762773722627738,
+            "Conviction": 100,
+            "Leverage": 0.09943560931244634,
+            "LHS_Count": 539,
+            "LHS_Support": 0.11224489795918367,
+            "RHS_Count": 548,
+            "RHS_Support": 0.11411911703456892,
+            "Support": 0.11224489795918367,
+            "Count": 539
+        },
+        {
+            "LHS": [
+                "Staten Island",
+                "New York"
+            ],
+            "RHS": [
+                "Richmond County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 8.762773722627738,
+            "Conviction": 100,
+            "Leverage": 0.09943560931244634,
+            "LHS_Count": 539,
+            "LHS_Support": 0.11224489795918367,
+            "RHS_Count": 548,
+            "RHS_Support": 0.11411911703456892,
+            "Support": 0.11224489795918367,
+            "Count": 539
+        },
+        {
+            "LHS": [
+                "United States",
+                "Staten Island"
+            ],
+            "RHS": [
+                "Richmond County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 8.762773722627738,
+            "Conviction": 100,
+            "Leverage": 0.08855119196655704,
+            "LHS_Count": 480,
+            "LHS_Support": 0.09995835068721366,
+            "RHS_Count": 548,
+            "RHS_Support": 0.11411911703456892,
+            "Support": 0.09995835068721366,
+            "Count": 480
+        },
+        {
+            "LHS": [
+                "Richmond County",
+                "3"
+            ],
+            "RHS": [
+                "Staten Island"
+            ],
+            "Confidence": 0.9820788530465949,
+            "Lift": 8.749429781687846,
+            "Conviction": 49.53673469387739,
+            "Leverage": 0.05053804112232148,
+            "LHS_Count": 279,
+            "LHS_Support": 0.05810079133694294,
+            "RHS_Count": 539,
+            "RHS_Support": 0.11224489795918367,
+            "Support": 0.05705955851728446,
+            "Count": 274
+        },
+        {
+            "LHS": [
+                "Richmond County",
+                "United States"
+            ],
+            "RHS": [
+                "Staten Island"
+            ],
+            "Confidence": 0.98159509202454,
+            "Lift": 8.745119910764084,
+            "Conviction": 48.2346938775513,
+            "Leverage": 0.0885281642852893,
+            "LHS_Count": 489,
+            "LHS_Support": 0.10183256976259891,
+            "RHS_Count": 539,
+            "RHS_Support": 0.11224489795918367,
+            "Support": 0.09995835068721366,
+            "Count": 480
+        },
+        {
+            "LHS": [
+                "Richmond County",
+                "4"
+            ],
+            "RHS": [
+                "Staten Island"
+            ],
+            "Confidence": 0.9707602339181286,
+            "Lift": 8.648591174906963,
+            "Conviction": 30.361224489795863,
+            "Leverage": 0.03057187056413569,
+            "LHS_Count": 171,
+            "LHS_Support": 0.03561016243231987,
+            "RHS_Count": 539,
+            "RHS_Support": 0.11224489795918367,
+            "Support": 0.03456892961266139,
+            "Count": 166
+        },
+        {
+            "LHS": [
+                "United States",
+                "New York County"
+            ],
+            "RHS": [
+                "Townhouse for sale"
+            ],
+            "Confidence": 0.4315068493150685,
+            "Lift": 6.930086590003207,
+            "Conviction": 1.649508487929226,
+            "Leverage": 0.022452813202051555,
+            "LHS_Count": 292,
+            "LHS_Support": 0.060807996668054975,
+            "RHS_Count": 299,
+            "RHS_Support": 0.06226572261557684,
+            "Support": 0.026239067055393587,
+            "Count": 126
+        },
+        {
+            "LHS": [
+                "1",
+                "New York County"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.9466666666666667,
+            "Lift": 4.518780649436713,
+            "Conviction": 14.821949187838399,
+            "Leverage": 0.08059445590576327,
+            "LHS_Count": 525,
+            "LHS_Support": 0.10932944606413994,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.10349854227405247,
+            "Count": 497
+        },
+        {
+            "LHS": [
+                "New York County",
+                "2"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.9327902240325866,
+            "Lift": 4.452543395431889,
+            "Conviction": 11.761740688854399,
+            "Leverage": 0.07395615217246874,
+            "LHS_Count": 491,
+            "LHS_Support": 0.1022490628904623,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.09537692628071637,
+            "Count": 458
+        },
+        {
+            "LHS": [
+                "Co-op for sale",
+                "New York County"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.9315525876460767,
+            "Lift": 4.446635711606819,
+            "Conviction": 11.549070001320578,
+            "Leverage": 0.09006911079844733,
+            "LHS_Count": 599,
+            "LHS_Support": 0.12473969179508539,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.11620158267388588,
+            "Count": 558
+        },
+        {
+            "LHS": [
+                "New York County",
+                "Condo for sale"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.8765432098765431,
+            "Lift": 4.184056156885845,
+            "Conviction": 6.403082049146184,
+            "Leverage": 0.05625866356878581,
+            "LHS_Count": 405,
+            "LHS_Support": 0.08433985839233653,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.07392753019575177,
+            "Count": 355
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "New York County"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.8639846743295019,
+            "Lift": 4.124109747644402,
+            "Conviction": 5.81187416041438,
+            "Leverage": 0.07114599445843839,
+            "LHS_Count": 522,
+            "LHS_Support": 0.10870470637234486,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.09391920033319451,
+            "Count": 451
+        },
+        {
+            "LHS": [
+                "3",
+                "New York County"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.8596938775510204,
+            "Lift": 4.1036282306163026,
+            "Conviction": 5.63413729128015,
+            "Leverage": 0.05307737422332531,
+            "LHS_Count": 392,
+            "LHS_Support": 0.08163265306122448,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.07017909204498125,
+            "Count": 337
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS",
+                "Kings County"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 1.0,
+            "Lift": 4.0083472454090145,
+            "Conviction": 100,
+            "Leverage": 0.017035974008469675,
+            "LHS_Count": 109,
+            "LHS_Support": 0.022698875468554768,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.022698875468554768,
+            "Count": 109
+        },
+        {
+            "LHS": [
+                "Co-op for sale",
+                "Kings County"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 1.0,
+            "Lift": 4.0083472454090145,
+            "Conviction": 100,
+            "Leverage": 0.03594746809126629,
+            "LHS_Count": 230,
+            "LHS_Support": 0.04789670970428988,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.04789670970428988,
+            "Count": 230
+        },
+        {
+            "LHS": [
+                "Kings County",
+                "Condo for sale"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 1.0,
+            "Lift": 4.0083472454090145,
+            "Conviction": 100,
+            "Leverage": 0.03547858807268456,
+            "LHS_Count": 227,
+            "LHS_Support": 0.04727197001249479,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.04727197001249479,
+            "Count": 227
+        },
+        {
+            "LHS": [
+                "Townhouse for sale",
+                "Kings County"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 1.0,
+            "Lift": 4.0083472454090145,
+            "Conviction": 100,
+            "Leverage": 0.01625450731083345,
+            "LHS_Count": 104,
+            "LHS_Support": 0.021657642648896292,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.021657642648896292,
+            "Count": 104
+        },
+        {
+            "LHS": [
+                "Brooklyn, NY 11235"
+            ],
+            "RHS": [
+                "Brooklyn",
+                "New York"
+            ],
+            "Confidence": 0.9901960784313726,
+            "Lift": 3.992377471559573,
+            "Conviction": 76.7017909204501,
+            "Leverage": 0.015764637842659267,
+            "LHS_Count": 102,
+            "LHS_Support": 0.0212411495210329,
+            "RHS_Count": 1191,
+            "RHS_Support": 0.24802165764264889,
+            "Support": 0.021032902957101206,
+            "Count": 101
+        },
+        {
+            "LHS": [
+                "Kings County",
+                "2"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 0.9942748091603053,
+            "Lift": 3.9853986924772835,
+            "Conviction": 131.090934332916,
+            "Leverage": 0.08127297022048116,
+            "LHS_Count": 524,
+            "LHS_Support": 0.10912119950020825,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.10849645980841316,
+            "Count": 521
+        },
+        {
+            "LHS": [
+                "Brooklyn, NY 11235"
+            ],
+            "RHS": [
+                "Kings County",
+                "New York"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.985062240663901,
+            "Conviction": 100,
+            "Leverage": 0.01591095685696696,
+            "LHS_Count": 102,
+            "LHS_Support": 0.0212411495210329,
+            "RHS_Count": 1205,
+            "RHS_Support": 0.2509371095376926,
+            "Support": 0.0212411495210329,
+            "Count": 102
+        },
+        {
+            "LHS": [
+                "1",
+                "Kings County"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 0.9940652818991098,
+            "Lift": 3.9845588344570326,
+            "Conviction": 126.46272386505659,
+            "Leverage": 0.05225436229281808,
+            "LHS_Count": 337,
+            "LHS_Support": 0.07017909204498125,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.06976259891711786,
+            "Count": 335
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "Kings County"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 0.9932659932659933,
+            "Lift": 3.9813550080661932,
+            "Conviction": 111.45231153686015,
+            "Leverage": 0.0460026287117283,
+            "LHS_Count": 297,
+            "LHS_Support": 0.06184922948771345,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.06143273635985006,
+            "Count": 295
+        },
+        {
+            "LHS": [
+                "Brooklyn, NY 11235"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 0.9901960784313726,
+            "Lift": 3.969049723395201,
+            "Conviction": 76.55310287380286,
+            "Leverage": 0.015733674067847266,
+            "LHS_Count": 102,
+            "LHS_Support": 0.0212411495210329,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.021032902957101206,
+            "Count": 101
+        },
+        {
+            "LHS": [
+                "2.3738608579684373",
+                "Kings County"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 0.9901960784313726,
+            "Lift": 3.969049723395201,
+            "Conviction": 76.55310287380286,
+            "Leverage": 0.015733674067847266,
+            "LHS_Count": 102,
+            "LHS_Support": 0.0212411495210329,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.021032902957101206,
+            "Count": 101
+        },
+        {
+            "LHS": [
+                "New York",
+                "Brooklyn, NY 11235"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 0.9901960784313726,
+            "Lift": 3.969049723395201,
+            "Conviction": 76.55310287380286,
+            "Leverage": 0.015733674067847266,
+            "LHS_Count": 102,
+            "LHS_Support": 0.0212411495210329,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.021032902957101206,
+            "Count": 101
+        },
+        {
+            "LHS": [
+                "Brooklyn, NY 11235"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.015884416478556672,
+            "LHS_Count": 102,
+            "LHS_Support": 0.0212411495210329,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.0212411495210329,
+            "Count": 102
+        },
+        {
+            "LHS": [
+                "Brooklyn",
+                "2"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.08113510769929438,
+            "LHS_Count": 521,
+            "LHS_Support": 0.10849645980841316,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.10849645980841316,
+            "Count": 521
+        },
+        {
+            "LHS": [
+                "Brooklyn",
+                "2.3738608579684373"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.01572868690523749,
+            "LHS_Count": 101,
+            "LHS_Support": 0.021032902957101206,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.021032902957101206,
+            "Count": 101
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "Brooklyn"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.04594022412915901,
+            "LHS_Count": 295,
+            "LHS_Support": 0.06143273635985006,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.06143273635985006,
+            "Count": 295
+        },
+        {
+            "LHS": [
+                "Brooklyn",
+                "4"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.03519488357013538,
+            "LHS_Count": 226,
+            "LHS_Support": 0.0470637234485631,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.0470637234485631,
+            "Count": 226
+        },
+        {
+            "LHS": [
+                "Brooklyn",
+                "5"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.020400574104812986,
+            "LHS_Count": 131,
+            "LHS_Support": 0.027280299875052063,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.027280299875052063,
+            "Count": 131
+        },
+        {
+            "LHS": [
+                "6",
+                "Brooklyn"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.01759744178506769,
+            "LHS_Count": 113,
+            "LHS_Support": 0.02353186172428155,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.02353186172428155,
+            "Count": 113
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS",
+                "Brooklyn"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.016974523491790957,
+            "LHS_Count": 109,
+            "LHS_Support": 0.022698875468554768,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.022698875468554768,
+            "Count": 109
+        },
+        {
+            "LHS": [
+                "Brooklyn",
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.03581780186341211,
+            "LHS_Count": 230,
+            "LHS_Support": 0.04789670970428988,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.04789670970428988,
+            "Count": 230
+        },
+        {
+            "LHS": [
+                "Brooklyn",
+                "House for sale"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.04080114820962597,
+            "LHS_Count": 262,
+            "LHS_Support": 0.054560599750104126,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.054560599750104126,
+            "Count": 262
+        },
+        {
+            "LHS": [
+                "Brooklyn",
+                "Multi-family home for sale"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.040956877782945156,
+            "LHS_Count": 263,
+            "LHS_Support": 0.05476884631403582,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.05476884631403582,
+            "Count": 263
+        },
+        {
+            "LHS": [
+                "Brooklyn",
+                "New York"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.18547392182314704,
+            "LHS_Count": 1191,
+            "LHS_Support": 0.24802165764264889,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.24802165764264889,
+            "Count": 1191
+        },
+        {
+            "LHS": [
+                "Brooklyn",
+                "Townhouse for sale"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.01619587562519504,
+            "LHS_Count": 104,
+            "LHS_Support": 0.021657642648896292,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.021657642648896292,
+            "Count": 104
+        },
+        {
+            "LHS": [
+                "United States",
+                "Brooklyn"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.1132153998030461,
+            "LHS_Count": 727,
+            "LHS_Support": 0.15139525197834236,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.15139525197834236,
+            "Count": 727
+        },
+        {
+            "LHS": [
+                "New York",
+                "Brooklyn, NY 11235"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.965317919075144,
+            "Conviction": 100,
+            "Leverage": 0.015884416478556672,
+            "LHS_Count": 102,
+            "LHS_Support": 0.0212411495210329,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.0212411495210329,
+            "Count": 102
+        },
+        {
+            "LHS": [
+                "Brooklyn"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 0.9991652754590985,
+            "Lift": 3.9620079708956157,
+            "Conviction": 895.8804664723067,
+            "Leverage": 0.18635578227244964,
+            "LHS_Count": 1198,
+            "LHS_Support": 0.24947938359017077,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.24927113702623907,
+            "Count": 1197
+        },
+        {
+            "LHS": [
+                "Brooklyn"
+            ],
+            "RHS": [
+                "Kings County",
+                "New York"
+            ],
+            "Confidence": 0.9941569282136894,
+            "Lift": 3.961777235918786,
+            "Conviction": 128.19676325340438,
+            "Leverage": 0.18541802223528617,
+            "LHS_Count": 1198,
+            "LHS_Support": 0.24947938359017077,
+            "RHS_Count": 1205,
+            "RHS_Support": 0.2509371095376926,
+            "Support": 0.24802165764264889,
+            "Count": 1191
+        },
+        {
+            "LHS": [
+                "Brooklyn",
+                "3"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 0.9978586723768738,
+            "Lift": 3.956826874280551,
+            "Conviction": 349.22886297377636,
+            "Leverage": 0.07251746417612681,
+            "LHS_Count": 467,
+            "LHS_Support": 0.09725114535610162,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.09704289879216993,
+            "Count": 466
+        },
+        {
+            "LHS": [
+                "Brooklyn",
+                "1"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 0.9970238095238094,
+            "Lift": 3.9535163776493247,
+            "Conviction": 251.26530612244048,
+            "Leverage": 0.052116890071313815,
+            "LHS_Count": 336,
+            "LHS_Support": 0.06997084548104957,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.06976259891711786,
+            "Count": 335
+        },
+        {
+            "LHS": [
+                "3",
+                "Kings County"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 0.985200845665962,
+            "Lift": 3.949027095899791,
+            "Conviction": 50.71375022312151,
+            "Leverage": 0.0724690236488649,
+            "LHS_Count": 473,
+            "LHS_Support": 0.09850062473969179,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.09704289879216993,
+            "Count": 466
+        },
+        {
+            "LHS": [
+                "5",
+                "Kings County"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 0.9849624060150376,
+            "Lift": 3.948071346981812,
+            "Conviction": 49.90962099125365,
+            "Leverage": 0.02037052102926016,
+            "LHS_Count": 133,
+            "LHS_Support": 0.027696793002915453,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.027280299875052063,
+            "Count": 131
+        },
+        {
+            "LHS": [
+                "Brooklyn",
+                "Condo for sale"
+            ],
+            "RHS": [
+                "Kings County"
+            ],
+            "Confidence": 0.9956140350877193,
+            "Lift": 3.9479261738160427,
+            "Conviction": 170.50145772594698,
+            "Leverage": 0.035298096152842046,
+            "LHS_Count": 228,
+            "LHS_Support": 0.04748021657642649,
+            "RHS_Count": 1211,
+            "RHS_Support": 0.2521865889212828,
+            "Support": 0.04727197001249479,
+            "Count": 227
+        },
+        {
+            "LHS": [
+                "4",
+                "Kings County"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 0.9826086956521739,
+            "Lift": 3.938636858532336,
+            "Conviction": 43.15493544356516,
+            "Leverage": 0.03511448183553951,
+            "LHS_Count": 230,
+            "LHS_Support": 0.04789670970428988,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.0470637234485631,
+            "Count": 226
+        },
+        {
+            "LHS": [
+                "United States",
+                "Kings County"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 0.9811066126855601,
+            "Lift": 3.932615988410734,
+            "Conviction": 39.7239840542632,
+            "Leverage": 0.11289791269464462,
+            "LHS_Count": 741,
+            "LHS_Support": 0.15431070387338608,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.15139525197834236,
+            "Count": 727
+        },
+        {
+            "LHS": [
+                "6",
+                "Kings County"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 0.9741379310344828,
+            "Lift": 3.904683092510506,
+            "Conviction": 29.02013050118007,
+            "Leverage": 0.017505287693365304,
+            "LHS_Count": 116,
+            "LHS_Support": 0.024156601416076635,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.02353186172428155,
+            "Count": 113
+        },
+        {
+            "LHS": [
+                "Multi-family home for sale",
+                "Kings County"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 0.9740740740740741,
+            "Lift": 3.9044271316391517,
+            "Conviction": 28.94865234723629,
+            "Leverage": 0.04074147572483421,
+            "LHS_Count": 270,
+            "LHS_Support": 0.05622657226155769,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.05476884631403582,
+            "Count": 263
+        },
+        {
+            "LHS": [
+                "Kings County",
+                "House for sale"
+            ],
+            "RHS": [
+                "Brooklyn"
+            ],
+            "Confidence": 0.9739776951672863,
+            "Lift": 3.904040811513613,
+            "Conviction": 28.84143511632061,
+            "Leverage": 0.04058518238530697,
+            "LHS_Count": 269,
+            "LHS_Support": 0.05601832569762599,
+            "RHS_Count": 1198,
+            "RHS_Support": 0.24947938359017077,
+            "Support": 0.054560599750104126,
+            "Count": 262
+        },
+        {
+            "LHS": [
+                "Flushing"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8570281124497994,
+            "Conviction": 100,
+            "Leverage": 0.022058480422828125,
+            "LHS_Count": 143,
+            "LHS_Support": 0.029779258642232402,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.029779258642232402,
+            "Count": 143
+        },
+        {
+            "LHS": [
+                "Queens County",
+                "2"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8570281124497994,
+            "Conviction": 100,
+            "Leverage": 0.08946796255412806,
+            "LHS_Count": 580,
+            "LHS_Support": 0.12078300708038317,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.12078300708038317,
+            "Count": 580
+        },
+        {
+            "LHS": [
+                "4",
+                "Queens County"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8570281124497994,
+            "Conviction": 100,
+            "Leverage": 0.03331910329602011,
+            "LHS_Count": 216,
+            "LHS_Support": 0.044981257809246146,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.044981257809246146,
+            "Count": 216
+        },
+        {
+            "LHS": [
+                "Queens County",
+                "Condo for sale"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8570281124497994,
+            "Conviction": 100,
+            "Leverage": 0.026377623442682588,
+            "LHS_Count": 171,
+            "LHS_Support": 0.03561016243231987,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.03561016243231987,
+            "Count": 171
+        },
+        {
+            "LHS": [
+                "New York",
+                "Flushing"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8570281124497994,
+            "Conviction": 100,
+            "Leverage": 0.021441459991420345,
+            "LHS_Count": 139,
+            "LHS_Support": 0.02894627238650562,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.02894627238650562,
+            "Count": 139
+        },
+        {
+            "LHS": [
+                "Queens County",
+                "House for sale"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8570281124497994,
+            "Conviction": 100,
+            "Leverage": 0.04720206300269515,
+            "LHS_Count": 306,
+            "LHS_Support": 0.06372344856309871,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.06372344856309871,
+            "Count": 306
+        },
+        {
+            "LHS": [
+                "Flushing"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.022027473281384734,
+            "LHS_Count": 143,
+            "LHS_Support": 0.029779258642232402,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.029779258642232402,
+            "Count": 143
+        },
+        {
+            "LHS": [
+                "Queens"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.1917776519952727,
+            "LHS_Count": 1245,
+            "LHS_Support": 0.2592669720949604,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.2592669720949604,
+            "Count": 1245
+        },
+        {
+            "LHS": [
+                "Queens",
+                "1"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.07624894597402408,
+            "LHS_Count": 495,
+            "LHS_Support": 0.10308204914618908,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.10308204914618908,
+            "Count": 495
+        },
+        {
+            "LHS": [
+                "Queens",
+                "2"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.08934219932309892,
+            "LHS_Count": 580,
+            "LHS_Support": 0.12078300708038317,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.12078300708038317,
+            "Count": 580
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "Queens"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.10412987369381875,
+            "LHS_Count": 676,
+            "LHS_Support": 0.1407746772178259,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.1407746772178259,
+            "Count": 676
+        },
+        {
+            "LHS": [
+                "Queens",
+                "3"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.06854703223927418,
+            "LHS_Count": 445,
+            "LHS_Support": 0.09266972094960434,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.09266972094960434,
+            "Count": 445
+        },
+        {
+            "LHS": [
+                "Queens",
+                "4"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.0332722673341196,
+            "LHS_Count": 216,
+            "LHS_Support": 0.044981257809246146,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.044981257809246146,
+            "Count": 216
+        },
+        {
+            "LHS": [
+                "Queens",
+                "5"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.01987093743565476,
+            "LHS_Count": 129,
+            "LHS_Support": 0.026863806747188673,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.026863806747188673,
+            "Count": 129
+        },
+        {
+            "LHS": [
+                "Queens",
+                "6"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.014941712645414818,
+            "LHS_Count": 97,
+            "LHS_Support": 0.020199916701374426,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.020199916701374426,
+            "Count": 97
+        },
+        {
+            "LHS": [
+                "Queens",
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.06916318533805417,
+            "LHS_Count": 449,
+            "LHS_Support": 0.09350270720533112,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.09350270720533112,
+            "Count": 449
+        },
+        {
+            "LHS": [
+                "Queens",
+                "Condo for sale"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.026340544972844684,
+            "LHS_Count": 171,
+            "LHS_Support": 0.03561016243231987,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.03561016243231987,
+            "Count": 171
+        },
+        {
+            "LHS": [
+                "New York",
+                "Flushing"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.02141132018260474,
+            "LHS_Count": 139,
+            "LHS_Support": 0.02894627238650562,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.02894627238650562,
+            "Count": 139
+        },
+        {
+            "LHS": [
+                "Queens",
+                "House for sale"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.04713571205666943,
+            "LHS_Count": 306,
+            "LHS_Support": 0.06372344856309871,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.06372344856309871,
+            "Count": 306
+        },
+        {
+            "LHS": [
+                "Queens",
+                "Multi-family home for sale"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.03250207596064461,
+            "LHS_Count": 211,
+            "LHS_Support": 0.04394002498958767,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.04394002498958767,
+            "Count": 211
+        },
+        {
+            "LHS": [
+                "Queens",
+                "New York"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.19085342234710267,
+            "LHS_Count": 1239,
+            "LHS_Support": 0.25801749271137026,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.25801749271137026,
+            "Count": 1239
+        },
+        {
+            "LHS": [
+                "United States",
+                "Queens"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.8415999999999997,
+            "Conviction": 100,
+            "Leverage": 0.10536217989137873,
+            "LHS_Count": 684,
+            "LHS_Support": 0.14244064972927947,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.14244064972927947,
+            "Count": 684
+        },
+        {
+            "LHS": [
+                "Queens County",
+                "New York"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 0.9959807073954985,
+            "Lift": 3.8415255878820758,
+            "Conviction": 184.29437734277823,
+            "Leverage": 0.19085212134816104,
+            "LHS_Count": 1244,
+            "LHS_Support": 0.2590587255310287,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.25801749271137026,
+            "Count": 1239
+        },
+        {
+            "LHS": [
+                "1",
+                "Queens County"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 0.9959758551307847,
+            "Lift": 3.8415068725606654,
+            "Conviction": 184.07215743440113,
+            "Leverage": 0.07624829547455324,
+            "LHS_Count": 497,
+            "LHS_Support": 0.10349854227405247,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.10308204914618908,
+            "Count": 495
+        },
+        {
+            "LHS": [
+                "United States",
+                "Queens County"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 0.9956331877729259,
+            "Lift": 3.840185194928185,
+            "Conviction": 169.62786339025797,
+            "Leverage": 0.1053485194024911,
+            "LHS_Count": 687,
+            "LHS_Support": 0.14306538942107455,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.14244064972927947,
+            "Count": 684
+        },
+        {
+            "LHS": [
+                "Co-op for sale",
+                "Queens County"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 0.9955654101995566,
+            "Lift": 3.839923774922306,
+            "Conviction": 167.0352977925878,
+            "Leverage": 0.06915256051336378,
+            "LHS_Count": 451,
+            "LHS_Support": 0.09391920033319451,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.09350270720533112,
+            "Count": 449
+        },
+        {
+            "LHS": [
+                "3",
+                "Queens County"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 0.9955257270693513,
+            "Lift": 3.8397707159735144,
+            "Conviction": 165.55383173677797,
+            "Leverage": 0.068535540081956,
+            "LHS_Count": 447,
+            "LHS_Support": 0.09308621407746773,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.09266972094960434,
+            "Count": 445
+        },
+        {
+            "LHS": [
+                "Multi-family home for sale",
+                "Queens County"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 0.9952830188679245,
+            "Lift": 3.838834583617489,
+            "Conviction": 157.03540191586657,
+            "Leverage": 0.03249383630068063,
+            "LHS_Count": 212,
+            "LHS_Support": 0.044148271553519365,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.04394002498958767,
+            "Count": 211
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "Queens County"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 0.9941176470588236,
+            "Lift": 3.83433971178833,
+            "Conviction": 125.92461474385718,
+            "Leverage": 0.10406048708359578,
+            "LHS_Count": 680,
+            "LHS_Support": 0.1416076634735527,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.1407746772178259,
+            "Count": 676
+        },
+        {
+            "LHS": [
+                "5",
+                "Queens County"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 0.9923076923076923,
+            "Lift": 3.827358665430955,
+            "Conviction": 96.29529362765548,
+            "Leverage": 0.019844917456821147,
+            "LHS_Count": 130,
+            "LHS_Support": 0.027072053311120368,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.026863806747188673,
+            "Count": 129
+        },
+        {
+            "LHS": [
+                "6",
+                "Queens County"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 0.9897959183673469,
+            "Lift": 3.817670682730924,
+            "Conviction": 72.5918367346938,
+            "Leverage": 0.014908754005558907,
+            "LHS_Count": 98,
+            "LHS_Support": 0.02040816326530612,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.020199916701374426,
+            "Count": 97
+        },
+        {
+            "LHS": [
+                "Flushing"
+            ],
+            "RHS": [
+                "Queens",
+                "New York"
+            ],
+            "Confidence": 0.972027972027972,
+            "Lift": 3.7672948520406146,
+            "Conviction": 26.525874635568464,
+            "Leverage": 0.02126270273683341,
+            "LHS_Count": 143,
+            "LHS_Support": 0.029779258642232402,
+            "RHS_Count": 1239,
+            "RHS_Support": 0.25801749271137026,
+            "Support": 0.02894627238650562,
+            "Count": 139
+        },
+        {
+            "LHS": [
+                "Flushing"
+            ],
+            "RHS": [
+                "Queens County",
+                "New York"
+            ],
+            "Confidence": 0.972027972027972,
+            "Lift": 3.752152991702831,
+            "Conviction": 26.488650562265676,
+            "Leverage": 0.021231695595390024,
+            "LHS_Count": 143,
+            "LHS_Support": 0.029779258642232402,
+            "RHS_Count": 1244,
+            "RHS_Support": 0.2590587255310287,
+            "Support": 0.02894627238650562,
+            "Count": 139
+        },
+        {
+            "LHS": [
+                "United States",
+                "6"
+            ],
+            "RHS": [
+                "Multi-family home for sale"
+            ],
+            "Confidence": 0.5633802816901409,
+            "Lift": 3.7212546254141077,
+            "Conviction": 1.9435786164367,
+            "Leverage": 0.03045703572421667,
+            "LHS_Count": 355,
+            "LHS_Support": 0.07392753019575177,
+            "RHS_Count": 727,
+            "RHS_Support": 0.15139525197834236,
+            "Support": 0.04164931278633902,
+            "Count": 200
+        },
+        {
+            "LHS": [
+                "Manhattan"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.7167182662538703,
+            "Conviction": 100,
+            "Leverage": 0.153130177433705,
+            "LHS_Count": 1006,
+            "LHS_Support": 0.2094960433152853,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.2094960433152853,
+            "Count": 1006
+        },
+        {
+            "LHS": [
+                "Manhattan",
+                "1"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.7167182662538703,
+            "Conviction": 100,
+            "Leverage": 0.07565178745979262,
+            "LHS_Count": 497,
+            "LHS_Support": 0.10349854227405247,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.10349854227405247,
+            "Count": 497
+        },
+        {
+            "LHS": [
+                "Manhattan",
+                "2"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.7167182662538703,
+            "Conviction": 100,
+            "Leverage": 0.06971532928890348,
+            "LHS_Count": 458,
+            "LHS_Support": 0.09537692628071637,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.09537692628071637,
+            "Count": 458
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "Manhattan"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.7167182662538703,
+            "Conviction": 100,
+            "Leverage": 0.06864981115566696,
+            "LHS_Count": 451,
+            "LHS_Support": 0.09391920033319451,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.09391920033319451,
+            "Count": 451
+        },
+        {
+            "LHS": [
+                "Manhattan",
+                "3"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.7167182662538703,
+            "Conviction": 100,
+            "Leverage": 0.0512970872715294,
+            "LHS_Count": 337,
+            "LHS_Support": 0.07017909204498125,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.07017909204498125,
+            "Count": 337
+        },
+        {
+            "LHS": [
+                "Manhattan",
+                "4"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.7167182662538703,
+            "Conviction": 100,
+            "Leverage": 0.018266025141197417,
+            "LHS_Count": 120,
+            "LHS_Support": 0.024989587671803416,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.024989587671803416,
+            "Count": 120
+        },
+        {
+            "LHS": [
+                "Manhattan",
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.7167182662538703,
+            "Conviction": 100,
+            "Leverage": 0.08493701690656798,
+            "LHS_Count": 558,
+            "LHS_Support": 0.11620158267388588,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.11620158267388588,
+            "Count": 558
+        },
+        {
+            "LHS": [
+                "Manhattan",
+                "Condo for sale"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.7167182662538703,
+            "Conviction": 100,
+            "Leverage": 0.05403699104270902,
+            "LHS_Count": 355,
+            "LHS_Support": 0.07392753019575177,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.07392753019575177,
+            "Count": 355
+        },
+        {
+            "LHS": [
+                "Manhattan"
+            ],
+            "RHS": [
+                "New York County",
+                "New York"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.7167182662538703,
+            "Conviction": 100,
+            "Leverage": 0.153130177433705,
+            "LHS_Count": 1006,
+            "LHS_Support": 0.2094960433152853,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.2094960433152853,
+            "Count": 1006
+        },
+        {
+            "LHS": [
+                "Manhattan",
+                "New York"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 1.0,
+            "Lift": 3.7167182662538703,
+            "Conviction": 100,
+            "Leverage": 0.153130177433705,
+            "LHS_Count": 1006,
+            "LHS_Support": 0.2094960433152853,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.2094960433152853,
+            "Count": 1006
+        },
+        {
+            "LHS": [
+                "6"
+            ],
+            "RHS": [
+                "Multi-family home for sale"
+            ],
+            "Confidence": 0.5284974093264247,
+            "Lift": 3.490845336431213,
+            "Conviction": 1.7997880919580207,
+            "Leverage": 0.0303126682083215,
+            "LHS_Count": 386,
+            "LHS_Support": 0.08038317367763433,
+            "RHS_Count": 727,
+            "RHS_Support": 0.15139525197834236,
+            "Support": 0.0424822990420658,
+            "Count": 204
+        },
+        {
+            "LHS": [
+                "6"
+            ],
+            "RHS": [
+                "Multi-family home for sale",
+                "New York"
+            ],
+            "Confidence": 0.5284974093264247,
+            "Lift": 3.490845336431213,
+            "Conviction": 1.7997880919580207,
+            "Leverage": 0.0303126682083215,
+            "LHS_Count": 386,
+            "LHS_Support": 0.08038317367763433,
+            "RHS_Count": 727,
+            "RHS_Support": 0.15139525197834236,
+            "Support": 0.0424822990420658,
+            "Count": 204
+        },
+        {
+            "LHS": [
+                "6",
+                "New York"
+            ],
+            "RHS": [
+                "Multi-family home for sale"
+            ],
+            "Confidence": 0.5284974093264247,
+            "Lift": 3.490845336431213,
+            "Conviction": 1.7997880919580207,
+            "Leverage": 0.0303126682083215,
+            "LHS_Count": 386,
+            "LHS_Support": 0.08038317367763433,
+            "RHS_Count": 727,
+            "RHS_Support": 0.15139525197834236,
+            "Support": 0.0424822990420658,
+            "Count": 204
+        },
+        {
+            "LHS": [
+                "6"
+            ],
+            "RHS": [
+                "United States",
+                "Multi-family home for sale"
+            ],
+            "Confidence": 0.5181347150259067,
+            "Lift": 3.489597337383456,
+            "Conviction": 1.7671333181067026,
+            "Leverage": 0.029714035228622808,
+            "LHS_Count": 386,
+            "LHS_Support": 0.08038317367763433,
+            "RHS_Count": 713,
+            "RHS_Support": 0.1484798000832986,
+            "Support": 0.04164931278633902,
+            "Count": 200
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS",
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.7083333333333333,
+            "Lift": 3.3811298873426106,
+            "Conviction": 2.7102992800618786,
+            "Leverage": 0.01994518110859334,
+            "LHS_Count": 192,
+            "LHS_Support": 0.03998334027488547,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.028321532694710536,
+            "Count": 136
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "Brokered by COMPASS"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.7034883720930233,
+            "Lift": 3.358003143927135,
+            "Conviction": 2.6660133441131557,
+            "Leverage": 0.01769401927317179,
+            "LHS_Count": 172,
+            "LHS_Support": 0.03581840899625156,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.02519783423573511,
+            "Count": 121
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS",
+                "1"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.6685393258426966,
+            "Lift": 3.191178770076172,
+            "Conviction": 2.3849102422013426,
+            "Leverage": 0.017015765158242234,
+            "LHS_Count": 178,
+            "LHS_Support": 0.037067888379841735,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.02478134110787172,
+            "Count": 119
+        },
+        {
+            "LHS": [
+                "United States",
+                "5"
+            ],
+            "RHS": [
+                "Multi-family home for sale"
+            ],
+            "Confidence": 0.451923076923077,
+            "Lift": 2.9850544915881922,
+            "Conviction": 1.5483314700746036,
+            "Leverage": 0.026034896954812495,
+            "LHS_Count": 416,
+            "LHS_Support": 0.08663057059558517,
+            "RHS_Count": 727,
+            "RHS_Support": 0.15139525197834236,
+            "Support": 0.03915035401915869,
+            "Count": 188
+        },
+        {
+            "LHS": [
+                "United States",
+                "Bronx County"
+            ],
+            "RHS": [
+                "Multi-family home for sale"
+            ],
+            "Confidence": 0.4368932038834951,
+            "Lift": 2.885778768980115,
+            "Conviction": 1.5070049835557024,
+            "Leverage": 0.018371275955579386,
+            "LHS_Count": 309,
+            "LHS_Support": 0.0643481882548938,
+            "RHS_Count": 727,
+            "RHS_Support": 0.15139525197834236,
+            "Support": 0.028113286130778844,
+            "Count": 135
+        },
+        {
+            "LHS": [
+                "United States",
+                "The Bronx"
+            ],
+            "RHS": [
+                "Multi-family home for sale"
+            ],
+            "Confidence": 0.4322580645161291,
+            "Lift": 2.8551626214669215,
+            "Conviction": 1.4947015448108745,
+            "Leverage": 0.01813150185062763,
+            "LHS_Count": 310,
+            "LHS_Support": 0.06455643481882549,
+            "RHS_Count": 727,
+            "RHS_Support": 0.15139525197834236,
+            "Support": 0.02790503956684715,
+            "Count": 134
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "Manhattan"
+            ],
+            "RHS": [
+                "Brokered by COMPASS"
+            ],
+            "Confidence": 0.26829268292682923,
+            "Lift": 2.825310226786478,
+            "Conviction": 1.2368874080244343,
+            "Leverage": 0.01627922629072539,
+            "LHS_Count": 451,
+            "LHS_Support": 0.09391920033319451,
+            "RHS_Count": 456,
+            "RHS_Support": 0.09496043315285298,
+            "Support": 0.02519783423573511,
+            "Count": 121
+        },
+        {
+            "LHS": [
+                "5"
+            ],
+            "RHS": [
+                "United States",
+                "Multi-family home for sale"
+            ],
+            "Confidence": 0.4177777777777778,
+            "Lift": 2.8137011064360298,
+            "Conviction": 1.4625346945134183,
+            "Leverage": 0.025236170337883307,
+            "LHS_Count": 450,
+            "LHS_Support": 0.0937109537692628,
+            "RHS_Count": 713,
+            "RHS_Support": 0.1484798000832986,
+            "Support": 0.03915035401915869,
+            "Count": 188
+        },
+        {
+            "LHS": [
+                "5"
+            ],
+            "RHS": [
+                "Multi-family home for sale"
+            ],
+            "Confidence": 0.4222222222222223,
+            "Lift": 2.7888736053797953,
+            "Conviction": 1.4687389869605614,
+            "Leverage": 0.02537945368799374,
+            "LHS_Count": 450,
+            "LHS_Support": 0.0937109537692628,
+            "RHS_Count": 727,
+            "RHS_Support": 0.15139525197834236,
+            "Support": 0.03956684714702208,
+            "Count": 190
+        },
+        {
+            "LHS": [
+                "5"
+            ],
+            "RHS": [
+                "Multi-family home for sale",
+                "New York"
+            ],
+            "Confidence": 0.4222222222222223,
+            "Lift": 2.7888736053797953,
+            "Conviction": 1.4687389869605614,
+            "Leverage": 0.02537945368799374,
+            "LHS_Count": 450,
+            "LHS_Support": 0.0937109537692628,
+            "RHS_Count": 727,
+            "RHS_Support": 0.15139525197834236,
+            "Support": 0.03956684714702208,
+            "Count": 190
+        },
+        {
+            "LHS": [
+                "5",
+                "New York"
+            ],
+            "RHS": [
+                "Multi-family home for sale"
+            ],
+            "Confidence": 0.4222222222222223,
+            "Lift": 2.7888736053797953,
+            "Conviction": 1.4687389869605614,
+            "Leverage": 0.02537945368799374,
+            "LHS_Count": 450,
+            "LHS_Support": 0.0937109537692628,
+            "RHS_Count": 727,
+            "RHS_Support": 0.15139525197834236,
+            "Support": 0.03956684714702208,
+            "Count": 190
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS",
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 0.7447916666666666,
+            "Lift": 2.7681807920536636,
+            "Conviction": 2.8641127421397545,
+            "Leverage": 0.0190215585932628,
+            "LHS_Count": 192,
+            "LHS_Support": 0.03998334027488547,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.029779258642232402,
+            "Count": 143
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "Brokered by COMPASS"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 0.7441860465116279,
+            "Lift": 2.7659298725610197,
+            "Conviction": 2.857332172200977,
+            "Leverage": 0.01701845388938838,
+            "LHS_Count": 172,
+            "LHS_Support": 0.03581840899625156,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.026655560183256977,
+            "Count": 128
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "Brokered by COMPASS"
+            ],
+            "RHS": [
+                "Co-op for sale"
+            ],
+            "Confidence": 0.8313953488372092,
+            "Lift": 2.7533520449077784,
+            "Conviction": 4.140114032946041,
+            "Leverage": 0.018963620773726618,
+            "LHS_Count": 172,
+            "LHS_Support": 0.03581840899625156,
+            "RHS_Count": 1450,
+            "RHS_Support": 0.3019575177009579,
+            "Support": 0.029779258642232402,
+            "Count": 143
+        },
+        {
+            "LHS": [
+                "Richmond County",
+                "4"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.5789473684210525,
+            "Lift": 2.747139588100686,
+            "Conviction": 1.8744793835901703,
+            "Leverage": 0.013111727534046706,
+            "LHS_Count": 171,
+            "LHS_Support": 0.03561016243231987,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.020616409829237816,
+            "Count": 99
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "Manhattan"
+            ],
+            "RHS": [
+                "Co-op for sale"
+            ],
+            "Confidence": 0.8292682926829268,
+            "Lift": 2.7463078216989065,
+            "Conviction": 4.0885345391801025,
+            "Leverage": 0.04952460631338359,
+            "LHS_Count": 451,
+            "LHS_Support": 0.09391920033319451,
+            "RHS_Count": 1450,
+            "RHS_Support": 0.3019575177009579,
+            "Support": 0.07788421491045398,
+            "Count": 374
+        },
+        {
+            "LHS": [
+                "4",
+                "New York County"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.5741626794258373,
+            "Lift": 2.740685076145995,
+            "Conviction": 1.8563519881697235,
+            "Leverage": 0.015871579955665426,
+            "LHS_Count": 209,
+            "LHS_Support": 0.04352353186172428,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.024989587671803416,
+            "Count": 120
+        },
+        {
+            "LHS": [
+                "1",
+                "The Bronx"
+            ],
+            "RHS": [
+                "Co-op for sale"
+            ],
+            "Confidence": 0.8074534161490683,
+            "Lift": 2.6740629685157424,
+            "Conviction": 3.625317408069218,
+            "Leverage": 0.01694811321327484,
+            "LHS_Count": 161,
+            "LHS_Support": 0.033527696793002916,
+            "RHS_Count": 1450,
+            "RHS_Support": 0.3019575177009579,
+            "Support": 0.027072053311120368,
+            "Count": 130
+        },
+        {
+            "LHS": [
+                "4",
+                "House for sale"
+            ],
+            "RHS": [
+                "Richmond County"
+            ],
+            "Confidence": 0.303680981595092,
+            "Lift": 2.6610877255832697,
+            "Conviction": 1.2722342195891214,
+            "Leverage": 0.012869047864791861,
+            "LHS_Count": 326,
+            "LHS_Support": 0.06788837984173261,
+            "RHS_Count": 548,
+            "RHS_Support": 0.11411911703456892,
+            "Support": 0.020616409829237816,
+            "Count": 99
+        },
+        {
+            "LHS": [
+                "1",
+                "Bronx County"
+            ],
+            "RHS": [
+                "Co-op for sale"
+            ],
+            "Confidence": 0.802547770700637,
+            "Lift": 2.657816824072041,
+            "Conviction": 3.535247410353214,
+            "Leverage": 0.01636665341960633,
+            "LHS_Count": 157,
+            "LHS_Support": 0.032694710537276135,
+            "RHS_Count": 1450,
+            "RHS_Support": 0.3019575177009579,
+            "Support": 0.026239067055393587,
+            "Count": 126
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS",
+                "2"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.5567010309278351,
+            "Lift": 2.6573343444487714,
+            "Conviction": 1.7832298557771473,
+            "Leverage": 0.01402702365615049,
+            "LHS_Count": 194,
+            "LHS_Support": 0.04039983340274885,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.022490628904623073,
+            "Count": 108
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "1"
+            ],
+            "RHS": [
+                "Co-op for sale"
+            ],
+            "Confidence": 0.8017621145374448,
+            "Lift": 2.655214947592283,
+            "Conviction": 3.5212365218196107,
+            "Leverage": 0.07088024374128438,
+            "LHS_Count": 681,
+            "LHS_Support": 0.1418159100374844,
+            "RHS_Count": 1450,
+            "RHS_Support": 0.3019575177009579,
+            "Support": 0.11370262390670553,
+            "Count": 546
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS",
+                "1"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 0.7134831460674157,
+            "Lift": 2.651815841653042,
+            "Conviction": 2.5511429061420485,
+            "Leverage": 0.016474029198926383,
+            "LHS_Count": 178,
+            "LHS_Support": 0.037067888379841735,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.026447313619325282,
+            "Count": 127
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS"
+            ],
+            "RHS": [
+                "2184.207862",
+                "New York County"
+            ],
+            "Confidence": 0.28070175438596495,
+            "Lift": 2.58224104322108,
+            "Conviction": 1.2391178472384474,
+            "Leverage": 0.016332914180385412,
+            "LHS_Count": 456,
+            "LHS_Support": 0.09496043315285298,
+            "RHS_Count": 522,
+            "RHS_Support": 0.10870470637234486,
+            "Support": 0.026655560183256977,
+            "Count": 128
+        },
+        {
+            "LHS": [
+                "Brooklyn",
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "1"
+            ],
+            "Confidence": 0.8608695652173912,
+            "Lift": 2.5708306294613887,
+            "Conviction": 4.780690337359431,
+            "Leverage": 0.025194104705435625,
+            "LHS_Count": 230,
+            "LHS_Support": 0.04789670970428988,
+            "RHS_Count": 1608,
+            "RHS_Support": 0.33486047480216574,
+            "Support": 0.04123281965847563,
+            "Count": 198
+        },
+        {
+            "LHS": [
+                "Co-op for sale",
+                "Kings County"
+            ],
+            "RHS": [
+                "1"
+            ],
+            "Confidence": 0.8608695652173912,
+            "Lift": 2.5708306294613887,
+            "Conviction": 4.780690337359431,
+            "Leverage": 0.025194104705435625,
+            "LHS_Count": 230,
+            "LHS_Support": 0.04789670970428988,
+            "RHS_Count": 1608,
+            "RHS_Support": 0.33486047480216574,
+            "Support": 0.04123281965847563,
+            "Count": 198
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS"
+            ],
+            "RHS": [
+                "Manhattan",
+                "Co-op for sale"
+            ],
+            "Confidence": 0.2982456140350877,
+            "Lift": 2.5666226498145,
+            "Conviction": 1.2594127446897125,
+            "Leverage": 0.017286980070951277,
+            "LHS_Count": 456,
+            "LHS_Support": 0.09496043315285298,
+            "RHS_Count": 558,
+            "RHS_Support": 0.11620158267388588,
+            "Support": 0.028321532694710536,
+            "Count": 136
+        },
+        {
+            "LHS": [
+                "Richmond County",
+                "United States"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.5378323108384458,
+            "Lift": 2.552046202219582,
+            "Conviction": 1.7077231831869466,
+            "Leverage": 0.03330808817164721,
+            "LHS_Count": 489,
+            "LHS_Support": 0.10183256976259891,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.05476884631403582,
+            "Count": 263
+        },
+        {
+            "LHS": [
+                "United States",
+                "Staten Island"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.5375,
+            "Lift": 2.5504693675889327,
+            "Conviction": 1.7064961671375665,
+            "Leverage": 0.032661838630683004,
+            "LHS_Count": 480,
+            "LHS_Support": 0.09995835068721366,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.053727613494377345,
+            "Count": 258
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS"
+            ],
+            "RHS": [
+                "1",
+                "New York County"
+            ],
+            "Confidence": 0.2785087719298246,
+            "Lift": 2.547426900584796,
+            "Conviction": 1.2344856309870886,
+            "Leverage": 0.01606534206471308,
+            "LHS_Count": 456,
+            "LHS_Support": 0.09496043315285298,
+            "RHS_Count": 525,
+            "RHS_Support": 0.10932944606413994,
+            "Support": 0.026447313619325282,
+            "Count": 127
+        },
+        {
+            "LHS": [
+                "House for sale"
+            ],
+            "RHS": [
+                "United States",
+                "2"
+            ],
+            "Confidence": 0.541501976284585,
+            "Lift": 2.5343981385171315,
+            "Conviction": 1.7150325295494693,
+            "Leverage": 0.06909102326342227,
+            "LHS_Count": 1012,
+            "LHS_Support": 0.21074552269887548,
+            "RHS_Count": 1026,
+            "RHS_Support": 0.2136609745939192,
+            "Support": 0.11411911703456892,
+            "Count": 548
+        },
+        {
+            "LHS": [
+                "Staten Island",
+                "2"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.5326460481099656,
+            "Lift": 2.5274370780870106,
+            "Conviction": 1.688772447754612,
+            "Leverage": 0.01950709139829805,
+            "LHS_Count": 291,
+            "LHS_Support": 0.06059975010412328,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.032278217409412745,
+            "Count": 155
+        },
+        {
+            "LHS": [
+                "Richmond County",
+                "2"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.5324232081911263,
+            "Lift": 2.5263796894602653,
+            "Conviction": 1.6879676047389014,
+            "Leverage": 0.019627563900297684,
+            "LHS_Count": 293,
+            "LHS_Support": 0.06101624323198667,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.03248646397334444,
+            "Count": 156
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "New York County"
+            ],
+            "RHS": [
+                "Co-op for sale"
+            ],
+            "Confidence": 0.7624521072796934,
+            "Lift": 2.5250310476945432,
+            "Conviction": 2.938533675484676,
+            "Leverage": 0.0500579291462099,
+            "LHS_Count": 522,
+            "LHS_Support": 0.10870470637234486,
+            "RHS_Count": 1450,
+            "RHS_Support": 0.3019575177009579,
+            "Support": 0.08288213244481465,
+            "Count": 398
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS"
+            ],
+            "RHS": [
+                "Manhattan",
+                "1"
+            ],
+            "Confidence": 0.26096491228070173,
+            "Lift": 2.5214356313318507,
+            "Conviction": 1.2130702217300655,
+            "Leverage": 0.014953074702838832,
+            "LHS_Count": 456,
+            "LHS_Support": 0.09496043315285298,
+            "RHS_Count": 497,
+            "RHS_Support": 0.10349854227405247,
+            "Support": 0.02478134110787172,
+            "Count": 119
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS"
+            ],
+            "RHS": [
+                "Co-op for sale",
+                "New York County"
+            ],
+            "Confidence": 0.31359649122807015,
+            "Lift": 2.5140072635679345,
+            "Conviction": 1.2751396183432622,
+            "Leverage": 0.017933923478017713,
+            "LHS_Count": 456,
+            "LHS_Support": 0.09496043315285298,
+            "RHS_Count": 599,
+            "RHS_Support": 0.12473969179508539,
+            "Support": 0.029779258642232402,
+            "Count": 143
+        },
+        {
+            "LHS": [
+                "3",
+                "Staten Island"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.5291970802919708,
+            "Lift": 2.5110715213063672,
+            "Conviction": 1.6764009827946365,
+            "Leverage": 0.018170705285403606,
+            "LHS_Count": 274,
+            "LHS_Support": 0.05705955851728446,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.030195751770095793,
+            "Count": 145
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS"
+            ],
+            "RHS": [
+                "Manhattan",
+                "2"
+            ],
+            "Confidence": 0.23684210526315788,
+            "Lift": 2.483222247759136,
+            "Conviction": 1.1853681655631991,
+            "Leverage": 0.01343359467221852,
+            "LHS_Count": 456,
+            "LHS_Support": 0.09496043315285298,
+            "RHS_Count": 458,
+            "RHS_Support": 0.09537692628071637,
+            "Support": 0.022490628904623073,
+            "Count": 108
+        },
+        {
+            "LHS": [
+                "Richmond County",
+                "3"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.5232974910394266,
+            "Lift": 2.4830776205250262,
+            "Conviction": 1.6556541290752915,
+            "Leverage": 0.018159516694505152,
+            "LHS_Count": 279,
+            "LHS_Support": 0.05810079133694294,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.030403998334027488,
+            "Count": 146
+        },
+        {
+            "LHS": [
+                "1",
+                "Queens County"
+            ],
+            "RHS": [
+                "Co-op for sale"
+            ],
+            "Confidence": 0.7464788732394366,
+            "Lift": 2.4721321029626036,
+            "Conviction": 2.753389791290666,
+            "Leverage": 0.04600731230791835,
+            "LHS_Count": 497,
+            "LHS_Support": 0.10349854227405247,
+            "RHS_Count": 1450,
+            "RHS_Support": 0.3019575177009579,
+            "Support": 0.07725947521865889,
+            "Count": 371
+        },
+        {
+            "LHS": [
+                "Queens",
+                "1"
+            ],
+            "RHS": [
+                "Co-op for sale"
+            ],
+            "Confidence": 0.7454545454545455,
+            "Lift": 2.468739811912226,
+            "Conviction": 2.742309751889094,
+            "Leverage": 0.045716582411084096,
+            "LHS_Count": 495,
+            "LHS_Support": 0.10308204914618908,
+            "RHS_Count": 1450,
+            "RHS_Support": 0.3019575177009579,
+            "Support": 0.0768429820907955,
+            "Count": 369
+        },
+        {
+            "LHS": [
+                "4",
+                "2"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.5201612903225806,
+            "Lift": 2.468196162182838,
+            "Conviction": 1.6448328602578057,
+            "Leverage": 0.015979823067613263,
+            "LHS_Count": 248,
+            "LHS_Support": 0.05164514785506039,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.026863806747188673,
+            "Count": 129
+        },
+        {
+            "LHS": [
+                "Staten Island"
+            ],
+            "RHS": [
+                "House for sale",
+                "2"
+            ],
+            "Confidence": 0.287569573283859,
+            "Lift": 2.4659090909090913,
+            "Conviction": 1.2399553571428572,
+            "Leverage": 0.019188433390849052,
+            "LHS_Count": 539,
+            "LHS_Support": 0.11224489795918367,
+            "RHS_Count": 560,
+            "RHS_Support": 0.11661807580174927,
+            "Support": 0.032278217409412745,
+            "Count": 155
+        },
+        {
+            "LHS": [
+                "Co-op for sale",
+                "Queens County"
+            ],
+            "RHS": [
+                "1"
+            ],
+            "Confidence": 0.8226164079822615,
+            "Lift": 2.456594521847525,
+            "Conviction": 3.749724073302789,
+            "Leverage": 0.04580964720204565,
+            "LHS_Count": 451,
+            "LHS_Support": 0.09391920033319451,
+            "RHS_Count": 1608,
+            "RHS_Support": 0.33486047480216574,
+            "Support": 0.07725947521865889,
+            "Count": 371
+        },
+        {
+            "LHS": [
+                "Queens",
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "1"
+            ],
+            "Confidence": 0.821826280623608,
+            "Lift": 2.454234949971745,
+            "Conviction": 3.7330955851728436,
+            "Leverage": 0.04553262116073044,
+            "LHS_Count": 449,
+            "LHS_Support": 0.09350270720533112,
+            "RHS_Count": 1608,
+            "RHS_Support": 0.33486047480216574,
+            "Support": 0.0768429820907955,
+            "Count": 369
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS"
+            ],
+            "RHS": [
+                "New York County",
+                "2"
+            ],
+            "Confidence": 0.25,
+            "Lift": 2.445010183299389,
+            "Conviction": 1.1970012494793836,
+            "Leverage": 0.014030492986661638,
+            "LHS_Count": 456,
+            "LHS_Support": 0.09496043315285298,
+            "RHS_Count": 491,
+            "RHS_Support": 0.1022490628904623,
+            "Support": 0.023740108288213244,
+            "Count": 114
+        },
+        {
+            "LHS": [
+                "Richmond County"
+            ],
+            "RHS": [
+                "House for sale",
+                "2"
+            ],
+            "Confidence": 0.28467153284671537,
+            "Lift": 2.4410583941605846,
+            "Conviction": 1.2349318736240853,
+            "Leverage": 0.019178112132578383,
+            "LHS_Count": 548,
+            "LHS_Support": 0.11411911703456892,
+            "RHS_Count": 560,
+            "RHS_Support": 0.11661807580174927,
+            "Support": 0.03248646397334444,
+            "Count": 156
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.5109649122807017,
+            "Lift": 2.4390193924174253,
+            "Conviction": 1.6164565212925108,
+            "Leverage": 0.028627614379056626,
+            "LHS_Count": 456,
+            "LHS_Support": 0.09496043315285298,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.048521449396084965,
+            "Count": 233
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS"
+            ],
+            "RHS": [
+                "Manhattan",
+                "New York"
+            ],
+            "Confidence": 0.5109649122807017,
+            "Lift": 2.4390193924174253,
+            "Conviction": 1.6164565212925108,
+            "Leverage": 0.028627614379056626,
+            "LHS_Count": 456,
+            "LHS_Support": 0.09496043315285298,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.048521449396084965,
+            "Count": 233
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS",
+                "New York"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.5109649122807017,
+            "Lift": 2.4390193924174253,
+            "Conviction": 1.6164565212925108,
+            "Leverage": 0.028627614379056626,
+            "LHS_Count": 456,
+            "LHS_Support": 0.09496043315285298,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.048521449396084965,
+            "Count": 233
+        },
+        {
+            "LHS": [
+                "Queens",
+                "4"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.513888888888889,
+            "Lift": 2.438433245498463,
+            "Conviction": 1.6236092104480278,
+            "Leverage": 0.013635769907755705,
+            "LHS_Count": 216,
+            "LHS_Support": 0.044981257809246146,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.02311536859641816,
+            "Count": 111
+        },
+        {
+            "LHS": [
+                "4",
+                "Queens County"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.513888888888889,
+            "Lift": 2.438433245498463,
+            "Conviction": 1.6236092104480278,
+            "Leverage": 0.013635769907755705,
+            "LHS_Count": 216,
+            "LHS_Support": 0.044981257809246146,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.02311536859641816,
+            "Count": 111
+        },
+        {
+            "LHS": [
+                "2.3738608579684373"
+            ],
+            "RHS": [
+                "2184.207862",
+                "United States"
+            ],
+            "Confidence": 0.39072847682119205,
+            "Lift": 2.4304121058230104,
+            "Conviction": 1.3774378429277656,
+            "Leverage": 0.014462424635299639,
+            "LHS_Count": 302,
+            "LHS_Support": 0.06289046230737193,
+            "RHS_Count": 772,
+            "RHS_Support": 0.16076634735526865,
+            "Support": 0.024573094543940025,
+            "Count": 118
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "House for sale"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 0.6176470588235294,
+            "Lift": 2.382282069454288,
+            "Conviction": 1.9373017652901037,
+            "Leverage": 0.02029974668683273,
+            "LHS_Count": 272,
+            "LHS_Support": 0.05664306538942107,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.03498542274052478,
+            "Count": 168
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 0.6403508771929824,
+            "Lift": 2.380003802074847,
+            "Conviction": 2.0323848802836215,
+            "Leverage": 0.03525845905175218,
+            "LHS_Count": 456,
+            "LHS_Support": 0.09496043315285298,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.060807996668054975,
+            "Count": 292
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS"
+            ],
+            "RHS": [
+                "New York County",
+                "New York"
+            ],
+            "Confidence": 0.6403508771929824,
+            "Lift": 2.380003802074847,
+            "Conviction": 2.0323848802836215,
+            "Leverage": 0.03525845905175218,
+            "LHS_Count": 456,
+            "LHS_Support": 0.09496043315285298,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.060807996668054975,
+            "Count": 292
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS",
+                "New York"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 0.6403508771929824,
+            "Lift": 2.380003802074847,
+            "Conviction": 2.0323848802836215,
+            "Leverage": 0.03525845905175218,
+            "LHS_Count": 456,
+            "LHS_Support": 0.09496043315285298,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.060807996668054975,
+            "Count": 292
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "House for sale"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 0.6176470588235294,
+            "Lift": 2.3727529411764707,
+            "Conviction": 1.9345785409925353,
+            "Leverage": 0.020240768068143206,
+            "LHS_Count": 272,
+            "LHS_Support": 0.05664306538942107,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.03498542274052478,
+            "Count": 168
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.49602122015915123,
+            "Lift": 2.3676877725688312,
+            "Conviction": 1.568526271948092,
+            "Leverage": 0.04498958420247291,
+            "LHS_Count": 754,
+            "LHS_Support": 0.15701790920449812,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.07788421491045398,
+            "Count": 374
+        },
+        {
+            "LHS": [
+                "3",
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.49441340782122906,
+            "Lift": 2.360013105723203,
+            "Conviction": 1.5635382126692146,
+            "Leverage": 0.021241236254295685,
+            "LHS_Count": 358,
+            "LHS_Support": 0.07455226988754686,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.03685964181591004,
+            "Count": 177
+        },
+        {
+            "LHS": [
+                "Multi-family home for sale"
+            ],
+            "RHS": [
+                "United States",
+                "Kings County"
+            ],
+            "Confidence": 0.36176066024759285,
+            "Lift": 2.344365304330555,
+            "Conviction": 1.3250347376811387,
+            "Leverage": 0.03140693841816916,
+            "LHS_Count": 727,
+            "LHS_Support": 0.15139525197834236,
+            "RHS_Count": 741,
+            "RHS_Support": 0.15431070387338608,
+            "Support": 0.05476884631403582,
+            "Count": 263
+        },
+        {
+            "LHS": [
+                "House for sale"
+            ],
+            "RHS": [
+                "United States",
+                "3"
+            ],
+            "Confidence": 0.5612648221343873,
+            "Lift": 2.3416104916501546,
+            "Conviction": 1.732954737327915,
+            "Leverage": 0.06777007567130244,
+            "LHS_Count": 1012,
+            "LHS_Support": 0.21074552269887548,
+            "RHS_Count": 1151,
+            "RHS_Support": 0.2396917950853811,
+            "Support": 0.11828404831320283,
+            "Count": 568
+        },
+        {
+            "LHS": [
+                "Richmond County"
+            ],
+            "RHS": [
+                "United States",
+                "House for sale"
+            ],
+            "Confidence": 0.4799270072992701,
+            "Lift": 2.3397050650264926,
+            "Conviction": 1.528395332354209,
+            "Leverage": 0.031360406022688386,
+            "LHS_Count": 548,
+            "LHS_Support": 0.11411911703456892,
+            "RHS_Count": 985,
+            "RHS_Support": 0.2051228654727197,
+            "Support": 0.05476884631403582,
+            "Count": 263
+        },
+        {
+            "LHS": [
+                "Co-op for sale",
+                "The Bronx"
+            ],
+            "RHS": [
+                "1"
+            ],
+            "Confidence": 0.7831325301204819,
+            "Lift": 2.3386830905712404,
+            "Conviction": 3.0670322550789018,
+            "Leverage": 0.015496285127621927,
+            "LHS_Count": 166,
+            "LHS_Support": 0.03456892961266139,
+            "RHS_Count": 1608,
+            "RHS_Support": 0.33486047480216574,
+            "Support": 0.027072053311120368,
+            "Count": 130
+        },
+        {
+            "LHS": [
+                "Staten Island"
+            ],
+            "RHS": [
+                "United States",
+                "House for sale"
+            ],
+            "Confidence": 0.47866419294990725,
+            "Lift": 2.3335486848177203,
+            "Conviction": 1.5246931512818651,
+            "Leverage": 0.03070361839029656,
+            "LHS_Count": 539,
+            "LHS_Support": 0.11224489795918367,
+            "RHS_Count": 985,
+            "RHS_Support": 0.2051228654727197,
+            "Support": 0.053727613494377345,
+            "Count": 258
+        },
+        {
+            "LHS": [
+                "Bronx County",
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "1"
+            ],
+            "Confidence": 0.7777777777777778,
+            "Lift": 2.322692095080155,
+            "Conviction": 2.9931278633902543,
+            "Leverage": 0.014942233044991494,
+            "LHS_Count": 162,
+            "LHS_Support": 0.03373594335693461,
+            "RHS_Count": 1608,
+            "RHS_Support": 0.33486047480216574,
+            "Support": 0.026239067055393587,
+            "Count": 126
+        },
+        {
+            "LHS": [
+                "Richmond County"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.4799270072992701,
+            "Lift": 2.27728210380543,
+            "Conviction": 1.517584047582513,
+            "Leverage": 0.030718753344651448,
+            "LHS_Count": 548,
+            "LHS_Support": 0.11411911703456892,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.05476884631403582,
+            "Count": 263
+        },
+        {
+            "LHS": [
+                "Richmond County"
+            ],
+            "RHS": [
+                "House for sale",
+                "New York"
+            ],
+            "Confidence": 0.4799270072992701,
+            "Lift": 2.27728210380543,
+            "Conviction": 1.517584047582513,
+            "Leverage": 0.030718753344651448,
+            "LHS_Count": 548,
+            "LHS_Support": 0.11411911703456892,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.05476884631403582,
+            "Count": 263
+        },
+        {
+            "LHS": [
+                "Richmond County",
+                "New York"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.4799270072992701,
+            "Lift": 2.27728210380543,
+            "Conviction": 1.517584047582513,
+            "Leverage": 0.030718753344651448,
+            "LHS_Count": 548,
+            "LHS_Support": 0.11411911703456892,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.05476884631403582,
+            "Count": 263
+        },
+        {
+            "LHS": [
+                "Staten Island"
+            ],
+            "RHS": [
+                "United States",
+                "2"
+            ],
+            "Confidence": 0.4860853432282004,
+            "Lift": 2.2750310118731174,
+            "Conviction": 1.5300965151403523,
+            "Leverage": 0.03057824545894993,
+            "LHS_Count": 539,
+            "LHS_Support": 0.11224489795918367,
+            "RHS_Count": 1026,
+            "RHS_Support": 0.2136609745939192,
+            "Support": 0.054560599750104126,
+            "Count": 262
+        },
+        {
+            "LHS": [
+                "Staten Island"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.47866419294990725,
+            "Lift": 2.2712899748472872,
+            "Conviction": 1.5139080543249328,
+            "Leverage": 0.030072503803687242,
+            "LHS_Count": 539,
+            "LHS_Support": 0.11224489795918367,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.053727613494377345,
+            "Count": 258
+        },
+        {
+            "LHS": [
+                "Staten Island"
+            ],
+            "RHS": [
+                "House for sale",
+                "New York"
+            ],
+            "Confidence": 0.47866419294990725,
+            "Lift": 2.2712899748472872,
+            "Conviction": 1.5139080543249328,
+            "Leverage": 0.030072503803687242,
+            "LHS_Count": 539,
+            "LHS_Support": 0.11224489795918367,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.053727613494377345,
+            "Count": 258
+        },
+        {
+            "LHS": [
+                "Staten Island",
+                "New York"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.47866419294990725,
+            "Lift": 2.2712899748472872,
+            "Conviction": 1.5139080543249328,
+            "Leverage": 0.030072503803687242,
+            "LHS_Count": 539,
+            "LHS_Support": 0.11224489795918367,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.053727613494377345,
+            "Count": 258
+        },
+        {
+            "LHS": [
+                "Richmond County"
+            ],
+            "RHS": [
+                "United States",
+                "2"
+            ],
+            "Confidence": 0.4817518248175183,
+            "Lift": 2.254748794126436,
+            "Conviction": 1.5173020631075083,
+            "Leverage": 0.030594291112563995,
+            "LHS_Count": 548,
+            "LHS_Support": 0.11411911703456892,
+            "RHS_Count": 1026,
+            "RHS_Support": 0.2136609745939192,
+            "Support": 0.054977092877967516,
+            "Count": 264
+        },
+        {
+            "LHS": [
+                "Staten Island"
+            ],
+            "RHS": [
+                "3",
+                "House for sale"
+            ],
+            "Confidence": 0.26901669758812613,
+            "Lift": 2.2388530014179926,
+            "Conviction": 1.203641355019165,
+            "Leverage": 0.016708599308111416,
+            "LHS_Count": 539,
+            "LHS_Support": 0.11224489795918367,
+            "RHS_Count": 577,
+            "RHS_Support": 0.12015826738858809,
+            "Support": 0.030195751770095793,
+            "Count": 145
+        },
+        {
+            "LHS": [
+                "Richmond County"
+            ],
+            "RHS": [
+                "3",
+                "House for sale"
+            ],
+            "Confidence": 0.2664233576642336,
+            "Lift": 2.217270300699566,
+            "Conviction": 1.199386242465308,
+            "Leverage": 0.016691642955238176,
+            "LHS_Count": 548,
+            "LHS_Support": 0.11411911703456892,
+            "RHS_Count": 577,
+            "RHS_Support": 0.12015826738858809,
+            "Support": 0.030403998334027488,
+            "Count": 146
+        },
+        {
+            "LHS": [
+                "Townhouse for sale"
+            ],
+            "RHS": [
+                "United States",
+                "Brooklyn"
+            ],
+            "Confidence": 0.33444816053511706,
+            "Lift": 2.2091060067257664,
+            "Conviction": 1.2750392947662093,
+            "Leverage": 0.011397921628170684,
+            "LHS_Count": 299,
+            "LHS_Support": 0.06226572261557684,
+            "RHS_Count": 727,
+            "RHS_Support": 0.15139525197834236,
+            "Support": 0.02082465639316951,
+            "Count": 100
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS",
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "2184.207862"
+            ],
+            "Confidence": 0.7447916666666666,
+            "Lift": 2.2063476763314824,
+            "Conviction": 2.595653171722666,
+            "Leverage": 0.01628217522165986,
+            "LHS_Count": 192,
+            "LHS_Support": 0.03998334027488547,
+            "RHS_Count": 1621,
+            "RHS_Support": 0.3375676801332778,
+            "Support": 0.029779258642232402,
+            "Count": 143
+        },
+        {
+            "LHS": [
+                "3",
+                "2"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.46387283236994215,
+            "Lift": 2.2011040919372156,
+            "Conviction": 1.472140426664092,
+            "Leverage": 0.036477321593581455,
+            "LHS_Count": 692,
+            "LHS_Support": 0.14410662224073303,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.06684714702207413,
+            "Count": 321
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS",
+                "2"
+            ],
+            "RHS": [
+                "New York County"
+            ],
+            "Confidence": 0.5876288659793815,
+            "Lift": 2.1840509399636145,
+            "Conviction": 1.772542690545606,
+            "Leverage": 0.012870348863733547,
+            "LHS_Count": 194,
+            "LHS_Support": 0.04039983340274885,
+            "RHS_Count": 1292,
+            "RHS_Support": 0.2690545605997501,
+            "Support": 0.023740108288213244,
+            "Count": 114
+        },
+        {
+            "LHS": [
+                "Multi-family home for sale"
+            ],
+            "RHS": [
+                "2184.207862",
+                "United States"
+            ],
+            "Confidence": 0.35075653370013754,
+            "Lift": 2.181778335269508,
+            "Conviction": 1.2926331895608467,
+            "Leverage": 0.02876361213509365,
+            "LHS_Count": 727,
+            "LHS_Support": 0.15139525197834236,
+            "RHS_Count": 772,
+            "RHS_Support": 0.16076634735526865,
+            "Support": 0.05310287380258226,
+            "Count": 255
+        },
+        {
+            "LHS": [
+                "3",
+                "Condo for sale"
+            ],
+            "RHS": [
+                "Manhattan"
+            ],
+            "Confidence": 0.4551971326164875,
+            "Lift": 2.1728197125490785,
+            "Conviction": 1.450990815230496,
+            "Leverage": 0.014275427720748732,
+            "LHS_Count": 279,
+            "LHS_Support": 0.05810079133694294,
+            "RHS_Count": 1006,
+            "RHS_Support": 0.2094960433152853,
+            "Support": 0.026447313619325282,
+            "Count": 127
+        },
+        {
+            "LHS": [
+                "2.3738608579684373"
+            ],
+            "RHS": [
+                "United States",
+                "3"
+            ],
+            "Confidence": 0.5198675496688742,
+            "Lift": 2.1689000638661455,
+            "Conviction": 1.5835384681669993,
+            "Leverage": 0.01762038273307266,
+            "LHS_Count": 302,
+            "LHS_Support": 0.06289046230737193,
+            "RHS_Count": 1151,
+            "RHS_Support": 0.2396917950853811,
+            "Support": 0.032694710537276135,
+            "Count": 157
+        },
+        {
+            "LHS": [
+                "Townhouse for sale"
+            ],
+            "RHS": [
+                "United States",
+                "Kings County"
+            ],
+            "Confidence": 0.33444816053511706,
+            "Lift": 2.167368511322041,
+            "Conviction": 1.270658791667626,
+            "Leverage": 0.011216388909174835,
+            "LHS_Count": 299,
+            "LHS_Support": 0.06226572261557684,
+            "RHS_Count": 741,
+            "RHS_Support": 0.15431070387338608,
+            "Support": 0.02082465639316951,
+            "Count": 100
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "1"
+            ],
+            "Confidence": 0.7241379310344828,
+            "Lift": 2.1625064333504893,
+            "Conviction": 2.4111307788421494,
+            "Leverage": 0.06112353227804394,
+            "LHS_Count": 754,
+            "LHS_Support": 0.15701790920449812,
+            "RHS_Count": 1608,
+            "RHS_Support": 0.33486047480216574,
+            "Support": 0.11370262390670553,
+            "Count": 546
+        },
+        {
+            "LHS": [
+                "Brokered by COMPASS",
+                "1"
+            ],
+            "RHS": [
+                "Co-op for sale"
+            ],
+            "Confidence": 0.646067415730337,
+            "Lift": 2.1395970554048818,
+            "Conviction": 1.9722470134798327,
+            "Leverage": 0.012755427290551747,
+            "LHS_Count": 178,
+            "LHS_Support": 0.037067888379841735,
+            "RHS_Count": 1450,
+            "RHS_Support": 0.3019575177009579,
+            "Support": 0.02394835485214494,
+            "Count": 115
+        },
+        {
+            "LHS": [
+                "Manhattan",
+                "1"
+            ],
+            "RHS": [
+                "Co-op for sale"
+            ],
+            "Confidence": 0.6458752515090543,
+            "Lift": 2.138960660514813,
+            "Conviction": 1.9711767824012723,
+            "Leverage": 0.03559498411133359,
+            "LHS_Count": 497,
+            "LHS_Support": 0.10349854227405247,
+            "RHS_Count": 1450,
+            "RHS_Support": 0.3019575177009579,
+            "Support": 0.06684714702207413,
+            "Count": 321
+        },
+        {
+            "LHS": [
+                "Co-op for sale",
+                "New York"
+            ],
+            "RHS": [
+                "1"
+            ],
+            "Confidence": 0.71557719054242,
+            "Lift": 2.1369413364332717,
+            "Conviction": 2.338559015243241,
+            "Leverage": 0.11400887905757717,
+            "LHS_Count": 1438,
+            "LHS_Support": 0.2994585589337776,
+            "RHS_Count": 1608,
+            "RHS_Support": 0.33486047480216574,
+            "Support": 0.21428571428571427,
+            "Count": 1029
+        },
+        {
+            "LHS": [
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "1"
+            ],
+            "Confidence": 0.7151724137931035,
+            "Lift": 2.1357325441756734,
+            "Conviction": 2.335235621154624,
+            "Leverage": 0.11483804904974171,
+            "LHS_Count": 1450,
+            "LHS_Support": 0.3019575177009579,
+            "RHS_Count": 1608,
+            "RHS_Support": 0.33486047480216574,
+            "Support": 0.21595168679716784,
+            "Count": 1037
+        },
+        {
+            "LHS": [
+                "Co-op for sale"
+            ],
+            "RHS": [
+                "1",
+                "New York"
+            ],
+            "Confidence": 0.7096551724137932,
+            "Lift": 2.13519056261343,
+            "Conviction": 2.299467462587343,
+            "Leverage": 0.11392665592446295,
+            "LHS_Count": 1450,
+            "LHS_Support": 0.3019575177009579,
+            "RHS_Count": 1596,
+            "RHS_Support": 0.3323615160349854,
+            "Support": 0.21428571428571427,
+            "Count": 1029
+        },
+        {
+            "LHS": [
+                "United States",
+                "Queens"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.44590643274853803,
+            "Lift": 2.1158524605320945,
+            "Conviction": 1.4244064972927948,
+            "Leverage": 0.03349647281840258,
+            "LHS_Count": 684,
+            "LHS_Support": 0.14244064972927947,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.06351520199916702,
+            "Count": 305
+        },
+        {
+            "LHS": [
+                "Townhouse for sale"
+            ],
+            "RHS": [
+                "United States",
+                "4"
+            ],
+            "Confidence": 0.3277591973244147,
+            "Lift": 2.1097850744662727,
+            "Conviction": 1.2564665220337297,
+            "Leverage": 0.010735062667384354,
+            "LHS_Count": 299,
+            "LHS_Support": 0.06226572261557684,
+            "RHS_Count": 746,
+            "RHS_Support": 0.15535193669304456,
+            "Support": 0.02040816326530612,
+            "Count": 98
+        },
+        {
+            "LHS": [
+                "1",
+                "New York County"
+            ],
+            "RHS": [
+                "Co-op for sale"
+            ],
+            "Confidence": 0.6361904761904762,
+            "Lift": 2.106887356321839,
+            "Conviction": 1.9187031581518172,
+            "Leverage": 0.036541504208037714,
+            "LHS_Count": 525,
+            "LHS_Support": 0.10932944606413994,
+            "RHS_Count": 1450,
+            "RHS_Support": 0.3019575177009579,
+            "Support": 0.06955435235318617,
+            "Count": 334
+        },
+        {
+            "LHS": [
+                "United States",
+                "Queens County"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.4439592430858807,
+            "Lift": 2.106612930136758,
+            "Conviction": 1.4194183924237505,
+            "Leverage": 0.0333648117255045,
+            "LHS_Count": 687,
+            "LHS_Support": 0.14306538942107455,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.06351520199916702,
+            "Count": 305
+        },
+        {
+            "LHS": [
+                "1",
+                "2"
+            ],
+            "RHS": [
+                "Co-op for sale"
+            ],
+            "Confidence": 0.6331360946745562,
+            "Lift": 2.096772087329117,
+            "Conviction": 1.9027287017506147,
+            "Leverage": 0.034966167956187906,
+            "LHS_Count": 507,
+            "LHS_Support": 0.10558100791336943,
+            "RHS_Count": 1450,
+            "RHS_Support": 0.3019575177009579,
+            "Support": 0.06684714702207413,
+            "Count": 321
+        },
+        {
+            "LHS": [
+                "Manhattan",
+                "2"
+            ],
+            "RHS": [
+                "Condo for sale"
+            ],
+            "Confidence": 0.388646288209607,
+            "Lift": 2.0945897598008227,
+            "Conviction": 1.3322112810138633,
+            "Leverage": 0.01937092017573547,
+            "LHS_Count": 458,
+            "LHS_Support": 0.09537692628071637,
+            "RHS_Count": 891,
+            "RHS_Support": 0.18554768846314035,
+            "Support": 0.037067888379841735,
+            "Count": 178
+        },
+        {
+            "LHS": [
+                "Staten Island"
+            ],
+            "RHS": [
+                "3",
+                "2"
+            ],
+            "Confidence": 0.29684601113172543,
+            "Lift": 2.0599054125065686,
+            "Conviction": 1.217220397393786,
+            "Leverage": 0.017144217120417513,
+            "LHS_Count": 539,
+            "LHS_Support": 0.11224489795918367,
+            "RHS_Count": 692,
+            "RHS_Support": 0.14410662224073303,
+            "Support": 0.03331945022907122,
+            "Count": 160
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "Multi-family home for sale"
+            ],
+            "RHS": [
+                "Queens County"
+            ],
+            "Confidence": 0.5348837209302325,
+            "Lift": 2.054809302325581,
+            "Conviction": 1.5903373594335692,
+            "Leverage": 0.014752287199506104,
+            "LHS_Count": 258,
+            "LHS_Support": 0.053727613494377345,
+            "RHS_Count": 1250,
+            "RHS_Support": 0.2603082049146189,
+            "Support": 0.028738025822573926,
+            "Count": 138
+        },
+        {
+            "LHS": [
+                "2184.207862",
+                "Multi-family home for sale"
+            ],
+            "RHS": [
+                "Queens"
+            ],
+            "Confidence": 0.5310077519379844,
+            "Lift": 2.0481118271535754,
+            "Conviction": 1.5794142247892577,
+            "Leverage": 0.014599983590066682,
+            "LHS_Count": 258,
+            "LHS_Support": 0.053727613494377345,
+            "RHS_Count": 1245,
+            "RHS_Support": 0.2592669720949604,
+            "Support": 0.02852977925864223,
+            "Count": 137
+        },
+        {
+            "LHS": [
+                "New York County",
+                "2"
+            ],
+            "RHS": [
+                "Condo for sale"
+            ],
+            "Confidence": 0.3788187372708758,
+            "Lift": 2.0416246648425878,
+            "Conviction": 1.3111347048019608,
+            "Leverage": 0.019761783624447752,
+            "LHS_Count": 491,
+            "LHS_Support": 0.1022490628904623,
+            "RHS_Count": 891,
+            "RHS_Support": 0.18554768846314035,
+            "Support": 0.038733860891295296,
+            "Count": 186
+        },
+        {
+            "LHS": [
+                "Richmond County"
+            ],
+            "RHS": [
+                "3",
+                "2"
+            ],
+            "Confidence": 0.2937956204379562,
+            "Lift": 2.038737816969748,
+            "Conviction": 1.211962715793484,
+            "Leverage": 0.01708237630405629,
+            "LHS_Count": 548,
+            "LHS_Support": 0.11411911703456892,
+            "RHS_Count": 692,
+            "RHS_Support": 0.14410662224073303,
+            "Support": 0.033527696793002916,
+            "Count": 161
+        },
+        {
+            "LHS": [
+                "United States",
+                "4"
+            ],
+            "RHS": [
+                "House for sale"
+            ],
+            "Confidence": 0.4289544235924933,
+            "Lift": 2.035414172026831,
+            "Conviction": 1.3821216902972746,
+            "Leverage": 0.03389917535748415,
+            "LHS_Count": 746,
+            "LHS_Support": 0.15535193669304456,
+            "RHS_Count": 1012,
+            "RHS_Support": 0.21074552269887548,
+            "Support": 0.06663890045814244,
+            "Count": 320
+        },
+        {
+            "LHS": [
+                "Manhattan",
+                "3"
+            ],
+            "RHS": [
+                "Condo for sale"
+            ],
+            "Confidence": 0.3768545994065282,
+            "Lift": 2.0310390419193585,
+            "Conviction": 1.3070020427996272,
+            "Leverage": 0.01342574531193705,
+            "LHS_Count": 337,
+            "LHS_Support": 0.07017909204498125,
+            "RHS_Count": 891,
+            "RHS_Support": 0.18554768846314035,
+            "Support": 0.026447313619325282,
+            "Count": 127
+        },
+        {
+            "LHS": [
+                "United States",
+                "Queens County"
+            ],
+            "RHS": [
+                "Multi-family home for sale"
+            ],
+            "Confidence": 0.3071324599708879,
+            "Lift": 2.0286796049246267,
+            "Conviction": 1.2247719787623503,
+            "Leverage": 0.02228060430880441,
+            "LHS_Count": 687,
+            "LHS_Support": 0.14306538942107455,
+            "RHS_Count": 727,
+            "RHS_Support": 0.15139525197834236,
+            "Support": 0.04394002498958767,
+            "Count": 211
+        },
+        {
+            "LHS": [
+                "United States",
+                "Queens"
+            ],
+            "RHS": [
+                "Multi-family home for sale"
+            ],
+            "Confidence": 0.3070175438596491,
+            "Lift": 2.027920557928521,
+            "Conviction": 1.2245688768920122,
+            "Leverage": 0.022166940367932906,
+            "LHS_Count": 684,
+            "LHS_Support": 0.14244064972927947,
+            "RHS_Count": 727,
+            "RHS_Support": 0.15139525197834236,
+            "Support": 0.043731778425655975,
+            "Count": 210
+        },
+        {
+            "LHS": [
+                "Richmond County"
+            ],
+            "RHS": [
+                "United States",
+                "3"
+            ],
+            "Confidence": 0.48540145985401467,
+            "Lift": 2.025106698713274,
+            "Conviction": 1.477478355649685,
+            "Leverage": 0.028040169990256388,
+            "LHS_Count": 548,
+            "LHS_Support": 0.11411911703456892,
+            "RHS_Count": 1151,
+            "RHS_Support": 0.2396917950853811,
+            "Support": 0.05539358600583091,
+            "Count": 266
+        },
+        {
+            "LHS": [
+                "Staten Island"
+            ],
+            "RHS": [
+                "United States",
+                "3"
+            ],
+            "Confidence": 0.4842300556586271,
+            "Lift": 2.020219571913751,
+            "Conviction": 1.4741227426222288,
+            "Leverage": 0.027448172105160266,
+            "LHS_Count": 539,
+            "LHS_Support": 0.11224489795918367,
+            "RHS_Count": 1151,
+            "RHS_Support": 0.2396917950853811,
+            "Support": 0.05435235318617243,
+            "Count": 261
+        },
+        {
+            "LHS": [
+                "Richmond County",
+                "House for sale"
+            ],
+            "RHS": [
+                "4"
+            ],
+            "Confidence": 0.3764258555133079,
+            "Lift": 2.0039877585087633,
+            "Conviction": 1.3024298818581688,
+            "Leverage": 0.010328717331266073,
+            "LHS_Count": 263,
+            "LHS_Support": 0.05476884631403582,
+            "RHS_Count": 902,
+            "RHS_Support": 0.18783840066638902,
+            "Support": 0.020616409829237816,
+            "Count": 99
+        }
+    ]
+}

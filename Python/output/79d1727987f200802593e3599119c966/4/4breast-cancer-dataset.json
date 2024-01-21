@@ -1,0 +1,2211 @@
+{
+    "min_support": 0.09,
+    "min_confidence": 0.2,
+    "min_lift": 2.0,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "4breast-cancer-dataset.csv",
+    "datasetType": 4,
+    "outputType": 3,
+    "reduntantRemoveType": 7,
+    "datasetArgs": "['Age', 'Menopause', 'Tumor Size (cm)', 'Inv-Nodes', 'Breast', 'Metastasis', 'Breast Quadrant', 'History', 'Diagnosis Result']",
+    "Records": 213,
+    "RecordsCreationTime": "0.032",
+    "RulesCount": 112,
+    "RulesCreationTime": "0.107",
+    "rules": [
+        {
+            "LHS": [
+                "History=0",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1",
+                "Menopause=0"
+            ],
+            "Confidence": 0.6363636363636364,
+            "Lift": 3.080578512396694,
+            "Conviction": 2.181924882629108,
+            "Leverage": 0.06658731733121734,
+            "LHS_Count": 33,
+            "LHS_Support": 0.15492957746478872,
+            "RHS_Count": 44,
+            "RHS_Support": 0.20657276995305165,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.9583333333333335,
+            "Conviction": 100,
+            "Leverage": 0.13674535475765393,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.20657276995305165,
+            "Count": 44
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Breast=Right",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.9583333333333335,
+            "Conviction": 100,
+            "Leverage": 0.06526482840706209,
+            "LHS_Count": 21,
+            "LHS_Support": 0.09859154929577464,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "History=0",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.9583333333333335,
+            "Conviction": 100,
+            "Leverage": 0.06526482840706209,
+            "LHS_Count": 21,
+            "LHS_Support": 0.09859154929577464,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Breast=Right",
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.6052631578947368,
+            "Lift": 2.930023923444976,
+            "Conviction": 2.010015649452269,
+            "Leverage": 0.07112786263748375,
+            "LHS_Count": 38,
+            "LHS_Support": 0.1784037558685446,
+            "RHS_Count": 44,
+            "RHS_Support": 0.20657276995305165,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Inv-Nodes=1",
+                "Menopause=0"
+            ],
+            "Confidence": 0.6052631578947368,
+            "Lift": 2.930023923444976,
+            "Conviction": 2.010015649452269,
+            "Leverage": 0.07112786263748375,
+            "LHS_Count": 38,
+            "LHS_Support": 0.1784037558685446,
+            "RHS_Count": 44,
+            "RHS_Support": 0.20657276995305165,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Inv-Nodes=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.9178082191780823,
+            "Conviction": 100,
+            "Leverage": 0.1357755295466067,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.20657276995305165,
+            "Count": 44
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Breast=Right",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.9178082191780823,
+            "Conviction": 100,
+            "Leverage": 0.06480195728360774,
+            "LHS_Count": 21,
+            "LHS_Support": 0.09859154929577464,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "History=0",
+                "Inv-Nodes=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.9178082191780823,
+            "Conviction": 100,
+            "Leverage": 0.06480195728360774,
+            "LHS_Count": 21,
+            "LHS_Support": 0.09859154929577464,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Inv-Nodes=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.9178082191780823,
+            "Conviction": 100,
+            "Leverage": 0.07097357226299897,
+            "LHS_Count": 23,
+            "LHS_Support": 0.107981220657277,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Breast=Right",
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.5999999999999999,
+            "Lift": 2.904545454545454,
+            "Conviction": 1.9835680751173703,
+            "Leverage": 0.06464766690912296,
+            "LHS_Count": 35,
+            "LHS_Support": 0.1643192488262911,
+            "RHS_Count": 44,
+            "RHS_Support": 0.20657276995305165,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "History=0"
+            ],
+            "RHS": [
+                "Inv-Nodes=1",
+                "Menopause=0"
+            ],
+            "Confidence": 0.5999999999999999,
+            "Lift": 2.904545454545454,
+            "Conviction": 1.9835680751173703,
+            "Leverage": 0.06464766690912296,
+            "LHS_Count": 35,
+            "LHS_Support": 0.1643192488262911,
+            "RHS_Count": 44,
+            "RHS_Support": 0.20657276995305165,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.9736842105263159,
+            "Lift": 2.8804824561403515,
+            "Conviction": 25.154929577464923,
+            "Leverage": 0.11340342524631358,
+            "LHS_Count": 38,
+            "LHS_Support": 0.1784037558685446,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.17370892018779344,
+            "Count": 37
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.9714285714285713,
+            "Lift": 2.8738095238095234,
+            "Conviction": 23.169014084506944,
+            "Leverage": 0.10407987833101898,
+            "LHS_Count": 35,
+            "LHS_Support": 0.1643192488262911,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.1596244131455399,
+            "Count": 34
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1",
+                "Menopause=0"
+            ],
+            "Confidence": 0.5897435897435898,
+            "Lift": 2.854895104895105,
+            "Conviction": 1.9339788732394367,
+            "Leverage": 0.07015803742643656,
+            "LHS_Count": 39,
+            "LHS_Support": 0.18309859154929578,
+            "RHS_Count": 44,
+            "RHS_Support": 0.20657276995305165,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Breast=Left",
+                "Metastasis=1",
+                "Diagnosis Result=Malignant"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.9615384615384616,
+            "Lift": 2.8445512820512824,
+            "Conviction": 17.211267605633815,
+            "Leverage": 0.07610923758513523,
+            "LHS_Count": 26,
+            "LHS_Support": 0.12206572769953052,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.11737089201877934,
+            "Count": 25
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Breast=Right",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.9583333333333334,
+            "Lift": 2.8350694444444446,
+            "Conviction": 15.887323943661986,
+            "Leverage": 0.0698935396416055,
+            "LHS_Count": 24,
+            "LHS_Support": 0.11267605633802817,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Diagnosis Result=Malignant",
+                "Breast=Right"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.9545454545454545,
+            "Lift": 2.8238636363636362,
+            "Conviction": 14.563380281690119,
+            "Leverage": 0.06367784169807578,
+            "LHS_Count": 22,
+            "LHS_Support": 0.10328638497652583,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Inv-Nodes=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Metastasis=1",
+                "Breast=Right"
+            ],
+            "Confidence": 0.5909090909090908,
+            "Lift": 2.7969696969696964,
+            "Conviction": 1.9280125195618152,
+            "Leverage": 0.07842359320240692,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 45,
+            "RHS_Support": 0.2112676056338028,
+            "Support": 0.12206572769953052,
+            "Count": 26
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Breast=Right",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.9583333333333334,
+            "Lift": 2.796232876712329,
+            "Conviction": 15.774647887323956,
+            "Leverage": 0.0693645440719434,
+            "LHS_Count": 24,
+            "LHS_Support": 0.11267605633802817,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1",
+                "Breast=Right"
+            ],
+            "Confidence": 0.5897435897435898,
+            "Lift": 2.7914529914529917,
+            "Conviction": 1.9225352112676057,
+            "Leverage": 0.06929841962573563,
+            "LHS_Count": 39,
+            "LHS_Support": 0.18309859154929578,
+            "RHS_Count": 45,
+            "RHS_Support": 0.2112676056338028,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Breast=Right",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.9545454545454545,
+            "Lift": 2.7851805728518055,
+            "Conviction": 14.460093896713591,
+            "Leverage": 0.12638585818510434,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.19718309859154928,
+            "Count": 42
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Diagnosis Result=Malignant",
+                "Breast=Right"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.9545454545454545,
+            "Lift": 2.7851805728518055,
+            "Conviction": 14.460093896713591,
+            "Leverage": 0.06319292909255217,
+            "LHS_Count": 22,
+            "LHS_Support": 0.10328638497652583,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.9487179487179488,
+            "Lift": 2.768177028451001,
+            "Conviction": 12.81690140845072,
+            "Leverage": 0.11095682073662634,
+            "LHS_Count": 39,
+            "LHS_Support": 0.18309859154929578,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.17370892018779344,
+            "Count": 37
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "Breast=Right"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.9333333333333332,
+            "Lift": 2.761111111111111,
+            "Conviction": 9.929577464788718,
+            "Leverage": 0.12576869668716523,
+            "LHS_Count": 45,
+            "LHS_Support": 0.2112676056338028,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.19718309859154928,
+            "Count": 42
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1",
+                "Breast=Right"
+            ],
+            "Confidence": 0.5833333333333333,
+            "Lift": 2.7611111111111106,
+            "Conviction": 1.892957746478873,
+            "Leverage": 0.06288434834358261,
+            "LHS_Count": 36,
+            "LHS_Support": 0.16901408450704225,
+            "RHS_Count": 45,
+            "RHS_Support": 0.2112676056338028,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.9444444444444444,
+            "Lift": 2.7557077625570776,
+            "Conviction": 11.83098591549295,
+            "Leverage": 0.20339879653507903,
+            "LHS_Count": 72,
+            "LHS_Support": 0.3380281690140845,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.3192488262910798,
+            "Count": 68
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.9444444444444444,
+            "Lift": 2.7557077625570776,
+            "Conviction": 11.83098591549295,
+            "Leverage": 0.10169939826753951,
+            "LHS_Count": 36,
+            "LHS_Support": 0.16901408450704225,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.1596244131455399,
+            "Count": 34
+        },
+        {
+            "LHS": [
+                "History=0",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.9393939393939394,
+            "Lift": 2.740971357409714,
+            "Conviction": 10.845070422535219,
+            "Leverage": 0.09244197579845267,
+            "LHS_Count": 33,
+            "LHS_Support": 0.15492957746478872,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.14553990610328638,
+            "Count": 31
+        },
+        {
+            "LHS": [
+                "Breast=Left",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.9259259259259259,
+            "Lift": 2.7391975308641974,
+            "Conviction": 8.93661971830986,
+            "Leverage": 0.07452225087614892,
+            "LHS_Count": 27,
+            "LHS_Support": 0.1267605633802817,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.11737089201877934,
+            "Count": 25
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Diagnosis Result=Malignant",
+                "Breast=Right"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.92,
+            "Lift": 2.7216666666666667,
+            "Conviction": 8.274647887323948,
+            "Leverage": 0.0683065529326192,
+            "LHS_Count": 25,
+            "LHS_Support": 0.11737089201877934,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Menopause=1",
+                "Diagnosis Result=Malignant",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.92,
+            "Lift": 2.7216666666666667,
+            "Conviction": 8.274647887323948,
+            "Leverage": 0.0683065529326192,
+            "LHS_Count": 25,
+            "LHS_Support": 0.11737089201877934,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "History=0",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Menopause=0"
+            ],
+            "Confidence": 0.6363636363636364,
+            "Lift": 2.710909090909091,
+            "Conviction": 2.1044600938967135,
+            "Leverage": 0.06222310388150499,
+            "LHS_Count": 33,
+            "LHS_Support": 0.15492957746478872,
+            "RHS_Count": 50,
+            "RHS_Support": 0.2347417840375587,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Breast=Left",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.9259259259259259,
+            "Lift": 2.7016742770167426,
+            "Conviction": 8.873239436619718,
+            "Leverage": 0.07392713086027905,
+            "LHS_Count": 27,
+            "LHS_Support": 0.1267605633802817,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.11737089201877934,
+            "Count": 25
+        },
+        {
+            "LHS": [
+                "Breast=Left",
+                "Diagnosis Result=Malignant",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.9259259259259259,
+            "Lift": 2.7016742770167426,
+            "Conviction": 8.873239436619718,
+            "Leverage": 0.07392713086027905,
+            "LHS_Count": 27,
+            "LHS_Support": 0.1267605633802817,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.11737089201877934,
+            "Count": 25
+        },
+        {
+            "LHS": [
+                "Diagnosis Result=Malignant",
+                "History=0",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.9130434782608695,
+            "Lift": 2.701086956521739,
+            "Conviction": 7.612676056338024,
+            "Leverage": 0.06209085498908946,
+            "LHS_Count": 23,
+            "LHS_Support": 0.107981220657277,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Diagnosis Result=Malignant",
+                "Breast=Right"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.92,
+            "Lift": 2.684383561643836,
+            "Conviction": 8.215962441314558,
+            "Leverage": 0.06775551588088784,
+            "LHS_Count": 25,
+            "LHS_Support": 0.11737089201877934,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Diagnosis Result=Malignant",
+                "History=0",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.9130434782608695,
+            "Lift": 2.6640857653365098,
+            "Conviction": 7.558685446009385,
+            "Leverage": 0.06158390090149661,
+            "LHS_Count": 23,
+            "LHS_Support": 0.107981220657277,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "History=0",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Breast=Right"
+            ],
+            "Confidence": 0.6060606060606061,
+            "Lift": 2.6345083487940633,
+            "Conviction": 1.954496208017335,
+            "Leverage": 0.058255637109039214,
+            "LHS_Count": 33,
+            "LHS_Support": 0.15492957746478872,
+            "RHS_Count": 49,
+            "RHS_Support": 0.2300469483568075,
+            "Support": 0.09389671361502347,
+            "Count": 20
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Breast=Right"
+            ],
+            "Confidence": 0.6052631578947368,
+            "Lift": 2.631041890440387,
+            "Conviction": 1.950547730829421,
+            "Leverage": 0.06693998104432543,
+            "LHS_Count": 38,
+            "LHS_Support": 0.1784037558685446,
+            "RHS_Count": 49,
+            "RHS_Support": 0.2300469483568075,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "History=0"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.8857142857142856,
+            "Lift": 2.620238095238095,
+            "Conviction": 5.792253521126753,
+            "Leverage": 0.08999537128876545,
+            "LHS_Count": 35,
+            "LHS_Support": 0.1643192488262911,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.14553990610328638,
+            "Count": 31
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Breast=Right"
+            ],
+            "Confidence": 0.5999999999999999,
+            "Lift": 2.608163265306122,
+            "Conviction": 1.9248826291079806,
+            "Leverage": 0.060790407547003454,
+            "LHS_Count": 35,
+            "LHS_Support": 0.1643192488262911,
+            "RHS_Count": 49,
+            "RHS_Support": 0.2300469483568075,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Diagnosis Result=Malignant",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.88,
+            "Lift": 2.6033333333333335,
+            "Conviction": 5.516431924882629,
+            "Leverage": 0.12722343450373605,
+            "LHS_Count": 50,
+            "LHS_Support": 0.2347417840375587,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.20657276995305165,
+            "Count": 44
+        },
+        {
+            "LHS": [
+                "Diagnosis Result=Malignant",
+                "Breast=Right"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.8775510204081634,
+            "Lift": 2.59608843537415,
+            "Conviction": 5.4061032863849805,
+            "Leverage": 0.12411558553197118,
+            "LHS_Count": 49,
+            "LHS_Support": 0.2300469483568075,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.20187793427230047,
+            "Count": 43
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Menopause=0"
+            ],
+            "Confidence": 0.6052631578947368,
+            "Lift": 2.5784210526315787,
+            "Conviction": 1.938654147104851,
+            "Leverage": 0.06610240472569376,
+            "LHS_Count": 38,
+            "LHS_Support": 0.1784037558685446,
+            "RHS_Count": 50,
+            "RHS_Support": 0.2347417840375587,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Inv-Nodes=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Breast=Right"
+            ],
+            "Confidence": 0.5909090909090908,
+            "Lift": 2.5686456400742115,
+            "Conviction": 1.882107459572248,
+            "Leverage": 0.07454429235821816,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 49,
+            "RHS_Support": 0.2300469483568075,
+            "Support": 0.12206572769953052,
+            "Count": 26
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Breast=Right"
+            ],
+            "Confidence": 0.5909090909090908,
+            "Lift": 2.5686456400742115,
+            "Conviction": 1.882107459572248,
+            "Leverage": 0.07454429235821816,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 49,
+            "RHS_Support": 0.2300469483568075,
+            "Support": 0.12206572769953052,
+            "Count": 26
+        },
+        {
+            "LHS": [
+                "Diagnosis Result=Malignant",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.88,
+            "Lift": 2.5676712328767124,
+            "Conviction": 5.477308294209703,
+            "Leverage": 0.12612136040027333,
+            "LHS_Count": 50,
+            "LHS_Support": 0.2347417840375587,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.20657276995305165,
+            "Count": 44
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Breast=Right"
+            ],
+            "Confidence": 0.5897435897435898,
+            "Lift": 2.563579277864992,
+            "Conviction": 1.8767605633802817,
+            "Leverage": 0.06585994842293197,
+            "LHS_Count": 39,
+            "LHS_Support": 0.18309859154929578,
+            "RHS_Count": 49,
+            "RHS_Support": 0.2300469483568075,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "History=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Menopause=0"
+            ],
+            "Confidence": 0.5999999999999999,
+            "Lift": 2.5559999999999996,
+            "Conviction": 1.9131455399061026,
+            "Leverage": 0.06001895567457955,
+            "LHS_Count": 35,
+            "LHS_Support": 0.1643192488262911,
+            "RHS_Count": 50,
+            "RHS_Support": 0.2347417840375587,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Breast=Right"
+            ],
+            "Confidence": 0.5833333333333333,
+            "Lift": 2.5357142857142856,
+            "Conviction": 1.8478873239436617,
+            "Leverage": 0.059710374925609995,
+            "LHS_Count": 36,
+            "LHS_Support": 0.16901408450704225,
+            "RHS_Count": 49,
+            "RHS_Support": 0.2300469483568075,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Breast=Right",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Menopause=0"
+            ],
+            "Confidence": 0.5909090909090908,
+            "Lift": 2.517272727272727,
+            "Conviction": 1.870631194574856,
+            "Leverage": 0.07357446714717097,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 50,
+            "RHS_Support": 0.2347417840375587,
+            "Support": 0.12206572769953052,
+            "Count": 26
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Menopause=0"
+            ],
+            "Confidence": 0.5897435897435898,
+            "Lift": 2.5123076923076924,
+            "Conviction": 1.8653169014084505,
+            "Leverage": 0.06500033062223104,
+            "LHS_Count": 39,
+            "LHS_Support": 0.18309859154929578,
+            "RHS_Count": 50,
+            "RHS_Support": 0.2347417840375587,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Diagnosis Result=Malignant",
+                "Breast=Right"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.8571428571428571,
+            "Lift": 2.5009784735812133,
+            "Conviction": 4.600938967136148,
+            "Leverage": 0.11834071722982652,
+            "LHS_Count": 49,
+            "LHS_Support": 0.2300469483568075,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.19718309859154928,
+            "Count": 42
+        },
+        {
+            "LHS": [
+                "Menopause=1",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.8571428571428571,
+            "Lift": 2.5009784735812133,
+            "Conviction": 4.600938967136148,
+            "Leverage": 0.0676232669884723,
+            "LHS_Count": 28,
+            "LHS_Support": 0.13145539906103287,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.11267605633802817,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Diagnosis Result=Malignant",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.8518518518518519,
+            "Lift": 2.4855403348554033,
+            "Conviction": 4.436619718309859,
+            "Leverage": 0.0645374594987767,
+            "LHS_Count": 27,
+            "LHS_Support": 0.1267605633802817,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Menopause=1",
+                "Diagnosis Result=Malignant",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.8518518518518519,
+            "Lift": 2.4855403348554033,
+            "Conviction": 4.436619718309859,
+            "Leverage": 0.0645374594987767,
+            "LHS_Count": 27,
+            "LHS_Support": 0.1267605633802817,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Diagnosis Result=Malignant"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.8372093023255813,
+            "Lift": 2.4767441860465116,
+            "Conviction": 4.066398390342051,
+            "Leverage": 0.10077365602063082,
+            "LHS_Count": 43,
+            "LHS_Support": 0.20187793427230047,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.16901408450704225,
+            "Count": 36
+        },
+        {
+            "LHS": [
+                "Diagnosis Result=Malignant",
+                "History=0",
+                "Breast=Right"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.8333333333333333,
+            "Lift": 2.4652777777777777,
+            "Conviction": 3.971830985915491,
+            "Leverage": 0.05580903259935197,
+            "LHS_Count": 24,
+            "LHS_Support": 0.11267605633802817,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.09389671361502347,
+            "Count": 20
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "Breast=Right"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Menopause=0"
+            ],
+            "Confidence": 0.5777777777777778,
+            "Lift": 2.4613333333333336,
+            "Conviction": 1.8124536693847295,
+            "Leverage": 0.07247239304370826,
+            "LHS_Count": 45,
+            "LHS_Support": 0.2112676056338028,
+            "RHS_Count": 50,
+            "RHS_Support": 0.2347417840375587,
+            "Support": 0.12206572769953052,
+            "Count": 26
+        },
+        {
+            "LHS": [
+                "Menopause=1",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.8275862068965518,
+            "Lift": 2.4482758620689657,
+            "Conviction": 3.8394366197183123,
+            "Leverage": 0.06665344177742512,
+            "LHS_Count": 29,
+            "LHS_Support": 0.13615023474178403,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.11267605633802817,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "Menopause=1",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.7931034482758621,
+            "Lift": 2.3793103448275863,
+            "Conviction": 3.222222222222223,
+            "Leverage": 0.06259780907668233,
+            "LHS_Count": 29,
+            "LHS_Support": 0.13615023474178403,
+            "RHS_Count": 71,
+            "RHS_Support": 0.3333333333333333,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Diagnosis Result=Malignant"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.8139534883720931,
+            "Lift": 2.374960178400765,
+            "Conviction": 3.5328638497652602,
+            "Leverage": 0.09513103661090173,
+            "LHS_Count": 43,
+            "LHS_Support": 0.20187793427230047,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.1643192488262911,
+            "Count": 35
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Diagnosis Result=Malignant"
+            ],
+            "RHS": [
+                "Breast=Right",
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.4883720930232558,
+            "Lift": 2.3641649048625792,
+            "Conviction": 1.5507895860008536,
+            "Leverage": 0.05688906522074543,
+            "LHS_Count": 43,
+            "LHS_Support": 0.20187793427230047,
+            "RHS_Count": 44,
+            "RHS_Support": 0.20657276995305165,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Diagnosis Result=Malignant"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.7916666666666666,
+            "Lift": 2.342013888888889,
+            "Conviction": 3.1774647887323937,
+            "Leverage": 0.1022283938372016,
+            "LHS_Count": 48,
+            "LHS_Support": 0.22535211267605634,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.1784037558685446,
+            "Count": 38
+        },
+        {
+            "LHS": [
+                "Breast=Right",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "History=1",
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.5227272727272727,
+            "Lift": 2.3196022727272725,
+            "Conviction": 1.6230717639168342,
+            "Leverage": 0.06142961052701184,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 48,
+            "RHS_Support": 0.22535211267605634,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Inv-Nodes=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "History=1",
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.5227272727272727,
+            "Lift": 2.3196022727272725,
+            "Conviction": 1.6230717639168342,
+            "Leverage": 0.06142961052701184,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 48,
+            "RHS_Support": 0.22535211267605634,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "History=1",
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.5227272727272727,
+            "Lift": 2.3196022727272725,
+            "Conviction": 1.6230717639168342,
+            "Leverage": 0.06142961052701184,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 48,
+            "RHS_Support": 0.22535211267605634,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Diagnosis Result=Malignant"
+            ],
+            "RHS": [
+                "Metastasis=1",
+                "Breast=Right"
+            ],
+            "Confidence": 0.4883720930232558,
+            "Lift": 2.311627906976744,
+            "Conviction": 1.5416133162612036,
+            "Leverage": 0.055941281491767504,
+            "LHS_Count": 43,
+            "LHS_Support": 0.20187793427230047,
+            "RHS_Count": 45,
+            "RHS_Support": 0.2112676056338028,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.09521920253917873,
+            "LHS_Count": 36,
+            "LHS_Support": 0.16901408450704225,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.16901408450704225,
+            "Count": 36
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.09257422469086822,
+            "LHS_Count": 35,
+            "LHS_Support": 0.1643192488262911,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.1643192488262911,
+            "Count": 35
+        },
+        {
+            "LHS": [
+                "Breast=Left",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.07141440190438406,
+            "LHS_Count": 27,
+            "LHS_Support": 0.1267605633802817,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.1267605633802817,
+            "Count": 27
+        },
+        {
+            "LHS": [
+                "History=0",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.08728426899424717,
+            "LHS_Count": 33,
+            "LHS_Support": 0.15492957746478872,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.15492957746478872,
+            "Count": 33
+        },
+        {
+            "LHS": [
+                "Inv-Nodes=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.11637902532566291,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.20657276995305165,
+            "Count": 44
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.11637902532566291,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.20657276995305165,
+            "Count": 44
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Breast=Right",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.05554453481452093,
+            "LHS_Count": 21,
+            "LHS_Support": 0.09859154929577464,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Breast=Right",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.05554453481452093,
+            "LHS_Count": 21,
+            "LHS_Support": 0.09859154929577464,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "History=0",
+                "Breast=Right",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.05289955696621041,
+            "LHS_Count": 20,
+            "LHS_Support": 0.09389671361502347,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.09389671361502347,
+            "Count": 20
+        },
+        {
+            "LHS": [
+                "Breast=Right",
+                "Inv-Nodes=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.06876942405607353,
+            "LHS_Count": 26,
+            "LHS_Support": 0.12206572769953052,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.12206572769953052,
+            "Count": 26
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "Breast=Right",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.06876942405607353,
+            "LHS_Count": 26,
+            "LHS_Support": 0.12206572769953052,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.12206572769953052,
+            "Count": 26
+        },
+        {
+            "LHS": [
+                "History=0",
+                "Inv-Nodes=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.05554453481452093,
+            "LHS_Count": 21,
+            "LHS_Support": 0.09859154929577464,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "History=0",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.05554453481452093,
+            "LHS_Count": 21,
+            "LHS_Support": 0.09859154929577464,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Inv-Nodes=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.060834490511141974,
+            "LHS_Count": 23,
+            "LHS_Support": 0.107981220657277,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "History=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2903225806451615,
+            "Conviction": 100,
+            "Leverage": 0.060834490511141974,
+            "LHS_Count": 23,
+            "LHS_Support": 0.107981220657277,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "Breast=Right"
+            ],
+            "RHS": [
+                "History=1",
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.5111111111111112,
+            "Lift": 2.2680555555555557,
+            "Conviction": 1.5845070422535212,
+            "Leverage": 0.06037161938768763,
+            "LHS_Count": 45,
+            "LHS_Support": 0.2112676056338028,
+            "RHS_Count": 48,
+            "RHS_Support": 0.22535211267605634,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.986111111111111,
+            "Lift": 2.2585125448028673,
+            "Conviction": 40.563380281689966,
+            "Leverage": 0.18574356939760628,
+            "LHS_Count": 72,
+            "LHS_Support": 0.3380281690140845,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.3333333333333333,
+            "Count": 71
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Diagnosis Result=Malignant"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.7708333333333334,
+            "Lift": 2.2491438356164384,
+            "Conviction": 2.8681177976952625,
+            "Leverage": 0.09647556701712624,
+            "LHS_Count": 48,
+            "LHS_Support": 0.22535211267605634,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.17370892018779344,
+            "Count": 37
+        },
+        {
+            "LHS": [
+                "Breast=Right",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.9772727272727272,
+            "Lift": 2.2382697947214076,
+            "Conviction": 24.7887323943661,
+            "Leverage": 0.11168418964491172,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.20187793427230047,
+            "Count": 43
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.9743589743589743,
+            "Lift": 2.2315963606286187,
+            "Conviction": 21.971830985915478,
+            "Leverage": 0.09845930040335912,
+            "LHS_Count": 39,
+            "LHS_Support": 0.18309859154929578,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.1784037558685446,
+            "Count": 38
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.9736842105263159,
+            "Lift": 2.2300509337860785,
+            "Conviction": 21.408450704225466,
+            "Leverage": 0.09581432255504861,
+            "LHS_Count": 38,
+            "LHS_Support": 0.1784037558685446,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.17370892018779344,
+            "Count": 37
+        },
+        {
+            "LHS": [
+                "Diagnosis Result=Malignant",
+                "History=0"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.7499999999999999,
+            "Lift": 2.2187499999999996,
+            "Conviction": 2.6478873239436607,
+            "Leverage": 0.08510216226939098,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.15492957746478872,
+            "Count": 33
+        },
+        {
+            "LHS": [
+                "Menopause=1",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.9642857142857142,
+            "Lift": 2.2085253456221197,
+            "Conviction": 15.774647887323903,
+            "Leverage": 0.0693645440719434,
+            "LHS_Count": 28,
+            "LHS_Support": 0.13145539906103287,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.1267605633802817,
+            "Count": 27
+        },
+        {
+            "LHS": [
+                "Breast=Left",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.962962962962963,
+            "Lift": 2.2054958183990445,
+            "Conviction": 15.211267605633827,
+            "Leverage": 0.06671956622363288,
+            "LHS_Count": 27,
+            "LHS_Support": 0.1267605633802817,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.12206572769953052,
+            "Count": 26
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Breast=Right",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.9583333333333334,
+            "Lift": 2.19489247311828,
+            "Conviction": 13.521126760563392,
+            "Leverage": 0.05878463267870132,
+            "LHS_Count": 24,
+            "LHS_Support": 0.11267605633802817,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Breast=Right",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.9583333333333334,
+            "Lift": 2.19489247311828,
+            "Conviction": 13.521126760563392,
+            "Leverage": 0.05878463267870132,
+            "LHS_Count": 24,
+            "LHS_Support": 0.11267605633802817,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Menopause=1",
+                "Inv-Nodes=1",
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.9583333333333334,
+            "Lift": 2.19489247311828,
+            "Conviction": 13.521126760563392,
+            "Leverage": 0.05878463267870132,
+            "LHS_Count": 24,
+            "LHS_Support": 0.11267605633802817,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.9523809523809524,
+            "Lift": 2.18125960061444,
+            "Conviction": 11.830985915492972,
+            "Leverage": 0.05084969913376976,
+            "LHS_Count": 21,
+            "LHS_Support": 0.09859154929577464,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.09389671361502347,
+            "Count": 20
+        },
+        {
+            "LHS": [
+                "Breast=Right",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Metastasis=1",
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.7027027027027026,
+            "Lift": 2.169212690951821,
+            "Conviction": 2.274007682458386,
+            "Leverage": 0.06579382397672419,
+            "LHS_Count": 37,
+            "LHS_Support": 0.17370892018779344,
+            "RHS_Count": 69,
+            "RHS_Support": 0.323943661971831,
+            "Support": 0.12206572769953052,
+            "Count": 26
+        },
+        {
+            "LHS": [
+                "Metastasis=1"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.9452054794520548,
+            "Lift": 2.1648254529385773,
+            "Conviction": 10.281690140845072,
+            "Leverage": 0.1743040402036633,
+            "LHS_Count": 73,
+            "LHS_Support": 0.3427230046948357,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.323943661971831,
+            "Count": 69
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "Breast=Right"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.9333333333333332,
+            "Lift": 2.1376344086021506,
+            "Conviction": 8.450704225352101,
+            "Leverage": 0.10493949613171989,
+            "LHS_Count": 45,
+            "LHS_Support": 0.2112676056338028,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.19718309859154928,
+            "Count": 42
+        },
+        {
+            "LHS": [
+                "Diagnosis Result=Malignant",
+                "History=0"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.7272727272727273,
+            "Lift": 2.1220423412204235,
+            "Conviction": 2.4100156494522693,
+            "Leverage": 0.07943750137759263,
+            "LHS_Count": 44,
+            "LHS_Support": 0.20657276995305165,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.15023474178403756,
+            "Count": 32
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Metastasis=1",
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.6764705882352942,
+            "Lift": 2.1189446366782008,
+            "Conviction": 2.1041399914639354,
+            "Leverage": 0.05702131411316097,
+            "LHS_Count": 34,
+            "LHS_Support": 0.1596244131455399,
+            "RHS_Count": 68,
+            "RHS_Support": 0.3192488262910798,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Breast=Right",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.7027027027027026,
+            "Lift": 2.108108108108108,
+            "Conviction": 2.242424242424242,
+            "Leverage": 0.06416275430359937,
+            "LHS_Count": 37,
+            "LHS_Support": 0.17370892018779344,
+            "RHS_Count": 71,
+            "RHS_Support": 0.3333333333333333,
+            "Support": 0.12206572769953052,
+            "Count": 26
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "History=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.9142857142857143,
+            "Lift": 2.094009216589862,
+            "Conviction": 6.572769953051641,
+            "Leverage": 0.07848971764861469,
+            "LHS_Count": 35,
+            "LHS_Support": 0.1643192488262911,
+            "RHS_Count": 93,
+            "RHS_Support": 0.43661971830985913,
+            "Support": 0.15023474178403756,
+            "Count": 32
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Metastasis=1",
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.6764705882352942,
+            "Lift": 2.088235294117647,
+            "Conviction": 2.089628681177977,
+            "Leverage": 0.05627190372280633,
+            "LHS_Count": 34,
+            "LHS_Support": 0.1596244131455399,
+            "RHS_Count": 69,
+            "RHS_Support": 0.323943661971831,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Breast=Right",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.7027027027027026,
+            "Lift": 2.078828828828829,
+            "Conviction": 2.22663252240717,
+            "Leverage": 0.06334721946703696,
+            "LHS_Count": 37,
+            "LHS_Support": 0.17370892018779344,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.12206572769953052,
+            "Count": 26
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Breast=Right"
+            ],
+            "RHS": [
+                "Metastasis=1",
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.6562499999999999,
+            "Lift": 2.0556066176470584,
+            "Conviction": 1.9803670507895854,
+            "Leverage": 0.05062928431307721,
+            "LHS_Count": 32,
+            "LHS_Support": 0.15023474178403756,
+            "RHS_Count": 68,
+            "RHS_Support": 0.3192488262910798,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Breast=Right",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Metastasis=1"
+            ],
+            "Confidence": 0.7027027027027026,
+            "Lift": 2.050351721584598,
+            "Conviction": 2.2108408023900976,
+            "Leverage": 0.06253168463047455,
+            "LHS_Count": 37,
+            "LHS_Support": 0.17370892018779344,
+            "RHS_Count": 73,
+            "RHS_Support": 0.3427230046948357,
+            "Support": 0.12206572769953052,
+            "Count": 26
+        },
+        {
+            "LHS": [
+                "Metastasis=1",
+                "History=0",
+                "Inv-Nodes=1"
+            ],
+            "RHS": [
+                "Menopause=0"
+            ],
+            "Confidence": 0.6774193548387096,
+            "Lift": 2.032258064516129,
+            "Conviction": 2.0666666666666664,
+            "Leverage": 0.050078247261345854,
+            "LHS_Count": 31,
+            "LHS_Support": 0.14553990610328638,
+            "RHS_Count": 71,
+            "RHS_Support": 0.3333333333333333,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Diagnosis Result=Malignant",
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.6764705882352942,
+            "Lift": 2.0294117647058827,
+            "Conviction": 2.060606060606061,
+            "Leverage": 0.05477308294209703,
+            "LHS_Count": 34,
+            "LHS_Support": 0.1596244131455399,
+            "RHS_Count": 71,
+            "RHS_Support": 0.3333333333333333,
+            "Support": 0.107981220657277,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Breast Quadrant=Upper outer",
+                "Breast=Right"
+            ],
+            "RHS": [
+                "Metastasis=1",
+                "Diagnosis Result=Malignant"
+            ],
+            "Confidence": 0.6562499999999999,
+            "Lift": 2.0258152173913038,
+            "Conviction": 1.9667093469910364,
+            "Leverage": 0.04992395688686106,
+            "LHS_Count": 32,
+            "LHS_Support": 0.15023474178403756,
+            "RHS_Count": 69,
+            "RHS_Support": 0.323943661971831,
+            "Support": 0.09859154929577464,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "History=1",
+                "Menopause=0"
+            ],
+            "RHS": [
+                "Inv-Nodes=1"
+            ],
+            "Confidence": 0.6764705882352942,
+            "Lift": 2.0012254901960786,
+            "Conviction": 2.0460947503201026,
+            "Leverage": 0.05402367255174238,
+            "LHS_Count": 34,
+            "LHS_Support": 0.1596244131455399,
+            "RHS_Count": 72,
+            "RHS_Support": 0.3380281690140845,
+            "Support": 0.107981220657277,
+            "Count": 23
+        }
+    ]
+}

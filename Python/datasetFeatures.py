@@ -32,6 +32,7 @@ class datasetFeatures:
     Freq2ValuesItemColumns = 0 #Range [0...1]
     HasHeader=None  
     datasetType=None
+    delimiter=';'
 
     def _datasetFeatures_x(self, filepath, delimiter, hasHeader, nrows=100, datasetType=None):
         # Creates the features of the dataset in order to determine datasetType via ML
@@ -43,6 +44,8 @@ class datasetFeatures:
 
             class datasetFeaturesInst(datasetFeatures):
                 _name=os.path.basename(filepath)
+
+            datasetFeaturesInst.delimiter=delimiter
 
             freqplus=0
             numericColumns=0
@@ -157,7 +160,7 @@ class datasetFeatures:
 
                 strsql = "Delete From `datasetfeatures` \
                           Where `name`=%s"
-                #parameters are given as a tuple
+                #parameters are given as a tuple, so , at the end is necessary
                 recorddata = (dFI._name,) 
                 # Execute the query with the data
                 cursor.execute(strsql, recorddata) 
@@ -170,8 +173,8 @@ class datasetFeatures:
                                 `FreqOfDateCol`, `FreqOfStringCol`, `FreqOfBoolCol`, \
                                 `MinItemLen`, `MaxItemLen`, `AvgItemLen`, \
                                 `Freq1CharColumns`, `Freq2ValuesItemColumns`, `hasHeader`, \
-                                `datasetType`) \
-                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) "
+                                `datasetType`,`delimiter`) \
+                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) "
                 #parameters are given as a tuple
                 recorddata = (dFI._name, dFI.AvgOfDistinctValuesPerCol, dFI.AvgOfDistinctValuesOverAll, 
                               dFI.AvgOfDistinctValuesPerRow, dFI.FreqoFTop1FreqValue, dFI.FreqoFTop2FreqValue, 
@@ -179,7 +182,7 @@ class datasetFeatures:
                               dFI.FreqOfDateCol, dFI.FreqOfStringCol, dFI.FreqOfBoolCol,
                               dFI.MinItemLen, dFI.MaxItemLen, dFI.AvgItemLen, 
                               dFI.Freq1CharColumns, dFI.Freq2ValuesItemColumns, dFI.HasHeader, 
-                              dFI.datasetType)
+                              dFI.datasetType,dFI.delimiter)
                 # Execute the query with the data
                 cursor.execute(strsql, recorddata) 
                 # Commit the changes
@@ -190,7 +193,7 @@ class datasetFeatures:
 
         finally:
             # Close the cursor and connection when done
-            if 'cursor' in locals() and not cursor.closed():
-                cursor.close()
-            if 'connection' in locals() and connection.is_connected():
-                connection.close()
+            #if 'cursor' in locals() and cursor.is_closed():
+            cursor.close()
+            #if 'connection' in locals() and connection.is_connected():
+            connection.close()

@@ -23,9 +23,11 @@
 	//define('smtpPort',587);
 	//define('smtpAuth',true);
 	//define('smtpUsername','malliaridis@mentor.com.gr');
-	//define('smtpPassword','sakhs13!');
+	//define('smtpPassword','Bol43272');
 	//define('smtpSecure','tls');
 	//define('smtpFrom','malliaridis@mentor.com.gr');	
-	//define('smtpFromName','WebApriori association rules');		
+	//define('smtpFromName','WebApriori association rules');
+	
+	
 
 ?>
