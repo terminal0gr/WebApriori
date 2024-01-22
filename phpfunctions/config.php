@@ -19,14 +19,7 @@
     define('smtpFrom','noc@teithe.gr');
     define('smtpFromName','WebApriori association rules');
 
-     //define('smtpHost','smtp.office365.com');
-	//define('smtpPort',587);
-	//define('smtpAuth',true);
-	//define('smtpUsername','malliaridis@mentor.com.gr');
-	//define('smtpPassword','Bol43272');
-	//define('smtpSecure','tls');
-	//define('smtpFrom','malliaridis@mentor.com.gr');	
-	//define('smtpFromName','WebApriori association rules');
+
 	
 	
 
