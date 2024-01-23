@@ -37,10 +37,16 @@ class datasetFeatures:
     def _datasetFeatures_x(self, filepath, delimiter, hasHeader, nrows=100, datasetType=None):
         # Creates the features of the dataset in order to determine datasetType via ML
         try:
+
+            #The possible missing values that can exists in datasets and pandas cannot manipulate by default
+            extra_missing_values = ["n/a", "na", "-", "?", "#"]
+
+            headerV1=None
             if hasHeader:
-                df = pd.read_csv(filepath, sep=delimiter, nrows=nrows, header=0)
-            else:
-                df = pd.read_csv(filepath, sep=delimiter, nrows=nrows, header=None)
+                headerV1=0
+
+            dfi = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values, header=headerV1)
+            df = dfi.dropna()
 
             class datasetFeaturesInst(datasetFeatures):
                 _name=os.path.basename(filepath)
@@ -60,19 +66,19 @@ class datasetFeatures:
                 
                 try:
                     # At first check if you can recognise the column as number
-                    df[myCol] = pd.to_numeric(df[myCol])
+                    tempColumn = pd.to_numeric(df[myCol])
                     numericColumns+=1
                 except ValueError:
                     try:
                         # If not then try to chack if it is a number but with comma as delimiter e.g. like greek regional settings
-                        df[myCol] = pd.to_numeric(df[myCol].str.replace(',', '.'), errors='raise')
+                        tempColumn = pd.to_numeric(df[myCol].str.replace(',', '.'), errors='raise')
                         numericColumns+=1  
                     except ValueError:
                         try:
                             # If not a number the try to check if it is a date.
                             # to_datetime ensures that it will find that a column is datetime even if it has 
                             # other format than the expected (expected format yyy-mm-dd)
-                            df[myCol] = pd.to_datetime(df[myCol])
+                            tempColumn = pd.to_datetime(df[myCol])
                             datetimeColumns+=1
                         except ValueError:
                             # Ok it is not a datetime Column. So what!!!
@@ -107,7 +113,7 @@ class datasetFeatures:
         
             freq=0
             for i in range(df.shape[0]):
-                freq+=df.loc[i].nunique()/df.shape[1] #df.shape[0]->#rows
+                freq+=df.iloc[i].nunique()/df.shape[1] #df.shape[0]->#rows
             datasetFeaturesInst.AvgOfDistinctValuesPerRow=freq/df.shape[0] #df.shape[1]->#Columns
 
             datasetFeaturesInst.NumberOfColumns=df.shape[1]
