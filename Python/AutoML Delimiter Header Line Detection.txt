@@ -70,23 +70,27 @@ Dataset Categories:
 2,3,4,0 type of datasets are candidates for ML techniques
 
 Features candidates
-1) V Avg of different values per column 
-2) V Avg of different values over all Columns
-3) V Avg of different values per row
-4) V frequency of the most frequent value
-5) V frequency of the second most frequent value
-6) V frequency of the third most frequent value
-7) V Number of Columns
-8) V Freq Number of Number Columns
-9) V Freq Number of Date Columns
-10)V Freq Number of string Columns
-11)V Freq Number of boolean columns
-12)V Min item length
-13)V Max item length
-14)V Avg item length
-15)V Freq of 1 character columns
-16)V Freq of Columns that have items with only 2 values
-17)V Has header
+1) V Avg of different values per column          Range [0...1]  --> It is the number of unique values per column divided by the number of rows For every column and compute the average over all columns 
+2) V Avg of different values over all Columns    Range [0...1]  --> It is the number of unique values divided by the items of the sample dataset
+3) V Avg of different values per row             Range [0...1]  --> It is the number of unique values per row divided by the number of columns For every row and compute the average over all rows 
+4) V frequency of the most frequent value        Range [0...1]  --> It is the number of the most frequent value divided by by the items of the sample dataset
+5) V frequency of the second most frequent value Range [0...1]  --> It is the number of the second most frequent value divided by by the items of the sample dataset
+6) V frequency of the third most frequent value  Range [0...1]  --> It is the number of the third most frequent value divided by by the items of the sample dataset
+7) V Number of Columns                           Range [1.Inf]  --> It is the number of columns of the sample dataset
+                                8+9+10+11=1
+8) V Freq Number of Number Columns               Range [0...1]  --> It is the number of columns with number items divided by the number of all columns
+9) V Freq Number of Date Columns                 Range [0...1]  --> It is the number of columns with date items divided by the number of all columns
+10)V Freq Number of string Columns               Range [0...1]  --> It is the number of columns with string or other items divided by the number of all columns
+11)V Freq Number of boolean columns              Range [0...1]  --> It is the number of columns with boolean items divided by the number of all columns
+12)V Min item length                             Range [1.Inf]  --> It is the minimum length of items in the sample dataset
+13)V Max item length                             Range [1.Inf]  --> It is the maximum length of items in the sample dataset
+14)V Avg item length                             Range [1.Inf]  --> It is the average length of items in the sample dataset
+15)V Freq of 1 character columns                 Range [0...1]  --> It is the number of columns with only one character length items divided by the number of all columns
+16)V Freq of Columns that have items with only 2 values Range [0...1]  --> It is the number of columns with only 2 different values divided by the number of all columns
+17)V Has header                                  Range [0,1]    --> 0 If dataset has no header, 1 if it has
+18)V datasetType                                 Range [0,2,3,4]--> It is the type of the dataset and it is the class Y
+19)V delimiter                                                      It is the delimiter of the dataset               
+
 
 Installation of MySQL Connector is needed in order to link Python with mySQL database 
 Run the command below in cmd

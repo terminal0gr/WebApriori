@@ -57,9 +57,19 @@ with open(filepath, encoding='utf8') as f:
     datasetAttributes['datasetType']=dialect.datasetType
 
 if public=='0':
-    filepath=os.path.join('output', identity, str(datasetType), datasetName)
+    #filepath=os.path.join('output', identity, str(datasetType), datasetName)
+    filepath=os.path.join('output', identity, str(datasetType))
 else:
-    filepath=os.path.join('output', identity, 'p' + str(datasetType), datasetName)	
+    filepath=os.path.join('output', identity, 'p' + str(datasetType))	
+
+# Use os.makedirs() to create the folder (including parent directories if they don't exist)
+os.makedirs(filepath, exist_ok=True)
+
+if os.path.exists(filepath):
+    filepath=os.path.join(filepath, datasetName)
+else:
+    print(f"Failed to create folder '{filepath}'.")
+    sys.exit()
 
 #file = open(os.path.splitext(filepath)[0] + '.metadata','w')
 with open(os.path.splitext(filepath)[0] + '.metadata','w') as file:

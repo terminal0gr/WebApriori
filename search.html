@@ -173,6 +173,18 @@
 					return;
 				}
 
+				//If the dataset is of type 2 it is mandatory to have 2 paramaters declared in extra fields
+				//datasetType.value format: ?name or p|?name where ? dataset type (1,2,3,4) and name the filename of the dataset
+				var str =  datasetType.value
+				if (str.charAt(0)==='2' || (str.charAt(0)==='p' && str.charAt(2)==='2')) { //If it is type 2 dataset
+					var textboxValue = document.getElementById("extra_parameters").value;
+					var pattern = /^".*"\s".*"$/;
+					if (!pattern.test(textboxValue)) {
+						MyModal("Information", "In extra parameters field it is mandatory to declare 2 parameters when type 2 (INV) dataset is used. The 1st parameter represents the primary key column while 2nd represents the items column.");
+						return;
+					}
+				}
+
                 // Serialize the form data first in array form so to add more elements.
 				var formData = $('#retrieveRules').serializeArray(); // convert form to array
 
@@ -885,7 +897,7 @@ other vegetables,whole milk,condensed milk,long life bakery product<br>
 			</div>
 		</div>
 		<p><b>2) Order/Invoice detail.</b> Header line is mandatory in that type. Number of columns is fixed in the dataset. 
-		In extra parameters field, 1st parameter represents the primary key column while 2nd parameter represents the items column and are both mandatory.<br>
+		In extra parameters field it is mandatory to declare 2 parameters. The 1st parameter represents the primary key column while 2nd represents the items column.<br>
 		<a href="javascript:toggleDisplay('#hexample2');">Example</a></p>
 		<div id="hexample2" style="display:none">
 			<div class="card text-white bg-secondary mb-3">
