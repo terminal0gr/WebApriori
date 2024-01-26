@@ -630,6 +630,7 @@
 							extraparams=extraparams.replace(regex,' ');  
 							var regex = /'/g;
 							extraparams=extraparams.replace(regex,'"'); 
+							
 							document.getElementById('extra_parameters').value=extraparams; 
 
 							fillTable(res);
@@ -720,10 +721,18 @@
 					res=JSON.parse(response);
 					try {
 						if (jqXHR.status!=200) {
-							MyModal(jqXHR.status+res.title, res.message)
+							MyModal(jqXHR.status+res.title, res.message);
 						} else {
 							document.getElementById('separator').value=res.delimiter; 
 							document.getElementById("header1").checked=res.hasHeader; 
+                            
+							if (res.header) {
+								// Transform the array to a string
+								var transformedString = res.header.map(function(item) {
+    								return '"' + item + '"';
+								}).join(' ');
+								document.getElementById('extra_parameters').value=transformedString;
+							}
 						}
 					}
 					catch(err) {
@@ -961,8 +970,8 @@ order_id,pay_method,arrival_timestamp,air fresheners candles,asian foods,baby ac
 			</div>
 		</div>
 		<p><b>4) Columns with multiple categorized values.</b> Header line is optional for that kind of dataset and the number of columns is fixed. 
-			If a header line exists in the dataset then 
-			participant item columns can be declared for filtering and tuning puproses optionally.<br>
+			If a header line exists in the dataset then participant item columns can be declared for filtering and tuning puproses optionally. 
+			However keep in mind, if there is no header or columns declared in the extra parameters field, any identical values in different columns will be considered as the same value.<br>
 		<a href="javascript:toggleDisplay('#hexample4');">Example</a></p>
 		<div id="hexample4" style="display:none">
 			<div class="card text-white bg-secondary mb-3">

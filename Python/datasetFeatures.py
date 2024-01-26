@@ -33,25 +33,34 @@ class datasetFeatures:
     HasHeader=None  
     datasetType=None
     delimiter=';'
+    Header=None
 
     def _datasetFeatures_x(self, filepath, delimiter, hasHeader, nrows=100, datasetType=None):
         # Creates the features of the dataset in order to determine datasetType via ML
         try:
 
             #The possible missing values that can exists in datasets and pandas cannot manipulate by default
-            extra_missing_values = ["n/a", "na", "-", "?", "#"]
+            extra_missing_values = []
+            if datasetType=='3': #Many 3rd type dataset are using "?", "#" as the absense of an item in a row. Not a missing value.
+                extra_missing_values = ["n/a", "na", "-"]
+            else:
+                extra_missing_values = ["n/a", "na", "-", "?", "#"]
 
             headerV1=None
             if hasHeader:
                 headerV1=0
 
             dfi = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values, header=headerV1)
+            #Remove the rows that have missing values
             df = dfi.dropna()
 
             class datasetFeaturesInst(datasetFeatures):
                 _name=os.path.basename(filepath)
 
             datasetFeaturesInst.delimiter=delimiter
+
+            if hasHeader:
+                datasetFeaturesInst.Header=df.columns.tolist()
 
             freqplus=0
             numericColumns=0

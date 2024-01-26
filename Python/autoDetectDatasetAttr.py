@@ -48,11 +48,11 @@ with open(filepath, encoding='utf8') as f:
     for x in range(100):
         s100+=f.readline()
 
-    datasetAttributes['hasHeader'] = csv.Sniffer().has_header(s100)
+    datasetAttributes['hasHeader'], datasetAttributes['header'] = csv.Sniffer().has_header(s100)
     dialect = csv.Sniffer().sniff(s100)  # Check what kind of csv/tsv file we have.
     datasetAttributes['delimiter']=dialect.delimiter
 
-    df.datasetFeatures()._datasetFeatures_x(filepath,dialect.delimiter,datasetAttributes['hasHeader'],datasetType=datasetType)
+    #df.datasetFeatures()._datasetFeatures_x(filepath,dialect.delimiter,datasetAttributes['hasHeader'],datasetType=datasetType)
 
     datasetAttributes['datasetType']=dialect.datasetType
 

@@ -43,6 +43,7 @@ class Dialect:
     lineterminator = None
     quoting = None
     datasetType = 0 # 0:Unspecified, 1:Market Basket List
+    header=None
 
     def __init__(self):
         if self.__class__ != Dialect:
@@ -486,20 +487,20 @@ class Sniffer:
                         # consideration
                         del columnTypes[col]
 
-                #enumerate the items from header that match the items fron the next # lines
+                #enumerate the items from header that match the items from the next # lines
                 if header[col]==row[col]:
                     headerItemFound+=1
 
         #checked is the lines from the sample dataset without the header.
         if checked>0:
             #if the dataset is of the type 1) Market Basket list then it must not have a header.
-            #if the ratio of lines with different number of columns fron header is more than 0.2 then we assume we have an 1) Market Basket list
+            #if the ratio of lines with different number of columns from header is more than 0.2 then we assume we have an 1) Market Basket list
             if rowsWithDifferentNumberOfColumnsFromFirstRowColumns/checked>0.2:
-                return False
+                return (False, None)
             
         #If not even one item from the header found in the next # lines then it is propably header!
         if headerItemFound==0:
-            return True
+            return (True, header)
         #Malliaridis 03/12/2023 end
 
         # finally, compare results against first row and "vote"
@@ -519,4 +520,7 @@ class Sniffer:
                 else:
                     hasHeader -= 1
 
-        return hasHeader > 0
+        if hasHeader > 0:
+            return (True, header)
+        else:
+            return (False, None)

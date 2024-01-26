@@ -465,7 +465,7 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
         
         #pandas to list
         records=dataset.values.tolist()
-        #remove nan elements from this 2-dimensional list'
+        #remove nan elements from this 2-dimensional list inorder to be transformed a dataset type 1'
         records = [[y for y in x if str(y) != args[0]] for x in records]
         return(records)
                             
