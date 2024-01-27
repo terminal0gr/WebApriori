@@ -1,0 +1,13 @@
+{
+    "hasHeader": true,
+    "header": [
+        "Index",
+        "Country",
+        "Code",
+        "Year",
+        "Deaths",
+        "Sidedness"
+    ],
+    "delimiter": ",",
+    "datasetType": 0
+}
