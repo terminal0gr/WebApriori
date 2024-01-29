@@ -22,4 +22,5 @@ for file in files:
 
         dialect = csv.Sniffer().sniff(s100)  # Check what kind of csv/tsv file we have.
 
-        df.datasetFeatures()._datasetFeatures_x(filepath,dialect.delimiter,csv.Sniffer().has_header(s100),datasetType=file[0])
+        hasHeader, header =csv.Sniffer().has_header(s100)
+        df.datasetFeatures()._datasetFeatures_x(filepath,dialect.delimiter,hasHeader,datasetType=file[0])

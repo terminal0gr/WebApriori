@@ -429,12 +429,12 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
 
         dataset = dataset[[groupCol, itemsCol]]
         
-        dataset.sort_values(by=groupCol)
+        datasetSorted=dataset.sort_values(by=groupCol)
 
         TempInv=''
         records=[]
         setrec=set()
-        for index, row in dataset.iterrows():
+        for index, row in datasetSorted.iterrows():
             if TempInv!=row[groupCol]:
                 if len(setrec)>1:
                     records.append(sorted(setrec))
@@ -784,7 +784,12 @@ if len(sys.argv)>7:
 datasetSep=','
 if len(sys.argv)>8:
     if len(sys.argv[8])>0:
-        datasetSep=str(sys.argv[8])
+        if str(sys.argv[8])=="{TAB}":
+            datasetSep='\t'
+        elif str(sys.argv[8])=="{SPACE}":
+            datasetSep=' '
+        else:
+            datasetSep=str(sys.argv[8])
 
 
 datasetType=1

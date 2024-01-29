@@ -206,6 +206,10 @@ class datasetFeatures:
         except mysql.connector.Error as e:
             print(f"Error: {e}")
 
+        except Exception as e:
+            vbcrlf = '\n'
+            print(f"Unexpected error:{vbcrlf}{e}")
+
         finally:
             # Close the cursor and connection when done
             #if 'cursor' in locals() and cursor.is_closed():

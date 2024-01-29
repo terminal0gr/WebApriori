@@ -729,7 +729,11 @@
 						if (jqXHR.status!=200) {
 							MyModal(jqXHR.status+res.title, res.message);
 						} else {
-							document.getElementById('separator').value=res.delimiter; 
+							if (res.delimiter=='\t') {
+								document.getElementById('separator').value='{TAB}'
+							} else {
+								document.getElementById('separator').value=res.delimiter; 
+							}
 							document.getElementById("header1").checked=res.hasHeader; 
                             
 							if (res.header) {
@@ -1066,7 +1070,7 @@ class,age,sex,survived<br>
 					</label>
 				</div>
 				<div class="col-2">	
-					<input type="text" id="separator" name="separator" class="form-control" data-trigger="hover" data-toggle="tooltip" title="the separator of the items in the CSV file. The most common characters are (,) and (;)" value="," placeholder=",">		
+					<input type="text" id="separator" name="separator" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The separator of the items in the CSV file. The most common characters used as delimiters are ';', ',' '{TAB}' '{SPACE}' and (:). Keep in mind that especially the {TAB} character is presended by {TAB} or \t string." value=";" placeholder=";">		
 				</div>
 				<div class="col-1">	
 					<button type="button" id="downloadDataset" class="btn mt-n2 float-right" onclick="DoDownload('dataset')"    data-trigger="hover" data-toggle="tooltip" title="Download current dataset">
