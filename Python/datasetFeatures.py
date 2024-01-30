@@ -21,6 +21,7 @@ class datasetFeatures:
     FreqoFTop2FreqValue = 0 #Range [0...1]
     FreqoFTop3FreqValue = 0 #Range [0...1]
     NumberOfColumns = 0 #Range [1...Infinite]
+    FreqOfIntegerCol = 0 #Range [0...1]
     FreqOfNumberCol = 0 #Range [0...1]
     FreqOfDateCol = 0 #Range [0...1]    
     FreqOfStringCol = 0 #Range [0...1]
@@ -42,7 +43,7 @@ class datasetFeatures:
             #The possible missing values that can exists in datasets and pandas cannot manipulate by default
             extra_missing_values = []
             if datasetType=='3': #Many 3rd type dataset are using "?", "#" as the absense of an item in a row. Not a missing value.
-                extra_missing_values = ["n/a", "na", "-"]
+                extra_missing_values = ["n/a", "na"]
             else:
                 extra_missing_values = ["n/a", "na", "-", "?", "#"]
 
@@ -54,6 +55,13 @@ class datasetFeatures:
             #Remove the rows that have missing values
             df = dfi.dropna()
 
+            if df.shape[0]==0: #rows
+                print(f"The dataset {os.path.basename(filepath)} is full of missing values or has a column which all of its items are missing values and can't be used.")
+                return None 
+            if df.shape[0]>0 and df.shape[0]<(dfi.shape[0]*0.2):
+                print(f"The dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be used.")
+                return None 
+
             class datasetFeaturesInst(datasetFeatures):
                 _name=os.path.basename(filepath)
 
@@ -64,6 +72,7 @@ class datasetFeatures:
 
             freqplus=0
             numericColumns=0
+            integerColumns=0
             datetimeColumns=0
             twoValuesItemColumn=0
             for myCol in df.columns:
@@ -79,9 +88,17 @@ class datasetFeatures:
                     numericColumns+=1
                 except ValueError:
                     try:
-                        # If not then try to chack if it is a number but with comma as delimiter e.g. like greek regional settings
-                        tempColumn = pd.to_numeric(df[myCol].str.replace(',', '.'), errors='raise')
-                        numericColumns+=1  
+                        # If not then try to check if it is a number but with comma as delimiter e.g. like greek regional settings
+                        dfc=df[myCol].str.replace('.', '') # 43.700,00 --> 43700,00
+                        dfc=dfc.str.replace(',', '.')      # 43700,00  --> 43700.00
+                        dfc=pd.to_numeric(dfc, errors='raise') #check if can be pasred as number
+                        dfint64=dfc.astype('int64') #
+                        if dfint64.sum()==dfc.sum():
+
+                            integerColumns+=1
+                        else:  
+                            numericColumns+=1
+                          
                     except ValueError:
                         try:
                             # If not a number the try to check if it is a date.
@@ -95,9 +112,11 @@ class datasetFeatures:
 
             datasetFeaturesInst.AvgOfDistinctValuesPerCol=freqplus/df.shape[1] #df.shape[1]->#Columns
 
-            #From numeric columns we want to substract the columns that have only items 0 or 1 because we consider them to be boolean columns
+            #From integer columns we want to substract the columns that have only items 0 or 1 because we consider them to be boolean columns
             #(df.isin([0, 1]).all()).sum() --> count the columns that have as values 0 or 1
-            datasetFeaturesInst.FreqOfNumberCol=(numericColumns-(df.isin([0, 1]).all()).sum())/df.shape[1]
+            datasetFeaturesInst.FreqOfIntegerCol=(integerColumns-(df.isin([0, 1]).all()).sum())/df.shape[1]
+            
+            datasetFeaturesInst.FreqOfNumberCol=numericColumns/df.shape[1]
 
             datasetFeaturesInst.FreqOfDateCol=datetimeColumns/df.shape[1]
 
@@ -149,7 +168,7 @@ class datasetFeatures:
 
         except Exception as e:
             vbcrlf = '\n'
-            print(f"Could not open/read or find dataset file!!!.{vbcrlf}Unexpected error: {e}{vbcrlf}")
+            print(f"Could not open/read or find dataset file {os.path.basename(filepath)}!!!.{vbcrlf}Unexpected error: {e}{vbcrlf}")
             return None
         
     def _WriteToDatabase(self, dFI):
@@ -184,20 +203,21 @@ class datasetFeatures:
 
                 strsql = "INSERT INTO `datasetfeatures` (`name`, `AvgOfDistinctValuesPerCol`, `AvgOfDistinctValuesOverAll`, \
                                 `AvgOfDistinctValuesPerRow`, `FreqoFTop1FreqValue`, `FreqoFTop2FreqValue`, \
-                                `FreqoFTop3FreqValue`, `NumberOfColumns`, `FreqOfNumberCol`, \
-                                `FreqOfDateCol`, `FreqOfStringCol`, `FreqOfBoolCol`, \
-                                `MinItemLen`, `MaxItemLen`, `AvgItemLen`, \
-                                `Freq1CharColumns`, `Freq2ValuesItemColumns`, `hasHeader`, \
-                                `datasetType`,`delimiter`) \
-                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) "
+                                `FreqoFTop3FreqValue`, `NumberOfColumns`, `FreqOfIntegerCol`, \
+                                `FreqOfNumberCol`, `FreqOfDateCol`, `FreqOfStringCol`, \
+                                `FreqOfBoolCol`, `MinItemLen`, `MaxItemLen`, \
+                                `AvgItemLen`, `Freq1CharColumns`, `Freq2ValuesItemColumns`, \
+                                `hasHeader`, `datasetType`,`delimiter` \
+                                ) \
+                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) "
                 #parameters are given as a tuple
                 recorddata = (dFI._name, dFI.AvgOfDistinctValuesPerCol, dFI.AvgOfDistinctValuesOverAll, 
                               dFI.AvgOfDistinctValuesPerRow, dFI.FreqoFTop1FreqValue, dFI.FreqoFTop2FreqValue, 
-                              dFI.FreqoFTop3FreqValue, dFI.NumberOfColumns, dFI.FreqOfNumberCol,
-                              dFI.FreqOfDateCol, dFI.FreqOfStringCol, dFI.FreqOfBoolCol,
-                              dFI.MinItemLen, dFI.MaxItemLen, dFI.AvgItemLen, 
-                              dFI.Freq1CharColumns, dFI.Freq2ValuesItemColumns, dFI.HasHeader, 
-                              dFI.datasetType,dFI.delimiter)
+                              dFI.FreqoFTop3FreqValue, dFI.NumberOfColumns, dFI.FreqOfIntegerCol,
+                              dFI.FreqOfNumberCol, dFI.FreqOfDateCol, dFI.FreqOfStringCol,
+                              dFI.FreqOfBoolCol, dFI.MinItemLen, dFI.MaxItemLen, 
+                              dFI.AvgItemLen, dFI.Freq1CharColumns, dFI.Freq2ValuesItemColumns, 
+                              dFI.HasHeader, dFI.datasetType,dFI.delimiter)
                 # Execute the query with the data
                 cursor.execute(strsql, recorddata) 
                 # Commit the changes
