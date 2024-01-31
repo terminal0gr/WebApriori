@@ -85,16 +85,20 @@ class datasetFeatures:
                 try:
                     # At first check if you can recognise the column as number
                     tempColumn = pd.to_numeric(df[myCol], errors='raise')
-                    numericColumns+=1
+                    dfint=dfc.astype('int64') 
+                    if dfint.sum()==dfc.sum():
+                        integerColumns+=1
+                    else:  
+                        numericColumns+=1
+                        
                 except ValueError:
                     try:
                         # If not then try to check if it is a number but with comma as delimiter e.g. like greek regional settings
                         dfc=df[myCol].str.replace('.', '') # 43.700,00 --> 43700,00
                         dfc=dfc.str.replace(',', '.')      # 43700,00  --> 43700.00
                         dfc=pd.to_numeric(dfc, errors='raise') #check if can be pasred as number
-                        dfint64=dfc.astype('int64') #
-                        if dfint64.sum()==dfc.sum():
-
+                        dfint=dfc.astype('int64') 
+                        if dfint.sum()==dfc.sum():
                             integerColumns+=1
                         else:  
                             numericColumns+=1
@@ -127,10 +131,10 @@ class datasetFeatures:
             df_1d = df_1d.reset_index(drop=True)
             #nunique counts the unique values of a dataframe column
             datasetFeaturesInst.AvgOfDistinctValuesOverAll=df_1d.nunique()/(df.shape[0]*df.shape[1])
-            #Freq of the most frequent value
-            most_frequent_item=df_1d.value_counts()[:3]
+            #value_
+            most_frequent_item=df_1d.value_counts().iloc[:3]
             i=0
-            for si in most_frequent_item[:3]:
+            for si in most_frequent_item.iloc[:3]:
                 i+=1
                 if i==1:
                     datasetFeaturesInst.FreqoFTop1FreqValue=si/(df.shape[0]*df.shape[1])
@@ -215,7 +219,7 @@ class datasetFeatures:
                               dFI.AvgOfDistinctValuesPerRow, dFI.FreqoFTop1FreqValue, dFI.FreqoFTop2FreqValue, 
                               dFI.FreqoFTop3FreqValue, dFI.NumberOfColumns, dFI.FreqOfIntegerCol,
                               dFI.FreqOfNumberCol, dFI.FreqOfDateCol, dFI.FreqOfStringCol,
-                              dFI.FreqOfBoolCol, dFI.MinItemLen, dFI.MaxItemLen, 
+                              dFI.FreqOfBoolCol, dFI.MinItemLen.item(), dFI.MaxItemLen.item(), 
                               dFI.AvgItemLen, dFI.Freq1CharColumns, dFI.Freq2ValuesItemColumns, 
                               dFI.HasHeader, dFI.datasetType,dFI.delimiter)
                 # Execute the query with the data
