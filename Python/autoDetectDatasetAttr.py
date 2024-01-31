@@ -36,7 +36,7 @@ if len(sys.argv)>4:
 #------------------------------
 
 if public=='0':
-    filepath=os.path.join('datasets', identity, str(datasetType), datasetName)
+    filepath=os.path.join('datasets', str(identity), str(datasetType), datasetName)
 else:
     filepath=os.path.join('public', str(datasetType), datasetName)	
 
@@ -58,9 +58,9 @@ with open(filepath, encoding='utf8') as f:
 
 if public=='0':
     #filepath=os.path.join('output', identity, str(datasetType), datasetName)
-    filepath=os.path.join('output', identity, str(datasetType))
+    filepath=os.path.join('output', str(identity), str(datasetType))
 else:
-    filepath=os.path.join('output', identity, 'p' + str(datasetType))	
+    filepath=os.path.join('output', str(identity), 'p' + str(datasetType))	
 
 # Use os.makedirs() to create the folder (including parent directories if they don't exist)
 os.makedirs(filepath, exist_ok=True)

@@ -14,27 +14,27 @@ class datasetFeatures:
 
     """
     _name=""
-    AvgOfDistinctValuesPerCol = 0 #Range [0...1]
-    AvgOfDistinctValuesOverAll = 0 #Range [0...1]
-    AvgOfDistinctValuesPerRow = 0 #Range [0...1]
-    FreqoFTop1FreqValue = 0 #Range [0...1]
-    FreqoFTop2FreqValue = 0 #Range [0...1]
-    FreqoFTop3FreqValue = 0 #Range [0...1]
+    AvgOfDistinctValuesPerCol = 0.0 #Range [0...1]
+    AvgOfDistinctValuesOverAll = 0.0 #Range [0...1]
+    AvgOfDistinctValuesPerRow = 0.0 #Range [0...1]
+    FreqoFTop1FreqValue = 0.0 #Range [0...1]
+    FreqoFTop2FreqValue = 0.0 #Range [0...1]
+    FreqoFTop3FreqValue = 0.0 #Range [0...1]
     NumberOfColumns = 0 #Range [1...Infinite]
-    FreqOfIntegerCol = 0 #Range [0...1]
-    FreqOfNumberCol = 0 #Range [0...1]
-    FreqOfDateCol = 0 #Range [0...1]    
-    FreqOfStringCol = 0 #Range [0...1]
-    FreqOfBoolCol = 0 #Range [0...1]
+    FreqOfIntegerCol = 0.0 #Range [0...1]
+    FreqOfNumberCol = 0.0 #Range [0...1]
+    FreqOfDateCol = 0.0 #Range [0...1]    
+    FreqOfStringCol = 0.0 #Range [0...1]
+    FreqOfBoolCol = 0.0 #Range [0...1]
     MinItemLen = 9999 #Range [0...infinite]
     MaxItemLen = 0 #Range [0...infinite]
-    AvgItemLen = 0 #Range [0...infinite]
-    Freq1CharColumns = 0 #Range [0...1]
-    Freq2ValuesItemColumns = 0 #Range [0...1]
-    HasHeader=None  
-    datasetType=None
+    AvgItemLen = 0.0 #Range [0...infinite]
+    Freq1CharColumns = 0.0 #Range [0...1]
+    Freq2ValuesItemColumns = 0.0 #Range [0...1]
+    HasHeader=True  
+    datasetType='0'
     delimiter=';'
-    Header=None
+    Header=[]
 
     def _datasetFeatures_x(self, filepath, delimiter, hasHeader, nrows=100, datasetType=None):
         # Creates the features of the dataset in order to determine datasetType via ML
@@ -85,12 +85,12 @@ class datasetFeatures:
                 try:
                     # At first check if you can recognise the column as number
                     tempColumn = pd.to_numeric(df[myCol], errors='raise')
-                    dfint=dfc.astype('int64') 
-                    if dfint.sum()==dfc.sum():
+                    dfint=df[myCol].astype('int64') 
+                    if dfint.sum()==df[myCol].sum():
                         integerColumns+=1
                     else:  
                         numericColumns+=1
-                        
+
                 except ValueError:
                     try:
                         # If not then try to check if it is a number but with comma as delimiter e.g. like greek regional settings
@@ -166,7 +166,7 @@ class datasetFeatures:
 
             datasetFeaturesInst.HasHeader=hasHeader
 
-            datasetFeaturesInst.datasetType=datasetType
+            datasetFeaturesInst.datasetType=str(datasetType)
 
             self._WriteToDatabase(datasetFeaturesInst)
 
