@@ -84,7 +84,7 @@ class datasetFeatures:
                 
                 try:
                     # At first check if you can recognise the column as number
-                    tempColumn = pd.to_numeric(df[myCol])
+                    tempColumn = pd.to_numeric(df[myCol], errors='raise')
                     numericColumns+=1
                 except ValueError:
                     try:
@@ -104,7 +104,7 @@ class datasetFeatures:
                             # If not a number the try to check if it is a date.
                             # to_datetime ensures that it will find that a column is datetime even if it has 
                             # other format than the expected (expected format yyy-mm-dd)
-                            tempColumn = pd.to_datetime(df[myCol])
+                            tempColumn = pd.to_datetime(df[myCol], errors='raise', format='mixed')
                             datetimeColumns+=1
                         except ValueError:
                             # Ok it is not a datetime Column. So what!!!
@@ -153,12 +153,12 @@ class datasetFeatures:
             #All the other columns are of String/Object type 
             datasetFeaturesInst.FreqOfStringCol = 1-datasetFeaturesInst.FreqOfNumberCol-datasetFeaturesInst.FreqOfBoolCol-datasetFeaturesInst.FreqOfDateCol
 
-            datasetFeaturesInst.MinItemLen = (df.applymap(lambda x: len(str(x)) if x is not None else 0).min()).min()
-            datasetFeaturesInst.MaxItemLen = (df.applymap(lambda x: len(str(x)) if x is not None else 0).max()).max()
-            datasetFeaturesInst.AvgItemLen = (df.applymap(lambda x: len(str(x)) if x is not None else 0).mean()).mean()
+            datasetFeaturesInst.MinItemLen = (df.map(lambda x: len(str(x)) if x is not None else 0).min()).min()
+            datasetFeaturesInst.MaxItemLen = (df.map(lambda x: len(str(x)) if x is not None else 0).max()).max()
+            datasetFeaturesInst.AvgItemLen = (df.map(lambda x: len(str(x)) if x is not None else 0).mean()).mean()
 
             # Count columns with only 1-character items
-            datasetFeaturesInst.Freq1CharColumns = (df.applymap(lambda x: len(str(x)) == 1 if x is not None else False).all()).sum()/df.shape[1]
+            datasetFeaturesInst.Freq1CharColumns = (df.map(lambda x: len(str(x)) == 1 if x is not None else False).all()).sum()/df.shape[1]
 
             datasetFeaturesInst.HasHeader=hasHeader
 
