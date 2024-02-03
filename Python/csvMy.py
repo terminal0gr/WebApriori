@@ -402,20 +402,30 @@ class Sniffer:
             # Malliaridis 20231209  
             # if there's more than one, fall back to a 'preferred' list
             # However, ofr better detection, the dict is beeing sorted by the highest frequency character
-            max_value = max(item[1][0] for item in delims.items())
-            FilterDelimsByMaxFrequency = dict([item for item in delims.items() if item[1][0] == max_value])
-            for d in self.preferred: #For every character in the ordered preferred list
-                if d in FilterDelimsByMaxFrequency.keys(): #see if the character exists in the dataset's delimiter candidates'
+            
+            # max_value = max(item[1][0] for item in delims.items())
+            # FilterDelimsByMaxFrequency = dict([item for item in delims.items() if item[1][0] == max_value])
+            # for d in self.preferred: #For every character in the ordered preferred list
+            #     if d in sortDelimsByMaxFrequency.keys(): #see if the character exists in the dataset's delimiter candidates'
+            #         #Match! return it!
+            #         skipinitialspace = (data[0].count(d) ==
+            #                             data[0].count("%c " % d))             
+            #         return (d, skipinitialspace, 0) 
+                
+            # Sort the list by the first item of each tuple
+            sortDelimsByMaxFrequency = sorted(delims.items(), key=lambda x: x[0])
+            for item in sortDelimsByMaxFrequency:
+                if item[0] in self.preferred:
                     #Match! return it!
-                    skipinitialspace = (data[0].count(d) ==
-                                        data[0].count("%c " % d))             
-                    return (d, skipinitialspace, 0)                    
+                    skipinitialspace = (data[0].count(item[0]) ==
+                                        data[0].count("%c " % item[0]))             
+                    return (item[0], skipinitialspace, 0)  
 
             #None of the characters in the dataset's delimiter candidates is in preferred list
-            #OoooK! return the most frequent
-            skipinitialspace = (data[0].count(data[0][0]) ==
-                                data[0].count("%c " % data[0][0]))             
-            return (data[0][0], skipinitialspace, 0)      
+            #OoooK! return the most frequent even if is not in the list of preferred delimiters
+            skipinitialspace = (data[0].count(sortDelimsByMaxFrequency[0][0]) ==
+                                data[0].count("%c " % sortDelimsByMaxFrequency[0][0]))             
+            return (sortDelimsByMaxFrequency[0][0], skipinitialspace, 0)      
                 
             # Original code replace by the above
             # for d in self.preferred:

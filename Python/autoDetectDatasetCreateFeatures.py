@@ -1,6 +1,8 @@
 import os
 import csvMy as csv
 import datasetFeatures as df
+from scipy.io import arff
+import pandas as pd
 
 directory_path=os.path.join('features','all')
 
@@ -14,13 +16,29 @@ files = [entry for entry in entries if os.path.isfile(os.path.join(directory_pat
 # Print the list of files
 for file in files:
     filepath=os.path.join(directory_path,file)
-    with open(filepath, encoding='utf8') as f:
-        s100=''
 
-        for x in range(100):
-            s100+=f.readline()
+    s100=''
 
-        dialect = csv.Sniffer().sniff(s100)  # Check what kind of csv/tsv file we have.
+    if df.is_arff_file(filepath):
+        #loads arff datafile into numpy structured array
+        df1, meta = df.loadarfftoDataframe(filepath)
+        # Convert the structured array to a Pandas DataFrame
+        # df1 = pd.DataFrame(data)
 
-        hasHeader, header =csv.Sniffer().has_header(s100)
-        df.datasetFeatures()._datasetFeatures_x(filepath,dialect.delimiter,hasHeader,datasetType=file[0])
+        # # Decode categorical attributes to strings
+        # for column in df1.columns:
+        #     if df1[column].dtype == 'object':
+        #         df1[column] = df1[column].str.decode('utf-8')
+        
+        # Save the first 100 rows of the DataFrame to a CSV format string with a header
+        s100=df1.head(100).to_csv(path_or_buf=None, sep=';', index=False)
+
+    else:
+        with open(filepath, encoding='utf8') as f:
+            for x in range(100):
+                s100+=f.readline()
+
+    dialect = csv.Sniffer().sniff(s100)  # Check what kind of csv/tsv file we have.
+
+    hasHeader, header =csv.Sniffer().has_header(s100)
+    df.datasetFeatures()._datasetFeatures_x(filepath,dialect.delimiter,hasHeader,datasetType=file[0])

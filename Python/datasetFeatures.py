@@ -4,6 +4,7 @@ Owner: Malliaridis Konstantinos PHd candidate
 """
 
 import os
+from scipy.io import arff
 import pandas as pd
 import numpy as np
 import mysql.connector
@@ -51,7 +52,10 @@ class datasetFeatures:
             if hasHeader:
                 headerV1=0
 
-            dfi = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values, header=headerV1)
+            if is_arff_file(filepath):
+                dfi, meta = loadarfftoDataframe(filepath)
+            else:
+                dfi = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values, header=headerV1)
             #Remove the rows that have missing values
             df = dfi.dropna()
 
@@ -155,7 +159,7 @@ class datasetFeatures:
             datasetFeaturesInst.FreqOfBoolCol = (len(df.select_dtypes(include='bool').columns)+(df.isin([0, 1]).all()).sum())/df.shape[1]
 
             #All the other columns are of String/Object type 
-            datasetFeaturesInst.FreqOfStringCol = 1-datasetFeaturesInst.FreqOfNumberCol-datasetFeaturesInst.FreqOfBoolCol-datasetFeaturesInst.FreqOfDateCol
+            datasetFeaturesInst.FreqOfStringCol = round(1-datasetFeaturesInst.FreqOfIntegerCol-datasetFeaturesInst.FreqOfNumberCol-datasetFeaturesInst.FreqOfBoolCol-datasetFeaturesInst.FreqOfDateCol,6)
 
             datasetFeaturesInst.MinItemLen = (df.map(lambda x: len(str(x)) if x is not None else 0).min()).min()
             datasetFeaturesInst.MaxItemLen = (df.map(lambda x: len(str(x)) if x is not None else 0).max()).max()
@@ -240,3 +244,40 @@ class datasetFeatures:
             cursor.close()
             #if 'connection' in locals() and connection.is_connected():
             connection.close()
+
+
+
+#Detect if a file is in arff format
+def is_arff_file(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            # Read the first few lines to check for ARFF attributes
+            first_lines = [file.readline().strip() for _ in range(15)]
+
+            # Check if it contains ARFF-specific keywords in the header
+            if any(line.lower().startswith('@relation') or line.lower().startswith('@attribute') for line in first_lines):
+                return True
+            else:
+                return False
+    except Exception as e:
+        print(f"Error: {e}")
+        return False
+
+#Detect if a file is in arff format
+def loadarfftoDataframe(file_path):
+    try:
+        data, meta = arff.loadarff(file_path)
+        # Convert the structured array to a Pandas DataFrame
+        df1 = pd.DataFrame(data)
+
+        # Decode categorical attributes to strings
+        for column in df1.columns:
+            if df1[column].dtype == 'object':
+                df1[column] = df1[column].str.decode('utf-8')
+
+        return df1, meta
+
+    except Exception as e:
+        print(f"Error: {e}")
+        return None, None
+    
