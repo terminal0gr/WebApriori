@@ -1,6 +1,6 @@
 {
     "hasHeader": false,
     "header": null,
-    "delimiter": " ",
+    "delimiter": ",",
     "datasetType": 0
 }

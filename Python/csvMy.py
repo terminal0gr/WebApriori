@@ -177,7 +177,7 @@ class Sniffer:
         # in case there is more than one possible delimiter
         # Malliaridis 20231209 changed preferred character order, because in some countries ',' is used as decimal separator
         # leadding to wrong delimiter detection. 
-        self.preferred = [';', ',', '\t', ' ', ':']
+        self.preferred = [';', ',', '\t', ':']
         #self.preferred = [',', '\t', ';', ' ', ':']
 
 

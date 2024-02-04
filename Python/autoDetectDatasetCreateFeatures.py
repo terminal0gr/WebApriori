@@ -19,21 +19,30 @@ for file in files:
 
     s100=''
 
-    if df.is_arff_file(filepath):
+    # if df.is_arff_file(filepath):
+
+    #     #loads arff datafile into numpy structured array
+    #     df1, meta = df.loadarfftoDataframe(filepath)
+        
+    #     # Save the first 100 rows of the DataFrame to a CSV format string with a header
+    #     s100=df1.head(100).to_csv(path_or_buf=None, sep=';', index=False)
+
+    # else:
+    #     with open(filepath, encoding='utf8') as f:
+    #         for x in range(100):
+    #             s100+=f.readline()
+
+    try:
         #loads arff datafile into numpy structured array
         df1, meta = df.loadarfftoDataframe(filepath)
-        # Convert the structured array to a Pandas DataFrame
-        # df1 = pd.DataFrame(data)
-
-        # # Decode categorical attributes to strings
-        # for column in df1.columns:
-        #     if df1[column].dtype == 'object':
-        #         df1[column] = df1[column].str.decode('utf-8')
-        
-        # Save the first 100 rows of the DataFrame to a CSV format string with a header
-        s100=df1.head(100).to_csv(path_or_buf=None, sep=';', index=False)
-
-    else:
+        if df1 is not None:       
+            # Save the first 100 rows of the DataFrame to a CSV format string with a header
+            s100=df1.head(100).to_csv(path_or_buf=None, sep=';', index=False)
+        else:
+            with open(filepath, encoding='utf8') as f:
+                for x in range(100):
+                    s100+=f.readline()
+    except Exception as e:
         with open(filepath, encoding='utf8') as f:
             for x in range(100):
                 s100+=f.readline()

@@ -52,10 +52,18 @@ class datasetFeatures:
             if hasHeader:
                 headerV1=0
 
-            if is_arff_file(filepath):
+            # if is_arff_file(filepath):
+            #     dfi, meta = loadarfftoDataframe(filepath)
+            # else:
+            #     dfi = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values, header=headerV1)
+
+            try:
                 dfi, meta = loadarfftoDataframe(filepath)
-            else:
+                if dfi is None:       
+                    dfi = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values, header=headerV1)
+            except Exception as e:
                 dfi = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values, header=headerV1)
+
             #Remove the rows that have missing values
             df = dfi.dropna()
 
@@ -250,9 +258,10 @@ class datasetFeatures:
 #Detect if a file is in arff format
 def is_arff_file(file_path):
     try:
-        with open(file_path, 'r') as file:
+        with open(file=file_path, mode='r', encoding='utf-8') as file:
             # Read the first few lines to check for ARFF attributes
-            first_lines = [file.readline().strip() for _ in range(15)]
+            #first_lines = [file.readline().strip() for _ in range(15)]
+            first_lines = [file.readline() for _ in range(15)]
 
             # Check if it contains ARFF-specific keywords in the header
             if any(line.lower().startswith('@relation') or line.lower().startswith('@attribute') for line in first_lines):
@@ -277,7 +286,7 @@ def loadarfftoDataframe(file_path):
 
         return df1, meta
 
-    except Exception as e:
-        print(f"Error: {e}")
+    except arff.ParseArffError as e:
+        print(f"Error: {e} in filepath: {file_path}")
         return None, None
     
