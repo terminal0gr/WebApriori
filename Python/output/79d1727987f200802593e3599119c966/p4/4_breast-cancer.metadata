@@ -1,0 +1,17 @@
+{
+    "hasHeader": true,
+    "header": [
+        "Class",
+        "age",
+        "menopause",
+        "tumor-size",
+        "inv-nodes",
+        "node-caps",
+        "deg-malig",
+        "breast",
+        "breast-quad",
+        "irradiat"
+    ],
+    "delimiter": ",",
+    "datasetType": 0
+}

@@ -19,19 +19,6 @@ for file in files:
 
     s100=''
 
-    # if df.is_arff_file(filepath):
-
-    #     #loads arff datafile into numpy structured array
-    #     df1, meta = df.loadarfftoDataframe(filepath)
-        
-    #     # Save the first 100 rows of the DataFrame to a CSV format string with a header
-    #     s100=df1.head(100).to_csv(path_or_buf=None, sep=';', index=False)
-
-    # else:
-    #     with open(filepath, encoding='utf8') as f:
-    #         for x in range(100):
-    #             s100+=f.readline()
-
     try:
         #loads arff datafile into numpy structured array
         df1, meta = df.loadarfftoDataframe(filepath)

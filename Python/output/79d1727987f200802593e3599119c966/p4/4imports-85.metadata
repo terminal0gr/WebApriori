@@ -1,0 +1,30 @@
+{
+    "hasHeader": true,
+    "header": [
+        "\ufeffsymboling",
+        "make",
+        "fuel",
+        "aspiration",
+        "doors",
+        "style",
+        "drive-wheels",
+        "engine-location",
+        "wheel-base",
+        "length",
+        "width",
+        "height",
+        "curb-weight",
+        "engine-type",
+        "num-of-cylinders",
+        "engine-size",
+        "fuel-system",
+        "compression-ratio",
+        "horsepower",
+        "peak-rpm",
+        "city-mpg",
+        "highway-mpg",
+        "price"
+    ],
+    "delimiter": ";",
+    "datasetType": 0
+}

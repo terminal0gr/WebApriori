@@ -1,0 +1,14 @@
+{
+    "hasHeader": true,
+    "header": [
+        "buying",
+        "maint",
+        "doors",
+        "persons",
+        "lug_boot",
+        "safety",
+        "class"
+    ],
+    "delimiter": ",",
+    "datasetType": 0
+}
