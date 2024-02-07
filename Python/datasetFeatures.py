@@ -64,15 +64,17 @@ class datasetFeatures:
             except Exception as e:
                 dfi = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values, header=headerV1)
 
-            #Remove the rows that have missing values
-            df = dfi.dropna()
+            df=dfi
 
-            if df.shape[0]==0: #rows
-                print(f"The dataset {os.path.basename(filepath)} is full of missing values or has a column which all of its items are missing values and can't be used.")
-                return None 
-            if df.shape[0]>0 and df.shape[0]<(dfi.shape[0]*0.2):
-                print(f"The dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be used.")
-                return None 
+            #Remove the rows that have missing values
+            # df = dfi.dropna()
+
+            # if df.shape[0]==0: #rows
+            #     print(f"The dataset {os.path.basename(filepath)} is full of missing values or has a column which all of its items are missing values and can't be used.")
+            #     return None 
+            # if df.shape[0]>0 and df.shape[0]<(dfi.shape[0]*0.2):
+            #     print(f"The dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be used.")
+            #     return None 
 
             class datasetFeaturesInst(datasetFeatures):
                 _name=os.path.basename(filepath)
@@ -83,54 +85,86 @@ class datasetFeatures:
                 datasetFeaturesInst.Header=df.columns.tolist()
 
             freqplus=0
+            boolColumns=0
             numericColumns=0
             integerColumns=0
             datetimeColumns=0
             twoValuesItemColumn=0
             for myCol in df.columns:
-                uniqueValues=df[myCol].nunique()
+
+                #Remove the rows from current column that have missing values
+                dfcol = df[myCol].dropna()
+                if dfcol.shape[0]==0: #rows
+                    print(f"The column {dfcol.name} of {os.path.basename(filepath)} is full of missing values and can't be analysed. The procedure ends with error.")
+                    return None 
+                if dfcol.shape[0]>0 and dfcol.shape[0]<(df[myCol].shape[0]*0.2):
+                    print(f"The column {dfcol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be analysed. The procedure ends with error.")
+                    return None 
+
+                uniqueValues=dfcol.nunique()
                 freq=uniqueValues/df.shape[0] #df.shape[0]->#rows
                 freqplus+=freq
                 if uniqueValues==2:
                     twoValuesItemColumn+=1
+
+                #detect bool column values (missing values have been eliminated in this stage...)
+                if (dfcol.isin([0, 1]).all() or 
+                    dfcol.isin(['t', 'f']).all() or
+                    dfcol.isin(['T', 'F']).all() or
+                    dfcol.isin(['y', 'n']).all() or
+                    dfcol.isin(['Y', 'N']).all() or
+                    dfcol.isin(['YES', 'NO']).all() or
+                    dfcol.isin(['yes', 'no']).all() or
+                    dfcol.isin(['Yes', 'No']).all() or                    
+                    dfcol.isin(['true', 'false']).all() or
+                    dfcol.isin(['TRUE', 'FALSE']).all() or
+                    dfcol.isin(['True', 'False']).all() or                    
+                    dfcol.isin([True, False]).all()
+                   ):
+                        boolColumns+=1
+                        continue
                 
                 try:
                     # At first check if you can recognise the column as number
-                    tempColumn = pd.to_numeric(df[myCol], errors='raise')
-                    dfint=df[myCol].astype('int64') 
-                    if dfint.sum()==df[myCol].sum():
+                    tempColumn = pd.to_numeric(dfcol, errors='raise')
+                    dfint=dfcol.astype('int64') 
+                    if dfint.sum()==dfcol.sum():
                         integerColumns+=1
+                        continue
                     else:  
                         numericColumns+=1
+                        continue
 
                 except ValueError:
                     try:
                         # If not then try to check if it is a number but with comma as delimiter e.g. like greek regional settings
-                        dfc=df[myCol].str.replace('.', '') # 43.700,00 --> 43700,00
+                        dfc=dfcol.str.replace('.', '') # 43.700,00 --> 43700,00
                         dfc=dfc.str.replace(',', '.')      # 43700,00  --> 43700.00
                         dfc=pd.to_numeric(dfc, errors='raise') #check if can be pasred as number
                         dfint=dfc.astype('int64') 
                         if dfint.sum()==dfc.sum():
                             integerColumns+=1
+                            continue
                         else:  
                             numericColumns+=1
+                            continue
                           
                     except ValueError:
                         try:
                             # If not a number the try to check if it is a date.
                             # to_datetime ensures that it will find that a column is datetime even if it has 
                             # other format than the expected (expected format yyy-mm-dd)
-                            tempColumn = pd.to_datetime(df[myCol], errors='raise', format='mixed')
+                            tempColumn = pd.to_datetime(dfcol, errors='raise', format='mixed')
                             datetimeColumns+=1
+                            continue
                         except ValueError:
                             # Ok it is not a datetime Column. So what!!!
                             datetimeColumns+=0
+                            continue
 
             datasetFeaturesInst.AvgOfDistinctValuesPerCol=freqplus/df.shape[1] #df.shape[1]->#Columns
 
-            #From integer columns we want to substract the columns that have only items 0 or 1 because we consider them to be boolean columns
-            #(df.isin([0, 1]).all()).sum() --> count the columns that have as values 0 or 1
-            datasetFeaturesInst.FreqOfIntegerCol=(integerColumns-(df.isin([0, 1]).all()).sum())/df.shape[1]
+            datasetFeaturesInst.FreqOfIntegerCol=integerColumns/df.shape[1]
             
             datasetFeaturesInst.FreqOfNumberCol=numericColumns/df.shape[1]
 
@@ -162,9 +196,7 @@ class datasetFeatures:
 
             datasetFeaturesInst.NumberOfColumns=df.shape[1]
 
-            #len(df.select_dtypes(include='bool').columns) --> count the columns that have as Values True/False
-            #(df.isin([0, 1]).all()).sum() --> count the columns that have as values 0 or 1
-            datasetFeaturesInst.FreqOfBoolCol = (len(df.select_dtypes(include='bool').columns)+(df.isin([0, 1]).all()).sum())/df.shape[1]
+            datasetFeaturesInst.FreqOfBoolCol = boolColumns/df.shape[1]
 
             #All the other columns are of String/Object type 
             datasetFeaturesInst.FreqOfStringCol = round(1-datasetFeaturesInst.FreqOfIntegerCol-datasetFeaturesInst.FreqOfNumberCol-datasetFeaturesInst.FreqOfBoolCol-datasetFeaturesInst.FreqOfDateCol,6)
