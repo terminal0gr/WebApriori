@@ -1,0 +1,13 @@
+{
+    "hasHeader": true,
+    "header": [
+        "Brew No.",
+        "OG",
+        "ABV",
+        "pH",
+        "IBU",
+        "style"
+    ],
+    "delimiter": ",",
+    "datasetType": 0
+}

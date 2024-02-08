@@ -1,0 +1,168 @@
+{
+    "min_support": 0.03,
+    "min_confidence": 0.2,
+    "min_lift": 10.0,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "beer.csv",
+    "datasetType": 4,
+    "outputType": 3,
+    "reduntantRemoveType": 0,
+    "datasetArgs": "['OG', 'ABV', 'pH', 'IBU', 'style']",
+    "Records": 150,
+    "RecordsCreationTime": "0.008",
+    "RulesCount": 8,
+    "RulesCreationTime": "0.090",
+    "rules": [
+        {
+            "LHS": [
+                "IBU=13.0"
+            ],
+            "RHS": [
+                "pH=3.8",
+                "style=Premium Lager"
+            ],
+            "Confidence": 0.5555555555555556,
+            "Lift": 11.904761904761905,
+            "Conviction": 2.145,
+            "Leverage": 0.030533333333333332,
+            "LHS_Count": 9,
+            "LHS_Support": 0.06,
+            "RHS_Count": 7,
+            "RHS_Support": 0.04666666666666667,
+            "Support": 0.03333333333333333,
+            "Count": 5
+        },
+        {
+            "LHS": [
+                "pH=3.8",
+                "style=Premium Lager"
+            ],
+            "RHS": [
+                "IBU=13.0"
+            ],
+            "Confidence": 0.7142857142857142,
+            "Lift": 11.904761904761903,
+            "Conviction": 3.2899999999999987,
+            "Leverage": 0.030533333333333332,
+            "LHS_Count": 7,
+            "LHS_Support": 0.04666666666666667,
+            "RHS_Count": 9,
+            "RHS_Support": 0.06,
+            "Support": 0.03333333333333333,
+            "Count": 5
+        },
+        {
+            "LHS": [
+                "IBU=42.0"
+            ],
+            "RHS": [
+                "OG=13.6"
+            ],
+            "Confidence": 0.5,
+            "Lift": 10.714285714285714,
+            "Conviction": 1.9066666666666667,
+            "Leverage": 0.03626666666666667,
+            "LHS_Count": 12,
+            "LHS_Support": 0.08,
+            "RHS_Count": 7,
+            "RHS_Support": 0.04666666666666667,
+            "Support": 0.04,
+            "Count": 6
+        },
+        {
+            "LHS": [
+                "OG=13.6"
+            ],
+            "RHS": [
+                "IBU=42.0"
+            ],
+            "Confidence": 0.8571428571428571,
+            "Lift": 10.714285714285714,
+            "Conviction": 6.439999999999998,
+            "Leverage": 0.03626666666666667,
+            "LHS_Count": 7,
+            "LHS_Support": 0.04666666666666667,
+            "RHS_Count": 12,
+            "RHS_Support": 0.08,
+            "Support": 0.04,
+            "Count": 6
+        },
+        {
+            "LHS": [
+                "IBU=42.0"
+            ],
+            "RHS": [
+                "OG=13.6",
+                "style=IPA"
+            ],
+            "Confidence": 0.5,
+            "Lift": 10.714285714285714,
+            "Conviction": 1.9066666666666667,
+            "Leverage": 0.03626666666666667,
+            "LHS_Count": 12,
+            "LHS_Support": 0.08,
+            "RHS_Count": 7,
+            "RHS_Support": 0.04666666666666667,
+            "Support": 0.04,
+            "Count": 6
+        },
+        {
+            "LHS": [
+                "OG=13.6"
+            ],
+            "RHS": [
+                "IBU=42.0",
+                "style=IPA"
+            ],
+            "Confidence": 0.8571428571428571,
+            "Lift": 10.714285714285714,
+            "Conviction": 6.439999999999998,
+            "Leverage": 0.03626666666666667,
+            "LHS_Count": 7,
+            "LHS_Support": 0.04666666666666667,
+            "RHS_Count": 12,
+            "RHS_Support": 0.08,
+            "Support": 0.04,
+            "Count": 6
+        },
+        {
+            "LHS": [
+                "style=IPA",
+                "IBU=42.0"
+            ],
+            "RHS": [
+                "OG=13.6"
+            ],
+            "Confidence": 0.5,
+            "Lift": 10.714285714285714,
+            "Conviction": 1.9066666666666667,
+            "Leverage": 0.03626666666666667,
+            "LHS_Count": 12,
+            "LHS_Support": 0.08,
+            "RHS_Count": 7,
+            "RHS_Support": 0.04666666666666667,
+            "Support": 0.04,
+            "Count": 6
+        },
+        {
+            "LHS": [
+                "OG=13.6",
+                "style=IPA"
+            ],
+            "RHS": [
+                "IBU=42.0"
+            ],
+            "Confidence": 0.8571428571428571,
+            "Lift": 10.714285714285714,
+            "Conviction": 6.439999999999998,
+            "Leverage": 0.03626666666666667,
+            "LHS_Count": 7,
+            "LHS_Support": 0.04666666666666667,
+            "RHS_Count": 12,
+            "RHS_Support": 0.08,
+            "Support": 0.04,
+            "Count": 6
+        }
+    ]
+}

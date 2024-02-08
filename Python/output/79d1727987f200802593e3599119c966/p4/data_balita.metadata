@@ -1,0 +1,11 @@
+{
+    "hasHeader": true,
+    "header": [
+        "Umur (bulan)",
+        "Jenis Kelamin",
+        "Tinggi Badan (cm)",
+        "Status Gizi"
+    ],
+    "delimiter": ",",
+    "datasetType": 0
+}

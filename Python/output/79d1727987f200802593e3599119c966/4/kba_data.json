@@ -1,0 +1,183 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 2.0,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "kba_data.csv",
+    "datasetType": 4,
+    "outputType": 3,
+    "reduntantRemoveType": 0,
+    "datasetArgs": "['Common.Name', 'Date', 'Time', 'n.observers', 'County', 'Sub.cell', 'Season', 'DEM', 'Cell.ID', 'List.ID']",
+    "Records": 300882,
+    "RecordsCreationTime": "1.511",
+    "RulesCount": 9,
+    "RulesCreationTime": "3.843",
+    "rules": [
+        {
+            "LHS": [
+                "DEM=1.0"
+            ],
+            "RHS": [
+                "County=Alappuzha"
+            ],
+            "Confidence": 0.5794056407344311,
+            "Lift": 10.535609354895577,
+            "Conviction": 2.246832364154516,
+            "Leverage": 0.009207800776222356,
+            "LHS_Count": 5283,
+            "LHS_Support": 0.01755837836759926,
+            "RHS_Count": 16547,
+            "RHS_Support": 0.05499498142128808,
+            "Support": 0.010173423468336424,
+            "Count": 3061
+        },
+        {
+            "LHS": [
+                "Season=Dry",
+                "County=Kozhikode"
+            ],
+            "RHS": [
+                "n.observers=1.0"
+            ],
+            "Confidence": 0.5532002752924983,
+            "Lift": 5.338978869340437,
+            "Conviction": 2.0062336201684117,
+            "Leverage": 0.010855532504658517,
+            "LHS_Count": 7265,
+            "LHS_Support": 0.024145678372252247,
+            "RHS_Count": 31176,
+            "RHS_Support": 0.10361537080981913,
+            "Support": 0.013357395922654064,
+            "Count": 4019
+        },
+        {
+            "LHS": [
+                "County=Kozhikode"
+            ],
+            "RHS": [
+                "n.observers=1.0"
+            ],
+            "Confidence": 0.48595938118630394,
+            "Lift": 4.690031772199689,
+            "Conviction": 1.7438011635322885,
+            "Leverage": 0.01733167805825831,
+            "LHS_Count": 13639,
+            "LHS_Support": 0.045330062948265436,
+            "RHS_Count": 31176,
+            "RHS_Support": 0.10361537080981913,
+            "Support": 0.022028569339475276,
+            "Count": 6628
+        },
+        {
+            "LHS": [
+                "n.observers=1.0"
+            ],
+            "RHS": [
+                "County=Kozhikode"
+            ],
+            "Confidence": 0.2125994354631768,
+            "Lift": 4.690031772199689,
+            "Conviction": 1.2124323756527977,
+            "Leverage": 0.01733167805825831,
+            "LHS_Count": 31176,
+            "LHS_Support": 0.10361537080981913,
+            "RHS_Count": 13639,
+            "RHS_Support": 0.045330062948265436,
+            "Support": 0.022028569339475276,
+            "Count": 6628
+        },
+        {
+            "LHS": [
+                "County=Kozhikode"
+            ],
+            "RHS": [
+                "Season=Dry",
+                "n.observers=1.0"
+            ],
+            "Confidence": 0.2946696971918762,
+            "Lift": 4.442591964247437,
+            "Conviction": 1.3237367914492169,
+            "Leverage": 0.010350728636945602,
+            "LHS_Count": 13639,
+            "LHS_Support": 0.045330062948265436,
+            "RHS_Count": 19957,
+            "RHS_Support": 0.06632832804886965,
+            "Support": 0.013357395922654064,
+            "Count": 4019
+        },
+        {
+            "LHS": [
+                "Season=Dry",
+                "n.observers=1.0"
+            ],
+            "RHS": [
+                "County=Kozhikode"
+            ],
+            "Confidence": 0.2013829733927945,
+            "Lift": 4.442591964247437,
+            "Conviction": 1.195403936111273,
+            "Leverage": 0.010350728636945602,
+            "LHS_Count": 19957,
+            "LHS_Support": 0.06632832804886965,
+            "RHS_Count": 13639,
+            "RHS_Support": 0.045330062948265436,
+            "Support": 0.013357395922654064,
+            "Count": 4019
+        },
+        {
+            "LHS": [
+                "Date=7/24/2016"
+            ],
+            "RHS": [
+                "Season=Wet"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.2936925399076067,
+            "Conviction": 100,
+            "Leverage": 0.006575961307532551,
+            "LHS_Count": 3508,
+            "LHS_Support": 0.011659055709547264,
+            "RHS_Count": 131178,
+            "RHS_Support": 0.43597822402137715,
+            "Support": 0.011659055709547264,
+            "Count": 3508
+        },
+        {
+            "LHS": [
+                "County=Kottayam"
+            ],
+            "RHS": [
+                "n.observers=1.0"
+            ],
+            "Confidence": 0.233463517450871,
+            "Lift": 2.2531745592010832,
+            "Conviction": 1.1693959121283306,
+            "Leverage": 0.006961468128591301,
+            "LHS_Count": 16131,
+            "LHS_Support": 0.053612379603964345,
+            "RHS_Count": 31176,
+            "RHS_Support": 0.10361537080981913,
+            "Support": 0.01251653472125285,
+            "Count": 3766
+        },
+        {
+            "LHS": [
+                "County=Wayanad"
+            ],
+            "RHS": [
+                "n.observers=1.0"
+            ],
+            "Confidence": 0.21914611508883589,
+            "Lift": 2.1149961957967385,
+            "Conviction": 1.1479543695837031,
+            "Leverage": 0.007239822200666243,
+            "LHS_Count": 18855,
+            "LHS_Support": 0.0626657626577861,
+            "RHS_Count": 31176,
+            "RHS_Support": 0.10361537080981913,
+            "Support": 0.013732958435532867,
+            "Count": 4132
+        }
+    ]
+}

@@ -1,0 +1,240 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "targets.csv",
+    "datasetType": 4,
+    "outputType": 3,
+    "reduntantRemoveType": 0,
+    "datasetArgs": "['sides', 'bg_color', 'fg_color', 'bound_circle_x', 'bound_circle_y', 'bound_circle_r', 'rotation']",
+    "Records": 10000,
+    "RecordsCreationTime": "0.075",
+    "RulesCount": 12,
+    "RulesCreationTime": "0.193",
+    "rules": [
+        {
+            "LHS": [
+                "bound_circle_r=59"
+            ],
+            "RHS": [
+                "bound_circle_x=64",
+                "bound_circle_y=64"
+            ],
+            "Confidence": 1.0,
+            "Lift": 30.959752321981423,
+            "Conviction": 100,
+            "Leverage": 0.01703152,
+            "LHS_Count": 176,
+            "LHS_Support": 0.0176,
+            "RHS_Count": 323,
+            "RHS_Support": 0.0323,
+            "Support": 0.0176,
+            "Count": 176
+        },
+        {
+            "LHS": [
+                "bound_circle_x=64",
+                "bound_circle_y=64"
+            ],
+            "RHS": [
+                "bound_circle_r=59"
+            ],
+            "Confidence": 0.544891640866873,
+            "Lift": 30.95975232198142,
+            "Conviction": 2.1586068027210885,
+            "Leverage": 0.01703152,
+            "LHS_Count": 323,
+            "LHS_Support": 0.0323,
+            "RHS_Count": 176,
+            "RHS_Support": 0.0176,
+            "Support": 0.0176,
+            "Count": 176
+        },
+        {
+            "LHS": [
+                "bound_circle_r=59"
+            ],
+            "RHS": [
+                "bound_circle_y=64"
+            ],
+            "Confidence": 1.0,
+            "Lift": 12.72264631043257,
+            "Conviction": 100,
+            "Leverage": 0.01621664,
+            "LHS_Count": 176,
+            "LHS_Support": 0.0176,
+            "RHS_Count": 786,
+            "RHS_Support": 0.0786,
+            "Support": 0.0176,
+            "Count": 176
+        },
+        {
+            "LHS": [
+                "bound_circle_y=64"
+            ],
+            "RHS": [
+                "bound_circle_r=59"
+            ],
+            "Confidence": 0.22391857506361323,
+            "Lift": 12.72264631043257,
+            "Conviction": 1.2658465573770492,
+            "Leverage": 0.01621664,
+            "LHS_Count": 786,
+            "LHS_Support": 0.0786,
+            "RHS_Count": 176,
+            "RHS_Support": 0.0176,
+            "Support": 0.0176,
+            "Count": 176
+        },
+        {
+            "LHS": [
+                "bound_circle_y=64"
+            ],
+            "RHS": [
+                "bound_circle_x=64",
+                "bound_circle_r=59"
+            ],
+            "Confidence": 0.22391857506361323,
+            "Lift": 12.72264631043257,
+            "Conviction": 1.2658465573770492,
+            "Leverage": 0.01621664,
+            "LHS_Count": 786,
+            "LHS_Support": 0.0786,
+            "RHS_Count": 176,
+            "RHS_Support": 0.0176,
+            "Support": 0.0176,
+            "Count": 176
+        },
+        {
+            "LHS": [
+                "bound_circle_x=64",
+                "bound_circle_r=59"
+            ],
+            "RHS": [
+                "bound_circle_y=64"
+            ],
+            "Confidence": 1.0,
+            "Lift": 12.72264631043257,
+            "Conviction": 100,
+            "Leverage": 0.01621664,
+            "LHS_Count": 176,
+            "LHS_Support": 0.0176,
+            "RHS_Count": 786,
+            "RHS_Support": 0.0786,
+            "Support": 0.0176,
+            "Count": 176
+        },
+        {
+            "LHS": [
+                "bound_circle_r=59"
+            ],
+            "RHS": [
+                "bound_circle_x=64"
+            ],
+            "Confidence": 1.0,
+            "Lift": 11.80637544273908,
+            "Conviction": 100,
+            "Leverage": 0.01610928,
+            "LHS_Count": 176,
+            "LHS_Support": 0.0176,
+            "RHS_Count": 847,
+            "RHS_Support": 0.0847,
+            "Support": 0.0176,
+            "Count": 176
+        },
+        {
+            "LHS": [
+                "bound_circle_r=59",
+                "bound_circle_y=64"
+            ],
+            "RHS": [
+                "bound_circle_x=64"
+            ],
+            "Confidence": 1.0,
+            "Lift": 11.80637544273908,
+            "Conviction": 100,
+            "Leverage": 0.01610928,
+            "LHS_Count": 176,
+            "LHS_Support": 0.0176,
+            "RHS_Count": 847,
+            "RHS_Support": 0.0847,
+            "Support": 0.0176,
+            "Count": 176
+        },
+        {
+            "LHS": [
+                "bound_circle_x=64"
+            ],
+            "RHS": [
+                "bound_circle_r=59"
+            ],
+            "Confidence": 0.2077922077922078,
+            "Lift": 11.806375442739078,
+            "Conviction": 1.2400786885245902,
+            "Leverage": 0.01610928,
+            "LHS_Count": 847,
+            "LHS_Support": 0.0847,
+            "RHS_Count": 176,
+            "RHS_Support": 0.0176,
+            "Support": 0.0176,
+            "Count": 176
+        },
+        {
+            "LHS": [
+                "bound_circle_x=64"
+            ],
+            "RHS": [
+                "bound_circle_r=59",
+                "bound_circle_y=64"
+            ],
+            "Confidence": 0.2077922077922078,
+            "Lift": 11.806375442739078,
+            "Conviction": 1.2400786885245902,
+            "Leverage": 0.01610928,
+            "LHS_Count": 847,
+            "LHS_Support": 0.0847,
+            "RHS_Count": 176,
+            "RHS_Support": 0.0176,
+            "Support": 0.0176,
+            "Count": 176
+        },
+        {
+            "LHS": [
+                "bound_circle_x=64"
+            ],
+            "RHS": [
+                "bound_circle_y=64"
+            ],
+            "Confidence": 0.3813459268004723,
+            "Lift": 4.851729348606518,
+            "Conviction": 1.489362213740458,
+            "Leverage": 0.02564258,
+            "LHS_Count": 847,
+            "LHS_Support": 0.0847,
+            "RHS_Count": 786,
+            "RHS_Support": 0.0786,
+            "Support": 0.0323,
+            "Count": 323
+        },
+        {
+            "LHS": [
+                "bound_circle_y=64"
+            ],
+            "RHS": [
+                "bound_circle_x=64"
+            ],
+            "Confidence": 0.41094147582697205,
+            "Lift": 4.851729348606518,
+            "Conviction": 1.5538354211663068,
+            "Leverage": 0.02564258,
+            "LHS_Count": 786,
+            "LHS_Support": 0.0786,
+            "RHS_Count": 847,
+            "RHS_Support": 0.0847,
+            "Support": 0.0323,
+            "Count": 323
+        }
+    ]
+}
