@@ -104,7 +104,7 @@ class datasetFeatures:
                 uniqueValues=dfcol.nunique()
                 freq=uniqueValues/df.shape[0] #df.shape[0]->#rows
                 freqplus+=freq
-                if uniqueValues==2:
+                if uniqueValues<=2:
                     twoValuesItemColumn+=1
 
                 #detect bool column values (missing values have been eliminated in this stage...)
