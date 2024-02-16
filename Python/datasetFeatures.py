@@ -37,7 +37,7 @@ class datasetFeatures:
     delimiter=';'
     Header=[]
 
-    def _datasetFeatures_x(self, filepath, delimiter, hasHeader, nrows=100, datasetType=None):
+    def _datasetFeatures_x(self, filepath, delimiter, hasHeader, nrows=500, datasetType=None):
         # Creates the features of the dataset in order to determine datasetType via ML
         try:
 
