@@ -242,7 +242,7 @@ ALTER TABLE `datasetfeatures`
 --
 -- Ευρετήρια για πίνακα `datasetwrongclassifications`
 --
-ALTER TABLE `datasetwrongclassifications`
+ALTER TABLE `datasetWrongClassifications`
   ADD PRIMARY KEY (`datasetName`,`realClass`,`predictedClass`);
 
 --

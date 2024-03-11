@@ -71,14 +71,25 @@ for train_index, test_index in kf.split(X):
     print()
     for row_index, (input, prediction, label) in enumerate(zip (X_test, y_pred, y_test)):
       if prediction != label:
+      
         print('Dataset', y_test.index[row_index], dsData['name'].iloc[y_test.index[row_index]], 'classified as ', prediction, 'should be ', label)
+      
         strsql = "UPDATE `datasetwrongclassification` \
                       set instances=instances+1 \
                   Where `datasetName`=%s \
                   And   `realClass`  =%s \
-                  And   `predicedClass`=%s"
-        queryParams=(dsData['name'].iloc[y_test.index[row_index]],label,prediction)
-        print(type(queryParams))
+                  And   `predictedClass`=%s"
+        queryParams=(dsData['name'].iloc[y_test.index[row_index]],int(label),int(prediction))
+        mySql.myQuery(strsql,queryParams)
+
+        strsql = "INSERT INTO `datasetwrongclassification`(`datasetName`, `realClass`, `predictedClass`, `instances`)  \
+                  SELECT %s, %s, %s, 1 \
+                  WHERE NOT EXISTS (SELECT `datasetName` \
+                      FROM `datasetwrongclassification` \
+                      WHERE `datasetName`=%s \
+                      AND   `realClass`=%s \
+                      AND   `predictedClass`=%s)"
+        queryParams=(dsData['name'].iloc[y_test.index[row_index]],int(label),int(prediction),dsData['name'].iloc[y_test.index[row_index]],int(label),int(prediction))
         mySql.myQuery(strsql,queryParams)
 
     # Compute confusion matrix

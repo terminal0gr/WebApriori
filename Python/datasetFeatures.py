@@ -36,6 +36,7 @@ class datasetFeatures:
     datasetType='0'
     delimiter=';'
     Header=[]
+    type2Words=0 #Range [0...infinite]
 
     def _datasetFeatures_x(self, filepath, delimiter, hasHeader, nrows=500, datasetType=None):
         # Creates the features of the dataset in order to determine datasetType via ML
@@ -83,6 +84,12 @@ class datasetFeatures:
 
             if hasHeader:
                 datasetFeaturesInst.Header=df.columns.tolist()
+
+                #datasetFeaturesInst.type2Words += sum(1 for item in datasetFeaturesInst.Header if 'invoice' in str.upper(item))
+                # Specific list of strings to count
+                specific_strings = ['INVOICE', 'ORDER', 'QUANTITY', 'QTY', 'PRODUCT', 'ITEM', 'CUSTOMER', 'ΕΙΔΟΣ', 'ΤΙΜΟΛΟΓΙΟ', 'ΠΑΡΑΓ', 'ΠΟΣΟΤ', 'PRODUKT']
+                datasetFeaturesInst.type2Words= sum(1 for item in datasetFeaturesInst.Header if any(s in str.upper(item) for s in specific_strings))
+
 
             freqplus=0
             boolColumns=0
@@ -255,7 +262,7 @@ class datasetFeatures:
                                 `FreqOfNumberCol`, `FreqOfDateCol`, `FreqOfStringCol`, \
                                 `FreqOfBoolCol`, `MinItemLen`, `MaxItemLen`, \
                                 `AvgItemLen`, `Freq1CharColumns`, `Freq2ValuesItemColumns`, \
-                                `hasHeader`, `datasetType`,`delimiter` \
+                                `hasHeader`, `datasetType`, `type2Words` \
                                 ) \
                         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) "
                 #parameters are given as a tuple
@@ -265,7 +272,7 @@ class datasetFeatures:
                               dFI.FreqOfNumberCol, dFI.FreqOfDateCol, dFI.FreqOfStringCol,
                               dFI.FreqOfBoolCol, dFI.MinItemLen.item(), dFI.MaxItemLen.item(), 
                               dFI.AvgItemLen, dFI.Freq1CharColumns, dFI.Freq2ValuesItemColumns, 
-                              dFI.HasHeader, dFI.datasetType,dFI.delimiter)
+                              dFI.HasHeader, dFI.datasetType, dFI.type2Words)
                 # Execute the query with the data
                 cursor.execute(strsql, recorddata) 
                 # Commit the changes
