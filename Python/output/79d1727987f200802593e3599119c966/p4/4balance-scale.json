@@ -1,0 +1,3536 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "4balance-scale.data",
+    "datasetType": 4,
+    "outputType": 3,
+    "reduntantRemoveType": 0,
+    "datasetArgs": "['Class', 'Left-Weight', 'Left-Distance', 'Right-Weight', 'Right-Distance']",
+    "Records": 625,
+    "RecordsCreationTime": "0.010",
+    "RulesCount": 186,
+    "RulesCreationTime": "0.051",
+    "rules": [
+        {
+            "LHS": [
+                "Left-Distance=1",
+                "Class=L"
+            ],
+            "RHS": [
+                "Right-Distance=1"
+            ],
+            "Confidence": 0.5882352941176471,
+            "Lift": 2.941176470588235,
+            "Conviction": 1.942857142857143,
+            "Leverage": 0.01056,
+            "LHS_Count": 17,
+            "LHS_Support": 0.0272,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Left-Distance=1",
+                "Class=L"
+            ],
+            "RHS": [
+                "Right-Weight=1"
+            ],
+            "Confidence": 0.5882352941176471,
+            "Lift": 2.941176470588235,
+            "Conviction": 1.942857142857143,
+            "Leverage": 0.01056,
+            "LHS_Count": 17,
+            "LHS_Support": 0.0272,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Left-Weight=1"
+            ],
+            "RHS": [
+                "Right-Distance=1"
+            ],
+            "Confidence": 0.5882352941176471,
+            "Lift": 2.941176470588235,
+            "Conviction": 1.942857142857143,
+            "Leverage": 0.01056,
+            "LHS_Count": 17,
+            "LHS_Support": 0.0272,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Left-Weight=1"
+            ],
+            "RHS": [
+                "Right-Weight=1"
+            ],
+            "Confidence": 0.5882352941176471,
+            "Lift": 2.941176470588235,
+            "Conviction": 1.942857142857143,
+            "Leverage": 0.01056,
+            "LHS_Count": 17,
+            "LHS_Support": 0.0272,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Distance=1"
+            ],
+            "RHS": [
+                "Left-Distance=1"
+            ],
+            "Confidence": 0.5882352941176471,
+            "Lift": 2.941176470588235,
+            "Conviction": 1.942857142857143,
+            "Leverage": 0.01056,
+            "LHS_Count": 17,
+            "LHS_Support": 0.0272,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Weight=1"
+            ],
+            "RHS": [
+                "Left-Distance=1"
+            ],
+            "Confidence": 0.5882352941176471,
+            "Lift": 2.941176470588235,
+            "Conviction": 1.942857142857143,
+            "Leverage": 0.01056,
+            "LHS_Count": 17,
+            "LHS_Support": 0.0272,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Distance=1"
+            ],
+            "RHS": [
+                "Left-Weight=1"
+            ],
+            "Confidence": 0.5882352941176471,
+            "Lift": 2.941176470588235,
+            "Conviction": 1.942857142857143,
+            "Leverage": 0.01056,
+            "LHS_Count": 17,
+            "LHS_Support": 0.0272,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Weight=1"
+            ],
+            "RHS": [
+                "Left-Weight=1"
+            ],
+            "Confidence": 0.5882352941176471,
+            "Lift": 2.941176470588235,
+            "Conviction": 1.942857142857143,
+            "Leverage": 0.01056,
+            "LHS_Count": 17,
+            "LHS_Support": 0.0272,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Weight=5"
+            ],
+            "RHS": [
+                "Right-Distance=1"
+            ],
+            "Confidence": 0.5357142857142857,
+            "Lift": 2.6785714285714284,
+            "Conviction": 1.7230769230769232,
+            "Leverage": 0.01504,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Right-Distance=5",
+                "Class=L"
+            ],
+            "RHS": [
+                "Right-Weight=1"
+            ],
+            "Confidence": 0.5357142857142857,
+            "Lift": 2.6785714285714284,
+            "Conviction": 1.7230769230769232,
+            "Leverage": 0.01504,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Weight=5"
+            ],
+            "RHS": [
+                "Left-Distance=1"
+            ],
+            "Confidence": 0.5357142857142857,
+            "Lift": 2.6785714285714284,
+            "Conviction": 1.7230769230769232,
+            "Leverage": 0.01504,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Distance=5"
+            ],
+            "RHS": [
+                "Left-Weight=1"
+            ],
+            "Confidence": 0.5357142857142857,
+            "Lift": 2.6785714285714284,
+            "Conviction": 1.7230769230769232,
+            "Leverage": 0.01504,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Left-Distance=1",
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Weight=5"
+            ],
+            "Confidence": 0.4705882352941177,
+            "Lift": 2.3529411764705883,
+            "Conviction": 1.5111111111111115,
+            "Leverage": 0.00736,
+            "LHS_Count": 17,
+            "LHS_Support": 0.0272,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0128,
+            "Count": 8
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Left-Weight=1"
+            ],
+            "RHS": [
+                "Left-Distance=5"
+            ],
+            "Confidence": 0.4705882352941177,
+            "Lift": 2.3529411764705883,
+            "Conviction": 1.5111111111111115,
+            "Leverage": 0.00736,
+            "LHS_Count": 17,
+            "LHS_Support": 0.0272,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0128,
+            "Count": 8
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Distance=1"
+            ],
+            "RHS": [
+                "Right-Weight=5"
+            ],
+            "Confidence": 0.4705882352941177,
+            "Lift": 2.3529411764705883,
+            "Conviction": 1.5111111111111115,
+            "Leverage": 0.00736,
+            "LHS_Count": 17,
+            "LHS_Support": 0.0272,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0128,
+            "Count": 8
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Weight=1"
+            ],
+            "RHS": [
+                "Right-Distance=5"
+            ],
+            "Confidence": 0.4705882352941177,
+            "Lift": 2.3529411764705883,
+            "Conviction": 1.5111111111111115,
+            "Leverage": 0.00736,
+            "LHS_Count": 17,
+            "LHS_Support": 0.0272,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0128,
+            "Count": 8
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Weight=4"
+            ],
+            "RHS": [
+                "Right-Distance=1"
+            ],
+            "Confidence": 0.4473684210526316,
+            "Lift": 2.236842105263158,
+            "Conviction": 1.4476190476190478,
+            "Leverage": 0.015039999999999998,
+            "LHS_Count": 38,
+            "LHS_Support": 0.0608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0272,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Right-Distance=4",
+                "Class=L"
+            ],
+            "RHS": [
+                "Right-Weight=1"
+            ],
+            "Confidence": 0.4473684210526316,
+            "Lift": 2.236842105263158,
+            "Conviction": 1.4476190476190478,
+            "Leverage": 0.015039999999999998,
+            "LHS_Count": 38,
+            "LHS_Support": 0.0608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0272,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Left-Weight=4",
+                "Class=R"
+            ],
+            "RHS": [
+                "Left-Distance=1"
+            ],
+            "Confidence": 0.4473684210526316,
+            "Lift": 2.236842105263158,
+            "Conviction": 1.4476190476190478,
+            "Leverage": 0.015039999999999998,
+            "LHS_Count": 38,
+            "LHS_Support": 0.0608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0272,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Distance=4"
+            ],
+            "RHS": [
+                "Left-Weight=1"
+            ],
+            "Confidence": 0.4473684210526316,
+            "Lift": 2.236842105263158,
+            "Conviction": 1.4476190476190478,
+            "Leverage": 0.015039999999999998,
+            "LHS_Count": 38,
+            "LHS_Support": 0.0608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0272,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Left-Distance=2",
+                "Class=L"
+            ],
+            "RHS": [
+                "Right-Distance=1"
+            ],
+            "Confidence": 0.4418604651162791,
+            "Lift": 2.2093023255813953,
+            "Conviction": 1.4333333333333333,
+            "Leverage": 0.01664,
+            "LHS_Count": 43,
+            "LHS_Support": 0.0688,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Distance=2",
+                "Class=L"
+            ],
+            "RHS": [
+                "Right-Weight=1"
+            ],
+            "Confidence": 0.4418604651162791,
+            "Lift": 2.2093023255813953,
+            "Conviction": 1.4333333333333333,
+            "Leverage": 0.01664,
+            "LHS_Count": 43,
+            "LHS_Support": 0.0688,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Weight=2",
+                "Class=L"
+            ],
+            "RHS": [
+                "Right-Distance=1"
+            ],
+            "Confidence": 0.4418604651162791,
+            "Lift": 2.2093023255813953,
+            "Conviction": 1.4333333333333333,
+            "Leverage": 0.01664,
+            "LHS_Count": 43,
+            "LHS_Support": 0.0688,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Weight=2",
+                "Class=L"
+            ],
+            "RHS": [
+                "Right-Weight=1"
+            ],
+            "Confidence": 0.4418604651162791,
+            "Lift": 2.2093023255813953,
+            "Conviction": 1.4333333333333333,
+            "Leverage": 0.01664,
+            "LHS_Count": 43,
+            "LHS_Support": 0.0688,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Distance=2"
+            ],
+            "RHS": [
+                "Left-Distance=1"
+            ],
+            "Confidence": 0.4418604651162791,
+            "Lift": 2.2093023255813953,
+            "Conviction": 1.4333333333333333,
+            "Leverage": 0.01664,
+            "LHS_Count": 43,
+            "LHS_Support": 0.0688,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Weight=2"
+            ],
+            "RHS": [
+                "Left-Distance=1"
+            ],
+            "Confidence": 0.4418604651162791,
+            "Lift": 2.2093023255813953,
+            "Conviction": 1.4333333333333333,
+            "Leverage": 0.01664,
+            "LHS_Count": 43,
+            "LHS_Support": 0.0688,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Distance=2"
+            ],
+            "RHS": [
+                "Left-Weight=1"
+            ],
+            "Confidence": 0.4418604651162791,
+            "Lift": 2.2093023255813953,
+            "Conviction": 1.4333333333333333,
+            "Leverage": 0.01664,
+            "LHS_Count": 43,
+            "LHS_Support": 0.0688,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Weight=2"
+            ],
+            "RHS": [
+                "Left-Weight=1"
+            ],
+            "Confidence": 0.4418604651162791,
+            "Lift": 2.2093023255813953,
+            "Conviction": 1.4333333333333333,
+            "Leverage": 0.01664,
+            "LHS_Count": 43,
+            "LHS_Support": 0.0688,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Weight=5",
+                "Left-Distance=5"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.9599999999999999,
+            "Lift": 2.083333333333333,
+            "Conviction": 13.47999999999995,
+            "Leverage": 0.019967999999999996,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0384,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "Right-Distance=1",
+                "Left-Distance=5"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.9599999999999999,
+            "Lift": 2.083333333333333,
+            "Conviction": 13.47999999999995,
+            "Leverage": 0.019967999999999996,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0384,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "Right-Weight=1",
+                "Left-Distance=5"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.9599999999999999,
+            "Lift": 2.083333333333333,
+            "Conviction": 13.47999999999995,
+            "Leverage": 0.019967999999999996,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0384,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "Left-Weight=5",
+                "Right-Distance=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.9599999999999999,
+            "Lift": 2.083333333333333,
+            "Conviction": 13.47999999999995,
+            "Leverage": 0.019967999999999996,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0384,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "Left-Weight=5",
+                "Right-Weight=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.9599999999999999,
+            "Lift": 2.083333333333333,
+            "Conviction": 13.47999999999995,
+            "Leverage": 0.019967999999999996,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0384,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "Right-Distance=1",
+                "Right-Weight=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.9599999999999999,
+            "Lift": 2.083333333333333,
+            "Conviction": 13.47999999999995,
+            "Leverage": 0.019967999999999996,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0384,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "Left-Distance=1",
+                "Left-Weight=1"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.9599999999999999,
+            "Lift": 2.083333333333333,
+            "Conviction": 13.47999999999995,
+            "Leverage": 0.019967999999999996,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0384,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "Left-Distance=1",
+                "Right-Distance=5"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.9599999999999999,
+            "Lift": 2.083333333333333,
+            "Conviction": 13.47999999999995,
+            "Leverage": 0.019967999999999996,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0384,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "Left-Distance=1",
+                "Right-Weight=5"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.9599999999999999,
+            "Lift": 2.083333333333333,
+            "Conviction": 13.47999999999995,
+            "Leverage": 0.019967999999999996,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0384,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "Right-Distance=5",
+                "Left-Weight=1"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.9599999999999999,
+            "Lift": 2.083333333333333,
+            "Conviction": 13.47999999999995,
+            "Leverage": 0.019967999999999996,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0384,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "Left-Weight=1",
+                "Right-Weight=5"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.9599999999999999,
+            "Lift": 2.083333333333333,
+            "Conviction": 13.47999999999995,
+            "Leverage": 0.019967999999999996,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0384,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "Right-Distance=5",
+                "Right-Weight=5"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.9599999999999999,
+            "Lift": 2.083333333333333,
+            "Conviction": 13.47999999999995,
+            "Leverage": 0.019967999999999996,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0384,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "Left-Distance=4",
+                "Right-Distance=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.9199999999999999,
+            "Lift": 1.9965277777777777,
+            "Conviction": 6.739999999999994,
+            "Leverage": 0.018368,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0368,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Left-Distance=4",
+                "Right-Weight=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.9199999999999999,
+            "Lift": 1.9965277777777777,
+            "Conviction": 6.739999999999994,
+            "Leverage": 0.018368,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0368,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Left-Weight=4",
+                "Right-Distance=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.9199999999999999,
+            "Lift": 1.9965277777777777,
+            "Conviction": 6.739999999999994,
+            "Leverage": 0.018368,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0368,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Left-Weight=4",
+                "Right-Weight=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.9199999999999999,
+            "Lift": 1.9965277777777777,
+            "Conviction": 6.739999999999994,
+            "Leverage": 0.018368,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0368,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Right-Distance=4",
+                "Left-Distance=1"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.9199999999999999,
+            "Lift": 1.9965277777777777,
+            "Conviction": 6.739999999999994,
+            "Leverage": 0.018368,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0368,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Left-Distance=1",
+                "Right-Weight=4"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.9199999999999999,
+            "Lift": 1.9965277777777777,
+            "Conviction": 6.739999999999994,
+            "Leverage": 0.018368,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0368,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Right-Distance=4",
+                "Left-Weight=1"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.9199999999999999,
+            "Lift": 1.9965277777777777,
+            "Conviction": 6.739999999999994,
+            "Leverage": 0.018368,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0368,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Right-Weight=4",
+                "Left-Weight=1"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.9199999999999999,
+            "Lift": 1.9965277777777777,
+            "Conviction": 6.739999999999994,
+            "Leverage": 0.018368,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0368,
+            "Count": 23
+        },
+        {
+            "LHS": [
+                "Right-Distance=4",
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Distance=5"
+            ],
+            "Confidence": 0.39473684210526316,
+            "Lift": 1.9736842105263157,
+            "Conviction": 1.3217391304347827,
+            "Leverage": 0.01184,
+            "LHS_Count": 38,
+            "LHS_Support": 0.0608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Weight=4"
+            ],
+            "RHS": [
+                "Left-Distance=5"
+            ],
+            "Confidence": 0.39473684210526316,
+            "Lift": 1.9736842105263157,
+            "Conviction": 1.3217391304347827,
+            "Leverage": 0.01184,
+            "LHS_Count": 38,
+            "LHS_Support": 0.0608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Right-Distance=4",
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Weight=5"
+            ],
+            "Confidence": 0.39473684210526316,
+            "Lift": 1.9736842105263157,
+            "Conviction": 1.3217391304347827,
+            "Leverage": 0.01184,
+            "LHS_Count": 38,
+            "LHS_Support": 0.0608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Weight=4"
+            ],
+            "RHS": [
+                "Left-Weight=5"
+            ],
+            "Confidence": 0.39473684210526316,
+            "Lift": 1.9736842105263157,
+            "Conviction": 1.3217391304347827,
+            "Leverage": 0.01184,
+            "LHS_Count": 38,
+            "LHS_Support": 0.0608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Distance=4"
+            ],
+            "RHS": [
+                "Right-Distance=5"
+            ],
+            "Confidence": 0.39473684210526316,
+            "Lift": 1.9736842105263157,
+            "Conviction": 1.3217391304347827,
+            "Leverage": 0.01184,
+            "LHS_Count": 38,
+            "LHS_Support": 0.0608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Distance=4"
+            ],
+            "RHS": [
+                "Right-Weight=5"
+            ],
+            "Confidence": 0.39473684210526316,
+            "Lift": 1.9736842105263157,
+            "Conviction": 1.3217391304347827,
+            "Leverage": 0.01184,
+            "LHS_Count": 38,
+            "LHS_Support": 0.0608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Left-Weight=4",
+                "Class=R"
+            ],
+            "RHS": [
+                "Right-Distance=5"
+            ],
+            "Confidence": 0.39473684210526316,
+            "Lift": 1.9736842105263157,
+            "Conviction": 1.3217391304347827,
+            "Leverage": 0.01184,
+            "LHS_Count": 38,
+            "LHS_Support": 0.0608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Left-Weight=4",
+                "Class=R"
+            ],
+            "RHS": [
+                "Right-Weight=5"
+            ],
+            "Confidence": 0.39473684210526316,
+            "Lift": 1.9736842105263157,
+            "Conviction": 1.3217391304347827,
+            "Leverage": 0.01184,
+            "LHS_Count": 38,
+            "LHS_Support": 0.0608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Left-Distance=3",
+                "Right-Distance=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Left-Distance=3",
+                "Right-Weight=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Left-Distance=4",
+                "Left-Weight=5"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Left-Weight=4",
+                "Left-Distance=5"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Left-Weight=3",
+                "Right-Distance=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Left-Weight=3",
+                "Right-Weight=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Right-Distance=1",
+                "Right-Weight=2"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Right-Distance=2",
+                "Right-Weight=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Left-Distance=1",
+                "Left-Weight=2"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Left-Distance=1",
+                "Right-Distance=3"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Right-Weight=3",
+                "Left-Distance=1"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Left-Distance=2",
+                "Left-Weight=1"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Left-Weight=1",
+                "Right-Distance=3"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Right-Weight=3",
+                "Left-Weight=1"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Right-Distance=4",
+                "Right-Weight=5"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Right-Distance=5",
+                "Right-Weight=4"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.88,
+            "Lift": 1.9097222222222223,
+            "Conviction": 4.493333333333333,
+            "Leverage": 0.016768,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Right-Weight=3",
+                "Class=L"
+            ],
+            "RHS": [
+                "Right-Distance=1"
+            ],
+            "Confidence": 0.37735849056603776,
+            "Lift": 1.8867924528301887,
+            "Conviction": 1.284848484848485,
+            "Leverage": 0.015040000000000001,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.032,
+            "Count": 20
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Distance=3"
+            ],
+            "RHS": [
+                "Right-Weight=1"
+            ],
+            "Confidence": 0.37735849056603776,
+            "Lift": 1.8867924528301887,
+            "Conviction": 1.284848484848485,
+            "Leverage": 0.015040000000000001,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.032,
+            "Count": 20
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Weight=3"
+            ],
+            "RHS": [
+                "Left-Distance=1"
+            ],
+            "Confidence": 0.37735849056603776,
+            "Lift": 1.8867924528301887,
+            "Conviction": 1.284848484848485,
+            "Leverage": 0.015040000000000001,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.032,
+            "Count": 20
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Distance=3"
+            ],
+            "RHS": [
+                "Left-Weight=1"
+            ],
+            "Confidence": 0.37735849056603776,
+            "Lift": 1.8867924528301887,
+            "Conviction": 1.284848484848485,
+            "Leverage": 0.015040000000000001,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.032,
+            "Count": 20
+        },
+        {
+            "LHS": [
+                "Left-Weight=4",
+                "Left-Distance=4"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.84,
+            "Lift": 1.8229166666666667,
+            "Conviction": 3.369999999999999,
+            "Leverage": 0.015167999999999997,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0336,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Right-Distance=2",
+                "Left-Distance=5"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.84,
+            "Lift": 1.8229166666666667,
+            "Conviction": 3.369999999999999,
+            "Leverage": 0.015167999999999997,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0336,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Left-Distance=5",
+                "Right-Weight=2"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.84,
+            "Lift": 1.8229166666666667,
+            "Conviction": 3.369999999999999,
+            "Leverage": 0.015167999999999997,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0336,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Right-Distance=2",
+                "Left-Weight=5"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.84,
+            "Lift": 1.8229166666666667,
+            "Conviction": 3.369999999999999,
+            "Leverage": 0.015167999999999997,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0336,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Left-Weight=5",
+                "Right-Weight=2"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.84,
+            "Lift": 1.8229166666666667,
+            "Conviction": 3.369999999999999,
+            "Leverage": 0.015167999999999997,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0336,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Left-Distance=2",
+                "Right-Distance=5"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.84,
+            "Lift": 1.8229166666666667,
+            "Conviction": 3.369999999999999,
+            "Leverage": 0.015167999999999997,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0336,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Left-Distance=2",
+                "Right-Weight=5"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.84,
+            "Lift": 1.8229166666666667,
+            "Conviction": 3.369999999999999,
+            "Leverage": 0.015167999999999997,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0336,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Right-Distance=5",
+                "Left-Weight=2"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.84,
+            "Lift": 1.8229166666666667,
+            "Conviction": 3.369999999999999,
+            "Leverage": 0.015167999999999997,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0336,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Left-Weight=2",
+                "Right-Weight=5"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.84,
+            "Lift": 1.8229166666666667,
+            "Conviction": 3.369999999999999,
+            "Leverage": 0.015167999999999997,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0336,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Right-Distance=4",
+                "Right-Weight=4"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.84,
+            "Lift": 1.8229166666666667,
+            "Conviction": 3.369999999999999,
+            "Leverage": 0.015167999999999997,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0336,
+            "Count": 21
+        },
+        {
+            "LHS": [
+                "Right-Distance=5",
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Distance=5"
+            ],
+            "Confidence": 0.35714285714285715,
+            "Lift": 1.7857142857142856,
+            "Conviction": 1.2444444444444447,
+            "Leverage": 0.007039999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Weight=5"
+            ],
+            "RHS": [
+                "Left-Distance=5"
+            ],
+            "Confidence": 0.35714285714285715,
+            "Lift": 1.7857142857142856,
+            "Conviction": 1.2444444444444447,
+            "Leverage": 0.007039999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Right-Distance=5",
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Weight=5"
+            ],
+            "Confidence": 0.35714285714285715,
+            "Lift": 1.7857142857142856,
+            "Conviction": 1.2444444444444447,
+            "Leverage": 0.007039999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Weight=5"
+            ],
+            "RHS": [
+                "Left-Weight=5"
+            ],
+            "Confidence": 0.35714285714285715,
+            "Lift": 1.7857142857142856,
+            "Conviction": 1.2444444444444447,
+            "Leverage": 0.007039999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Distance=5"
+            ],
+            "RHS": [
+                "Right-Distance=5"
+            ],
+            "Confidence": 0.35714285714285715,
+            "Lift": 1.7857142857142856,
+            "Conviction": 1.2444444444444447,
+            "Leverage": 0.007039999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Distance=5"
+            ],
+            "RHS": [
+                "Right-Weight=5"
+            ],
+            "Confidence": 0.35714285714285715,
+            "Lift": 1.7857142857142856,
+            "Conviction": 1.2444444444444447,
+            "Leverage": 0.007039999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Weight=5"
+            ],
+            "RHS": [
+                "Right-Distance=5"
+            ],
+            "Confidence": 0.35714285714285715,
+            "Lift": 1.7857142857142856,
+            "Conviction": 1.2444444444444447,
+            "Leverage": 0.007039999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Weight=5"
+            ],
+            "RHS": [
+                "Right-Weight=5"
+            ],
+            "Confidence": 0.35714285714285715,
+            "Lift": 1.7857142857142856,
+            "Conviction": 1.2444444444444447,
+            "Leverage": 0.007039999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.016,
+            "Count": 10
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Left-Distance=3"
+            ],
+            "RHS": [
+                "Right-Distance=1"
+            ],
+            "Confidence": 0.34920634920634924,
+            "Lift": 1.746031746031746,
+            "Conviction": 1.229268292682927,
+            "Leverage": 0.015040000000000001,
+            "LHS_Count": 63,
+            "LHS_Support": 0.1008,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Left-Distance=3"
+            ],
+            "RHS": [
+                "Right-Weight=1"
+            ],
+            "Confidence": 0.34920634920634924,
+            "Lift": 1.746031746031746,
+            "Conviction": 1.229268292682927,
+            "Leverage": 0.015040000000000001,
+            "LHS_Count": 63,
+            "LHS_Support": 0.1008,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Left-Weight=3"
+            ],
+            "RHS": [
+                "Right-Distance=1"
+            ],
+            "Confidence": 0.34920634920634924,
+            "Lift": 1.746031746031746,
+            "Conviction": 1.229268292682927,
+            "Leverage": 0.015040000000000001,
+            "LHS_Count": 63,
+            "LHS_Support": 0.1008,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Left-Weight=3"
+            ],
+            "RHS": [
+                "Right-Weight=1"
+            ],
+            "Confidence": 0.34920634920634924,
+            "Lift": 1.746031746031746,
+            "Conviction": 1.229268292682927,
+            "Leverage": 0.015040000000000001,
+            "LHS_Count": 63,
+            "LHS_Support": 0.1008,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Distance=3"
+            ],
+            "RHS": [
+                "Left-Distance=1"
+            ],
+            "Confidence": 0.34920634920634924,
+            "Lift": 1.746031746031746,
+            "Conviction": 1.229268292682927,
+            "Leverage": 0.015040000000000001,
+            "LHS_Count": 63,
+            "LHS_Support": 0.1008,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Right-Weight=3",
+                "Class=R"
+            ],
+            "RHS": [
+                "Left-Distance=1"
+            ],
+            "Confidence": 0.34920634920634924,
+            "Lift": 1.746031746031746,
+            "Conviction": 1.229268292682927,
+            "Leverage": 0.015040000000000001,
+            "LHS_Count": 63,
+            "LHS_Support": 0.1008,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Distance=3"
+            ],
+            "RHS": [
+                "Left-Weight=1"
+            ],
+            "Confidence": 0.34920634920634924,
+            "Lift": 1.746031746031746,
+            "Conviction": 1.229268292682927,
+            "Leverage": 0.015040000000000001,
+            "LHS_Count": 63,
+            "LHS_Support": 0.1008,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Right-Weight=3",
+                "Class=R"
+            ],
+            "RHS": [
+                "Left-Weight=1"
+            ],
+            "Confidence": 0.34920634920634924,
+            "Lift": 1.746031746031746,
+            "Conviction": 1.229268292682927,
+            "Leverage": 0.015040000000000001,
+            "LHS_Count": 63,
+            "LHS_Support": 0.1008,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Left-Distance=2",
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Weight=5"
+            ],
+            "Confidence": 0.3488372093023256,
+            "Lift": 1.744186046511628,
+            "Conviction": 1.2285714285714286,
+            "Leverage": 0.010239999999999999,
+            "LHS_Count": 43,
+            "LHS_Support": 0.0688,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Left-Weight=2",
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Distance=5"
+            ],
+            "Confidence": 0.3488372093023256,
+            "Lift": 1.744186046511628,
+            "Conviction": 1.2285714285714286,
+            "Leverage": 0.010239999999999999,
+            "LHS_Count": 43,
+            "LHS_Support": 0.0688,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Distance=2"
+            ],
+            "RHS": [
+                "Right-Weight=5"
+            ],
+            "Confidence": 0.3488372093023256,
+            "Lift": 1.744186046511628,
+            "Conviction": 1.2285714285714286,
+            "Leverage": 0.010239999999999999,
+            "LHS_Count": 43,
+            "LHS_Support": 0.0688,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Weight=2"
+            ],
+            "RHS": [
+                "Right-Distance=5"
+            ],
+            "Confidence": 0.3488372093023256,
+            "Lift": 1.744186046511628,
+            "Conviction": 1.2285714285714286,
+            "Leverage": 0.010239999999999999,
+            "LHS_Count": 43,
+            "LHS_Support": 0.0688,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.024,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Right-Weight=3",
+                "Right-Distance=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.8,
+            "Lift": 1.7361111111111112,
+            "Conviction": 2.6960000000000006,
+            "Leverage": 0.013568,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.032,
+            "Count": 20
+        },
+        {
+            "LHS": [
+                "Right-Weight=1",
+                "Right-Distance=3"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.8,
+            "Lift": 1.7361111111111112,
+            "Conviction": 2.6960000000000006,
+            "Leverage": 0.013568,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.032,
+            "Count": 20
+        },
+        {
+            "LHS": [
+                "Left-Distance=1",
+                "Left-Weight=3"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.8,
+            "Lift": 1.7361111111111112,
+            "Conviction": 2.6960000000000006,
+            "Leverage": 0.013568,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.032,
+            "Count": 20
+        },
+        {
+            "LHS": [
+                "Left-Distance=3",
+                "Left-Weight=1"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.8,
+            "Lift": 1.7361111111111112,
+            "Conviction": 2.6960000000000006,
+            "Leverage": 0.013568,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.032,
+            "Count": 20
+        },
+        {
+            "LHS": [
+                "Class=L"
+            ],
+            "RHS": [
+                "Right-Distance=1"
+            ],
+            "Confidence": 0.3402777777777778,
+            "Lift": 1.7013888888888888,
+            "Conviction": 1.2126315789473685,
+            "Leverage": 0.06463999999999999,
+            "LHS_Count": 288,
+            "LHS_Support": 0.4608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.1568,
+            "Count": 98
+        },
+        {
+            "LHS": [
+                "Right-Distance=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.7839999999999999,
+            "Lift": 1.7013888888888888,
+            "Conviction": 2.4962962962962956,
+            "Leverage": 0.06463999999999999,
+            "LHS_Count": 125,
+            "LHS_Support": 0.2,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.1568,
+            "Count": 98
+        },
+        {
+            "LHS": [
+                "Class=L"
+            ],
+            "RHS": [
+                "Right-Weight=1"
+            ],
+            "Confidence": 0.3402777777777778,
+            "Lift": 1.7013888888888888,
+            "Conviction": 1.2126315789473685,
+            "Leverage": 0.06463999999999999,
+            "LHS_Count": 288,
+            "LHS_Support": 0.4608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.1568,
+            "Count": 98
+        },
+        {
+            "LHS": [
+                "Right-Weight=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.7839999999999999,
+            "Lift": 1.7013888888888888,
+            "Conviction": 2.4962962962962956,
+            "Leverage": 0.06463999999999999,
+            "LHS_Count": 125,
+            "LHS_Support": 0.2,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.1568,
+            "Count": 98
+        },
+        {
+            "LHS": [
+                "Class=R"
+            ],
+            "RHS": [
+                "Left-Distance=1"
+            ],
+            "Confidence": 0.3402777777777778,
+            "Lift": 1.7013888888888888,
+            "Conviction": 1.2126315789473685,
+            "Leverage": 0.06463999999999999,
+            "LHS_Count": 288,
+            "LHS_Support": 0.4608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.1568,
+            "Count": 98
+        },
+        {
+            "LHS": [
+                "Left-Distance=1"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.7839999999999999,
+            "Lift": 1.7013888888888888,
+            "Conviction": 2.4962962962962956,
+            "Leverage": 0.06463999999999999,
+            "LHS_Count": 125,
+            "LHS_Support": 0.2,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.1568,
+            "Count": 98
+        },
+        {
+            "LHS": [
+                "Class=R"
+            ],
+            "RHS": [
+                "Left-Weight=1"
+            ],
+            "Confidence": 0.3402777777777778,
+            "Lift": 1.7013888888888888,
+            "Conviction": 1.2126315789473685,
+            "Leverage": 0.06463999999999999,
+            "LHS_Count": 288,
+            "LHS_Support": 0.4608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.1568,
+            "Count": 98
+        },
+        {
+            "LHS": [
+                "Left-Weight=1"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.7839999999999999,
+            "Lift": 1.7013888888888888,
+            "Conviction": 2.4962962962962956,
+            "Leverage": 0.06463999999999999,
+            "LHS_Count": 125,
+            "LHS_Support": 0.2,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.1568,
+            "Count": 98
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Distance=3"
+            ],
+            "RHS": [
+                "Left-Distance=5"
+            ],
+            "Confidence": 0.33962264150943394,
+            "Lift": 1.6981132075471697,
+            "Conviction": 1.2114285714285713,
+            "Leverage": 0.01184,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Right-Weight=3",
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Distance=5"
+            ],
+            "Confidence": 0.33962264150943394,
+            "Lift": 1.6981132075471697,
+            "Conviction": 1.2114285714285713,
+            "Leverage": 0.01184,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Distance=3"
+            ],
+            "RHS": [
+                "Left-Weight=5"
+            ],
+            "Confidence": 0.33962264150943394,
+            "Lift": 1.6981132075471697,
+            "Conviction": 1.2114285714285713,
+            "Leverage": 0.01184,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Right-Weight=3",
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Weight=5"
+            ],
+            "Confidence": 0.33962264150943394,
+            "Lift": 1.6981132075471697,
+            "Conviction": 1.2114285714285713,
+            "Leverage": 0.01184,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Distance=3"
+            ],
+            "RHS": [
+                "Right-Distance=5"
+            ],
+            "Confidence": 0.33962264150943394,
+            "Lift": 1.6981132075471697,
+            "Conviction": 1.2114285714285713,
+            "Leverage": 0.01184,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Distance=3"
+            ],
+            "RHS": [
+                "Right-Weight=5"
+            ],
+            "Confidence": 0.33962264150943394,
+            "Lift": 1.6981132075471697,
+            "Conviction": 1.2114285714285713,
+            "Leverage": 0.01184,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Weight=3"
+            ],
+            "RHS": [
+                "Right-Distance=5"
+            ],
+            "Confidence": 0.33962264150943394,
+            "Lift": 1.6981132075471697,
+            "Conviction": 1.2114285714285713,
+            "Leverage": 0.01184,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Weight=3"
+            ],
+            "RHS": [
+                "Right-Weight=5"
+            ],
+            "Confidence": 0.33962264150943394,
+            "Lift": 1.6981132075471697,
+            "Conviction": 1.2114285714285713,
+            "Leverage": 0.01184,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Left-Distance=2",
+                "Right-Distance=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Distance=2",
+                "Right-Weight=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Distance=3",
+                "Left-Weight=5"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Right-Distance=2",
+                "Left-Distance=4"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Distance=4",
+                "Right-Weight=2"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Weight=3",
+                "Left-Distance=5"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Weight=2",
+                "Right-Distance=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Weight=2",
+                "Right-Weight=1"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Weight=4",
+                "Right-Distance=2"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Weight=4",
+                "Right-Weight=2"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Distance=1",
+                "Right-Distance=2"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Distance=1",
+                "Right-Weight=2"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Right-Distance=4",
+                "Left-Distance=2"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Distance=2",
+                "Right-Weight=4"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Right-Distance=2",
+                "Left-Weight=1"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Weight=1",
+                "Right-Weight=2"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Right-Distance=4",
+                "Left-Weight=2"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Left-Weight=2",
+                "Right-Weight=4"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Right-Weight=5",
+                "Right-Distance=3"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Right-Weight=3",
+                "Right-Distance=5"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.76,
+            "Lift": 1.6493055555555556,
+            "Conviction": 2.2466666666666666,
+            "Leverage": 0.011968,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Right-Distance=5",
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Distance=4"
+            ],
+            "Confidence": 0.3214285714285714,
+            "Lift": 1.607142857142857,
+            "Conviction": 1.1789473684210527,
+            "Leverage": 0.005439999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0144,
+            "Count": 9
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Weight=5"
+            ],
+            "RHS": [
+                "Left-Distance=4"
+            ],
+            "Confidence": 0.3214285714285714,
+            "Lift": 1.607142857142857,
+            "Conviction": 1.1789473684210527,
+            "Leverage": 0.005439999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0144,
+            "Count": 9
+        },
+        {
+            "LHS": [
+                "Right-Distance=5",
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Weight=4"
+            ],
+            "Confidence": 0.3214285714285714,
+            "Lift": 1.607142857142857,
+            "Conviction": 1.1789473684210527,
+            "Leverage": 0.005439999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0144,
+            "Count": 9
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Weight=5"
+            ],
+            "RHS": [
+                "Left-Weight=4"
+            ],
+            "Confidence": 0.3214285714285714,
+            "Lift": 1.607142857142857,
+            "Conviction": 1.1789473684210527,
+            "Leverage": 0.005439999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0144,
+            "Count": 9
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Distance=5"
+            ],
+            "RHS": [
+                "Right-Distance=4"
+            ],
+            "Confidence": 0.3214285714285714,
+            "Lift": 1.607142857142857,
+            "Conviction": 1.1789473684210527,
+            "Leverage": 0.005439999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0144,
+            "Count": 9
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Distance=5"
+            ],
+            "RHS": [
+                "Right-Weight=4"
+            ],
+            "Confidence": 0.3214285714285714,
+            "Lift": 1.607142857142857,
+            "Conviction": 1.1789473684210527,
+            "Leverage": 0.005439999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0144,
+            "Count": 9
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Weight=5"
+            ],
+            "RHS": [
+                "Right-Distance=4"
+            ],
+            "Confidence": 0.3214285714285714,
+            "Lift": 1.607142857142857,
+            "Conviction": 1.1789473684210527,
+            "Leverage": 0.005439999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0144,
+            "Count": 9
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Weight=5"
+            ],
+            "RHS": [
+                "Right-Weight=4"
+            ],
+            "Confidence": 0.3214285714285714,
+            "Lift": 1.607142857142857,
+            "Conviction": 1.1789473684210527,
+            "Leverage": 0.005439999999999999,
+            "LHS_Count": 28,
+            "LHS_Support": 0.0448,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0144,
+            "Count": 9
+        },
+        {
+            "LHS": [
+                "Left-Distance=5",
+                "Right-Distance=3"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.72,
+            "Lift": 1.5625,
+            "Conviction": 1.9257142857142855,
+            "Leverage": 0.010367999999999999,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Right-Weight=3",
+                "Left-Distance=5"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.72,
+            "Lift": 1.5625,
+            "Conviction": 1.9257142857142855,
+            "Leverage": 0.010367999999999999,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Left-Weight=5",
+                "Right-Distance=3"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.72,
+            "Lift": 1.5625,
+            "Conviction": 1.9257142857142855,
+            "Leverage": 0.010367999999999999,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Right-Weight=3",
+                "Left-Weight=5"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.72,
+            "Lift": 1.5625,
+            "Conviction": 1.9257142857142855,
+            "Leverage": 0.010367999999999999,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Right-Distance=5",
+                "Left-Distance=3"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.72,
+            "Lift": 1.5625,
+            "Conviction": 1.9257142857142855,
+            "Leverage": 0.010367999999999999,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Left-Distance=3",
+                "Right-Weight=5"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.72,
+            "Lift": 1.5625,
+            "Conviction": 1.9257142857142855,
+            "Leverage": 0.010367999999999999,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Right-Distance=5",
+                "Left-Weight=3"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.72,
+            "Lift": 1.5625,
+            "Conviction": 1.9257142857142855,
+            "Leverage": 0.010367999999999999,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Left-Weight=3",
+                "Right-Weight=5"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.72,
+            "Lift": 1.5625,
+            "Conviction": 1.9257142857142855,
+            "Leverage": 0.010367999999999999,
+            "LHS_Count": 25,
+            "LHS_Support": 0.04,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.0288,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Weight=2"
+            ],
+            "RHS": [
+                "Right-Distance=1"
+            ],
+            "Confidence": 0.30985915492957744,
+            "Lift": 1.549295774647887,
+            "Conviction": 1.1591836734693879,
+            "Leverage": 0.012479999999999998,
+            "LHS_Count": 71,
+            "LHS_Support": 0.1136,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Distance=2"
+            ],
+            "RHS": [
+                "Right-Weight=1"
+            ],
+            "Confidence": 0.30985915492957744,
+            "Lift": 1.549295774647887,
+            "Conviction": 1.1591836734693879,
+            "Leverage": 0.012479999999999998,
+            "LHS_Count": 71,
+            "LHS_Support": 0.1136,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Left-Weight=2",
+                "Class=R"
+            ],
+            "RHS": [
+                "Left-Distance=1"
+            ],
+            "Confidence": 0.30985915492957744,
+            "Lift": 1.549295774647887,
+            "Conviction": 1.1591836734693879,
+            "Leverage": 0.012479999999999998,
+            "LHS_Count": 71,
+            "LHS_Support": 0.1136,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Left-Distance=2",
+                "Class=R"
+            ],
+            "RHS": [
+                "Left-Weight=1"
+            ],
+            "Confidence": 0.30985915492957744,
+            "Lift": 1.549295774647887,
+            "Conviction": 1.1591836734693879,
+            "Leverage": 0.012479999999999998,
+            "LHS_Count": 71,
+            "LHS_Support": 0.1136,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0352,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Distance=5"
+            ],
+            "Confidence": 0.3055555555555556,
+            "Lift": 1.527777777777778,
+            "Conviction": 1.1520000000000001,
+            "Leverage": 0.04864,
+            "LHS_Count": 288,
+            "LHS_Support": 0.4608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.1408,
+            "Count": 88
+        },
+        {
+            "LHS": [
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Weight=5"
+            ],
+            "Confidence": 0.3055555555555556,
+            "Lift": 1.527777777777778,
+            "Conviction": 1.1520000000000001,
+            "Leverage": 0.04864,
+            "LHS_Count": 288,
+            "LHS_Support": 0.4608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.1408,
+            "Count": 88
+        },
+        {
+            "LHS": [
+                "Class=R"
+            ],
+            "RHS": [
+                "Right-Distance=5"
+            ],
+            "Confidence": 0.3055555555555556,
+            "Lift": 1.527777777777778,
+            "Conviction": 1.1520000000000001,
+            "Leverage": 0.04864,
+            "LHS_Count": 288,
+            "LHS_Support": 0.4608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.1408,
+            "Count": 88
+        },
+        {
+            "LHS": [
+                "Class=R"
+            ],
+            "RHS": [
+                "Right-Weight=5"
+            ],
+            "Confidence": 0.3055555555555556,
+            "Lift": 1.527777777777778,
+            "Conviction": 1.1520000000000001,
+            "Leverage": 0.04864,
+            "LHS_Count": 288,
+            "LHS_Support": 0.4608,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.1408,
+            "Count": 88
+        },
+        {
+            "LHS": [
+                "Left-Distance=5"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.704,
+            "Lift": 1.5277777777777777,
+            "Conviction": 1.8216216216216214,
+            "Leverage": 0.04864,
+            "LHS_Count": 125,
+            "LHS_Support": 0.2,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.1408,
+            "Count": 88
+        },
+        {
+            "LHS": [
+                "Left-Weight=5"
+            ],
+            "RHS": [
+                "Class=L"
+            ],
+            "Confidence": 0.704,
+            "Lift": 1.5277777777777777,
+            "Conviction": 1.8216216216216214,
+            "Leverage": 0.04864,
+            "LHS_Count": 125,
+            "LHS_Support": 0.2,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.1408,
+            "Count": 88
+        },
+        {
+            "LHS": [
+                "Right-Distance=5"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.704,
+            "Lift": 1.5277777777777777,
+            "Conviction": 1.8216216216216214,
+            "Leverage": 0.04864,
+            "LHS_Count": 125,
+            "LHS_Support": 0.2,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.1408,
+            "Count": 88
+        },
+        {
+            "LHS": [
+                "Right-Weight=5"
+            ],
+            "RHS": [
+                "Class=R"
+            ],
+            "Confidence": 0.704,
+            "Lift": 1.5277777777777777,
+            "Conviction": 1.8216216216216214,
+            "Leverage": 0.04864,
+            "LHS_Count": 125,
+            "LHS_Support": 0.2,
+            "RHS_Count": 288,
+            "RHS_Support": 0.4608,
+            "Support": 0.1408,
+            "Count": 88
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Distance=3"
+            ],
+            "RHS": [
+                "Left-Distance=4"
+            ],
+            "Confidence": 0.3018867924528302,
+            "Lift": 1.5094339622641508,
+            "Conviction": 1.145945945945946,
+            "Leverage": 0.008640000000000002,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0256,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "Right-Weight=3",
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Distance=4"
+            ],
+            "Confidence": 0.3018867924528302,
+            "Lift": 1.5094339622641508,
+            "Conviction": 1.145945945945946,
+            "Leverage": 0.008640000000000002,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0256,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Right-Distance=3"
+            ],
+            "RHS": [
+                "Left-Weight=4"
+            ],
+            "Confidence": 0.3018867924528302,
+            "Lift": 1.5094339622641508,
+            "Conviction": 1.145945945945946,
+            "Leverage": 0.008640000000000002,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0256,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "Right-Weight=3",
+                "Class=L"
+            ],
+            "RHS": [
+                "Left-Weight=4"
+            ],
+            "Confidence": 0.3018867924528302,
+            "Lift": 1.5094339622641508,
+            "Conviction": 1.145945945945946,
+            "Leverage": 0.008640000000000002,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0256,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Distance=3"
+            ],
+            "RHS": [
+                "Right-Distance=4"
+            ],
+            "Confidence": 0.3018867924528302,
+            "Lift": 1.5094339622641508,
+            "Conviction": 1.145945945945946,
+            "Leverage": 0.008640000000000002,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0256,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Distance=3"
+            ],
+            "RHS": [
+                "Right-Weight=4"
+            ],
+            "Confidence": 0.3018867924528302,
+            "Lift": 1.5094339622641508,
+            "Conviction": 1.145945945945946,
+            "Leverage": 0.008640000000000002,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0256,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Weight=3"
+            ],
+            "RHS": [
+                "Right-Distance=4"
+            ],
+            "Confidence": 0.3018867924528302,
+            "Lift": 1.5094339622641508,
+            "Conviction": 1.145945945945946,
+            "Leverage": 0.008640000000000002,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0256,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Left-Weight=3"
+            ],
+            "RHS": [
+                "Right-Weight=4"
+            ],
+            "Confidence": 0.3018867924528302,
+            "Lift": 1.5094339622641508,
+            "Conviction": 1.145945945945946,
+            "Leverage": 0.008640000000000002,
+            "LHS_Count": 53,
+            "LHS_Support": 0.0848,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0256,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Left-Distance=3"
+            ],
+            "RHS": [
+                "Left-Weight=5"
+            ],
+            "Confidence": 0.30158730158730157,
+            "Lift": 1.5079365079365077,
+            "Conviction": 1.1454545454545455,
+            "Leverage": 0.010239999999999999,
+            "LHS_Count": 63,
+            "LHS_Support": 0.1008,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Class=L",
+                "Left-Weight=3"
+            ],
+            "RHS": [
+                "Left-Distance=5"
+            ],
+            "Confidence": 0.30158730158730157,
+            "Lift": 1.5079365079365077,
+            "Conviction": 1.1454545454545455,
+            "Leverage": 0.010239999999999999,
+            "LHS_Count": 63,
+            "LHS_Support": 0.1008,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Class=R",
+                "Right-Distance=3"
+            ],
+            "RHS": [
+                "Right-Weight=5"
+            ],
+            "Confidence": 0.30158730158730157,
+            "Lift": 1.5079365079365077,
+            "Conviction": 1.1454545454545455,
+            "Leverage": 0.010239999999999999,
+            "LHS_Count": 63,
+            "LHS_Support": 0.1008,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0304,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "Right-Weight=3",
+                "Class=R"
+            ],
+            "RHS": [
+                "Right-Distance=5"
+            ],
+            "Confidence": 0.30158730158730157,
+            "Lift": 1.5079365079365077,
+            "Conviction": 1.1454545454545455,
+            "Leverage": 0.010239999999999999,
+            "LHS_Count": 63,
+            "LHS_Support": 0.1008,
+            "RHS_Count": 125,
+            "RHS_Support": 0.2,
+            "Support": 0.0304,
+            "Count": 19
+        }
+    ]
+}
