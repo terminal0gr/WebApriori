@@ -48,9 +48,9 @@ y = dsData['datasetType']
 rf_classifier = RandomForestClassifier(n_estimators=90)
 
 # Step 3: Perform ?-fold Cross-Validation
-split=9
+split=124
 
-for i in range(10):
+for i in range(1):
 
     kf = KFold(n_splits=split, shuffle=True)
     fold = 1
