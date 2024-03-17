@@ -41,14 +41,12 @@ var callingRoutine = "";
 function MyModal(title="WebApriori",maincontext="", ConfirmFunc=false) {
     if ($("#MyModal")) {
         MyModalAnsw=false;
-        var str = '<div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';
-        str +=    '    <div class="modal-dialog" role="document">';
+        var str = '<div class="modal fade" id="MyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
+        str +=    '    <div class="modal-dialog modal-dialog-centered">';
         str +=    '        <div class="modal-content">';
         str +=    '            <div class="modal-header">';
         str +=    '                <h5 class="modal-title" id="exampleModalLabel">' + title + '</h5>';    
-        str +=    '                <button type="button" class="close" data-dismiss="modal" aria-label="Close">';   
-        str +=    '                   <span aria-hidden="true">&times;</span>';
-        str +=    '                </button>';
+        str +=    '                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
         str +=    '            </div>';
         str +=    '            <div class="modal-body">';
         str +=    '               ' + maincontext; 
@@ -56,10 +54,10 @@ function MyModal(title="WebApriori",maincontext="", ConfirmFunc=false) {
         str +=    '            <div class="modal-footer">'; 
         if (ConfirmFunc) {
             str +=    '                <button type="button" class="btn btn-primary" >Yes</button>'; 
-            str +=    '                <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>'; 
+            str +=    '                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>'; 
         }
         else {
-            str +=    '                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>'; 
+            str +=    '                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>'; 
         }
         str +=    '            </div>'; 
         str +=    '        </div>'; 
@@ -72,15 +70,14 @@ function MyModal(title="WebApriori",maincontext="", ConfirmFunc=false) {
 
 function credits() {
     if ($("#Credits")) {
-        str     = '<div class="modal fade" id="Credits" tabindex="-1" role="dialog">';
-        str    +=    '<div class="modal-dialog" role="document">';
+        str     = '<div class="modal fade" id="Credits" tabindex="-1">';
+        str    +=    '<div class="modal-dialog modal-dialog-centered">';
         str    +=    '    <div class="modal-content">';
-        str    +=    '            <div class="modal-header">';
-        str    +=    '                <h5 class="modal-title text-primary">Association rules<br><p class="text-secondary">An innovative association rules mining engine</p></h5>';             
-        str    +=    '                <button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-        str    +=    '                    <span aria-hidden="true">&times;</span>';
-        str    +=    '                </button>';
-        str    +=    '           </div>';
+        str    +=    '        <div class="modal-header"><div>';
+        str    +=    '                <h1 class="modal-title text-primary fs-3">webApriori</h1>';
+        str    +=    '                <p class="text-secondary">An innovative association rules mining engine</p></div>';             
+        str    +=    '                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+        str    +=    '        </div>';
         str    +=    '           <div class="modal-body">';
         str    +=    '               <h5 class="modal-title text-primary">Developer</h5>';
         str    +=    '               <p>Malliaridis Konstantinos</p><hr>';
