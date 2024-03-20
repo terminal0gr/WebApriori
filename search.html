@@ -792,11 +792,11 @@
 
 <body>
 
-	<nav class="navbar navbar-expand-sm text-bg-dark" data-bs-theme="dark">
+	<nav class="navbar navbar-expand-sm bg-body-tertiary" data-bs-theme="dark">
 		<a id="navbar-brand" class="navbar-brand d-none d-sm-block ms-2" data-toggle="modal" onclick="credits()" data-target="#Credits" href="#">
 			<img class="d-inline-block" src="./images/basketwhite.svg" width="24" height="24" alt="">webApriori
         </a>		
-		<ul class="navbar-nav">
+		<ul class="navbar-nav" data-bs-theme="dark">
 			<li class="nav-item">
 				<a class="nav-link" href="index.html">Home</a>
 			</li>
@@ -815,19 +815,19 @@
 				<a class="nav-link" href="Login.html">Sign In</a>
 			</li>
 			<li id=sdropdown class="nav-item dropdown">
-				<a class="nav-item nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<a class="nav-item nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<img src="images/settings24.png" alt="">
 				</a>
-				<div class="dropdown-menu dropdown-menu-right" data-bs-theme="dark" aria-labelledby="navbarDropdown">
-                    <p id="person" class="text-primary text-center"></p>
-					<div class="dropdown-divider"></div>
-					<a id="uploadDatasetDD" class="dropdown-item" onclick="UploadDataset()" href="#"><img src="images/upload24Black.png" alt=""> Upload dataset</a>
-					<a id="webApiDD" class="dropdown-item" href="webAPI.html"><img src="images/settings24black.png" alt=""> API Settings</a>
-					<a id="grandPublicDatasets" class="dropdown-item" href="grandPublicDatasets.html"><img src="images/admin24black.png" alt=""> Grand public Datasets</a>
-					<div class="dropdown-divider"></div>
-					<a id="settings"    class="dropdown-item" href="profile.html"><img src="images/settings24.png" alt="">Profile</a>
-					<a id="SignOut"     class="dropdown-item" href="#"><img src="images/signout24.png" alt=""> Sign out</a>
-				</div>
+				<ul class="dropdown-menu dropdown-menu-end bg-body-tertiary" data-bs-theme="dark">
+                    <li><p id="person" class="text-primary text-center"></p></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a id="uploadDatasetDD" class="dropdown-item" onclick="UploadDataset()" href="#"><img src="images/upload24Black.png" alt=""> Upload dataset</a></li>
+					<li><a id="webApiDD" class="dropdown-item" href="webAPI.html"><img src="images/settings24black.png" alt=""> API Settings</a></li>
+					<li><a id="grandPublicDatasets" class="dropdown-item" href="grandPublicDatasets.html"><img src="images/admin24black.png" alt=""> Grand public Datasets</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a id="settings"    class="dropdown-item" href="profile.html"><img src="images/settings24.png" alt="">Profile</a></li>
+					<li><a id="SignOut"     class="dropdown-item" href="#"><img src="images/signout24.png" alt=""> Sign out</a></li>
+				</ul>
 			</li>			
 		</ul>
 	</nav>
