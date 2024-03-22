@@ -55,7 +55,7 @@
 			}
 
 			if (sessionStorage.getItem('version')) {
-				$('#navbar-brand').html('<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="24" height="24" alt="">   WebApriori ' +  sessionStorage.getItem('version'));
+				$('#navbar-brand').html('<img class="d-inline-block me-1" src="./images/basketwhite.svg" width="24" height="24" alt="">   WebApriori ' +  sessionStorage.getItem('version'));
 			}
 			else {
 				sessionStorage.clear();
@@ -63,6 +63,7 @@
 			}
 			M_F();
 			VT();
+			footerActions();
 
             if (sessionStorage.getItem('administrator') && sessionStorage.getItem('administrator')==1) {
                 $('#grandPublicDatasets').show();
@@ -837,51 +838,61 @@
 	<form id="uploadDatasetform" action="phpfunctions/uploadDataset.php" method="post" enctype="multipart/form-data" style="display: none">
 		<div class="container lightgraybackground udfwidth mx-auto border rounded p-2">
 			<div class="row">
-				<div class="col-5">
-					<form-label >Select dataset to upload:</form-label>
-				</div>
-				<div class="col-7">
-					<input type="file" class="form-control-file" name="fileToUpload" id="fileToUpload" accept=".csv, .txt" >
-				</div>						
-			</div>
-					<div class="row">
+				<div class="col-11">
+
+					<!-- First Row -->
+					<div class="row mb-2">
 						<div class="col-1">
 							<button type="button" class="btn btn-sm" id="hideUpload" onclick="toggleDisplay('#uploadDatasetform')" data-trigger="hover" data-toggle="tooltip" title="Hides upload new dataset section"><img src="./images/close24grey.png" width="24" height="24" alt="">	</button>
 						</div>
+						<div class="col-4 text-end">
+							<label for="fileToUpload" class="form-label">Select dataset to upload:</label>
+						</div>
+						<div class="col-7" >
+							<input type="file" class="form-control" id="fileToUpload" accept=".csv, .txt" >
+						</div>						
+					</div>	
+
+					<!-- Second Row -->
+					<div class="row">
 						<div class="col-1">
 							<!-- <button type="button" class="btn btn-sm" data-toggle="collapse" data-target="#collapseInfo" aria-expanded="false" aria-controls="collapseInfo" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button> -->
 							<button type="button" class="btn btn-sm" onclick="toggleDisplay('#infoForDS')" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button>
 						</div>
-						<div class="col-3">
-							<label class="col-form-label float-right">dataset type:</label>
+						<div class="col-4 text-end ">
+							<label class="form-label ">dataset type:</label>
 						</div>
 						<div class="col-7">
 							<select id="datasetType" class="browser-default form-select" data-html="true" data-trigger="hover" data-toggle="tooltip" 
-							    title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparse item Dataset<br>4) Columns with multiple nomimal values</p>"
-						    >
-								<option value="" disabled selected>Autodetect dataset type</option>
-								<option value="1">1) Market basket list</option>
-								<option value="2">2) Order/Invoice detail</option>
-								<option value="3">3) Sparse item dataset</option>
-								<option value="4">4) Multiple nomimal values</option>
+							    title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparse item Dataset<br>4) Columns with multiple nomimal values</p>">
+									<option value="" disabled selected>Autodetect dataset type</option>
+									<option value="1">1) Market basket list</option>
+									<option value="2">2) Order/Invoice detail</option>
+									<option value="3">3) Sparse item dataset</option>
+									<option value="4">4) Multiple nomimal values</option>
 							</select>
-						</div>
-					</div>		
+						</div>	
+					</div>					
+
+					<!-- Third Row -->
 					<div class="row" id="publicDataset" style="display:none" data-trigger="hover" data-toggle="tooltip" title="Activating this switch, the uploaded dataset becomes public and therefore visible to all users. Otherwise it is private and only visible to you.">
 						<div class="col-5">
-							<label class="col-form-label float-right">Public dataset:</label>
+							<label class="form-label text-end ">Public dataset:</label>
 						</div>
-						<div class="col-2 mt-1">
-                            <label class="switch">
+						<div class="col-7 mt-1">
+							<label class="switch">
 								<input type="checkbox" id="isPublicCheckbox" class="primary">
 								<span class="slider round"></span>
-	    				    </label>
+							</label>
 						</div>
 					</div>
+
 				</div>
-				<div class="col-1 border border-primary rounded p-1	">
-					<button id="uploadDataset" class="btn btn-primary btn-inline p-1 m-0" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" data-trigger="hover" data-toggle="tooltip" title="Upload the Dataset!"><img src="./images/upload32White.png" class="img-responsive" width="32" height="32" alt=""></button>
+
+				<div class="col-1 border border-primary rounded p-1">
+					<button id="uploadDataset" class="btn btn-primary" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" data-trigger="hover" data-toggle="tooltip" title="Upload the Dataset!"><img src="./images/upload32White.png" class="img-responsive" width="32" height="32" alt=""></button>
 				</div>
+
 			</div>
 		</div>
 	</form>		
@@ -1213,8 +1224,8 @@ class,age,sex,survived<br>
 	<br>
 	
 	<footer>
-        <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg text-bg-dark" data-bs-theme="dark">
-            <span class="text-muted ms-2">WebApriori Association rules mining based on Apriori algorithm &middot; MSc in Web Intelligence &copy; 2019-2020</span>
+        <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+            <span id="c-footer-span" class="text-muted ms-2" ></span>
         </nav>
 	</footer> 
 

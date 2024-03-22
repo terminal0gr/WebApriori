@@ -72,6 +72,7 @@
 			}
 			M_F();
 			VT();
+			footerActions();
 
 			$('#SignOut').click(function() {
 				sessionStorage.clear();
@@ -755,7 +756,7 @@
 
 	<h3 class="text-center text-primary">WebAPI calls</h3>	
 
-	<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
+	<div class="lightgraybackground mx-auto border rounded p-2">
 		<div class="accordion" id="webApiAccordion">
 
 			<div class="card lightgraybackground">
@@ -1292,12 +1293,6 @@ email=##1##&apiKey=##2##&datasetId=##3##
 	<br>
 	<br>
 
-	<footer>
-        <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
-            <span class="text-muted">WebApriori Association rules mining based on Apriori algorithm &middot; MSc in Web Intelligence &copy; 2019-2020</span>
-        </nav>
-	</footer> 
-
 	<!-- Help DOM segment -->
 	<div id="infoForDS" class="lightgraybackground border rounded p-2" style="display:none">
 		<h2>Supported dataset types</h2>
@@ -1446,6 +1441,12 @@ class,age,sex,survived<br>
 		The types are selected using the <b>bitwise AND (&) operator</b>. For example, if it is desirable to select the first case then select the value <b>1</b> (001); If it is desirable the third one then select <b>4</b> (100); If it is desirable the second and third type then select <b>6</b> (110). With <b>0</b> (000) it does not remove the redundant rules.
 		</p>
 	</div>
+
+	<footer>
+		<nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+			<span id="c-footer-span" class="text-muted ms-2" ></span>
+		</nav>
+	</footer> 
 
 </body>
 </html>

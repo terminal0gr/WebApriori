@@ -95,6 +95,17 @@ function credits() {
     $( "#Credits").modal('show')   
 }
 
+function footerActions() {
+    // Select the span element with id "erty"
+    var spanElement = document.getElementById("c-footer-span");
+
+    // Check if the span element exists
+    if (spanElement) {
+        // Update the inner text of the span element
+        spanElement.innerHTML = " WebApriori Association rules mining based on Apriori algorithm  &copy;2019-2024";
+    } 
+}
+
 function ProfileSettings() {
     if (!sessionStorage.getItem('token')) {
         MyModal("Information","Please Sing In!!!");

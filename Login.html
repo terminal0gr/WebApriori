@@ -23,6 +23,8 @@
 
             M_F();
 			VT();
+			footerActions();
+			
 			if (sessionStorage.getItem('version')) {
 				$('#navbar-brand').html('<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="24" height="24" alt="">WebApriori ' +  sessionStorage.getItem('version'));
 			} else {
@@ -138,12 +140,13 @@
 		<span class="text-center align-middle" >New to our site? Please <a href="SignUp.html">Sign Up</a>.</span>
 	</div>
 
-    <footer>
-        <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
-            <span class="text-muted">WebApriori association rules mining is based on Apriori algorithm &middot; MSc in Web Intelligence &copy; 2019-2020</span>
-        </nav>
+	<footer>
+		<nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+			<span id="c-footer-span" class="text-muted ms-2" ></span>
+		</nav>
 	</footer> 
-
+	
 	<script src="scripts/login.js"></script>
 </body>
+
 </html>

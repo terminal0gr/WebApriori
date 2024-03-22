@@ -25,6 +25,8 @@
 
             M_F();
 			VT();
+			footerActions();
+			
 			if (sessionStorage.getItem('version')) {
 				$('#navbar-brand').html('<img class="d-inline-block mr-1" src="./images/basketwhite.svg" width="24" height="24" alt="">WebApriori ' +  sessionStorage.getItem('version'));
 			} else {
@@ -131,9 +133,9 @@
 		</form>
 	</div>
 
-    <footer>
-        <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
-            <span class="text-muted">WebApriori Association rules mining based on Apriori algorithm &middot; MSc in Web Intelligence &copy; 2019-2020</span>
+	<footer>
+        <nav id="c-footer" class="navbar fixed-bottom navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+            <span id="c-footer-span" class="text-muted ms-2" ></span>
         </nav>
 	</footer> 
 
