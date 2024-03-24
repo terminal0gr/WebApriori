@@ -683,7 +683,7 @@
         </a>	
         <ul class="navbar-nav me-auto">
 			<li class="nav-item">
-				<a class="nav-link" href="index.html">Home</a>
+				<a class="nav-link active">Home</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="search.html">Rules search</a>
@@ -707,7 +707,7 @@
 				<ul class="dropdown-menu dropdown-menu-end">
                     <li><p id="person" class="text-primary text-center"></p></li>
 					<li><hr class="dropdown-divider"></li>
-					<li><a id="grandPublicDatasets" class="dropdown-item" href="grandPublicDatasets.html"><img src="images/admin24White.png" alt=""> Grand public Datasets</a></li>
+					<li><a id="grandPublicDatasets" class="dropdown-item" href="grandPublicDatasets.html"><img src="images/admin24black.png" alt=""> Grand public Datasets</a></li>
 					<li><hr class="dropdown-divider"></li>
 					<li><a id="settings"    class="dropdown-item" href="profile.html"><img src="images/settings24.png" alt="">Profile</a></li>
 					<li><a id="SignOut"     class="dropdown-item" href="#"><img src="images/signout24.png" alt=""> Sign out</a></li>
@@ -722,7 +722,7 @@
 
 	<form id="APIKeyForm" action="phpfunctions/regenerateAPIKey.php" method="post" >
 		<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
-			<div class="row mb-2">
+			<div class="row">
 				<div class="col-xl-10 col-md-9 col-sm-8">	
 					<label id="lExpiredkey" for="WebAPIKey">WebAPI Key</label>
 				</div>
@@ -730,7 +730,7 @@
 					<label id="lkeyExpiresAt" for="keyExpiresAt">Expires at</label>
 				</div>
 			</div>
-			<div class="row mb-2">
+			<div class="row">
 				<div class="col-xl-10 col-md-9 col-sm-8">		
 					<input type="text" readonly id="WebAPIKey" name="WebAPIKey" class="form-control" data-trigger="hover" data-toggle="tooltip" title="The key which grants access to our WebAPI functions. Please keep this key secret." >
 				</div>
@@ -738,7 +738,7 @@
 					<input type="text" readonly id="keyExpiresAt" name="keyExpiresAt" class="form-control border" data-trigger="hover" data-toggle="tooltip" title="When the WebAPI key expires (or expired)" >
 				</div>
 			</div>
-			<div class="row mb-2">
+			<div class="row pt-2">
 				<div class="col-xl-10 col-md-9 col-sm-8">	
 					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
 						<button id="regenerateKey" type="submit" class="btn btn-primary btn-inline" style="height:100%; width:100%" data-trigger="hover" data-toggle="tooltip" title="Replaces webAPI key with a new one">Regenerate Key</button>
@@ -760,68 +760,70 @@
 	<div class="lightgraybackground mx-auto udfwidth border rounded p-2">
 		<div class="accordion" id="webApiAccordion">
 
-			<div class="accordion-item lightgraybackground mb-2">
-				<h2 class="accordion-header ">
-				  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-					<b>(POST)</b>&nbsp;Upload dataset call
-				  </button>
-				</h2>
-				<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#webApiAccordion">
-					<div class="accordion-body">
+			<div class="card lightgraybackground">
+				<div class="card-header" id="headingOne">
+					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-bs-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							Upload dataset call <b>(POST)</b>
+						</button>
+					</div>
+				</div>
+				<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#webApiAccordion">
+					<div class="card-body">
 						<h5 class="text-primary">Endpoint</h5>
-						<div class="row mb-2">
-							<label for="endpoint1" class="col-sm-3 col-form-label">Url</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="endpoint1" class="col-sm-2 col-form-label">Url</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" id="endpoint1">
 							</div>
 						</div>
 						<h5 class="text-primary">Parameters (Header section)</h5>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label" for="content-type">content-type</label>
-							<div class="col-sm-9">
-								<input id="content-type" type="text" readonly class="form-control" value="multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">content-type</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW">
 							</div>
 						</div>
-						<div class="row mb-2" >
-							<label class="col-sm-3 col-form-label" for="cache-control">cache-control</label>
-							<div class="col-sm-9">
-								<input type="text" id="cache-control" readonly class="form-control" value="no-cache">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">cache-control</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control" value="no-cache">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Accept</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="*/*">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Accept-Encoding</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept-Encoding</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="gzip, deflate">
 							</div>
 						</div>	
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Connection</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Connection</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="keep-alive">
 							</div>
 						</div>		
 						<h5 class="text-primary">Parameters (Body section)</h5>
-						<div class="row mb-2">
-							<label for="email1" class="col-sm-3 col-form-label">Email</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="email1" class="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
 								<input type="email" class="form-control" id="email1" required>
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label for="APIKey1" class="col-sm-3 col-form-label">WebAPI key</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="APIKey1" class="col-sm-2 col-form-label">WebAPI key</label>
+							<div class="col-sm-10">
 								<input type="text" class="form-control" id="APIKey1" required>
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label for="datasetType1" class="col-sm-3 col-form-label">Dataset Type</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="datasetType1" class="col-sm-2 col-form-label">Dataset Type</label>
+							<div class="col-sm-10">
 								<select id="datasetType1" class="browser-default custom-select" data-html="true" data-trigger="hover" data-toggle="tooltip" title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) sparse item Dataset<br>4) Columns with multiple nomimal values</p>">
 									<option value="" disabled selected>Choose a dataset type</option>
 									<option value="1">1) Market basket list</option>
@@ -831,9 +833,9 @@
 								</select>
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label for="file1" class="col-sm-3 col-form-label">File</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="file1" class="col-sm-2 col-form-label">File</label>
+							<div class="col-sm-10">
 								<input type="file" id="file1" class="form-control-file" name="fileToUpload" id="fileToUpload" accept=".csv, .txt" >
 							</div>
 						</div>
@@ -865,62 +867,64 @@ curl -X POST \
 				</div>
 			</div>
 
-			<div class="accordion-item lightgraybackground mb-2">
-				<h2 class="accordion-header">
-				  	<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-		  			   	<b>(POST)</b>&nbsp;Request Dataset Ids
-	   				</button>
-				</h2>
-				<div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#webApiAccordion">
-					<div class="accordion-body">
+			<div class="card lightgraybackground">
+				<div class="card-header" id="headingDatasets">
+					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapseDatasets" aria-expanded="false" aria-controls="collapseDatasets">
+							Request Dataset Ids <b>(POST)</b>
+						</button>
+					</div>
+				</div>
+				<div id="collapseDatasets" class="collapse" aria-labelledby="headingDatasets" data-parent="#webApiAccordion">
+					<div class="card-body">
 						<h5 class="text-primary">Endpoint</h5>
-						<div class="row mb-2">
-							<label for="endpoint2" class="col-sm-3 col-form-label">Url</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="endpoint2" class="col-sm-2 col-form-label">Url</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" id="endpoint2">
 							</div>
 						</div>
 						<h5 class="text-primary">Parameters (Header section)</h5>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">content-type</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">content-type</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="application/x-www-form-urlencoded">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">cache-control</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">cache-control</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="no-cache">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Accept</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="*/*">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Accept-Encoding</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept-Encoding</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="gzip, deflate">
 							</div>
 						</div>	
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Connection</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Connection</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="keep-alive">
 							</div>
 						</div>											
 						<h5 class="text-primary">Parameters (Body section)</h5>
-						<div class="row mb-2">
-							<label for="email2" class="col-sm-3 col-form-label">Email</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="email2" class="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
 								<input type="email" class="form-control" id="email2" required>
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label for="APIKey2" class="col-sm-3 col-form-label">WebAPI key</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="APIKey2" class="col-sm-2 col-form-label">WebAPI key</label>
+							<div class="col-sm-10">
 								<input type="text" class="form-control" id="APIKey2" required>
 							</div>
 						</div>
@@ -953,68 +957,70 @@ email=##1##&apiKey=##2##
 				</div>
 			</div>
 
-			<div class="accordion-item lightgraybackground mb-2">
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-						<b>(POST)</b>&nbsp;Delete dataset 
-					</button>
-				</h2>
-				<div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#webApiAccordion">
-					<div class="accordion-body">
+			<div class="card lightgraybackground">
+				<div class="card-header" id="heading3">
+					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+							Delete dataset <b>(POST)</b>
+						</button>
+					</div>
+				</div>
+				<div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#webApiAccordion">
+					<div class="card-body">
 						<h5 class="text-primary">Endpoint</h5>
-						<div class="row mb-2">
-							<label for="endpoint3" class="col-sm-3 col-form-label">Url</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="endpoint3" class="col-sm-2 col-form-label">Url</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" id="endpoint3">
 							</div>
 						</div>
 						<h5 class="text-primary">Parameters (Header section)</h5>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">content-type</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">content-type</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="application/x-www-form-urlencoded">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">cache-control</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">cache-control</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="no-cache">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Accept</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="*/*">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Accept-Encoding</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept-Encoding</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="gzip, deflate">
 							</div>
 						</div>	
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Connection</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Connection</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="keep-alive">
 							</div>
 						</div>											
 						<h5 class="text-primary">Parameters (Body section)</h5>
-						<div class="row mb-2">
-							<label for="email3" class="col-sm-3 col-form-label">Email</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="email3" class="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
 								<input type="email" class="form-control" id="email3" required>
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label for="APIKey3" class="col-sm-3 col-form-label">WebAPI key</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="APIKey3" class="col-sm-2 col-form-label">WebAPI key</label>
+							<div class="col-sm-10">
 								<input type="text" class="form-control" id="APIKey3" required>
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label for="datasetId3" class="col-sm-3 col-form-label">Dataset Id</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="datasetId3" class="col-sm-2 col-form-label">Dataset Id</label>
+							<div class="col-sm-10">
 								<input type="text" class="form-control" id="datasetId3" required>
 							</div>
 						</div>
@@ -1046,75 +1052,76 @@ email=##1##&apiKey=##2##&datasetId=##3##
 				</div>
 			</div>
 
-
-			<div class="accordion-item lightgraybackground mb-2">
-				<h2 class="accordion-header">
-				  	<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-						<strong>(POST)</strong>&nbsp;Request association rules 
-					</button>
-				</h2>
-				<div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#webApiAccordion">
-					<div class="accordion-body">
-						<div class="row mb-2">
+			<div class="card lightgraybackground">
+				<div class="card-header" id="heading4">
+					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+							Request association rules <b>(POST)</b>
+						</button>
+					</div>
+				</div>
+				<div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#webApiAccordion">
+					<div class="card-body">
+						<div class="form-group row">
 							<div class="col-sm-11">
 								<h5 class="text-primary">Endpoint</h5>
 							</div>
 							<div class="col-1">
-								<button type="button" class="btn mt-n1 float-end" onclick="toggleDisplay('#infoForDS')" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button>
+								<button type="button" class="btn mt-n1 float-right"  onclick="toggleDisplay('#infoForDS')" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button>
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label for="endpoint4" class="col-sm-3 col-form-label">Url</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="endpoint4" class="col-sm-2 col-form-label">Url</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" id="endpoint4">
 							</div>
 						</div>
 						<h5 class="text-primary">Parameters (Header section)</h5>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">content-type</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">content-type</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="application/x-www-form-urlencoded">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">cache-control</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">cache-control</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="no-cache">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Accept</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="*/*">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Accept-Encoding</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept-Encoding</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="gzip, deflate">
 							</div>
 						</div>	
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Connection</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Connection</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="keep-alive">
 							</div>
 						</div>											
 						<h5 class="text-primary">Parameters (Body section)</h5>
-						<div class="row mb-2">
-							<label for="email4" class="col-sm-3 col-form-label">Email</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="email4" class="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
 								<input type="email" class="form-control" id="email4" required>
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label for="APIKey4" class="col-sm-3 col-form-label">WebAPI key</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="APIKey4" class="col-sm-2 col-form-label">WebAPI key</label>
+							<div class="col-sm-10">
 								<input type="text" class="form-control" id="APIKey4" required>
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label for="datasetId4" class="col-sm-3 col-form-label">Dataset Id</label>
+						<div class="form-group row">
+							<label for="datasetId4" class="col-sm-2 col-form-label">Dataset Id</label>
 							<div class="col-sm-8">
 								<input type="text" class="form-control" id="datasetId4" required>
 							</div>
@@ -1123,33 +1130,33 @@ email=##1##&apiKey=##2##&datasetId=##3##
 								<input type="text" class="form-control" id="separator4" required value=",">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label for="minSupp4" class="col-sm-3 col-form-label">Min supp</label>
+						<div class="form-group row">
+							<label for="minSupp4" class="col-sm-2 col-form-label">Min supp</label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" id="minSupp4" required value="0.01" placeholder="0.01">
 							</div>
-							<label for="minConf4" class="col-sm-3 col-form-label ">Min conf</label>
+							<label for="minConf4" class="col-sm-2 col-form-label ">Min conf</label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" id="minConf4" required value="0.2" placeholder="0.2">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label for="minLift4" class="col-sm-3 col-form-label">Min lift</label>
+						<div class="form-group row">
+							<label for="minLift4" class="col-sm-2 col-form-label">Min lift</label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" id="minLift4" required value="1.5" placeholder="1.5">
 							</div>
-							<label for="maxRuleItems4" class="col-sm-3 col-form-label">Max Items</label>
+							<label for="maxRuleItems4" class="col-sm-2 col-form-label">Max Items</label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" id="maxRuleItems4" required value="4" placeholder="4">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label for="extra4" class="col-sm-3 col-form-label">Parameters</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="extra4" class="col-sm-2 col-form-label">Parameters</label>
+							<div class="col-sm-10">
 								<input type="text" class="form-control" id="extra4" >
 							</div>
 						</div>
-						<div class="row mb-2" data-trigger="hover" data-toggle="tooltip" title="In this section you can remove redundant association rules optionally. All association rules are retrieved by choosing 0. For more details please press the question mark.">
+						<div class="form-group row" data-trigger="hover" data-toggle="tooltip" title="In this section you can remove redundant association rules optionally. All association rules are retrieved by choosing 0. For more details please press the question mark.">
 							<label for="Redundant4" class="col-sm-6 col-form-label float-right">Redundant rules elimination type</label>
 							<div class="col-sm-5">
 								<input type="text" class="form-control" id="Redundant4" required value="0" placeholder="0" >
@@ -1186,68 +1193,70 @@ email=##1##&apiKey=##2##&datasetId=##3##&separator=##4##&min_support=##5##&min_c
 				</div>
 			</div>
 
-			<div class="accordion-item lightgraybackground mb-2">
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-						<b>(POST)</b>&nbsp;Retrieve association rules 
-					</button>
-				</h2>
-				<div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#webApiAccordion">
-					<div class="accordion-body">
+			<div class="card lightgraybackground">
+				<div class="card-header" id="heading5">
+					<div class="p-1 mt-0 mx-auto border border-primary rounded" style="width:100%">
+						<button class="btn btn-primary collapsed" style="width:100%; height:100%" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+							Retrieve association rules <b>(POST)</b>
+						</button>
+					</div>
+				</div>
+				<div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#webApiAccordion">
+					<div class="card-body">
 						<h5 class="text-primary">Endpoint</h5>
-						<div class="row mb-2">
-							<label for="endpoint5" class="col-sm-3 col-form-label">Url</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="endpoint5" class="col-sm-2 col-form-label">Url</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" id="endpoint5">
 							</div>
 						</div>
 						<h5 class="text-primary">Parameters (Header section)</h5>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">content-type</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">content-type</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="application/x-www-form-urlencoded">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">cache-control</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">cache-control</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="no-cache">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Accept</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="*/*">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Accept-Encoding</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Accept-Encoding</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="gzip, deflate">
 							</div>
 						</div>	
-						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Connection</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label class="col-sm-2 col-form-label">Connection</label>
+							<div class="col-sm-10">
 								<input type="text" readonly class="form-control" value="keep-alive">
 							</div>
 						</div>											
 						<h5 class="text-primary">Parameters (Body section)</h5>
-						<div class="row mb-2">
-							<label for="email5" class="col-sm-3 col-form-label">Email</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="email5" class="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
 								<input type="email" class="form-control" id="email5" required>
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label for="APIKey5" class="col-sm-3 col-form-label">WebAPI key</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="APIKey5" class="col-sm-2 col-form-label">WebAPI key</label>
+							<div class="col-sm-10">
 								<input type="text" class="form-control" id="APIKey5" required>
 							</div>
 						</div>
-						<div class="row mb-2">
-							<label for="datasetId5" class="col-sm-3 col-form-label">Dataset Id</label>
-							<div class="col-sm-9">
+						<div class="form-group row">
+							<label for="datasetId5" class="col-sm-2 col-form-label">Dataset Id</label>
+							<div class="col-sm-10">
 								<input type="text" class="form-control" id="datasetId5" required>
 							</div>
 						</div>

@@ -75,17 +75,17 @@ function credits() {
         str    +=    '    <div class="modal-content">';
         str    +=    '        <div class="modal-header"><div>';
         str    +=    '                <h1 class="modal-title text-primary fs-3">webApriori</h1>';
-        str    +=    '                <p class="text-secondary">An innovative association rules mining engine</p></div>';             
+        str    +=    '                <p class="text-secondary">An innovative AutoML association rules mining engine</p></div>';             
         str    +=    '                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
         str    +=    '        </div>';
         str    +=    '           <div class="modal-body">';
         str    +=    '               <h5 class="modal-title text-primary">Developer</h5>';
         str    +=    '               <p>Malliaridis Konstantinos</p><hr>';
         str    +=    '               <h5 class="modal-title text-primary">Application Version</h5>';
-        str    +=    '               <p>V01.06.00 28/11/2023</p>';
+        str    +=    '               <p>V01.07.00 beta 24/03/2024</p>';
         str    +=    '            </div>';
         str    +=    '            <div class="modal-footer">';
-        str    +=    '               <p class="text-center" >MSc in Web Intelligence &copy; 2019-2020</p>';
+        str    +=    '               <p class="text-center" >MSc and PHd in Web Intelligence &copy; 2019-2024</p>';
         str    +=    '           </div>';
         str    +=    '        </div>';
         str    +=    '    </div>';
@@ -102,7 +102,7 @@ function footerActions() {
     // Check if the span element exists
     if (spanElement) {
         // Update the inner text of the span element
-        spanElement.innerHTML = " WebApriori Association rules mining based on Apriori algorithm  &copy;2019-2024";
+        spanElement.innerHTML = "WebApriori - An innovative autoML association rules mining engine. &copy;2019-2024";
     } 
 }
 
