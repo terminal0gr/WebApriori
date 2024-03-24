@@ -39,7 +39,7 @@
     try {
         // Get email
         $key=SERVERKEY.date("m.d.y");
-        $email = JWT::decode($_POST['token'], $key);
+        $email = (string) JWT::decode($_POST['token'], $key);
         $auth = true;
     }
     catch (Exception $e) {  //hide $key on error
@@ -102,7 +102,7 @@
             $Vi++;
         };
     }
-    if ($Vi>=MaxDatasets) {
+    if ($Vi>=MaxDatasets && !$isPublic) {
         http_response_code(201);
         $JsonReq = array('title' => 'exclamation', 'message' => "Sorry, no more than ".MaxDatasets." datasets are permitted per account!!!");
         print json_encode($JsonReq);
