@@ -1,15 +1,17 @@
 
 17/12/2023 Dataset description section must be created
+           > Shape
+           > describe
+           > 20 lines sample
 09/12/2023 Extra parameters / item names field must be AutoML initialized in 3,4 dataset type 
            (e.g. name of the dataset's columns)
 03/02/2024 arff files manipulation in webApriori
 21/01/2024 Columns participating in RHS in 1,3,4 dataset types
 13/12/2023 AutoML dataset type must be utilized
-27/01/2024 Bootstrap update must be done
-             Nav dropdown dropdown-menu is not working
 17/03/2024 jQuery must be eliminated
 12/02/2024 Apriori Engine Main04.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv 
 
+DONE - V01.07.00 27/01/2024 Bootstrap updated from V4.3.1 to V5.3.3
 DONE - V01.07.00 16/02/2024 30/01/2024 Dataset attributes must be collected (120/120)
 DONE - V01.07.00 03/02/2024 30/01/2024 Check Integer Columns frequnce is not working smoothly
 DONE - V01.07.00 03/02/2024 03/02/2024 arff files manipulation
