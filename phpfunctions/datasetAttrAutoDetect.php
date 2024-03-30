@@ -119,7 +119,7 @@
     }
 
     $input = PYTHON;
-    $input.= ' autoDetectDatasetAttr.py ';
+    $input.= ' DatasetAttrAutoDetect.py ';
     $input.= '"'.$identity.'" ';
     $input.= '"'.$filename.'" ';
     $input.= '"'.$datasetType.'" ';

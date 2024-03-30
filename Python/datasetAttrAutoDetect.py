@@ -2,43 +2,46 @@ import sys
 import os
 import json
 import csvMy as csv
-import datasetFeatures as df
-#import csv
+import datasetTypeDetection as df
 
 #------------------------------
 #command line arguments section
+#------------------------------
+
 #identity
-identity=None
+identity=111111111 #random for testing purposes
 if len(sys.argv)>1:
 	try:
 		identity=str(sys.argv[1])
 	except:
 		sys.exit()
               
-datasetName='dataset.csv'	
+datasetName='titanic02.csv'	
 if len(sys.argv)>2:
     if len(sys.argv[2])>0:
         datasetName=sys.argv[2]
 
-datasetType=1
+datasetType=-1
 if len(sys.argv)>3:
 	try:
 		datasetType=int(sys.argv[3])
 	except:
-		datasetType=1 # Default is Market Basket list
+		datasetType=-1 # -1 means detect DatasetType. Else force the value from user
 
-public=0	
+public=0
 if len(sys.argv)>4:
     if len(sys.argv[4])>0:
         public=sys.argv[4]
-            
+
+#------------------------------           
 #end command line arguments section
 #------------------------------
 
-if public=='0':
-    filepath=os.path.join('datasets', str(identity), str(datasetType), datasetName)
+
+if public==0:
+    filepath=os.path.join('datasets', str(identity), datasetName)
 else:
-    filepath=os.path.join('public', str(datasetType), datasetName)	
+    filepath=os.path.join('public', datasetName)	
 
 datasetAttributes = {}
 
@@ -52,15 +55,17 @@ with open(filepath, encoding='utf8') as f:
     dialect = csv.Sniffer().sniff(s100)  # Check what kind of csv/tsv file we have.
     datasetAttributes['delimiter']=dialect.delimiter
 
-    #df.datasetFeatures()._datasetFeatures_x(filepath,dialect.delimiter,datasetAttributes['hasHeader'],datasetType=datasetType)
-
-    datasetAttributes['datasetType']=dialect.datasetType
+    if datasetType==-1:
+        if dialect.datasetType==1: #Without Machine learning detection
+            datasetAttributes['datasetType']=dialect.datasetType
+        else:
+            DFI=df.datasetFeatures()._datasetFeatures_a(filepath,dialect.delimiter,datasetAttributes['hasHeader'])
+            datasetAttributes['datasetType']=df.datasetFeatures().AutoDetectType(DFI)
 
 if public=='0':
-    #filepath=os.path.join('output', identity, str(datasetType), datasetName)
-    filepath=os.path.join('output', str(identity), str(datasetType))
+    filepath=os.path.join('output', str(identity))
 else:
-    filepath=os.path.join('output', str(identity), 'p' + str(datasetType))	
+    filepath=os.path.join('output', 'p')	
 
 # Use os.makedirs() to create the folder (including parent directories if they don't exist)
 os.makedirs(filepath, exist_ok=True)

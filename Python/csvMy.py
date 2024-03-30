@@ -14,9 +14,6 @@ from _csv import Dialect as _Dialect
 from collections import OrderedDict
 from io import StringIO
 
-# Malliaridis 23/12/2023
-import datasetFeatures
-
 __all__ = ["QUOTE_MINIMAL", "QUOTE_ALL", "QUOTE_NONNUMERIC", "QUOTE_NONE",
            "Error", "Dialect", "__doc__", "excel", "excel_tab",
            "field_size_limit", "reader", "writer",

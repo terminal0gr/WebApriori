@@ -788,6 +788,13 @@
 			document.getElementById("header1").checked=false; 
 		}
 
+		function Helloworld() {
+			fetch('http://localhost:5000/api/data')
+			.then(response => response.json())
+  			.then(data => console.log(data))
+			.catch(error => console.error('Error:', error));
+		}
+
     </script>
 </head>
 
@@ -1071,8 +1078,11 @@ class,age,sex,survived<br>
 				</div>
 			</div>
 			<div id="autoDetect1" class="row">
-				<div class="col-11">
+				<div class="col-6">
 					<label class="form-label"><a href="#" onclick="autoDetectDatasetAttr(true)" data-trigger="hover" data-toggle="tooltip" title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			
+				</div>
+				<div class="col-5">
+					<label class="form-label"><a href="#" onclick="Helloworld()" data-trigger="hover" data-toggle="tooltip" title="Helloworld">Hello world!</a> Hello world</label>			
 				</div>
 				<div class="col-1">
 					<button type="button" id="deleteDataset"   class="btn mt-n1 float-right" onclick="deletecurrentDataset()" data-trigger="hover" data-toggle="tooltip" title="Delete current dataset" >
