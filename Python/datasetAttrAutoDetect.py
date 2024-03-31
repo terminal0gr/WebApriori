@@ -57,12 +57,12 @@ with open(filepath, encoding='utf8') as f:
 
     if datasetType==-1:
         if dialect.datasetType==1: #Without Machine learning detection
-            datasetAttributes['datasetType']=dialect.datasetType
+            datasetAttributes['datasetType']=int(dialect.datasetType)
         else:
             DFI=df.datasetFeatures()._datasetFeatures_a(filepath,dialect.delimiter,datasetAttributes['hasHeader'])
-            datasetAttributes['datasetType']=df.datasetFeatures().AutoDetectType(DFI)
+            datasetAttributes['datasetType']=int(df.datasetFeatures().AutoDetectType(DFI))
 
-if public=='0':
+if public==0:
     filepath=os.path.join('output', str(identity))
 else:
     filepath=os.path.join('output', 'p')	

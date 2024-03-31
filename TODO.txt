@@ -13,8 +13,10 @@
            python/datasetAttrAutoDetect.py
 
            31/03/2024
-           Makes the detection of the dataset (testing must be done) but hits error after ln 65
-           in datasetAttrAutoDetect.py
+           Makes the detection of the dataset (testing must be done) 
+           TODO retrieveMetadata in Main05.py ln 857
+           TODO correct the html files to conform to new rules (datasetType, datasetSep etc)
+
 
 12/02/2024 Apriori Engine Main04.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv 
 

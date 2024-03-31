@@ -721,7 +721,7 @@ Dataset types:
 # sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "titanic02WithoutHeader.csv", ",", "4", '2' 0]
 # sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 3, -3, "titanic02.csv", ",", "4", '2', 0,  "class", "age", "sex", "survived"]
 '''
-# 1) Identity   2) min_support   3) min_confidence   4) min_lift   5) max_length   6) SortIndex   7) datasetName   8) datasetSep   9) datasetType   10) outputType   11) reduntantRemoveType   12) datasetArgs
+# 1) Identity   2) min_support   3) min_confidence   4) min_lift   5) max_length   6) SortIndex   7) datasetName 8) outputType 9) reduntantRemoveType 10) datasetArgs
 '''
 
 
@@ -780,18 +780,19 @@ if len(sys.argv)>7:
     if len(sys.argv[7])>0:
         datasetName=sys.argv[7]	
 
-
+#Let's say declaration of the variables
 datasetSep=',' #Dataset item separator
 datasetType=1 # Default is Market Basket list
+hasHeader=True #Default the dataset has header
 
 '''
 #1=text file, 2=json file
 #output to both console and file if datasetName is given
 '''
 outputType=1
-if len(sys.argv)>10:
+if len(sys.argv)>8:
 	try:
-		outputType=int(sys.argv[10])
+		outputType=int(sys.argv[8])
 	except:
 		outputType=1 # Default is 1 print text.
 
@@ -803,16 +804,16 @@ bitwise 4 Redundant Rules with Fixed Antecedent/LHS
 #output to to both console and file if datasetName is given
 '''
 reduntantRemoveType=0 
-if len(sys.argv)>11:
+if len(sys.argv)>9:
 	try:
-		reduntantRemoveType=int(sys.argv[11])
+		reduntantRemoveType=int(sys.argv[9])
 	except:
 		reduntantRemoveType=0 
 
 datasetArgs=''
-if len(sys.argv)>12:
-    if len(sys.argv[12])>0:
-	    datasetArgs=str(sys.argv[12:])
+if len(sys.argv)>10:
+    if len(sys.argv[10])>0:
+	    datasetArgs=str(sys.argv[10:])
 
 if not identity:
     print("Unknown identity")
@@ -823,6 +824,8 @@ recordTime=time()
 public=0
 if outputType==3:
     public=1
+
+datasetSep, datasetType, hasHeader=retrieveMetadata()
 
 if len(sys.argv)>12:
     records=prepare_records(datasetName, datasetSep, datasetType, public, *sys.argv[12:])
@@ -847,4 +850,10 @@ if records:
 else:
     print("Could not retrieve any record from the dataset")
     
+def retrieveMetadata(datasetName, public):
+     # Step 1: Read JSON file
+    with open('data.json', 'r') as file:
+        data = json.load(file)
+
     
+     

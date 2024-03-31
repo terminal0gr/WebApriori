@@ -57,35 +57,29 @@
     $postdata = urldecode($_REQUEST["dataset"]); // Decode URL-encoded string
 
     // Lets assume that it is simple dataset. (not public)
-    //get dataset type from the first character of $_POST['dataset']
-    $datasetType=substr($postdata,0,1);
     //get the filename from the 2nd character to the end
-    $filename=substr($postdata,1);
+    $filename=$postdata;
     $isPublicDataset=false;
     //if the first character of $_POST['dataset'] is p the dataset is public.
-    if (substr($postdata,0,1)=='p') {
-        //get dataset type from the third character of $_POST['dataset']
-        $datasetType=substr($postdata,2,1);
-        //get the filename from the 4th character to the end
-        $filename=substr($postdata,3);
+    if (substr($postdata,0,2)=='p|') {
+        //get the filename from the 3rd character to the end
+        $filename=substr($postdata,2);
         $isPublicDataset=true;
     }
-
-
 
     //Create dataset path
     $kind=$_REQUEST["kind"];
 
     $filepath='';
     if ($kind=='result') {
-        $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;   
+        $fpatho="../Python/output/".$identity."/".$filename;   
         $fpatho_parts = pathinfo($fpatho);
         $filepath=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".json";
     } elseif ($kind=='dataset') {
         if ($isPublicDataset) {
-            $filepath="../Python/public/".$datasetType."/".$filename; 
+            $filepath="../Python/public/".$filename; 
         } else {
-            $filepath="../Python/datasets/".$identity."/".$datasetType."/".$filename;  
+            $filepath="../Python/datasets/".$identity."/".$filename;  
         } 
     } else {
         http_response_code(201);

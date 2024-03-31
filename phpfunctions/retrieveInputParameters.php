@@ -66,16 +66,14 @@
     //get dataset type is the first character of $_POST['dataset']
     if (substr($_POST['dataset'],0,2)=='p|') {
         // public dataset
-        $datasetType='p'.substr($_POST['dataset'],2,1);
-        $filename=substr($_POST['dataset'],3);
+        $filename=substr($_POST['dataset'],2);
     }else{
         // private dataset
-        $datasetType=substr($_POST['dataset'],0,1);
-        $filename=substr($_POST['dataset'],1);
+        $filename=$_POST['dataset'];
     }
 
     //Create output path
-    $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;
+    $fpatho="../Python/output/".$identity."/".$filename;
     $fpatho_parts = pathinfo($fpatho);
     $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".json";
     $message = '';

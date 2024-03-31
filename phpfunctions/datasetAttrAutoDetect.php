@@ -73,13 +73,11 @@
     if (substr($_POST['dataset'],0,2)=='p|') {
         // public dataset
         $isPublic=1;
-        $datasetType=substr($_POST['dataset'],2,1);
-        $filename=substr($_POST['dataset'],3);
+        $filename=substr($_POST['dataset'],2);
     }else{
         // private dataset
         $isPublic=0;
-        $datasetType=substr($_POST['dataset'],0,1);
-        $filename=substr($_POST['dataset'],1);
+        $filename=$_POST['dataset'];
     }
 
 
@@ -88,9 +86,9 @@
 
         //assemble output path
         if ($isPublic==0) {
-            $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;
+            $fpatho="../Python/output/".$identity."/".$filename;
         } else {
-            $fpatho="../Python/output/".$identity."/p".$datasetType."/".$filename;            
+            $fpatho="../Python/output/".$identity."/p".$filename;            
         }
         $fpatho_parts = pathinfo($fpatho);
         $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".metadata";
@@ -122,7 +120,7 @@
     $input.= ' DatasetAttrAutoDetect.py ';
     $input.= '"'.$identity.'" ';
     $input.= '"'.$filename.'" ';
-    $input.= '"'.$datasetType.'" ';
+    $input.= '-1 ';
     $input.= '"'.$isPublic.'"';
 
     chdir('../Python');

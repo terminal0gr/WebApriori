@@ -16,7 +16,7 @@
     try {
         // Get email
         $key=SERVERKEY.date("m.d.y");
-        $email = JWT::decode($_POST['token'], $key);
+        $email =(string) JWT::decode($_POST['token'], $key);
         $auth = true;
     }
     catch (Exception $e) {  //hide $key on error

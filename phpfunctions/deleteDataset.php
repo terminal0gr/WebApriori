@@ -16,7 +16,7 @@
     try {
         // Get email
         $key=SERVERKEY.date("m.d.y");
-        $email = JWT::decode($_POST['token'], $key);
+        $email = (string) JWT::decode($_POST['token'], $key);
         $auth = true;
     }
     catch (Exception $e) {  //hide $key on error
@@ -66,22 +66,20 @@
     if (substr($_POST['dataset'],0,2)=='p|') {
         // public dataset
         $outputType=3;
-        $datasetType=substr($_POST['dataset'],2,1);
-        $filename=substr($_POST['dataset'],3);
+        $filename=substr($_POST['dataset'],2);
     }else{
         // private dataset
         $outputType=2;
-        $datasetType=substr($_POST['dataset'],0,1);
-        $filename=substr($_POST['dataset'],1);
+        $filename=$_POST['dataset'];
     }
 
     //Create dataset path
     if ($outputType==2) {
         //private dataset
-        $fpath="../Python/datasets/".$identity."/".$datasetType."/".$filename;
+        $fpath="../Python/datasets/".$identity."/".$filename;
     }else{
         //public dataset
-        $fpath="../Python/public/".$datasetType."/".$filename;   
+        $fpath="../Python/public/".$filename;   
     }
 
     $message = '';
@@ -94,9 +92,9 @@
     }
 
     if ($outputType==2) {
-        $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;
+        $fpatho="../Python/output/".$identity."/".$filename;
     }else{
-        $fpatho="../Python/output/".$identity."/p".$datasetType."/".$filename;
+        $fpatho="../Python/output/".$identity."/p".$filename;
     } 
       
     $fpatho_parts = pathinfo($fpatho);

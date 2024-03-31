@@ -14,13 +14,6 @@
         exit();
     }
 
-    if (!isset($_POST['datasetType'])) {
-        http_response_code(400);
-        $JsonReq = array('title' => 'Error', 'message' => 'Dataset type not provided!!!');
-        print json_encode($JsonReq);
-        exit();
-    }
-
     if (!isset($_POST['isPublic'])) {
         http_response_code(400);
         $JsonReq = array('title' => 'Error', 'message' => 'Is public not provided!!!');
@@ -96,12 +89,10 @@
 
     $filelist=array();
     $Vi=0;
-    for ($i = 1; $i < 5; $i++) {
-        $log_directory="../Python/datasets/".$identity."/".$i."/";
-        foreach(glob($log_directory.'*.*') as $file) {
-            $Vi++;
-        };
-    }
+    $log_directory="../Python/datasets/".$identity."/".$i."/";
+    foreach(glob($log_directory.'*.*') as $file) {
+        $Vi++;
+    };
     if ($Vi>=MaxDatasets && !$isPublic) {
         http_response_code(201);
         $JsonReq = array('title' => 'exclamation', 'message' => "Sorry, no more than ".MaxDatasets." datasets are permitted per account!!!");
@@ -109,7 +100,7 @@
         exit();
     }
 
-    $target_dir = "../Python/datasets/".$identity."/".$_POST['datasetType']."/";
+    $target_dir = "../Python/datasets/".$identity."/";
     if (!is_dir($target_dir)) {
         if (!mkdir($target_dir, 0777, true)) {
             http_response_code(201);
@@ -120,7 +111,7 @@
     }
 
     if ($isPublic) {
-        $targetPbl_dir = "../Python/public/".$_POST['datasetType']."/";
+        $targetPbl_dir = "../Python/public/";
         if (!is_dir($targetPbl_dir)) {
             if (!mkdir($targetPbl_dir, 0777, true)) {
                 http_response_code(201);

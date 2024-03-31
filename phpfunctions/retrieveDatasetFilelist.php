@@ -46,23 +46,20 @@
     }
 
     $filelist=array();
-    for ($i = 1; $i < 5; $i++) {
-        $log_directory="../Python/datasets/".$identity."/".$i."/";
-        foreach(glob($log_directory.'*.*') as $file) {
-            $filelist[] = array('public' => 0, 'datasetType' => $i, 'filename' => basename($file));
-        };
-    }
-    if (count($filelist)>10) {
-        $filelist=array_slice($filelist, 0, 10);
+    $log_directory="../Python/datasets/".$identity."/";
+    foreach(glob($log_directory.'*.*') as $file) {
+        $filelist[] = array('public' => 0, 'filename' => basename($file));
+    };
+
+    if (count($filelist)>MaxDatasets) {
+        $filelist=array_slice($filelist, 0, MaxDatasets);
     }
 
     // collect public datasets
-    for ($i = 1; $i < 5; $i++) {
-        $log_directory="../Python/public/".$i."/";
-        foreach(glob($log_directory.'*.*') as $file) {
-            $filelist[] = array('public' => 1, 'datasetType' => $i, 'filename' => basename($file));
-        };
-    }
+    $log_directory="../Python/public/".$i."/";
+    foreach(glob($log_directory.'*.*') as $file) {
+        $filelist[] = array('public' => 1, 'filename' => basename($file));
+    };
 
     if($filelist) {
         http_response_code(200);

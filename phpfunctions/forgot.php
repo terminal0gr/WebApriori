@@ -6,7 +6,6 @@
 	require './PHPMailer/src/Exception.php';
 	require './PHPMailer/src/SMTP.php';
 	use PHPMailer\PHPMailer\PHPMailer;
-	use PHPMailer\PHPMailer\SMTP;
 	use PHPMailer\PHPMailer\Exception;
 
 	session_start();

@@ -105,14 +105,12 @@
         // public dataset
         $outputType=3;
         $isPublic==1;
-        $datasetType=substr($_POST['dataset'],2,1);
-        $filename=substr($_POST['dataset'],3);
+        $filename=substr($_POST['dataset'],2);
     }else{
         // private dataset
         $outputType=2;
         $isPublic=0;
-        $datasetType=substr($_POST['dataset'],0,1);
-        $filename=substr($_POST['dataset'],1);
+        $filename=$_POST['dataset'];
     }
 
     if (empty($filename)) {
@@ -127,46 +125,33 @@
         print json_encode($JsonReq);
         exit();
     }
-    else {
-        switch($datasetType) {
-            case '1';
-            case '2';
-            case '3';
-            case '4';
-            break;        
-        default;
-            http_response_code(201);
-            $JsonReq = array('title' => 'Exclamation', 'message' => 'inadequate dataset!!!');
-            print json_encode($JsonReq);
-            exit();
-        }
-    }
 
-    //WritedatasetAttrs
-    //translate string value to bool value
-    $header1=filter_var($_POST['header1'], FILTER_VALIDATE_BOOLEAN);
-    // JSON data to be written to the file
-    $json_data = [
-        "hasHeader" => $header1,
-        "delimiter" => $_POST['separator']
-    ];
-    // Convert the PHP array to a JSON string
-    $json_string = json_encode($json_data, JSON_PRETTY_PRINT);
-    // File path where you want to write the JSON data
-    //assemble output path
-    if ($isPublic==0) {
-        $fpatho="../Python/output/".$identity."/".$datasetType."/".$filename;
-    } else {
-        $fpatho="../Python/output/".$identity."/p".$datasetType."/".$filename;            
-    }
-    $fpatho_parts = pathinfo($fpatho);
-    $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".metadata";
-    // Write the JSON data to the file
-    file_put_contents($fpatho, $json_string);
+    //This work is done in datasetAttrAutoDetect.py. It is obsolete here.
+    // //WritedatasetAttrs
+    // //translate string value to bool value
+    // $header1=filter_var($_POST['header1'], FILTER_VALIDATE_BOOLEAN);
+    // // JSON data to be written to the file
+    // $json_data = [
+    //     "hasHeader" => $header1,
+    //     "delimiter" => $_POST['separator']
+    // ];
+    // // Convert the PHP array to a JSON string
+    // $json_string = json_encode($json_data, JSON_PRETTY_PRINT);
+    // // File path where you want to write the JSON data
+    // //assemble output path
+    // if ($isPublic==0) {
+    //     $fpatho="../Python/output/".$identity."/".$filename;
+    // } else {
+    //     $fpatho="../Python/output/".$identity."/p".$filename;            
+    // }
+    // $fpatho_parts = pathinfo($fpatho);
+    // $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".metadata";
+    // // Write the JSON data to the file
+    // file_put_contents($fpatho, $json_string);
 
     //Call Python for Association rules mining
     $input = PYTHON;
-    $input.= ' Main04.py ';
+    $input.= ' Main05.py ';
     $input.= '"'.$identity.'" ';
     $input.= '"'.$_POST['min_support'].'" ';
     $input.= '"'.$_POST['min_confidence'].'" ';
@@ -174,8 +159,6 @@
     $input.= '"'.$_POST['max_length'].'" ';
     $input.= '"-3" ';
     $input.= '"'.$filename.'" ';
-    $input.= '"'.$_POST['separator'].'" ';
-    $input.= '"'.$datasetType.'" ';
     $input.= '"'.$outputType.'" ';
     $input.= '"'.$_POST['redundantType'].'" ';
     $input.= $_POST['extra_parameters'];
