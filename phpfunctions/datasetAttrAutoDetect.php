@@ -120,7 +120,7 @@
     $input.= ' DatasetAttrAutoDetect.py ';
     $input.= '"'.$identity.'" ';
     $input.= '"'.$filename.'" ';
-    $input.= '-1 ';
+    $input.= '"-1" ';
     $input.= '"'.$isPublic.'"';
 
     chdir('../Python');

@@ -24,8 +24,8 @@
             "justMyCode": false,
             "args": [
                 "79d1727987f200802593e3599119c966",
-                "a2.csv",
-                "3",
+                "0data_balita.csv",
+                "-1",
                 "0"
             ],
             "console": "integratedTerminal"
@@ -80,16 +80,42 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Run Main04 2...",
+            "name": "Run Main05",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "args": [
-                "79d1727987f200802593e3599119c966","0.01", "0.2", "1.5", "4", "-3", "2_L-0006.csv", ";", "2", "3", "0"
+                "79d1727987f200802593e3599119c966","0.01", "0.2", "1.5", "4", "-3", "2_L-0006.csv", "3", "0"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Run Main04...",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${fileDirname}",
+            "justMyCode": false,
+            "args": [
+                // "79d1727987f200802593e3599119c966",
+                // "0.01",
+                // "0.2",
+                // "1.5", "4", "-3", "2u.data", " ", "2", "3", "0", "user_id", "movie_id"
+                // "79d1727987f200802593e3599119c966",
+                // "0.01",
+                // "0.2",
+                // "1.5", "4", "-3", "2u.data", "{TAB}", "2", "3", "0", "user_id", "movie_id"
+                // "79d1727987f200802593e3599119c966", 
+                // "0.01", 
+                // "0.02",  
+                // "1.5","4","-3", "grocery_timestamp.csv", ",", "3", "2", "0", "0", "air fresheners candles", "asian foods", "baby accessories", "baby bath body care", "baby food formula", "bakery desserts", "baking ingredients", "baking supplies decor", "beauty", "beers coolers", "body lotions soap", "bread", "breakfast bakery", "breakfast bars pastries", "bulk dried fruits vegetables", "bulk grains rice dried goods", "buns rolls", "butter", "candy chocolate", "canned fruit applesauce", "canned jarred vegetables", "canned meals beans", "canned meat seafood", "cat food care", "cereal", "chips pretzels", "cleaning products", "cocoa drink mixes", "coffee", "cold flu allergy", "condiments", "cookies cakes", "crackers", "cream", "deodorants", "diapers wipes", "digestion", "dish detergents", "dog food care", "doughs gelatins bake mixes", "dry pasta", "eggs", "energy granola bars", "energy sports drinks", "eye ear care", "facial care", "feminine care", "first aid", "food storage", "fresh dips tapenades", "fresh fruits", "fresh herbs", "fresh pasta", "fresh vegetables", "frozen appetizers sides", "frozen breads doughs", "frozen breakfast", "frozen dessert", "frozen juice", "frozen meals", "frozen meat seafood", "frozen pizza", "frozen produce", "frozen vegan vegetarian", "fruit vegetable snacks", "grains rice dried goods", "granola", "hair care", "honeys syrups nectars", "hot cereal pancake mixes", "hot dogs bacon sausage", "ice cream ice", "ice cream toppings", "indian foods", "instant foods", "juice nectars", "kitchen supplies", "kosher foods", "latino foods", "laundry", "lunch meat", "marinades meat preparation", "meat counter", "milk", "mint gum", "missing", "more household", "muscles joints pain relief", "nuts seeds dried fruit", "oils vinegars", "oral hygiene", "other", "other creams cheeses", "packaged cheese", "packaged meat", "packaged poultry", "packaged produce", "packaged seafood", "packaged vegetables fruits", "paper goods", "pasta sauce", "pickled goods olives", "plates bowls cups flatware", "popcorn jerky", "poultry counter", "prepared meals", "prepared soups salads", "preserved dips spreads", "protein meal replacements", "red wines", "refrigerated", "refrigerated pudding desserts", "salad dressing toppings", "seafood counter", "shave needs", "skin care", "soap", "soft drinks", "soup broth bouillon", "soy lactosefree", "specialty cheeses", "specialty wines champagnes", "spices seasonings", "spirits", "spreads", "tea", "tofu meat alternatives", "tortillas flat bread", "trail mix snack mix", "trash bags liners", "vitamins supplements", "water seltzer sparkling water", "white wines", "yogurt"
+                "79d1727987f200802593e3599119c966", 
+                "0.01","0.2","1.5","4","-3","4imports-85.csv",";","4","3","0","symboling","make","fuel","aspiration","doors","style","drive-wheels","engine-location","wheel-base","length","width","height","curb-weight","engine-type","num-of-cylinders","engine-size","fuel-system","compression-ratio","horsepower","peak-rpm","city-mpg","highway-mpg","price"            
             ],
             "console": "integratedTerminal"
         }
+
     ]
 }

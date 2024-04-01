@@ -56,7 +56,7 @@
     }
 
     // collect public datasets
-    $log_directory="../Python/public/".$i."/";
+    $log_directory="../Python/public/";
     foreach(glob($log_directory.'*.*') as $file) {
         $filelist[] = array('public' => 1, 'filename' => basename($file));
     };

@@ -407,9 +407,9 @@
 						str='<option value="" disabled selected >Choose a dataset or click to the link to upload a new one</option>';
 						res.forEach(function(data, index){
 							if (data.public===0) {
-								str += '<option value="' + data.datasetType + data.filename + '">(' + data.datasetType + ') ' + data.filename + '</option>' 
+								str += '<option value="' + data.filename + '">' + data.filename + '</option>' 
 							}else{
-								str += '<option value="' + 'p|' + data.datasetType + data.filename + '" style="background-color: powderblue;">(public ' + data.datasetType + ') ' + data.filename + '</option>' 
+								str += '<option value="' + 'p|' + data.filename + '" style="background-color: powderblue;">(public) ' + data.filename + '</option>' 
 							}	  
 						});
 						$("#dataset").html(str);
@@ -711,8 +711,8 @@
 				cache: false,
 				processData:false,
 				beforeSend: function( xhr ) {
-					$('#autoDetect1').hide("slow");
-					$('#autoDetecting').show("slow");
+					$('#autoDetect1').hide(400);
+					$('#autoDetecting').show(400);
 				}
 			}) 	
 			.done(function(response, textStatus, jqXHR) {
@@ -768,8 +768,8 @@
 					MyModal("association rules",'Unknown error occured!');
 				}
 			}).always(function() {
-				$('#autoDetecting').hide("slow");
-				$('#autoDetect1').show("slow");			
+				$('#autoDetecting').hide(400);
+				$('#autoDetect1').show(400);			
 			});
 		};
 
@@ -786,13 +786,6 @@
 
 			document.getElementById('separator').value=";"; 
 			document.getElementById("header1").checked=false; 
-		}
-
-		function Helloworld() {
-			fetch('http://localhost:5000/api/data')
-			.then(response => response.json())
-  			.then(data => console.log(data))
-			.catch(error => console.error('Error:', error));
 		}
 
     </script>
@@ -1077,24 +1070,18 @@ class,age,sex,survived<br>
 					</button>
 				</div>
 			</div>
-			<div id="autoDetect1" class="row">
-				<div class="col-6">
-					<label class="form-label"><a href="#" onclick="autoDetectDatasetAttr(true)" data-trigger="hover" data-toggle="tooltip" title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			
-				</div>
-				<div class="col-5">
-					<label class="form-label"><a href="#" onclick="Helloworld()" data-trigger="hover" data-toggle="tooltip" title="Helloworld">Hello world!</a> Hello world</label>			
+			<div class="row">
+				<div class="col-11">
+					<label id="autoDetect1" class="form-label"><a href="#" onclick="autoDetectDatasetAttr(true)" data-trigger="hover" data-toggle="tooltip" title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			
+					<label id="autoDetecting" style="display:none">Autodetecting attributes... Please wait</label>
 				</div>
 				<div class="col-1">
 					<button type="button" id="deleteDataset"   class="btn mt-n1 float-right" onclick="deletecurrentDataset()" data-trigger="hover" data-toggle="tooltip" title="Delete current dataset" >
 						<img src="images/delete32grey.png" width="24" height="24" alt="">
 					</button>
 				</div>	
-			</div>	
-			<div id="autoDetecting" class="row" style="display:none">
-				<div class="col-12">
-					<label>Autodetecting attributes... Please wait</label>			
-				</div>
-			</div>	
+			</div>			
+
 			<div class="row">
 				<div class="col-12">
 					<label for="extra parameters" class="form-label">Extra parameters / item names</label>

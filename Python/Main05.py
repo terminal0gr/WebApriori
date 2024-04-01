@@ -495,7 +495,7 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
                 return list(reader)            
             
     else:
-        print("Unknown dataset type")
+        print("Unknown or unable to process the dataset. Its dataset type is 0 which means it can't be used for association rules mining as it can't produce intresting frequent itemsets.")
 
 
 ##################################################################################
@@ -684,7 +684,33 @@ def output_association_rules(association_results, sort_index, descending=True, f
     if fileName:
         file.close()     
 
- 
+def retrieveMetadata(datasetName, public):
+
+    # Step 1: Read JSON file
+    if public==0:
+        filepath=os.path.join('output', str(identity))
+    else:
+        filepath=os.path.join('output', str(identity), 'p')	
+
+    # Use os.makedirs() to create the folder (including parent directories if they don't exist)
+    os.makedirs(filepath, exist_ok=True)
+
+    if os.path.exists(filepath):
+        filepath=os.path.join(filepath, datasetName)
+        filepath=os.path.splitext(filepath)[0] + '.metadata'
+        if not os.path.exists(filepath):
+            print("")
+            #TODO Create metadata file
+    else:
+        print(f"Failed to create folder '{filepath}'.")
+        sys.exit()
+
+    with open(filepath, 'r') as file:
+        data = json.load(file)
+        return data['delimiter'], data['datasetType'], data['hasHeader']
+
+
+
 
 #Main Task
 
@@ -825,10 +851,10 @@ public=0
 if outputType==3:
     public=1
 
-datasetSep, datasetType, hasHeader=retrieveMetadata()
+datasetSep, datasetType, hasHeader=retrieveMetadata(datasetName, public)
 
-if len(sys.argv)>12:
-    records=prepare_records(datasetName, datasetSep, datasetType, public, *sys.argv[12:])
+if len(sys.argv)>10:
+    records=prepare_records(datasetName, datasetSep, datasetType, public, *sys.argv[10:])
 else:
     records=prepare_records(datasetName=datasetName, datasetSep=datasetSep, datasetType=datasetType, public=public)
     
@@ -850,10 +876,7 @@ if records:
 else:
     print("Could not retrieve any record from the dataset")
     
-def retrieveMetadata(datasetName, public):
-     # Step 1: Read JSON file
-    with open('data.json', 'r') as file:
-        data = json.load(file)
+
 
     
      
