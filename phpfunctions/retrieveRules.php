@@ -126,7 +126,7 @@
         exit();
     }
 
-    //This work is done in datasetAttrAutoDetect.py. It is obsolete here.
+    //I have to save the metadtaafile here in case the user has customly changed dataset attributes
     // //WritedatasetAttrs
     // //translate string value to bool value
     // $header1=filter_var($_POST['header1'], FILTER_VALIDATE_BOOLEAN);

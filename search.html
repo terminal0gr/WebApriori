@@ -1047,13 +1047,38 @@ class,age,sex,survived<br>
 		<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
 			<div class="row">
 				<div class="col-8">	
-					<label for="dataset" class="form-label">Select dataset or <a href="#" onclick="toggleDisplay('#uploadDatasetform');return false;" data-toggle="tooltip" title="Upload a new dataset on our server">upload</a> one:</label>			
-					<select id="dataset" name="dataset" class="form-control browser-default form-select" data-html="true" data-trigger="hover" data-toggle="tooltip" title="Pick a dataset for which association rules would be generated.<br>Datasets in blue background are public" onchange="clearDatasetAttr();autoDetectDatasetAttr(false);retrieveInputParameters()">
+					<label for="dataset" class="form-label">Select dataset or <a href="#" onclick="toggleDisplay('#uploadDatasetform');return false;" data-toggle="tooltip" title="Upload a new dataset on our server">upload</a> one:</label>	
+				</div>
+				<div class="col-1">
+				</div>
+				<div class="col-1">
+					<button type="button" class="btn mt-n1 float-right"  onclick="toggleDisplay('#infoForDS')" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button>
+				</div>
+				<div class="col-1">
+					<button type="button" class="btn mt-n1 float-right"  onclick="toggleDisplay('#infoForDS')" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button>
+				</div>
+				<div class="col-1">
+					<button type="button" id="downloadDataset" class="btn mt-n2 float-right" onclick="DoDownload('dataset')"    data-trigger="hover" data-toggle="tooltip" title="Download current dataset">
+						<img src="./images/downArrow24grey.png" width="24" height="24" alt="">	
+					</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-9">	
+					<select id="dataset" name="dataset" class="form-control browser-default form-select" data-html="true" data-trigger="hover" data-toggle="tooltip" title="Pick a dataset for which association rules would be generated. Datasets in blue background are public" onchange="clearDatasetAttr();autoDetectDatasetAttr(false);retrieveInputParameters()">
 						<option value="" disabled selected>Choose a dataset from the list</option>
 					</select>
 				</div>
-				<div class="col-1">	
-					<label for="header1" class="form-label">header</label>		
+				<div class="col-11">
+					<label id="autoDetect1" class="form-label"><a href="#" onclick="autoDetectDatasetAttr(true)" data-trigger="hover" data-toggle="tooltip" title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			
+					<label id="autoDetecting" style="display:none">Autodetecting attributes... Please wait</label>
+				</div>
+
+
+				<div class="col-2">	
+					<label for="header1" class="form-label">has header?</label>		
+				</div>
+
 					<label class="switch">
 						<input type="checkbox" id="header1" class="primary">
 						<span class="slider round"></span>
@@ -1064,10 +1089,6 @@ class,age,sex,survived<br>
 					<input type="text" id="separator" name="separator" class="primary form-control" data-trigger="hover" data-toggle="tooltip" title="The separator of the items in the CSV file. The most common characters used as delimiters are ';', ',' '{TAB}' '{SPACE}' and (:). Keep in mind that especially the {TAB} character is presended by {TAB} or \t string." value=";" placeholder=";">		
 				</div>
       		    <div class="col-1">
-					<button type="button" class="btn mt-n1 float-right"  onclick="toggleDisplay('#infoForDS')" id="helpForDatasetType" data-trigger="hover" data-toggle="tooltip" title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="">	</button>
-					<button type="button" id="downloadDataset" class="btn mt-n2 float-right" onclick="DoDownload('dataset')"    data-trigger="hover" data-toggle="tooltip" title="Download current dataset">
-						<img src="./images/downArrow24grey.png" width="24" height="24" alt="">	
-					</button>
 				</div>
 			</div>
 			<div class="row">

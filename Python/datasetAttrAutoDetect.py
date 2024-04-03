@@ -23,7 +23,7 @@ def createMetadataFile(identity, datasetName, datasetType, public):
         dialect = csv.Sniffer().sniff(s100)  # Check what kind of csv/tsv file we have.
         datasetAttributes['delimiter']=dialect.delimiter
 
-        if datasetType=="-1":
+        if datasetType==-1:
             if dialect.datasetType==1: #Without Machine learning detection
                 datasetAttributes['datasetType']=int(dialect.datasetType)
             else:
@@ -32,7 +32,7 @@ def createMetadataFile(identity, datasetName, datasetType, public):
         else: 
             datasetAttributes['datasetType']=int(datasetType)
 
-    if public==0:
+    if public=='0':
         filepath=os.path.join('output', str(identity))
     else:
         filepath=os.path.join('output', str(identity), 'p')	

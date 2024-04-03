@@ -88,7 +88,7 @@
         if ($isPublic==0) {
             $fpatho="../Python/output/".$identity."/".$filename;
         } else {
-            $fpatho="../Python/output/".$identity."/p".$filename;            
+            $fpatho="../Python/output/".$identity."/p/".$filename;            
         }
         $fpatho_parts = pathinfo($fpatho);
         $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".metadata";
@@ -96,6 +96,7 @@
 
         if (is_file($fpatho)) {
             try {
+
                 $json = file_get_contents($fpatho);
                 $jsonReq = json_decode($json, true);
                 http_response_code(200);
@@ -110,8 +111,6 @@
         }
     }
 
-
-
     if (!$forceAutoDetect) {
         exit();
     }
@@ -122,6 +121,10 @@
     $input.= '"'.$filename.'" ';
     $input.= '"-1" ';
     $input.= '"'.$isPublic.'"';
+
+    // http_response_code(200);
+    // print($input);
+    // exit();
 
     chdir('../Python');
 
