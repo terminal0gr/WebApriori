@@ -174,15 +174,21 @@
 				};
 
 				//Prepare the data to send
-				var datasetType = document.getElementById("dataset");
-				if(!datasetType.value){
+				var dataset = document.getElementById("dataset");
+				if(!dataset.value){
 					MyModal("Information", "Please choose a dataset!!!");
+					return;
+				}
+
+				var datasetType = document.getElementById("datasetType");
+				if (datasetType=="0") {
+					MyModal("Information", "This dataset (0 - Unmanaged dataset Type  can't be used for frequent itemsets or useful association rules.");
 					return;
 				}
 
 				//If the dataset is of type 2 it is mandatory to have 2 paramaters declared in extra fields
 				//datasetType.value format: ?name or p|?name where ? dataset type (1,2,3,4) and name the filename of the dataset
-				var str =  datasetType.value
+				var str =  dataset.value
 				if (str.charAt(0)==='2' || (str.charAt(0)==='p' && str.charAt(2)==='2')) { //If it is type 2 dataset
 					var textboxValue = document.getElementById("extra_parameters").value;
 					var pattern = /^".*"\s".*"$/;
@@ -199,6 +205,13 @@
 				hd1=0;
 				if ($("#header1").is(":checked")) hd1=1;
 				formData.push({name: "header1", value: hd1});
+
+				formData.push({name: "datasetType", value: document.getElementById('datasetType').value});
+	
+				//Iterate formdata item names for testing purposes
+				for (var i = 0; i < formData.length; i++) {
+					MyModal("Inf",formData[i].name)
+				}
 
                 //Redundant rules process
 				bws=0;
@@ -873,7 +886,17 @@
 	</form>		
 
 	<div id="infoForDS" class="lightgraybackground udfwidth mx-auto border rounded p-2" style="display:none">
-		<h2 class="text-primary">Supported dataset types</h2>
+		<div class="container">
+			<div class="row">
+				<div class="col-11">
+					<h2 class="text-primary">Supported dataset types</h2>
+				</div>
+				<div class="col-1">
+					<button type="button" class="btn btn-sm" onclick="toggleDisplay('#infoForDS')" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Hides dataset type guide section"><img src="./images/close24grey.png" width="24" height="24" alt="hide">	</button>
+				</div>
+			</div>
+		</div>
+
 		<br>
 		<p><b>1) Market Basket list.</b> No header is expected, The number of columns in each record is unspecified. 
 		In extra parameters, participant columns can be declared for filtering and tuning puproses.<br> 
@@ -1020,6 +1043,9 @@ class,age,sex,survived<br>
 
 	<form id="retrieveRules" action="phpfunctions/retrieveRules.php" method="post" >
 		<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
+			<div class="col">	
+				<h4 class="text-center text-primary">Dataset management</h4>
+			</div>
 			<div class="row">
 				<div class="col-8">	
 					<label for="dataset" class="form-label">Select dataset or <a href="#" onclick="toggleDisplay('#uploadDatasetform');return false;" data-bs-toggle="tooltip" data-bs-title="Upload a new dataset on our server">upload</a> one:</label>	
@@ -1077,13 +1103,13 @@ class,age,sex,survived<br>
 					<input type="text" id="separator" name="separator" class="primary form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="The separator of the items in the CSV file. The most common characters used as delimiters are ';', ',' '{TAB}' '{SPACE}' and (:). Keep in mind that especially the {TAB} character is presended by {TAB} or \t string." value=";" placeholder=";">		
 				</div>
       		    <div class="col-6">
-					<select id="datasetType" class="browser-default form-select" data-bs-html="true" data-bs-trigger="hover" data-bs-toggle="tooltip" 
-					data-bs-title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparse item Dataset<br>4) Columns with multiple nomimal values</p>">
-					<option value="0" disabled selected>0) Unhandled dataset</option>
-					<option value="1">1) Market basket list</option>
-					<option value="2">2) Order/Invoice detail</option>
-					<option value="3">3) Sparse item dataset</option>
-					<option value="4">4) Multiple nomimal values</option>
+					<select id="datasetType" class="browser-default form-select form-control" data-bs-html="true" data-bs-trigger="hover" data-bs-toggle="tooltip" 
+					data-bs-title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparse item Dataset<br>4) Columns with multiple nomimal values</p><p>For more details click the <img src='./images/help24grey.png' width='24' height='24' alt='help'> icon.">
+					<option value="0" selected>unmanaged dataset type</option>
+					<option value="1">1 - Market basket list</option>
+					<option value="2">2 - Order/Invoice detail</option>
+					<option value="3">3 - Sparse item dataset</option>
+					<option value="4">4 - Multiple nomimal values</option>
 				</select>
 				</div>
 			</div>	

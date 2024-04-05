@@ -126,28 +126,28 @@
         exit();
     }
 
-    //I have to save the metadtaafile here in case the user has customly changed dataset attributes
-    // //WritedatasetAttrs
-    // //translate string value to bool value
-    // $header1=filter_var($_POST['header1'], FILTER_VALIDATE_BOOLEAN);
-    // // JSON data to be written to the file
-    // $json_data = [
-    //     "hasHeader" => $header1,
-    //     "delimiter" => $_POST['separator']
-    // ];
-    // // Convert the PHP array to a JSON string
-    // $json_string = json_encode($json_data, JSON_PRETTY_PRINT);
-    // // File path where you want to write the JSON data
-    // //assemble output path
-    // if ($isPublic==0) {
-    //     $fpatho="../Python/output/".$identity."/".$filename;
-    // } else {
-    //     $fpatho="../Python/output/".$identity."/p".$filename;            
-    // }
-    // $fpatho_parts = pathinfo($fpatho);
-    // $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".metadata";
-    // // Write the JSON data to the file
-    // file_put_contents($fpatho, $json_string);
+    //I have to save the metadatafile here in case the user has customly changed dataset attributes
+    $header1=filter_var($_POST['header1'], FILTER_VALIDATE_BOOLEAN);
+    // JSON data to be written to the file
+    $json_data = [
+        "hasHeader"   => $header1,
+        "delimiter"   => $_POST['separator'],
+        "datasetType" => $_POST['datasetType'],
+        "header"      => $_POST['extra_parameters'] 
+    ];
+    // Convert the PHP array to a JSON string
+    $json_string = json_encode($json_data, JSON_PRETTY_PRINT);
+    // File path where you want to write the JSON data
+    //assemble output path
+    if ($isPublic==0) {
+        $fpatho="../Python/output/".$identity."/".$filename;
+    } else {
+        $fpatho="../Python/output/".$identity."/p".$filename;            
+    }
+    $fpatho_parts = pathinfo($fpatho);
+    $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".metadata";
+    // Write the JSON data to the file
+    file_put_contents($fpatho, $json_string);
 
     //Call Python for Association rules mining
     $input = PYTHON;
