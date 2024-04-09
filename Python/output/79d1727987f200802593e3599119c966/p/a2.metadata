@@ -1,0 +1,12 @@
+{
+    "hasHeader": true,
+    "header": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+    ],
+    "delimiter": ";",
+    "datasetType": 3
+}

@@ -119,7 +119,7 @@
         print json_encode($JsonReq);
         exit();
     }
-    if (empty($datasetType)) {
+    if (empty($_POST['datasetType'])) {
         http_response_code(201);
         $JsonReq = array('title' => 'Exclamation', 'message' => 'inadequate dataset type!!!');
         print json_encode($JsonReq);

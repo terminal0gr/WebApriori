@@ -9,7 +9,7 @@ from itertools import combinations
 from time import time
 import pandas as pd
 import numpy as np
-
+import datasetAttrAutoDetectMetadata as Metadata
 # global variables section
 max_rules=1000
 max_items=999
@@ -392,7 +392,7 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
         print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' columns will be processed.')
         args=args[0:max_items+1]
     
-    if datasetType==1:
+    if int(datasetType)==1:
         if len(args)==0:
             try:
                 with open(filepath, mode='r') as f:
@@ -684,34 +684,6 @@ def output_association_rules(association_results, sort_index, descending=True, f
     if fileName:
         file.close()     
 
-def retrieveMetadata(datasetName, public):
-
-    # Step 1: Read JSON file
-    if public==0:
-        filepath=os.path.join('output', str(identity))
-    else:
-        filepath=os.path.join('output', str(identity), 'p')	
-
-    # Use os.makedirs() to create the folder (including parent directories if they don't exist)
-    os.makedirs(filepath, exist_ok=True)
-
-    if os.path.exists(filepath):
-        filepath=os.path.join(filepath, datasetName)
-        filepath=os.path.splitext(filepath)[0] + '.metadata'
-        if not os.path.exists(filepath):
-            print("")
-            #TODO Create metadata file
-    else:
-        print(f"Failed to create folder '{filepath}'.")
-        sys.exit()
-
-    with open(filepath, 'r') as file:
-        data = json.load(file)
-        return data['delimiter'], data['datasetType'], data['hasHeader']
-
-
-
-
 #Main Task
 
 '''
@@ -806,11 +778,6 @@ if len(sys.argv)>7:
     if len(sys.argv[7])>0:
         datasetName=sys.argv[7]	
 
-#Let's say declaration of the variables
-datasetSep=',' #Dataset item separator
-datasetType=1 # Default is Market Basket list
-hasHeader=True #Default the dataset has header
-
 '''
 #1=text file, 2=json file
 #output to both console and file if datasetName is given
@@ -845,13 +812,23 @@ if not identity:
     print("Unknown identity")
     sys.exit()
 
-recordTime=time()
-
 public=0
 if outputType==3:
     public=1
 
-datasetSep, datasetType, hasHeader=retrieveMetadata(datasetName, public)
+#Read dataset's metadatafile to retrieve its attributes. If not exists then it will AutoML create it.
+metadataInst=Metadata()
+jsonData=metadataInst.readMetadataFile(identity, datasetName, public)
+datasetSep=jsonData['delimiter']
+datasetType=int(jsonData['datasetType'])
+hasHeader=bool(jsonData['hasHeader'])
+
+
+
+#################
+recordTime=time()
+#################
+
 
 if len(sys.argv)>10:
     records=prepare_records(datasetName, datasetSep, datasetType, public, *sys.argv[10:])

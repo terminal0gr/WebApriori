@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -20,7 +20,7 @@
   
 	<link rel="stylesheet" href="css/styles.css" type="text/css" />
 
-    <script src="scripts/jquery-3.5.1.js"></script>
+    <script src="scripts/jquery-3.7.1.js"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
@@ -28,7 +28,7 @@
 
     <link rel="icon" type="image/png" href="images/basketwhite.png"/>
 
-    <title>WebApriori WebAPI</title>
+    <title>AutoML WebApriori WebAPI</title>
 
 	<script>
 
@@ -64,7 +64,7 @@
 			}
 
 			if (sessionStorage.getItem('version')) {
-				$('#navbar-brand').html('<img class="d-inline-block me-1" src="./images/basketwhite.svg" width="24" height="24" alt="">WebApriori ' +  sessionStorage.getItem('version'));
+				$('#navbar-brand').html('<img class="d-inline-block me-1" src="./images/basketwhite.svg" width="24" height="24" alt="">   ' + sessionStorage.getItem('ApplName') + ' ' +  sessionStorage.getItem('version'));
 			}
 			else {
 				sessionStorage.clear();
@@ -789,21 +789,21 @@
 							</div>
 						</div>
 						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Accept</label>
+							<label class="col-sm-3 col-form-label" for="Accept">Accept</label>
 							<div class="col-sm-9">
-								<input type="text" readonly class="form-control" value="*/*">
+								<input id="Accept" type="text" readonly class="form-control" value="*/*">
 							</div>
 						</div>
 						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Accept-Encoding</label>
+							<label class="col-sm-3 col-form-label" for="Accept-Encoding">Accept-Encoding</label>
 							<div class="col-sm-9">
-								<input type="text" readonly class="form-control" value="gzip, deflate">
+								<input id="Accept-Encoding" type="text" readonly class="form-control" value="gzip, deflate">
 							</div>
 						</div>	
 						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Connection</label>
+							<label class="col-sm-3 col-form-label" for="Connection">Connection</label>
 							<div class="col-sm-9">
-								<input type="text" readonly class="form-control" value="keep-alive">
+								<input id="Connection" type="text" readonly class="form-control" value="keep-alive">
 							</div>
 						</div>		
 						<h5 class="text-primary">Parameters (Body section)</h5>
@@ -882,27 +882,27 @@ curl -X POST \
 						</div>
 						<h5 class="text-primary">Parameters (Header section)</h5>
 						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">content-type</label>
+							<label class="col-sm-3 col-form-label" for="content-type2">content-type</label>
 							<div class="col-sm-9">
-								<input type="text" readonly class="form-control" value="application/x-www-form-urlencoded">
+								<input id="content-type2" type="text" readonly class="form-control" value="application/x-www-form-urlencoded">
 							</div>
 						</div>
 						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">cache-control</label>
+							<label class="col-sm-3 col-form-label" for="cache-control2" >cache-control</label>
 							<div class="col-sm-9">
-								<input type="text" readonly class="form-control" value="no-cache">
+								<input id="cache-control2" type="text" readonly class="form-control" value="no-cache">
 							</div>
 						</div>
 						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Accept</label>
+							<label class="col-sm-3 col-form-label" for="Accept2">Accept</label>
 							<div class="col-sm-9">
-								<input type="text" readonly class="form-control" value="*/*">
+								<input id="Accept2" type="text" readonly class="form-control" value="*/*">
 							</div>
 						</div>
 						<div class="row mb-2">
-							<label class="col-sm-3 col-form-label">Accept-Encoding</label>
+							<label class="col-sm-3 col-form-label" for="Accept-Encoding2">Accept-Encoding</label>
 							<div class="col-sm-9">
-								<input type="text" readonly class="form-control" value="gzip, deflate">
+								<input id="Accept-Encoding2" type="text" readonly class="form-control" value="gzip, deflate">
 							</div>
 						</div>	
 						<div class="row mb-2">

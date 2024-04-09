@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="css/styles.css" type="text/css" />
 	<link rel="stylesheet" href="css/switch.css" type="text/css" />
 
-	<script src="scripts/jquery-3.5.1.js"></script>
+	<script src="scripts/jquery-3.7.1.js"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
@@ -29,7 +29,7 @@
 
     <link rel="icon" type="image/png" href="images/basketwhite.png"/>
 
-    <title>WebApriori Administrator</title>
+    <title>AutoML WebApriori Administrator</title>
 
 	<script>
 
@@ -48,7 +48,7 @@
 			}
 
 			if (sessionStorage.getItem('version')) {
-				$('#navbar-brand').html('<img class="d-inline-block me-1" src="./images/basketwhite.svg" width="24" height="24" alt="">WebApriori ' +  sessionStorage.getItem('version'));
+				$('#navbar-brand').html('<img class="d-inline-block me-1" src="./images/basketwhite.svg" width="24" height="24" alt="">   ' + sessionStorage.getItem('ApplName') + ' ' +  sessionStorage.getItem('version'));
 			}
 			else {
 				sessionStorage.clear();

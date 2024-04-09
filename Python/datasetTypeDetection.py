@@ -51,7 +51,7 @@ class datasetFeatures:
                 headerV1=0
 
             try: #Try with extra_missing_values_normal
-                df, meta = loadarfftoDataframe(filepath)
+                df, meta = loadarfftoDataframe(filepath,False)
                 if df is None:       
                     df = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values_normal, header=headerV1)
             except Exception as e:
@@ -94,7 +94,7 @@ class datasetFeatures:
 
                 #datasetFeaturesInst.type2Words += sum(1 for item in datasetFeaturesInst.Header if 'invoice' in str.upper(item))
                 # Specific list of strings to count
-                specific_strings = ['INVOICE', 'ORDER', 'QUANTITY', 'QTY', 'PRODUCT', 'ITEM', 'CUSTOMER', 'ΕΙΔΟΣ', 'ΤΙΜΟΛΟΓΙΟ', 'ΠΑΡΑΓ', 'ΠΟΣΟΤ', 'PRODUKT']
+                specific_strings = ['INVOICE', 'ORDER', 'QUA', 'QUANTITY', 'QTY', 'PRODUCT', 'ITEM', 'CUSTOMER', 'ΕΙΔ', 'ΤΙΜΟΛ', 'ΠΑΡΑΣ', 'ΠΑΡΑΓ', 'ΠΟΣΟΤ', 'ΠΕΛΑΤ', 'PRODUKT']
                 datasetFeaturesInst.type2Words= sum(1 for item in datasetFeaturesInst.Header if any(s in str.upper(item) for s in specific_strings))
 
 
@@ -283,7 +283,7 @@ def is_arff_file(file_path):
         return False
 
 #Detect if a file is in arff format
-def loadarfftoDataframe(file_path):
+def loadarfftoDataframe(file_path, showErrors=True):
     try:
         data, meta = arff.loadarff(file_path)
         # Convert the structured array to a Pandas DataFrame
@@ -297,6 +297,9 @@ def loadarfftoDataframe(file_path):
         return df1, meta
 
     except arff.ParseArffError as e:
-        print(f"Error: {e} in filepath: {file_path}")
+        
+        if showErrors:
+            print(f"Error: {e} in filepath: {file_path}")
+        
         return None, None
     

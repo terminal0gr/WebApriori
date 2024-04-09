@@ -1,0 +1,15 @@
+{
+    "hasHeader": true,
+    "header": [
+        "\ufeffInvoiceNo",
+        "StockCode",
+        "Description",
+        "Quantity",
+        "InvoiceDate",
+        "UnitPrice",
+        "CustomerID",
+        "Country"
+    ],
+    "delimiter": ";",
+    "datasetType": 2
+}

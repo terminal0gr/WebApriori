@@ -120,7 +120,10 @@
     $input.= '"'.$identity.'" ';
     $input.= '"'.$filename.'" ';
     $input.= '"-1" ';
-    $input.= '"'.$isPublic.'"';
+    $input.= '"'.$isPublic.'" ';
+    $input.= '"'.$forceAutoDetect.'"';
+
+
 
     // http_response_code(200);
     // print($input);

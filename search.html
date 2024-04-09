@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="css/styles.css" type="text/css" />
 	<link rel="stylesheet" href="css/switch.css" type="text/css" />
 	
-	<script src="scripts/jquery-3.5.1.js"></script>
+	<script src="scripts/jquery-3.7.1.js"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
@@ -33,7 +33,7 @@
 
     <link rel="icon" type="image/png" href="images/basketwhite.png"/>
 
-    <title>WebApriori Association rules mining</title>
+    <title>AutoML WebApriori Association rules mining</title>
 
 	<script>
 
@@ -57,7 +57,7 @@
 			}
 
 			if (sessionStorage.getItem('version')) {
-				$('#navbar-brand').html('<img class="d-inline-block me-1" src="./images/basketwhite.svg" width="24" height="24" alt="">   WebApriori ' +  sessionStorage.getItem('version'));
+				$('#navbar-brand').html('<img class="d-inline-block me-1" src="./images/basketwhite.svg" width="24" height="24" alt="">   ' + sessionStorage.getItem('ApplName') + ' ' +  sessionStorage.getItem('version'));
 			}
 			else {
 				sessionStorage.clear();
@@ -207,11 +207,6 @@
 				formData.push({name: "header1", value: hd1});
 
 				formData.push({name: "datasetType", value: document.getElementById('datasetType').value});
-	
-				//Iterate formdata item names for testing purposes
-				for (var i = 0; i < formData.length; i++) {
-					MyModal("Inf",formData[i].name)
-				}
 
                 //Redundant rules process
 				bws=0;
@@ -726,8 +721,14 @@
 				cache: false,
 				processData:false,
 				beforeSend: function( xhr ) {
-					$('#autoDetect1').hide(400);
-					$('#autoDetecting').show(400);
+					var element = document.getElementById('DatasetAttrSection');
+					element.className="d-none";
+					var element = document.getElementById('autoDetect1');
+					element.classList.add("d-none");
+					element.classList.remove("d-block");
+					element = document.getElementById('autoDetecting');
+					element.classList.add("d-block");
+					element.classList.remove("d-none");
 				}
 			}) 	
 			.done(function(response, textStatus, jqXHR) {
@@ -787,15 +788,18 @@
 					MyModal("association rules",'Unknown error occured!');
 				}
 			}).always(function() {
-				$('#autoDetecting').hide(400);
-				$('#autoDetect1').show(400);			
+				var element = document.getElementById('DatasetAttrSection');
+				element.className="";
+				var element = document.getElementById('autoDetecting');
+				element.classList.add("d-none");
+				element.classList.remove("d-block");
+				element = document.getElementById('autoDetect1');
+				element.classList.add("d-block");
+				element.classList.remove("d-none");				
 			});
 		};
 
 		function clearDatasetAttr() {
-			//Initialization of frontend form fields
-			$('#autoDetecting').hide("slow");
-			$('#autoDetect1').show("slow");		
 			
 			document.getElementById('min_support').value="0.01"; 
 			document.getElementById('min_confidence').value="0.2"; 
@@ -1077,50 +1081,57 @@ class,age,sex,survived<br>
 					</select>
 				</div>
 				<div class="col-4">
-					<label id="autoDetect1" class="form-label"><a href="#" onclick="autoDetectDatasetAttr(true)" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			
-					<label id="autoDetecting" style="display:none">Autodetecting attributes... Please wait</label>
+					<label id="autoDetect1" class="d-block" ><a href="#" onclick="autoDetectDatasetAttr(true)" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			
+					<label id="autoDetecting" class="d-none">Autodetecting attributes... Please wait</label>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-3">	
-					<label for="header1" class="form-label">has header?</label>		
-				</div>
-				<div class="col-3">
-					<label for="separator" class="form-label">Separator</label>
-				</div>
-				<div class="col-6">
-					<label for="datasetType" class="form-label">Dataset type</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-3">	
-					<label class="switch">
-						<input type="checkbox" id="header1" class="primary">
-						<span class="slider round"></span>
-					</label>
-				</div>
-				<div class="col-3">	
-					<input type="text" id="separator" name="separator" class="primary form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="The separator of the items in the CSV file. The most common characters used as delimiters are ';', ',' '{TAB}' '{SPACE}' and (:). Keep in mind that especially the {TAB} character is presended by {TAB} or \t string." value=";" placeholder=";">		
-				</div>
-      		    <div class="col-6">
-					<select id="datasetType" class="browser-default form-select form-control" data-bs-html="true" data-bs-trigger="hover" data-bs-toggle="tooltip" 
-					data-bs-title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparse item Dataset<br>4) Columns with multiple nomimal values</p><p>For more details click the <img src='./images/help24grey.png' width='24' height='24' alt='help'> icon.">
-					<option value="0" selected>unmanaged dataset type</option>
-					<option value="1">1 - Market basket list</option>
-					<option value="2">2 - Order/Invoice detail</option>
-					<option value="3">3 - Sparse item dataset</option>
-					<option value="4">4 - Multiple nomimal values</option>
-				</select>
-				</div>
-			</div>	
 
-			<div class="row">
-				<div class="col-12">
-					<label for="extra parameters" class="form-label">Extra parameters / item names</label>
-					<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="In extra parameters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
+			<div id="DatasetAttrSection">
+				<div class="row">
+					<div class="col-3">	
+						<label for="header1" class="form-label">has header?</label>		
+					</div>
+					<div class="col-3">
+						<label for="separator" class="form-label">Separator</label>
+					</div>
+					<div class="col-6">
+						<label for="datasetType" class="form-label">Dataset type</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">	
+						<label class="switch">
+							<input type="checkbox" id="header1" class="primary">
+							<span class="slider round"></span>
+						</label>
+					</div>
+					<div class="col-3">	
+						<input type="text" id="separator" name="separator" class="primary form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="The separator of the items in the CSV file. The most common characters used as delimiters are ';', ',' '{TAB}' '{SPACE}' and (:). Keep in mind that especially the {TAB} character is presended by {TAB} or \t string." value=";" placeholder=";">		
+					</div>
+					<div class="col-6">
+						<select id="datasetType" class="browser-default form-select form-control" data-bs-html="true" data-bs-trigger="hover" data-bs-toggle="tooltip" 
+						data-bs-title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparse item Dataset<br>4) Columns with multiple nomimal values</p><p>For more details click the <img src='./images/help24grey.png' width='24' height='24' alt='help'> icon.">
+						<option value="0" selected>unmanaged dataset type</option>
+						<option value="1">1 - Market basket list</option>
+						<option value="2">2 - Order/Invoice detail</option>
+						<option value="3">3 - Sparse item dataset</option>
+						<option value="4">4 - Multiple nomimal values</option>
+					</select>
+					</div>
+				</div>	
+
+
+				<div class="row">
+					<div class="col-12">
+						<label for="extra parameters" class="form-label">Extra parameters / item names</label>
+						<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="In extra parameters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
+					</div>
 				</div>
 			</div>
+
 		</div>
+
+
 		<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
 			<div class="col">	
 				<h4 class="text-center text-primary">Apriori engine parameterization</h4>
