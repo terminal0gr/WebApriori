@@ -45,12 +45,12 @@ y = dsData['datasetType']
 
 # Step 2: Instantiate the Model
 #rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42)
-rf_classifier = RandomForestClassifier(n_estimators=90)
+rf_classifier = RandomForestClassifier(n_estimators=120)
 
 # Step 3: Perform ?-fold Cross-Validation
-split=124
+split=12
 
-for i in range(1):
+for i in range(10):
 
     kf = KFold(n_splits=split, shuffle=True)
     fold = 1
