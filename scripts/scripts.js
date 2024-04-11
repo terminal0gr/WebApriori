@@ -102,7 +102,7 @@ function footerActions() {
     // Check if the span element exists
     if (spanElement) {
         // Update the inner text of the span element
-        spanElement.innerHTML = "WebApriori - An innovative autoML association rules mining engine. &copy;2019-2024";
+        spanElement.innerHTML = "AutoML WebApriori - An innovative autoML association rules mining engine. &copy;2019-2024";
     } 
 }
 

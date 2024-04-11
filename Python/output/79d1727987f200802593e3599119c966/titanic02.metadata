@@ -1,6 +1,11 @@
 {
     "hasHeader": true,
+    "header": [
+        "class",
+        "age",
+        "sex",
+        "survived"
+    ],
     "delimiter": ",",
-    "datasetType": "4",
-    "header": "\"class\" \"age\" \"sex\" \"survived\""
+    "datasetType": 4
 }

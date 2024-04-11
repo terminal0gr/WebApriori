@@ -72,7 +72,7 @@
             "program": "${file}",
             "cwd": "${fileDirname}",
             "justMyCode": false,
-            "args": ["79d1727987f200802593e3599119c966","0.01","0.2","1.5","4","-3","titanic02.csv","2","0","class","age","sex"
+            "args": ["79d1727987f200802593e3599119c966","0.01","0.2","1.5","4","-3","titanic02.csv","2","0","class","age","sex","survived"
             ],
             "console": "integratedTerminal"
         },

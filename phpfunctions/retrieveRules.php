@@ -131,9 +131,9 @@
     // JSON data to be written to the file
     $json_data = [
         "hasHeader"   => $header1,
+        "header"      => explode(' ', str_replace('"', '', $_POST['extra_parameters'])), 
         "delimiter"   => $_POST['separator'],
-        "datasetType" => $_POST['datasetType'],
-        "header"      => $_POST['extra_parameters'] 
+        "datasetType" => (int) $_POST['datasetType']
     ];
     // Convert the PHP array to a JSON string
     $json_string = json_encode($json_data, JSON_PRETTY_PRINT);

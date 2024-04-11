@@ -384,9 +384,9 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
     global max_items
 
     if public==0:
-        filepath=os.path.join('datasets', identity, str(datasetType), datasetName)
+        filepath=os.path.join('datasets', identity, datasetName)
     else:
-        filepath=os.path.join('public', str(datasetType), datasetName)
+        filepath=os.path.join('public', datasetName)
 
     if len(args)>max_items:
         print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' columns will be processed.')
@@ -817,7 +817,7 @@ if outputType==3:
     public=1
 
 #Read dataset's metadatafile to retrieve its attributes. If not exists then it will AutoML create it.
-metadataInst=Metadata()
+metadataInst=Metadata.Metadata()
 jsonData=metadataInst.readMetadataFile(identity, datasetName, public)
 datasetSep=jsonData['delimiter']
 datasetType=int(jsonData['datasetType'])
