@@ -195,3 +195,14 @@ cstat_02.pdf (105 kb) cstat_02.ps.gz (91 kb) (6 pages)
 \subsection{Front-end web development}
 
 \subsection{Web services}
+
+
+
+
+Dataset detection Paper
+
+Gaussian Naive bayes
+Decision trees
+KNN Classification - Σταθμισμένα στο 0-1 - Hyper K 1-30
+SVM Αποτελέσματα
+RandomForest

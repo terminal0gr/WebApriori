@@ -1,0 +1,17 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "titanic02.csv",
+    "datasetType": 2,
+    "outputType": 2,
+    "reduntantRemoveType": 0,
+    "datasetArgs": "['class', 'age', 'sex', 'survived']",
+    "Records": 3,
+    "RecordsCreationTime": "0.111",
+    "RulesCount": 0,
+    "RulesCreationTime": "0.000",
+    "rules": []
+}
