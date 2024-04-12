@@ -104,7 +104,7 @@
     if (substr($_POST['dataset'],0,2)=='p|') {
         // public dataset
         $outputType=3;
-        $isPublic==1;
+        $isPublic=1;
         $filename=substr($_POST['dataset'],2);
     }else{
         // private dataset
@@ -137,6 +137,7 @@
     ];
     // Convert the PHP array to a JSON string
     $json_string = json_encode($json_data, JSON_PRETTY_PRINT);
+
     // File path where you want to write the JSON data
     //assemble output path
     if ($isPublic==0) {
@@ -147,6 +148,11 @@
     $fpatho_parts = pathinfo($fpatho);
     $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".metadata";
     // Write the JSON data to the file
+
+    // $JsonReq = array('title' => 'Test', 'message' => $fpatho);
+    // print json_encode($JsonReq);
+    //exit();
+
     file_put_contents($fpatho, $json_string);
 
     //Call Python for Association rules mining

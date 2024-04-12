@@ -1,0 +1,9 @@
+{
+    "hasHeader": true,
+    "header": [
+        "year",
+        "per capita income (US$)"
+    ],
+    "delimiter": ",",
+    "datasetType": 0
+}

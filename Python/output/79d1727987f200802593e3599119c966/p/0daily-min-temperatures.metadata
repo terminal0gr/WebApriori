@@ -1,0 +1,9 @@
+{
+    "hasHeader": true,
+    "header": [
+        "Date",
+        "Temp"
+    ],
+    "delimiter": ",",
+    "datasetType": 0
+}

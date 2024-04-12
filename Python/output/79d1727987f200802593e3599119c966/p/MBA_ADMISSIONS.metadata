@@ -1,0 +1,21 @@
+{
+    "hasHeader": true,
+    "header": [
+        "pre_score",
+        "Age_in_years",
+        "Percentage_in_10_Class",
+        "Percentage_in_12_Class",
+        "Percentage_in_Under_Graduate",
+        "percentage_MBA",
+        "post_score",
+        "Gender",
+        "STATE",
+        "Previous_Degree",
+        "Marital_status",
+        "Place_you_belong_to",
+        "perceived#Job#Skill",
+        "Specialization"
+    ],
+    "delimiter": ",",
+    "datasetType": 4
+}
