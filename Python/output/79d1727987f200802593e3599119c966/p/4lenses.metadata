@@ -1,0 +1,12 @@
+{
+    "hasHeader": true,
+    "header": [
+        "class",
+        "ageofthepatient",
+        "spectacleprescription",
+        "astigmatic",
+        "tearproductionrate"
+    ],
+    "delimiter": " ",
+    "datasetType": 4
+}

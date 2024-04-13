@@ -1,0 +1,9 @@
+{
+    "hasHeader": true,
+    "header": [
+        "date",
+        "births"
+    ],
+    "delimiter": ",",
+    "datasetType": 0
+}

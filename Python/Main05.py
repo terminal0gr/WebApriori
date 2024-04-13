@@ -370,10 +370,10 @@ Dataset types:
      In arg[0] the absent of item string must be declared. If absent item is nothing then assign '' or 'nan' 
 2--> Order/Invoice detail. Header line is mandatory. Number of columns is fixed, 
      arg[0] primary key column and arg[1] items column are required in *args
-3--> Sparce item Dataset. Header line is mandatory. Number of columns is fixed. 
+3--> Sparse item Dataset. Header line is mandatory. Number of columns is fixed. 
      Items columns are mandatory to be declared in args[1:].
      In arg[0] the absent of item string must be declared!!! If absent item is nothing then assign '' or 'nan' 
-4--> Columns with multiple nomimal values. Header line is optional. 
+4--> Columns with multiple nominal values. Header line is optional. 
      Number of columns is fixed, optional items columns are expected in case header line exists.
 '''
 ###################################################################
@@ -465,7 +465,7 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
         
         #pandas to list
         records=dataset.values.tolist()
-        #remove nan elements from this 2-dimensional list inorder to be transformed a dataset type 1'
+        #remove nan elements from this 2-dimensional list in order to be transformed a dataset type 1'
         records = [[y for y in x if str(y) != args[0]] for x in records]
         return(records)
                             
@@ -512,7 +512,7 @@ def output_association_rules(association_results, sort_index, descending=True, f
     
     if fileName:
 
-        filepath=os.path.join('output', identity, str(datasetType))
+        filepath=os.path.join('output', identity)
         if not os.path.exists(filepath):
             os.makedirs(filepath)
 
@@ -522,14 +522,14 @@ def output_association_rules(association_results, sort_index, descending=True, f
             ext='.json'
         elif outputType==3:
             ext='.json'
-            publicFilePath=os.path.join('output', identity, 'p'+str(datasetType))
+            publicFilePath=os.path.join('output', identity, 'p')
             if not os.path.exists(publicFilePath):
                 os.makedirs(publicFilePath)
-            publicFile = open(os.path.join('output', identity, 'p'+str(datasetType), os.path.splitext(fileName)[0] + ext),'w')
+            publicFile = open(os.path.join('output', identity, 'p', os.path.splitext(fileName)[0] + ext),'w')
         else:
             ext=''
             
-        file = open(os.path.join('output', identity, str(datasetType), os.path.splitext(fileName)[0] + ext),'w')
+        file = open(os.path.join('output', identity, os.path.splitext(fileName)[0] + ext),'w')
         
     if outputType==1:        
     
@@ -571,7 +571,7 @@ def output_association_rules(association_results, sort_index, descending=True, f
                 Sline+='Unknown ' 
 
             if ssort>0:
-                Sline+='acsending\n'
+                Sline+='ascending\n'
             else:
                 Sline+='descending\n'
         
@@ -582,7 +582,7 @@ def output_association_rules(association_results, sort_index, descending=True, f
         if datasetType:
             Sline+='Dataset Type      :' + str(datasetType) + '\n' 
         Sline+=    'Output Type       :Plain text\n'
-        Sline+=    'Reduntant Type    :' + str(reduntantRemoveType) + '\n'
+        Sline+=    'Reduntant Type    :' + str(redundantRemoveType) + '\n'
         if datasetArgs:
             Sline+='Dataset parameters: ' + datasetArgs + '\n' 
             
@@ -660,7 +660,7 @@ def output_association_rules(association_results, sort_index, descending=True, f
         dictRules['datasetName'] = datasetName
         dictRules['datasetType'] = datasetType
         dictRules['outputType'] = outputType
-        dictRules['reduntantRemoveType'] = reduntantRemoveType
+        dictRules['redundantRemoveType'] = redundantRemoveType
         dictRules['datasetArgs'] = datasetArgs
         
         dictRules['Records'] = records
@@ -693,10 +693,10 @@ Dataset types:
      In arg[0] the absent of item string must be declared. If absent item is nothing then assign '' or 'nan' 
 2--> Order/Invoice detail. Header line is mandatory. Number of columns is fixed, 
      arg[0] primary key column and arg[1] items column are required in *args
-3--> Sparce item Dataset. Header line is mandatory. Number of columns is fixed. 
+3--> Sparse item Dataset. Header line is mandatory. Number of columns is fixed. 
      Items columns are mandatory to be declared in args[1:].
      In arg[0] the absent of item string must be declared!!! If absent item is nothing then assign '' or 'nan' 
-4--> Columns with multiple nomimal values. Header line is optional. 
+4--> Columns with multiple nominal values. Header line is optional. 
      Number of columns is fixed, optional items columns are expected in case header line exists.
 '''
 
@@ -719,7 +719,7 @@ Dataset types:
 # sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "titanic02WithoutHeader.csv", ",", "4", '2' 0]
 # sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 3, -3, "titanic02.csv", ",", "4", '2', 0,  "class", "age", "sex", "survived"]
 '''
-# 1) Identity   2) min_support   3) min_confidence   4) min_lift   5) max_length   6) SortIndex   7) datasetName 8) outputType 9) reduntantRemoveType 10) datasetArgs
+# 1) Identity   2) min_support   3) min_confidence   4) min_lift   5) max_length   6) SortIndex   7) datasetName 8) outputType 9) redundantRemoveType 10) datasetArgs
 '''
 
 
@@ -796,12 +796,12 @@ bitwise 2 Redundant Rules with Fixed Consequence/RHS
 bitwise 4 Redundant Rules with Fixed Antecedent/LHS
 #output to to both console and file if datasetName is given
 '''
-reduntantRemoveType=0 
+redundantRemoveType=0 
 if len(sys.argv)>9:
 	try:
-		reduntantRemoveType=int(sys.argv[9])
+		redundantRemoveType=int(sys.argv[9])
 	except:
-		reduntantRemoveType=0 
+		redundantRemoveType=0 
 
 datasetArgs=''
 if len(sys.argv)>10:
@@ -841,7 +841,7 @@ if records:
 
     assocTime=time()
     association_results = list(webApriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length))
-    association_results = transform_association_rules(association_results,reduntantRemoveType)
+    association_results = transform_association_rules(association_results,redundantRemoveType)
     assocTime=time()-assocTime
 
     descending=False

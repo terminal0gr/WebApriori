@@ -1,0 +1,16 @@
+{
+    "hasHeader": true,
+    "header": [
+        "ID",
+        "Name",
+        "Segment",
+        "Age",
+        "Country",
+        "City",
+        "State",
+        "Postal Code",
+        "Region"
+    ],
+    "delimiter": ",",
+    "datasetType": 0
+}

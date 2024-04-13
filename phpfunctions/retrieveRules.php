@@ -100,7 +100,7 @@
     }
 
     $isPublic=0;
-    //get dataset type is the fisrt character of $_POST['dataset']
+    //get dataset type is the first character of $_POST['dataset']
     if (substr($_POST['dataset'],0,2)=='p|') {
         // public dataset
         $outputType=3;
@@ -143,7 +143,7 @@
     if ($isPublic==0) {
         $fpatho="../Python/output/".$identity."/".$filename;
     } else {
-        $fpatho="../Python/output/".$identity."/p".$filename;            
+        $fpatho="../Python/output/".$identity."/p/".$filename;            
     }
     $fpatho_parts = pathinfo($fpatho);
     $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".metadata";

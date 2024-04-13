@@ -1,0 +1,9 @@
+{
+    "hasHeader": true,
+    "header": [
+        "Month",
+        "MilesMM"
+    ],
+    "delimiter": ",",
+    "datasetType": 0
+}

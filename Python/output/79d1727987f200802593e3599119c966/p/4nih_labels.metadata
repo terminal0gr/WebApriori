@@ -1,0 +1,28 @@
+{
+    "hasHeader": true,
+    "header": [
+        "Image Index",
+        "Follow-up #",
+        "Patient ID",
+        "Patient Age",
+        "Patient Gender",
+        "View Position",
+        "Cardiomegaly",
+        "Emphysema",
+        "Effusion",
+        "Hernia",
+        "Infiltration",
+        "Mass",
+        "Nodule",
+        "Atelectasis",
+        "Pneumothorax",
+        "Pleural_Thickening",
+        "Pneumonia",
+        "Fibrosis",
+        "Edema",
+        "Consolidation",
+        "fold"
+    ],
+    "delimiter": ",",
+    "datasetType": 4
+}

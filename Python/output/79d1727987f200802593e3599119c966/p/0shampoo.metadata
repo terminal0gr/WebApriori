@@ -1,0 +1,9 @@
+{
+    "hasHeader": true,
+    "header": [
+        "Month",
+        "Sales"
+    ],
+    "delimiter": ",",
+    "datasetType": 0
+}

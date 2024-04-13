@@ -10,16 +10,17 @@ FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 
 10/04/2024 Autodetect Dataset procedure is slow
 31/03/2024 correct the html files (frontend) to conform to new rules (datasetType, datasetSep etc)
 12/02/2024 Apriori Engine Main04.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv 
+13/04/2024 The engine does not keep user dataset feature preferences in public datasets.
 
 DONE - V01.00.00 10/04/2024 AutoML dataset type must be utilized
 DONE - V01.00.00 10/04/2024 Correct the texts in the application (AutoML)
 DONE - V01.00.00 10/04/2024 jquery updated to latest version 3.7.1
 DONE - V01.07.00 27/01/2024 Bootstrap updated from V4.3.1 to V5.3.3
 DONE - V01.07.00 16/02/2024 30/01/2024 Dataset attributes must be collected (120/120)
-DONE - V01.07.00 03/02/2024 30/01/2024 Check Integer Columns frequnce is not working smoothly
+DONE - V01.07.00 03/02/2024 30/01/2024 Check Integer Columns frequency is not working smoothly
 DONE - V01.07.00 03/02/2024 03/02/2024 arff files manipulation
 DONE - V01.07.00 30/01/2024 27/01/2024 Absent item auto detection in 3rd type dataset
-DONE - V01.07.00 27/01/2024 06/01/2024 In type 4 datasets there is the nesessity to tranform columns putting as a prefix the column name 
+DONE - V01.07.00 27/01/2024 06/01/2024 In type 4 datasets there is the necessity to transform columns putting as a prefix the column name 
                             in order to distinct same values from other columns (e.g mammographic.dat, car.dat)
                             Auto fill extra parameters with header columns if header exists
 DONE - V01.07.00 27/01/2024 26/01/2024 search.html Ln 634 (from .metadata) is running after 734 (Autodetect.)

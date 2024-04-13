@@ -1,0 +1,23 @@
+{
+    "hasHeader": true,
+    "header": [
+        "0",
+        "water",
+        "budget",
+        "physician",
+        "salvador",
+        "religious",
+        "satellite",
+        "aid",
+        "missile",
+        "immigration",
+        "synfuels",
+        "education",
+        "superfund",
+        "crime",
+        "dutyfree",
+        "exports"
+    ],
+    "delimiter": ",",
+    "datasetType": 3
+}

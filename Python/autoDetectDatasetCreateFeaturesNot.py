@@ -4,7 +4,7 @@ import datasetFeaturesNot as df
 from scipy.io import arff
 import pandas as pd
 
-recsNo=100
+recsNo=150
 
 directory_path=os.path.join('features','all')
 

@@ -12,7 +12,7 @@ X = dsData.drop(columns=['name','datasetType'])
 y = dsData['datasetType'] 
 
 # Step 2: Instantiate the Model
-rf_classifier = RandomForestClassifier(n_estimators=90)
+rf_classifier = RandomForestClassifier(n_estimators=180)
 
 # Step 3: # Train the model
 rf_classifier.fit(X, y)
