@@ -62,14 +62,14 @@ loo = LeaveOneOut()
 #rf_classifier = RandomForestClassifier(n_estimators=120)
 
 #Gaussian Naive Bayes classifier
-rf_classifier = GaussianNB()
+# rf_classifier = GaussianNB()
 
 #SVM with linear Kernel
 #rf_classifier = SVC(kernel='linear')
 #SVM with RBF Kernel
 #rf_classifier = SVC(kernel='rbf',C=1.0, gamma=0.3)
 #KNN Classifier
-rf_classifier=KNeighborsClassifier(n_neighbors=25)
+rf_classifier=KNeighborsClassifier(n_neighbors=30)
 
 #MinNaxScaler to [0..1) Must used in SVM and KNN algorithms
 X = X.values
@@ -78,9 +78,9 @@ X = min_max_scaler.fit_transform(X)
 X = pd.DataFrame(X)
 
 # Step 3: Perform ?-fold Cross-Validation
-split=10
+split=124
 
-for i in range(10):
+for i in range(1):
 
     kf = KFold(n_splits=split,shuffle=True)
     #kf = LeaveOneOut()
@@ -101,28 +101,28 @@ for i in range(10):
         acc_score.append(acc)
         
         #print()
-        for row_index, (input, prediction, label) in enumerate(zip (X_test, y_pred, y_test)):
-          if prediction != label:
+        # for row_index, (input, prediction, label) in enumerate(zip (X_test, y_pred, y_test)):
+        #   if prediction != label:
         
-            #print('Dataset', y_test.index[row_index], dsData['name'].iloc[y_test.index[row_index]], 'classified as ', prediction, 'should be ', label)
+        #     #print('Dataset', y_test.index[row_index], dsData['name'].iloc[y_test.index[row_index]], 'classified as ', prediction, 'should be ', label)
         
-            strsql = "UPDATE `datasetwrongclassification` \
-                        set instances=instances+1 \
-                    Where `datasetName`=%s \
-                    And   `realClass`  =%s \
-                    And   `predictedClass`=%s"
-            queryParams=(dsData['name'].iloc[y_test.index[row_index]],int(label),int(prediction))
-            mySql.myQuery(strsql,queryParams)
+        #     strsql = "UPDATE `datasetwrongclassification` \
+        #                 set instances=instances+1 \
+        #             Where `datasetName`=%s \
+        #             And   `realClass`  =%s \
+        #             And   `predictedClass`=%s"
+        #     queryParams=(dsData['name'].iloc[y_test.index[row_index]],int(label),int(prediction))
+        #     mySql.myQuery(strsql,queryParams)
 
-            strsql = "INSERT INTO `datasetwrongclassification`(`datasetName`, `realClass`, `predictedClass`, `instances`)  \
-                    SELECT %s, %s, %s, 1 \
-                    WHERE NOT EXISTS (SELECT `datasetName` \
-                        FROM `datasetwrongclassification` \
-                        WHERE `datasetName`=%s \
-                        AND   `realClass`=%s \
-                        AND   `predictedClass`=%s)"
-            queryParams=(dsData['name'].iloc[y_test.index[row_index]],int(label),int(prediction),dsData['name'].iloc[y_test.index[row_index]],int(label),int(prediction))
-            mySql.myQuery(strsql,queryParams)
+        #     strsql = "INSERT INTO `datasetwrongclassification`(`datasetName`, `realClass`, `predictedClass`, `instances`)  \
+        #             SELECT %s, %s, %s, 1 \
+        #             WHERE NOT EXISTS (SELECT `datasetName` \
+        #                 FROM `datasetwrongclassification` \
+        #                 WHERE `datasetName`=%s \
+        #                 AND   `realClass`=%s \
+        #                 AND   `predictedClass`=%s)"
+        #     queryParams=(dsData['name'].iloc[y_test.index[row_index]],int(label),int(prediction),dsData['name'].iloc[y_test.index[row_index]],int(label),int(prediction))
+        #     mySql.myQuery(strsql,queryParams)
 
         # Compute confusion matrix
         #cm = confusion_matrix(y_test, y_pred)

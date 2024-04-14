@@ -1,0 +1,11 @@
+{
+    "hasHeader": true,
+    "header": [
+        "Order",
+        "ID",
+        "Product",
+        "ID"
+    ],
+    "delimiter": ",",
+    "datasetType": 2
+}

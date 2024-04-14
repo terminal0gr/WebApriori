@@ -1,0 +1,11 @@
+{
+    "hasHeader": true,
+    "header": [
+        "Invoice",
+        "ID",
+        "Product",
+        "line"
+    ],
+    "delimiter": ",",
+    "datasetType": 2
+}

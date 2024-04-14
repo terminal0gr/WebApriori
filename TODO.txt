@@ -202,8 +202,13 @@ cstat_02.pdf (105 kb) cstat_02.ps.gz (91 kb) (6 pages)
 
 Dataset detection Paper
 
-Decision trees
-RandomForest
 Gaussian Naive bayes
+Decision trees
 KNN Classification - Σταθμισμένα στο 0-1 - Hyper K 1-30
 SVM Αποτελέσματα
+RandomForest
+
+
+New discovery:
+Some dataset can produce meaningful association rules either if they have been characterized as 3 or 4 dataset type
+example: house-votes-84.csv & 43nih_labels in test datasets
