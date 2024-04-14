@@ -202,8 +202,8 @@ cstat_02.pdf (105 kb) cstat_02.ps.gz (91 kb) (6 pages)
 
 Dataset detection Paper
 
-Gaussian Naive bayes
 Decision trees
+RandomForest
+Gaussian Naive bayes
 KNN Classification - Σταθμισμένα στο 0-1 - Hyper K 1-30
 SVM Αποτελέσματα
-RandomForest

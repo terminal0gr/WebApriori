@@ -16,10 +16,16 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import cross_val_predict
-from sklearn.model_selection import KFold
+from sklearn.model_selection import KFold, LeaveOneOut
 from sklearn.feature_selection import SelectKBest, chi2
 from sklearn.decomposition import PCA
+
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 #mySqlTasks
@@ -43,17 +49,41 @@ X = dsData.drop(columns=['name','datasetType'])
 # Put in y the class column [0,1]
 y = dsData['datasetType'] 
 
+# Initialize a LeaveOneOut object
+loo = LeaveOneOut()
+
 # Step 2: Instantiate the Model
+
+#Decision tree classifier
+#rf_classifier = DecisionTreeClassifier()
+
+#Random forest classifier
 #rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42)
-rf_classifier = RandomForestClassifier(n_estimators=120)
+#rf_classifier = RandomForestClassifier(n_estimators=120)
+
+#Gaussian Naive Bayes classifier
+rf_classifier = GaussianNB()
+
+#SVM with linear Kernel
+#rf_classifier = SVC(kernel='linear')
+#SVM with RBF Kernel
+#rf_classifier = SVC(kernel='rbf',C=1.0, gamma=0.3)
+#KNN Classifier
+rf_classifier=KNeighborsClassifier(n_neighbors=25)
+
+#MinNaxScaler to [0..1) Must used in SVM and KNN algorithms
+X = X.values
+min_max_scaler = preprocessing.MinMaxScaler()
+X = min_max_scaler.fit_transform(X)
+X = pd.DataFrame(X)
 
 # Step 3: Perform ?-fold Cross-Validation
-split=8
+split=10
 
 for i in range(10):
 
-    kf = KFold(n_splits=split, shuffle=True)
-    fold = 1
+    kf = KFold(n_splits=split,shuffle=True)
+    #kf = LeaveOneOut()
 
     acc_score = []
 
@@ -101,11 +131,10 @@ for i in range(10):
         #print(f"Fold {fold} Accuracy {acc} Confusion Matrix:")
         #print(cm)
         
-        # Increment fold counter
-        fold += 1
-        
+       
     #percentages = ["{:.1f}%".format(number * 100) for number in acc_score]
     #print('accuracy of each fold - {}'.format(percentages))
     avgper="{:.1f}%".format(sum(acc_score)/split*100)
-    print(f'aa {i+1}: Avg accuracy : {avgper}')
+    print(avgper)
+    #print(f'aa {i+1}: Avg accuracy : {avgper}')
 
