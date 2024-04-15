@@ -23,7 +23,7 @@
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "args": [
-                "79d1727987f200802593e3599119c966","2_L-0006.csv","-1","1","1"
+                "79d1727987f200802593e3599119c966","Bakery Sales.csv","-1","1","1"
             ],
             "console": "integratedTerminal"
         },

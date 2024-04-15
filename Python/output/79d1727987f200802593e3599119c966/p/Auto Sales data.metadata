@@ -1,0 +1,27 @@
+{
+    "hasHeader": true,
+    "header": [
+        "ORDERNUMBER",
+        "QUANTITYORDERED",
+        "PRICEEACH",
+        "ORDERLINENUMBER",
+        "SALES",
+        "ORDERDATE",
+        "DAYS_SINCE_LASTORDER",
+        "STATUS",
+        "PRODUCTLINE",
+        "MSRP",
+        "PRODUCTCODE",
+        "CUSTOMERNAME",
+        "PHONE",
+        "ADDRESSLINE1",
+        "CITY",
+        "POSTALCODE",
+        "COUNTRY",
+        "CONTACTLASTNAME",
+        "CONTACTFIRSTNAME",
+        "DEALSIZE"
+    ],
+    "delimiter": ",",
+    "datasetType": 2
+}
