@@ -12,7 +12,8 @@ FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 
 12/02/2024 Apriori Engine Main04.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv 
 13/04/2024 The engine does not keep user dataset feature preferences in public datasets.
 
-15/4/2024 Run datasetAttrAutoDetect to see the error with None value
+15/4/2024 Run datasetAttrAutoDetect (Bakery Sales.csv) to see the error with None value And (2SuperStoreOrders.csv)
+16/4/2024 Too late when choosing a dataset for the first time (not having metadata)
 
 DONE - V01.00.00 10/04/2024 AutoML dataset type must be utilized
 DONE - V01.00.00 10/04/2024 Correct the texts in the application (AutoML)

@@ -1,0 +1,588 @@
+{
+    "min_support": 0.001,
+    "min_confidence": 0.2,
+    "min_lift": 1.2,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "2pizza_sales.csv",
+    "datasetType": 2,
+    "outputType": 3,
+    "redundantRemoveType": 0,
+    "datasetArgs": "['order_id', 'pizza_name_id']",
+    "Records": 13149,
+    "RecordsCreationTime": "1.903",
+    "RulesCount": 30,
+    "RulesCreationTime": "0.480",
+    "rules": [
+        {
+            "LHS": [
+                "five_cheese_l",
+                "cali_ckn_l"
+            ],
+            "RHS": [
+                "spicy_ital_l"
+            ],
+            "Confidence": 0.2777777777777778,
+            "Lift": 4.174285714285714,
+            "Conviction": 1.2924761754330543,
+            "Leverage": 0.0008674858043873387,
+            "LHS_Count": 54,
+            "LHS_Support": 0.004106776180698152,
+            "RHS_Count": 875,
+            "RHS_Support": 0.0665449844094608,
+            "Support": 0.0011407711613050423,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "pepperoni_m",
+                "bbq_ckn_l"
+            ],
+            "RHS": [
+                "five_cheese_l"
+            ],
+            "Confidence": 0.2692307692307692,
+            "Lift": 3.1721464019851116,
+            "Conviction": 1.2522785402932382,
+            "Leverage": 0.0007290732779027342,
+            "LHS_Count": 52,
+            "LHS_Support": 0.003954673359190813,
+            "RHS_Count": 1116,
+            "RHS_Support": 0.08487337440109514,
+            "Support": 0.0010647197505513728,
+            "Count": 14
+        },
+        {
+            "LHS": [
+                "classic_dlx_m",
+                "southw_ckn_l"
+            ],
+            "RHS": [
+                "thai_ckn_l"
+            ],
+            "Confidence": 0.25396825396825395,
+            "Lift": 2.942227816236626,
+            "Conviction": 1.2247222100863588,
+            "Leverage": 0.0008032507319232537,
+            "LHS_Count": 63,
+            "LHS_Support": 0.004791238877481177,
+            "RHS_Count": 1135,
+            "RHS_Support": 0.08631835120541487,
+            "Support": 0.0012168225720587116,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "big_meat_s",
+                "classic_dlx_s"
+            ],
+            "RHS": [
+                "four_cheese_l"
+            ],
+            "Confidence": 0.22950819672131148,
+            "Lift": 2.846984225177853,
+            "Conviction": 1.1932450166099517,
+            "Leverage": 0.0006907381383122466,
+            "LHS_Count": 61,
+            "LHS_Support": 0.004639136055973839,
+            "RHS_Count": 1060,
+            "RHS_Support": 0.08061449539888965,
+            "Support": 0.0010647197505513728,
+            "Count": 14
+        },
+        {
+            "LHS": [
+                "spicy_ital_l",
+                "cali_ckn_l"
+            ],
+            "RHS": [
+                "five_cheese_l"
+            ],
+            "Confidence": 0.23809523809523814,
+            "Lift": 2.805299539170507,
+            "Conviction": 1.2011036960985628,
+            "Leverage": 0.0007341225502114995,
+            "LHS_Count": 63,
+            "LHS_Support": 0.004791238877481177,
+            "RHS_Count": 1116,
+            "RHS_Support": 0.08487337440109514,
+            "Support": 0.0011407711613050423,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "big_meat_s",
+                "veggie_veg_m"
+            ],
+            "RHS": [
+                "thai_ckn_l"
+            ],
+            "Confidence": 0.23728813559322035,
+            "Lift": 2.748988277458374,
+            "Conviction": 1.1979381617529006,
+            "Leverage": 0.0006774064399483248,
+            "LHS_Count": 59,
+            "LHS_Support": 0.0044870332344665,
+            "RHS_Count": 1135,
+            "RHS_Support": 0.08631835120541487,
+            "Support": 0.0010647197505513728,
+            "Count": 14
+        },
+        {
+            "LHS": [
+                "big_meat_s",
+                "sicilian_m"
+            ],
+            "RHS": [
+                "four_cheese_l"
+            ],
+            "Confidence": 0.2142857142857143,
+            "Lift": 2.6581536388140163,
+            "Conviction": 1.1701270058559587,
+            "Leverage": 0.0007116119341453894,
+            "LHS_Count": 70,
+            "LHS_Support": 0.0053235987527568635,
+            "RHS_Count": 1060,
+            "RHS_Support": 0.08061449539888965,
+            "Support": 0.0011407711613050423,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "big_meat_s",
+                "spicy_ital_l"
+            ],
+            "RHS": [
+                "four_cheese_l"
+            ],
+            "Confidence": 0.2115384615384615,
+            "Lift": 2.624074746008708,
+            "Conviction": 1.1660499082745788,
+            "Leverage": 0.0010355230419435298,
+            "LHS_Count": 104,
+            "LHS_Support": 0.007909346718381626,
+            "RHS_Count": 1060,
+            "RHS_Support": 0.08061449539888965,
+            "Support": 0.0016731310365807285,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "big_meat_s",
+                "bbq_ckn_m"
+            ],
+            "RHS": [
+                "four_cheese_l"
+            ],
+            "Confidence": 0.2073170731707317,
+            "Lift": 2.571709618039576,
+            "Conviction": 1.159840175035247,
+            "Leverage": 0.0007901446024253592,
+            "LHS_Count": 82,
+            "LHS_Support": 0.006236215681800898,
+            "RHS_Count": 1060,
+            "RHS_Support": 0.08061449539888965,
+            "Support": 0.0012928739828123811,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "cali_ckn_m",
+                "cali_ckn_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.2916666666666667,
+            "Lift": 2.5704591152815013,
+            "Conviction": 1.2515735931607415,
+            "Leverage": 0.0006505059067202987,
+            "LHS_Count": 48,
+            "LHS_Support": 0.003650467716176135,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0010647197505513728,
+            "Count": 14
+        },
+        {
+            "LHS": [
+                "spicy_ital_l",
+                "four_cheese_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.2857142857142857,
+            "Lift": 2.518000765990042,
+            "Conviction": 1.241143813217735,
+            "Leverage": 0.001008662995435047,
+            "LHS_Count": 77,
+            "LHS_Support": 0.00585595862803255,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0016731310365807285,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "big_meat_s",
+                "classic_dlx_m"
+            ],
+            "RHS": [
+                "thai_ckn_l"
+            ],
+            "Confidence": 0.2095238095238095,
+            "Lift": 2.4273379483952167,
+            "Conviction": 1.1558623267883306,
+            "Leverage": 0.0009838446363549652,
+            "LHS_Count": 105,
+            "LHS_Support": 0.007985398129135296,
+            "RHS_Count": 1135,
+            "RHS_Support": 0.08631835120541487,
+            "Support": 0.0016731310365807285,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "thai_ckn_l",
+                "cali_ckn_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.2698412698412698,
+            "Lift": 2.3781118345461505,
+            "Conviction": 1.2141624259738713,
+            "Leverage": 0.0007492183127840963,
+            "LHS_Count": 63,
+            "LHS_Support": 0.004791238877481177,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0012928739828123811,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "thai_ckn_l",
+                "veggie_veg_m"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.2641509433962264,
+            "Lift": 2.327962972330416,
+            "Conviction": 1.204773298544688,
+            "Leverage": 0.0006073586313212285,
+            "LHS_Count": 53,
+            "LHS_Support": 0.004030724769944483,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0010647197505513728,
+            "Count": 14
+        },
+        {
+            "LHS": [
+                "sicilian_m",
+                "four_cheese_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.25862068965517243,
+            "Lift": 2.27922483128409,
+            "Conviction": 1.1957863981167547,
+            "Leverage": 0.0006402627666758277,
+            "LHS_Count": 58,
+            "LHS_Support": 0.00441098182371283,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0011407711613050423,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "thai_ckn_l",
+                "pepperoni_s"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.2545454545454546,
+            "Lift": 2.243309773336583,
+            "Conviction": 1.189249298379363,
+            "Leverage": 0.0005900997211616003,
+            "LHS_Count": 55,
+            "LHS_Support": 0.004182827591451822,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0010647197505513728,
+            "Count": 14
+        },
+        {
+            "LHS": [
+                "spicy_ital_l",
+                "cali_ckn_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.25396825396825395,
+            "Lift": 2.2382229031022596,
+            "Conviction": 1.1883291828680442,
+            "Leverage": 0.0006731669020304268,
+            "LHS_Count": 63,
+            "LHS_Support": 0.004791238877481177,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0012168225720587116,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "classic_dlx_m",
+                "southw_ckn_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.25396825396825395,
+            "Lift": 2.2382229031022596,
+            "Conviction": 1.1883291828680442,
+            "Leverage": 0.0006731669020304268,
+            "LHS_Count": 63,
+            "LHS_Support": 0.004791238877481177,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0012168225720587116,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "classic_dlx_m",
+                "thai_ckn_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.25287356321839083,
+            "Lift": 2.228575390588888,
+            "Conviction": 1.1865880412081644,
+            "Leverage": 0.0009223684446369066,
+            "LHS_Count": 87,
+            "LHS_Support": 0.006616472735569244,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0016731310365807285,
+            "Count": 22
+        },
+        {
+            "LHS": [
+                "four_cheese_l",
+                "cali_ckn_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.25,
+            "Lift": 2.2032506702412866,
+            "Conviction": 1.1820417268740335,
+            "Leverage": 0.0005814702660817863,
+            "LHS_Count": 56,
+            "LHS_Support": 0.004258879002205491,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0010647197505513728,
+            "Count": 14
+        },
+        {
+            "LHS": [
+                "thai_ckn_l",
+                "bbq_ckn_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.2238805970149254,
+            "Lift": 1.9730603017086155,
+            "Conviction": 1.142261476450388,
+            "Leverage": 0.0005625976709575013,
+            "LHS_Count": 67,
+            "LHS_Support": 0.005095444520495855,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0011407711613050423,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "four_cheese_l",
+                "classic_dlx_s"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.22222222222222227,
+            "Lift": 1.9584450402144775,
+            "Conviction": 1.1398259509142468,
+            "Leverage": 0.000521064080523088,
+            "LHS_Count": 63,
+            "LHS_Support": 0.004791238877481177,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0010647197505513728,
+            "Count": 14
+        },
+        {
+            "LHS": [
+                "southw_ckn_l",
+                "four_cheese_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.2173913043478261,
+            "Lift": 1.9158701480359017,
+            "Conviction": 1.1327899882542822,
+            "Leverage": 0.0005453387607978733,
+            "LHS_Count": 69,
+            "LHS_Support": 0.005247547342003194,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0011407711613050423,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "four_cheese_l",
+                "bbq_ckn_m"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.2151898734177215,
+            "Lift": 1.8964689313469303,
+            "Conviction": 1.129612456730427,
+            "Leverage": 0.0006111470315070716,
+            "LHS_Count": 79,
+            "LHS_Support": 0.006008061449539889,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0012928739828123811,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "five_cheese_l",
+                "spicy_ital_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.21348314606741575,
+            "Lift": 1.881427538633009,
+            "Conviction": 1.1271612181263106,
+            "Leverage": 0.0006769553022162703,
+            "LHS_Count": 89,
+            "LHS_Support": 0.006768575557076583,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0014449768043197201,
+            "Count": 19
+        },
+        {
+            "LHS": [
+                "spicy_ital_l",
+                "southw_ckn_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.21212121212121215,
+            "Lift": 1.8694248111138194,
+            "Conviction": 1.1252127976973973,
+            "Leverage": 0.0004951757152836459,
+            "LHS_Count": 66,
+            "LHS_Support": 0.005019393109742185,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0010647197505513728,
+            "Count": 14
+        },
+        {
+            "LHS": [
+                "thai_ckn_l",
+                "southw_ckn_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.21176470588235294,
+            "Lift": 1.8662829206749723,
+            "Conviction": 1.1247038819137258,
+            "Leverage": 0.0006354217117818568,
+            "LHS_Count": 85,
+            "LHS_Support": 0.006464369914061906,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0013689253935660506,
+            "Count": 18
+        },
+        {
+            "LHS": [
+                "thai_ckn_l",
+                "hawaiian_s"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.20987654320987653,
+            "Lift": 1.8496425379803394,
+            "Conviction": 1.1220161704312115,
+            "Leverage": 0.0005938881213474435,
+            "LHS_Count": 81,
+            "LHS_Support": 0.006160164271047228,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0012928739828123811,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "pepperoni_m",
+                "thai_ckn_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.20987654320987653,
+            "Lift": 1.8496425379803394,
+            "Conviction": 1.1220161704312115,
+            "Leverage": 0.0005938881213474435,
+            "LHS_Count": 81,
+            "LHS_Support": 0.006160164271047228,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0012928739828123811,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "thai_ckn_l",
+                "spicy_ital_l"
+            ],
+            "RHS": [
+                "big_meat_s"
+            ],
+            "Confidence": 0.20895522388059704,
+            "Lift": 1.8415229482613742,
+            "Conviction": 1.1207093731211355,
+            "Leverage": 0.0004865462602038318,
+            "LHS_Count": 67,
+            "LHS_Support": 0.005095444520495855,
+            "RHS_Count": 1492,
+            "RHS_Support": 0.11346870484447487,
+            "Support": 0.0010647197505513728,
+            "Count": 14
+        }
+    ]
+}
