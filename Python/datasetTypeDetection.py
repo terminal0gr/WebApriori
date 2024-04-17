@@ -9,6 +9,9 @@ from scipy.io import arff
 import pandas as pd
 from joblib import load
 
+missingValuesThreshold=0.2
+nRows=500
+
 class datasetFeatures:
     """Creates the features of a given dataset or dataset sample that can be used 
     in Machine learning experiments
@@ -33,17 +36,19 @@ class datasetFeatures:
     Freq1CharColumns = 0.0 #Range [0...1]
     Freq2ValuesItemColumns = 0.0 #Range [0...1]
     HasHeader=True  
-    datasetType='0'
     delimiter=';'
     Header=[]
     type2Words=0 #Range [0...infinite]
 
-    def _datasetFeatures_a(self, filepath, delimiter, hasHeader, nrows=500):
+    #This is not an attribute directly at least.
+    datasetType=-1
+
+    def _datasetFeatures_a(self, filepath, delimiter, hasHeader, nRows=nRows):
         # Creates the features of the dataset in order to determine datasetType via ML
         try:
 
             #The possible missing values that can exists in datasets and pandas cannot manipulate by default
-            extra_missing_values_light = ["n/a", "na"] #Useful only in 3 type recordset which may use "-", "?", "#" as absent value of an item
+            extra_missing_values_light = ["n/a", "na"] #Useful only in 3 type recordset which may use "-", "?", "#" or None as absent value of an item
             extra_missing_values_normal = ["n/a", "na", "-", "?", "#"] #all the other dataset types (0,2,4)
 
             headerV1=None
@@ -53,39 +58,55 @@ class datasetFeatures:
             try: #Try with extra_missing_values_normal
                 df, meta = loadarfftoDataframe(filepath,False)
                 if df is None:       
-                    df = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values_normal, header=headerV1)
+                    df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8', na_values = extra_missing_values_normal, header=headerV1)
             except Exception as e:
-                df = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values_normal, header=headerV1)
+                df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8', na_values = extra_missing_values_normal, header=headerV1)
 
-            hasMissingValues=False
+            class datasetFeaturesInst(datasetFeatures):
+                _name=os.path.basename(filepath)
+
+            #DatasetType 3 special case.
+            #Initially check if NaN value is the most frequent in the dataset.
+            #If that happens then DatasetType is Most likely datasetType:3 and NaN Value is the absent value.
+            #For smoothness in the procedures below, I change Nan value with 0.
+            countNaNValues=0
+            for myCol in df.columns:
+                if pd.isna(df[myCol].value_counts(dropna=False).idxmax()):
+                    countNaNValues+=df[myCol].value_counts(dropna=False).max()
+            #If NaN values are more than 50% of all the values of the dataset then change them to 0
+            if countNaNValues>= df.shape[1]*df.shape[0]*0.5:
+                df=df.fillna(0)   
+                datasetFeaturesInst.datasetType=3
+
+            columnsCount=df.shape[1]
+            columnsWithUnacceptedMissingValues=0
+
             for myCol in df.columns:
                 #Remove the rows from current column that have missing values
-                dfcol = df[myCol].dropna()
-                if dfcol.shape[0]==0: #rows "The column {dfcol.name} of {os.path.basename(filepath)} is full of missing values 
-                    hasMissingValues=True
-                elif dfcol.shape[0]>0 and dfcol.shape[0]<(df[myCol].shape[0]*0.2): #The column {dfcol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be analysed. The procedure ends with error.
-                    hasMissingValues=True 
+                dfCol = df[myCol].dropna()
+                if dfCol.shape[0]<(df[myCol].shape[0]*missingValuesThreshold): #The column {dfcol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be analysed. The procedure ends with error.
+                    columnsWithUnacceptedMissingValues+=1
             
-            if hasMissingValues: #Try with extra_missing_values_light
+            if columnsWithUnacceptedMissingValues>columnsCount*missingValuesThreshold: #Try with extra_missing_values_light
                 try:
                     df, meta = loadarfftoDataframe(filepath)
                     if df is None:       
-                        df = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values_light, header=headerV1)
+                        df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8', na_values = extra_missing_values_light, header=headerV1)
                 except Exception as e:
-                    df = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values_light, header=headerV1)
+                    df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8', na_values = extra_missing_values_light, header=headerV1)
+
+                columnsWithUnacceptedMissingValues=0
 
                 for myCol in df.columns:
                     #Remove the rows from current column that have missing values
                     dfcol = df[myCol].dropna()
-                    if dfcol.shape[0]==0: #rows
-                        print(f"The column {dfcol.name} of {os.path.basename(filepath)} is full of missing values and can't be analysed. The procedure ends with error.")
-                        return None 
-                    if dfcol.shape[0]>0 and dfcol.shape[0]<(df[myCol].shape[0]*0.2):
+                    if dfcol.shape[0]<(df[myCol].shape[0]*missingValuesThreshold):
+                        columnsWithUnacceptedMissingValues+=1
                         print(f"The column {dfcol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be analysed. The procedure ends with error.")
-                        return None 
 
-            class datasetFeaturesInst(datasetFeatures):
-                _name=os.path.basename(filepath)
+                if columnsWithUnacceptedMissingValues>columnsCount*missingValuesThreshold: 
+                    print(f"{columnsWithUnacceptedMissingValues} columns {columnsCount} of the dataset {os.path.basename(filepath)} has missing values more than 80% and the dataset and can't be analyzed. The procedure ends with error.")
+                    return None
 
             datasetFeaturesInst.delimiter=delimiter
 
@@ -107,13 +128,14 @@ class datasetFeatures:
             for myCol in df.columns:
 
                 #Remove the rows from current column that have missing values
+
                 dfcol = df[myCol].dropna()
-                if dfcol.shape[0]==0: #rows
-                    print(f"The column {dfcol.name} of {os.path.basename(filepath)} is full of missing values and can't be analysed. The procedure ends with error.")
-                    return None 
-                if dfcol.shape[0]>0 and dfcol.shape[0]<(df[myCol].shape[0]*0.2):
-                    print(f"The column {dfcol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be analysed. The procedure ends with error.")
-                    return None 
+                # if dfcol.shape[0]==0: #rows
+                #     print(f"The column {dfcol.name} of {os.path.basename(filepath)} is full of missing values and can't be analysed. The procedure ends with error.")
+                #     return None 
+                # if dfcol.shape[0]>0 and dfcol.shape[0]<(df[myCol].shape[0]*0.2):
+                #     print(f"The column {dfcol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be analysed. The procedure ends with error.")
+                #     return None 
 
                 uniqueValues=dfcol.nunique()
                 freq=uniqueValues/df.shape[0] #df.shape[0]->#rows

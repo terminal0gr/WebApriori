@@ -30,7 +30,13 @@ class Metadata():
                     datasetAttributes['datasetType']=int(dialect.datasetType)
                 else:
                     DFI=df.datasetFeatures()._datasetFeatures_a(filepath,dialect.delimiter,datasetAttributes['hasHeader'])
-                    datasetAttributes['datasetType']=int(df.datasetFeatures().AutoDetectType(DFI))
+                    if DFI==None:
+                        print(f"Failed to detect dataset attributes for dataset '{datasetName}'.")
+                        sys.exit()
+                    if DFI.datasetType==-1:
+                        datasetAttributes['datasetType']=int(df.datasetFeatures().AutoDetectType(DFI))
+                    else:
+                        datasetAttributes['datasetType']=int(DFI.datasetType)
             else: 
                 datasetAttributes['datasetType']=int(datasetType)
 
