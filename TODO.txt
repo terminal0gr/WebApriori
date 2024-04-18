@@ -12,8 +12,9 @@ FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 
 12/02/2024 Apriori Engine Main04.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv 
 13/04/2024 The engine does not keep user dataset feature preferences in public datasets.
 
-15/4/2024 Run datasetAttrAutoDetect to see the error with None value And (2SuperStoreOrders.csv)
-16/4/2024 Too late when choosing a dataset for the first time (not having metadata)
+15/04/2024 Run datasetAttrAutoDetect to see the error with None value And (2SuperStoreOrders.csv)
+16/04/2024 Too late when choosing a dataset for the first time (not having metadata)
+17/04/2024 2Sample - Superstore It is detected as 1???  I must find the error in myCSV ln 318?
 
 DONE - V01.00.00 17/04/2024 When the the most frequent value in a dataframe is NaN(nan) then the dataset is more likely to be of Type 3 (sparse) and NaN value is changed to 0 (example: Bakery Sales.csv) 
 DONE - V01.00.00 10/04/2024 AutoML dataset type must be utilized

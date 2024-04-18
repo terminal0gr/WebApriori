@@ -23,7 +23,7 @@
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "args": [
-                "79d1727987f200802593e3599119c966","3Bakery Sales.csv","-1","1","1"
+                "79d1727987f200802593e3599119c966","2Sample - Superstore.csv","-1","1","1"
             ],
             "console": "integratedTerminal"
         },
@@ -72,7 +72,7 @@
             "program": "${file}",
             "cwd": "${fileDirname}",
             "justMyCode": false,
-            "args": ["79d1727987f200802593e3599119c966","0.01","0.2","1.5","4","-3","titanic02.csv","2","0","class","age","sex","survived"
+            "args": ["79d1727987f200802593e3599119c966","0.01","0.2","1.5","4","-3","retail_sales_dataset.csv","3","0","Transaction ID","Product Category"
             ],
             "console": "integratedTerminal"
         },

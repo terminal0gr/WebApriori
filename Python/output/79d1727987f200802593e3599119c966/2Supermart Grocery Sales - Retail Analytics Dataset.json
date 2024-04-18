@@ -1,0 +1,17 @@
+{
+    "min_support": 0.001,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "2Supermart Grocery Sales - Retail Analytics Dataset.csv",
+    "datasetType": 2,
+    "outputType": 3,
+    "redundantRemoveType": 0,
+    "datasetArgs": "['Customer Name', 'Category']",
+    "Records": 50,
+    "RecordsCreationTime": "0.810",
+    "RulesCount": 0,
+    "RulesCreationTime": "0.008",
+    "rules": []
+}

@@ -1,0 +1,17 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "2dairy_dataset.csv",
+    "datasetType": 2,
+    "outputType": 3,
+    "redundantRemoveType": 0,
+    "datasetArgs": "['Location', 'Product Name']",
+    "Records": 15,
+    "RecordsCreationTime": "0.364",
+    "RulesCount": 0,
+    "RulesCreationTime": "0.022",
+    "rules": []
+}

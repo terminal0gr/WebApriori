@@ -190,7 +190,7 @@ class Sniffer:
             # we use _guess_delimiter only for examine if it is dataset of type 1) Market Basket list.
             # This is neseccary because that king of dataset has indistinct number of columns in each line
             # and thus can't be merged in a pandas dataframe or a numpy's array
-            temp_delimiter, temp_skipinitialspace, datasetType = self._guess_delimiter(sample, delimiters)
+            temp_delimiter, temp_skipinitialspace, datasetType = self._guess_delimiter(sample, delimiters=delimiter)
 
         if not delimiter:
             raise Error("Could not determine delimiter")

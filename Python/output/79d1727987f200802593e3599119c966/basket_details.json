@@ -1,0 +1,17 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "basket_details.csv",
+    "datasetType": 2,
+    "outputType": 3,
+    "redundantRemoveType": 0,
+    "datasetArgs": "['customer_id', 'product_id']",
+    "Records": 924,
+    "RecordsCreationTime": "0.915",
+    "RulesCount": 0,
+    "RulesCreationTime": "0.004",
+    "rules": []
+}

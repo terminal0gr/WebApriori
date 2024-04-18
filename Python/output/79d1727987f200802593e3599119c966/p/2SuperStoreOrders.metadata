@@ -1,9 +1,0 @@
-{
-    "hasHeader": true,
-    "header": [
-        "\ufefforder_id",
-        "product_id"
-    ],
-    "delimiter": ",",
-    "datasetType": 2
-}
