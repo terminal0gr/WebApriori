@@ -1,0 +1,18 @@
+{
+    "hasHeader": true,
+    "header": [
+        "?",
+        "Books",
+        "Clothing",
+        "Cosmetics",
+        "Food",
+        "&",
+        "Beverage",
+        "Shoes",
+        "Souvenir",
+        "Technology",
+        "Toys"
+    ],
+    "delimiter": ",",
+    "datasetType": 3
+}

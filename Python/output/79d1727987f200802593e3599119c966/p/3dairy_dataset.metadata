@@ -1,0 +1,19 @@
+{
+    "hasHeader": true,
+    "header": [
+        "N",
+        "Butter",
+        "Buttermilk",
+        "Cheese",
+        "Curd",
+        "Ghee",
+        "Ice",
+        "Cream",
+        "Lassi",
+        "Milk",
+        "Paneer",
+        "Yogurt"
+    ],
+    "delimiter": ",",
+    "datasetType": 3
+}

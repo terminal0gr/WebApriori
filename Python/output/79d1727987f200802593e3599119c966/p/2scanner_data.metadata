@@ -1,0 +1,9 @@
+{
+    "hasHeader": true,
+    "header": [
+        "Customer_ID",
+        "SKU"
+    ],
+    "delimiter": ",",
+    "datasetType": 2
+}

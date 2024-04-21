@@ -1,0 +1,16 @@
+{
+    "hasHeader": true,
+    "header": [
+        "Seller",
+        "Department",
+        "Revenue",
+        "Revenue Goal",
+        "Margin",
+        "Margin Goal",
+        "Date",
+        "Sales Quantity",
+        "Customers"
+    ],
+    "delimiter": ",",
+    "datasetType": 2
+}

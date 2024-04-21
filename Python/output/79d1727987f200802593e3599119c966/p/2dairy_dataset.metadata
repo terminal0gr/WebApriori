@@ -1,0 +1,10 @@
+{
+    "hasHeader": true,
+    "header": [
+        "Date",
+        "Product",
+        "Name"
+    ],
+    "delimiter": ",",
+    "datasetType": 2
+}

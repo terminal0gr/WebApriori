@@ -1,0 +1,1218 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.02,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "3dairy_dataset.csv",
+    "datasetType": 3,
+    "outputType": 3,
+    "redundantRemoveType": 0,
+    "datasetArgs": "['N', 'Butter', 'Buttermilk', 'Cheese', 'Curd', 'Ghee', 'Ice Cream', 'Lassi', 'Milk', 'Paneer', 'Yogurt']",
+    "Records": 1278,
+    "RecordsCreationTime": "0.016",
+    "RulesCount": 60,
+    "RulesCreationTime": "0.034",
+    "rules": [
+        {
+            "LHS": [
+                "Ghee",
+                "Ice Cream"
+            ],
+            "RHS": [
+                "Milk",
+                "Paneer"
+            ],
+            "Confidence": 0.18681318681318682,
+            "Lift": 2.2106227106227108,
+            "Conviction": 1.1258089074990483,
+            "Leverage": 0.0072847098238885575,
+            "LHS_Count": 91,
+            "LHS_Support": 0.07120500782472614,
+            "RHS_Count": 108,
+            "RHS_Support": 0.08450704225352113,
+            "Support": 0.013302034428794992,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Milk",
+                "Paneer"
+            ],
+            "RHS": [
+                "Ghee",
+                "Ice Cream"
+            ],
+            "Confidence": 0.1574074074074074,
+            "Lift": 2.2106227106227108,
+            "Conviction": 1.1023061445596658,
+            "Leverage": 0.0072847098238885575,
+            "LHS_Count": 108,
+            "LHS_Support": 0.08450704225352113,
+            "RHS_Count": 91,
+            "RHS_Support": 0.07120500782472614,
+            "Support": 0.013302034428794992,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Paneer"
+            ],
+            "RHS": [
+                "Ghee",
+                "Lassi",
+                "Butter"
+            ],
+            "Confidence": 0.03430079155672823,
+            "Lift": 1.9059309395434207,
+            "Conviction": 1.0168830224821912,
+            "Leverage": 0.004835043997247263,
+            "LHS_Count": 379,
+            "LHS_Support": 0.2965571205007825,
+            "RHS_Count": 23,
+            "RHS_Support": 0.017996870109546165,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Lassi",
+                "Butter"
+            ],
+            "RHS": [
+                "Paneer"
+            ],
+            "Confidence": 0.5652173913043478,
+            "Lift": 1.9059309395434207,
+            "Conviction": 1.6179186228482003,
+            "Leverage": 0.004835043997247263,
+            "LHS_Count": 23,
+            "LHS_Support": 0.017996870109546165,
+            "RHS_Count": 379,
+            "RHS_Support": 0.2965571205007825,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Lassi",
+                "Butter"
+            ],
+            "RHS": [
+                "Yogurt",
+                "Cheese"
+            ],
+            "Confidence": 0.14606741573033705,
+            "Lift": 1.8482589832016905,
+            "Conviction": 1.0785046536529115,
+            "Leverage": 0.0046685083549462296,
+            "LHS_Count": 89,
+            "LHS_Support": 0.06964006259780908,
+            "RHS_Count": 101,
+            "RHS_Support": 0.07902973395931143,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Yogurt",
+                "Cheese"
+            ],
+            "RHS": [
+                "Lassi",
+                "Butter"
+            ],
+            "Confidence": 0.1287128712871287,
+            "Lift": 1.8482589832016905,
+            "Conviction": 1.0677994736093328,
+            "Leverage": 0.0046685083549462296,
+            "LHS_Count": 101,
+            "LHS_Support": 0.07902973395931143,
+            "RHS_Count": 89,
+            "RHS_Support": 0.06964006259780908,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Ice Cream"
+            ],
+            "RHS": [
+                "Paneer",
+                "Cheese"
+            ],
+            "Confidence": 0.14285714285714285,
+            "Lift": 1.8076379066478074,
+            "Conviction": 1.0744653103808033,
+            "Leverage": 0.004544831150002081,
+            "LHS_Count": 91,
+            "LHS_Support": 0.07120500782472614,
+            "RHS_Count": 101,
+            "RHS_Support": 0.07902973395931143,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Paneer",
+                "Cheese"
+            ],
+            "RHS": [
+                "Ghee",
+                "Ice Cream"
+            ],
+            "Confidence": 0.1287128712871287,
+            "Lift": 1.8076379066478072,
+            "Conviction": 1.0660033432920757,
+            "Leverage": 0.004544831150002081,
+            "LHS_Count": 101,
+            "LHS_Support": 0.07902973395931143,
+            "RHS_Count": 91,
+            "RHS_Support": 0.07120500782472614,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Butter"
+            ],
+            "RHS": [
+                "Paneer",
+                "Lassi"
+            ],
+            "Confidence": 0.15476190476190474,
+            "Lift": 1.7818532818532815,
+            "Conviction": 1.0803412021424321,
+            "Leverage": 0.004463400119024002,
+            "LHS_Count": 84,
+            "LHS_Support": 0.06572769953051644,
+            "RHS_Count": 111,
+            "RHS_Support": 0.08685446009389672,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Paneer",
+                "Lassi"
+            ],
+            "RHS": [
+                "Ghee",
+                "Butter"
+            ],
+            "Confidence": 0.1171171171171171,
+            "Lift": 1.7818532818532815,
+            "Conviction": 1.0582063811440068,
+            "Leverage": 0.004463400119024002,
+            "LHS_Count": 111,
+            "LHS_Support": 0.08685446009389672,
+            "RHS_Count": 84,
+            "RHS_Support": 0.06572769953051644,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Yogurt",
+                "Butter"
+            ],
+            "RHS": [
+                "Lassi",
+                "Cheese"
+            ],
+            "Confidence": 0.14285714285714285,
+            "Lift": 1.7725381414701802,
+            "Conviction": 1.0726395409494,
+            "Leverage": 0.004433399212874185,
+            "LHS_Count": 91,
+            "LHS_Support": 0.07120500782472614,
+            "RHS_Count": 103,
+            "RHS_Support": 0.08059467918622848,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Lassi",
+                "Cheese"
+            ],
+            "RHS": [
+                "Yogurt",
+                "Butter"
+            ],
+            "Confidence": 0.1262135922330097,
+            "Lift": 1.7725381414701802,
+            "Conviction": 1.0629542688228133,
+            "Leverage": 0.004433399212874185,
+            "LHS_Count": 103,
+            "LHS_Support": 0.08059467918622848,
+            "RHS_Count": 91,
+            "RHS_Support": 0.07120500782472614,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Milk"
+            ],
+            "RHS": [
+                "Paneer",
+                "Cheese",
+                "Curd"
+            ],
+            "Confidence": 0.0425531914893617,
+            "Lift": 1.754289636238847,
+            "Conviction": 1.0191097200486872,
+            "Leverage": 0.005383019732024559,
+            "LHS_Count": 376,
+            "LHS_Support": 0.2942097026604069,
+            "RHS_Count": 31,
+            "RHS_Support": 0.024256651017214397,
+            "Support": 0.012519561815336464,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "Paneer",
+                "Curd",
+                "Cheese"
+            ],
+            "RHS": [
+                "Milk"
+            ],
+            "Confidence": 0.5161290322580645,
+            "Lift": 1.7542896362388467,
+            "Conviction": 1.4586332811684923,
+            "Leverage": 0.005383019732024559,
+            "LHS_Count": 31,
+            "LHS_Support": 0.024256651017214397,
+            "RHS_Count": 376,
+            "RHS_Support": 0.2942097026604069,
+            "Support": 0.012519561815336464,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "Curd",
+                "Cheese"
+            ],
+            "RHS": [
+                "Milk",
+                "Paneer"
+            ],
+            "Confidence": 0.14814814814814817,
+            "Lift": 1.7530864197530867,
+            "Conviction": 1.0747091243110838,
+            "Leverage": 0.005378121624898059,
+            "LHS_Count": 108,
+            "LHS_Support": 0.08450704225352113,
+            "RHS_Count": 108,
+            "RHS_Support": 0.08450704225352113,
+            "Support": 0.012519561815336464,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "Milk",
+                "Paneer"
+            ],
+            "RHS": [
+                "Cheese",
+                "Curd"
+            ],
+            "Confidence": 0.14814814814814817,
+            "Lift": 1.7530864197530867,
+            "Conviction": 1.0747091243110838,
+            "Leverage": 0.005378121624898059,
+            "LHS_Count": 108,
+            "LHS_Support": 0.08450704225352113,
+            "RHS_Count": 108,
+            "RHS_Support": 0.08450704225352113,
+            "Support": 0.012519561815336464,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "Lassi",
+                "Butter"
+            ],
+            "RHS": [
+                "Yogurt",
+                "Curd"
+            ],
+            "Confidence": 0.14606741573033705,
+            "Lift": 1.7126069477373465,
+            "Conviction": 1.0711741207478789,
+            "Leverage": 0.004232576820687645,
+            "LHS_Count": 89,
+            "LHS_Support": 0.06964006259780908,
+            "RHS_Count": 109,
+            "RHS_Support": 0.08528951486697965,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Yogurt",
+                "Curd"
+            ],
+            "RHS": [
+                "Lassi",
+                "Butter"
+            ],
+            "Confidence": 0.11926605504587155,
+            "Lift": 1.7126069477373465,
+            "Conviction": 1.0563461789254043,
+            "Leverage": 0.004232576820687645,
+            "LHS_Count": 109,
+            "LHS_Support": 0.08528951486697965,
+            "RHS_Count": 89,
+            "RHS_Support": 0.06964006259780908,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Paneer"
+            ],
+            "RHS": [
+                "Milk",
+                "Ice Cream"
+            ],
+            "Confidence": 0.14912280701754385,
+            "Lift": 1.6865393572426641,
+            "Conviction": 1.0713421422002807,
+            "Leverage": 0.005414857428346815,
+            "LHS_Count": 114,
+            "LHS_Support": 0.0892018779342723,
+            "RHS_Count": 113,
+            "RHS_Support": 0.08841940532081377,
+            "Support": 0.013302034428794992,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Milk",
+                "Ice Cream"
+            ],
+            "RHS": [
+                "Ghee",
+                "Paneer"
+            ],
+            "Confidence": 0.15044247787610618,
+            "Lift": 1.6865393572426641,
+            "Conviction": 1.0720852895148671,
+            "Leverage": 0.005414857428346815,
+            "LHS_Count": 113,
+            "LHS_Support": 0.08841940532081377,
+            "RHS_Count": 114,
+            "RHS_Support": 0.0892018779342723,
+            "Support": 0.013302034428794992,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Paneer",
+                "Cheese"
+            ],
+            "RHS": [
+                "Milk",
+                "Curd"
+            ],
+            "Confidence": 0.15841584158415842,
+            "Lift": 1.6594708651192989,
+            "Conviction": 1.0748043818466353,
+            "Leverage": 0.004975252313743354,
+            "LHS_Count": 101,
+            "LHS_Support": 0.07902973395931143,
+            "RHS_Count": 122,
+            "RHS_Support": 0.09546165884194054,
+            "Support": 0.012519561815336464,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "Milk",
+                "Curd"
+            ],
+            "RHS": [
+                "Paneer",
+                "Cheese"
+            ],
+            "Confidence": 0.13114754098360656,
+            "Lift": 1.6594708651192989,
+            "Conviction": 1.0599846458204152,
+            "Leverage": 0.004975252313743354,
+            "LHS_Count": 122,
+            "LHS_Support": 0.09546165884194054,
+            "RHS_Count": 101,
+            "RHS_Support": 0.07902973395931143,
+            "Support": 0.012519561815336464,
+            "Count": 16
+        },
+        {
+            "LHS": [
+                "Milk",
+                "Paneer"
+            ],
+            "RHS": [
+                "Ghee",
+                "Curd"
+            ],
+            "Confidence": 0.1388888888888889,
+            "Lift": 1.6588785046728973,
+            "Conviction": 1.064061790095411,
+            "Leverage": 0.004661773457647292,
+            "LHS_Count": 108,
+            "LHS_Support": 0.08450704225352113,
+            "RHS_Count": 107,
+            "RHS_Support": 0.0837245696400626,
+            "Support": 0.011737089201877934,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Curd"
+            ],
+            "RHS": [
+                "Milk",
+                "Paneer"
+            ],
+            "Confidence": 0.14018691588785046,
+            "Lift": 1.658878504672897,
+            "Conviction": 1.064758113900796,
+            "Leverage": 0.004661773457647292,
+            "LHS_Count": 107,
+            "LHS_Support": 0.0837245696400626,
+            "RHS_Count": 108,
+            "RHS_Support": 0.08450704225352113,
+            "Support": 0.011737089201877934,
+            "Count": 15
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Milk",
+                "Paneer"
+            ],
+            "RHS": [
+                "Ice Cream"
+            ],
+            "Confidence": 0.45945945945945943,
+            "Lift": 1.649407834801093,
+            "Conviction": 1.3346635367762127,
+            "Leverage": 0.005237301045011154,
+            "LHS_Count": 37,
+            "LHS_Support": 0.028951486697965573,
+            "RHS_Count": 356,
+            "RHS_Support": 0.27856025039123633,
+            "Support": 0.013302034428794992,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Ice Cream"
+            ],
+            "RHS": [
+                "Ghee",
+                "Milk",
+                "Paneer"
+            ],
+            "Confidence": 0.04775280898876404,
+            "Lift": 1.6494078348010928,
+            "Conviction": 1.0197441614617235,
+            "Leverage": 0.005237301045011154,
+            "LHS_Count": 356,
+            "LHS_Support": 0.27856025039123633,
+            "RHS_Count": 37,
+            "RHS_Support": 0.028951486697965573,
+            "Support": 0.013302034428794992,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Ice Cream"
+            ],
+            "RHS": [
+                "Paneer",
+                "Lassi"
+            ],
+            "Confidence": 0.14285714285714285,
+            "Lift": 1.6447876447876446,
+            "Conviction": 1.065336463223787,
+            "Leverage": 0.003987671464362596,
+            "LHS_Count": 91,
+            "LHS_Support": 0.07120500782472614,
+            "RHS_Count": 111,
+            "RHS_Support": 0.08685446009389672,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Paneer",
+                "Lassi"
+            ],
+            "RHS": [
+                "Ghee",
+                "Ice Cream"
+            ],
+            "Confidence": 0.1171171171171171,
+            "Lift": 1.6447876447876446,
+            "Conviction": 1.0520024911373,
+            "Leverage": 0.003987671464362596,
+            "LHS_Count": 111,
+            "LHS_Support": 0.08685446009389672,
+            "RHS_Count": 91,
+            "RHS_Support": 0.07120500782472614,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Lassi",
+                "Butter"
+            ],
+            "RHS": [
+                "Ghee",
+                "Paneer"
+            ],
+            "Confidence": 0.14606741573033705,
+            "Lift": 1.6374926079243048,
+            "Conviction": 1.0665925376822336,
+            "Leverage": 0.003960119611776028,
+            "LHS_Count": 89,
+            "LHS_Support": 0.06964006259780908,
+            "RHS_Count": 114,
+            "RHS_Support": 0.0892018779342723,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Paneer"
+            ],
+            "RHS": [
+                "Lassi",
+                "Butter"
+            ],
+            "Confidence": 0.11403508771929824,
+            "Lift": 1.6374926079243048,
+            "Conviction": 1.0501092362757403,
+            "Leverage": 0.003960119611776028,
+            "LHS_Count": 114,
+            "LHS_Support": 0.0892018779342723,
+            "RHS_Count": 89,
+            "RHS_Support": 0.06964006259780908,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Yogurt"
+            ],
+            "RHS": [
+                "Lassi",
+                "Butter",
+                "Cheese"
+            ],
+            "Confidence": 0.03571428571428571,
+            "Lift": 1.6301020408163265,
+            "Conviction": 1.0143163507795745,
+            "Leverage": 0.003931955495798648,
+            "LHS_Count": 364,
+            "LHS_Support": 0.28482003129890454,
+            "RHS_Count": 28,
+            "RHS_Support": 0.02190923317683881,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Lassi",
+                "Butter",
+                "Cheese"
+            ],
+            "RHS": [
+                "Yogurt"
+            ],
+            "Confidence": 0.46428571428571425,
+            "Lift": 1.6301020408163265,
+            "Conviction": 1.3350026082420445,
+            "Leverage": 0.003931955495798648,
+            "LHS_Count": 28,
+            "LHS_Support": 0.02190923317683881,
+            "RHS_Count": 364,
+            "RHS_Support": 0.28482003129890454,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ghee"
+            ],
+            "RHS": [
+                "Milk",
+                "Paneer",
+                "Ice Cream"
+            ],
+            "Confidence": 0.04970760233918129,
+            "Lift": 1.628879892037787,
+            "Conviction": 1.0201950162513542,
+            "Leverage": 0.0051356653221362614,
+            "LHS_Count": 342,
+            "LHS_Support": 0.2676056338028169,
+            "RHS_Count": 39,
+            "RHS_Support": 0.03051643192488263,
+            "Support": 0.013302034428794992,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Milk",
+                "Paneer",
+                "Ice Cream"
+            ],
+            "RHS": [
+                "Ghee"
+            ],
+            "Confidence": 0.4358974358974359,
+            "Lift": 1.628879892037787,
+            "Conviction": 1.298335467349552,
+            "Leverage": 0.0051356653221362614,
+            "LHS_Count": 39,
+            "LHS_Support": 0.03051643192488263,
+            "RHS_Count": 342,
+            "RHS_Support": 0.2676056338028169,
+            "Support": 0.013302034428794992,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Curd"
+            ],
+            "RHS": [
+                "Ghee",
+                "Lassi",
+                "Milk"
+            ],
+            "Confidence": 0.03431372549019608,
+            "Lift": 1.624183006535948,
+            "Conviction": 1.0136555372846214,
+            "Leverage": 0.0042099230752275785,
+            "LHS_Count": 408,
+            "LHS_Support": 0.3192488262910798,
+            "RHS_Count": 27,
+            "RHS_Support": 0.02112676056338028,
+            "Support": 0.010954616588419406,
+            "Count": 14
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Lassi",
+                "Milk"
+            ],
+            "RHS": [
+                "Curd"
+            ],
+            "Confidence": 0.5185185185185185,
+            "Lift": 1.6241830065359477,
+            "Conviction": 1.4138678223185266,
+            "Leverage": 0.0042099230752275785,
+            "LHS_Count": 27,
+            "LHS_Support": 0.02112676056338028,
+            "RHS_Count": 408,
+            "RHS_Support": 0.3192488262910798,
+            "Support": 0.010954616588419406,
+            "Count": 14
+        },
+        {
+            "LHS": [
+                "Paneer"
+            ],
+            "RHS": [
+                "Ghee",
+                "Cheese",
+                "Ice Cream"
+            ],
+            "Confidence": 0.03430079155672823,
+            "Lift": 1.623570800351803,
+            "Conviction": 1.0136419610559533,
+            "Leverage": 0.003906852696775331,
+            "LHS_Count": 379,
+            "LHS_Support": 0.2965571205007825,
+            "RHS_Count": 27,
+            "RHS_Support": 0.02112676056338028,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Cheese",
+                "Ice Cream"
+            ],
+            "RHS": [
+                "Paneer"
+            ],
+            "Confidence": 0.48148148148148145,
+            "Lift": 1.6235708003518028,
+            "Conviction": 1.3566398390342052,
+            "Leverage": 0.003906852696775331,
+            "LHS_Count": 27,
+            "LHS_Support": 0.02112676056338028,
+            "RHS_Count": 379,
+            "RHS_Support": 0.2965571205007825,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Paneer",
+                "Lassi",
+                "Butter"
+            ],
+            "RHS": [
+                "Ghee"
+            ],
+            "Confidence": 0.43333333333333335,
+            "Lift": 1.6192982456140352,
+            "Conviction": 1.2924606462303232,
+            "Leverage": 0.003890321585223391,
+            "LHS_Count": 30,
+            "LHS_Support": 0.023474178403755867,
+            "RHS_Count": 342,
+            "RHS_Support": 0.2676056338028169,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ghee"
+            ],
+            "RHS": [
+                "Paneer",
+                "Lassi",
+                "Butter"
+            ],
+            "Confidence": 0.038011695906432746,
+            "Lift": 1.619298245614035,
+            "Conviction": 1.0151119482854574,
+            "Leverage": 0.003890321585223391,
+            "LHS_Count": 342,
+            "LHS_Support": 0.2676056338028169,
+            "RHS_Count": 30,
+            "RHS_Support": 0.023474178403755867,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ice Cream"
+            ],
+            "RHS": [
+                "Ghee",
+                "Cheese",
+                "Paneer"
+            ],
+            "Confidence": 0.03651685393258426,
+            "Lift": 1.609259976753196,
+            "Conviction": 1.014349133348846,
+            "Leverage": 0.0038511367282113807,
+            "LHS_Count": 356,
+            "LHS_Support": 0.27856025039123633,
+            "RHS_Count": 29,
+            "RHS_Support": 0.02269170579029734,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Cheese",
+                "Paneer"
+            ],
+            "RHS": [
+                "Ice Cream"
+            ],
+            "Confidence": 0.44827586206896547,
+            "Lift": 1.609259976753196,
+            "Conviction": 1.307609546165884,
+            "Leverage": 0.0038511367282113807,
+            "LHS_Count": 29,
+            "LHS_Support": 0.02269170579029734,
+            "RHS_Count": 356,
+            "RHS_Support": 0.27856025039123633,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Curd"
+            ],
+            "RHS": [
+                "Milk",
+                "Lassi"
+            ],
+            "Confidence": 0.13084112149532712,
+            "Lift": 1.5925233644859813,
+            "Conviction": 1.0560098944924026,
+            "Leverage": 0.004075837392639614,
+            "LHS_Count": 107,
+            "LHS_Support": 0.0837245696400626,
+            "RHS_Count": 105,
+            "RHS_Support": 0.08215962441314555,
+            "Support": 0.010954616588419406,
+            "Count": 14
+        },
+        {
+            "LHS": [
+                "Milk",
+                "Lassi"
+            ],
+            "RHS": [
+                "Ghee",
+                "Curd"
+            ],
+            "Confidence": 0.13333333333333333,
+            "Lift": 1.5925233644859813,
+            "Conviction": 1.057240881184543,
+            "Leverage": 0.004075837392639614,
+            "LHS_Count": 105,
+            "LHS_Support": 0.08215962441314555,
+            "RHS_Count": 107,
+            "RHS_Support": 0.0837245696400626,
+            "Support": 0.010954616588419406,
+            "Count": 14
+        },
+        {
+            "LHS": [
+                "Lassi"
+            ],
+            "RHS": [
+                "Yogurt",
+                "Butter",
+                "Curd"
+            ],
+            "Confidence": 0.03359173126614987,
+            "Lift": 1.5900086132644273,
+            "Conviction": 1.0128982450854862,
+            "Leverage": 0.003774603804359805,
+            "LHS_Count": 387,
+            "LHS_Support": 0.3028169014084507,
+            "RHS_Count": 27,
+            "RHS_Support": 0.02112676056338028,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Yogurt",
+                "Butter",
+                "Curd"
+            ],
+            "RHS": [
+                "Lassi"
+            ],
+            "Confidence": 0.48148148148148145,
+            "Lift": 1.590008613264427,
+            "Conviction": 1.344567404426559,
+            "Leverage": 0.003774603804359805,
+            "LHS_Count": 27,
+            "LHS_Support": 0.02112676056338028,
+            "RHS_Count": 387,
+            "RHS_Support": 0.3028169014084507,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Yogurt"
+            ],
+            "RHS": [
+                "Lassi",
+                "Butter",
+                "Curd"
+            ],
+            "Confidence": 0.03571428571428571,
+            "Lift": 1.5738916256157633,
+            "Conviction": 1.013504897698951,
+            "Leverage": 0.003709091621542854,
+            "LHS_Count": 364,
+            "LHS_Support": 0.28482003129890454,
+            "RHS_Count": 29,
+            "RHS_Support": 0.02269170579029734,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Lassi",
+                "Butter",
+                "Curd"
+            ],
+            "RHS": [
+                "Yogurt"
+            ],
+            "Confidence": 0.44827586206896547,
+            "Lift": 1.5738916256157633,
+            "Conviction": 1.2962636932707354,
+            "Leverage": 0.003709091621542854,
+            "LHS_Count": 29,
+            "LHS_Support": 0.02269170579029734,
+            "RHS_Count": 364,
+            "RHS_Support": 0.28482003129890454,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Cheese"
+            ],
+            "RHS": [
+                "Paneer",
+                "Ice Cream"
+            ],
+            "Confidence": 0.15294117647058822,
+            "Lift": 1.5512605042016807,
+            "Conviction": 1.0641627543035994,
+            "Leverage": 0.0036148030593577104,
+            "LHS_Count": 85,
+            "LHS_Support": 0.06651017214397496,
+            "RHS_Count": 126,
+            "RHS_Support": 0.09859154929577464,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Paneer",
+                "Ice Cream"
+            ],
+            "RHS": [
+                "Ghee",
+                "Cheese"
+            ],
+            "Confidence": 0.10317460317460317,
+            "Lift": 1.5512605042016805,
+            "Conviction": 1.0408824629191076,
+            "Leverage": 0.0036148030593577104,
+            "LHS_Count": 126,
+            "LHS_Support": 0.09859154929577464,
+            "RHS_Count": 85,
+            "RHS_Support": 0.06651017214397496,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Paneer",
+                "Butter"
+            ],
+            "RHS": [
+                "Ghee",
+                "Lassi"
+            ],
+            "Confidence": 0.125,
+            "Lift": 1.5360576923076925,
+            "Conviction": 1.0498546836575007,
+            "Leverage": 0.0035499031399315734,
+            "LHS_Count": 104,
+            "LHS_Support": 0.081377151799687,
+            "RHS_Count": 104,
+            "RHS_Support": 0.081377151799687,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Lassi"
+            ],
+            "RHS": [
+                "Paneer",
+                "Butter"
+            ],
+            "Confidence": 0.125,
+            "Lift": 1.5360576923076925,
+            "Conviction": 1.0498546836575007,
+            "Leverage": 0.0035499031399315734,
+            "LHS_Count": 104,
+            "LHS_Support": 0.081377151799687,
+            "RHS_Count": 104,
+            "RHS_Support": 0.081377151799687,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Cheese",
+                "Ice Cream"
+            ],
+            "RHS": [
+                "Milk",
+                "Lassi"
+            ],
+            "Confidence": 0.125,
+            "Lift": 1.5214285714285714,
+            "Conviction": 1.0489604292421195,
+            "Leverage": 0.00348622774728706,
+            "LHS_Count": 104,
+            "LHS_Support": 0.081377151799687,
+            "RHS_Count": 105,
+            "RHS_Support": 0.08215962441314555,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Milk",
+                "Lassi"
+            ],
+            "RHS": [
+                "Cheese",
+                "Ice Cream"
+            ],
+            "Confidence": 0.12380952380952379,
+            "Lift": 1.5214285714285711,
+            "Conviction": 1.0484282506634008,
+            "Leverage": 0.00348622774728706,
+            "LHS_Count": 105,
+            "LHS_Support": 0.08215962441314555,
+            "RHS_Count": 104,
+            "RHS_Support": 0.081377151799687,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ghee"
+            ],
+            "RHS": [
+                "Paneer",
+                "Lassi",
+                "Curd"
+            ],
+            "Confidence": 0.038011695906432746,
+            "Lift": 1.5180921052631577,
+            "Conviction": 1.0134851663170512,
+            "Leverage": 0.003471533425907558,
+            "LHS_Count": 342,
+            "LHS_Support": 0.2676056338028169,
+            "RHS_Count": 32,
+            "RHS_Support": 0.025039123630672927,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Paneer",
+                "Lassi",
+                "Curd"
+            ],
+            "RHS": [
+                "Ghee"
+            ],
+            "Confidence": 0.40624999999999994,
+            "Lift": 1.5180921052631577,
+            "Conviction": 1.2335063009636769,
+            "Leverage": 0.003471533425907558,
+            "LHS_Count": 32,
+            "LHS_Support": 0.025039123630672927,
+            "RHS_Count": 342,
+            "RHS_Support": 0.2676056338028169,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Ghee",
+                "Milk"
+            ],
+            "RHS": [
+                "Paneer",
+                "Ice Cream"
+            ],
+            "Confidence": 0.14912280701754385,
+            "Lift": 1.512531328320802,
+            "Conviction": 1.0593872513431102,
+            "Leverage": 0.004507483083162513,
+            "LHS_Count": 114,
+            "LHS_Support": 0.0892018779342723,
+            "RHS_Count": 126,
+            "RHS_Support": 0.09859154929577464,
+            "Support": 0.013302034428794992,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Paneer",
+                "Ice Cream"
+            ],
+            "RHS": [
+                "Ghee",
+                "Milk"
+            ],
+            "Confidence": 0.1349206349206349,
+            "Lift": 1.512531328320802,
+            "Conviction": 1.0528492053236853,
+            "Leverage": 0.004507483083162513,
+            "LHS_Count": 126,
+            "LHS_Support": 0.09859154929577464,
+            "RHS_Count": 114,
+            "RHS_Support": 0.0892018779342723,
+            "Support": 0.013302034428794992,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Yogurt",
+                "Lassi"
+            ],
+            "RHS": [
+                "Butter",
+                "Cheese"
+            ],
+            "Confidence": 0.11206896551724137,
+            "Lift": 1.507622504537205,
+            "Conviction": 1.042496619414437,
+            "Leverage": 0.0034250014082057977,
+            "LHS_Count": 116,
+            "LHS_Support": 0.09076682316118936,
+            "RHS_Count": 95,
+            "RHS_Support": 0.07433489827856025,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        },
+        {
+            "LHS": [
+                "Butter",
+                "Cheese"
+            ],
+            "RHS": [
+                "Yogurt",
+                "Lassi"
+            ],
+            "Confidence": 0.13684210526315788,
+            "Lift": 1.5076225045372047,
+            "Conviction": 1.053379899996183,
+            "Leverage": 0.0034250014082057977,
+            "LHS_Count": 95,
+            "LHS_Support": 0.07433489827856025,
+            "RHS_Count": 116,
+            "RHS_Support": 0.09076682316118936,
+            "Support": 0.010172143974960876,
+            "Count": 13
+        }
+    ]
+}

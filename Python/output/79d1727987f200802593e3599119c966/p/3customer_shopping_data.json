@@ -1,0 +1,17 @@
+{
+    "min_support": 0.0001,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "3customer_shopping_data.csv",
+    "datasetType": 3,
+    "outputType": 3,
+    "redundantRemoveType": 0,
+    "datasetArgs": "['?', 'Books', 'Clothing', 'Cosmetics', 'Food & Beverage', 'Shoes', 'Souvenir', 'Technology', 'Toys']",
+    "Records": 99457,
+    "RecordsCreationTime": "0.519",
+    "RulesCount": 0,
+    "RulesCreationTime": "0.064",
+    "rules": []
+}

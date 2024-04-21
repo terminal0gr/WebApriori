@@ -10,12 +10,14 @@ FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 
 10/04/2024 Autodetect Dataset procedure is slow
 31/03/2024 correct the html files (frontend) to conform to new rules (datasetType, datasetSep etc)
 12/02/2024 Apriori Engine Main04.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv 
-13/04/2024 The engine does not keep user dataset feature preferences in public datasets.
-
-15/04/2024 Run datasetAttrAutoDetect to see the error with None value And (2SuperStoreOrders.csv)
 16/04/2024 Too late when choosing a dataset for the first time (not having metadata)
-17/04/2024 2Sample - Superstore It is detected as 1???  I must find the error in myCSV ln 318?
+20/04/2024 Examine the 2dairy_dataset.csv & 3dairy_dataset.csv and see why they have different association rules results with the same parameters (min sup=0.01, min conf=0.02, Min Lift=1.5, Maximum rules items) Group Column="Date" Item Column="Product Name"
 
+20/04/2024 3 datasetType creation from 2 (test datasets) and final percentages of ML (all algorithms) via test data
+
+DONE - V01.00.00 13/04/2024 The engine does not keep user dataset feature preferences in public datasets.
+DONE - V01.00.00 15/04/2024 2SuperStoreOrders.csv removed from test data due to malformed data
+DONE - V01.00.00 20/04/2024 17/04/2024 2Sample - Superstore It is detected as 1? but it is clearly datasetType:2. Finally the dataset had commas in a column, making it inconsistent. The solution was to erase the commas inside the text of the column. 
 DONE - V01.00.00 17/04/2024 When the the most frequent value in a dataframe is NaN(nan) then the dataset is more likely to be of Type 3 (sparse) and NaN value is changed to 0 (example: Bakery Sales.csv) 
 DONE - V01.00.00 10/04/2024 AutoML dataset type must be utilized
 DONE - V01.00.00 10/04/2024 Correct the texts in the application (AutoML)
