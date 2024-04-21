@@ -1,0 +1,75 @@
+{
+    "min_support": 0.004,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "2pizza_sales.csv",
+    "datasetType": 2,
+    "outputType": 3,
+    "redundantRemoveType": 0,
+    "datasetArgs": "['order_id', 'pizza_name']",
+    "Records": 13030,
+    "RecordsCreationTime": "5.205",
+    "RulesCount": 3,
+    "RulesCreationTime": "0.233",
+    "rules": [
+        {
+            "LHS": [
+                "The Thai Chicken Pizza",
+                "The Pepperoni Pizza"
+            ],
+            "RHS": [
+                "The Southwest Chicken Pizza"
+            ],
+            "Confidence": 0.20622568093385216,
+            "Lift": 1.7902202681999293,
+            "Conviction": 1.114679924156923,
+            "Leverage": 0.0017954493114360924,
+            "LHS_Count": 257,
+            "LHS_Support": 0.01972371450498849,
+            "RHS_Count": 1501,
+            "RHS_Support": 0.11519570222563315,
+            "Support": 0.004067536454336148,
+            "Count": 53
+        },
+        {
+            "LHS": [
+                "The Southwest Chicken Pizza",
+                "The Pepperoni Pizza"
+            ],
+            "RHS": [
+                "The Thai Chicken Pizza"
+            ],
+            "Confidence": 0.23981900452488691,
+            "Lift": 1.6992069760518087,
+            "Conviction": 1.1298153528487374,
+            "Leverage": 0.001673751287689016,
+            "LHS_Count": 221,
+            "LHS_Support": 0.016960859554873368,
+            "RHS_Count": 1839,
+            "RHS_Support": 0.14113584036838067,
+            "Support": 0.004067536454336148,
+            "Count": 53
+        },
+        {
+            "LHS": [
+                "The Thai Chicken Pizza",
+                "The Southwest Chicken Pizza"
+            ],
+            "RHS": [
+                "The Pepperoni Pizza"
+            ],
+            "Confidence": 0.24423963133640555,
+            "Lift": 1.6670730205936954,
+            "Conviction": 1.1293155569698445,
+            "Leverage": 0.001627609466082463,
+            "LHS_Count": 217,
+            "LHS_Support": 0.016653875671527246,
+            "RHS_Count": 1909,
+            "RHS_Support": 0.14650805832693783,
+            "Support": 0.004067536454336148,
+            "Count": 53
+        }
+    ]
+}

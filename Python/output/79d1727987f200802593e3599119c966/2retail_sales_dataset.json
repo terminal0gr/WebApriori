@@ -1,0 +1,17 @@
+{
+    "min_support": 0.001,
+    "min_confidence": 0.02,
+    "min_lift": 1.1,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "2retail_sales_dataset.csv",
+    "datasetType": 2,
+    "outputType": 3,
+    "redundantRemoveType": 0,
+    "datasetArgs": "['Date', 'Product Category']",
+    "Records": 240,
+    "RecordsCreationTime": "0.158",
+    "RulesCount": 0,
+    "RulesCreationTime": "0.001",
+    "rules": []
+}

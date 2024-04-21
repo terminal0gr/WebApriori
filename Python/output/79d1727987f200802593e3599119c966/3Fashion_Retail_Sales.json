@@ -1,0 +1,284 @@
+{
+    "min_support": 0.1,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "3Fashion_Retail_Sales.csv",
+    "datasetType": 3,
+    "outputType": 3,
+    "redundantRemoveType": 0,
+    "datasetArgs": "['?', 'Backpack', 'Belt', 'Blazer', 'Blouse', 'Boots', 'Bowtie', 'Camisole', 'Cardigan', 'Coat', 'Dress', 'Flannel Shirt', 'Flip-Flops', 'Gloves', 'Handbag', 'Hat', 'Hoodie', 'Jacket', 'Jeans', 'Jumpsuit', 'Kimono', 'Leggings', 'Loafers', 'Onesie', 'Overalls', 'Pajamas', 'Pants', 'Polo Shirt', 'Poncho', 'Raincoat', 'Romper', 'Sandals', 'Scarf', 'Shorts', 'Skirt', 'Slippers', 'Sneakers', 'Socks', 'Sun Hat', 'Sunglasses', 'Sweater', 'Swimsuit', 'T-shirt', 'Tank Top', 'Tie', 'Trench Coat', 'Trousers', 'Tunic', 'Umbrella', 'Vest', 'Wallet']",
+    "Records": 166,
+    "RecordsCreationTime": "0.025",
+    "RulesCount": 14,
+    "RulesCreationTime": "0.124",
+    "rules": [
+        {
+            "LHS": [
+                "Raincoat"
+            ],
+            "RHS": [
+                "Loafers",
+                "Backpack"
+            ],
+            "Confidence": 0.3207547169811321,
+            "Lift": 2.315012305168171,
+            "Conviction": 1.2682396251673362,
+            "Leverage": 0.05817244883147046,
+            "LHS_Count": 53,
+            "LHS_Support": 0.3192771084337349,
+            "RHS_Count": 23,
+            "RHS_Support": 0.13855421686746988,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Loafers",
+                "Backpack"
+            ],
+            "RHS": [
+                "Raincoat"
+            ],
+            "Confidence": 0.7391304347826086,
+            "Lift": 2.3150123051681706,
+            "Conviction": 2.6094377510040156,
+            "Leverage": 0.05817244883147046,
+            "LHS_Count": 23,
+            "LHS_Support": 0.13855421686746988,
+            "RHS_Count": 53,
+            "RHS_Support": 0.3192771084337349,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Loafers"
+            ],
+            "RHS": [
+                "Raincoat",
+                "Backpack"
+            ],
+            "Confidence": 0.29310344827586204,
+            "Lift": 2.0272988505747125,
+            "Conviction": 1.2101087275933,
+            "Leverage": 0.05189432428509217,
+            "LHS_Count": 58,
+            "LHS_Support": 0.3493975903614458,
+            "RHS_Count": 24,
+            "RHS_Support": 0.14457831325301204,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Raincoat",
+                "Backpack"
+            ],
+            "RHS": [
+                "Loafers"
+            ],
+            "Confidence": 0.7083333333333334,
+            "Lift": 2.0272988505747125,
+            "Conviction": 2.230636833046472,
+            "Leverage": 0.05189432428509217,
+            "LHS_Count": 24,
+            "LHS_Support": 0.14457831325301204,
+            "RHS_Count": 58,
+            "RHS_Support": 0.3493975903614458,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Sneakers"
+            ],
+            "RHS": [
+                "Handbag",
+                "Skirt"
+            ],
+            "Confidence": 0.3035714285714286,
+            "Lift": 2.0157142857142856,
+            "Conviction": 1.2196478220574607,
+            "Leverage": 0.05160400638699376,
+            "LHS_Count": 56,
+            "LHS_Support": 0.3373493975903614,
+            "RHS_Count": 25,
+            "RHS_Support": 0.15060240963855423,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Handbag",
+                "Skirt"
+            ],
+            "RHS": [
+                "Sneakers"
+            ],
+            "Confidence": 0.6799999999999999,
+            "Lift": 2.0157142857142856,
+            "Conviction": 2.0707831325301203,
+            "Leverage": 0.05160400638699376,
+            "LHS_Count": 25,
+            "LHS_Support": 0.15060240963855423,
+            "RHS_Count": 56,
+            "RHS_Support": 0.3373493975903614,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Raincoat",
+                "Loafers"
+            ],
+            "RHS": [
+                "Backpack"
+            ],
+            "Confidence": 0.6538461538461539,
+            "Lift": 1.7793190416141236,
+            "Conviction": 1.8273092369477912,
+            "Leverage": 0.044854115256205536,
+            "LHS_Count": 26,
+            "LHS_Support": 0.1566265060240964,
+            "RHS_Count": 61,
+            "RHS_Support": 0.3674698795180723,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Backpack"
+            ],
+            "RHS": [
+                "Raincoat",
+                "Loafers"
+            ],
+            "Confidence": 0.2786885245901639,
+            "Lift": 1.7793190416141234,
+            "Conviction": 1.169222343921139,
+            "Leverage": 0.044854115256205536,
+            "LHS_Count": 61,
+            "LHS_Support": 0.3674698795180723,
+            "RHS_Count": 26,
+            "RHS_Support": 0.1566265060240964,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Skirt"
+            ],
+            "RHS": [
+                "Handbag",
+                "Sneakers"
+            ],
+            "Confidence": 0.25,
+            "Lift": 1.7291666666666667,
+            "Conviction": 1.140562248995984,
+            "Leverage": 0.043184787342139645,
+            "LHS_Count": 68,
+            "LHS_Support": 0.40963855421686746,
+            "RHS_Count": 24,
+            "RHS_Support": 0.14457831325301204,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Handbag",
+                "Sneakers"
+            ],
+            "RHS": [
+                "Skirt"
+            ],
+            "Confidence": 0.7083333333333334,
+            "Lift": 1.7291666666666667,
+            "Conviction": 2.024096385542169,
+            "Leverage": 0.043184787342139645,
+            "LHS_Count": 24,
+            "LHS_Support": 0.14457831325301204,
+            "RHS_Count": 68,
+            "RHS_Support": 0.40963855421686746,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Handbag"
+            ],
+            "RHS": [
+                "Skirt",
+                "Sneakers"
+            ],
+            "Confidence": 0.29310344827586204,
+            "Lift": 1.6777645659928655,
+            "Conviction": 1.1674992653540994,
+            "Leverage": 0.04137030047902452,
+            "LHS_Count": 58,
+            "LHS_Support": 0.3493975903614458,
+            "RHS_Count": 29,
+            "RHS_Support": 0.1746987951807229,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Skirt",
+                "Sneakers"
+            ],
+            "RHS": [
+                "Handbag"
+            ],
+            "Confidence": 0.5862068965517241,
+            "Lift": 1.6777645659928655,
+            "Conviction": 1.5722891566265058,
+            "Leverage": 0.04137030047902452,
+            "LHS_Count": 29,
+            "LHS_Support": 0.1746987951807229,
+            "RHS_Count": 58,
+            "RHS_Support": 0.3493975903614458,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Skirt",
+                "Trench Coat"
+            ],
+            "RHS": [
+                "Belt"
+            ],
+            "Confidence": 0.6538461538461539,
+            "Lift": 1.5961538461538463,
+            "Conviction": 1.7054886211512719,
+            "Leverage": 0.03824938307446654,
+            "LHS_Count": 26,
+            "LHS_Support": 0.1566265060240964,
+            "RHS_Count": 68,
+            "RHS_Support": 0.40963855421686746,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Belt"
+            ],
+            "RHS": [
+                "Skirt",
+                "Trench Coat"
+            ],
+            "Confidence": 0.25,
+            "Lift": 1.596153846153846,
+            "Conviction": 1.1244979919678715,
+            "Leverage": 0.03824938307446654,
+            "LHS_Count": 68,
+            "LHS_Support": 0.40963855421686746,
+            "RHS_Count": 26,
+            "RHS_Support": 0.1566265060240964,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        }
+    ]
+}

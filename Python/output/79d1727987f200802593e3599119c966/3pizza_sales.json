@@ -1,0 +1,17 @@
+{
+    "min_support": 0.001,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "3pizza_sales.csv",
+    "datasetType": 3,
+    "outputType": 3,
+    "redundantRemoveType": 0,
+    "datasetArgs": "",
+    "Records": 21350,
+    "RecordsCreationTime": "0.571",
+    "RulesCount": 0,
+    "RulesCreationTime": "2774.862",
+    "rules": []
+}

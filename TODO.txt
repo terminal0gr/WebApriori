@@ -12,6 +12,8 @@ FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 
 12/02/2024 Apriori Engine Main04.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv 
 16/04/2024 Too late when choosing a dataset for the first time (not having metadata)
 20/04/2024 Examine the 2dairy_dataset.csv & 3dairy_dataset.csv and see why they have different association rules results with the same parameters (min sup=0.01, min conf=0.02, Min Lift=1.5, Maximum rules items) Group Column="Date" Item Column="Product Name"
+21/04/2024 3 Type Datasets seems not to produce association rules if the absent item is None
+21/04/2024 2Sample - Superstore Could not retrieve any record from the dataset. IT SHOULD
 
 20/04/2024 3 datasetType creation from 2 (test datasets) and final percentages of ML (all algorithms) via test data
 

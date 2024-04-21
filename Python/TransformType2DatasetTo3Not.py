@@ -4,12 +4,12 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import os
 
 #Declaration Section###############
-ff='2dairy_dataset.csv' 
-groupByItemColumn='Date'
-itemColumn='Product Name'
+ff='2scanner_data.csv' 
+groupByItemColumn='Customer_ID'
+itemColumn='SKU'
 separator=","
-absentValue='N'
-value='Y'
+absentValue='n'
+value='y'
 filepath=os.path.join('public', ff)
 ###################################
 
