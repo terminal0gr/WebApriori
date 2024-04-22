@@ -17,22 +17,7 @@ FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 
 
 20/04/2024 3 datasetType creation from 2 (test datasets) and final percentages of ML (all algorithms) via test data
 
-# Create a KNN classifier
-clf = KNeighborsClassifier(n_neighbors=5)  # You can adjust the number of neighbors (K)
 
-# Train the classifier on the training data
-clf.fit(X_train, y_train)
-
-# Make predictions on the testing data
-y_pred = clf.predict(X_test)
-
-# Calculate accuracy
-accuracy = accuracy_score(y_test, y_pred)
-print("Accuracy:", accuracy)
-
-# Print classification report
-print("Classification Report:")
-print(classification_report(y_test, y_pred))
 
 
 DONE - V01.00.00 13/04/2024 The engine does not keep user dataset feature preferences in public datasets.

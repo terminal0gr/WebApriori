@@ -44,9 +44,7 @@ class datasetFeatures:
 
             #The possible missing values that can exists in datasets and pandas cannot manipulate by default
             extra_missing_values = []
-            if datasetType=='3': #Many 3rd type dataset are using "?", "#" as the absense of an item in a row. Not a missing value.
-                extra_missing_values = ["n/a", "na"]
-            else:
+            if datasetType!='3': #Many 3rd type dataset are using "?", "#", "nan" etc as the absense of an item in a row. Not a missing value.
                 extra_missing_values = ["n/a", "na", "-", "?", "#"]
 
             headerV1=None
@@ -61,9 +59,15 @@ class datasetFeatures:
             try:
                 dfi, meta = loadarfftoDataframe(filepath)
                 if dfi is None:       
-                    dfi = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values, header=headerV1)
+                    if datasetType!='3':
+                        dfi = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values, header=headerV1)
+                    else:
+                        dfi = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', header=headerV1)
             except Exception as e:
-                dfi = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values, header=headerV1)
+                if datasetType!='3':
+                    dfi = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', na_values = extra_missing_values, header=headerV1)
+                else:
+                    dfi = pd.read_csv(filepath, sep=delimiter, nrows=nrows, encoding='utf-8', header=headerV1)
 
             df=dfi
 
@@ -99,14 +103,14 @@ class datasetFeatures:
             twoValuesItemColumn=0
             for myCol in df.columns:
 
-                #Remove the rows from current column that have missing values
-                dfcol = df[myCol].dropna()
-                if dfcol.shape[0]==0: #rows
-                    print(f"The column {dfcol.name} of {os.path.basename(filepath)} is full of missing values and can't be analysed. The procedure ends with error.")
-                    return None 
-                if dfcol.shape[0]>0 and dfcol.shape[0]<(df[myCol].shape[0]*0.2):
-                    print(f"The column {dfcol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be analysed. The procedure ends with error.")
-                    return None 
+                if datasetType!='3':
+                    #Remove the rows from current column that have missing values
+                    dfcol = df[myCol].dropna()
+                    if dfcol.shape[0]<(df[myCol].shape[0]*0.2):
+                        print(f"The column {dfcol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be analysed. The procedure ends with error.")
+                        return None 
+                else:
+                    dfcol = df[myCol]
 
                 uniqueValues=dfcol.nunique()
                 freq=uniqueValues/df.shape[0] #df.shape[0]->#rows
@@ -134,7 +138,7 @@ class datasetFeatures:
                 try:
                     # At first check if you can recognise the column as number
                     tempColumn = pd.to_numeric(dfcol, errors='raise')
-                    dfint=dfcol.astype('int64') 
+                    dfint=dfcol.fillna(0).astype('int64')
                     if dfint.sum()==dfcol.sum():
                         integerColumns+=1
                         continue
@@ -148,7 +152,7 @@ class datasetFeatures:
                         dfc=dfcol.str.replace('.', '') # 43.700,00 --> 43700,00
                         dfc=dfc.str.replace(',', '.')      # 43700,00  --> 43700.00
                         dfc=pd.to_numeric(dfc, errors='raise') #check if can be pasred as number
-                        dfint=dfc.astype('int64') 
+                        dfint=dfc.fillna(0).astype('int64')
                         if dfint.sum()==dfc.sum():
                             integerColumns+=1
                             continue
@@ -251,19 +255,18 @@ class datasetFeatures:
                 if trainDataset:
                     sqlTable='datasetfeatures'
                 else:
-                    sqlTable='datasetTest'
+                    sqlTable='datasettest'
 
-                strsql = "Delete From %s \
+                strsql = "Delete From `" + sqlTable + "` \
                           Where `name`=%s"
                 #parameters are given as a tuple, so , at the end is necessary
-                recorddata = (sqlTable,dFI._name,) 
+                recordData = (dFI._name,) 
                 # Execute the query with the data
-                cursor.execute(strsql, recorddata) 
+                cursor.execute(strsql, recordData) 
                 # Commit the changes
                 connection.commit() 
-                exit()
 
-                strsql = "INSERT INTO %s (`name`, `AvgOfDistinctValuesPerCol`, `AvgOfDistinctValuesOverAll`, \
+                strsql = "INSERT INTO `" + sqlTable + "` (`name`, `AvgOfDistinctValuesPerCol`, `AvgOfDistinctValuesOverAll`, \
                                 `AvgOfDistinctValuesPerRow`, `FreqoFTop1FreqValue`, `FreqoFTop2FreqValue`, \
                                 `FreqoFTop3FreqValue`, `NumberOfColumns`, `FreqOfIntegerCol`, \
                                 `FreqOfNumberCol`, `FreqOfDateCol`, `FreqOfStringCol`, \
@@ -273,8 +276,7 @@ class datasetFeatures:
                                 ) \
                         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) "
                 #parameters are given as a tuple
-                recorddata = (sqlTable,
-                              dFI._name, dFI.AvgOfDistinctValuesPerCol, dFI.AvgOfDistinctValuesOverAll, 
+                recordData = (dFI._name, dFI.AvgOfDistinctValuesPerCol, dFI.AvgOfDistinctValuesOverAll, 
                               dFI.AvgOfDistinctValuesPerRow, dFI.FreqoFTop1FreqValue, dFI.FreqoFTop2FreqValue, 
                               dFI.FreqoFTop3FreqValue, dFI.NumberOfColumns, dFI.FreqOfIntegerCol,
                               dFI.FreqOfNumberCol, dFI.FreqOfDateCol, dFI.FreqOfStringCol,
@@ -282,7 +284,7 @@ class datasetFeatures:
                               dFI.AvgItemLen, dFI.Freq1CharColumns, dFI.Freq2ValuesItemColumns, 
                               dFI.HasHeader, dFI.datasetType, dFI.type2Words)
                 # Execute the query with the data
-                cursor.execute(strsql, recorddata) 
+                cursor.execute(strsql, recordData) 
                 # Commit the changes
                 connection.commit()                                  
 
