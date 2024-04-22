@@ -38,7 +38,7 @@ class datasetFeatures:
     Header=[]
     type2Words=0 #Range [0...infinite]
 
-    def _datasetFeatures_x(self, filepath, delimiter, hasHeader, nrows=500, datasetType=None):
+    def _datasetFeatures_x(self, filepath, delimiter, hasHeader, nrows=500, datasetType=None, trainDataset=True):
         # Creates the features of the dataset in order to determine datasetType via ML
         try:
 
@@ -219,14 +219,15 @@ class datasetFeatures:
 
             datasetFeaturesInst.datasetType=str(datasetType)
 
-            self._WriteToDatabase(datasetFeaturesInst)
+            self._WriteToDatabase(datasetFeaturesInst, trainDataset)
+            return datasetFeaturesInst
 
         except Exception as e:
             vbcrlf = '\n'
             print(f"Could not open/read or find dataset file {os.path.basename(filepath)}!!!.{vbcrlf}Unexpected error: {e}{vbcrlf}")
             return None
         
-    def _WriteToDatabase(self, dFI):
+    def _WriteToDatabase(self, dFI, trainDataset=True):
         
         # Replace these with your MySQL server and database information
         host = "localhost"
@@ -247,16 +248,22 @@ class datasetFeatures:
 
                 cursor = connection.cursor()
 
-                strsql = "Delete From `datasetfeatures` \
+                if trainDataset:
+                    sqlTable='datasetfeatures'
+                else:
+                    sqlTable='datasetTest'
+
+                strsql = "Delete From %s \
                           Where `name`=%s"
                 #parameters are given as a tuple, so , at the end is necessary
-                recorddata = (dFI._name,) 
+                recorddata = (sqlTable,dFI._name,) 
                 # Execute the query with the data
                 cursor.execute(strsql, recorddata) 
                 # Commit the changes
                 connection.commit() 
+                exit()
 
-                strsql = "INSERT INTO `datasetfeatures` (`name`, `AvgOfDistinctValuesPerCol`, `AvgOfDistinctValuesOverAll`, \
+                strsql = "INSERT INTO %s (`name`, `AvgOfDistinctValuesPerCol`, `AvgOfDistinctValuesOverAll`, \
                                 `AvgOfDistinctValuesPerRow`, `FreqoFTop1FreqValue`, `FreqoFTop2FreqValue`, \
                                 `FreqoFTop3FreqValue`, `NumberOfColumns`, `FreqOfIntegerCol`, \
                                 `FreqOfNumberCol`, `FreqOfDateCol`, `FreqOfStringCol`, \
@@ -266,7 +273,8 @@ class datasetFeatures:
                                 ) \
                         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) "
                 #parameters are given as a tuple
-                recorddata = (dFI._name, dFI.AvgOfDistinctValuesPerCol, dFI.AvgOfDistinctValuesOverAll, 
+                recorddata = (sqlTable,
+                              dFI._name, dFI.AvgOfDistinctValuesPerCol, dFI.AvgOfDistinctValuesOverAll, 
                               dFI.AvgOfDistinctValuesPerRow, dFI.FreqoFTop1FreqValue, dFI.FreqoFTop2FreqValue, 
                               dFI.FreqoFTop3FreqValue, dFI.NumberOfColumns, dFI.FreqOfIntegerCol,
                               dFI.FreqOfNumberCol, dFI.FreqOfDateCol, dFI.FreqOfStringCol,
@@ -291,8 +299,6 @@ class datasetFeatures:
             cursor.close()
             #if 'connection' in locals() and connection.is_connected():
             connection.close()
-
-
 
 #Detect if a file is in arff format
 def is_arff_file(file_path):

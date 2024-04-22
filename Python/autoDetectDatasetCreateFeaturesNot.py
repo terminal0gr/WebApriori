@@ -4,9 +4,17 @@ import datasetFeaturesNot as df
 from scipy.io import arff
 import pandas as pd
 
+##################################
+#Declaration Section
+##################################
 recsNo=150
+trainData=False
+##################################
 
-directory_path=os.path.join('features','all')
+if trainData:
+    directory_path=os.path.join('features','train')
+else:  
+    directory_path=os.path.join('features','test')
 
 # Get a list of all entries in the directory
 entries = os.listdir(directory_path)
@@ -40,4 +48,4 @@ for file in files:
 
     hasHeader, header =csv.Sniffer().has_header(s1)
 
-    df.datasetFeatures()._datasetFeatures_x(filepath,dialect.delimiter,hasHeader,datasetType=file[0])
+    df.datasetFeatures()._datasetFeatures_x(filepath,dialect.delimiter,hasHeader,datasetType=file[0],trainDataset=trainData)
