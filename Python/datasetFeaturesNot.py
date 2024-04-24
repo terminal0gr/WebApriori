@@ -183,6 +183,10 @@ class datasetFeatures:
 
             datasetFeaturesInst.Freq2ValuesItemColumns=twoValuesItemColumn/df.shape[1]
 
+            #If the dataset is type 3, then if Nan columns exists fill them with value 0 (missing on the other dataset Types)
+            if datasetType=='3':
+                df=df.fillna(0)
+
             #transform the 2-dimensional dataframe to 1-dimensional dataframe e.g. (100,7)->(700) rows
             df_1d = df.stack()
             df_1d = df_1d.reset_index(drop=True)

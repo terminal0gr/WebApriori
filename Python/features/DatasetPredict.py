@@ -51,20 +51,23 @@ y_test  = dsTest['datasetType']
 rf_classifier = RandomForestClassifier(n_estimators=120)
 
 #Gaussian Naive Bayes classifier
-# rf_classifier = GaussianNB()
+#rf_classifier = GaussianNB()
 
 #SVM with linear Kernel
 #rf_classifier = SVC(kernel='linear')
 #SVM with RBF Kernel
 #rf_classifier = SVC(kernel='rbf',C=1.0, gamma=0.3)
 #KNN Classifier
-#rf_classifier=KNeighborsClassifier(n_neighbors=30)
+#rf_classifier=KNeighborsClassifier(n_neighbors=2)
 
 #MinNaxScaler to [0..1) Must used in SVM and KNN algorithms
-# X = X.values
 # min_max_scaler = preprocessing.MinMaxScaler()
-# X = min_max_scaler.fit_transform(X)
-# X = pd.DataFrame(X)
+# X_train = X_train.values
+# X_train = min_max_scaler.fit_transform(X_train)
+# X_train = pd.DataFrame(X_train)
+# X_test = X_test.values
+# X_test = min_max_scaler.fit_transform(X_test)
+# X_test = pd.DataFrame(X_test)
 
 # Train the classifier on the training data
 rf_classifier.fit(X_train, y_train)
@@ -74,11 +77,12 @@ y_pred = rf_classifier.predict(X_test)
 
 # Calculate accuracy
 accuracy = accuracy_score(y_test, y_pred)
+accuracy="{:.1f}%".format(accuracy*100)
 print("Accuracy:", accuracy)
 
 # Print classification report
-print("Classification Report:")
-print(classification_report(y_test, y_pred))
+# print("Classification Report:")
+# print(classification_report(y_test, y_pred))
 
 
 #Record mistaken predictions
