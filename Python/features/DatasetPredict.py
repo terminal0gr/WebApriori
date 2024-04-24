@@ -29,17 +29,17 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 # the reading of the dataset which is in CSV format
-dsData = pd.read_csv("datasetOfDatasets.csv", encoding='utf-8')
+dsTrain = pd.read_csv("datasetOfDatasets.csv", encoding='utf-8')
 dsTest = pd.read_csv("datasetTest.csv", encoding='utf-8')
 
 # To apply an classifier on this data, we need to flatten the image, to
 # Put in X the dataset excluding the 'Class' column (X=features)
 # X = dsData.drop('datasetType ', axis=1)  
-X_train = dsData.drop(columns=['name','datasetType'])
+X_train = dsTrain.drop(columns=['name','datasetType'])
 X_test  = dsTest.drop(columns=['name','datasetType'])
 
 # Put in y the class column
-y_train = dsData['datasetType'] 
+y_train = dsTrain['datasetType'] 
 y_test  = dsTest['datasetType'] 
 
 # Step 2: Instantiate the Model
@@ -79,4 +79,37 @@ print("Accuracy:", accuracy)
 # Print classification report
 print("Classification Report:")
 print(classification_report(y_test, y_pred))
-        
+
+
+#Record mistaken predictions
+#mySqlTasks
+import sys
+sys.path.append('../')
+import mySqlTasks as mySql1
+mySql=mySql1.mySqlTasks()
+mySql._ConnectTobase()
+
+for row_index, (prediction, label) in enumerate(zip(y_pred, y_test)):
+
+    if prediction != label:
+        print('Dataset', y_test.index[row_index], dsTest['name'].iloc[y_test.index[row_index]], 'classified as ', prediction, 'should be ', label)
+
+        strsql = "UPDATE `datasetwrongclassification` \
+                    set instances=instances+1 \
+                Where `datasetName`=%s \
+                And   `realClass`  =%s \
+                And   `predictedClass`=%s"
+        queryParams=(dsTest['name'].iloc[y_test.index[row_index]],int(label),int(prediction))
+        mySql.myQuery(strsql,queryParams)
+
+        strsql = "INSERT INTO `datasetwrongclassification`(`datasetName`, `realClass`, `predictedClass`, `instances`)  \
+                SELECT %s, %s, %s, 1 \
+                WHERE NOT EXISTS (SELECT `datasetName` \
+                    FROM `datasetwrongclassification` \
+                    WHERE `datasetName`=%s \
+                    AND   `realClass`=%s \
+                    AND   `predictedClass`=%s)"
+        queryParams=(dsTest['name'].iloc[y_test.index[row_index]],int(label),int(prediction),dsTest['name'].iloc[y_test.index[row_index]],int(label),int(prediction))
+        mySql.myQuery(strsql,queryParams)
+
+            
