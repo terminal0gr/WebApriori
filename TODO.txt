@@ -7,7 +7,6 @@ FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 
            (e.g. name of the dataset's columns)
 03/02/2024 arff files manipulation in webApriori
 21/01/2024 Columns participating in RHS in 1,3,4 dataset types
-10/04/2024 Autodetect Dataset procedure is slow
 31/03/2024 correct the html files (frontend) to conform to new rules (datasetType, datasetSep etc)
 12/02/2024 Apriori Engine Main04.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv 
 16/04/2024 Too late when choosing a dataset for the first time (not having metadata)
@@ -15,11 +14,12 @@ FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 
 21/04/2024 3 Type Datasets seems not to produce association rules if the absent item is None
 21/04/2024 2Sample - Superstore Could not retrieve any record from the dataset. IT SHOULD
 
-20/04/2024 3 datasetType creation from 2 (test datasets) and final percentages of ML (all algorithms) via test data
 
 
 
 
+
+DONE - V01.00.00 25/04/2024 20/04/2024 3 datasetType creation from 2 (test datasets) and final percentages of ML (all algorithms) via test data
 DONE - V01.00.00 13/04/2024 The engine does not keep user dataset feature preferences in public datasets.
 DONE - V01.00.00 15/04/2024 2SuperStoreOrders.csv removed from test data due to malformed data
 DONE - V01.00.00 20/04/2024 17/04/2024 2Sample - Superstore It is detected as 1? but it is clearly datasetType:2. Finally the dataset had commas in a column, making it inconsistent. The solution was to erase the commas inside the text of the column. 
