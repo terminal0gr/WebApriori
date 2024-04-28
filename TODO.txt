@@ -217,7 +217,8 @@ Dataset detection Paper
 Gaussian Naive bayes
 Decision trees
 KNN Classification - Σταθμισμένα στο 0-1 - Hyper K 1-30
-SVM Αποτελέσματα
+SVM Linear
+SVm RBF Kernel
 RandomForest
 
 
