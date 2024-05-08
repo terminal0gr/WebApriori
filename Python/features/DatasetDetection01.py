@@ -59,7 +59,7 @@ loo = LeaveOneOut()
 
 #Random forest classifier
 #rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42)
-# rf_classifier = RandomForestClassifier(n_estimators=120)
+rf_classifier = RandomForestClassifier(n_estimators=120)
 
 #Gaussian Naive Bayes classifier
 #rf_classifier = GaussianNB()
@@ -69,18 +69,18 @@ loo = LeaveOneOut()
 #SVM with RBF Kernel
 # rf_classifier = SVC(kernel='rbf',C=1.0, gamma=0.3)
 #KNN Classifier
-rf_classifier=KNeighborsClassifier(n_neighbors=2)
+# rf_classifier=KNeighborsClassifier(n_neighbors=2)
 
 #MinNaxScaler to [0..1) Must used in SVM and KNN algorithms
-X = X.values
-min_max_scaler = preprocessing.MinMaxScaler()
-X = min_max_scaler.fit_transform(X)
-X = pd.DataFrame(X)
-
+# X = X.values
+# min_max_scaler = preprocessing.MinMaxScaler()
+# X = min_max_scaler.fit_transform(X)
+# X = pd.DataFrame(X)
+#
 # Step 3: Perform ?-fold Cross-Validation
 split=10
 
-for i in range(10):
+for i in range(1):
 
     # K-Fold
     kf = KFold(n_splits=split,shuffle=True)
@@ -95,6 +95,11 @@ for i in range(10):
         
         # Train the model
         rf_classifier.fit(X_train, y_train)
+
+        # Get feature importances
+        feature_importances = rf_classifier.feature_importances_
+        for i, feature_name in enumerate(X.columns):
+            print(f"{feature_name}: {"{:.1f}%".format(feature_importances[i]*100)}")
         
         # Predict on the test set
         y_pred = rf_classifier.predict(X_test)
