@@ -13,12 +13,11 @@ from time import time
 from sklearn import preprocessing
 from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import cross_val_predict
 from sklearn.model_selection import KFold, LeaveOneOut
 from sklearn.feature_selection import SelectKBest, chi2
 from sklearn.decomposition import PCA
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report, confusion_matrix
+
 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -72,6 +71,13 @@ rf_classifier = RandomForestClassifier(n_estimators=120)
 # Train the classifier on the training data
 rf_classifier.fit(X_train, y_train)
 
+# # Get feature importances - permutation_importance
+# feature_importances = rf_classifier.feature_importances_
+# # Get feature importances - permutation_importance.
+# # feature_importances = permutation_importance(rf_classifier, X, y)
+# for i, feature_name in enumerate(X.columns):
+#     print(f"{feature_name}: {"{:.1f}%".format(feature_importances[i]*100)}")
+
 # Make predictions on the testing data
 y_pred = rf_classifier.predict(X_test)
 
@@ -79,10 +85,18 @@ y_pred = rf_classifier.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 accuracy="{:.1f}%".format(accuracy*100)
 print("Accuracy:", accuracy)
+# Calculate metrics
+print("Average Precision for each class:", precision_score(y_test, y_pred, average=None))
+print("Average Recall for each class:", recall_score(y_test, y_pred, average=None))
+print("Average F1 Score for each class:", f1_score(y_test, y_pred, average=None))
 
 # Print classification report
-# print("Classification Report:")
-# print(classification_report(y_test, y_pred))
+print("Classification Report:")
+print(classification_report(y_test, y_pred))
+
+# Compute and display confusion matrix for each fold
+cm = confusion_matrix(y_test, y_pred)
+print(f"Confusion Matrix:\n", cm)
 
 
 #Record mistaken predictions

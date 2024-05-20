@@ -7,17 +7,36 @@
     "datasetName": "2Fashion_Retail_Sales.csv",
     "datasetType": 2,
     "outputType": 3,
-    "redundantRemoveType": 1,
+    "redundantRemoveType": 0,
     "datasetArgs": "['Customer Reference ID', 'Item Purchased']",
     "Records": 166,
-    "RecordsCreationTime": "0.302",
-    "RulesCount": 7,
-    "RulesCreationTime": "0.123",
+    "RecordsCreationTime": "0.263",
+    "RulesCount": 14,
+    "RulesCreationTime": "0.114",
     "rules": [
         {
             "LHS": [
-                "Backpack",
-                "Loafers"
+                "Raincoat"
+            ],
+            "RHS": [
+                "Loafers",
+                "Backpack"
+            ],
+            "Confidence": 0.3207547169811321,
+            "Lift": 2.315012305168171,
+            "Conviction": 1.2682396251673362,
+            "Leverage": 0.05817244883147046,
+            "LHS_Count": 53,
+            "LHS_Support": 0.3192771084337349,
+            "RHS_Count": 23,
+            "RHS_Support": 0.13855421686746988,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Loafers",
+                "Backpack"
             ],
             "RHS": [
                 "Raincoat"
@@ -30,6 +49,25 @@
             "LHS_Support": 0.13855421686746988,
             "RHS_Count": 53,
             "RHS_Support": 0.3192771084337349,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Loafers"
+            ],
+            "RHS": [
+                "Raincoat",
+                "Backpack"
+            ],
+            "Confidence": 0.29310344827586204,
+            "Lift": 2.0272988505747125,
+            "Conviction": 1.2101087275933,
+            "Leverage": 0.05189432428509217,
+            "LHS_Count": 58,
+            "LHS_Support": 0.3493975903614458,
+            "RHS_Count": 24,
+            "RHS_Support": 0.14457831325301204,
             "Support": 0.10240963855421686,
             "Count": 17
         },
@@ -54,8 +92,27 @@
         },
         {
             "LHS": [
-                "Handbag",
-                "Skirt"
+                "Sneakers"
+            ],
+            "RHS": [
+                "Skirt",
+                "Handbag"
+            ],
+            "Confidence": 0.3035714285714286,
+            "Lift": 2.0157142857142856,
+            "Conviction": 1.2196478220574607,
+            "Leverage": 0.05160400638699376,
+            "LHS_Count": 56,
+            "LHS_Support": 0.3373493975903614,
+            "RHS_Count": 25,
+            "RHS_Support": 0.15060240963855423,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Skirt",
+                "Handbag"
             ],
             "RHS": [
                 "Sneakers"
@@ -73,8 +130,8 @@
         },
         {
             "LHS": [
-                "Raincoat",
-                "Loafers"
+                "Loafers",
+                "Raincoat"
             ],
             "RHS": [
                 "Backpack"
@@ -92,8 +149,46 @@
         },
         {
             "LHS": [
-                "Handbag",
-                "Sneakers"
+                "Backpack"
+            ],
+            "RHS": [
+                "Loafers",
+                "Raincoat"
+            ],
+            "Confidence": 0.2786885245901639,
+            "Lift": 1.7793190416141234,
+            "Conviction": 1.169222343921139,
+            "Leverage": 0.044854115256205536,
+            "LHS_Count": 61,
+            "LHS_Support": 0.3674698795180723,
+            "RHS_Count": 26,
+            "RHS_Support": 0.1566265060240964,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Skirt"
+            ],
+            "RHS": [
+                "Sneakers",
+                "Handbag"
+            ],
+            "Confidence": 0.25,
+            "Lift": 1.7291666666666667,
+            "Conviction": 1.140562248995984,
+            "Leverage": 0.043184787342139645,
+            "LHS_Count": 68,
+            "LHS_Support": 0.40963855421686746,
+            "RHS_Count": 24,
+            "RHS_Support": 0.14457831325301204,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Sneakers",
+                "Handbag"
             ],
             "RHS": [
                 "Skirt"
@@ -106,6 +201,25 @@
             "LHS_Support": 0.14457831325301204,
             "RHS_Count": 68,
             "RHS_Support": 0.40963855421686746,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Handbag"
+            ],
+            "RHS": [
+                "Skirt",
+                "Sneakers"
+            ],
+            "Confidence": 0.29310344827586204,
+            "Lift": 1.6777645659928655,
+            "Conviction": 1.1674992653540994,
+            "Leverage": 0.04137030047902452,
+            "LHS_Count": 58,
+            "LHS_Support": 0.3493975903614458,
+            "RHS_Count": 29,
+            "RHS_Support": 0.1746987951807229,
             "Support": 0.10240963855421686,
             "Count": 17
         },
@@ -144,6 +258,25 @@
             "LHS_Support": 0.1566265060240964,
             "RHS_Count": 68,
             "RHS_Support": 0.40963855421686746,
+            "Support": 0.10240963855421686,
+            "Count": 17
+        },
+        {
+            "LHS": [
+                "Belt"
+            ],
+            "RHS": [
+                "Skirt",
+                "Trench Coat"
+            ],
+            "Confidence": 0.25,
+            "Lift": 1.596153846153846,
+            "Conviction": 1.1244979919678715,
+            "Leverage": 0.03824938307446654,
+            "LHS_Count": 68,
+            "LHS_Support": 0.40963855421686746,
+            "RHS_Count": 26,
+            "RHS_Support": 0.1566265060240964,
             "Support": 0.10240963855421686,
             "Count": 17
         }

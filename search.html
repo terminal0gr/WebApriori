@@ -1071,7 +1071,7 @@ class,age,sex,survived<br>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-8">	
+				<div class="col-6">	
 					<select id="dataset" name="dataset" class="form-control browser-default form-select" 
 					        data-bs-html="true" 
 							data-bs-placement="top" 
@@ -1079,6 +1079,9 @@ class,age,sex,survived<br>
 							data-bs-title="Pick a dataset for which association rules would be generated. Datasets in blue background are public" onchange="clearDatasetAttr();autoDetectDatasetAttr(false);retrieveInputParameters()">
 						<option value="" disabled selected>Choose a dataset from the list</option>
 					</select>
+				</div>
+				<div class="col-2">	
+					<button type="button" class="btn btn-primary" data-bs-toggle="button">Info</button>
 				</div>
 				<div class="col-4">
 					<label id="autoDetect1" class="d-block" ><a href="#" onclick="autoDetectDatasetAttr(true)" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			

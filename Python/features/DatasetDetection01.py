@@ -18,6 +18,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import cross_val_predict
 from sklearn.model_selection import KFold, LeaveOneOut
 from sklearn.feature_selection import SelectKBest, chi2
+from sklearn.inspection import permutation_importance
 from sklearn.decomposition import PCA
 
 from sklearn.tree import DecisionTreeClassifier
@@ -96,8 +97,10 @@ for i in range(1):
         # Train the model
         rf_classifier.fit(X_train, y_train)
 
-        # Get feature importances
+        # Get feature importances - permutation_importance
         feature_importances = rf_classifier.feature_importances_
+        # Get feature importances - permutation_importance.
+        # feature_importances = permutation_importance(rf_classifier, X, y)
         for i, feature_name in enumerate(X.columns):
             print(f"{feature_name}: {"{:.1f}%".format(feature_importances[i]*100)}")
         
