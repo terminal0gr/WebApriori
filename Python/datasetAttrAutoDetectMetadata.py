@@ -25,16 +25,19 @@ class Metadata():
             dialect = csv.Sniffer().sniff(s100)  # Check what kind of csv/tsv file we have.
             datasetAttributes['delimiter']=dialect.delimiter
 
+            DFI=df.datasetFeatures()._datasetFeatures_a(filepath,dialect.delimiter,datasetAttributes['hasHeader'])
+            if DFI==None:
+                print(f"Failed to detect dataset attributes for dataset '{datasetName}'.")
+                sys.exit()
+
+            datasetAttributes['datasetTypePredicted']=int(df.datasetFeatures().AutoDetectType(DFI))
+
             if datasetType==-1:
                 if dialect.datasetType==1: #Without Machine learning detection
                     datasetAttributes['datasetType']=int(dialect.datasetType)
                 else:
-                    DFI=df.datasetFeatures()._datasetFeatures_a(filepath,dialect.delimiter,datasetAttributes['hasHeader'])
-                    if DFI==None:
-                        print(f"Failed to detect dataset attributes for dataset '{datasetName}'.")
-                        sys.exit()
                     if DFI.datasetType==-1:
-                        datasetAttributes['datasetType']=int(df.datasetFeatures().AutoDetectType(DFI))
+                        datasetAttributes['datasetType']=datasetAttributes['datasetTypePredicted']
                     else:
                         datasetAttributes['datasetType']=int(DFI.datasetType)
             else: 

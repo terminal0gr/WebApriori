@@ -1,0 +1,12 @@
+{
+    "hasHeader": true,
+    "header": [
+        "class",
+        "age",
+        "sex",
+        "survived"
+    ],
+    "delimiter": ",",
+    "datasetTypePredicted": 4,
+    "datasetType": 4
+}

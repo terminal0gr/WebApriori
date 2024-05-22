@@ -277,13 +277,13 @@ class datasetFeatures:
                 'hasHeader': [dFI.HasHeader],       
                 'type2Words': [dFI.type2Words]
         }                                                              
-        X_trained = pd.DataFrame(data)
+        X_Pred = pd.DataFrame(data)
 
         #Load the trained model
         filepath=os.path.join('features','TrainedModel.joblib')
         rf_model = load(filepath)
 
-        y_pred = rf_model.predict(X_trained)
+        y_pred = rf_model.predict(X_Pred)
 
         return(y_pred[0])
 

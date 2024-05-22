@@ -29,7 +29,7 @@ if len(sys.argv)>3:
 public=0	
 if len(sys.argv)>4:
     if len(sys.argv[4])>0:
-        public=sys.argv[4]
+        public=sys.argv[4] 
             
 #end command line arguments section
 #------------------------------
