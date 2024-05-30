@@ -51,10 +51,11 @@ else:
 
 dataset = pd.read_csv(filepath, sep=metaDataFile['delimiter'])
 
-datasetDescription['Shape']=f"Rows:{dataset.shape[0]}, Columns:{dataset.shape[1]}"
-datasetDescription['Describe']=dataset.describe(include='all').to_dict(orient='records')
-datasetDescription['Head']=dataset.head(10).to_dict(orient='records')
+print(dataset.describe(include='all'))
 
+#datasetDescription['Shape']=f"Rows:{dataset.shape[0]}, Columns:{dataset.shape[1]}"
+datasetDescription['Describe']=dataset.describe(include='all').to_dict(orient='dict')
+#datasetDescription['Head']=dataset.head(10).to_dict(orient='records')
 print(json.dumps(datasetDescription, indent=4))
 
 
