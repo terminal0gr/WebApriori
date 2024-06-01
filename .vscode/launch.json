@@ -35,6 +35,8 @@
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "args": [ 
+
+            python datasetDescribe.py "79d1727987f200802593e3599119c966" "titanic02.csv" "0"
                 "79d1727987f200802593e3599119c966",
                 "titanic02.csv",
                 "-1",
@@ -42,7 +44,21 @@
                 "1"
             ],
             "console": "integratedTerminal"
-        },        
+        },     
+        {
+            "name": "Run datasetDescribe 01",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${fileDirname}",
+            "justMyCode": false,
+            "args": [ 
+                "79d1727987f200802593e3599119c966",
+                "titanic02.csv"
+                ,"0"
+            ],
+            "console": "integratedTerminal"
+        },    
         {
             "name": "Run python...",
             "type": "debugpy",

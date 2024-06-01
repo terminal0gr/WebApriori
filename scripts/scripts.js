@@ -170,6 +170,16 @@ function dateObjToString(date){
     return dd + '/' + mm + '/' + yyyy;
 }
 
+function isElementHidden(element) {
+    const style = window.getComputedStyle(element);
+    return (
+        style.display === 'none' || 
+        style.visibility === 'hidden' || 
+        style.opacity === '0' || 
+        element.offsetWidth === 0 && element.offsetHeight === 0
+    );
+}
+
 const copyToClipboard = str => {
     const el = document.createElement('textarea');  // Create a <textarea> element
     el.value = str;                                 // Set its value to the string that you want copied

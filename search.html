@@ -809,12 +809,102 @@
 
 			document.getElementById('separator').value=";"; 
 			document.getElementById("header1").checked=false; 
+
+			element=document.getElementById("datasetDescribe")
+            if (!isElementHidden(element)) {
+	        	toggleDisplay('#datasetDescribe');
+			}
 		}
 
 
 
             // Function to render JSON data into the table
             function renderTable() {
+
+				if (!sessionStorage.getItem('token')) {
+					MyModal("Error", "You are not signed in!!! Please sign in/up");
+					setTimeout(function() {
+									sessionStorage.clear();
+									window.location.href='index.html';
+								}, 3000);	
+					return;
+				}
+
+				element=document.getElementById("datasetDescribe")
+
+				//If datasetDescribe is shown the just hide it
+				if (!isElementHidden(element)) {
+					toggleDisplay('#datasetDescribe');
+					return;
+				}
+
+				//Check if user has chosen any dataset.
+				var dataset =  document.getElementById("dataset");
+				if(!dataset.value){
+					MyModal("Information", "No dataset has been selected!");
+					return;
+				}
+
+				var formData = new FormData();
+				formData.set("token",sessionStorage.getItem('token'));
+				formData.set("dataset",dataset.value);
+
+				$.ajax({
+					url: 'phpfunctions/datasetDescribe.php',
+					method: 'POST',
+					dataType: 'json',
+					data: formData,
+					contentType: false,
+					cache: false,
+					processData:false,
+
+				}) 	
+				.done(function(response, textStatus, jqXHR) {
+					//cover both null and undefined circumstanses and if it is a JSON obj
+					if (response!=undefined && response!=null && isJSON(response)) {
+						res=JSON.parse(response);
+						try {
+							if (jqXHR.status!=200) {
+								MyModal(jqXHR.status+res.title, res.message);
+							} else {	
+								if (response!=undefined && response!=null && isJSON(response)) {
+									res=JSON.parse(response);
+									MyModal(response);
+								}
+								return;
+							//renderTable(response);
+							}
+						}
+						catch(err) {
+							MyModal("Error1", err.message);
+						}
+					}
+					else {
+						//cover both null and undefined circumstanses
+						if (response!=undefined && response!=null) {
+							MyModal("Error", response);
+						} else {
+							MyModal("Error", "Unknown error occured");
+						}
+					}
+				}).fail(function( jqXHR, textStatus, thrownError ) {
+					if (jqXHR.responseText) {
+						if (isJSON(jqXHR.responseText)) {
+							res=JSON.parse(jqXHR.responseText);
+							MyModal(res.title, res.message);
+							if (jqXHR.status>=400) {
+								setTimeout(function() {
+									sessionStorage.clear();
+									window.location.href='index.html';
+								}, 3000);	
+							}
+						}
+						else alert(jqXHR.responseText);
+					} else {
+						MyModal("association rules",'Unknown error occured!');
+					}
+				})
+
 				var jsonData = [
 					{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
 					{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
@@ -852,6 +942,9 @@
 					});
                     tableBody.append(row);
                 });
+
+				toggleDisplay('#datasetDescribe');
+
             }
 
     </script>
@@ -1124,7 +1217,7 @@ class,age,sex,survived<br>
 					</select>
 				</div>
 				<div class="col-2">	
-					<button type="button" class="btn btn-primary" onclick="renderTable();toggleDisplay('#datasetDescribe')" data-bs-toggle="button">Info</button>
+					<button type="button" class="btn btn-primary" onclick="renderTable();" data-bs-toggle="button">Info</button>
 				</div>
 				<div class="col-4">
 					<label id="autoDetect1" class="d-block" ><a href="#" onclick="autoDetectDatasetAttr(true)" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			

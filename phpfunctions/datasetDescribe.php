@@ -90,7 +90,7 @@
     $input.= ' datasetDescribe.py ';
     $input.= '"'.$identity.'" ';
     $input.= '"'.$filename.'" ';
-    $input.= '"'.$outputType.'" ';
+    $input.= $isPublic;
 
     try {
         set_time_limit(20); //in seconds

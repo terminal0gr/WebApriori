@@ -1,0 +1,11 @@
+{
+    "hasHeader": true,
+    "header": [
+        "class",
+        "name",
+        "sequence"
+    ],
+    "delimiter": ",",
+    "datasetTypePredicted": 0,
+    "datasetType": 0
+}
