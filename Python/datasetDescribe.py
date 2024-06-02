@@ -23,9 +23,9 @@ if len(sys.argv)>2:
         datasetName=sys.argv[2]
 
 public=0 # 0 > private, 1 > public
-if len(sys.argv)>4:
-    if len(sys.argv[4])>0:
-        public=int(sys.argv[4])
+if len(sys.argv)>3:
+    if len(sys.argv[3])>0:
+        public=int(sys.argv[3])
 
 #------------------------------           
 #end command line arguments section
@@ -43,12 +43,12 @@ else:
 
 dataset = pd.read_csv(filepath, sep=metaDataFile['delimiter'])
 
-print(dataset.describe(include='all'))
+#print(dataset.describe(include='all'))
 
-datasetDescription['Shape']=f"Rows:{dataset.shape[0]}, Columns:{dataset.shape[1]}"
-datasetDescription['Describe']=dataset.describe(include='all').to_dict(orient='dict')
+#datasetDescription['Shape']=f"Rows:{dataset.shape[0]}, Columns:{dataset.shape[1]}"
+#datasetDescription['Describe']=dataset.describe(include='all').to_dict(orient='dict')
 datasetDescription['Head']=dataset.head(10).to_dict(orient='records')
-print(json.dumps(datasetDescription, indent=4))
+print(json.dumps(datasetDescription))
 
 
 

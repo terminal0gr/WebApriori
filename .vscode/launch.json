@@ -35,8 +35,6 @@
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "args": [ 
-
-            python datasetDescribe.py "79d1727987f200802593e3599119c966" "titanic02.csv" "0"
                 "79d1727987f200802593e3599119c966",
                 "titanic02.csv",
                 "-1",
@@ -54,8 +52,8 @@
             "justMyCode": false,
             "args": [ 
                 "79d1727987f200802593e3599119c966",
-                "titanic02.csv"
-                ,"0"
+                "0Customer.csv"
+                ,"1"
             ],
             "console": "integratedTerminal"
         },    

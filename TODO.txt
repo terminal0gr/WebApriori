@@ -2,7 +2,9 @@
 17/12/2023 Dataset description section must be created
            > Shape
            > describe
-           > 20 lines sample
+           > 10 lines sample
+02/06/2024 Some datasets don't functioning The high column ones???
+
 FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 3,4 dataset type 
            (e.g. name of the dataset's columns)
 03/02/2024 arff files manipulation in webApriori

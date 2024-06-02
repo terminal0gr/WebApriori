@@ -1,0 +1,27 @@
+{
+    "hasHeader": true,
+    "header": [
+        "price",
+        "crime_rate",
+        "resid_area",
+        "air_qual",
+        "room_num",
+        "age",
+        "dist1",
+        "dist2",
+        "dist3",
+        "dist4",
+        "teachers",
+        "poor_prop",
+        "airport",
+        "n_hos_beds",
+        "n_hot_rooms",
+        "waterbody",
+        "rainfall",
+        "bus_ter",
+        "parks"
+    ],
+    "delimiter": ",",
+    "datasetTypePredicted": 0,
+    "datasetType": 0
+}

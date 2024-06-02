@@ -861,31 +861,60 @@
 				}) 	
 				.done(function(response, textStatus, jqXHR) {
 					//cover both null and undefined circumstanses and if it is a JSON obj
-					if (response!=undefined && response!=null && isJSON(response)) {
-						res=JSON.parse(response);
+					if (response!=undefined && response!=null) {
+						res=response;
+						try {
+							res=JSON.parse(res);
+						}
+						catch {}
+
 						try {
 							if (jqXHR.status!=200) {
 								MyModal(jqXHR.status+res.title, res.message);
-							} else {	
-								if (response!=undefined && response!=null && isJSON(response)) {
-									res=JSON.parse(response);
-									MyModal(response);
-								}
-								return;
-							//renderTable(response);
 							}
+							else {	
+								var jsonData = res.Head
+
+								if (jsonData==undefined) {
+									MyModal("Invalid information!", "Could not retrieve dataset information properly");
+								}
+
+								var tableHead = $('#dD1TableHeader');
+								tableHead.empty();
+
+								const keys = Object.keys(jsonData[0]);
+
+								var row = $('<tr></tr>');
+								// Loop through each key
+								keys.forEach(key => {
+									row.append('<th>' + key + '</th>');
+								});
+								tableHead.append(row);
+
+								var tableBody = $('#data-table-body');
+								tableBody.empty(); // Clear any existing rows
+
+								// Loop through each item in the JSON data
+								jsonData.forEach(function(item) {
+									var row = $('<tr></tr>');
+
+									keys.forEach(key => {
+										row.append('<td>' + item[key] + '</td>');
+									});
+									tableBody.append(row);
+								});
+
+								toggleDisplay('#datasetDescribe');
+
+							}
+							return;
 						}
 						catch(err) {
 							MyModal("Error1", err.message);
 						}
 					}
 					else {
-						//cover both null and undefined circumstanses
-						if (response!=undefined && response!=null) {
-							MyModal("Error", response);
-						} else {
-							MyModal("Error", "Unknown error occured");
-						}
+						MyModal("Error", "Unknown error occured");
 					}
 				}).fail(function( jqXHR, textStatus, thrownError ) {
 					if (jqXHR.responseText) {
@@ -901,49 +930,24 @@
 						}
 						else alert(jqXHR.responseText);
 					} else {
-						MyModal("association rules",'Unknown error occured!');
+						MyModal("Error",'Unknown error occured!');
 					}
 				})
 
-				var jsonData = [
-					{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-					{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-					{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-					{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-					{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-					{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-					{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-					{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-					{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-					{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"}
-            	];
+				// var jsonData = [
+				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
+				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
+				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
+				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
+				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
+				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
+				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
+				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
+				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
+				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"}
+            	// ];
 
-				var tableHead = $('#dD1TableHeader');
-				tableHead.empty();
 
-				const keys = Object.keys(jsonData[0]);
-
-				var row = $('<tr></tr>');
-				// Loop through each key
-				keys.forEach(key => {
-					row.append('<th>' + key + '</th>');
-				});
-				tableHead.append(row);
-
-                var tableBody = $('#data-table-body');
-                tableBody.empty(); // Clear any existing rows
-
-                // Loop through each item in the JSON data
-                jsonData.forEach(function(item) {
-                    var row = $('<tr></tr>');
-
-					keys.forEach(key => {
-					 	row.append('<td>' + item[key] + '</td>');
-					});
-                    tableBody.append(row);
-                });
-
-				toggleDisplay('#datasetDescribe');
 
             }
 
@@ -1273,20 +1277,22 @@ class,age,sex,survived<br>
 		<div id="datasetDescribe" class="lightgraybackground udfwidth mx-auto border rounded p-2" style="display:none">
 			<div class="container mt-5">
 				<h4 class="text-center text-primary">Dataset Description</h4>
-				<table class="table table-bordered table-striped mt-4">
-					<thead class="thead-dark" id="dD1TableHeader">
-						<!-- Rows will be inserted here by JavaScript -->
-						<!-- <tr>
-							<th>Class</th>
-							<th>Age</th>
-							<th>Sex</th>
-							<th>Survived</th>
-						</tr> -->
-					</thead>
-					<tbody id="data-table-body">
-						<!-- Rows will be inserted here by JavaScript -->
-					</tbody>
-				</table>
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped mt-4">
+						<thead class="thead-dark" id="dD1TableHeader">
+							<!-- Rows will be inserted here by JavaScript -->
+							<!-- <tr>
+								<th>Class</th>
+								<th>Age</th>
+								<th>Sex</th>
+								<th>Survived</th>
+							</tr> -->
+						</thead>
+						<tbody id="data-table-body">
+							<!-- Rows will be inserted here by JavaScript -->
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 

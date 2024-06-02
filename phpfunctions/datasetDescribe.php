@@ -2,6 +2,7 @@
     include("config.php");
     include("jwt_helper.php");
     include_once("functions.php");
+    header('Content-Type: application/json');
     
     session_start(); 
     
@@ -93,6 +94,7 @@
     $input.= $isPublic;
 
     try {
+        chdir('../Python');
         set_time_limit(20); //in seconds
         ob_start();
         passthru($input);
@@ -108,7 +110,7 @@
     if (!$output) {
         http_response_code(201);
         $JsonReq = array('title' => 'Invalid parameters! Please check!', 'message' => $input);
-        print json_encode($JsonReq);
+        echo json_encode($JsonReq);
         exit();
     }
 
