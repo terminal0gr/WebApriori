@@ -1221,7 +1221,7 @@ class,age,sex,survived<br>
 					</select>
 				</div>
 				<div class="col-2">	
-					<button type="button" class="btn btn-primary" onclick="renderTable();" data-bs-toggle="button">Info</button>
+					<button type="button" class="btn btn-primary" onclick="renderTable();" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Information about the dataset as well as its first rows of its up to 15 first features.">Info</button>
 				</div>
 				<div class="col-4">
 					<label id="autoDetect1" class="d-block" ><a href="#" onclick="autoDetectDatasetAttr(true)" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			
@@ -1275,18 +1275,14 @@ class,age,sex,survived<br>
 		</div>
 
 		<div id="datasetDescribe" class="lightgraybackground udfwidth mx-auto border rounded p-2" style="display:none">
-			<div class="container mt-5">
-				<h4 class="text-center text-primary">Dataset Description</h4>
+			<div class="container mt-2">
+				<h4 class="text-center text-primary">Dataset information</h4>
+
+				
 				<div class="table-responsive">
-					<table class="table table-bordered table-striped mt-4">
+					<table class="table table-bordered table-striped mt-2">
 						<thead class="thead-dark" id="dD1TableHeader">
 							<!-- Rows will be inserted here by JavaScript -->
-							<!-- <tr>
-								<th>Class</th>
-								<th>Age</th>
-								<th>Sex</th>
-								<th>Survived</th>
-							</tr> -->
 						</thead>
 						<tbody id="data-table-body">
 							<!-- Rows will be inserted here by JavaScript -->

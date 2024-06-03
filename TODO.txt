@@ -3,7 +3,9 @@
            > Shape
            > describe
            > 10 lines sample
-02/06/2024 Some datasets don't functioning The high column ones???
+02/06/2024 Some datasets don't functioning???
+03/06/2024 Dataset features extraction show in HTML
+03/06/2024 Dataset Type 1 manipulation
 
 FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 3,4 dataset type 
            (e.g. name of the dataset's columns)
