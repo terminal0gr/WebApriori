@@ -858,6 +858,14 @@
 					cache: false,
 					processData:false,
 
+					beforeSend: function( xhr ) {
+					var element = document.getElementById('datasetInfo');
+					element.classList.add("d-none");
+					element.classList.remove("d-block");
+					var element = document.getElementById('datasetInfoSpinner');
+					element.classList.add("d-block");
+					element.classList.remove("d-none");
+					}
 				}) 	
 				.done(function(response, textStatus, jqXHR) {
 					//cover both null and undefined circumstanses and if it is a JSON obj
@@ -873,8 +881,34 @@
 								MyModal(jqXHR.status+res.title, res.message);
 							}
 							else {	
-								var jsonData = res.Head
 
+								//Dataset Features Loading Segment
+								var jsonData = res.features
+								if (jsonData==undefined) {
+									MyModal("Invalid information!", "Could not retrieve dataset information properly");
+								}
+								else {
+									var featuresList = document.getElementById('datasetFeaturesDiv');
+									featuresList.empty;
+
+									for (const key in jsonData) {
+  										if (jsonData.hasOwnProperty(key)) {
+											featuresList.append('<div class="col">' + key + ':' + jsonData[key] + '</div>');
+  										}
+									}
+
+									// const keys = Object.keys(jsonData[0]);
+									// // Loop through each item in the JSON data
+									// jsonData.forEach(function(item) {
+									// 	keys.forEach(key => {
+									// 		featuresList.append('<div class="col">' + key + ':' + item(key) + '</div>');
+									// 	});
+									// });
+								}	
+
+
+								//First dataset lines Loading Segment
+								var jsonData = res.Head
 								if (jsonData==undefined) {
 									MyModal("Invalid information!", "Could not retrieve dataset information properly");
 								}
@@ -932,22 +966,14 @@
 					} else {
 						MyModal("Error",'Unknown error occured!');
 					}
-				})
-
-				// var jsonData = [
-				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"},
-				// 	{"class": "1st", "age": "adult", "sex": "male", "survived": "yes"}
-            	// ];
-
-
+				}).always(function() {
+					var element = document.getElementById('datasetInfoSpinner');
+					element.classList.add("d-none");
+					element.classList.remove("d-block");
+					var element = document.getElementById('datasetInfo');
+					element.classList.add("d-block");
+					element.classList.remove("d-none");		
+				});					
 
             }
 
@@ -1221,7 +1247,10 @@ class,age,sex,survived<br>
 					</select>
 				</div>
 				<div class="col-2">	
-					<button type="button" class="btn btn-primary" onclick="renderTable();" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Information about the dataset as well as its first rows of its up to 15 first features.">Info</button>
+					<button id="datasetInfo" type="button" class="btn btn-primary d-block" onclick="renderTable();" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Information about the dataset as well as its first rows of its up to 15 first features.">Info</button>
+					<div id="datasetInfoSpinner" class="spinner-border text-warning d-none" role="status">
+						<span class="visually-hidden">Loading...</span>
+					</div>
 				</div>
 				<div class="col-4">
 					<label id="autoDetect1" class="d-block" ><a href="#" onclick="autoDetectDatasetAttr(true)" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			
@@ -1278,6 +1307,12 @@ class,age,sex,survived<br>
 			<div class="container mt-2">
 				<h4 class="text-center text-primary">Dataset information</h4>
 
+				<div class="container text-center">
+					<div id="datasetFeaturesDiv" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+  						<!-- Rows will be inserted here by JavaScript -->
+					  	<!-- <div class="col">Column</div> -->
+					</div>
+				  </div>
 				
 				<div class="table-responsive">
 					<table class="table table-bordered table-striped mt-2">

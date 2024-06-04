@@ -7,5 +7,29 @@
         "survived"
     ],
     "delimiter": ",",
+    "datasetFeatures": {
+        "_name": "titanic02.csv",
+        "AvgOfDistinctValuesPerCol": 0.004,
+        "AvgOfDistinctValuesOverAll": 0.004,
+        "AvgOfDistinctValuesPerRow": 1.0,
+        "FreqoFTop1FreqValue": 0.247,
+        "FreqoFTop2FreqValue": 0.174,
+        "FreqoFTop3FreqValue": 0.1625,
+        "NumberOfColumns": 4,
+        "FreqOfIntegerCol": 0.0,
+        "FreqOfNumberCol": 0.0,
+        "FreqOfDateCol": 0.0,
+        "FreqOfStringCol": 0.75,
+        "FreqOfBoolCol": 0.25,
+        "MinItemLen": 2,
+        "MaxItemLen": 6,
+        "AvgItemLen": 3.7640000000000002,
+        "Freq1CharColumns": 0.0,
+        "Freq2ValuesItemColumns": 1.0,
+        "HasHeader": true,
+        "delimiter": ",",
+        "type2Words": 0
+    },
+    "datasetTypePredicted": 4,
     "datasetType": 4
 }

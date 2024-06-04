@@ -49,6 +49,11 @@ if dataset.shape[1]>15:
      dataset=dataset[dataset.columns[:15]]
 
 datasetDescription['Head']=dataset.head(10).to_dict(orient='records')
+
+metadatafile=metadataInst.readMetadataFile(identity,datasetName,public)
+
+datasetDescription['features']=metadatafile['datasetFeatures']
+
 print(json.dumps(datasetDescription))
 
 

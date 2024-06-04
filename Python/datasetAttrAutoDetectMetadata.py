@@ -30,6 +30,32 @@ class Metadata():
                 print(f"Failed to detect dataset attributes for dataset '{datasetName}'.")
                 sys.exit()
 
+            DFI_Dict = {
+                "_name": DFI._name,
+                "AvgOfDistinctValuesPerCol": DFI.AvgOfDistinctValuesPerCol,
+                "AvgOfDistinctValuesOverAll": DFI.AvgOfDistinctValuesOverAll,
+                "AvgOfDistinctValuesPerRow": DFI.AvgOfDistinctValuesPerRow,
+                "FreqoFTop1FreqValue": DFI.FreqoFTop1FreqValue,
+                "FreqoFTop2FreqValue": DFI.FreqoFTop2FreqValue,
+                "FreqoFTop3FreqValue": DFI.FreqoFTop3FreqValue,
+                "NumberOfColumns": int(DFI.NumberOfColumns),
+                "FreqOfIntegerCol": DFI.FreqOfIntegerCol,
+                "FreqOfNumberCol": DFI.FreqOfNumberCol,
+                "FreqOfDateCol": DFI.FreqOfDateCol,
+                "FreqOfStringCol": DFI.FreqOfStringCol,
+                "FreqOfBoolCol": DFI.FreqOfBoolCol,
+                "MinItemLen": int(DFI.MinItemLen),
+                "MaxItemLen": int(DFI.MaxItemLen),
+                "AvgItemLen": DFI.AvgItemLen,
+                "Freq1CharColumns": DFI.Freq1CharColumns,
+                "Freq2ValuesItemColumns": DFI.Freq2ValuesItemColumns,
+                "HasHeader": DFI.HasHeader,
+                "delimiter": DFI.delimiter,
+                "type2Words": int(DFI.type2Words)
+            }
+
+            datasetAttributes['datasetFeatures']=DFI_Dict
+
             datasetAttributes['datasetTypePredicted']=int(df.datasetFeatures().AutoDetectType(DFI))
 
             if datasetType==-1:
