@@ -889,21 +889,16 @@
 								}
 								else {
 									var featuresList = document.getElementById('datasetFeaturesDiv');
-									featuresList.empty;
+									featuresList.innerHTML="";
 
 									for (const key in jsonData) {
-  										if (jsonData.hasOwnProperty(key)) {
-											featuresList.append('<div class="col">' + key + ':' + jsonData[key] + '</div>');
-  										}
+										// Create a new div element with the class "col" and populate it with key-value pairs from jsonData
+  										const newDiv = document.createElement("div");
+										newDiv.className = "col text-bg-secondary border";
+										newDiv.innerHTML = jsonData[key][0] + '<br>' + jsonData[key][2];
+										// Append the new div element to the row
+										featuresList.appendChild(newDiv);
 									}
-
-									// const keys = Object.keys(jsonData[0]);
-									// // Loop through each item in the JSON data
-									// jsonData.forEach(function(item) {
-									// 	keys.forEach(key => {
-									// 		featuresList.append('<div class="col">' + key + ':' + item(key) + '</div>');
-									// 	});
-									// });
 								}	
 
 
@@ -1308,12 +1303,14 @@ class,age,sex,survived<br>
 				<h4 class="text-center text-primary">Dataset information</h4>
 
 				<div class="container text-center">
-					<div id="datasetFeaturesDiv" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+					<div id="datasetFeaturesDiv" class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
   						<!-- Rows will be inserted here by JavaScript -->
 					  	<!-- <div class="col">Column</div> -->
 					</div>
-				  </div>
+				</div>
 				
+				<h5 class="text-center text-primary mt-4">Dataset's first lines</h5>
+
 				<div class="table-responsive">
 					<table class="table table-bordered table-striped mt-2">
 						<thead class="thead-dark" id="dD1TableHeader">

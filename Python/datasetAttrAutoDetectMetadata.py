@@ -31,27 +31,27 @@ class Metadata():
                 sys.exit()
 
             DFI_Dict = {
-                "_name": DFI._name,
-                "AvgOfDistinctValuesPerCol": DFI.AvgOfDistinctValuesPerCol,
-                "AvgOfDistinctValuesOverAll": DFI.AvgOfDistinctValuesOverAll,
-                "AvgOfDistinctValuesPerRow": DFI.AvgOfDistinctValuesPerRow,
-                "FreqoFTop1FreqValue": DFI.FreqoFTop1FreqValue,
-                "FreqoFTop2FreqValue": DFI.FreqoFTop2FreqValue,
-                "FreqoFTop3FreqValue": DFI.FreqoFTop3FreqValue,
-                "NumberOfColumns": int(DFI.NumberOfColumns),
-                "FreqOfIntegerCol": DFI.FreqOfIntegerCol,
-                "FreqOfNumberCol": DFI.FreqOfNumberCol,
-                "FreqOfDateCol": DFI.FreqOfDateCol,
-                "FreqOfStringCol": DFI.FreqOfStringCol,
-                "FreqOfBoolCol": DFI.FreqOfBoolCol,
-                "MinItemLen": int(DFI.MinItemLen),
-                "MaxItemLen": int(DFI.MaxItemLen),
-                "AvgItemLen": DFI.AvgItemLen,
-                "Freq1CharColumns": DFI.Freq1CharColumns,
-                "Freq2ValuesItemColumns": DFI.Freq2ValuesItemColumns,
-                "HasHeader": DFI.HasHeader,
-                "delimiter": DFI.delimiter,
-                "type2Words": int(DFI.type2Words)
+                "_name": ("Name", DFI._name, DFI._name, "The name of the dataset"),
+                "AvgOfDistinctValuesPerCol": ("AvgOfDistinctValuesPerCol" ,DFI.AvgOfDistinctValuesPerCol, "{:.1f}%".format(DFI.AvgOfDistinctValuesPerCol*100), "The Average of distinct values per column over the total columns"),
+                "AvgOfDistinctValuesOverAll": ("AvgOfDistinctValuesOverAll", DFI.AvgOfDistinctValuesOverAll, "{:.1f}%".format(DFI.AvgOfDistinctValuesOverAll*100), "The ratio of the number of total unique values to the number of elements"),
+                "AvgOfDistinctValuesPerRow": ("AvgOfDistinctValuesPerRow", DFI.AvgOfDistinctValuesPerRow, "{:.1f}%".format(DFI.AvgOfDistinctValuesPerRow*100), "The Average of distinct values per row over the total rows"),
+                "FreqoFTop1FreqValue": ("Top 1 Value", DFI.FreqoFTop1FreqValue, "{:.1f}%".format(DFI.FreqoFTop1FreqValue*100), "The ratio of the number of the most frequent value to the number of elements"), 
+                "FreqoFTop2FreqValue": ("Top 2 Value", DFI.FreqoFTop2FreqValue, "{:.1f}%".format(DFI.FreqoFTop2FreqValue*100), "The ratio of the number of the second most frequent value to the number of elements"), 
+                "FreqoFTop3FreqValue": ("Top 3 Value", DFI.FreqoFTop3FreqValue, "{:.1f}%".format(DFI.FreqoFTop3FreqValue*100), "The ratio of the number of the third most frequent value to the number of elements"), 
+                "NumberOfColumns": ("Number Of Columns", int(DFI.NumberOfColumns), int(DFI.NumberOfColumns), "The total number of columns in the Dataset"),
+                "FreqOfIntegerCol": ("Integer Columns %", DFI.FreqOfIntegerCol, "{:.1f}%".format(DFI.FreqOfIntegerCol*100), "The ratio of integer columns to the total number of columns"),
+                "FreqOfNumberCol": ("Number Columns %", DFI.FreqOfNumberCol, "{:.1f}%".format(DFI.FreqOfNumberCol*100), "The ratio of float number columns to the total number of columns"),
+                "FreqOfDateCol": ("Date Columns %", DFI.FreqOfDateCol, "{:.1f}%".format(DFI.FreqOfDateCol*100), "The ratio of date columns to the total number of columns"),
+                "FreqOfStringCol": ("String Columns %", DFI.FreqOfStringCol, "{:.1f}%".format(DFI.FreqOfStringCol*100), "The ratio of columns with text to the total number of columns"),
+                "FreqOfBoolCol": ("Boolean Columns %", DFI.FreqOfBoolCol, "{:.1f}%".format(DFI.FreqOfBoolCol*100), "The ratio of boolean columns to the total number of columns"),
+                "MinItemLen": ("Min Item length", int(DFI.MinItemLen), int(DFI.MinItemLen), "The length of the smallest element in dataset"),
+                "MaxItemLen": ("Max Item Length", int(DFI.MaxItemLen), int(DFI.MaxItemLen), "The length of the largest element in dataset"),
+                "AvgItemLen": ("Avg Item Length", DFI.AvgItemLen, "{:.1f}".format(DFI.AvgItemLen), "The average length of the elements in dataset"),
+                "Freq1CharColumns": ("1-Char Columns %", DFI.Freq1CharColumns, "{:.1f}%".format(DFI.Freq1CharColumns*100), "The columns count with exclusively 1-character elements by the total of columns"),
+                "Freq2ValuesItemColumns": ("2-Value Item Columns %", DFI.Freq2ValuesItemColumns, "{:.1f}%".format(DFI.Freq2ValuesItemColumns*100), "The columns count having exclusively 2 values by the total number of columns"),
+                "HasHeader": ("Has Header?", DFI.HasHeader, DFI.HasHeader, "Does the dataset have Header?"),
+                "delimiter": ("delimiter", DFI.delimiter, DFI.delimiter, "The delimiter between the columns of the dataset"),
+                "type2Words": ("Type 2-INV Words", int(DFI.type2Words), int(DFI.type2Words), "he number of columns containing words used in Type 2-INV datasets")
             }
 
             datasetAttributes['datasetFeatures']=DFI_Dict

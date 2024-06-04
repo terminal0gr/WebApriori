@@ -43,16 +43,17 @@ else:
 
 dataset = pd.read_csv(filepath, sep=metaDataFile['delimiter'])
 
-datasetDescription['Shape']=f"Rows:{dataset.shape[0]}, Columns:{dataset.shape[1]}"
+datasetDescription['features']={"Rows":  ("Dataset rows", dataset.shape[0], dataset.shape[0], "The Total rows of the dataset"),
+                                "Columns": ("Dataset Columns", dataset.shape[1], dataset.shape[1], "The number of columns of the dataset")}
+metaDatafile=metadataInst.readMetadataFile(identity,datasetName,public)
 
+datasetDescription['features'].update(metaDatafile['datasetFeatures'])
+
+#Arbitrary take the first 15 columns for rendering purposes
 if dataset.shape[1]>15:
      dataset=dataset[dataset.columns[:15]]
 
 datasetDescription['Head']=dataset.head(10).to_dict(orient='records')
-
-metadatafile=metadataInst.readMetadataFile(identity,datasetName,public)
-
-datasetDescription['features']=metadatafile['datasetFeatures']
 
 print(json.dumps(datasetDescription))
 

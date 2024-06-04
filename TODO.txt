@@ -4,8 +4,9 @@
            > describe
            > 10 lines sample
 02/06/2024 Some datasets don't functioning???
-03/06/2024 Dataset features extraction show in HTML
+DONE - 03/06/2024 Dataset features extraction show in HTML 
 03/06/2024 Dataset Type 1 manipulation
+05/06/2024 Tooltip on Dataset features
 
 FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 3,4 dataset type 
            (e.g. name of the dataset's columns)
