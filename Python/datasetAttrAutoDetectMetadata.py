@@ -31,6 +31,7 @@ class Metadata():
                 sys.exit()
 
             DFI_Dict = {
+                "NumberOfColumns": ("Number Of Columns", int(DFI.NumberOfColumns), int(DFI.NumberOfColumns), "The total number of columns/features in the Dataset"),
                 "_name": ("Name", DFI._name, DFI._name, "The name of the dataset"),
                 "AvgOfDistinctValuesPerCol": ("AvgOfDistinctValuesPerCol" ,DFI.AvgOfDistinctValuesPerCol, "{:.1f}%".format(DFI.AvgOfDistinctValuesPerCol*100), "The Average of distinct values per column over the total columns"),
                 "AvgOfDistinctValuesOverAll": ("AvgOfDistinctValuesOverAll", DFI.AvgOfDistinctValuesOverAll, "{:.1f}%".format(DFI.AvgOfDistinctValuesOverAll*100), "The ratio of the number of total unique values to the number of elements"),
@@ -38,7 +39,6 @@ class Metadata():
                 "FreqoFTop1FreqValue": ("Top 1 Value", DFI.FreqoFTop1FreqValue, "{:.1f}%".format(DFI.FreqoFTop1FreqValue*100), "The ratio of the number of the most frequent value to the number of elements"), 
                 "FreqoFTop2FreqValue": ("Top 2 Value", DFI.FreqoFTop2FreqValue, "{:.1f}%".format(DFI.FreqoFTop2FreqValue*100), "The ratio of the number of the second most frequent value to the number of elements"), 
                 "FreqoFTop3FreqValue": ("Top 3 Value", DFI.FreqoFTop3FreqValue, "{:.1f}%".format(DFI.FreqoFTop3FreqValue*100), "The ratio of the number of the third most frequent value to the number of elements"), 
-                "NumberOfColumns": ("Number Of Columns", int(DFI.NumberOfColumns), int(DFI.NumberOfColumns), "The total number of columns in the Dataset"),
                 "FreqOfIntegerCol": ("Integer Columns %", DFI.FreqOfIntegerCol, "{:.1f}%".format(DFI.FreqOfIntegerCol*100), "The ratio of integer columns to the total number of columns"),
                 "FreqOfNumberCol": ("Number Columns %", DFI.FreqOfNumberCol, "{:.1f}%".format(DFI.FreqOfNumberCol*100), "The ratio of float number columns to the total number of columns"),
                 "FreqOfDateCol": ("Date Columns %", DFI.FreqOfDateCol, "{:.1f}%".format(DFI.FreqOfDateCol*100), "The ratio of date columns to the total number of columns"),
@@ -51,7 +51,7 @@ class Metadata():
                 "Freq2ValuesItemColumns": ("2-Value Item Columns %", DFI.Freq2ValuesItemColumns, "{:.1f}%".format(DFI.Freq2ValuesItemColumns*100), "The columns count having exclusively 2 values by the total number of columns"),
                 "HasHeader": ("Has Header?", DFI.HasHeader, DFI.HasHeader, "Does the dataset have Header?"),
                 "delimiter": ("delimiter", DFI.delimiter, DFI.delimiter, "The delimiter between the columns of the dataset"),
-                "type2Words": ("Type 2-INV Words", int(DFI.type2Words), int(DFI.type2Words), "he number of columns containing words used in Type 2-INV datasets")
+                "type2Words": ("Type 2-INV Words", int(DFI.type2Words), int(DFI.type2Words), "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)")
             }
 
             datasetAttributes['datasetFeatures']=DFI_Dict
@@ -114,6 +114,11 @@ class Metadata():
         with open(filepath, 'r') as file:
             # Load the JSON data from the file
             json_data = json.load(file)
+
+        if not 'datasetFeatures' in json_data:
+            self.createMetadataFile(identity,datasetName,-1,public) 
+            with open(filepath, 'r') as file:
+                json_data = json.load(file)
 
         # Now you can work with the JSON data as a Python dictionary or list
         return json_data

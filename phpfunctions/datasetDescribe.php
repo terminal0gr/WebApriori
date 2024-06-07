@@ -86,11 +86,22 @@
         exit();
     }
 
+    $rows=10;
+    if (isset($_POST['rows'])) {
+        $rows=$_POST['rows'];
+    }
+    $columns=10;
+    if (isset($_POST['columns'])) {
+        $rows=$_POST['columns'];
+    }
+
     //Call datasetDescribe.py
     $input = PYTHON;
     $input.= ' datasetDescribe.py ';
     $input.= '"'.$identity.'" ';
     $input.= '"'.$filename.'" ';
+    $input.= $rows.' ';
+    $input.= $columns.' ';
     $input.= $isPublic;
 
     try {

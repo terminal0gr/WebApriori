@@ -872,6 +872,7 @@
 					if (response!=undefined && response!=null) {
 						res=response;
 						try {
+							//res=res.replaceAll('NaN', '\" \"')
 							res=JSON.parse(res);
 						}
 						catch {}
@@ -886,6 +887,7 @@
 								var jsonData = res.features
 								if (jsonData==undefined) {
 									MyModal("Invalid information!", "Could not retrieve dataset information properly");
+									return;
 								}
 								else {
 									var featuresList = document.getElementById('datasetFeaturesDiv');
@@ -895,10 +897,15 @@
 										// Create a new div element with the class "col" and populate it with key-value pairs from jsonData
   										const newDiv = document.createElement("div");
 										newDiv.className = "col text-bg-secondary border";
+										newDiv.setAttribute('tabindex',"0");
+										newDiv.setAttribute('data-bs-toggle', "tooltip");
+										newDiv.setAttribute('data-bs-title', jsonData[key][3]);
+										newDiv.setAttribute('data-bs-delay', '{"show":800,"hide":100}');
 										newDiv.innerHTML = jsonData[key][0] + '<br>' + jsonData[key][2];
 										// Append the new div element to the row
 										featuresList.appendChild(newDiv);
 									}
+									$('#datasetFeaturesDiv').find('[data-bs-toggle="tooltip"]').tooltip();
 								}	
 
 
@@ -906,6 +913,7 @@
 								var jsonData = res.Head
 								if (jsonData==undefined) {
 									MyModal("Invalid information!", "Could not retrieve dataset information properly");
+									return;
 								}
 
 								var tableHead = $('#dD1TableHeader');
@@ -940,10 +948,12 @@
 						}
 						catch(err) {
 							MyModal("Error1", err.message);
+							return;
 						}
 					}
 					else {
 						MyModal("Error", "Unknown error occured");
+						return;
 					}
 				}).fail(function( jqXHR, textStatus, thrownError ) {
 					if (jqXHR.responseText) {
@@ -960,6 +970,7 @@
 						else alert(jqXHR.responseText);
 					} else {
 						MyModal("Error",'Unknown error occured!');
+						return;
 					}
 				}).always(function() {
 					var element = document.getElementById('datasetInfoSpinner');
@@ -1030,7 +1041,7 @@
 
 				</div>	
 				<div class="col-1">
-					<button type="button" class="btn btn-sm" id="hideUpload" onclick="toggleDisplay('#uploadDatasetform')" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Hides upload new dataset section"><img src="./images/close24grey.png" width="24" height="24" alt="">	</button>
+					<button type="button" class="btn btn-sm" id="hideUpload" onclick="toggleDisplay('#uploadDatasetform')" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Hides upload new dataset section"><img src="./images/close24grey.png" width="24" height="24" alt="">	</button>
 				</div>
 			</div>
 			<div class="row">
@@ -1044,7 +1055,7 @@
 					</label>
 				</div>
 				<div class="col-1 border border-primary rounded p-1">
-					<button id="uploadDataset" class="btn btn-primary" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Upload the Dataset!"><img src="./images/upload32White.png" class="img-responsive" width="32" height="32" alt=""></button>
+					<button id="uploadDataset" class="btn btn-primary" type="submit" name="submit" style="height:100%; width:100%" id="uploadButton" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Upload the Dataset!"><img src="./images/upload32White.png" class="img-responsive" width="32" height="32" alt=""></button>
 				</div>
 			</div>
 		</div>
@@ -1057,7 +1068,7 @@
 					<h2 class="text-primary">Supported dataset types</h2>
 				</div>
 				<div class="col-1">
-					<button type="button" class="btn btn-sm" onclick="toggleDisplay('#infoForDS')" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Hides dataset type guide section"><img src="./images/close24grey.png" width="24" height="24" alt="hide">	</button>
+					<button type="button" class="btn btn-sm" onclick="toggleDisplay('#infoForDS')" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Hides dataset type guide section"><img src="./images/close24grey.png" width="24" height="24" alt="hide">	</button>
 				</div>
 			</div>
 		</div>
@@ -1218,15 +1229,15 @@ class,age,sex,survived<br>
 				<div class="col-1">
 				</div>
 				<div class="col-1">
-					<button type="button" class="btn mt-n1 float-right"  onclick="toggleDisplay('#infoForDS')" id="helpForDatasetType1" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="help">	</button>
+					<button type="button" class="btn mt-n1 float-right"  onclick="toggleDisplay('#infoForDS')" id="helpForDatasetType1" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Information for the dataset type"><img src="./images/help24grey.png" width="24" height="24" alt="help">	</button>
 				</div>
 				<div class="col-1">
-					<button type="button" id="downloadDataset" class="btn mt-n2 float-right" onclick="DoDownload('dataset')"    data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Download current dataset">
+					<button type="button" id="downloadDataset" class="btn mt-n2 float-right" onclick="DoDownload('dataset')"    data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Download current dataset">
 						<img src="./images/downArrow24grey.png" width="24" height="24" alt="Download Dataset">	
 					</button>
 				</div>
 				<div class="col-1">
-					<button type="button" id="deleteDataset"   class="btn mt-n1 float-right" onclick="deletecurrentDataset()" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Delete current dataset" >
+					<button type="button" id="deleteDataset"   class="btn mt-n1 float-right" onclick="deletecurrentDataset()" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Delete current dataset" >
 						<img src="images/delete32grey.png" width="24" height="24" alt="Delete dataset">
 					</button>				
 				</div>
@@ -1237,18 +1248,19 @@ class,age,sex,survived<br>
 					        data-bs-html="true" 
 							data-bs-placement="top" 
 							data-bs-toggle="tooltip" 
+							data-bs-delay='{"show":800,"hide":100}'
 							data-bs-title="Pick a dataset for which association rules would be generated. Datasets in blue background are public" onchange="clearDatasetAttr();autoDetectDatasetAttr(false);retrieveInputParameters()">
 						<option value="" disabled selected>Choose a dataset from the list</option>
 					</select>
 				</div>
 				<div class="col-2">	
-					<button id="datasetInfo" type="button" class="btn btn-primary d-block" onclick="renderTable();" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Information about the dataset as well as its first rows of its up to 15 first features.">Info</button>
+					<button id="datasetInfo" type="button" class="btn btn-primary d-block" onclick="renderTable();" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Information about the dataset as well as its first rows of its up to 15 first features.">Info</button>
 					<div id="datasetInfoSpinner" class="spinner-border text-warning d-none" role="status">
 						<span class="visually-hidden">Loading...</span>
 					</div>
 				</div>
 				<div class="col-4">
-					<label id="autoDetect1" class="d-block" ><a href="#" onclick="autoDetectDatasetAttr(true)" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			
+					<label id="autoDetect1" class="d-block" ><a href="#" onclick="autoDetectDatasetAttr(true)" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			
 					<label id="autoDetecting" class="d-none">Autodetecting attributes... Please wait</label>
 				</div>
 			</div>
@@ -1273,10 +1285,10 @@ class,age,sex,survived<br>
 						</label>
 					</div>
 					<div class="col-3">	
-						<input type="text" id="separator" name="separator" class="primary form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="The separator of the items in the CSV file. The most common characters used as delimiters are ';', ',' '{TAB}' '{SPACE}' and (:). Keep in mind that especially the {TAB} character is presended by {TAB} or \t string." value=";" placeholder=";">		
+						<input type="text" id="separator" name="separator" class="primary form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="The separator of the items in the CSV file. The most common characters used as delimiters are ';', ',' '{TAB}' '{SPACE}' and (:). Keep in mind that especially the {TAB} character is presended by {TAB} or \t string." value=";" placeholder=";">		
 					</div>
 					<div class="col-6">
-						<select id="datasetType" class="browser-default form-select form-control" data-bs-html="true" data-bs-trigger="hover" data-bs-toggle="tooltip" 
+						<select id="datasetType" class="browser-default form-select form-control" data-bs-html="true" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' 
 						data-bs-title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparse item Dataset<br>4) Columns with multiple nomimal values</p><p>For more details click the <img src='./images/help24grey.png' width='24' height='24' alt='help'> icon.">
 						<option value="0" selected>unmanaged dataset type</option>
 						<option value="1">1 - Market basket list</option>
@@ -1291,11 +1303,10 @@ class,age,sex,survived<br>
 				<div class="row">
 					<div class="col-12">
 						<label for="extra parameters" class="form-label">Extra parameters / item names</label>
-						<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="In extra parameters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
+						<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="In extra parameters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
 					</div>
 				</div>
 			</div>
-
 		</div>
 
 		<div id="datasetDescribe" class="lightgraybackground udfwidth mx-auto border rounded p-2" style="display:none">
@@ -1304,12 +1315,11 @@ class,age,sex,survived<br>
 
 				<div class="container text-center">
 					<div id="datasetFeaturesDiv" class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-  						<!-- Rows will be inserted here by JavaScript -->
-					  	<!-- <div class="col">Column</div> -->
+							<!-- Rows will be inserted here by JavaScript -->
 					</div>
 				</div>
 				
-				<h5 class="text-center text-primary mt-4">Dataset's first lines</h5>
+				<h5 class="text-center text-primary mt-4">Dataset's first rows & features</h5>
 
 				<div class="table-responsive">
 					<table class="table table-bordered table-striped mt-2">
@@ -1323,6 +1333,8 @@ class,age,sex,survived<br>
 				</div>
 			</div>
 		</div>
+
+		<br>
 
 		<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
 			<div class="col">	
@@ -1338,10 +1350,10 @@ class,age,sex,survived<br>
 			</div>
 			<div class="row">
 				<div class="col-6">		
-					<input type="text" id="min_support" name="min_support" class="form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="The minimum support that each association rule should have" value="0.01" placeholder="0.01">
+					<input type="text" id="min_support" name="min_support" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="The minimum support that each association rule should have" value="0.01" placeholder="0.01">
 				</div>
 				<div class="col-6">	
-					<input type="text" id="min_confidence" name="min_confidence" class="form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="The minimum confidence that each association rule should have" value="0.2" placeholder="0.2">
+					<input type="text" id="min_confidence" name="min_confidence" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="The minimum confidence that each association rule should have" value="0.2" placeholder="0.2">
 				</div>
 			</div>
 			<div class="row">
@@ -1354,18 +1366,18 @@ class,age,sex,survived<br>
 			</div>
 			<div class="row">
 				<div class="col-6">		
-					<input type="text" id="min_lift" name="min_lift" class="form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="The minimum lift that each association rule should have" value="1.5" placeholder="1.5">
+					<input type="text" id="min_lift" name="min_lift" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="The minimum lift that each association rule should have" value="1.5" placeholder="1.5">
 				</div>
 				<div class="col-6">	
-					<input type="text" id="max_length" name="max_length" class="form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="The maximum items each association rule consist of" value="4" placeholder="4">
+					<input type="text" id="max_length" name="max_length" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="The maximum items each association rule consist of" value="4" placeholder="4">
 				</div>
 			</div>	
 			<br>
 			<div class="col">	
-				<h4 class="text-center text-primary" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="In this section you can remove redundant association rules optionally. Please hover over the switches to get information for each case.">Redundant association rule elimination</h4>
+				<h4 class="text-center text-primary" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="In this section you can remove redundant association rules optionally. Please hover over the switches to get information for each case.">Redundant association rule elimination</h4>
 			</div>
 			<div class="row">
-				<div class="col-4 mt-1" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="The comparable rules are the ones that have reversed their LHS and RHS (e.g. A->B & B->A). The rule with the smaller confidence value is removed.">
+				<div class="col-4 mt-1" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="The comparable rules are the ones that have reversed their LHS and RHS (e.g. A->B & B->A). The rule with the smaller confidence value is removed.">
 					<label for="Redundant1">Interchange LHS and RHS case</label>
 					<!-- For centering the slider -->
 					<div class="mx-auto p-2" style="width: 70px;">
@@ -1375,7 +1387,7 @@ class,age,sex,survived<br>
 						</label>
 					</div>
 				</div>
-				<div class="col-4 mt-1" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Removes redundant rules that have multiple items in LHS but have the same RHS itemset. If n number of (n-1) LHS-itemset with the same RHS rules are found in the retrieved rule set, the rule is removed otherwise remains. Example: If XY->Z, X->Z, Y->Z exist in the rule set then XY->Z is removed">
+				<div class="col-4 mt-1" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Removes redundant rules that have multiple items in LHS but have the same RHS itemset. If n number of (n-1) LHS-itemset with the same RHS rules are found in the retrieved rule set, the rule is removed otherwise remains. Example: If XY->Z, X->Z, Y->Z exist in the rule set then XY->Z is removed">
 					<label for="Redundant2">Redundant Rules with Fixed RHS</label>
 					<!-- For centering the slider -->
 					<div class="mx-auto p-2" style="width: 70px;">
@@ -1385,7 +1397,7 @@ class,age,sex,survived<br>
 						</label>
 					</div>
 				</div>
-				<div class="col-4 mt-1" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Removes redundant rules that have multiple items in RHS but have the same LHS itemset. If n number of (n-1) RHS-itemset with the same LHS rules are found in the retrieved rule set, the rule is removed otherwise remains. Example: If X->YZ, X->Y, X->Z exist in the rule set then X->YZ is removed">
+				<div class="col-4 mt-1" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Removes redundant rules that have multiple items in RHS but have the same LHS itemset. If n number of (n-1) RHS-itemset with the same LHS rules are found in the retrieved rule set, the rule is removed otherwise remains. Example: If X->YZ, X->Y, X->Z exist in the rule set then X->YZ is removed">
 					<label for="Redundant3">Redundant Rules with Fixed LHS</label>
 					<!-- For centering the slider -->
 					<div class="mx-auto p-2" style="width: 70px;">
@@ -1416,15 +1428,15 @@ class,age,sex,survived<br>
 					<label for="RecordsCreationTime">Dataset read Time</label>
 				</div>
 				<div class="col-2">
-					<button type="button" class="btn mt-n2 float-right" onclick="DoDownload()" id="DownloadJson" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Download association rules in a json format file"><img src="./images/downArrow24grey.png" width="24" height="24" alt="">	</button>
+					<button type="button" class="btn mt-n2 float-right" onclick="DoDownload()" id="DownloadJson" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Download association rules in a json format file"><img src="./images/downArrow24grey.png" width="24" height="24" alt="">	</button>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-6">		
-					<input type="text" id="Records" readonly class="form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Dataset records count">
+					<input type="text" id="Records" readonly class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Dataset records count">
 				</div>
 				<div class="col-6">	
-					<input type="text" id="RecordsCreationTime" readonly class="form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Time spend (in seconds) for retrieving dataset records">
+					<input type="text" id="RecordsCreationTime" readonly class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Time spend (in seconds) for retrieving dataset records">
 				</div>
 			</div>
 			<div class="row">
@@ -1437,10 +1449,10 @@ class,age,sex,survived<br>
 			</div>
 			<div class="row">
 				<div class="col-6">		
-					<input type="text" id="RulesCount" readonly class="form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Retrieved association rules count">
+					<input type="text" id="RulesCount" readonly class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Retrieved association rules count">
 				</div>
 				<div class="col-6">	
-					<input type="text" id="RulesCreationTime" readonly class="form-control" data-bs-trigger="hover" data-bs-toggle="tooltip" data-bs-title="Time spend for retrieving the association rules">
+					<input type="text" id="RulesCreationTime" readonly class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Time spend for retrieving the association rules">
 				</div>
 			</div>	
 		</div>	

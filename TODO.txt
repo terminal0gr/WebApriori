@@ -1,12 +1,7 @@
 
-17/12/2023 Dataset description section must be created
-           > Shape
-           > describe
-           > 10 lines sample
-02/06/2024 Some datasets don't functioning???
-DONE - 03/06/2024 Dataset features extraction show in HTML 
-03/06/2024 Dataset Type 1 manipulation
-05/06/2024 Tooltip on Dataset features
+02/06/2024 Some datasets don't functioning??? (02W-Amazon.csv - Perhaps the quote " on strings????)
+03/06/2024 Dataset description > Dataset Type 1 manipulation
+07/06/2024 Dataset description > User decition the rows and columns
 
 FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 3,4 dataset type 
            (e.g. name of the dataset's columns)
@@ -22,7 +17,10 @@ FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 
 
 
 
-DONE - V01.00.00 30/04/2023 31/03/2024 correct the html files (frontend) to conform to new rules (datasetType, datasetSep etc)
+DONE - V01.00.00 07/06/2024 17/12/2023 Dataset description section must be created (Shape, describe, 10 lines sample)
+DONE - V01.00.00 07/06/2024 05/06/2024 Tooltip on Dataset features
+DONE - V01.00.00 06/06/2024 03/06/2024 Dataset features extraction show in HTML 
+DONE - V01.00.00 31/04/2023 31/03/2024 correct the html files (frontend) to conform to new rules (datasetType, datasetSep etc)
 DONE - V01.00.00 25/04/2024 20/04/2024 3 datasetType creation from 2 (test datasets) and final percentages of ML (all algorithms) via test data
 DONE - V01.00.00 13/04/2024 The engine does not keep user dataset feature preferences in public datasets.
 DONE - V01.00.00 15/04/2024 2SuperStoreOrders.csv removed from test data due to malformed data

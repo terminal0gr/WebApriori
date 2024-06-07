@@ -8,6 +8,12 @@
     ],
     "delimiter": ",",
     "datasetFeatures": {
+        "NumberOfColumns": [
+            "Number Of Columns",
+            4,
+            4,
+            "The total number of columns/features in the Dataset"
+        ],
         "_name": [
             "Name",
             "titanic02.csv",
@@ -49,12 +55,6 @@
             0.1625,
             "16.2%",
             "The ratio of the number of the third most frequent value to the number of elements"
-        ],
-        "NumberOfColumns": [
-            "Number Of Columns",
-            4,
-            4,
-            "The total number of columns in the Dataset"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
@@ -132,7 +132,7 @@
             "Type 2-INV Words",
             0,
             0,
-            "he number of columns containing words used in Type 2-INV datasets"
+            "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
         ]
     },
     "datasetTypePredicted": 4,

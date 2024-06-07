@@ -27,6 +27,17 @@ if len(sys.argv)>3:
     if len(sys.argv[3])>0:
         public=int(sys.argv[3])
 
+rows=10
+if len(sys.argv)>4:
+    if len(sys.argv[4])>0:
+        rows=int(sys.argv[4])
+
+columns=15       
+if len(sys.argv)>5:
+    if len(sys.argv[5])>0:
+        columns=int(sys.argv[5])
+
+
 #------------------------------           
 #end command line arguments section
 #------------------------------
@@ -43,17 +54,24 @@ else:
 
 dataset = pd.read_csv(filepath, sep=metaDataFile['delimiter'])
 
-datasetDescription['features']={"Rows":  ("Dataset rows", dataset.shape[0], dataset.shape[0], "The Total rows of the dataset"),
-                                "Columns": ("Dataset Columns", dataset.shape[1], dataset.shape[1], "The number of columns of the dataset")}
+datasetDescription['features']={"Rows":  ("Dataset rows", dataset.shape[0], dataset.shape[0], "The total rows of the dataset")}
 metaDatafile=metadataInst.readMetadataFile(identity,datasetName,public)
 
 datasetDescription['features'].update(metaDatafile['datasetFeatures'])
 
 #Arbitrary take the first 15 columns for rendering purposes
-if dataset.shape[1]>15:
-     dataset=dataset[dataset.columns[:15]]
+if dataset.shape[1]>columns:
+     dataset=dataset[dataset.columns[:columns]]
 
-datasetDescription['Head']=dataset.head(10).to_dict(orient='records')
+headData=dataset.head(rows).to_dict(orient='records')
+
+# Αντικατάσταση των τιμών NaN με κενό
+for item in headData:
+    for key, value in item.items():
+        if isinstance(value, float) and np.isnan(value):
+            item[key] = 'NaN'
+#my_dict_cleaned = {k: '' if isinstance(v, float) and np.isnan(v) else v for k, v in my_dict.items()}
+datasetDescription['Head']=headData
 
 print(json.dumps(datasetDescription))
 
