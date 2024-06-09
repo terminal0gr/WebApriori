@@ -42,9 +42,6 @@ if len(sys.argv)>5:
 #end command line arguments section
 #------------------------------
 
-metadataInst=Metadata.Metadata()
-metaDataFile=metadataInst.readMetadataFile(identity,datasetName,public)
-
 datasetDescription = {}
 
 if public==0:
@@ -52,12 +49,46 @@ if public==0:
 else:
     filepath=os.path.join('public', datasetName)
 
+metadataInst=Metadata.Metadata()
+metaDataFile=metadataInst.readMetadataFile(identity,datasetName,public)
+
 dataset = pd.read_csv(filepath, sep=metaDataFile['delimiter'])
 
 datasetDescription['features']={"Rows":  ("Dataset rows", dataset.shape[0], dataset.shape[0], "The total rows of the dataset")}
-metaDatafile=metadataInst.readMetadataFile(identity,datasetName,public)
 
-datasetDescription['features'].update(metaDatafile['datasetFeatures'])
+Type1="0-Unmanaged"
+Desc1="Unmanaged Dataset Type. This type can't be used for useful Association rules or frequent itemsets."
+if metaDataFile['datasetTypePredicted']==1:
+     Type1="1-MBL"
+     Desc1="Market Basket List (MBL) Dataset Type. Each dataset row is a transaction. A transaction involves a variable number of items. "
+elif metaDataFile['datasetTypePredicted']==2:
+    Type1="2-INV"
+    Desc1="Invoice detail (INV) Dataset Type. This dataset type is a special report (usually called Detailed Sales Statement) produced by a Company Accounting or an Enterprise Resource Planning software (ERP)."   
+elif metaDataFile['datasetTypePredicted']==3:
+    Type1="3-SI"
+    Desc1="Sparse Item (SI) Dataset Type. It involves a header and a fixed number of columns. Each item corresponds to a column. Each row represents a transaction." 
+elif metaDataFile['datasetTypePredicted']==4:
+    Type1="4-NOA"
+    Desc1="Nominal Attributes (NOA) Dataset Type. It involves a fixed number of columns. Each column registers nominal/categorical values."    
+datasetDescription['features'].update({"datasetTypePredicted":  ("Dataset type Predicted", metaDataFile['datasetTypePredicted'], Type1, Desc1)})
+
+Type1="0-Unmanaged"
+Desc1="Unmanaged Dataset Type. This type can't be used for useful Association rules or frequent itemsets."
+if metaDataFile['datasetType']==1:
+     Type1="1-MBL"
+     Desc1="Market Basket List (MBL) Dataset Type. Each dataset row is a transaction. A transaction involves a variable number of items. "
+elif metaDataFile['datasetType']==2:
+    Type1="2-INV"
+    Desc1="Invoice detail (INV) Dataset Type. This dataset type is a special report (usually called Detailed Sales Statement) produced by a Company Accounting or an Enterprise Resource Planning software (ERP)."   
+elif metaDataFile['datasetType']==3:
+    Type1="3-SI"
+    Desc1="Sparse Item (SI) Dataset Type. It involves a header and a fixed number of columns. Each item corresponds to a column. Each row represents a transaction." 
+elif metaDataFile['datasetType']==4:
+    Type1="4-NOA"
+    Desc1="Nominal Attributes (NOA) Dataset Type. It involves a fixed number of columns. Each column registers nominal/categorical values."    
+datasetDescription['features'].update({"datasetType": ("Dataset type Declared", metaDataFile['datasetType'], Type1, Desc1)})
+
+datasetDescription['features'].update(metaDataFile['datasetFeatures'])
 
 #Arbitrary take the first 15 columns for rendering purposes
 if dataset.shape[1]>columns:

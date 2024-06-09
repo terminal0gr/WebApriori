@@ -192,7 +192,8 @@ class Sniffer:
             # and thus can't be merged in a pandas dataframe or a numpy's array
             delimiter1, temp_skipinitialspace, datasetType = self._guess_delimiter(sample, delimiters)
             if delimiter1:
-                delimiter=delimiter1
+                if delimiter1 in self.preferred:
+                    delimiter=delimiter1
 
         if not delimiter:
             raise Error("Could not determine delimiter")
@@ -310,6 +311,7 @@ class Sniffer:
         data = list(filter(None, data.split('\n')))
 
         ascii = [chr(c) for c in range(127)] # 7-bit ASCII
+        
 
         # build frequency tables
         chunkLength = min(10, len(data))

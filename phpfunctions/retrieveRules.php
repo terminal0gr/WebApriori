@@ -126,18 +126,6 @@
         exit();
     }
 
-    //I have to save the metadatafile here in case the user has customly changed dataset attributes
-    $header1=filter_var($_POST['header1'], FILTER_VALIDATE_BOOLEAN);
-    // JSON data to be written to the file
-    $json_data = [
-        "hasHeader"   => $header1,
-        "header"      => explode(' ', str_replace('"', '', $_POST['extra_parameters'])), 
-        "delimiter"   => $_POST['separator'],
-        "datasetType" => (int) $_POST['datasetType']
-    ];
-    // Convert the PHP array to a JSON string
-    $json_string = json_encode($json_data, JSON_PRETTY_PRINT);
-
     // File path where you want to write the JSON data
     //assemble output path
     if ($isPublic==0) {
@@ -147,13 +135,41 @@
     }
     $fpatho_parts = pathinfo($fpatho);
     $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".metadata";
-    // Write the JSON data to the file
+    //I have to save the metadatafile here in case the user has customly changed dataset attributes
+    $header1=filter_var($_POST['header1'], FILTER_VALIDATE_BOOLEAN);
 
-    // $JsonReq = array('title' => 'Test', 'message' => $fpatho);
-    // print json_encode($JsonReq);
-    //exit();
+    // Step 1: Read the JSON file
+    $json_string = file_get_contents($fpatho);
+    // Decode JSON data into a PHP array
+    $json_data = json_decode($json_string, true);
 
+    // Check if json_decode not succeeded
+    if ($json_data === null && json_last_error() !== JSON_ERROR_NONE) {
+        //Create new  $json_data
+        $json_data = [
+            "hasHeader"   => $header1,
+            "header"      => explode(' ', str_replace('"', '', $_POST['extra_parameters'])), 
+            "delimiter"   => $_POST['separator'],
+            "datasetType" => (int) $_POST['datasetType']
+        ];
+    }
+    else {
+        $json_data['hasHeader'] = $header1;
+        $json_data['header'] = explode(' ', str_replace('"', '', $_POST['extra_parameters']));
+        $json_data['delimiter'] = $_POST['separator'];
+        $json_data['datasetType'] = (int) $_POST['datasetType'];
+    }
+    // Convert the PHP array to a JSON string
+    $json_string = json_encode($json_data, JSON_PRETTY_PRINT);
+
+    //Write to file
     file_put_contents($fpatho, $json_string);
+
+
+    //For testing purposes
+    // $JsonReq = array('title' => $fpatho, 'message' =>  $fpatho.$json_string);
+    // print json_encode($JsonReq);
+    // exit();
 
     //Call Python for Association rules mining
     $input = PYTHON;

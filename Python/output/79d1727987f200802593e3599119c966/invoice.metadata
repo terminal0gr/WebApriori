@@ -24,7 +24,8 @@
         "VendorNoProduits",
         "SearchDescriptionProduits",
         "ItemCategoryProduits",
-        "VAT ProdPostingGroup",
+        "VAT",
+        "ProdPostingGroup",
         "NameCustomers",
         "AddressCostumers",
         "DistrictCustomers",
@@ -107,7 +108,7 @@
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],

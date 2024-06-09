@@ -13,6 +13,12 @@
     ],
     "delimiter": ",",
     "datasetFeatures": {
+        "NumberOfColumns": [
+            "Number Of Columns",
+            9,
+            9,
+            "The total number of columns/features in the Dataset"
+        ],
         "_name": [
             "Name",
             "0Customer.csv",
@@ -54,12 +60,6 @@
             0.035111111111111114,
             "3.5%",
             "The ratio of the number of the third most frequent value to the number of elements"
-        ],
-        "NumberOfColumns": [
-            "Number Of Columns",
-            9,
-            9,
-            "The total number of columns in the Dataset"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
@@ -137,9 +137,9 @@
             "Type 2-INV Words",
             0,
             0,
-            "The number of columns containing words used in Type 2-INV datasets"
+            "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
         ]
     },
     "datasetTypePredicted": 0,
-    "datasetType": 0
+    "datasetType": 10
 }

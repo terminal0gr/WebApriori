@@ -179,7 +179,7 @@
 					return;
 				}
 
-				var datasetType = document.getElementById("datasetType");
+				var datasetType = document.getElementById("datasetType").value;
 				if (datasetType=="0") {
 					MyModal("Information", "This dataset (0 - Unmanaged dataset Type  can't be used for frequent itemsets or useful association rules.");
 					return;
@@ -897,7 +897,13 @@
 								for (const key in jsonData) {
 									// Create a new div element with the class "col" and populate it with key-value pairs from jsonData
 									const newDiv = document.createElement("div");
-									newDiv.className = "col text-bg-secondary border";
+
+									if (key.startsWith("datasetType")){
+										newDiv.className = "col text-bg-primary border";
+									}
+									else{
+										newDiv.className = "col text-bg-secondary border";
+									}
 									newDiv.setAttribute('tabindex',"0");
 									newDiv.setAttribute('data-bs-toggle', "tooltip");
 									newDiv.setAttribute('data-bs-title', jsonData[key][3]);
