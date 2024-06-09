@@ -41,7 +41,6 @@
 		var ajaxReq;
 		var tmpHtml;
 
-
 		$(function() {
 
 			// initialization of tooltips in page
@@ -810,178 +809,185 @@
 			document.getElementById('separator').value=";"; 
 			document.getElementById("header1").checked=false; 
 
-			element=document.getElementById("datasetDescribe")
+			element=document.getElementById("datasetDescribe");
             if (!isElementHidden(element)) {
 	        	toggleDisplay('#datasetDescribe');
 			}
 		}
 
+		// Function to render JSON data into the table
+		function renderTable(renderOnly=false) {
 
+			if (!sessionStorage.getItem('token')) {
+				MyModal("Error", "You are not signed in!!! Please sign in/up");
+				setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
+				return;
+			}
 
-            // Function to render JSON data into the table
-            function renderTable() {
+			element=document.getElementById("datasetDescribe");
 
-				if (!sessionStorage.getItem('token')) {
-					MyModal("Error", "You are not signed in!!! Please sign in/up");
-					setTimeout(function() {
-									sessionStorage.clear();
-									window.location.href='index.html';
-								}, 3000);	
-					return;
-				}
-
-				element=document.getElementById("datasetDescribe")
-
-				//If datasetDescribe is shown the just hide it
+			if (!renderOnly) {
+			//If datasetDescribe is shown the just hide it
 				if (!isElementHidden(element)) {
 					toggleDisplay('#datasetDescribe');
 					return;
 				}
+			}
 
-				//Check if user has chosen any dataset.
-				var dataset =  document.getElementById("dataset");
-				if(!dataset.value){
-					MyModal("Information", "No dataset has been selected!");
+			//Check if user has chosen any dataset.
+			var dataset =  document.getElementById("dataset");
+			if(!dataset.value){
+				MyModal("Information", "No dataset has been selected!");
+				return;
+			}
+
+			var formData = new FormData();
+			formData.set("token",sessionStorage.getItem('token'));
+			formData.set("dataset",dataset.value);
+			formData.set('rows', document.getElementById("NRows").value);
+			formData.set('columns',document.getElementById("NCols").value);
+
+			$.ajax({
+				url: 'phpfunctions/datasetDescribe.php',
+				method: 'POST',
+				dataType: 'json',
+				data: formData,
+				contentType: false,
+				cache: false,
+				processData:false,
+
+				beforeSend: function( xhr ) {
+				var element = document.getElementById('datasetInfo');
+				element.classList.add("d-none");
+				element.classList.remove("d-block");
+				var element = document.getElementById('datasetInfoSpinner');
+				element.classList.add("d-block");
+				element.classList.remove("d-none");
+				}
+			}) 	
+			.done(function(response, textStatus, jqXHR) {
+				//cover both null and undefined circumstanses and if it is a JSON obj
+				if (response!=undefined && response!=null) {
+					res=response;
+					try {
+						//res=res.replaceAll('NaN', '\" \"')
+						res=JSON.parse(res);
+					}
+					catch {}
+
+					try {
+						if (jqXHR.status!=200) {
+							MyModal(jqXHR.status+res.title, res.message);
+						}
+						else {	
+
+							//Dataset Features Loading Segment
+							var jsonData = res.features;
+							if (jsonData==undefined) {
+								MyModal("Invalid information!", "Could not retrieve dataset information properly");
+								return;
+							}
+							else {
+								var featuresList = document.getElementById('datasetFeaturesDiv');
+								featuresList.innerHTML="";
+
+								for (const key in jsonData) {
+									// Create a new div element with the class "col" and populate it with key-value pairs from jsonData
+									const newDiv = document.createElement("div");
+									newDiv.className = "col text-bg-secondary border";
+									newDiv.setAttribute('tabindex',"0");
+									newDiv.setAttribute('data-bs-toggle', "tooltip");
+									newDiv.setAttribute('data-bs-title', jsonData[key][3]);
+									newDiv.setAttribute('data-bs-delay', '{"show":800,"hide":100}');
+									newDiv.innerHTML = jsonData[key][0] + '<br>' + jsonData[key][2];
+									// Append the new div element to the row
+									featuresList.appendChild(newDiv);
+								}
+								$('#datasetFeaturesDiv').find('[data-bs-toggle="tooltip"]').tooltip();
+							}	
+
+
+							//First dataset lines Loading Segment
+							var jsonData = res.Head
+							if (jsonData==undefined) {
+								MyModal("Invalid information!", "Could not retrieve dataset information properly");
+								return;
+							}
+
+							var tableHead = $('#dD1TableHeader');
+							tableHead.empty();
+
+							const keys = Object.keys(jsonData[0]);
+
+							var row = $('<tr></tr>');
+							// Loop through each key
+							keys.forEach(key => {
+								row.append('<th>' + key + '</th>');
+							});
+							tableHead.append(row);
+
+							var tableBody = $('#data-table-body');
+							tableBody.empty(); // Clear any existing rows
+
+							// Loop through each item in the JSON data
+							jsonData.forEach(function(item) {
+								var row = $('<tr></tr>');
+
+								keys.forEach(key => {
+									row.append('<td>' + item[key] + '</td>');
+								});
+								tableBody.append(row);
+							});
+
+							if (!renderOnly) {
+								toggleDisplay('#datasetDescribe');
+							}
+
+						}
+						return;
+					}
+					catch(err) {
+						MyModal("Error1", err.message);
+						return;
+					}
+				}
+				else {
+					MyModal("Error", "Unknown error occured");
 					return;
 				}
-
-				var formData = new FormData();
-				formData.set("token",sessionStorage.getItem('token'));
-				formData.set("dataset",dataset.value);
-
-				$.ajax({
-					url: 'phpfunctions/datasetDescribe.php',
-					method: 'POST',
-					dataType: 'json',
-					data: formData,
-					contentType: false,
-					cache: false,
-					processData:false,
-
-					beforeSend: function( xhr ) {
-					var element = document.getElementById('datasetInfo');
-					element.classList.add("d-none");
-					element.classList.remove("d-block");
-					var element = document.getElementById('datasetInfoSpinner');
-					element.classList.add("d-block");
-					element.classList.remove("d-none");
-					}
-				}) 	
-				.done(function(response, textStatus, jqXHR) {
-					//cover both null and undefined circumstanses and if it is a JSON obj
-					if (response!=undefined && response!=null) {
-						res=response;
-						try {
-							//res=res.replaceAll('NaN', '\" \"')
-							res=JSON.parse(res);
-						}
-						catch {}
-
-						try {
-							if (jqXHR.status!=200) {
-								MyModal(jqXHR.status+res.title, res.message);
-							}
-							else {	
-
-								//Dataset Features Loading Segment
-								var jsonData = res.features
-								if (jsonData==undefined) {
-									MyModal("Invalid information!", "Could not retrieve dataset information properly");
-									return;
-								}
-								else {
-									var featuresList = document.getElementById('datasetFeaturesDiv');
-									featuresList.innerHTML="";
-
-									for (const key in jsonData) {
-										// Create a new div element with the class "col" and populate it with key-value pairs from jsonData
-  										const newDiv = document.createElement("div");
-										newDiv.className = "col text-bg-secondary border";
-										newDiv.setAttribute('tabindex',"0");
-										newDiv.setAttribute('data-bs-toggle', "tooltip");
-										newDiv.setAttribute('data-bs-title', jsonData[key][3]);
-										newDiv.setAttribute('data-bs-delay', '{"show":800,"hide":100}');
-										newDiv.innerHTML = jsonData[key][0] + '<br>' + jsonData[key][2];
-										// Append the new div element to the row
-										featuresList.appendChild(newDiv);
-									}
-									$('#datasetFeaturesDiv').find('[data-bs-toggle="tooltip"]').tooltip();
-								}	
-
-
-								//First dataset lines Loading Segment
-								var jsonData = res.Head
-								if (jsonData==undefined) {
-									MyModal("Invalid information!", "Could not retrieve dataset information properly");
-									return;
-								}
-
-								var tableHead = $('#dD1TableHeader');
-								tableHead.empty();
-
-								const keys = Object.keys(jsonData[0]);
-
-								var row = $('<tr></tr>');
-								// Loop through each key
-								keys.forEach(key => {
-									row.append('<th>' + key + '</th>');
-								});
-								tableHead.append(row);
-
-								var tableBody = $('#data-table-body');
-								tableBody.empty(); // Clear any existing rows
-
-								// Loop through each item in the JSON data
-								jsonData.forEach(function(item) {
-									var row = $('<tr></tr>');
-
-									keys.forEach(key => {
-										row.append('<td>' + item[key] + '</td>');
-									});
-									tableBody.append(row);
-								});
-
-								toggleDisplay('#datasetDescribe');
-
-							}
-							return;
-						}
-						catch(err) {
-							MyModal("Error1", err.message);
-							return;
+			}).fail(function( jqXHR, textStatus, thrownError ) {
+				if (jqXHR.responseText) {
+					if (isJSON(jqXHR.responseText)) {
+						res=JSON.parse(jqXHR.responseText);
+						MyModal(res.title, res.message);
+						if (jqXHR.status>=400) {
+							setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
 						}
 					}
-					else {
-						MyModal("Error", "Unknown error occured");
-						return;
-					}
-				}).fail(function( jqXHR, textStatus, thrownError ) {
-					if (jqXHR.responseText) {
-						if (isJSON(jqXHR.responseText)) {
-							res=JSON.parse(jqXHR.responseText);
-							MyModal(res.title, res.message);
-							if (jqXHR.status>=400) {
-								setTimeout(function() {
-									sessionStorage.clear();
-									window.location.href='index.html';
-								}, 3000);	
-							}
-						}
-						else alert(jqXHR.responseText);
-					} else {
-						MyModal("Error",'Unknown error occured!');
-						return;
-					}
-				}).always(function() {
-					var element = document.getElementById('datasetInfoSpinner');
-					element.classList.add("d-none");
-					element.classList.remove("d-block");
-					var element = document.getElementById('datasetInfo');
-					element.classList.add("d-block");
-					element.classList.remove("d-none");		
-				});					
+					else alert(jqXHR.responseText);
+				} else {
+					MyModal("Error",'Unknown error occured!');
+					return;
+				}
+			}).always(function() {
+				var element = document.getElementById('datasetInfoSpinner');
+				element.classList.add("d-none");
+				element.classList.remove("d-block");
+				var element = document.getElementById('datasetInfo');
+				element.classList.add("d-block");
+				element.classList.remove("d-none");		
+			});					
+		}
 
-            }
+		function changeRowsAndCols() {
+			renderTable(true);
+		}
 
     </script>
 </head>
@@ -1319,7 +1325,7 @@ class,age,sex,survived<br>
 					</div>
 				</div>
 				
-				<h5 class="text-center text-primary mt-4">Dataset's first rows & features</h5>
+				<h5 id="H5Test" class="text-center text-primary mt-4">Dataset's first <input type="text" id="NRows" class="form-control d-inline" style="width: 50px;" value="10" placeholder="10"> rows & <input type="text" id="NCols" class="form-control d-inline" style="width: 50px;" value="15" placeholder="15"> features <button type="button" class="btn mt-n1 float-right"  onclick="changeRowsAndCols();" id="refreshHeadTable" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Refresh the Dataset's head information table"><img src="./images/bootstrap/repeat.svg" width="24" height="24" alt="refresh"></button></h5> 
 
 				<div class="table-responsive">
 					<table class="table table-bordered table-striped mt-2">

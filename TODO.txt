@@ -1,7 +1,9 @@
 
-02/06/2024 Some datasets don't functioning??? (02W-Amazon.csv - Perhaps the quote " on strings????)
+02/06/2024 Some datasets don't functioning??? (02W-Amazon.csv - 
+   Perhaps the quote " on strings???? 
+   It brings as delimiter the '='...
+   It takes the delimiter from _guess_delimiter and not from _guess_quote_and_delimiter mycsv )
 03/06/2024 Dataset description > Dataset Type 1 manipulation
-07/06/2024 Dataset description > User decition the rows and columns
 
 FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 3,4 dataset type 
            (e.g. name of the dataset's columns)
@@ -17,6 +19,7 @@ FP 09/12/2023 Extra parameters / item names field must be AutoML initialized in 
 
 
 
+DONE - V01.00.00 09/06/2024 07/06/2024 Dataset description > User decition the rows and columns
 DONE - V01.00.00 07/06/2024 17/12/2023 Dataset description section must be created (Shape, describe, 10 lines sample)
 DONE - V01.00.00 07/06/2024 05/06/2024 Tooltip on Dataset features
 DONE - V01.00.00 06/06/2024 03/06/2024 Dataset features extraction show in HTML 

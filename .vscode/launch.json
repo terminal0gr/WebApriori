@@ -36,9 +36,9 @@
             "justMyCode": false,
             "args": [ 
                 "79d1727987f200802593e3599119c966",
-                "titanic02.csv",
+                "02W_amazon.csv",
                 "-1",
-                "0",
+                "1",
                 "1"
             ],
             "console": "integratedTerminal"
@@ -52,8 +52,10 @@
             "justMyCode": false,
             "args": [ 
                 "79d1727987f200802593e3599119c966",
-                "2Fashion_Retail_Sales.csv"
-                ,"1"
+                "0Customer.csv",
+                "10",
+                "15",
+                "1"
             ],
             "console": "integratedTerminal"
         },    

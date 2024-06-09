@@ -22,20 +22,20 @@ if len(sys.argv)>2:
     if len(sys.argv[2])>0:
         datasetName=sys.argv[2]
 
-public=0 # 0 > private, 1 > public
+rows=10
 if len(sys.argv)>3:
     if len(sys.argv[3])>0:
-        public=int(sys.argv[3])
-
-rows=10
-if len(sys.argv)>4:
-    if len(sys.argv[4])>0:
-        rows=int(sys.argv[4])
+        rows=int(sys.argv[3])
 
 columns=15       
+if len(sys.argv)>4:
+    if len(sys.argv[4])>0:
+        columns=int(sys.argv[4])
+
+public=0 # 0 > private, 1 > public
 if len(sys.argv)>5:
     if len(sys.argv[5])>0:
-        columns=int(sys.argv[5])
+        public=int(sys.argv[5])
 
 
 #------------------------------           

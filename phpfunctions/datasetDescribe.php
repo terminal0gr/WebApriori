@@ -90,9 +90,9 @@
     if (isset($_POST['rows'])) {
         $rows=$_POST['rows'];
     }
-    $columns=10;
+    $columns=15;
     if (isset($_POST['columns'])) {
-        $rows=$_POST['columns'];
+        $columns=$_POST['columns'];
     }
 
     //Call datasetDescribe.py
@@ -100,9 +100,9 @@
     $input.= ' datasetDescribe.py ';
     $input.= '"'.$identity.'" ';
     $input.= '"'.$filename.'" ';
-    $input.= $rows.' ';
-    $input.= $columns.' ';
-    $input.= $isPublic;
+    $input.= '"'.$rows.'" ';
+    $input.= '"'.$columns.'" ';
+    $input.= '"'.$isPublic.'" ';
 
     try {
         chdir('../Python');
@@ -113,7 +113,7 @@
         ob_end_clean();
     } catch (Exception $e) {
         http_response_code(201);
-        $JsonReq = array('title' => $input.'Error', 'message' => $e->getMessage());
+        $JsonReq = array('title' => ' Error! '.$input, 'message' => "OKAy!!!");
         print json_encode($JsonReq);
         exit();
     }
