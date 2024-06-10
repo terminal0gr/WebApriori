@@ -56,7 +56,11 @@ class Metadata():
 
             datasetAttributes['datasetFeatures']=DFI_Dict
 
-            datasetAttributes['datasetTypePredicted']=int(df.datasetFeatures().AutoDetectType(DFI))
+            # Declare the predicted Dataset type
+            if dialect.datasetType==0:
+              datasetAttributes['datasetTypePredicted']=int(df.datasetFeatures().AutoDetectType(DFI))
+            else:
+               datasetAttributes['datasetTypePredicted']=int(dialect.datasetType)  
 
             if datasetType==-1:
                 if dialect.datasetType==1: #Without Machine learning detection

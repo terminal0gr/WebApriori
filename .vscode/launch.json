@@ -36,9 +36,9 @@
             "justMyCode": false,
             "args": [ 
                 "79d1727987f200802593e3599119c966",
-                "02W_amazon.csv",
+                "sd.csv",
                 "-1",
-                "1",
+                "0",
                 "1"
             ],
             "console": "integratedTerminal"
@@ -52,10 +52,10 @@
             "justMyCode": false,
             "args": [ 
                 "79d1727987f200802593e3599119c966",
-                "0Customer.csv",
+                "sd.csv",
                 "10",
                 "15",
-                "1"
+                "0"
             ],
             "console": "integratedTerminal"
         },    

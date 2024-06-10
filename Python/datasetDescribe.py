@@ -52,7 +52,10 @@ else:
 metadataInst=Metadata.Metadata()
 metaDataFile=metadataInst.readMetadataFile(identity,datasetName,public)
 
-dataset = pd.read_csv(filepath, sep=metaDataFile['delimiter'])
+if metaDataFile['hasHeader']:
+    dataset = pd.read_csv(filepath, sep=metaDataFile['delimiter'])
+else:
+    dataset = pd.read_csv(filepath, sep=metaDataFile['delimiter'], header=None)
 
 datasetDescription['features']={"Rows":  ("Dataset rows", dataset.shape[0], dataset.shape[0], "The total rows of the dataset")}
 

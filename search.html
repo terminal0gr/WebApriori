@@ -707,6 +707,11 @@
 				return;
 			}
 
+			// If the dataset info div is open the close it first.
+			if (!isElementHidden(element)) {
+				toggleDisplay('#datasetDescribe');
+			}
+
 			var formData = new FormData();
 			formData.set("token",sessionStorage.getItem('token'));
 			formData.set("dataset",x.value);
@@ -873,7 +878,6 @@
 				if (response!=undefined && response!=null) {
 					res=response;
 					try {
-						//res=res.replaceAll('NaN', '\" \"')
 						res=JSON.parse(res);
 					}
 					catch {}
@@ -928,12 +932,16 @@
 
 							const keys = Object.keys(jsonData[0]);
 
-							var row = $('<tr></tr>');
-							// Loop through each key
-							keys.forEach(key => {
-								row.append('<th>' + key + '</th>');
-							});
-							tableHead.append(row);
+							// If the dataset has Header --> res.features['HasHeader'][1]
+							if (res.features['HasHeader'][1]) {
+
+								var row = $('<tr></tr>');
+								// Loop through each key
+								keys.forEach(key => {
+									row.append('<th>' + key + '</th>');
+								});
+								tableHead.append(row);
+							}
 
 							var tableBody = $('#data-table-body');
 							tableBody.empty(); // Clear any existing rows
@@ -943,7 +951,12 @@
 								var row = $('<tr></tr>');
 
 								keys.forEach(key => {
-									row.append('<td>' + item[key] + '</td>');
+									if (res.features['datasetType'][1]==1 && item[key]=='NaN') {
+										//If the dataset type is 1-MBL then we don't want to see 'NaN' at the end of each transaction. So we show nothing 
+										row.append('<td></td>');
+									} else {
+										row.append('<td>' + item[key] + '</td>');
+									}
 								});
 								tableBody.append(row);
 							});
@@ -1086,7 +1099,7 @@
 		</div>
 
 		<br>
-		<p><b>1) Market Basket list.</b> No header is expected, The number of columns in each record is unspecified. 
+		<p><b>1) Market Basket list (MBL).</b> No header is expected, The number of columns in each record is unspecified. 
 		In extra parameters, participant columns can be declared for filtering and tuning puproses.<br> 
 		<a href="javascript:toggleDisplay('#hexample1');">Examples</a></p>
 		<div id="hexample1" style="display:none">
@@ -1117,7 +1130,7 @@ other vegetables,whole milk,condensed milk,long life bakery product<br>
 				</div>
 			</div>
 		</div>
-		<p><b>2) Order/Invoice detail.</b> Header line is mandatory in that type. Number of columns is fixed in the dataset. 
+		<p><b>2) Order/Invoice detail (INV).</b> Header line is mandatory in that type. Number of columns is fixed in the dataset. 
 		In extra parameters field it is mandatory to declare 2 parameters. The 1st parameter represents the primary key column while 2nd represents the items column.<br>
 		<a href="javascript:toggleDisplay('#hexample2');">Example</a></p>
 		<div id="hexample2" style="display:none">
@@ -1141,7 +1154,7 @@ InvoiceNo;StockCode;Description;Quantity;InvoiceDate;UnitPrice;CustomerID<br>
 				</div>
 			</div>
 		</div>
-		<p><b>3) Sparse item Dataset.</b> Header line is mandatory in that type of dataset and the number of columns/items is fixed. 
+		<p><b>3) Sparse item Dataset (SI).</b> Header line is mandatory in that type of dataset and the number of columns/items is fixed. 
 		Item columns are mandatory to be declared from the 2nd parameter and above in extra parameters field.
 		In 1st parameter, the string of absent item must be declared!!! If absent item is nothing then assign '' or 'nan'. <br>
 		<a href="javascript:toggleDisplay('#hexample3');">Examples</a></p>
@@ -1181,7 +1194,7 @@ order_id,pay_method,arrival_timestamp,air fresheners candles,asian foods,baby ac
 				</div>
 			</div>
 		</div>
-		<p><b>4) Columns with multiple categorized values.</b> Header line is optional for that kind of dataset and the number of columns is fixed. 
+		<p><b>4) Columns with multiple categorized (nominal) values (NOA).</b> Header line is optional for that kind of dataset and the number of columns is fixed. 
 			If a header line exists in the dataset then participant item columns can be declared for filtering and tuning puproses optionally. 
 			However keep in mind, if there is no header or columns declared in the extra parameters field, any identical values in different columns will be considered as the same value.<br>
 		<a href="javascript:toggleDisplay('#hexample4');">Example</a></p>
