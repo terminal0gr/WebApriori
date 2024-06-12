@@ -1,18 +1,20 @@
 
 09/06/2024 Thorough Test for all datasets in info        must be done!
 09/06/2024 Thorough Test for all datasets in retrieve AR must be done!
-09/12/2023 Extra parameters / item names field must be AutoML initialized in 3,4 dataset type 
-           (e.g. name of the dataset's columns)
+10/06/2024 AutoML type 2-INV Dataset type for finding the qrouping and item column
+09/12/2023 AutoML type 3-SI Extra parameters / item names bring automatically the absent item 
+09/12/2023 AutoML type 4-NOA Extra parameters (e.g. name of the dataset's columns)
 03/02/2024 arff files manipulation in webApriori
 21/01/2024 Columns participating in RHS in 1,3,4 dataset types
 12/02/2024 Apriori Engine Main04.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv 
 20/04/2024 Examine the 2dairy_dataset.csv & 3dairy_dataset.csv and see why they have different association rules results with the same parameters (min sup=0.01, min conf=0.02, Min Lift=1.5, Maximum rules items) Group Column="Date" Item Column="Product Name"
-21/04/2024 3 Type Datasets seems not to produce association rules if the absent item is None
-21/04/2024 2Sample - Superstore Could not retrieve any record from the dataset. IT SHOULD
-10/06/2024 AutoML type 2-INV Dataset type for finding the qrouping and item column
+12/06/2024 Change the Main05 call without the need of all the columns
+12/06/2024 Extra parameters / item names field must be beautified!
 
 
-
+DONE - V01.00.00 12/06/2024 21/04/2024 3 Type Datasets seems not to produce association rules if the absent item is None. Tested and working Fine! a2100.csv & a2100withNaN.csv
+DONE - V01.00.00 12/06/2024 12/06/2024 If UTF-8 with BOM, erase BOM! (e.g. 3bakery_Sales.csv). Done with --> encoding='utf-8-sig'
+DONE - V01.00.00 12/06/2024 21/04/2024 2Sample - Superstore Could not retrieve any record from the dataset. IT SHOULD. In some lines it had +1 column 22 instead 21
 DONE - V01.00.00 10/06/2024 03/06/2024 Dataset description > Dataset Type 1 manipulation
 DONE - V01.00.00 09/06/2024 07/06/2024 Dataset description > User decition the rows and columns
 DONE - V01.00.00 07/06/2024 17/12/2023 Dataset description section must be created (Shape, describe, 10 lines sample)

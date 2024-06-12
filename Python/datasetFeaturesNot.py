@@ -309,7 +309,7 @@ class datasetFeatures:
 #Detect if a file is in arff format
 def is_arff_file(file_path):
     try:
-        with open(file=file_path, mode='r', encoding='utf-8') as file:
+        with open(file=file_path, mode='r', encoding='utf-8-sig') as file:
             # Read the first few lines to check for ARFF attributes
             #first_lines = [file.readline().strip() for _ in range(15)]
             first_lines = [file.readline() for _ in range(15)]

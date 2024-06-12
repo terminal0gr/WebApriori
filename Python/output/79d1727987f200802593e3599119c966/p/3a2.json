@@ -1,0 +1,17 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "3a2.csv",
+    "datasetType": 3,
+    "outputType": 3,
+    "redundantRemoveType": 0,
+    "datasetArgs": "['a', 'b', 'c', 'd', 'e']",
+    "Records": 5,
+    "RecordsCreationTime": "0.003",
+    "RulesCount": 0,
+    "RulesCreationTime": "0.001",
+    "rules": []
+}

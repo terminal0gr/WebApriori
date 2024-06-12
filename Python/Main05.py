@@ -380,122 +380,107 @@ Dataset types:
 # preprocessing section
 ###################################################################
 def prepare_records(datasetName, datasetSep, datasetType, public, *args):
-
     global max_items
 
-    if public==0:
-        filepath=os.path.join('datasets', identity, datasetName)
-    else:
-        filepath=os.path.join('public', datasetName)
+    try:
 
-    if len(args)>max_items:
-        print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' columns will be processed.')
-        args=args[0:max_items+1]
-    
-    if int(datasetType)==1:
-        if len(args)==0:
-            try:
+        if public==0:
+            filepath=os.path.join('datasets', identity, datasetName)
+        else:
+            filepath=os.path.join('public', datasetName)
+
+        if len(args)>max_items:
+            print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' columns will be processed.')
+            args=args[0:max_items+1]
+        
+        if int(datasetType)==1:
+            if len(args)==0:
                 with open(filepath, mode='r') as f:
                     reader = csv.reader(f, delimiter=datasetSep)
                     return list(reader)
-            except Exception as e:
-                vbcrlf = '<br>'
-                print(f"Could not open/read or find dataset file!!!.{vbcrlf}Unexpected error: {e}{vbcrlf}")
-                return None
-
-        else:
-            try:           
+            else:
                 dataset = pd.read_csv(filepath, sep=datasetSep)
-            except:
-                return None
+                    
+                #use only added columns
+                if len(args)>1:
+                    dataset = dataset[list(args[1:])]
+                #pandas to list
+                records=dataset.values.tolist()
+                #remove nan elements from this 2-dimensional list'
+                records = [[y for y in x if str(y) != args[0]] for x in records]
+                return(records)
                 
-            #use only added columns
-            if len(args)>1:
-                dataset = dataset[list(args[1:])]
+        elif datasetType==2:
+            dataset = pd.read_csv(filepath, sep=datasetSep, encoding='utf-8-sig')
+
+            groupCol = args[0]
+            itemsCol = args[1]
+
+            dataset = dataset[[groupCol, itemsCol]]
+            
+            datasetSorted=dataset.sort_values(by=groupCol)
+
+            TempInv=''
+            records=[]
+            setrec=set()
+            for index, row in datasetSorted.iterrows():
+                if TempInv!=row[groupCol]:
+                    if len(setrec)>1:
+                        records.append(sorted(setrec))
+                    setrec=set()
+                    setrec.add(str(row[itemsCol]).strip())
+                    TempInv=row[groupCol]
+                else:
+                    setrec.add(str(row[itemsCol]).strip())
+                    
+
+            if len(setrec)>1:
+                records.append(sorted(setrec))
+                
+            return(records)
+                    
+        elif datasetType==3:
+        
+            dataset = pd.read_csv(filepath, sep=datasetSep, encoding='utf-8-sig')
+            
+            dataset = dataset[list(args[1:])]
+            
+            #put the name of product in item#
+            for arg in args[1:]:
+                dataset[arg]=[str(arg) if str(x)!=args[0] else args[0] for x in dataset[arg]]
+            
             #pandas to list
             records=dataset.values.tolist()
-            #remove nan elements from this 2-dimensional list'
+            #remove nan elements from this 2-dimensional list in order to be transformed a dataset type 1'
             records = [[y for y in x if str(y) != args[0]] for x in records]
             return(records)
+                                
+        elif datasetType==4:
+            if len(args)>0:
             
-    elif datasetType==2:
-        try:
-            dataset = pd.read_csv(filepath, sep=datasetSep)
-        except:
-            return None
-
-        groupCol = args[0]
-        itemsCol = args[1]
-
-        dataset = dataset[[groupCol, itemsCol]]
-        
-        datasetSorted=dataset.sort_values(by=groupCol)
-
-        TempInv=''
-        records=[]
-        setrec=set()
-        for index, row in datasetSorted.iterrows():
-            if TempInv!=row[groupCol]:
-                if len(setrec)>1:
-                    records.append(sorted(setrec))
-                setrec=set()
-                setrec.add(str(row[itemsCol]).strip())
-                TempInv=row[groupCol]
-            else:
-                setrec.add(str(row[itemsCol]).strip())
-                
-
-        if len(setrec)>1:
-            records.append(sorted(setrec))
-            
-        return(records)
-                
-    elif datasetType==3:
-    
-        try:
-            dataset = pd.read_csv(filepath, sep=datasetSep)
-        except:
-            return None
-        
-        dataset = dataset[list(args[1:])]
-        
-        #put the name of product in item#
-        for arg in args[1:]:
-            dataset[arg]=[str(arg) if str(x)!=args[0] else args[0] for x in dataset[arg]]
-        
-        #pandas to list
-        records=dataset.values.tolist()
-        #remove nan elements from this 2-dimensional list in order to be transformed a dataset type 1'
-        records = [[y for y in x if str(y) != args[0]] for x in records]
-        return(records)
-                            
-    elif datasetType==4:
-        if len(args)>0:
-        
-            try:
                 dataset = pd.read_csv(filepath, sep=datasetSep)
-            except:
-                return None
-                
-            dataset = dataset[list(args)]
-            
-            for arg in args:
-                dataset[arg] = arg + '=' + dataset[arg].astype(str)
-            
-            records=dataset.values.tolist()
-            return(records)
-            
-        else:
-            with open(filepath, mode='r') as f:
-                try:
-                    reader = csv.reader(f, delimiter=datasetSep)
-                except:
-                    return None
                     
-                return list(reader)            
-            
-    else:
-        print("Unknown or unable to process the dataset. Its dataset type is 0 which means it can't be used for association rules mining as it can't produce intresting frequent itemsets.")
+                dataset = dataset[list(args)]
+                
+                for arg in args:
+                    dataset[arg] = arg + '=' + dataset[arg].astype(str)
+                
+                records=dataset.values.tolist()
+                return(records)
+                
+            else:
+                with open(filepath, mode='r') as f:
+                    reader = csv.reader(f, delimiter=datasetSep)
+                    return list(reader)            
+                
+        else:
+            print("An error occurred: Unknown or unable to process the dataset. Its dataset type is 0 which means it can't be used for association rules mining as it can't produce intresting frequent itemsets.")
+            sys.exit()
+
+    except Exception as e:
+        print(f"An error occurred: {e}")     
+        sys.exit()       
+     
 
 
 ##################################################################################
@@ -503,186 +488,192 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
 ##################################################################################
 
 def output_association_rules(association_results, sort_index, descending=True, fileName=None, outputType=1, **kwargs):
-    association_results.sort(reverse=descending, key=lambda x: x[sort_index])
-
-    records = kwargs.get('records')
-    recordTime = kwargs.get('recordTime')
-    rulesCount = kwargs.get('rulesCount')
-    assocTime = kwargs.get('assocTime')
-    
-    if fileName:
-
-        filepath=os.path.join('output', identity)
-        if not os.path.exists(filepath):
-            os.makedirs(filepath)
-
-        if outputType==1:
-            ext='.txt'
-        elif outputType==2:
-            ext='.json'
-        elif outputType==3:
-            ext='.json'
-            publicFilePath=os.path.join('output', identity, 'p')
-            if not os.path.exists(publicFilePath):
-                os.makedirs(publicFilePath)
-            publicFile = open(os.path.join('output', identity, 'p', os.path.splitext(fileName)[0] + ext),'w')
-        else:
-            ext=''
-            
-        file = open(os.path.join('output', identity, os.path.splitext(fileName)[0] + ext),'w')
-        
-    if outputType==1:        
-    
-        Sline='Input Parameters\n'
-        
-        if min_support:
-            Sline+='Minimum Support   :' + '{0:.3f}'.format(min_support)
-        if min_confidence:
-            Sline+='     Minimum confidence:' + '{0:.3f}'.format(min_confidence)  
-        Sline+='\n'
-        if min_lift:
-            Sline+='Minimum Lift      :' + '{0:.3f}'.format(min_lift)
-        if max_length:
-            Sline+='     Maximum rule items:' + '{:05d}'.format(max_length)      
-        Sline+='\n'
+    try:
          
-        if ssort:
-            Sline+='Sort by '
-            #sort_order
-#0 by LHS, 1 by RHS, 2 by confidence, 3 by lift, 4 by conviction, 5 by LHS support, 6 by RHS support, 7 by rule support 
-#negatives meaning descending
-            if ssort==0:
-                Sline+='LHS (body) '
-            elif abs(ssort)==1:
-                Sline+='RHS (head) '           
-            elif abs(ssort)==2:
-                Sline+='confidence '
-            elif abs(ssort)==3:
-                Sline+='lift '            
-            elif abs(ssort)==4:
-                Sline+='conviction '    
-            elif abs(ssort)==5:
-                Sline+='LHS support '            
-            elif abs(ssort)==6:
-                Sline+='RHS support '  
-            elif abs(ssort)==7:
-                Sline+='Rule support '  
-            else:
-                Sline+='Unknown ' 
+        association_results.sort(reverse=descending, key=lambda x: x[sort_index])
 
-            if ssort>0:
-                Sline+='ascending\n'
-            else:
-                Sline+='descending\n'
+        records = kwargs.get('records')
+        recordTime = kwargs.get('recordTime')
+        rulesCount = kwargs.get('rulesCount')
+        assocTime = kwargs.get('assocTime')
         
-        if datasetName:
-            Sline+='Dataset file name :' + datasetName + '\n' 
-        if datasetSep:
-            Sline+='Dataset separator : ' + datasetSep + '\n' 
-        if datasetType:
-            Sline+='Dataset Type      :' + str(datasetType) + '\n' 
-        Sline+=    'Output Type       :Plain text\n'
-        Sline+=    'Reduntant Type    :' + str(redundantRemoveType) + '\n'
-        if datasetArgs:
-            Sline+='Dataset parameters: ' + datasetArgs + '\n' 
-            
-        Sline+='-----------------------------------------------------\n\n' 
-        if records:
-            Sline+='Records           :' + '{:06d}'.format(records)
-        if recordTime:
-            Sline+='   Transformation time:' + '{0:.3f}'.format(recordTime)
-        Sline+='\n'
-        if rulesCount:
-            Sline+='Association Rules :' + '{:06d}'.format(len(association_results))
-        if assocTime:
-            Sline+='          Time elapsed:' + '{0:.3f}'.format(assocTime)
-        Sline+='\n'
-        Sline+='-----------------------------------------------------\n'
- 
         if fileName:
-            file.write(Sline)
-        print(Sline)
+
+            filepath=os.path.join('output', identity)
+            if not os.path.exists(filepath):
+                os.makedirs(filepath)
+
+            if outputType==1:
+                ext='.txt'
+            elif outputType==2:
+                ext='.json'
+            elif outputType==3:
+                ext='.json'
+                publicFilePath=os.path.join('output', identity, 'p')
+                if not os.path.exists(publicFilePath):
+                    os.makedirs(publicFilePath)
+                publicFile = open(os.path.join('output', identity, 'p', os.path.splitext(fileName)[0] + ext),'w')
+            else:
+                ext=''
+                
+            file = open(os.path.join('output', identity, os.path.splitext(fileName)[0] + ext),'w')
+            
+        if outputType==1:        
         
-        Vr=0
-        for item in association_results:
-            Vr+=1 
+            Sline='Input Parameters\n'
+            
+            if min_support:
+                Sline+='Minimum Support   :' + '{0:.3f}'.format(min_support)
+            if min_confidence:
+                Sline+='     Minimum confidence:' + '{0:.3f}'.format(min_confidence)  
+            Sline+='\n'
+            if min_lift:
+                Sline+='Minimum Lift      :' + '{0:.3f}'.format(min_lift)
+            if max_length:
+                Sline+='     Maximum rule items:' + '{:05d}'.format(max_length)      
+            Sline+='\n'
+            
+            if ssort:
+                Sline+='Sort by '
+                #sort_order
+    #0 by LHS, 1 by RHS, 2 by confidence, 3 by lift, 4 by conviction, 5 by LHS support, 6 by RHS support, 7 by rule support 
+    #negatives meaning descending
+                if ssort==0:
+                    Sline+='LHS (body) '
+                elif abs(ssort)==1:
+                    Sline+='RHS (head) '           
+                elif abs(ssort)==2:
+                    Sline+='confidence '
+                elif abs(ssort)==3:
+                    Sline+='lift '            
+                elif abs(ssort)==4:
+                    Sline+='conviction '    
+                elif abs(ssort)==5:
+                    Sline+='LHS support '            
+                elif abs(ssort)==6:
+                    Sline+='RHS support '  
+                elif abs(ssort)==7:
+                    Sline+='Rule support '  
+                else:
+                    Sline+='Unknown ' 
 
-            #Rules numbering
-            str1 = right("     " + str(Vr),4) + ") {"
-
-            #LHS
-            a = item[0]
-            LHS = [x for x in a]
-            for l in range(0, len(LHS)):
-                str1 += LHS[l] + ", "
-            if len(str1)>0:
-                str1 = left(str1,len(str1)-2)
-
-            str1 += "}([" + str(item[6]) + "]" + '{0:.3f}'.format(item[7]) + ") ==> {"
-
-            #RHS
-            a = item[1]
-            RHS = [x for x in a]
-            for l in range(0, len(RHS)):
-                str1 += RHS[l] + ", "
-            if len(str1)>0:
-                str1 = left(str1,len(str1)-2)
-
-            str1 += "}([" + str(item[8]) + "]" + '{0:.3f}'.format(item[9]) + ")"
-
-            #output to filename
+                if ssort>0:
+                    Sline+='ascending\n'
+                else:
+                    Sline+='descending\n'
+            
+            if datasetName:
+                Sline+='Dataset file name :' + datasetName + '\n' 
+            if datasetSep:
+                Sline+='Dataset separator : ' + datasetSep + '\n' 
+            if datasetType:
+                Sline+='Dataset Type      :' + str(datasetType) + '\n' 
+            Sline+=    'Output Type       :Plain text\n'
+            Sline+=    'Reduntant Type    :' + str(redundantRemoveType) + '\n'
+            if datasetArgs:
+                Sline+='Dataset parameters: ' + datasetArgs + '\n' 
+                
+            Sline+='-----------------------------------------------------\n\n' 
+            if records:
+                Sline+='Records           :' + '{:06d}'.format(records)
+            if recordTime:
+                Sline+='   Transformation time:' + '{0:.3f}'.format(recordTime)
+            Sline+='\n'
+            if rulesCount:
+                Sline+='Association Rules :' + '{:06d}'.format(len(association_results))
+            if assocTime:
+                Sline+='          Time elapsed:' + '{0:.3f}'.format(assocTime)
+            Sline+='\n'
+            Sline+='-----------------------------------------------------\n'
+    
             if fileName:
-                file.write(str1 + '\n')
-                file.write("        Count:" + '{:05d}'.format(item[11]) +
-                      "  Supp:" + '{0:.3f}'.format(item[10]) + 
-                      "  Conf:" + '{0:.3f}'.format(item[2]) + 
-                      "  Lift:" + '{0:.3f}'.format(item[3]) +
-                      "  Conv:" + '{0:.3f}'.format(item[4]) +
-                      "  Levr:" + '{0:.3f}'.format(item[5]) + '\n')
-            #output to console          
-            print(str1)    
-            print("        Count:" + '{:05d}'.format(item[11]) +
-                  "  Supp:" + '{0:.3f}'.format(item[10]) + 
-                  "  Conf:" + '{0:.3f}'.format(item[2]) + 
-                  "  Lift:" + '{0:.3f}'.format(item[3]) +
-                  "  Conv:" + '{0:.3f}'.format(item[4]) +
-                  "  Levr:" + '{0:.3f}'.format(item[5]))               
- 
-    elif (2<=outputType<=3):
-        Hlist = ['LHS', 'RHS', 'Confidence', 'Lift', 'Conviction', 'Leverage', 'LHS_Count', 'LHS_Support', 'RHS_Count', 'RHS_Support', 'Support', 'Count'] 
-        dictRules = {}
-        
-        dictRules['min_support'] = min_support
-        dictRules['min_confidence'] = min_confidence
-        dictRules['min_lift'] = min_lift
-        dictRules['max_length'] = max_length
-        dictRules['ssort'] = ssort
-        dictRules['datasetName'] = datasetName
-        dictRules['datasetType'] = datasetType
-        dictRules['outputType'] = outputType
-        dictRules['redundantRemoveType'] = redundantRemoveType
-        dictRules['datasetArgs'] = datasetArgs
-        
-        dictRules['Records'] = records
-        dictRules['RecordsCreationTime'] = '{0:.3f}'.format(recordTime)
-        dictRules['RulesCount'] = len(association_results)
-        dictRules['RulesCreationTime'] = '{0:.3f}'.format(assocTime)
-        
-        dictRules['rules'] = []
-        for arule in association_results:
-            dictRules['rules'].append(dict(zip(Hlist, arule)))
+                file.write(Sline)
+            print(Sline)
             
-        if fileName:
-            json.dump(dictRules, file, indent=4)
-            if outputType==3:
-                json.dump(dictRules, publicFile, indent=4)
-        print(json.dumps(dictRules, indent=4)) 
+            Vr=0
+            for item in association_results:
+                Vr+=1 
 
-    else:
-        print("Unknown output type")
- 
-    if fileName:
-        file.close()     
+                #Rules numbering
+                str1 = right("     " + str(Vr),4) + ") {"
+
+                #LHS
+                a = item[0]
+                LHS = [x for x in a]
+                for l in range(0, len(LHS)):
+                    str1 += LHS[l] + ", "
+                if len(str1)>0:
+                    str1 = left(str1,len(str1)-2)
+
+                str1 += "}([" + str(item[6]) + "]" + '{0:.3f}'.format(item[7]) + ") ==> {"
+
+                #RHS
+                a = item[1]
+                RHS = [x for x in a]
+                for l in range(0, len(RHS)):
+                    str1 += RHS[l] + ", "
+                if len(str1)>0:
+                    str1 = left(str1,len(str1)-2)
+
+                str1 += "}([" + str(item[8]) + "]" + '{0:.3f}'.format(item[9]) + ")"
+
+                #output to filename
+                if fileName:
+                    file.write(str1 + '\n')
+                    file.write("        Count:" + '{:05d}'.format(item[11]) +
+                        "  Supp:" + '{0:.3f}'.format(item[10]) + 
+                        "  Conf:" + '{0:.3f}'.format(item[2]) + 
+                        "  Lift:" + '{0:.3f}'.format(item[3]) +
+                        "  Conv:" + '{0:.3f}'.format(item[4]) +
+                        "  Levr:" + '{0:.3f}'.format(item[5]) + '\n')
+                #output to console          
+                print(str1)    
+                print("        Count:" + '{:05d}'.format(item[11]) +
+                    "  Supp:" + '{0:.3f}'.format(item[10]) + 
+                    "  Conf:" + '{0:.3f}'.format(item[2]) + 
+                    "  Lift:" + '{0:.3f}'.format(item[3]) +
+                    "  Conv:" + '{0:.3f}'.format(item[4]) +
+                    "  Levr:" + '{0:.3f}'.format(item[5]))               
+    
+        elif (2<=outputType<=3):
+            Hlist = ['LHS', 'RHS', 'Confidence', 'Lift', 'Conviction', 'Leverage', 'LHS_Count', 'LHS_Support', 'RHS_Count', 'RHS_Support', 'Support', 'Count'] 
+            dictRules = {}
+            
+            dictRules['min_support'] = min_support
+            dictRules['min_confidence'] = min_confidence
+            dictRules['min_lift'] = min_lift
+            dictRules['max_length'] = max_length
+            dictRules['ssort'] = ssort
+            dictRules['datasetName'] = datasetName
+            dictRules['datasetType'] = datasetType
+            dictRules['outputType'] = outputType
+            dictRules['redundantRemoveType'] = redundantRemoveType
+            dictRules['datasetArgs'] = datasetArgs
+            
+            dictRules['Records'] = records
+            dictRules['RecordsCreationTime'] = '{0:.3f}'.format(recordTime)
+            dictRules['RulesCount'] = len(association_results)
+            dictRules['RulesCreationTime'] = '{0:.3f}'.format(assocTime)
+            
+            dictRules['rules'] = []
+            for arule in association_results:
+                dictRules['rules'].append(dict(zip(Hlist, arule)))
+                
+            if fileName:
+                json.dump(dictRules, file, indent=4)
+                if outputType==3:
+                    json.dump(dictRules, publicFile, indent=4)
+            print(json.dumps(dictRules, indent=4)) 
+
+        else:
+            print("An error occurred: Unknown output type")
+    
+        if fileName:
+            file.close()     
+
+    except Exception as e:
+        print(f"An error occurred: {e}")     
+        sys.exit()       
 
 #Main Task
 
@@ -781,6 +772,7 @@ if len(sys.argv)>7:
 '''
 #1=text file, 2=json file
 #output to both console and file if datasetName is given
+#3 the dataset is public
 '''
 outputType=1
 if len(sys.argv)>8:
@@ -816,43 +808,48 @@ public=0
 if outputType==3:
     public=1
 
-#Read dataset's metadatafile to retrieve its attributes. If not exists then it will AutoML create it.
-metadataInst=Metadata.Metadata()
-jsonData=metadataInst.readMetadataFile(identity, datasetName, public)
-datasetSep=jsonData['delimiter']
-datasetType=int(jsonData['datasetType'])
-hasHeader=bool(jsonData['hasHeader'])
+try:
+
+    #Read dataset's metadatafile to retrieve its attributes. If not exists then it will AutoML create it.
+    metadataInst=Metadata.Metadata()
+    jsonData=metadataInst.readMetadataFile(identity, datasetName, public)
+    datasetSep=jsonData['delimiter']
+    datasetType=int(jsonData['datasetType'])
+    hasHeader=bool(jsonData['hasHeader'])
 
 
 
-#################
-recordTime=time()
-#################
+    #################
+    recordTime=time()
+    #################
 
 
-if len(sys.argv)>10:
-    records=prepare_records(datasetName, datasetSep, datasetType, public, *sys.argv[10:])
-else:
-    records=prepare_records(datasetName=datasetName, datasetSep=datasetSep, datasetType=datasetType, public=public)
+    if len(sys.argv)>10:
+        records=prepare_records(datasetName, datasetSep, datasetType, public, *sys.argv[10:])
+    else:
+        records=prepare_records(datasetName=datasetName, datasetSep=datasetSep, datasetType=datasetType, public=public)
+        
+    if records:
+
+        recordTime=time()-recordTime
+
+        assocTime=time()
+        association_results = list(webApriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length))
+        association_results = transform_association_rules(association_results,redundantRemoveType)
+        assocTime=time()-assocTime
+
+        descending=False
+        if ssort<0:
+            descending=True
+
+        output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, outputType=outputType, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
+
+    else:
+        print("Could not retrieve any record from the dataset")
     
-if records:
-
-    recordTime=time()-recordTime
-
-    assocTime=time()
-    association_results = list(webApriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length))
-    association_results = transform_association_rules(association_results,redundantRemoveType)
-    assocTime=time()-assocTime
-
-    descending=False
-    if ssort<0:
-        descending=True
-
-    output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, outputType=outputType, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
-
-else:
-    print("Could not retrieve any record from the dataset")
-    
+except Exception as e:
+    print(f"An error occurred: {e}")     
+    sys.exit()       
 
 
     

@@ -884,7 +884,7 @@
 
 					try {
 						if (jqXHR.status!=200) {
-							MyModal(jqXHR.status+res.title, res.message);
+							MyModal(res.title + '(' + jqXHR.status + ')', res.message);
 						}
 						else {	
 

@@ -113,14 +113,20 @@
         ob_end_clean();
     } catch (Exception $e) {
         http_response_code(201);
-        $JsonReq = array('title' => ' Error! '.$input, 'message' => "OKAy!!!");
+        $JsonReq = array('title' => ' Error! '.$input, 'message' => $e);
         print json_encode($JsonReq);
         exit();
     }
 
     if (!$output) {
         http_response_code(201);
-        $JsonReq = array('title' => 'Invalid parameters! Please check!', 'message' => $input);
+        $JsonReq = array('title' => 'Error!', 'message' => 'parameters:<br>'.$input.'.<br><br>Python did not resonded for unknown reason.');
+        echo json_encode($JsonReq);
+        exit();
+    }
+    elseif (strpos($output, 'error occurred') !== false) {
+        http_response_code(201);
+        $JsonReq = array('title' => 'Error!', 'message' => 'parameters:<br>'.$input.'.<br><br>Error:<br>'.$output);
         echo json_encode($JsonReq);
         exit();
     }

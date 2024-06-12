@@ -52,10 +52,10 @@
             "justMyCode": false,
             "args": [ 
                 "79d1727987f200802593e3599119c966",
-                "sd.csv",
+                "2Sample-Superstore.csv",
                 "10",
                 "15",
-                "0"
+                "1"
             ],
             "console": "integratedTerminal"
         },    
@@ -99,7 +99,16 @@
             "program": "${file}",
             "cwd": "${fileDirname}",
             "justMyCode": false,
-            "args": ["79d1727987f200802593e3599119c966","0.01","0.2","1.5","4","-3","3xrayfull.csv","3","0","0","Image Index","fold","Cardiomegaly","Emphysema","Effusion","Hernia","Infiltration","Mass","Nodule","Atelectasis","Pneumothorax","Pleural_Thickening","Pneumonia","Fibrosis","Edema","Consolidation"
+            "args": ["79d1727987f200802593e3599119c966",
+                     "0.01",
+                     "0.2",
+                     "1.5",
+                     "4",
+                     "-3",
+                     "2Sample-Superstore.csv",
+                     "3",
+                     "0",
+                     "Row ID","Order ID","Order Date","Ship Date","Ship Mode","Customer ID","Customer Name","Segment","Country","City","State","Postal Code","Region","Product ID","Category","Sub-Category","Product Name","Sales","Quantity","Discount","Profit"
             ],
             "console": "integratedTerminal"
         }

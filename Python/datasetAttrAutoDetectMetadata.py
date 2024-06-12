@@ -15,7 +15,7 @@ class Metadata():
 
         datasetAttributes = {}
 
-        with open(filepath, encoding='utf8') as f:
+        with open(filepath, encoding='utf-8-sig') as f:
             s100=''
 
             for x in range(100):

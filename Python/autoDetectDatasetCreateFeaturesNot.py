@@ -36,11 +36,11 @@ for file in files:
             # Save the first recsNo rows of the DataFrame to a CSV format string with a header
             s1=df1.head(recsNo).to_csv(path_or_buf=None, sep=';', index=False)
         else:
-            with open(filepath, encoding='utf8') as f:
+            with open(filepath, encoding='utf-8-sig') as f:
                 for x in range(recsNo):
                     s1+=f.readline()
     except Exception as e:
-        with open(filepath, encoding='utf8') as f:
+        with open(filepath, encoding='utf-8-sig') as f:
             for x in range(recsNo):
                 s1+=f.readline()
 

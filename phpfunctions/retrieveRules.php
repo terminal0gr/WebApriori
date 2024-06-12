@@ -222,8 +222,14 @@
 
     if (!$output) {
         http_response_code(201);
-        $JsonReq = array('title' => 'Invalid parameters! Please check!', 'message' => $input);
+        $JsonReq = array('title' => 'Invalid parameters! Please check!<br><br>', 'message' => $input);
         print json_encode($JsonReq);
+        exit();
+    }
+    elseif (strpos($output, 'error occurred') !== false) {
+        http_response_code(201);
+        $JsonReq = array('title' => 'Error!', 'message' => 'parameters:<br>'.$input.'.<br><br> Error:<br>'.$output);
+        echo json_encode($JsonReq);
         exit();
     }
 

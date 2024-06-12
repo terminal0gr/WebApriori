@@ -1,0 +1,40 @@
+import os
+from scipy.io import arff
+import pandas as pd
+import numpy as np
+import mysql.connector
+
+#Detect if a file is in arff format
+def is_arff_file(file_path):
+    try:
+        with open(file=file_path, mode='r', encoding='utf-8-sig') as file:
+            # Read the first few lines to check for ARFF attributes
+            #first_lines = [file.readline().strip() for _ in range(15)]
+            first_lines = [file.readline() for _ in range(15)]
+
+            # Check if it contains ARFF-specific keywords in the header
+            if any(line.lower().startswith('@relation') or line.lower().startswith('@attribute') for line in first_lines):
+                return True
+            else:
+                return False
+    except Exception as e:
+        print(f"Error: {e}")
+        return False
+
+#Detect if a file is in arff format
+def loadarfftoDataframe(file_path):
+    try:
+        data, meta = arff.loadarff(file_path)
+        # Convert the structured array to a Pandas DataFrame
+        dataframe1 = pd.DataFrame(data)
+
+        # Decode categorical attributes to strings
+        for column in dataframe1.columns:
+            if dataframe1[column].dtype == 'object':
+                dataframe1[column] = dataframe1[column].str.decode('utf-8-sig')
+
+        return dataframe1
+
+    except arff.ParseArffError as e:
+        print(f"Error: {e} in filepath: {file_path}")
+        return None, None
