@@ -10,9 +10,9 @@
     "redundantRemoveType": 0,
     "datasetArgs": "",
     "Records": 7501,
-    "RecordsCreationTime": "0.007",
+    "RecordsCreationTime": "0.332",
     "RulesCount": 96,
-    "RulesCreationTime": "0.056",
+    "RulesCreationTime": "0.112",
     "rules": [
         {
             "LHS": [
@@ -108,8 +108,8 @@
         },
         {
             "LHS": [
-                "mineral water",
-                "ground beef"
+                "ground beef",
+                "mineral water"
             ],
             "RHS": [
                 "spaghetti"
@@ -387,8 +387,8 @@
         },
         {
             "LHS": [
-                "mineral water",
-                "ground beef"
+                "ground beef",
+                "mineral water"
             ],
             "RHS": [
                 "milk"
@@ -480,8 +480,8 @@
         },
         {
             "LHS": [
-                "chocolate",
-                "ground beef"
+                "ground beef",
+                "chocolate"
             ],
             "RHS": [
                 "mineral water"
@@ -499,8 +499,8 @@
         },
         {
             "LHS": [
-                "mineral water",
-                "eggs"
+                "eggs",
+                "mineral water"
             ],
             "RHS": [
                 "milk"
@@ -556,8 +556,8 @@
         },
         {
             "LHS": [
-                "mineral water",
-                "pancakes"
+                "pancakes",
+                "mineral water"
             ],
             "RHS": [
                 "spaghetti"
@@ -835,8 +835,8 @@
         },
         {
             "LHS": [
-                "chocolate",
-                "eggs"
+                "eggs",
+                "chocolate"
             ],
             "RHS": [
                 "spaghetti"
@@ -1166,8 +1166,8 @@
         },
         {
             "LHS": [
-                "chocolate",
-                "eggs"
+                "eggs",
+                "chocolate"
             ],
             "RHS": [
                 "mineral water"
@@ -1331,8 +1331,8 @@
         },
         {
             "LHS": [
-                "mineral water",
-                "ground beef"
+                "ground beef",
+                "mineral water"
             ],
             "RHS": [
                 "chocolate"
@@ -1405,8 +1405,8 @@
         },
         {
             "LHS": [
-                "mineral water",
-                "eggs"
+                "eggs",
+                "mineral water"
             ],
             "RHS": [
                 "chocolate"
@@ -1424,8 +1424,8 @@
         },
         {
             "LHS": [
-                "mineral water",
-                "eggs"
+                "eggs",
+                "mineral water"
             ],
             "RHS": [
                 "spaghetti"

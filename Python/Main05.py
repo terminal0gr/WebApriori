@@ -10,6 +10,7 @@ from time import time
 import pandas as pd
 import numpy as np
 import datasetAttrAutoDetectMetadata as Metadata
+import Global
 # global variables section
 max_rules=1000
 max_items=999
@@ -399,7 +400,10 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
                     reader = csv.reader(f, delimiter=datasetSep)
                     return list(reader)
             else:
-                dataset = pd.read_csv(filepath, sep=datasetSep)
+                if Global.is_arff_file(filepath):
+                    dataset=Global.loadarfftoDataframe(filepath)
+                if not dataset:
+                    dataset = pd.read_csv(filepath, sep=datasetSep, encoding='utf-8-sig')
                     
                 #use only added columns
                 if len(args)>1:
@@ -411,7 +415,12 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
                 return(records)
                 
         elif datasetType==2:
-            dataset = pd.read_csv(filepath, sep=datasetSep, encoding='utf-8-sig')
+
+            dataset=None
+            if Global.is_arff_file(filepath):
+                dataset=Global.loadarfftoDataframe(filepath)
+            if not dataset:
+                dataset = pd.read_csv(filepath, sep=datasetSep, encoding='utf-8-sig')
 
             groupCol = args[0]
             itemsCol = args[1]
