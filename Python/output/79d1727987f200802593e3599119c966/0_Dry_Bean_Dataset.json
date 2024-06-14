@@ -1,0 +1,17 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "0_Dry_Bean_Dataset.arff",
+    "datasetType": 4,
+    "outputType": 3,
+    "redundantRemoveType": 0,
+    "datasetArgs": "['Area', 'Perimeter', 'MajorAxisLength', 'MinorAxisLength', 'AspectRation', 'Eccentricity', 'ConvexArea', 'EquivDiameter', 'Extent', 'Solidity', 'roundness', 'Compactness', 'ShapeFactor1', 'ShapeFactor2', 'ShapeFactor3', 'ShapeFactor4', 'Class']",
+    "Records": 13611,
+    "RecordsCreationTime": "0.413",
+    "RulesCount": 0,
+    "RulesCreationTime": "0.590",
+    "rules": []
+}

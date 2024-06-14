@@ -44,7 +44,7 @@ def readDataset(filepath, sep=';', encoding='utf-8-sig', hasHeader=True):
     try:
         if is_arff_file(filepath):
             dataset=loadarfftoDataframe(filepath, encoding)
-        if not dataset:
+        if not isinstance(dataset, pd.DataFrame):
             if hasHeader:
                 dataset = pd.read_csv(filepath, sep=sep, encoding=encoding)
             else:

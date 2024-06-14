@@ -398,13 +398,14 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
         if len(args)>max_items:
             print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' columns will be processed.')
             args=args[0:max_items+1]
-        
-        if int(datasetType)==1:
 
-            dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig', hasHeader=metaDataFile['hasHeader'])
-            if not dataset:
-                print(f"An error occurred: Could not read dataset! {e}")     
-                sys.exit
+        #Read the dataset from file
+        dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig', hasHeader=metaDataFile['hasHeader'])
+        if not isinstance(dataset, pd.DataFrame):
+            print(f"An error occurred: Could not read dataset! {e}")     
+            sys.exit
+
+        if int(datasetType)==1:
 
             # if len(args)==0:
             #     with open(filepath, mode='r') as f:
@@ -416,21 +417,16 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
             #         print(f"An error occurred: Could not read dataset! {e}")     
             #         sys.exit
                     
-                #use only added columns
-                if len(args)>1:
-                    dataset = dataset[list(args[1:])]
-                #pandas to list
-                records=dataset.values.tolist()
-                #remove nan elements from this 2-dimensional list'
-                records = [[y for y in x if str(y) != args[0]] for x in records]
-                return(records)
+            #use only added columns
+            if len(args)>1:
+                dataset = dataset[list(args[1:])]
+            #pandas to list
+            records=dataset.values.tolist()
+            #remove nan elements from this 2-dimensional list'
+            records = [[y for y in x if str(y) != args[0]] for x in records]
+            return(records)
                 
         elif datasetType==2:
-
-            dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig')
-            if not dataset:
-                print(f"An error occurred: Could not read dataset! {e}")     
-                sys.exit
 
             groupCol = args[0]
             itemsCol = args[1]
@@ -459,11 +455,6 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
             return(records)
                     
         elif datasetType==3:
-        
-            dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig')
-            if not dataset:
-                print(f"An error occurred: Could not read dataset! {e}")     
-                sys.exit
             
             dataset = dataset[list(args[1:])]
             
@@ -478,25 +469,14 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
             return(records)
                                 
         elif datasetType==4:
-            if len(args)>0:
+                
+            dataset = dataset[list(args)]
             
-                dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig')
-                if not dataset:
-                    print(f"An error occurred: Could not read dataset! {e}")     
-                    sys.exit
-                    
-                dataset = dataset[list(args)]
-                
-                for arg in args:
-                    dataset[arg] = arg + '=' + dataset[arg].astype(str)
-                
-                records=dataset.values.tolist()
-                return(records)
-                
-            else:
-                with open(filepath, mode='r') as f:
-                    reader = csv.reader(f, delimiter=datasetSep)
-                    return list(reader)            
+            for arg in args:
+                dataset[arg] = arg + '=' + dataset[arg].astype(str)
+            
+            records=dataset.values.tolist()
+            return(records)
                 
         else:
             print("An error occurred: Unknown or unable to process the dataset. Its dataset type is 0 which means it can't be used for association rules mining as it can't produce intresting frequent itemsets.")

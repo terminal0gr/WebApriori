@@ -36,9 +36,9 @@
             "justMyCode": false,
             "args": [ 
                 "79d1727987f200802593e3599119c966",
-                "sd.csv",
+                "0_Dry_Bean_Dataset.arff",
                 "-1",
-                "0",
+                "1",
                 "1"
             ],
             "console": "integratedTerminal"
@@ -52,7 +52,7 @@
             "justMyCode": false,
             "args": [ 
                 "79d1727987f200802593e3599119c966",
-                "2Sample-Superstore.csv",
+                "0_Dry_Bean_Dataset.arff",
                 "10",
                 "15",
                 "1"

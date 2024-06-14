@@ -3,6 +3,8 @@ import os
 import json
 import csvMy as csv
 import datasetTypeDetection as df
+import Global
+from scipy.io import arff
 
 class Metadata():
 
@@ -12,6 +14,12 @@ class Metadata():
             filepath=os.path.join('datasets', str(identity), datasetName)
         else:
             filepath=os.path.join('public', datasetName)	
+
+        if Global.is_arff_file(filepath):
+           dataset=Global.loadarfftoDataframe(filepath, encoding='utf-8-sig')
+           filepathcsv=os.path.join('temp',datasetName)
+           filepath=os.path.splitext(filepathcsv)[0] + '.csv'
+           dataset.to_csv(filepath,index=False)
 
         datasetAttributes = {}
 

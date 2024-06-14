@@ -1,6 +1,24 @@
 {
-    "hasHeader": false,
-    "header": null,
+    "hasHeader": true,
+    "header": [
+        "Area",
+        "Perimeter",
+        "MajorAxisLength",
+        "MinorAxisLength",
+        "AspectRation",
+        "Eccentricity",
+        "ConvexArea",
+        "EquivDiameter",
+        "Extent",
+        "Solidity",
+        "roundness",
+        "Compactness",
+        "ShapeFactor1",
+        "ShapeFactor2",
+        "ShapeFactor3",
+        "ShapeFactor4",
+        "Class"
+    ],
     "delimiter": ",",
     "datasetFeatures": {
         "NumberOfColumns": [
@@ -11,20 +29,20 @@
         ],
         "_name": [
             "Name",
-            "0_Dry_Bean_Dataset.arff",
-            "0_Dry_Bean_Dataset.arff",
+            "0_Dry_Bean_Dataset.csv",
+            "0_Dry_Bean_Dataset.csv",
             "The name of the dataset"
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.9162226054186277,
-            "91.6%",
+            0.9301176470588235,
+            "93.0%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.9051372808325446,
-            "90.5%",
+            0.9243529411764706,
+            "92.4%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
@@ -35,20 +53,20 @@
         ],
         "FreqoFTop1FreqValue": [
             "Top 1 Value",
-            0.015324975041813066,
-            "1.5%",
+            0.058823529411764705,
+            "5.9%",
             "The ratio of the number of the most frequent value to the number of elements"
         ],
         "FreqoFTop2FreqValue": [
             "Top 2 Value",
-            0.011392169828037011,
-            "1.1%",
+            0.00047058823529411766,
+            "0.0%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqoFTop3FreqValue": [
             "Top 3 Value",
-            0.008760215569586883,
-            "0.9%",
+            0.00035294117647058826,
+            "0.0%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
@@ -83,20 +101,20 @@
         ],
         "MinItemLen": [
             "Min Item length",
-            4,
-            4,
+            5,
+            5,
             "The length of the smallest element in dataset"
         ],
         "MaxItemLen": [
             "Max Item Length",
-            21,
-            21,
+            18,
+            18,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            15.718203702023018,
-            "15.7",
+            15.317176470588239,
+            "15.3",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
@@ -107,14 +125,14 @@
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.0,
-            "0.0%",
+            0.058823529411764705,
+            "5.9%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
         "HasHeader": [
             "Has Header?",
-            false,
-            false,
+            true,
+            true,
             "Does the dataset have Header?"
         ],
         "delimiter": [
@@ -130,6 +148,6 @@
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
         ]
     },
-    "datasetTypePredicted": 1,
-    "datasetType": 1
+    "datasetTypePredicted": 0,
+    "datasetType": 0
 }

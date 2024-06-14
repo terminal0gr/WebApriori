@@ -4,6 +4,7 @@ import os
 import pandas as pd
 import numpy as np
 import datasetAttrAutoDetectMetadata as Metadata
+import Global
 
 #------------------------------
 #command line arguments section
@@ -52,12 +53,13 @@ try:
         filepath=os.path.join('public', datasetName)
 
     metadataInst=Metadata.Metadata()
-    metaDataFile=metadataInst.rehasHeaderadMetadataFile(identity,datasetName,public)
+    metaDataFile=metadataInst.readMetadataFile(identity,datasetName,public)
 
-    if metaDataFile['']:
-        dataset = pd.read_csv(filepath, sep=metaDataFile['delimiter'], encoding='utf-8-sig')
-    else:
-        dataset = pd.read_csv(filepath, sep=metaDataFile['delimiter'], encoding='utf-8-sig', header=None)
+    #Read the dataset from file
+    dataset=Global.readDataset(filepath, sep=metaDataFile['delimiter'], encoding='utf-8-sig', hasHeader=metaDataFile['hasHeader'])
+    if not isinstance(dataset, pd.DataFrame):
+        print(f"An error occurred: Could not read dataset! {e}")     
+        sys.exit    
 
     datasetDescription['features']={"Rows":  ("Dataset rows", dataset.shape[0], dataset.shape[0], "The total rows of the dataset")}
 
