@@ -15,6 +15,8 @@ import Global
 max_rules=1000
 max_items=999
 
+metaDataFile=None
+
 __Version__ = '02.00.00 28/03/2024'
 __Developer__ = 'Malliaridis konstantinos'
 __DeveloperEmail__= 'terminal_gr@yahoo.com'
@@ -390,20 +392,29 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
         else:
             filepath=os.path.join('public', datasetName)
 
+        metadataInst=Metadata.Metadata()
+        metaDataFile=metadataInst.readMetadataFile(identity,datasetName,public)
+
         if len(args)>max_items:
             print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' columns will be processed.')
             args=args[0:max_items+1]
         
         if int(datasetType)==1:
-            if len(args)==0:
-                with open(filepath, mode='r') as f:
-                    reader = csv.reader(f, delimiter=datasetSep)
-                    return list(reader)
-            else:
-                if Global.is_arff_file(filepath):
-                    dataset=Global.loadarfftoDataframe(filepath)
-                if not dataset:
-                    dataset = pd.read_csv(filepath, sep=datasetSep, encoding='utf-8-sig')
+
+            dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig', hasHeader=metaDataFile['hasHeader'])
+            if not dataset:
+                print(f"An error occurred: Could not read dataset! {e}")     
+                sys.exit
+
+            # if len(args)==0:
+            #     with open(filepath, mode='r') as f:
+            #         reader = csv.reader(f, delimiter=datasetSep)
+            #         return list(reader)
+            # else:
+            #     dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig')
+            #     if not dataset:
+            #         print(f"An error occurred: Could not read dataset! {e}")     
+            #         sys.exit
                     
                 #use only added columns
                 if len(args)>1:
@@ -416,11 +427,10 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
                 
         elif datasetType==2:
 
-            dataset=None
-            if Global.is_arff_file(filepath):
-                dataset=Global.loadarfftoDataframe(filepath)
+            dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig')
             if not dataset:
-                dataset = pd.read_csv(filepath, sep=datasetSep, encoding='utf-8-sig')
+                print(f"An error occurred: Could not read dataset! {e}")     
+                sys.exit
 
             groupCol = args[0]
             itemsCol = args[1]
@@ -450,7 +460,10 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
                     
         elif datasetType==3:
         
-            dataset = pd.read_csv(filepath, sep=datasetSep, encoding='utf-8-sig')
+            dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig')
+            if not dataset:
+                print(f"An error occurred: Could not read dataset! {e}")     
+                sys.exit
             
             dataset = dataset[list(args[1:])]
             
@@ -467,7 +480,10 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
         elif datasetType==4:
             if len(args)>0:
             
-                dataset = pd.read_csv(filepath, sep=datasetSep)
+                dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig')
+                if not dataset:
+                    print(f"An error occurred: Could not read dataset! {e}")     
+                    sys.exit
                     
                 dataset = dataset[list(args)]
                 
