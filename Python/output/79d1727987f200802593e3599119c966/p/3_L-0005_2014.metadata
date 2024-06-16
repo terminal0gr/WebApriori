@@ -1,6 +1,7 @@
 {
     "hasHeader": true,
     "header": [
+        "N",
         "1.05",
         "1.07",
         "1.08",
@@ -9,7 +10,7 @@
         "1.11",
         "1.12",
         "1.14",
-        "1.17",
+        "1.19",
         "1.2",
         "1.21",
         "1.22",
@@ -18,6 +19,7 @@
         "1.25",
         "2.01",
         "2.02",
+        "2.03",
         "2.04",
         "2.05",
         "2.06",
@@ -26,8 +28,10 @@
         "2.09",
         "3.01",
         "3.03",
+        "3.04",
         "3.05",
         "3.07",
+        "3.09",
         "3.1",
         "3.11",
         "4.01",
@@ -52,6 +56,7 @@
         "5.28",
         "5.29",
         "5.31",
+        "5.32",
         "5.34",
         "5.35",
         "5.36",
@@ -60,20 +65,26 @@
         "5.39",
         "5.4",
         "5.41",
+        "5.42",
         "5.43",
         "5.44",
         "5.45",
         "5.46",
         "5.47",
-        "5.5",
+        "5.48",
+        "5.49",
         "6.04",
         "6.05",
         "6.06",
         "6.09",
+        "6.1",
+        "6.12",
         "6.13",
         "6.14",
+        "6.15",
         "6.16",
         "6.17",
+        "6.18",
         "6.19",
         "6.2",
         "6.21",
@@ -83,92 +94,93 @@
         "6.25",
         "7.01",
         "7.02",
-        "28.02"
+        "28.02",
+        "99.01"
     ],
     "delimiter": ";",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            83,
-            83,
-            "The total number of columns/features in the Dataset"
+            94,
+            94,
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
-            "3_L-0005_2015.csv",
-            "3_L-0005_2015.csv",
+            "3_L-0005_2014.csv",
+            "3_L-0005_2014.csv",
             "The name of the dataset"
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.0033253012048192793,
+            0.0032553191489361724,
             "0.3%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            7.228915662650602e-05,
+            6.382978723404255e-5,
             "0.0%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            0.024120481927711022,
-            "2.4%",
+            0.021276595744680684,
+            "2.1%",
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "0",
-            "0",
+            "N",
+            "N",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.9814698795180723,
-            "98.1%",
+            0.9832765957446808,
+            "98.3%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.01850602409638554,
-            "1.9%",
+            0.01670212765957447,
+            "1.7%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            2.4096385542168674e-05,
+            2.1276595744680852e-5,
             "0.0%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.012048192771084338,
-            "1.2%",
+            0,
+            "0.0%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            0.0,
-            "0.0%",
+            0.617021,
+            "61.7%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.9879518072289156,
-            "98.8%",
+            0.3829787234042553,
+            "38.3%",
             "The ratio of boolean columns to the total number of columns"
         ],
         "MinItemLen": [
@@ -185,20 +197,20 @@
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            1.0,
+            1,
             "1.0",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            1.0,
+            1,
             "100.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.9879518072289156,
-            "98.8%",
+            0.9893617021276596,
+            "98.9%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
         "HasHeader": [

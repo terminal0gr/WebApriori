@@ -83,7 +83,7 @@ class datasetFeatures:
             if datasetFeaturesInst.Top1Value in ["n/a", "na", "-", "?", "#", False, "no", "No", "0"]:
                 # If the most frequent value is more than 50% of all the values of the dataset then 
                 # It is the absent value and the
-                # dataset is 100% of type 3-SI. Additionally change NaN values to 0 For smoothness in the procedures below
+                # dataset is 100% of type 3-SI. Additionally change NaN values to 0 For smoothness in the procedures below because is 3-SI we don't want absent value to be treated as missing value
                 # Declare 3-SI type to dataset here without performing ML prediction afterwards.
                 if all_values.value_counts(dropna=False).max()>= df.shape[1]*df.shape[0]*0.5:
                     datasetFeaturesInst.datasetType=3

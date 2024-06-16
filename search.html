@@ -759,6 +759,9 @@
 								var transformedString = res.header.map(function(item) {
     								return '"' + item + '"';
 								}).join(' ');
+								if (res.datasetType==3) {
+									transformedString='"' + res.datasetFeatures.Top1Value[1] + '" ' + transformedString;
+								}
 								document.getElementById('extra_parameters').value=transformedString;
 							}
 						}

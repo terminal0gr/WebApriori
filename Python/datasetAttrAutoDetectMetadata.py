@@ -43,7 +43,7 @@ class Metadata():
                 "AvgOfDistinctValuesPerCol": ("AvgOfDistinctValuesPerCol" ,DFI.AvgOfDistinctValuesPerCol, "{:.1f}%".format(DFI.AvgOfDistinctValuesPerCol*100), "The Average of distinct values per column over the total columns"),
                 "AvgOfDistinctValuesOverAll": ("AvgOfDistinctValuesOverAll", DFI.AvgOfDistinctValuesOverAll, "{:.1f}%".format(DFI.AvgOfDistinctValuesOverAll*100), "The ratio of the number of total unique values to the number of elements"),
                 "AvgOfDistinctValuesPerRow": ("AvgOfDistinctValuesPerRow", DFI.AvgOfDistinctValuesPerRow, "{:.1f}%".format(DFI.AvgOfDistinctValuesPerRow*100), "The Average of distinct values per row over the total rows"),
-                "Top1Value": ("Most Frequent Value", DFI.Top1Value, DFI.Top1Value, "The most frequent value in the dataset"),
+                "Top1Value": ("Most Frequent Value", str(DFI.Top1Value), str(DFI.Top1Value), "The most frequent value in the dataset"),
                 "FreqOfTop1FreqValue": ("Top 1 Value %", DFI.FreqOfTop1FreqValue, "{:.1f}%".format(DFI.FreqOfTop1FreqValue*100), "The ratio Of the number of the most frequent value to the number of elements"), 
                 "FreqOfTop2FreqValue": ("Top 2 Value %", DFI.FreqOfTop2FreqValue, "{:.1f}%".format(DFI.FreqOfTop2FreqValue*100), "The ratio of the number of the second most frequent value to the number of elements"), 
                 "FreqOfTop3FreqValue": ("Top 3 Value %", DFI.FreqOfTop3FreqValue, "{:.1f}%".format(DFI.FreqOfTop3FreqValue*100), "The ratio of the number of the third most frequent value to the number of elements"), 

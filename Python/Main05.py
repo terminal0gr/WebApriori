@@ -128,7 +128,7 @@ class itemsetManager(object):
 
 FrequentItemset = namedtuple('FrequentItemset', ('items', 'support', 'count'))
 # Association_rule = namedtuple('Association_rule', FrequentItemset._fields + ('rule_statistics',))
-ruleStatistic = namedtuple('ruleStatistic', ('itemset', 'support', 'count', 'LHS', 'RHS', 'confidence', 'lift', 'conviction', 'levarage', 'LHS_count', 'LHS_support', 'RHS_count', 'RHS_support'))
+ruleStatistic = namedtuple('ruleStatistic', ('itemset', 'support', 'count', 'LHS', 'RHS', 'confidence', 'lift', 'conviction', 'leverage', 'LHS_count', 'LHS_support', 'RHS_count', 'RHS_support'))
 
 ################################################################################
 # Inner core functions.
@@ -225,11 +225,11 @@ def gen_rule_statistics(itemset_manager, itemset, **kwargs):
             RHS_support = float(RHS_count / itemset_manager.num_itemset)                   
             confidence = (itemset.support / LHS_support)
             lift = confidence / RHS_support
-            levarage = itemset.support - (LHS_support * RHS_support)
+            leverage = itemset.support - (LHS_support * RHS_support)
             if confidence!=1:
                 conviction = (1 - RHS_support) / (1 - confidence)
             else:
-                conviction = 100
+                conviction = 999.999
  
             if confidence < min_confidence:
                 continue
@@ -239,7 +239,7 @@ def gen_rule_statistics(itemset_manager, itemset, **kwargs):
             yield ruleStatistic(sorted_items, itemset.support, itemset.count,
                                     frozenset(LHS), 
                                     frozenset(RHS), 
-                                    confidence, lift, conviction, levarage, 
+                                    confidence, lift, conviction, leverage, 
                                     LHS_count, LHS_support, RHS_count, RHS_support
                                 )
         
@@ -304,7 +304,7 @@ def transform_association_rules(A_R,RedundantType=0):
         a = item[4]
         RHS = [x for x in a]
         rule=[]
-        # [0]:sorted_items, [1]:itemset.support, [2]:itemset.count, [3]:frozenset(LHS), [4]:frozenset(RHS), [5]:confidence, [6]:lift, [7]:conviction, [8]:levarage, [9]:LHS_count, [10]:LHS_support, [11]:RHS_count, [12]:RHS_support
+        # [0]:sorted_items, [1]:itemset.support, [2]:itemset.count, [3]:frozenset(LHS), [4]:frozenset(RHS), [5]:confidence, [6]:lift, [7]:conviction, [8]:leverage, [9]:LHS_count, [10]:LHS_support, [11]:RHS_count, [12]:RHS_support
         rule.extend((LHS, RHS, item[5], item[6], item[7], item[8], item[9], item[10], item[11], item[12], item[1], item[2], item[0]))
         rules.append(rule)
 

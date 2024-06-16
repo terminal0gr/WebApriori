@@ -36,7 +36,6 @@ def loadarfftoDataframe(file_path, encoding='utf-8-sig'):
         return dataframe1
 
     except arff.ParseArffError as e:
-        print(f"Error: {e} in filepath: {file_path}")
         return None
     
 def readDataset(filepath, sep=';', encoding='utf-8-sig', hasHeader=True):
