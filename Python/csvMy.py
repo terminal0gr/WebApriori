@@ -187,9 +187,9 @@ class Sniffer:
         if not delimiter:
             delimiter, skipinitialspace, datasetType = self._guess_delimiter(sample, delimiters)
         else: #Malliaridis 23/12/2023
-            # we use _guess_delimiter only for examine if it is dataset of type 1) Market Basket list.
-            # This is neseccary because that king of dataset has indistinct number of columns in each line
-            # and thus can't be merged in a pandas dataframe or a numpy's array
+            # we use _guess_delimiter only for examine if it is dataset of type 1-MBL - Market Basket list.
+            # This is neseccary because that kind of dataset has indistinct number of columns in each line
+            # making easy to be detected and not use the ML detection
             delimiter1, temp_skipinitialspace, datasetType = self._guess_delimiter(sample, delimiters)
             if delimiter1:
                 if delimiter1 in self.preferred:

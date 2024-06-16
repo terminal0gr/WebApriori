@@ -5,9 +5,9 @@ Owner: Malliaridis Konstantinos PHd candidate
 """
 
 import os
-from scipy.io import arff
 import pandas as pd
 from joblib import load
+import Global
 
 missingValuesThreshold=0.2
 nRows=500
@@ -21,9 +21,10 @@ class datasetFeatures:
     AvgOfDistinctValuesPerCol = 0.0 #Range [0...1]
     AvgOfDistinctValuesOverAll = 0.0 #Range [0...1]
     AvgOfDistinctValuesPerRow = 0.0 #Range [0...1]
-    FreqoFTop1FreqValue = 0.0 #Range [0...1]
-    FreqoFTop2FreqValue = 0.0 #Range [0...1]
-    FreqoFTop3FreqValue = 0.0 #Range [0...1]
+    Top1Value = None
+    FreqOfTop1FreqValue = 0.0 #Range [0...1]
+    FreqOfTop2FreqValue = 0.0 #Range [0...1]
+    FreqOfTop3FreqValue = 0.0 #Range [0...1]
     NumberOfColumns = 0 #Range [1...Infinite]
     FreqOfIntegerCol = 0.0 #Range [0...1]
     FreqOfNumberCol = 0.0 #Range [0...1]
@@ -48,35 +49,59 @@ class datasetFeatures:
         try:
 
             #The possible missing values that can exists in datasets and pandas cannot manipulate by default
-            extra_missing_values_light = ["n/a", "na"] #Useful only in 3 type recordset which may use "-", "?", "#" or None as absent value of an item
-            extra_missing_values_normal = ["n/a", "na", "-", "?", "#"] #all the other dataset types (0,2,4)
+            # extra_missing_values_light = ["n/a", "na"] #Useful only in 3 type recordset which may use "-", "?", "#" or None as absent value of an item
+            # extra_missing_values_normal = ["n/a", "na", "-", "?", "#"] #all the other dataset types (0,2,4)
 
             headerV1=None
             if hasHeader:
                 headerV1=0
 
+            # try: #Try with extra_missing_values_normal
+            #     df, meta = Global.loadarfftoDataframe(filepath,False)
+            #     if df is None:       
+            #         df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8-sig', na_values = extra_missing_values_normal, header=headerV1)
+            # except Exception as e:
+            #     df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8-sig', na_values = extra_missing_values_normal, header=headerV1)
             try: #Try with extra_missing_values_normal
-                df, meta = loadarfftoDataframe(filepath,False)
+                df, meta = Global.loadarfftoDataframe(filepath,False)
                 if df is None:       
-                    df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8', na_values = extra_missing_values_normal, header=headerV1)
+                    df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8-sig', header=headerV1)
             except Exception as e:
-                df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8', na_values = extra_missing_values_normal, header=headerV1)
-
+                df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8-sig', header=headerV1)
+            
             class datasetFeaturesInst(datasetFeatures):
                 _name=os.path.basename(filepath)
+
+            # We want to find and keep the most frequent value because with df=df.fillna(0) later the value may change to 0 for ever!!!
+            # Concatenate all columns into a single Series in ordeer to avoid iterating in all columns of the dataframe...
+            all_values = pd.concat([df[col] for col in df.columns])
+
+            # Find the most frequent value in the entire DataFrame
+            datasetFeaturesInst.Top1Value = all_values.value_counts(dropna=False).idxmax()
+            
+            # Check if the Most frequent value is one of the P\possible strings that could represent the absent value in 3-SI dataset type
+            if datasetFeaturesInst.Top1Value in ["n/a", "na", "-", "?", "#", False, "no", "No", "0"]:
+                # If the most frequent value is more than 50% of all the values of the dataset then 
+                # It is the absent value and the
+                # dataset is 100% of type 3-SI. Additionally change NaN values to 0 For smoothness in the procedures below
+                # Declare 3-SI type to dataset here without performing ML prediction afterwards.
+                if all_values.value_counts(dropna=False).max()>= df.shape[1]*df.shape[0]*0.5:
+                    datasetFeaturesInst.datasetType=3
+                    df=df.fillna(0)   
 
             #DatasetType 3 special case.
             #Initially check if NaN value is the most frequent in the dataset.
             #If that happens then DatasetType is Most likely datasetType:3 and NaN Value is the absent value.
             #For smoothness in the procedures below, I change Nan value with 0.
-            countNaNValues=0
-            for myCol in df.columns:
-                if pd.isna(df[myCol].value_counts(dropna=False).idxmax()):
-                    countNaNValues+=df[myCol].value_counts(dropna=False).max()
+            # countNaNValues=0
+            # for myCol in df.columns:
+            #     # if pd.isna(df[myCol].value_counts(dropna=False).idxmax()):
+            #         countNaNValues+=df[myCol].value_counts(dropna=False).max()
             #If NaN values are more than 50% of all the values of the dataset then change them to 0
-            if countNaNValues>= df.shape[1]*df.shape[0]*0.5:
-                df=df.fillna(0)   
-                datasetFeaturesInst.datasetType=3
+            #And declare 3-SI to dataset Type without performing ML prediction
+            # if countNaNValues>= df.shape[1]*df.shape[0]*0.5:
+            #     datasetFeaturesInst.datasetType=3
+            #     df=df.fillna(0)   
 
             columnsCount=df.shape[1]
             columnsWithUnacceptedMissingValues=0
@@ -86,27 +111,11 @@ class datasetFeatures:
                 dfCol = df[myCol].dropna()
                 if dfCol.shape[0]<(df[myCol].shape[0]*missingValuesThreshold): #The column {dfcol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be analysed. The procedure ends with error.
                     columnsWithUnacceptedMissingValues+=1
-            
-            if columnsWithUnacceptedMissingValues>columnsCount*missingValuesThreshold: #Try with extra_missing_values_light
-                try:
-                    df, meta = loadarfftoDataframe(filepath)
-                    if df is None:       
-                        df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8', na_values = extra_missing_values_light, header=headerV1)
-                except Exception as e:
-                    df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8', na_values = extra_missing_values_light, header=headerV1)
+                    print(f"The column {dfCol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and it will be omitted")
 
-                columnsWithUnacceptedMissingValues=0
-
-                for myCol in df.columns:
-                    #Remove the rows from current column that have missing values
-                    dfcol = df[myCol].dropna()
-                    if dfcol.shape[0]<(df[myCol].shape[0]*missingValuesThreshold):
-                        columnsWithUnacceptedMissingValues+=1
-                        print(f"The column {dfcol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be analysed. The procedure ends with error.")
-
-                if columnsWithUnacceptedMissingValues>columnsCount*missingValuesThreshold: 
-                    print(f"{columnsWithUnacceptedMissingValues} columns {columnsCount} of the dataset {os.path.basename(filepath)} has missing values more than 80% and the dataset and can't be analyzed. The procedure ends with error.")
-                    return None
+            if columnsWithUnacceptedMissingValues>columnsCount*missingValuesThreshold: 
+                print(f"{columnsWithUnacceptedMissingValues} columns {columnsCount} of the dataset {os.path.basename(filepath)} has missing values more than 80% and the dataset and can't be analyzed. The procedure ends with error.")
+                return None
 
             datasetFeaturesInst.delimiter=delimiter
 
@@ -219,11 +228,11 @@ class datasetFeatures:
             for si in most_frequent_item.iloc[:3]:
                 i+=1
                 if i==1:
-                    datasetFeaturesInst.FreqoFTop1FreqValue=si/(df.shape[0]*df.shape[1])
+                    datasetFeaturesInst.FreqOfTop1FreqValue=si/(df.shape[0]*df.shape[1])
                 elif i==2:
-                    datasetFeaturesInst.FreqoFTop2FreqValue=si/(df.shape[0]*df.shape[1])
+                    datasetFeaturesInst.FreqOfTop2FreqValue=si/(df.shape[0]*df.shape[1])
                 elif i==3:
-                    datasetFeaturesInst.FreqoFTop3FreqValue=si/(df.shape[0]*df.shape[1])
+                    datasetFeaturesInst.FreqOfTop3FreqValue=si/(df.shape[0]*df.shape[1])
         
             freq=0
             for i in range(df.shape[0]):
@@ -255,14 +264,14 @@ class datasetFeatures:
         
     def AutoDetectType(self, dFI):
 
-        #_name, datasetType omitted intetionally. _name irrelevant, datasetType > Y (predicted datasetType)
+        #_name, datasetType. Top1Value omitted intetionally. _name irrelevant, datasetType > Y (predicted datasetType)
         data = {
                 'AvgOfDistinctValuesPerCol': [dFI.AvgOfDistinctValuesPerCol],
                 'AvgOfDistinctValuesOverAll': [dFI.AvgOfDistinctValuesOverAll],
                 'AvgOfDistinctValuesPerRow': [dFI.AvgOfDistinctValuesPerRow],
-                'FreqoFTop1FreqValue': [dFI.FreqoFTop1FreqValue],
-                'FreqoFTop2FreqValue': [dFI.FreqoFTop2FreqValue],  
-                'FreqoFTop3FreqValue': [dFI.FreqoFTop3FreqValue],
+                'FreqOfTop1FreqValue': [dFI.FreqOfTop1FreqValue],
+                'FreqOfTop2FreqValue': [dFI.FreqOfTop2FreqValue],  
+                'FreqOfTop3FreqValue': [dFI.FreqOfTop3FreqValue],
                 'NumberOfColumns': [dFI.NumberOfColumns],
                 'FreqOfIntegerCol': [dFI.FreqOfIntegerCol],
                 'FreqOfNumberCol': [dFI.FreqOfNumberCol],
@@ -286,42 +295,3 @@ class datasetFeatures:
         y_pred = rf_model.predict(X_Pred)
 
         return(y_pred[0])
-
-#Detect if a file is in arff format
-def is_arff_file(file_path):
-    try:
-        with open(file=file_path, mode='r', encoding='utf-8') as file:
-            # Read the first few lines to check for ARFF attributes
-            #first_lines = [file.readline().strip() for _ in range(15)]
-            first_lines = [file.readline() for _ in range(15)]
-
-            # Check if it contains ARFF-specific keywords in the header
-            if any(line.lower().startswith('@relation') or line.lower().startswith('@attribute') for line in first_lines):
-                return True
-            else:
-                return False
-    except Exception as e:
-        print(f"Error: {e}")
-        return False
-
-#Detect if a file is in arff format
-def loadarfftoDataframe(file_path, showErrors=True):
-    try:
-        data, meta = arff.loadarff(file_path)
-        # Convert the structured array to a Pandas DataFrame
-        df1 = pd.DataFrame(data)
-
-        # Decode categorical attributes to strings
-        for column in df1.columns:
-            if df1[column].dtype == 'object':
-                df1[column] = df1[column].str.decode('utf-8')
-
-        return df1, meta
-
-    except arff.ParseArffError as e:
-        
-        if showErrors:
-            print(f"Error: {e} in filepath: {file_path}")
-        
-        return None, None
-    

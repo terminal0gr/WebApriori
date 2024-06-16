@@ -1,140 +1,125 @@
 {
     "hasHeader": true,
     "header": [
-        "Marketing expense",
-        "Production expense",
-        "Multiplex coverage",
-        "Budget",
-        "Movie_length",
-        "Lead_ Actor_Rating",
-        "Lead_Actress_rating",
-        "Director_rating",
-        "Producer_rating",
-        "Critic_rating",
-        "Trailer_views",
-        "3D_available",
-        "Time_taken",
-        "Twitter_hastags",
-        "Genre",
-        "Avg_age_actors",
-        "Num_multiplex",
-        "Collection",
-        "Start_Tech_Oscar"
+        "title",
+        "text",
+        "subject",
+        "date"
     ],
     "delimiter": ",",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            19,
-            19,
+            4,
+            4,
             "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
-            "0Movie_classification.csv",
-            "0Movie_classification.csv",
+            "0fakeNews.csv",
+            "0fakeNews.csv",
             "The name of the dataset"
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.5085263157894735,
-            "50.9%",
+            0.5614999999999999,
+            "56.1%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.4244210526315789,
-            "42.4%",
+            0.5615,
+            "56.1%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            0.9954736842105273,
-            "99.5%",
+            1.0,
+            "100.0%",
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
-            "Most Frequent Value",
-            "YES",
-            "YES",
+            "Top1Value",
+            "News",
+            "News",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.029052631578947368,
-            "2.9%",
+            0.0,
+            "0.0%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.02894736842105263,
-            "2.9%",
+            0.0,
+            "0.0%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.023894736842105264,
-            "2.4%",
+            0.0,
+            "0.0%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.21052631578947367,
-            "21.1%",
+            0.0,
+            "0.0%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0.631578947368421,
-            "63.2%",
+            0.0,
+            "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0.0,
-            "0.0%",
+            0.25,
+            "25.0%",
             "The ratio of date columns to the total number of columns"
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            0.052632,
-            "5.3%",
+            0.75,
+            "75.0%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.10526315789473684,
-            "10.5%",
+            0.0,
+            "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
         "MinItemLen": [
             "Min Item length",
-            1,
-            1,
+            4,
+            4,
             "The length of the smallest element in dataset"
         ],
         "MaxItemLen": [
             "Max Item Length",
-            9,
-            9,
+            6942,
+            6942,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            4.730736842105263,
-            "4.7",
+            642.6005,
+            "642.6",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0.05263157894736842,
-            "5.3%",
+            0.0,
+            "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.10526315789473684,
-            "10.5%",
+            0.25,
+            "25.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
         "HasHeader": [
@@ -151,11 +136,11 @@
         ],
         "type2Words": [
             "Type 2-INV Words",
-            1,
-            1,
+            0,
+            0,
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
         ]
     },
-    "datasetTypePredicted": 0,
-    "datasetType": 0
+    "datasetTypePredicted": 1,
+    "datasetType": 1
 }

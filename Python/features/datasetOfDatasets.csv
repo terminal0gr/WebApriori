@@ -1,4 +1,4 @@
-name,AvgOfDistinctValuesPerCol,AvgOfDistinctValuesOverAll,AvgOfDistinctValuesPerRow,FreqoFTop1FreqValue,FreqoFTop2FreqValue,FreqoFTop3FreqValue,NumberOfColumns,FreqOfIntegerCol,FreqOfNumberCol,FreqOfDateCol,FreqOfStringCol,FreqOfBoolCol,MinItemLen,MaxItemLen,AvgItemLen,Freq1CharColumns,Freq2ValuesItemColumns,hasHeader,datasetType,type2Words
+name,AvgOfDistinctValuesPerCol,AvgOfDistinctValuesOverAll,AvgOfDistinctValuesPerRow,FreqOfTop1FreqValue,FreqOfTop2FreqValue,FreqOfTop3FreqValue,NumberOfColumns,FreqOfIntegerCol,FreqOfNumberCol,FreqOfDateCol,FreqOfStringCol,FreqOfBoolCol,MinItemLen,MaxItemLen,AvgItemLen,Freq1CharColumns,Freq2ValuesItemColumns,hasHeader,datasetType,type2Words
 0abalone.data,0.375111,0.248222,0.997333,0.046,0.0442222,0.0208889,9,0.111111,0.777778,0,0.111111,0,1,6,4.07667,0.111111,0,0,0,0
 0academic_detail.csv,0.292824,0.291667,0.972222,0.111111,0.0555556,0.0555556,4,0.25,0,0,0.75,0,3,29,8.63194,0,0,1,0,0
 0All_Data_Aldi.csv,0.21225,0.20525,0.99225,0.125,0.125,0.1025,8,0.125,0.25,0,0.5,0.125,1,55,9.8405,0,0.375,1,0,0
