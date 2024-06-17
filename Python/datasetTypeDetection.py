@@ -8,6 +8,7 @@ import os
 import pandas as pd
 from joblib import load
 import Global
+import math
 
 missingValuesThreshold=0.2
 nRows=500
@@ -56,12 +57,6 @@ class datasetFeatures:
             if hasHeader:
                 headerV1=0
 
-            # try: #Try with extra_missing_values_normal
-            #     df, meta = Global.loadarfftoDataframe(filepath,False)
-            #     if df is None:       
-            #         df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8-sig', na_values = extra_missing_values_normal, header=headerV1)
-            # except Exception as e:
-            #     df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8-sig', na_values = extra_missing_values_normal, header=headerV1)
             try: #Try with extra_missing_values_normal
                 df, meta = Global.loadarfftoDataframe(filepath,False)
                 if df is None:       
@@ -77,7 +72,11 @@ class datasetFeatures:
             all_values = pd.concat([df[col] for col in df.columns])
 
             # Find the most frequent value in the entire DataFrame
-            datasetFeaturesInst.Top1Value = all_values.value_counts(dropna=False).idxmax()
+            tempV=all_values.value_counts(dropna=False).idxmax()
+            if pd.api.types.is_number(tempV) and math.floor(tempV)==tempV:
+                datasetFeaturesInst.Top1Value=str(math.floor(tempV))
+            else:
+                datasetFeaturesInst.Top1Value = str(tempV)
             
             # Check if the Most frequent value is one of the P\possible strings that could represent the absent value in 3-SI dataset type
             if datasetFeaturesInst.Top1Value in ["n/a", "na", "-", "?", "#", False, "no", "No", "0"]:
@@ -87,7 +86,7 @@ class datasetFeatures:
                 # Declare 3-SI type to dataset here without performing ML prediction afterwards.
                 if all_values.value_counts(dropna=False).max()>= df.shape[1]*df.shape[0]*0.5:
                     datasetFeaturesInst.datasetType=3
-                    df=df.fillna(0)   
+                    df=df.fillna(int(0))   
 
             #DatasetType 3 special case.
             #Initially check if NaN value is the most frequent in the dataset.

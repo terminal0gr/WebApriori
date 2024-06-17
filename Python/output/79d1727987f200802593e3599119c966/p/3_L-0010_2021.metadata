@@ -1,7 +1,7 @@
 {
     "hasHeader": true,
     "header": [
-        "0.0",
+        "0",
         "Stfartro_Id",
         "\u0394\u0399\u0391.\u0394\u0399\u0391.0002",
         "\u0394\u0399\u0391.\u0394\u0399\u0391.0003",
@@ -264,8 +264,8 @@
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "0.0",
-            "0.0",
+            "0",
+            "0",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [

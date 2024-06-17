@@ -1,103 +1,98 @@
 {
     "hasHeader": true,
     "header": [
-        "N",
-        "Butter",
-        "Buttermilk",
-        "Cheese",
-        "Curd",
-        "Ghee",
-        "Ice",
-        "Cream",
-        "Lassi",
-        "Milk",
-        "Paneer",
-        "Yogurt"
+        "Buying",
+        "Maint",
+        "Doors",
+        "Persons",
+        "Lug_boot",
+        "Safety",
+        "Acceptability"
     ],
     "delimiter": ",",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            10,
-            10,
-            "The total number of columns\/features in the Dataset"
+            7,
+            7,
+            "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
-            "3dairy_dataset.csv",
-            "3dairy_dataset.csv",
+            "4car.dat",
+            "4car.dat",
             "The name of the dataset"
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.004000000000000001,
-            "0.4%",
+            0.005999999999999999,
+            "0.6%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.0004,
-            "0.0%",
+            0.0037142857142857142,
+            "0.4%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            0.20000000000000176,
-            "20.0%",
+            0.8845714285714252,
+            "88.5%",
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "N",
-            "N",
+            "vhigh",
+            "vhigh",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.7022,
-            "70.2%",
+            0.1737142857142857,
+            "17.4%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.2978,
-            "29.8%",
+            0.12628571428571428,
+            "12.6%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0,
-            "0.0%",
+            0.12228571428571429,
+            "12.2%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            0,
-            "0.0%",
+            1.0,
+            "100.0%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            1,
-            "100.0%",
+            0.0,
+            "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
         "MinItemLen": [
@@ -108,26 +103,26 @@
         ],
         "MaxItemLen": [
             "Max Item Length",
-            1,
-            1,
+            5,
+            5,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            1,
-            "1.0",
+            3.4765714285714284,
+            "3.5",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            1,
-            "100.0%",
+            0.0,
+            "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            1,
-            "100.0%",
+            0.2857142857142857,
+            "28.6%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
         "HasHeader": [
@@ -149,6 +144,6 @@
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
         ]
     },
-    "datasetTypePredicted": 3,
-    "datasetType": 3
+    "datasetTypePredicted": 4,
+    "datasetType": 4
 }

@@ -10,18 +10,18 @@
     "redundantRemoveType": 0,
     "datasetArgs": "['N', 'Butter', 'Buttermilk', 'Cheese', 'Curd', 'Ghee', 'Ice Cream', 'Lassi', 'Milk', 'Paneer', 'Yogurt']",
     "Records": 1278,
-    "RecordsCreationTime": "0.016",
+    "RecordsCreationTime": "0.010",
     "RulesCount": 60,
-    "RulesCreationTime": "0.034",
+    "RulesCreationTime": "0.022",
     "rules": [
         {
             "LHS": [
-                "Ghee",
-                "Ice Cream"
+                "Ice Cream",
+                "Ghee"
             ],
             "RHS": [
-                "Milk",
-                "Paneer"
+                "Paneer",
+                "Milk"
             ],
             "Confidence": 0.18681318681318682,
             "Lift": 2.2106227106227108,
@@ -36,12 +36,12 @@
         },
         {
             "LHS": [
-                "Milk",
-                "Paneer"
+                "Paneer",
+                "Milk"
             ],
             "RHS": [
-                "Ghee",
-                "Ice Cream"
+                "Ice Cream",
+                "Ghee"
             ],
             "Confidence": 0.1574074074074074,
             "Lift": 2.2106227106227108,
@@ -59,9 +59,9 @@
                 "Paneer"
             ],
             "RHS": [
-                "Ghee",
                 "Lassi",
-                "Butter"
+                "Butter",
+                "Ghee"
             ],
             "Confidence": 0.03430079155672823,
             "Lift": 1.9059309395434207,
@@ -76,9 +76,9 @@
         },
         {
             "LHS": [
-                "Ghee",
                 "Lassi",
-                "Butter"
+                "Butter",
+                "Ghee"
             ],
             "RHS": [
                 "Paneer"
@@ -136,8 +136,8 @@
         },
         {
             "LHS": [
-                "Ghee",
-                "Ice Cream"
+                "Ice Cream",
+                "Ghee"
             ],
             "RHS": [
                 "Paneer",
@@ -160,8 +160,8 @@
                 "Cheese"
             ],
             "RHS": [
-                "Ghee",
-                "Ice Cream"
+                "Ice Cream",
+                "Ghee"
             ],
             "Confidence": 0.1287128712871287,
             "Lift": 1.8076379066478072,
@@ -176,8 +176,8 @@
         },
         {
             "LHS": [
-                "Ghee",
-                "Butter"
+                "Butter",
+                "Ghee"
             ],
             "RHS": [
                 "Paneer",
@@ -200,8 +200,8 @@
                 "Lassi"
             ],
             "RHS": [
-                "Ghee",
-                "Butter"
+                "Butter",
+                "Ghee"
             ],
             "Confidence": 0.1171171171171171,
             "Lift": 1.7818532818532815,
@@ -220,8 +220,8 @@
                 "Butter"
             ],
             "RHS": [
-                "Lassi",
-                "Cheese"
+                "Cheese",
+                "Lassi"
             ],
             "Confidence": 0.14285714285714285,
             "Lift": 1.7725381414701802,
@@ -236,8 +236,8 @@
         },
         {
             "LHS": [
-                "Lassi",
-                "Cheese"
+                "Cheese",
+                "Lassi"
             ],
             "RHS": [
                 "Yogurt",
@@ -277,8 +277,8 @@
         {
             "LHS": [
                 "Paneer",
-                "Curd",
-                "Cheese"
+                "Cheese",
+                "Curd"
             ],
             "RHS": [
                 "Milk"
@@ -296,12 +296,12 @@
         },
         {
             "LHS": [
-                "Curd",
-                "Cheese"
+                "Cheese",
+                "Curd"
             ],
             "RHS": [
-                "Milk",
-                "Paneer"
+                "Paneer",
+                "Milk"
             ],
             "Confidence": 0.14814814814814817,
             "Lift": 1.7530864197530867,
@@ -316,8 +316,8 @@
         },
         {
             "LHS": [
-                "Milk",
-                "Paneer"
+                "Paneer",
+                "Milk"
             ],
             "RHS": [
                 "Cheese",
@@ -376,8 +376,8 @@
         },
         {
             "LHS": [
-                "Ghee",
-                "Paneer"
+                "Paneer",
+                "Ghee"
             ],
             "RHS": [
                 "Milk",
@@ -400,8 +400,8 @@
                 "Ice Cream"
             ],
             "RHS": [
-                "Ghee",
-                "Paneer"
+                "Paneer",
+                "Ghee"
             ],
             "Confidence": 0.15044247787610618,
             "Lift": 1.6865393572426641,
@@ -456,12 +456,12 @@
         },
         {
             "LHS": [
-                "Milk",
-                "Paneer"
+                "Paneer",
+                "Milk"
             ],
             "RHS": [
-                "Ghee",
-                "Curd"
+                "Curd",
+                "Ghee"
             ],
             "Confidence": 0.1388888888888889,
             "Lift": 1.6588785046728973,
@@ -480,8 +480,8 @@
                 "Curd"
             ],
             "RHS": [
-                "Milk",
-                "Paneer"
+                "Paneer",
+                "Milk"
             ],
             "Confidence": 0.14018691588785046,
             "Lift": 1.658878504672897,
@@ -496,9 +496,9 @@
         },
         {
             "LHS": [
-                "Ghee",
+                "Paneer",
                 "Milk",
-                "Paneer"
+                "Ghee"
             ],
             "RHS": [
                 "Ice Cream"
@@ -519,9 +519,9 @@
                 "Ice Cream"
             ],
             "RHS": [
-                "Ghee",
+                "Paneer",
                 "Milk",
-                "Paneer"
+                "Ghee"
             ],
             "Confidence": 0.04775280898876404,
             "Lift": 1.6494078348010928,
@@ -536,8 +536,8 @@
         },
         {
             "LHS": [
-                "Ghee",
-                "Ice Cream"
+                "Ice Cream",
+                "Ghee"
             ],
             "RHS": [
                 "Paneer",
@@ -560,8 +560,8 @@
                 "Lassi"
             ],
             "RHS": [
-                "Ghee",
-                "Ice Cream"
+                "Ice Cream",
+                "Ghee"
             ],
             "Confidence": 0.1171171171171171,
             "Lift": 1.6447876447876446,
@@ -580,8 +580,8 @@
                 "Butter"
             ],
             "RHS": [
-                "Ghee",
-                "Paneer"
+                "Paneer",
+                "Ghee"
             ],
             "Confidence": 0.14606741573033705,
             "Lift": 1.6374926079243048,
@@ -596,8 +596,8 @@
         },
         {
             "LHS": [
-                "Ghee",
-                "Paneer"
+                "Paneer",
+                "Ghee"
             ],
             "RHS": [
                 "Lassi",
@@ -619,9 +619,9 @@
                 "Yogurt"
             ],
             "RHS": [
+                "Cheese",
                 "Lassi",
-                "Butter",
-                "Cheese"
+                "Butter"
             ],
             "Confidence": 0.03571428571428571,
             "Lift": 1.6301020408163265,
@@ -636,9 +636,9 @@
         },
         {
             "LHS": [
+                "Cheese",
                 "Lassi",
-                "Butter",
-                "Cheese"
+                "Butter"
             ],
             "RHS": [
                 "Yogurt"
@@ -659,8 +659,8 @@
                 "Ghee"
             ],
             "RHS": [
-                "Milk",
                 "Paneer",
+                "Milk",
                 "Ice Cream"
             ],
             "Confidence": 0.04970760233918129,
@@ -677,8 +677,8 @@
         {
             "LHS": [
                 "Milk",
-                "Paneer",
-                "Ice Cream"
+                "Ice Cream",
+                "Paneer"
             ],
             "RHS": [
                 "Ghee"
@@ -699,9 +699,9 @@
                 "Curd"
             ],
             "RHS": [
-                "Ghee",
                 "Lassi",
-                "Milk"
+                "Milk",
+                "Ghee"
             ],
             "Confidence": 0.03431372549019608,
             "Lift": 1.624183006535948,
@@ -716,9 +716,9 @@
         },
         {
             "LHS": [
-                "Ghee",
+                "Milk",
                 "Lassi",
-                "Milk"
+                "Ghee"
             ],
             "RHS": [
                 "Curd"
@@ -739,9 +739,9 @@
                 "Paneer"
             ],
             "RHS": [
-                "Ghee",
                 "Cheese",
-                "Ice Cream"
+                "Ice Cream",
+                "Ghee"
             ],
             "Confidence": 0.03430079155672823,
             "Lift": 1.623570800351803,
@@ -756,9 +756,9 @@
         },
         {
             "LHS": [
-                "Ghee",
                 "Cheese",
-                "Ice Cream"
+                "Ice Cream",
+                "Ghee"
             ],
             "RHS": [
                 "Paneer"
@@ -819,9 +819,9 @@
                 "Ice Cream"
             ],
             "RHS": [
-                "Ghee",
+                "Paneer",
                 "Cheese",
-                "Paneer"
+                "Ghee"
             ],
             "Confidence": 0.03651685393258426,
             "Lift": 1.609259976753196,
@@ -836,9 +836,9 @@
         },
         {
             "LHS": [
-                "Ghee",
+                "Paneer",
                 "Cheese",
-                "Paneer"
+                "Ghee"
             ],
             "RHS": [
                 "Ice Cream"
@@ -880,8 +880,8 @@
                 "Lassi"
             ],
             "RHS": [
-                "Ghee",
-                "Curd"
+                "Curd",
+                "Ghee"
             ],
             "Confidence": 0.13333333333333333,
             "Lift": 1.5925233644859813,
@@ -976,8 +976,8 @@
         },
         {
             "LHS": [
-                "Ghee",
-                "Cheese"
+                "Cheese",
+                "Ghee"
             ],
             "RHS": [
                 "Paneer",
@@ -1000,8 +1000,8 @@
                 "Ice Cream"
             ],
             "RHS": [
-                "Ghee",
-                "Cheese"
+                "Cheese",
+                "Ghee"
             ],
             "Confidence": 0.10317460317460317,
             "Lift": 1.5512605042016805,
@@ -1020,8 +1020,8 @@
                 "Butter"
             ],
             "RHS": [
-                "Ghee",
-                "Lassi"
+                "Lassi",
+                "Ghee"
             ],
             "Confidence": 0.125,
             "Lift": 1.5360576923076925,
@@ -1036,8 +1036,8 @@
         },
         {
             "LHS": [
-                "Ghee",
-                "Lassi"
+                "Lassi",
+                "Ghee"
             ],
             "RHS": [
                 "Paneer",
@@ -1136,8 +1136,8 @@
         },
         {
             "LHS": [
-                "Ghee",
-                "Milk"
+                "Milk",
+                "Ghee"
             ],
             "RHS": [
                 "Paneer",
@@ -1160,8 +1160,8 @@
                 "Ice Cream"
             ],
             "RHS": [
-                "Ghee",
-                "Milk"
+                "Milk",
+                "Ghee"
             ],
             "Confidence": 0.1349206349206349,
             "Lift": 1.512531328320802,
@@ -1180,8 +1180,8 @@
                 "Lassi"
             ],
             "RHS": [
-                "Butter",
-                "Cheese"
+                "Cheese",
+                "Butter"
             ],
             "Confidence": 0.11206896551724137,
             "Lift": 1.507622504537205,
@@ -1196,8 +1196,8 @@
         },
         {
             "LHS": [
-                "Butter",
-                "Cheese"
+                "Cheese",
+                "Butter"
             ],
             "RHS": [
                 "Yogurt",
