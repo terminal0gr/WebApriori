@@ -45,7 +45,7 @@ class datasetFeatures:
     #This is not an attribute directly at least.
     datasetType=-1
 
-    def _datasetFeatures_a(self, filepath, delimiter, hasHeader, nRows=nRows):
+    def _datasetFeatures_a(self, filepath, dialect, hasHeader, nRows=nRows):
         # Creates the features of the dataset in order to determine datasetType via ML
         try:
 
@@ -60,63 +60,56 @@ class datasetFeatures:
             try: #Try with extra_missing_values_normal
                 df, meta = Global.loadarfftoDataframe(filepath,False)
                 if df is None:       
-                    df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8-sig', header=headerV1)
+                    df = pd.read_csv(filepath, sep=dialect.delimiter, nrows=nRows, encoding='utf-8-sig', header=headerV1)
             except Exception as e:
-                df = pd.read_csv(filepath, sep=delimiter, nrows=nRows, encoding='utf-8-sig', header=headerV1)
+                df = pd.read_csv(filepath, sep=dialect.delimiter, nrows=nRows, encoding='utf-8-sig', header=headerV1, delim_whitespace=True)
             
             class datasetFeaturesInst(datasetFeatures):
                 _name=os.path.basename(filepath)
 
             # We want to find and keep the most frequent value because with df=df.fillna(0) later the value may change to 0 for ever!!!
-            # Concatenate all columns into a single Series in ordeer to avoid iterating in all columns of the dataframe...
+            # Concatenate all columns into a single Series in order to avoid iterating in all columns of the dataframe...
             all_values = pd.concat([df[col] for col in df.columns])
 
             # Find the most frequent value in the entire DataFrame
-            tempV=all_values.value_counts(dropna=False).idxmax()
+            if dialect.datasetType==1:
+                #In dataset Type 1-MBL dataframes already detected, We DO NOT want to include NaN values
+                tempV=all_values.value_counts(dropna=True).idxmax()
+            else:
+                tempV=all_values.value_counts(dropna=False).idxmax()
             if pd.api.types.is_number(tempV) and math.floor(tempV)==tempV:
                 datasetFeaturesInst.Top1Value=str(math.floor(tempV))
             else:
                 datasetFeaturesInst.Top1Value = str(tempV)
             
-            # Check if the Most frequent value is one of the P\possible strings that could represent the absent value in 3-SI dataset type
-            if datasetFeaturesInst.Top1Value in ["n/a", "na", "-", "?", "#", False, "no", "No", "0"]:
-                # If the most frequent value is more than 50% of all the values of the dataset then 
-                # It is the absent value and the
-                # dataset is 100% of type 3-SI. Additionally change NaN values to 0 For smoothness in the procedures below because is 3-SI we don't want absent value to be treated as missing value
-                # Declare 3-SI type to dataset here without performing ML prediction afterwards.
-                if all_values.value_counts(dropna=False).max()>= df.shape[1]*df.shape[0]*0.5:
-                    datasetFeaturesInst.datasetType=3
-                    df=df.fillna(int(0))   
+            if dialect.datasetType!=1:
+                # Check if the Most frequent value is one of the P\possible strings that could represent the absent value in 3-SI dataset type
+                if datasetFeaturesInst.Top1Value in ["n/a", "na", "-", "?", "#", False, "no", "No", "0"]:
+                    # If the most frequent value is more than 50% of all the values of the dataset then 
+                    # It is the absent value and the
+                    # dataset is 100% of type 3-SI. Additionally change NaN values to 0 For smoothness in the procedures below because is 3-SI we don't want absent value to be treated as missing value
+                    # Declare 3-SI type to dataset here without performing ML prediction afterwards.
+                    if all_values.value_counts(dropna=False).max()>= df.shape[1]*df.shape[0]*0.5:
+                        datasetFeaturesInst.datasetType=3
+                        df=df.fillna(int(0))   
 
-            #DatasetType 3 special case.
-            #Initially check if NaN value is the most frequent in the dataset.
-            #If that happens then DatasetType is Most likely datasetType:3 and NaN Value is the absent value.
-            #For smoothness in the procedures below, I change Nan value with 0.
-            # countNaNValues=0
-            # for myCol in df.columns:
-            #     # if pd.isna(df[myCol].value_counts(dropna=False).idxmax()):
-            #         countNaNValues+=df[myCol].value_counts(dropna=False).max()
-            #If NaN values are more than 50% of all the values of the dataset then change them to 0
-            #And declare 3-SI to dataset Type without performing ML prediction
-            # if countNaNValues>= df.shape[1]*df.shape[0]*0.5:
-            #     datasetFeaturesInst.datasetType=3
-            #     df=df.fillna(0)   
 
             columnsCount=df.shape[1]
             columnsWithUnacceptedMissingValues=0
 
-            for myCol in df.columns:
-                #Remove the rows from current column that have missing values
-                dfCol = df[myCol].dropna()
-                if dfCol.shape[0]<(df[myCol].shape[0]*missingValuesThreshold): #The column {dfcol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be analysed. The procedure ends with error.
-                    columnsWithUnacceptedMissingValues+=1
-                    print(f"The column {dfCol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and it will be omitted")
+            if dialect.datasetType!=1: 
+                for myCol in df.columns:
+                    #Remove the rows from current column that have missing values
+                    dfCol = df[myCol].dropna()
+                    if dfCol.shape[0]<(df[myCol].shape[0]*missingValuesThreshold): #The column {dfcol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be analysed. The procedure ends with error.
+                        columnsWithUnacceptedMissingValues+=1
+                        print(f"The column {dfCol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and it will be omitted")
 
-            if columnsWithUnacceptedMissingValues>columnsCount*missingValuesThreshold: 
-                print(f"{columnsWithUnacceptedMissingValues} columns {columnsCount} of the dataset {os.path.basename(filepath)} has missing values more than 80% and the dataset and can't be analyzed. The procedure ends with error.")
-                return None
+                if columnsWithUnacceptedMissingValues>columnsCount*missingValuesThreshold: 
+                    print(f"{columnsWithUnacceptedMissingValues} columns {columnsCount} of the dataset {os.path.basename(filepath)} has missing values more than 80% and the dataset and can't be analyzed. The procedure ends with error.")
+                    return None
 
-            datasetFeaturesInst.delimiter=delimiter
+            datasetFeaturesInst.delimiter=dialect.delimiter
 
             if hasHeader:
                 datasetFeaturesInst.Header=df.columns.tolist()

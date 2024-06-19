@@ -7,7 +7,7 @@
 12/02/2024 Apriori Engine Main04.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv. Should be checked After (1)
 12/06/2024 Extra parameters / item names field must be beautified!
 16/06/2024 Upload AutoML WebApriori to NIREAS
-datasetAttrAutoDetectMetadata ln 35 ΔατασετΤυπε 1
+datasetTypeDetection ln 65 Does not reading raght the datasets of type 1-MBL
 
 
 

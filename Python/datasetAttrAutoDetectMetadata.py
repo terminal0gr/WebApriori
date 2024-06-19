@@ -32,7 +32,7 @@ class Metadata():
             dialect = csv.Sniffer().sniff(s100)  # Check what kind of csv/tsv file we have.
             datasetAttributes['delimiter']=dialect.delimiter
 
-            DFI=df.datasetFeatures()._datasetFeatures_a(filepath,dialect.delimiter,datasetAttributes['hasHeader'])
+            DFI=df.datasetFeatures()._datasetFeatures_a(filepath,dialect,datasetAttributes['hasHeader'])
             if DFI==None:
                 print(f"Failed to detect dataset attributes for dataset '{datasetName}'.")
                 sys.exit()
