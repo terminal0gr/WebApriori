@@ -103,12 +103,10 @@
     //get dataset type is the first character of $_POST['dataset']
     if (substr($_POST['dataset'],0,2)=='p|') {
         // public dataset
-        $outputType=3;
         $isPublic=1;
         $filename=substr($_POST['dataset'],2);
     }else{
         // private dataset
-        $outputType=2;
         $isPublic=0;
         $filename=$_POST['dataset'];
     }
@@ -181,7 +179,7 @@
     $input.= '"'.$_POST['max_length'].'" ';
     $input.= '"-3" ';
     $input.= '"'.$filename.'" ';
-    $input.= '"'.$outputType.'" ';
+    $input.= '"'.$isPublic.'" ';
     $input.= '"'.$_POST['redundantType'].'" ';
     $input.= $_POST['extra_parameters'];
 

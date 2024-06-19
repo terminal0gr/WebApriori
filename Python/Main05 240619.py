@@ -396,7 +396,7 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
         metaDataFile=metadataInst.readMetadataFile(identity,datasetName,public)
 
         if len(args)>max_items:
-            print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' of the ' + str(len(args)) + ' columns will be processed.')
+            print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' columns will be processed.')
             args=args[0:max_items+1]
 
         #Read the dataset from file
@@ -406,17 +406,24 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
             sys.exit
 
         if int(datasetType)==1:
-                    
-            #use only the columns that the user has chosen
-            if len(args)>0:
-                dataset = dataset[list(args)]
 
+            # if len(args)==0:
+            #     with open(filepath, mode='r') as f:
+            #         reader = csv.reader(f, delimiter=datasetSep)
+            #         return list(reader)
+            # else:
+            #     dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig')
+            #     if not dataset:
+            #         print(f"An error occurred: Could not read dataset! {e}")     
+            #         sys.exit
+                    
+            #use only added columns
+            if len(args)>1:
+                dataset = dataset[list(args[1:])]
             #pandas to list
             records=dataset.values.tolist()
-
             #remove nan elements from this 2-dimensional list'
-            records = [[y for y in x if str(y) != 'nan'] for x in records]
-
+            records = [[y for y in x if str(y) != args[0]] for x in records]
             return(records)
                 
         elif datasetType==2:
@@ -485,7 +492,7 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
 # output operations
 ##################################################################################
 
-def output_association_rules(association_results, sort_index, descending=True, fileName=None, public=0, **kwargs):
+def output_association_rules(association_results, sort_index, descending=True, fileName=None, outputType=1, **kwargs):
     try:
          
         association_results.sort(reverse=descending, key=lambda x: x[sort_index])
@@ -501,16 +508,139 @@ def output_association_rules(association_results, sort_index, descending=True, f
             if not os.path.exists(filepath):
                 os.makedirs(filepath)
 
-            ext='.json'
-
-            if public==0: #Private Dataset'
-                file = open(os.path.join('output', identity, os.path.splitext(fileName)[0] + ext),'w')
-            elif public==1: #Public Dataset
+            if outputType==1:
+                ext='.txt'
+            elif outputType==2:
+                ext='.json'
+            elif outputType==3:
+                ext='.json'
                 publicFilePath=os.path.join('output', identity, 'p')
                 if not os.path.exists(publicFilePath):
                     os.makedirs(publicFilePath)
-                file = open(os.path.join('output', identity, 'p', os.path.splitext(fileName)[0] + ext),'w')
+                publicFile = open(os.path.join('output', identity, 'p', os.path.splitext(fileName)[0] + ext),'w')
+            else:
+                ext=''
                 
+            file = open(os.path.join('output', identity, os.path.splitext(fileName)[0] + ext),'w')
+            
+        if outputType==1:        
+        
+            Sline='Input Parameters\n'
+            
+            if min_support:
+                Sline+='Minimum Support   :' + '{0:.3f}'.format(min_support)
+            if min_confidence:
+                Sline+='     Minimum confidence:' + '{0:.3f}'.format(min_confidence)  
+            Sline+='\n'
+            if min_lift:
+                Sline+='Minimum Lift      :' + '{0:.3f}'.format(min_lift)
+            if max_length:
+                Sline+='     Maximum rule items:' + '{:05d}'.format(max_length)      
+            Sline+='\n'
+            
+            if ssort:
+                Sline+='Sort by '
+                #sort_order
+    #0 by LHS, 1 by RHS, 2 by confidence, 3 by lift, 4 by conviction, 5 by LHS support, 6 by RHS support, 7 by rule support 
+    #negatives meaning descending
+                if ssort==0:
+                    Sline+='LHS (body) '
+                elif abs(ssort)==1:
+                    Sline+='RHS (head) '           
+                elif abs(ssort)==2:
+                    Sline+='confidence '
+                elif abs(ssort)==3:
+                    Sline+='lift '            
+                elif abs(ssort)==4:
+                    Sline+='conviction '    
+                elif abs(ssort)==5:
+                    Sline+='LHS support '            
+                elif abs(ssort)==6:
+                    Sline+='RHS support '  
+                elif abs(ssort)==7:
+                    Sline+='Rule support '  
+                else:
+                    Sline+='Unknown ' 
+
+                if ssort>0:
+                    Sline+='ascending\n'
+                else:
+                    Sline+='descending\n'
+            
+            if datasetName:
+                Sline+='Dataset file name :' + datasetName + '\n' 
+            if datasetSep:
+                Sline+='Dataset separator : ' + datasetSep + '\n' 
+            if datasetType:
+                Sline+='Dataset Type      :' + str(datasetType) + '\n' 
+            Sline+=    'Output Type       :Plain text\n'
+            Sline+=    'Reduntant Type    :' + str(redundantRemoveType) + '\n'
+            if datasetArgs:
+                Sline+='Dataset parameters: ' + datasetArgs + '\n' 
+                
+            Sline+='-----------------------------------------------------\n\n' 
+            if records:
+                Sline+='Records           :' + '{:06d}'.format(records)
+            if recordTime:
+                Sline+='   Transformation time:' + '{0:.3f}'.format(recordTime)
+            Sline+='\n'
+            if rulesCount:
+                Sline+='Association Rules :' + '{:06d}'.format(len(association_results))
+            if assocTime:
+                Sline+='          Time elapsed:' + '{0:.3f}'.format(assocTime)
+            Sline+='\n'
+            Sline+='-----------------------------------------------------\n'
+    
+            if fileName:
+                file.write(Sline)
+            print(Sline)
+            
+            Vr=0
+            for item in association_results:
+                Vr+=1 
+
+                #Rules numbering
+                str1 = right("     " + str(Vr),4) + ") {"
+
+                #LHS
+                a = item[0]
+                LHS = [x for x in a]
+                for l in range(0, len(LHS)):
+                    str1 += LHS[l] + ", "
+                if len(str1)>0:
+                    str1 = left(str1,len(str1)-2)
+
+                str1 += "}([" + str(item[6]) + "]" + '{0:.3f}'.format(item[7]) + ") ==> {"
+
+                #RHS
+                a = item[1]
+                RHS = [x for x in a]
+                for l in range(0, len(RHS)):
+                    str1 += RHS[l] + ", "
+                if len(str1)>0:
+                    str1 = left(str1,len(str1)-2)
+
+                str1 += "}([" + str(item[8]) + "]" + '{0:.3f}'.format(item[9]) + ")"
+
+                #output to filename
+                if fileName:
+                    file.write(str1 + '\n')
+                    file.write("        Count:" + '{:05d}'.format(item[11]) +
+                        "  Supp:" + '{0:.3f}'.format(item[10]) + 
+                        "  Conf:" + '{0:.3f}'.format(item[2]) + 
+                        "  Lift:" + '{0:.3f}'.format(item[3]) +
+                        "  Conv:" + '{0:.3f}'.format(item[4]) +
+                        "  Levr:" + '{0:.3f}'.format(item[5]) + '\n')
+                #output to console          
+                print(str1)    
+                print("        Count:" + '{:05d}'.format(item[11]) +
+                    "  Supp:" + '{0:.3f}'.format(item[10]) + 
+                    "  Conf:" + '{0:.3f}'.format(item[2]) + 
+                    "  Lift:" + '{0:.3f}'.format(item[3]) +
+                    "  Conv:" + '{0:.3f}'.format(item[4]) +
+                    "  Levr:" + '{0:.3f}'.format(item[5]))               
+    
+        elif (2<=outputType<=3):
             Hlist = ['LHS', 'RHS', 'Confidence', 'Lift', 'Conviction', 'Leverage', 'LHS_Count', 'LHS_Support', 'RHS_Count', 'RHS_Support', 'Support', 'Count'] 
             dictRules = {}
             
@@ -520,7 +650,8 @@ def output_association_rules(association_results, sort_index, descending=True, f
             dictRules['max_length'] = max_length
             dictRules['ssort'] = ssort
             dictRules['datasetName'] = datasetName
-            dictRules['public'] = public
+            dictRules['datasetType'] = datasetType
+            dictRules['outputType'] = outputType
             dictRules['redundantRemoveType'] = redundantRemoveType
             dictRules['datasetArgs'] = datasetArgs
             
@@ -533,25 +664,24 @@ def output_association_rules(association_results, sort_index, descending=True, f
             for arule in association_results:
                 dictRules['rules'].append(dict(zip(Hlist, arule)))
                 
-            json.dump(dictRules, file, indent=4)
+            if fileName:
+                json.dump(dictRules, file, indent=4)
+                if outputType==3:
+                    json.dump(dictRules, publicFile, indent=4)
             print(json.dumps(dictRules, indent=4)) 
-            file.close()     
 
         else:
-            print("An error occurred: Dataset filepath not given!")
+            print("An error occurred: Unknown output type")
     
+        if fileName:
+            file.close()     
+
     except Exception as e:
         print(f"An error occurred: {e}")     
         sys.exit()       
 
+#Main Task
 
-###########
-###########
-###########
-#Main Task#
-###########
-###########
-###########
 '''
 Dataset types:
 1--> Market Basket list. No header is expected, The number of columns is undefined (Default). 
@@ -564,8 +694,28 @@ Dataset types:
      In arg[0] the absent of item string must be declared!!! If absent item is nothing then assign '' or 'nan' 
 4--> Columns with multiple nominal values. Header line is optional. 
      Number of columns is fixed, optional items columns are expected in case header line exists.
+'''
 
-1) Identity   2) min_support   3) min_confidence   4) min_lift   5) max_length   6) SortIndex   7) datasetName   8) public   9) redundantRemoveType 10) datasetArgs
+#1--> Market Basket list. No header is expected, The number of columns is undefined (Default)
+# sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "dataset.csv", ',', '1', '2' 0]
+# sys.argv=['Main02.py', '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, 'store_data.csv', ',', '1', '1' 0]
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries.csv", ",", 1, 2, 7]
+#1--> Market Basket list. There is a header, so the participant columns must be declared in args
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "groceries - groceries.csv", ",", "1", '2', 7, 'nan', "Item 1","Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10", "Item 11", "Item 12", "Item 13", "Item 14", "Item 15", "Item 16", "Item 17", "Item 18", "Item 19", "Item 20", "Item 21", "Item 22", "Item 23", "Item 24", "Item 25", "Item 26", "Item 27", "Item 28", "Item 29", "Item 30", "Item 31", "Item 32"]
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.005, 0.2, 1.0, 10, -3, "retail.txt", " ", "1", '2' 0]
+
+
+#sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "OrderDetails.csv", ";", "2", '1', 0, "InvoiceNo", "Description"]
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.02, 1.0, 4, -3, "invoice.csv", ";", "2", '1', 0, "IDInvoice", "ProduitID"]
+
+#sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.02, 1.5, 4, -3, "grocery_timestamp.csv", ",", "3", '2', 0, "0", "air fresheners candles", "asian foods", "baby accessories", "baby bath body care", "baby food formula", "bakery desserts", "baking ingredients", "baking supplies decor", "beauty", "beers coolers", "body lotions soap", "bread", "breakfast bakery", "breakfast bars pastries", "bulk dried fruits vegetables", "bulk grains rice dried goods", "buns rolls", "butter", "candy chocolate", "canned fruit applesauce", "canned jarred vegetables", "canned meals beans", "canned meat seafood", "cat food care", "cereal", "chips pretzels", "cleaning products", "cocoa drink mixes", "coffee", "cold flu allergy", "condiments", "cookies cakes", "crackers", "cream", "deodorants", "diapers wipes", "digestion", "dish detergents", "dog food care", "doughs gelatins bake mixes", "dry pasta", "eggs", "energy granola bars", "energy sports drinks", "eye ear care", "facial care", "feminine care", "first aid", "food storage", "fresh dips tapenades", "fresh fruits", "fresh herbs", "fresh pasta", "fresh vegetables", "frozen appetizers sides", "frozen breads doughs", "frozen breakfast", "frozen dessert", "frozen juice", "frozen meals", "frozen meat seafood", "frozen pizza", "frozen produce", "frozen vegan vegetarian", "fruit vegetable snacks", "grains rice dried goods", "granola", "hair care", "honeys syrups nectars", "hot cereal pancake mixes", "hot dogs bacon sausage", "ice cream ice", "ice cream toppings", "indian foods", "instant foods", "juice nectars", "kitchen supplies", "kosher foods", "latino foods", "laundry", "lunch meat", "marinades meat preparation", "meat counter", "milk", "mint gum", "missing", "more household", "muscles joints pain relief", "nuts seeds dried fruit", "oils vinegars", "oral hygiene", "other", "other creams cheeses", "packaged cheese", "packaged meat", "packaged poultry", "packaged produce", "packaged seafood", "packaged vegetables fruits", "paper goods", "pasta sauce", "pickled goods olives", "plates bowls cups flatware", "popcorn jerky", "poultry counter", "prepared meals", "prepared soups salads", "preserved dips spreads", "protein meal replacements", "red wines", "refrigerated", "refrigerated pudding desserts", "salad dressing toppings", "seafood counter", "shave needs", "skin care", "soap", "soft drinks", "soup broth bouillon", "soy lactosefree", "specialty cheeses", "specialty wines champagnes", "spices seasonings", "spirits", "spreads", "tea", "tofu meat alternatives", "tortillas flat bread", "trail mix snack mix", "trash bags liners", "vitamins supplements", "water seltzer sparkling water", "white wines", "yogurt"]
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.02, 1.5, 4, -3, "supermarket.txt", ",", "3", '1', 0, "?", 'department1','department2','department3','department4','department5','department6','department7','department8','department9','grocery misc','department11','baby needs','bread and cake','baking needs','coupons','juice-sat-cord-ms','tea','biscuits','canned fish-meat','canned fruit','canned vegetables','breakfast food','cigs-tobacco pkts','cigarette cartons','cleaners-polishers','coffee','sauces-gravy-pkle','confectionary','puddings-deserts','dishcloths-scour','deod-disinfectant','frozen foods','razor blades','fuels-garden aids','spices','jams-spreads','insecticides','pet foods','laundry needs','party snack foods','tissues-paper prd','wrapping','dried vegetables','pkt-canned soup','soft drinks','health food other','beverages hot','health&beauty misc','deodorants-soap','mens toiletries','medicines','haircare','dental needs','lotions-creams','sanitary pads','cough-cold-pain','department57','meat misc','cheese','chickens','milk-cream','cold-meats','deli gourmet','margarine','salads','small goods','dairy foods','fruit drinks','delicatessen misc','department70','beef','hogget','lamb','pet food','pork','poultry','veal','gourmet meat','department79','department80','department81','produce misc','fruit','plants','potatoes','vegetables','flowers','department88','department89','variety misc','brushware','electrical','haberdashery','kitchen','manchester','pantyhose','plasticware','department98','stationary','department100','department101','department102','prepared meals','preserving needs','condiments','cooking oils','department107','department108','department109','department110','department111','department112','department113','department114','health food bulk','department116','department117','department118','department119','department120','bake off products','department122','department123','department124','department125','department126','department127','department128','department129','department130','small goods2','offal','mutton','trim pork','trim lamb','imported cheese','department137','department138','department139','department140','department141','department142','department143','department144','department145','department146','department147','department148','department149','department150','department151','department152','department153','department154','department155','department156','department157','department158','department159','department160','department161','department162','department163','department164','department165','department166','department167','department168','department169','department170','department171','department172','department173','department174','department175','department176','department177','department178','department179','casks white wine','casks red wine','750ml white nz','750ml red nz','750ml white imp','750ml red imp','sparkling nz','sparkling imp','brew kits/accesry','department189','port and sherry','ctrled label wine','department192','department193','department194','department195','department196','department197','department198','department199','non host support','department201','department202','department203','department204','department205','department206','department207','department208','department209','department210','department211','department212','department213','department214','department215','department216']
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.02, 1.5, 4, -3, "supermarket.txt", ",", "3", '1', 0, "?", 'department1','department2','department3','department4','department5','department6','department7','department8','department9','grocery misc']
+
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 4, -3, "titanic02WithoutHeader.csv", ",", "4", '2' 0]
+# sys.argv=["Main02.py", '79d1727987f200802593e3599119c966', 0.01, 0.2, 1.5, 3, -3, "titanic02.csv", ",", "4", '2', 0,  "class", "age", "sex", "survived"]
+'''
+# 1) Identity   2) min_support   3) min_confidence   4) min_lift   5) max_length   6) SortIndex   7) datasetName 8) outputType 9) redundantRemoveType 10) datasetArgs
 '''
 
 
@@ -625,14 +775,16 @@ if len(sys.argv)>7:
         datasetName=sys.argv[7]	
 
 '''
-#0=private, 1=public
+#1=text file, 2=json file
+#output to both console and file if datasetName is given
+#3 the dataset is public
 '''
-public=0
+outputType=1
 if len(sys.argv)>8:
 	try:
-		public=int(sys.argv[8])
+		outputType=int(sys.argv[8])
 	except:
-		public=0 # Default is 0 private Dataset.
+		outputType=1 # Default is 1 print text.
 
 '''
 bitwise 0 non redundant removal
@@ -656,6 +808,10 @@ if len(sys.argv)>10:
 if not identity:
     print("Unknown identity")
     sys.exit()
+
+public=0
+if outputType==3:
+    public=1
 
 try:
 
@@ -691,7 +847,7 @@ try:
         if ssort<0:
             descending=True
 
-        output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, public=public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
+        output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, outputType=outputType, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
 
     else:
         print("Could not retrieve any record from the dataset")
