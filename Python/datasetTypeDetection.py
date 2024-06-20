@@ -9,6 +9,7 @@ import pandas as pd
 from joblib import load
 import Global
 import math
+from itertools import islice
 
 missingValuesThreshold=0.2
 nRows=500
@@ -45,7 +46,7 @@ class datasetFeatures:
     #This is not an attribute directly at least.
     datasetType=-1
 
-    def _datasetFeatures_a(self, filepath, dialect, hasHeader, nRows=nRows):
+    def _datasetFeatures_a(self, filepath, dialect, hasHeader, nRows=500):
         # Creates the features of the dataset in order to determine datasetType via ML
         try:
 
@@ -62,7 +63,18 @@ class datasetFeatures:
                 if df is None:       
                     df = pd.read_csv(filepath, sep=dialect.delimiter, nrows=nRows, encoding='utf-8-sig', header=headerV1)
             except Exception as e:
-                df = pd.read_csv(filepath, sep=dialect.delimiter, nrows=nRows, encoding='utf-8-sig', header=headerV1, delim_whitespace=True)
+                if dialect.datasetType==1:
+                    with open(filepath, 'r') as file:
+                        if nRows is None: #Read all the lines of the file
+                            data = [line.strip().split() for line in file]
+                        else: #Read only the firts nRows
+                            data = [line.strip().split() for line in islice(file, nRows)]
+
+                    # Create a DataFrame from the list of lists
+                    df = pd.DataFrame(data)
+                else:                    
+                    df = pd.read_csv(filepath, sep=dialect.delimiter, nrows=nRows, encoding='utf-8-sig', header=headerV1, delim_whitespace=True)
+
             
             class datasetFeaturesInst(datasetFeatures):
                 _name=os.path.basename(filepath)

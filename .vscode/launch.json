@@ -52,10 +52,10 @@
             "justMyCode": false,
             "args": [ 
                 "79d1727987f200802593e3599119c966",
-                "0_Dry_Bean_Dataset.arff",
+                "sd.csv",
                 "10",
                 "15",
-                "1"
+                "0"
             ],
             "console": "integratedTerminal"
         },    

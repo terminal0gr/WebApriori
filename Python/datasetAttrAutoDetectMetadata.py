@@ -5,6 +5,8 @@ import csvMy as csv
 import datasetTypeDetection as df
 import Global
 
+nRows=500
+
 class Metadata():
 
     def createMetadataFile(self, identity, datasetName, datasetType=-1, public=0):
@@ -25,14 +27,14 @@ class Metadata():
         with open(filepath, encoding='utf-8-sig') as f:
             s100=''
 
-            for x in range(100):
+            for x in range(nRows):
                 s100+=f.readline()
 
             datasetAttributes['hasHeader'], datasetAttributes['header'] = csv.Sniffer().has_header(s100)
             dialect = csv.Sniffer().sniff(s100)  # Check what kind of csv/tsv file we have.
             datasetAttributes['delimiter']=dialect.delimiter
 
-            DFI=df.datasetFeatures()._datasetFeatures_a(filepath,dialect,datasetAttributes['hasHeader'])
+            DFI=df.datasetFeatures()._datasetFeatures_a(filepath,dialect,datasetAttributes['hasHeader'],nRows=nRows)
             if DFI==None:
                 print(f"Failed to detect dataset attributes for dataset '{datasetName}'.")
                 sys.exit()

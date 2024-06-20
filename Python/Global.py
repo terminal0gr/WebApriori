@@ -2,7 +2,8 @@ import os
 from scipy.io import arff
 import pandas as pd
 import numpy as np
-import mysql.connector
+from itertools import islice
+import csv
 
 #Detect if a file is in arff format
 def is_arff_file(file_path, Show_Errors=False):
@@ -22,11 +23,11 @@ def is_arff_file(file_path, Show_Errors=False):
             print(f"Error: {e}")
         return False
 
-def loadarfftoDataframe(file_path, encoding='utf-8-sig'):
+def loadarfftoDataframe(file_path, encoding='utf-8-sig', nRows=None):
     try:
         data, meta = arff.loadarff(file_path)
         # Convert the structured array to a Pandas DataFrame
-        dataframe1 = pd.DataFrame(data)
+        dataframe1 = pd.DataFrame.from_records(data,nRows=nRows)
 
         # Decode categorical attributes to strings
         for column in dataframe1.columns:
@@ -38,16 +39,37 @@ def loadarfftoDataframe(file_path, encoding='utf-8-sig'):
     except arff.ParseArffError as e:
         return None
     
-def readDataset(filepath, sep=';', encoding='utf-8-sig', hasHeader=True):
+def readDataset(filepath, sep=';', encoding='utf-8-sig', hasHeader=None, nRows=None):
     dataset=None
     try:
         if is_arff_file(filepath):
             dataset=loadarfftoDataframe(filepath, encoding)
         if not isinstance(dataset, pd.DataFrame):
-            if hasHeader:
-                dataset = pd.read_csv(filepath, sep=sep, encoding=encoding)
-            else:
-                dataset = pd.read_csv(filepath, sep=sep, encoding=encoding, header=None)
+            try:
+                dataset = pd.read_csv(filepath, sep=sep, encoding=encoding, header=hasHeader, nrows=nRows)
+            except Exception:
+                with open(filepath, mode='r') as file:
+                    reader = csv.reader(file, delimiter=sep)
+                    if nRows is None: #Read all the lines of the file
+                        data = [line for line in reader]
+                    else:
+                        data = []
+                        for i, row in enumerate(reader):
+                            if i >= nRows:
+                                break
+                            data.append(row)
+
+                    # Create a DataFrame from the list of lists
+                    dataset = pd.DataFrame(data)                
+
+
+                # with open(filepath, 'r') as file:
+                #     if nRows is None: #Read all the lines of the file
+                #         data = [line.strip().split() for line in file]
+                #     else: #Read only the firts nRows
+                #         data = [line.strip().split() for line in islice(file, nRows)]
+                # # Create a DataFrame from the list of lists
+                # dataset = pd.DataFrame(data)                
     
     except Exception as e:
         print(f"An error occurred: {e}")     

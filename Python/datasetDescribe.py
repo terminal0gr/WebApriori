@@ -56,7 +56,7 @@ try:
     metaDataFile=metadataInst.readMetadataFile(identity,datasetName,public)
 
     #Read the dataset from file
-    dataset=Global.readDataset(filepath, sep=metaDataFile['delimiter'], encoding='utf-8-sig', hasHeader=metaDataFile['hasHeader'])
+    dataset=Global.readDataset(filepath, sep=metaDataFile['delimiter'], encoding='utf-8-sig', hasHeader=metaDataFile['hasHeader'], nRows=rows)
     if not isinstance(dataset, pd.DataFrame):
         print(f"An error occurred: Could not read dataset! {e}")     
         sys.exit    
