@@ -752,7 +752,8 @@
 
 							document.getElementById("header1").checked=res.hasHeader; 
 
-							document.getElementById("datasetType").value=res.datasetType
+							document.getElementById("datasetType").value=res.datasetType;
+							datasetTypeChanged();
                             
 							if (res.header) {
 								// Transform the array to a string
@@ -1009,6 +1010,17 @@
 
 		function changeRowsAndCols() {
 			renderTable(true);
+		}
+
+		function datasetTypeChanged() {
+			const datasetType=document.getElementById("datasetType").value;
+			switch(datasetType) {
+				case 2:
+				case 3:
+				default:
+			}
+
+			alert("Hello world");
 		}
 
     </script>
@@ -1316,7 +1328,7 @@ class,age,sex,survived<br>
 						<input type="text" id="separator" name="separator" class="primary form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="The separator of the items in the CSV file. The most common characters used as delimiters are ';', ',' '{TAB}' '{SPACE}' and (:). Keep in mind that especially the {TAB} character is presended by {TAB} or \t string." value=";" placeholder=";">		
 					</div>
 					<div class="col-6">
-						<select id="datasetType" class="browser-default form-select form-control" data-bs-html="true" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' 
+						<select id="datasetType" class="browser-default form-select form-control" onchange="datasetTypeChanged()" data-bs-html="true" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' 
 						data-bs-title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparse item Dataset<br>4) Columns with multiple nomimal values</p><p>For more details click the <img src='./images/help24grey.png' width='24' height='24' alt='help'> icon.">
 						<option value="0" selected>unmanaged dataset type</option>
 						<option value="1">1 - Market basket list</option>
@@ -1329,12 +1341,20 @@ class,age,sex,survived<br>
 
 
 				<div class="row">
-					<div class="col-2">
-						<label for="extra parameters" class="form-label">Extra parameters / item names</label>
-						<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="In extra parameters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
+					<div id="INV-2-groupItem" class="col-2" style="display:none">
+						<label for="groupItem" class="form-label">Group<br>Item</label>
+						<input type="text" id="groupItem" name="groupItem" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the column that groups a single transaction without quotes, for 2 - Invoice Detail (INV) dataset type, if not already predicted successfully. Possible Names Product Name, Product Id etc. For more details please press ?" placeholder="absent Item e.g. 0">
 					</div>
-					<div class="col-10">
-						<label for="extra parameters" class="form-label">Extra parameters / item names</label>
+					<div id="INV-2-valueItem" class="col-2" style="display:none">
+						<label for="valueItem" class="form-label">value<br>Item</label>
+						<input type="text" id="valueItem" name="valueItem" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the column that consists of the participating items in transactions without quotes, for 2 - Invoice Detail (INV) dataset type in not already predicted successfully. For more details please press ?" placeholder="absent Item e.g. 0">
+					</div>
+					<div id="SI-3-absentValue" class="col-2" style="display:none">
+						<label for="absentValue" class="form-label">Absent<br>Item</label>
+						<input type="text" id="absentValue" name="absentValue" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the absent value without quotes, for 3 - Sparse Item (SI) dataset type, if not already predicted successfully. For more details please press ?" placeholder="absent Item e.g. 0">
+					</div>
+					<div class="col-12">
+						<label for="extra_parameters" class="form-label">Participating<br>Items</label>
 						<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="In extra parameters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
 					</div>
 				</div>
