@@ -5,6 +5,7 @@ Owner: Malliaridis Konstantinos PHd candidate
 """
 
 import os
+import sys
 import pandas as pd
 from joblib import load
 import Global
@@ -50,31 +51,10 @@ class datasetFeatures:
         # Creates the features of the dataset in order to determine datasetType via ML
         try:
 
-            #The possible missing values that can exists in datasets and pandas cannot manipulate by default
-            # extra_missing_values_light = ["n/a", "na"] #Useful only in 3 type recordset which may use "-", "?", "#" or None as absent value of an item
-            # extra_missing_values_normal = ["n/a", "na", "-", "?", "#"] #all the other dataset types (0,2,4)
-
-            headerV1=None
-            if hasHeader:
-                headerV1=0
-
-            try: #Try with extra_missing_values_normal
-                df, meta = Global.loadarfftoDataframe(filepath,False)
-                if df is None:       
-                    df = pd.read_csv(filepath, sep=dialect.delimiter, nrows=nRows, encoding='utf-8-sig', header=headerV1)
-            except Exception as e:
-                if dialect.datasetType==1:
-                    with open(filepath, 'r') as file:
-                        if nRows is None: #Read all the lines of the file
-                            data = [line.strip().split() for line in file]
-                        else: #Read only the firts nRows
-                            data = [line.strip().split() for line in islice(file, nRows)]
-
-                    # Create a DataFrame from the list of lists
-                    df = pd.DataFrame(data)
-                else:                    
-                    df = pd.read_csv(filepath, sep=dialect.delimiter, nrows=nRows, encoding='utf-8-sig', header=headerV1, delim_whitespace=True)
-
+            df=Global.readDataset(filepath, sep=dialect.delimiter, encoding='utf-8-sig', hasHeader=hasHeader, nRows=nRows)
+            if not isinstance(df, pd.DataFrame):
+                print(f"An error occurred: Could not read dataset!")     
+                sys.exit    
             
             class datasetFeaturesInst(datasetFeatures):
                 _name=os.path.basename(filepath)

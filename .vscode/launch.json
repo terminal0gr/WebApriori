@@ -36,9 +36,9 @@
             "justMyCode": false,
             "args": [ 
                 "79d1727987f200802593e3599119c966",
-                "chainstoreFIM.txt",
+                "0data_balita.csv",
                 "-1",
-                "1",
+                "0",
                 "1"
             ],
             "console": "integratedTerminal"
@@ -52,9 +52,9 @@
             "justMyCode": false,
             "args": [ 
                 "79d1727987f200802593e3599119c966",
-                "sd.csv",
+                "invoice.csv",
                 "10",
-                "15",
+                "25",
                 "0"
             ],
             "console": "integratedTerminal"

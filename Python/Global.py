@@ -39,14 +39,19 @@ def loadarfftoDataframe(file_path, encoding='utf-8-sig', nRows=None):
     except arff.ParseArffError as e:
         return None
     
-def readDataset(filepath, sep=';', encoding='utf-8-sig', hasHeader=None, nRows=None):
+def readDataset(filepath, sep=';', encoding='utf-8-sig', hasHeader=True, nRows=None):
     dataset=None
     try:
+
+        headerV1=None
+        if hasHeader:
+            headerV1=0
+
         if is_arff_file(filepath):
             dataset=loadarfftoDataframe(filepath, encoding)
         if not isinstance(dataset, pd.DataFrame):
             try:
-                dataset = pd.read_csv(filepath, sep=sep, encoding=encoding, header=hasHeader, nrows=nRows)
+                dataset = pd.read_csv(filepath, sep=sep, encoding=encoding, header=headerV1, nrows=nRows)
             except Exception:
                 with open(filepath, mode='r') as file:
                     reader = csv.reader(file, delimiter=sep)
@@ -60,18 +65,14 @@ def readDataset(filepath, sep=';', encoding='utf-8-sig', hasHeader=None, nRows=N
                             data.append(row)
 
                     # Create a DataFrame from the list of lists
-                    dataset = pd.DataFrame(data)                
-
-
-                # with open(filepath, 'r') as file:
-                #     if nRows is None: #Read all the lines of the file
-                #         data = [line.strip().split() for line in file]
-                #     else: #Read only the firts nRows
-                #         data = [line.strip().split() for line in islice(file, nRows)]
-                # # Create a DataFrame from the list of lists
-                # dataset = pd.DataFrame(data)                
+                    dataset = pd.DataFrame(data)                              
     
     except Exception as e:
         print(f"An error occurred: {e}")     
     finally:
         return dataset       
+
+def countDatasetRecords(filepath):
+    with open(filepath, 'r', encoding='utf-8-sig') as file:
+        line_count = sum(1 for line in file)
+    return line_count

@@ -58,10 +58,12 @@ try:
     #Read the dataset from file
     dataset=Global.readDataset(filepath, sep=metaDataFile['delimiter'], encoding='utf-8-sig', hasHeader=metaDataFile['hasHeader'], nRows=rows)
     if not isinstance(dataset, pd.DataFrame):
-        print(f"An error occurred: Could not read dataset! {e}")     
+        print(f"An error occurred: Could not read dataset!")     
         sys.exit    
 
-    datasetDescription['features']={"Rows":  ("Dataset rows", dataset.shape[0], dataset.shape[0], "The total rows of the dataset")}
+    DR=Global.countDatasetRecords(filepath)
+
+    datasetDescription['features']={"Rows":  ("Dataset rows", DR, DR, "The total rows of the dataset")}
 
     Type1="0-Unmanaged"
     Desc1="Unmanaged Dataset Type. This type can't be used for useful Association rules or frequent itemsets."

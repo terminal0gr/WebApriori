@@ -1,71 +1,75 @@
 {
     "hasHeader": true,
     "header": [
-        "Umur (bulan)",
-        "Jenis Kelamin",
-        "Tinggi Badan (cm)",
-        "Status Gizi"
+        "supermarket",
+        "prices_(\u00ac\u00a3)",
+        "prices_unit_(\u00ac\u00a3)",
+        "unit",
+        "names",
+        "date",
+        "category",
+        "own_brand"
     ],
     "delimiter": ",",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            4,
-            4,
+            8,
+            8,
             "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
-            "0data_balita.csv",
-            "0data_balita.csv",
+            "0All_Data_Aldi.csv",
+            "0All_Data_Aldi.csv",
             "The name of the dataset"
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.253,
-            "25.3%",
+            0.21225,
+            "21.2%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.253,
-            "25.3%",
+            0.20525,
+            "20.5%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            1.0,
-            "100.0%",
+            0.99225,
+            "99.2%",
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "0",
-            "0",
+            "Aldi",
+            "Aldi",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.25,
-            "25.0%",
+            0.125,
+            "12.5%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.25,
-            "25.0%",
+            0.125,
+            "12.5%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.1305,
-            "13.1%",
+            0.1025,
+            "10.2%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.0,
-            "0.0%",
+            0.125,
+            "12.5%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
@@ -88,8 +92,8 @@
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.25,
-            "25.0%",
+            0.125,
+            "12.5%",
             "The ratio of boolean columns to the total number of columns"
         ],
         "MinItemLen": [
@@ -100,26 +104,26 @@
         ],
         "MaxItemLen": [
             "Max Item Length",
-            16,
-            16,
+            55,
+            55,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            8.306999999999999,
-            "8.3",
+            9.840499999999999,
+            "9.8",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0.25,
-            "25.0%",
+            0.0,
+            "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.5,
-            "50.0%",
+            0.375,
+            "37.5%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
         "HasHeader": [

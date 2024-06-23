@@ -3,20 +3,7 @@
     "header": [
         "product_id",
         "product_name",
-        "category",
-        "discounted_price",
-        "actual_price",
-        "discount_percentage",
-        "rating",
-        "rating_count",
-        "about_product",
-        "user_id",
-        "user_name",
-        "review_id",
-        "review_title",
-        "review_content",
-        "img_link",
-        "product_link"
+        ""
     ],
     "delimiter": ",",
     "datasetFeatures": {
@@ -24,7 +11,7 @@
             "Number Of Columns",
             16,
             16,
-            "The total number of columns/features in the Dataset"
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -70,7 +57,7 @@
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of integer columns to the total number of columns"
         ],
@@ -82,7 +69,7 @@
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
@@ -94,7 +81,7 @@
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -118,13 +105,13 @@
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0.0,
+            0,
             "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.0,
+            0,
             "0.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],

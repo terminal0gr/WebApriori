@@ -694,7 +694,7 @@ try:
         output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, public=public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
 
     else:
-        print("Could not retrieve any record from the dataset")
+        print("Could not retrieve records capable for frequent itemsets or Association Rules Mining")
     
 except Exception as e:
     print(f"An error occurred: {e}")     

@@ -877,7 +877,7 @@
 				}
 			}) 	
 			.done(function(response, textStatus, jqXHR) {
-				//cover both null and undefined circumstanses and if it is a JSON obj
+				//cover both null and undefined circumstances and if it is a JSON obj
 				if (response!=undefined && response!=null) {
 					res=response;
 					try {
@@ -954,7 +954,7 @@
 								var row = $('<tr></tr>');
 
 								keys.forEach(key => {
-									if (res.features['datasetType'][1]==1 && item[key]=='NaN') {
+									if (res.features['datasetType'][1]==1 && (item[key] === null || item[key]=='NaN')) {
 										//If the dataset type is 1-MBL then we don't want to see 'NaN' at the end of each transaction. So we show nothing 
 										row.append('<td></td>');
 									} else {

@@ -1,12 +1,45 @@
 {
     "hasHeader": true,
     "header": [
-        "IDInvoice",
+        "DateInvoice",
+        "CustomerID",
         "ProduitID",
-        ""
+        "SalesAmount",
+        "Quantity",
+        "CodeWarehousesineachzone",
+        "IDInvoice",
+        "ExpirationDate",
+        "RemainingQuantity",
+        "DocumentNo",
+        "DocumentType",
+        "SourceName",
+        "DescriptionProduit",
+        "MaxAgeofProductATOSProduits",
+        "CountrOriginProduits",
+        "ShelfLifeProduits",
+        "ExpiredRegistrationDateProduits",
+        "PackingProduits",
+        "InventoryProduits",
+        "UnitPriceProduits",
+        "VendorNoProduits",
+        "SearchDescriptionProduits",
+        "ItemCategoryProduits",
+        "VAT",
+        "ProdPostingGroup",
+        "NameCustomers",
+        "AddressCostumers",
+        "DistrictCustomers",
+        "CityCustomers",
+        "CustomerPostingGroup"
     ],
     "delimiter": ";",
     "datasetFeatures": {
+        "NumberOfColumns": [
+            "Number Of Columns",
+            29,
+            29,
+            "The total number of columns\/features in the Dataset"
+        ],
         "_name": [
             "Name",
             "invoice.csv",
@@ -31,29 +64,29 @@
             "99.3%",
             "The Average of distinct values per row over the total rows"
         ],
-        "FreqoFTop1FreqValue": [
-            "Top 1 Value",
+        "Top1Value": [
+            "Most Frequent Value",
+            "FR",
+            "FR",
+            "The most frequent value in the dataset"
+        ],
+        "FreqOfTop1FreqValue": [
+            "Top 1 Value %",
             0.034482758620689655,
             "3.4%",
-            "The ratio of the number of the most frequent value to the number of elements"
+            "The ratio Of the number of the most frequent value to the number of elements"
         ],
-        "FreqoFTop2FreqValue": [
-            "Top 2 Value",
+        "FreqOfTop2FreqValue": [
+            "Top 2 Value %",
             0.033931034482758624,
             "3.4%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
-        "FreqoFTop3FreqValue": [
-            "Top 3 Value",
+        "FreqOfTop3FreqValue": [
+            "Top 3 Value %",
             0.03379310344827586,
             "3.4%",
             "The ratio of the number of the third most frequent value to the number of elements"
-        ],
-        "NumberOfColumns": [
-            "Number Of Columns",
-            29,
-            29,
-            "The total number of columns in the Dataset"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
@@ -131,7 +164,7 @@
             "Type 2-INV Words",
             11,
             11,
-            "he number of columns containing words used in Type 2-INV datasets"
+            "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
         ]
     },
     "datasetTypePredicted": 2,

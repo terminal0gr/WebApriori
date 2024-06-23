@@ -13,16 +13,16 @@ function guestlogin() {
             sessionStorage.setItem('apikey', res.apikey);
             sessionStorage.setItem('username', res.name);
         } else {
-            MyModal("An error occured",res.message);
+            MyModal("An error occurred",res.message);
         }
 
     })
     .fail(function(data) {
 
         if (data.responseText) {
-            MyModal("WebApriori",data.responseText);
+            MyModal("AutoML WebApriori",data.responseText);
         } else {
-            MyModal("WebApriori",'Unknown error occured!');
+            MyModal("AutoML WebApriori",'Unknown error occurred!');
         }
     });
 };
@@ -74,7 +74,7 @@ function credits() {
         str    +=    '<div class="modal-dialog modal-dialog-centered">';
         str    +=    '    <div class="modal-content">';
         str    +=    '        <div class="modal-header"><div>';
-        str    +=    '                <h1 class="modal-title text-primary fs-3">webApriori</h1>';
+        str    +=    '                <h1 class="modal-title text-primary fs-3">AutoML webApriori</h1>';
         str    +=    '                <p class="text-secondary">An innovative AutoML association rules mining engine</p></div>';             
         str    +=    '                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
         str    +=    '        </div>';
@@ -82,7 +82,7 @@ function credits() {
         str    +=    '               <h5 class="modal-title text-primary">Developer</h5>';
         str    +=    '               <p>Malliaridis Konstantinos</p><hr>';
         str    +=    '               <h5 class="modal-title text-primary">Application Version</h5>';
-        str    +=    '               <p>V01.07.00 beta 24/03/2024</p>';
+        str    +=    '               <p>V01.01.00 20/06/2024</p>';
         str    +=    '            </div>';
         str    +=    '            <div class="modal-footer">';
         str    +=    '               <p class="text-center" >MSc and PHd in Web Intelligence &copy; 2019-2024</p>';
