@@ -7,10 +7,10 @@
 12/02/2024 Apriori Engine Main04.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv. Should be checked After (1)
 12/06/2024 Extra parameters / item names field must be beautified!
 16/06/2024 Upload AutoML WebApriori to NIREAS
-20/06/2024 Put an X button in info
+23/06/2024 Search.Html Ln:1333 Absent Item
 
 
-
+DONE - V01.00.00 23/06/2024 20/06/2024 Put an X button in Dataset information conteiner
 DONE - V01.00.00 17/06/2024 09/12/2023 AutoML type 4-NOA Extra parameters (e.g. name of the dataset's columns)
 DONE - V01.00.00 17/06/2024 16/06/2024 3_L-0010_2021.metadata Check why Top 1 Value is 0.0 and not 0
 DONE - V01.00.00 16/06/2024 09/12/2023 AutoML type 3-SI Extra parameters / item names bring automatically the absent item 

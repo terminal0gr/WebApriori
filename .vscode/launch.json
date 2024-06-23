@@ -106,11 +106,10 @@
                      "1.5",
                      "4",
                      "-3",
-                     "2Sample-Superstore.csv",
+                     "3_L-0003_2019.csv",
                      "1",
                      "0",
-                     "Row ID","Order ID","Order Date","Ship Date","Ship Mode","Customer ID","Customer Name","Segment","Country","City","State","Postal Code","Region","Product ID","Category","Sub-Category","Product Name","Sales","Quantity","Discount","Profit"
-            ],
+                     "#","01.01.20200","03.01.01015","03.01.01016","03.01.01133","03.01.01135", "15.00.00001","15.00.00003"],
             "console": "integratedTerminal"
         }
 

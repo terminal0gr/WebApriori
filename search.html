@@ -1329,7 +1329,11 @@ class,age,sex,survived<br>
 
 
 				<div class="row">
-					<div class="col-12">
+					<div class="col-2">
+						<label for="extra parameters" class="form-label">Extra parameters / item names</label>
+						<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="In extra parameters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
+					</div>
+					<div class="col-10">
 						<label for="extra parameters" class="form-label">Extra parameters / item names</label>
 						<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="In extra parameters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
 					</div>
@@ -1339,7 +1343,14 @@ class,age,sex,survived<br>
 
 		<div id="datasetDescribe" class="lightgraybackground udfwidth mx-auto border rounded p-2" style="display:none">
 			<div class="container mt-2">
-				<h4 class="text-center text-primary">Dataset information</h4>
+				<div class="row">
+					<div class="col-11">
+						<h4 class="text-center text-primary">Dataset information</h4>
+					</div>
+					<div class="col-1">
+						<button type="button" class="btn btn-sm" onclick="toggleDisplay('#datasetDescribe')" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Hides dataset type guide section"><img src="./images/close24grey.png" width="24" height="24" alt="hide">	</button>
+					</div>
+				</div>
 
 				<div class="container text-center">
 					<div id="datasetFeaturesDiv" class="row row-cols-1 row-cols-sm-2 row-cols-md-3">

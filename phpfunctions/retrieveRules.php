@@ -99,6 +99,7 @@
         exit();
     }
 
+
     $isPublic=0;
     //get dataset type is the first character of $_POST['dataset']
     if (substr($_POST['dataset'],0,2)=='p|') {
@@ -122,6 +123,13 @@
         $JsonReq = array('title' => 'Exclamation', 'message' => 'inadequate dataset type!!!');
         print json_encode($JsonReq);
         exit();
+    } else {
+        if ((int) $_POST['datasetType']==3 && !isset($_POST['absentItem'])) {
+            http_response_code(201);
+            $JsonReq = array('title' => 'Exclamation', 'message' => 'You have not declared the absent item in 3-SI type dataset!!!');
+            print json_encode($JsonReq);
+            exit();
+        }
     }
 
     // File path where you want to write the JSON data
@@ -150,6 +158,7 @@
             "delimiter"   => $_POST['separator'],
             "datasetType" => (int) $_POST['datasetType']
         ];
+
     }
     else {
         $json_data['hasHeader'] = $header1;
@@ -157,6 +166,12 @@
         $json_data['delimiter'] = $_POST['separator'];
         $json_data['datasetType'] = (int) $_POST['datasetType'];
     }
+
+    # It is an append. If it 'absentItem' is appended or edited if it exists
+    if  ($json_data['datasetType']==3) { //3-SI dataset Type
+        $json_data['absentItem']=(string) $_POST['absentItem'];
+    }
+
     // Convert the PHP array to a JSON string
     $json_string = json_encode($json_data, JSON_PRETTY_PRINT);
 

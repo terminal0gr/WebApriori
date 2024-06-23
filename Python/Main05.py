@@ -407,9 +407,9 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
 
         if int(datasetType)==1:
                     
-            #use only the columns that the user has chosen
-            if len(args)>0:
-                dataset = dataset[list(args)]
+            # #use only the columns that the user has chosen
+            # if len(args)>0:
+            #     dataset = dataset[list(args)]
 
             #pandas to list
             records=dataset.values.tolist()
@@ -457,7 +457,7 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
             
             #pandas to list
             records=dataset.values.tolist()
-            #remove nan elements from this 2-dimensional list in order to be transformed a dataset type 1'
+            #remove nan elements from this 2-dimensional list in order to be transformed as a dataset type 1-MBL'
             records = [[y for y in x if str(y) != args[0]] for x in records]
             return(records)
                                 
