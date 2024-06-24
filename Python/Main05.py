@@ -648,11 +648,6 @@ if len(sys.argv)>9:
 	except:
 		redundantRemoveType=0 
 
-datasetArgs=''
-if len(sys.argv)>10:
-    if len(sys.argv[10])>0:
-	    datasetArgs=str(sys.argv[10:])
-
 if not identity:
     print("Unknown identity")
     sys.exit()
@@ -662,6 +657,30 @@ try:
     #Read dataset's metadatafile to retrieve its attributes. If not exists then it will AutoML create it.
     metadataInst=Metadata.Metadata()
     jsonData=metadataInst.readMetadataFile(identity, datasetName, public)
+    if not ['delimiter', 'datasetType', 'hasHeader'] in jsonData:
+        jsonData=metadataInst.createMetadataFile(identity, datasetName, public)
+    if jsonData['datasetType']==3 and not 'absentValue' in jsonData:
+        jsonData=metadataInst.createMetadataFile(identity, datasetName, public)
+    
+    if not 'delimiter' in jsonData:
+        print("An error occurred: Could not retrieve the delimiter of the dataset!")
+        sys.exit()  
+
+    if not 'datasetType' in jsonData:
+        print("An error occurred: Could not retrieve the dataset type of the dataset!") 
+        sys.exit()    
+
+    if not 'hasHeader' in jsonData:
+        print("An error occurred: Could not retrieve the dataset has header or not!") 
+        sys.exit() 
+    elif jsonData['hasHeader'] and not 'header' in jsonData:
+        print("An error occurred: Could not retrieve the dataset's header!") 
+        sys.exit() 
+
+    if jsonData['datasetType']==3 and not 'absentValue' in jsonData:
+        print("An error occurred: Could not retrieve the absent value of 3-SI dataset!")
+        sys.exit()  
+
     datasetSep=jsonData['delimiter']
     datasetType=int(jsonData['datasetType'])
     hasHeader=bool(jsonData['hasHeader'])
@@ -694,7 +713,7 @@ try:
         output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, public=public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
 
     else:
-        print("Could not retrieve records capable for frequent itemsets or Association Rules Mining")
+        print("An error occurred: Could not retrieve records capable for frequent itemsets or Association Rules Mining")
     
 except Exception as e:
     print(f"An error occurred: {e}")     

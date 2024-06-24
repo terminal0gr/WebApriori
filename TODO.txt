@@ -7,7 +7,19 @@
 12/02/2024 Apriori Engine Main04.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv. Should be checked After (1)
 12/06/2024 Extra parameters / item names field must be beautified!
 16/06/2024 Upload AutoML WebApriori to NIREAS
-23/06/2024 Search.Html Ln:1020 switch element
+24/06/2024   Search.Html Ln:192 TODO
+             The existence of header file items must not be mandatory. Only for filter purposes.
+             RetrieveRules.php ln 153 --> Creation / append to metadatafile. For help.
+             The below must be transfered from .json file to .metadata
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "3_L-0003_2019.csv",
+    "public": 1,
+    "redundantRemoveType": 0,
+    "datasetArgs": "['#', '01.01.20200', '03.01.01015', '03.01.01016', '03.01.01133', '03.01.01135', '15.00.00001', '15.00.00003']",
 
 
 DONE - V01.00.00 23/06/2024 20/06/2024 Put an X button in Dataset information conteiner

@@ -280,5 +280,6 @@
         ]
     },
     "datasetTypePredicted": 3,
-    "datasetType": 3
+    "datasetType": 3,
+    "absentItem": "0"
 }

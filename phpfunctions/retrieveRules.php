@@ -124,7 +124,7 @@
         print json_encode($JsonReq);
         exit();
     } else {
-        if ((int) $_POST['datasetType']==3 && !isset($_POST['absentItem'])) {
+        if ((int) $_POST['datasetType']==3 && !isset($_POST['absentValue'])) {
             http_response_code(201);
             $JsonReq = array('title' => 'Exclamation', 'message' => 'You have not declared the absent item in 3-SI type dataset!!!');
             print json_encode($JsonReq);
@@ -167,9 +167,14 @@
         $json_data['datasetType'] = (int) $_POST['datasetType'];
     }
 
-    # It is an append. If it 'absentItem' is appended or edited if it exists
+    # It is an append. the key/value pair is appended or, edited if it exists 
+    if  ($json_data['datasetType']==2) { //2-INV dataset Type
+        $json_data['groupItem']=(string) $_POST['groupItem'];
+        $json_data['valueItem']=(string) $_POST['valueItem'];
+    }
+
     if  ($json_data['datasetType']==3) { //3-SI dataset Type
-        $json_data['absentItem']=(string) $_POST['absentItem'];
+        $json_data['absentValue']=(string) $_POST['absentValue'];
     }
 
     // Convert the PHP array to a JSON string

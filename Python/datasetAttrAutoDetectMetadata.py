@@ -84,7 +84,7 @@ class Metadata():
                 datasetAttributes['datasetType']=int(datasetType)
 
         if datasetAttributes['datasetType']==3:
-            datasetAttributes['absentItem']=str(DFI.Top1Value)
+            datasetAttributes['absentValue']=str(DFI.Top1Value)
 
         if public==0:
             filepath=os.path.join('output', str(identity))

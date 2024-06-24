@@ -185,11 +185,11 @@
 					return;
 				}
 
-				//If the dataset is of type 2 it is mandatory to have 2 paramaters declared in extra fields
+				//If the dataset is of type 2 it is mandatory to have Group Item and Value Item declared
 				//datasetType.value format: ?name or p|?name where ? dataset type (1,2,3,4) and name the filename of the dataset
 				var str =  dataset.value
 				if (str.charAt(0)==='2' || (str.charAt(0)==='p' && str.charAt(2)==='2')) { //If it is type 2 dataset
-					var textboxValue = document.getElementById("extra_parameters").value;
+					var textboxValue = document.getElementById("group").value ;
 					var pattern = /^".*"\s".*"$/;
 					if (!pattern.test(textboxValue)) {
 						MyModal("Information", "In extra parameters field it is mandatory to declare 2 parameters when type 2 (INV) dataset is used. The 1st parameter represents the primary key column while 2nd represents the items column.");
@@ -286,13 +286,13 @@
 			});
 
 			$('#extra_parameters').blur(function() {
-				var regex = /[\[\]]/g;
-				var extraparams=this.value.replace(regex,''); 
-				var regex = /,/g;
-				extraparams=extraparams.replace(regex,' '); 
-				var regex = /'/g;
-				extraparams=extraparams.replace(regex,'"'); 
-				this.value=extraparams;
+				let regex = /[\[\]]/g;
+				let extraParams=this.value.replace(regex,''); 
+				regex = /,/g;
+				extraParams=extraParams.replace(regex,' '); 
+				regex = /'/g;
+				extraParams=extraParams.replace(regex,'"'); 
+				this.value=extraParams;
 			}); 
 
 		});
@@ -754,6 +754,10 @@
 
 							document.getElementById("datasetType").value=res.datasetType;
 							datasetTypeChanged();
+
+							if (res.datasetType==3) {
+								document.getElementById("absentValue").value=res.absentValue
+							}
                             
 							if (res.header) {
 								// Transform the array to a string
@@ -761,7 +765,7 @@
     								return '"' + item + '"';
 								}).join(' ');
 								if (res.datasetType==3) {
-									transformedString='"' + res.datasetFeatures.Top1Value[1] + '" ' + transformedString;
+									document.getElementById('absentValue').value=res.datasetFeatures.Top1Value[1]
 								}
 								document.getElementById('extra_parameters').value=transformedString;
 							}
@@ -817,6 +821,10 @@
 
 			document.getElementById('separator').value=";"; 
 			document.getElementById("header1").checked=false; 
+
+			document.getElementById('absentValue').value="";
+			document.getElementById('groupItem').value="";
+			document.getElementById('valueItem').value="";
 
 			element=document.getElementById("datasetDescribe");
             if (!isElementHidden(element)) {
@@ -1014,13 +1022,55 @@
 
 		function datasetTypeChanged() {
 			const datasetType=document.getElementById("datasetType").value;
+			let element=null
 			switch(datasetType) {
-				case 2:
-				case 3:
+				case '2':
+					element = document.getElementById('INV-2-groupItem');
+					element.classList.remove("d-none");
+					element.classList.add("d-block");
+					element = document.getElementById('INV-2-valueItem');
+					element.classList.remove("d-none");
+					element.classList.add("d-block");
+					element = document.getElementById('SI-3-absentValue');
+					element.classList.remove("d-block");
+					element.classList.add("d-none");
+					element = document.getElementById('extraParametersDiv');
+					element.classList.remove("col-12");
+					element.classList.remove("col-10");
+					element.classList.add("col-8");
+					break;
+				case '3':
+					element = document.getElementById('INV-2-groupItem');
+					element.classList.remove("d-block");
+					element.classList.add("d-none");
+					element = document.getElementById('INV-2-valueItem');
+					element.classList.remove("d-block");
+					element.classList.add("d-none");
+					element = document.getElementById('SI-3-absentValue');
+					element.classList.remove("d-none");
+					element.classList.add("d-block");
+					element = document.getElementById('extraParametersDiv');
+					element.classList.remove("col-12");
+					element.classList.remove("col-8");
+					element.classList.add("col-10");
+					break;
 				default:
+					element = document.getElementById('INV-2-groupItem');
+					element.classList.remove("d-block");
+					element.classList.add("d-none");
+					element = document.getElementById('INV-2-valueItem');
+					element.classList.remove("d-block");
+					element.classList.add("d-none");
+					element = document.getElementById('SI-3-absentValue');
+					element.classList.remove("d-block");
+					element.classList.add("d-none");
+					element = document.getElementById('extraParametersDiv');
+					element.classList.remove("col-10");
+					element.classList.remove("col-8");
+					element.classList.add("col-12");
+					break;			
 			}
-
-			alert("Hello world");
+					
 		}
 
     </script>
@@ -1343,17 +1393,17 @@ class,age,sex,survived<br>
 				<div class="row">
 					<div id="INV-2-groupItem" class="col-2" style="display:none">
 						<label for="groupItem" class="form-label">Group<br>Item</label>
-						<input type="text" id="groupItem" name="groupItem" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the column that groups a single transaction without quotes, for 2 - Invoice Detail (INV) dataset type, if not already predicted successfully. Possible Names Product Name, Product Id etc. For more details please press ?" placeholder="absent Item e.g. 0">
+						<input type="text" id="groupItem" name="groupItem" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the column that groups a single transaction without quotes, for 2 - Invoice Detail (INV) dataset type, if not already predicted successfully. Possible Names Product Name, Product Id etc. For more details please press ?" placeholder="Group Item">
 					</div>
 					<div id="INV-2-valueItem" class="col-2" style="display:none">
-						<label for="valueItem" class="form-label">value<br>Item</label>
-						<input type="text" id="valueItem" name="valueItem" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the column that consists of the participating items in transactions without quotes, for 2 - Invoice Detail (INV) dataset type in not already predicted successfully. For more details please press ?" placeholder="absent Item e.g. 0">
+						<label for="valueItem" class="form-label">Value<br>Item</label>
+						<input type="text" id="valueItem" name="valueItem" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the column that consists of the participating items in transactions without quotes, for 2 - Invoice Detail (INV) dataset type in not already predicted successfully. For more details please press ?" placeholder="Value Item">
 					</div>
 					<div id="SI-3-absentValue" class="col-2" style="display:none">
 						<label for="absentValue" class="form-label">Absent<br>Item</label>
 						<input type="text" id="absentValue" name="absentValue" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the absent value without quotes, for 3 - Sparse Item (SI) dataset type, if not already predicted successfully. For more details please press ?" placeholder="absent Item e.g. 0">
 					</div>
-					<div class="col-12">
+					<div id="extraParametersDiv" class="col-12">
 						<label for="extra_parameters" class="form-label">Participating<br>Items</label>
 						<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="In extra parameters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
 					</div>
