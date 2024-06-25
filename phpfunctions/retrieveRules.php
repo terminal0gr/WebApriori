@@ -130,6 +130,18 @@
             print json_encode($JsonReq);
             exit();
         }
+        if ((int) $_POST['datasetType']==2 && !isset($_POST['groupItem'])) {
+            http_response_code(201);
+            $JsonReq = array('title' => 'Exclamation', 'message' => 'You have not declared the grouping item in 2-INV type dataset!!!');
+            print json_encode($JsonReq);
+            exit();
+        }
+        if ((int) $_POST['datasetType']==2 && !isset($_POST['valueItem'])) {
+            http_response_code(201);
+            $JsonReq = array('title' => 'Exclamation', 'message' => 'You have not declared the value item in 2-INV type dataset!!!');
+            print json_encode($JsonReq);
+            exit();
+        }
     }
 
     // File path where you want to write the JSON data
@@ -154,7 +166,7 @@
         //Create new  $json_data
         $json_data = [
             "hasHeader"   => $header1,
-            "header"      => explode(' ', str_replace('"', '', $_POST['extra_parameters'])), 
+            "header"      => explode($_POST['separator'], str_replace('"', '', $_POST['extra_parameters'])), 
             "delimiter"   => $_POST['separator'],
             "datasetType" => (int) $_POST['datasetType']
         ];
@@ -162,10 +174,44 @@
     }
     else {
         $json_data['hasHeader'] = $header1;
-        $json_data['header'] = explode(' ', str_replace('"', '', $_POST['extra_parameters']));
+        $json_data['header'] = explode($_POST['separator'], str_replace('"', '', $_POST['extra_parameters']));
         $json_data['delimiter'] = $_POST['separator'];
         $json_data['datasetType'] = (int) $_POST['datasetType'];
     }
+
+    $json_data['min_support']=0.01;
+    if (!empty($_POST['min_support'])) {
+        $json_data['min_support'] = (float) $_POST['min_support'];
+    }
+    $json_data['min_confidence']=0.2;
+    if (!empty($_POST['min_confidence'])) {
+        $json_data['min_confidence'] = (float) $_POST['min_confidence'];
+    }
+    $json_data['min_lift']=1.5;
+    if (!empty($_POST['min_lift'])) {
+        $json_data['min_lift'] = (float) $_POST['min_lift'];
+    }
+    $json_data['max_length']=4;
+    if (!empty($_POST['max_length'])) {
+        $json_data['max_length'] = (int) $_POST['max_length'];
+    }
+    $json_data['ssort']=-3; # order by lift descending
+    if (!empty($_POST['ssort'])) {
+        $json_data['ssort'] = (int) $_POST['ssort'];
+    }
+    $json_data['datasetName']=$filename;
+    $json_data['public']=1; # 0=Private, 1=public
+    if (!empty($_POST['public'])) {
+        $json_data['public'] = (int) $_POST['public'];
+    }    
+    $json_data['redundantRemoveType']=0; # 0=No redunrtant, bitwise parameter
+    if (!empty($_POST['redundantType'])) {
+        $json_data['redundantRemoveType'] = (int) $_POST['redundantType'];
+    }    
+    $json_data['participatingItems']="[]"; # 0=Private, 1=public
+    if (!empty($_POST['extra_parameters'])) {
+        $json_data['participatingItems'] = (string) $_POST['extra_parameters'];
+    }    
 
     # It is an append. the key/value pair is appended or, edited if it exists 
     if  ($json_data['datasetType']==2) { //2-INV dataset Type
