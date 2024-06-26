@@ -15,8 +15,6 @@ import Global
 max_rules=1000
 max_items=999
 
-metaDataFile=None
-
 __Version__ = '02.00.00 28/03/2024'
 __Developer__ = 'Malliaridis konstantinos'
 __DeveloperEmail__= 'terminal_gr@yahoo.com'
@@ -382,7 +380,7 @@ Dataset types:
 ###################################################################
 # preprocessing section
 ###################################################################
-def prepare_records(datasetName, datasetSep, datasetType, public, *args):
+def prepare_records():
     global max_items
 
     try:
@@ -392,15 +390,12 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
         else:
             filepath=os.path.join('public', datasetName)
 
-        metadataInst=Metadata.Metadata()
-        metaDataFile=metadataInst.readMetadataFile(identity,datasetName,public)
-
-        if len(args)>max_items:
+        if len(jsonData['participatingItems'])>max_items:
             print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' of the ' + str(len(args)) + ' columns will be processed.')
-            args=args[0:max_items+1]
+            jsonData['participatingItems']=jsonData['participatingItems'][0:max_items+1]
 
         #Read the dataset from file
-        dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig', hasHeader=metaDataFile['hasHeader'])
+        dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig', hasHeader=jsonData['hasHeader'])
         if not isinstance(dataset, pd.DataFrame):
             print(f"An error occurred: Could not read dataset! {e}")     
             sys.exit
@@ -449,16 +444,17 @@ def prepare_records(datasetName, datasetSep, datasetType, public, *args):
                     
         elif datasetType==3:
             
-            dataset = dataset[list(args[1:])]
+            if len(jsonData['participatingItems'])>0:
+                dataset = dataset[jsonData['participatingItems']]
             
             #put the name of product in item#
-            for arg in args[1:]:
-                dataset[arg]=[str(arg) if str(x)!=args[0] else args[0] for x in dataset[arg]]
+            for arg in jsonData['participatingItems']:
+                dataset[arg]=[str(arg) if str(x)!=jsonData['absentValue'] else jsonData['absentValue'] for x in dataset[arg]]
             
             #pandas to list
             records=dataset.values.tolist()
             #remove nan elements from this 2-dimensional list in order to be transformed as a dataset type 1-MBL'
-            records = [[y for y in x if str(y) != args[0]] for x in records]
+            records = [[y for y in x if str(y) !=jsonData['absentValue']] for x in records]
             return(records)
                                 
         elif datasetType==4:
@@ -520,18 +516,16 @@ def output_association_rules(association_results, sort_index, descending=True, f
             dictRules['max_length'] = max_length
             dictRules['ssort'] = ssort
             dictRules['datasetName'] = datasetName
-            dictRules['public'] = public
             dictRules['redundantRemoveType'] = redundantRemoveType
-            dictRules['datasetArgs'] = datasetArgs
-            
+
             dictRules['Records'] = records
             dictRules['RecordsCreationTime'] = '{0:.3f}'.format(recordTime)
             dictRules['RulesCount'] = len(association_results)
             dictRules['RulesCreationTime'] = '{0:.3f}'.format(assocTime)
             
             dictRules['rules'] = []
-            for arule in association_results:
-                dictRules['rules'].append(dict(zip(Hlist, arule)))
+            for rule in association_results:
+                dictRules['rules'].append(dict(zip(Hlist, rule)))
                 
             json.dump(dictRules, file, indent=4)
             print(json.dumps(dictRules, indent=4)) 
@@ -626,6 +620,12 @@ try:
         print("An error occurred: Could not retrieve the dataset's header!") 
         sys.exit() 
 
+    if jsonData['datasetType']==2 and not 'groupItem' in jsonData:
+        print("An error occurred: Could not retrieve the Group Item of 2-INV dataset!")
+        sys.exit()  
+    if jsonData['datasetType']==2 and not 'valueItem' in jsonData:
+        print("An error occurred: Could not retrieve the Value Item of 2-INV dataset!")
+        sys.exit()  
     if jsonData['datasetType']==3 and not 'absentValue' in jsonData:
         print("An error occurred: Could not retrieve the absent value of 3-SI dataset!")
         sys.exit()  
@@ -679,12 +679,9 @@ try:
     #Time starts here
     #################
     recordTime=time()
-    #################
+    #################    
 
-    if datasetType==2:
-        
-
-    records=prepare_records(datasetName, datasetSep, datasetType, public, participatingItems)
+    records=prepare_records()
         
     if records:
 

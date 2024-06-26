@@ -10,19 +10,12 @@
 24/06/2024   Search.Html Ln:192 TODO
              The existence of header file items must not be mandatory. Only for filter purposes.
              RetrieveRules.php ln 153 --> Creation / append to metadatafile. For help.
-             The below must be transfered from .json file to .metadata
-    "min_support": 0.01,
-    "min_confidence": 0.2,
-    "min_lift": 1.5,
-    "max_length": 4,
-    "ssort": -3,
-    "datasetName": "3_L-0003_2019.csv",
-    "public": 1,
-    "redundantRemoveType": 0,
-    "datasetArgs": "['#', '01.01.20200', '03.01.01015', '03.01.01016', '03.01.01133', '03.01.01135', '15.00.00001', '15.00.00003']",
+             datasetType 3. grocery_timestamp.csv. Error in application when choose the dataset
 
 
-DONE - V01.00.00 23/06/2024 20/06/2024 Put an X button in Dataset information conteiner
+
+
+DONE - V01.00.00 23/06/2024 20/06/2024 Put an X button in Dataset information container
 DONE - V01.00.00 17/06/2024 09/12/2023 AutoML type 4-NOA Extra parameters (e.g. name of the dataset's columns)
 DONE - V01.00.00 17/06/2024 16/06/2024 3_L-0010_2021.metadata Check why Top 1 Value is 0.0 and not 0
 DONE - V01.00.00 16/06/2024 09/12/2023 AutoML type 3-SI Extra parameters / item names bring automatically the absent item 
