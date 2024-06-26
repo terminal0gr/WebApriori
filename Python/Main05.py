@@ -572,92 +572,41 @@ Dataset types:
 #identity
 identity=None
 if len(sys.argv)>1:
-	try:
-		identity=str(sys.argv[1])
-	except:
-		sys.exit()
+    try:
+        identity=str(sys.argv[1])
+    except:
+        print("An error occurred: Could not retrieve identity of the user!")
+        sys.exit()
+else:        
+    print("An error occurred: User identity not given!")
+    sys.exit()
 
-#min_support
-min_support=0.01
 if len(sys.argv)>2:
-	try:
-		min_support=float(sys.argv[2])
-	except:
-		min_support=0.01
+    if len(sys.argv[2])>0:
+        datasetName=sys.argv[2]	
+    else:
+        print("An error occurred: Dataset name not given!")
+        sys.exit()
+else:        
+    print("An error occurred: Dataset name not given!")
+    sys.exit()
 
-#min_confidence
-min_confidence=0.2
+#0=private, 1=public
+public=0
 if len(sys.argv)>3:
 	try:
-		min_confidence=float(sys.argv[3])
-	except:
-		min_confidence=0.2
-
-#min_lift
-min_lift=1.5
-if len(sys.argv)>4:
-	try:
-		min_lift=float(sys.argv[4])
-	except:
-		min_lift=1.5
-
-#max_length	
-max_length=2	
-if len(sys.argv)>5:
-	try:
-		max_length=int(sys.argv[5])
-	except:
-		max_length=2
-		
-#sort_order
-#0 by LHS, 1 by RHS, 2 by confidence, 3 by lift, 4 by conviction, 5 by LHS support, 6 by RHS support, 7 by rule support 
-#negatives meaning descending
-ssort=-3
-if len(sys.argv)>6:
-	try:
-		ssort=int(sys.argv[6])
-	except:
-		ssort=-3 # by lift descending
-		
-datasetName='dataset.csv'	
-if len(sys.argv)>7:
-    if len(sys.argv[7])>0:
-        datasetName=sys.argv[7]	
-
-'''
-#0=private, 1=public
-'''
-public=0
-if len(sys.argv)>8:
-	try:
-		public=int(sys.argv[8])
+		public=int(sys.argv[3])
 	except:
 		public=0 # Default is 0 private Dataset.
 
-'''
-bitwise 0 non redundant removal
-bitwise 1 Interchange the antecedent/LHS and consequence/RHS case 
-bitwise 2 Redundant Rules with Fixed Consequence/RHS
-bitwise 4 Redundant Rules with Fixed Antecedent/LHS
-#output to to both console and file if datasetName is given
-'''
-redundantRemoveType=0 
-if len(sys.argv)>9:
-	try:
-		redundantRemoveType=int(sys.argv[9])
-	except:
-		redundantRemoveType=0 
 
-if not identity:
-    print("Unknown identity")
-    sys.exit()
-
+#Main Program
 try:
 
     #Read dataset's metadatafile to retrieve its attributes. If not exists then it will AutoML create it.
     metadataInst=Metadata.Metadata()
     jsonData=metadataInst.readMetadataFile(identity, datasetName, public)
-    if not ['delimiter', 'datasetType', 'hasHeader'] in jsonData:
+    if not {'delimiter', 'datasetType', 'hasHeader'}.issubset(jsonData):
         jsonData=metadataInst.createMetadataFile(identity, datasetName, public)
     if jsonData['datasetType']==3 and not 'absentValue' in jsonData:
         jsonData=metadataInst.createMetadataFile(identity, datasetName, public)
@@ -685,17 +634,57 @@ try:
     datasetType=int(jsonData['datasetType'])
     hasHeader=bool(jsonData['hasHeader'])
 
+    min_support=0.01
+    if 'min_support' in jsonData:
+        min_support=jsonData['min_support']
 
+    min_confidence=0.2
+    if 'min_confidence' in jsonData:
+        min_confidence=jsonData['min_confidence']
 
+    min_lift=1.5
+    if 'min_lift' in jsonData:
+        min_lift=jsonData['min_lift']
+
+    max_length=2
+    if 'max_length' in jsonData:
+        max_length=jsonData['max_length']
+
+    #sort_order
+    #0 by LHS, 1 by RHS, 2 by confidence, 3 by lift, 4 by conviction, 5 by LHS support, 6 by RHS support, 7 by rule support 
+    #negatives meaning descending
+    ssort=-3
+    if 'ssort' in jsonData:
+        ssort=jsonData['ssort']
+
+    '''
+    bitwise 0 non redundant removal
+    bitwise 1 Interchange the antecedent/LHS and consequence/RHS case 
+    bitwise 2 Redundant Rules with Fixed Consequence/RHS
+    bitwise 4 Redundant Rules with Fixed Antecedent/LHS
+    #output to to both console and file if datasetName is given
+    '''
+    redundantRemoveType=0 
+    if 'redundantRemoveType' in jsonData:
+        redundantRemoveType=jsonData['redundantRemoveType']
+
+    ssort=-3
+    if 'ssort' in jsonData:
+        ssort=jsonData['ssort']
+
+    participatingItems=[]
+    if 'participatingItems' in jsonData:
+        participatingItems=jsonData['participatingItems'] 
+
+    #Time starts here
     #################
     recordTime=time()
     #################
 
+    if datasetType==2:
+        
 
-    if len(sys.argv)>10:
-        records=prepare_records(datasetName, datasetSep, datasetType, public, *sys.argv[10:])
-    else:
-        records=prepare_records(datasetName=datasetName, datasetSep=datasetSep, datasetType=datasetType, public=public)
+    records=prepare_records(datasetName, datasetSep, datasetType, public, participatingItems)
         
     if records:
 

@@ -166,7 +166,6 @@
         //Create new  $json_data
         $json_data = [
             "hasHeader"   => $header1,
-            "header"      => explode($_POST['separator'], str_replace('"', '', $_POST['extra_parameters'])), 
             "delimiter"   => $_POST['separator'],
             "datasetType" => (int) $_POST['datasetType']
         ];
@@ -174,7 +173,6 @@
     }
     else {
         $json_data['hasHeader'] = $header1;
-        $json_data['header'] = explode($_POST['separator'], str_replace('"', '', $_POST['extra_parameters']));
         $json_data['delimiter'] = $_POST['separator'];
         $json_data['datasetType'] = (int) $_POST['datasetType'];
     }
@@ -208,12 +206,17 @@
     if (!empty($_POST['redundantType'])) {
         $json_data['redundantRemoveType'] = (int) $_POST['redundantType'];
     }    
-    $json_data['participatingItems']="[]"; # 0=Private, 1=public
+    $json_data['participatingItems']="[]"; 
     if (!empty($_POST['extra_parameters'])) {
-        $json_data['participatingItems'] = (string) $_POST['extra_parameters'];
+        // Use a regular expression to match quoted segments
+        preg_match_all('/"([^"]+)"/', $_POST['extra_parameters'], $matches);
+        // Extract the matches
+        $json_data['participatingItems'] = $matches[1];
+        
+        //$json_data['participatingItems'] = explode($_POST['separator'], str_replace('"', '', $_POST['extra_parameters']));
     }    
 
-    # It is an append. the key/value pair is appended or, edited if it exists 
+    // It is an append. the key/value pair is appended or, edited if it exists 
     if  ($json_data['datasetType']==2) { //2-INV dataset Type
         $json_data['groupItem']=(string) $_POST['groupItem'];
         $json_data['valueItem']=(string) $_POST['valueItem'];
@@ -229,27 +232,21 @@
     //Write to file
     file_put_contents($fpatho, $json_string);
 
-
-    //For testing purposes
-    // $JsonReq = array('title' => $fpatho, 'message' =>  $fpatho.$json_string);
-    // print json_encode($JsonReq);
-    // exit();
-
     //Call Python for Association rules mining
     $input = PYTHON;
     $input.= ' Main05.py ';
     $input.= '"'.$identity.'" ';
-    $input.= '"'.$_POST['min_support'].'" ';
-    $input.= '"'.$_POST['min_confidence'].'" ';
-    $input.= '"'.$_POST['min_lift'].'" ';
-    $input.= '"'.$_POST['max_length'].'" ';
-    $input.= '"-3" ';
+    //$input.= '"'.$_POST['min_support'].'" ';
+    //$input.= '"'.$_POST['min_confidence'].'" ';
+    //$input.= '"'.$_POST['min_lift'].'" ';
+    //$input.= '"'.$_POST['max_length'].'" ';
+    //$input.= '"-3" ';
     $input.= '"'.$filename.'" ';
     $input.= '"'.$isPublic.'" ';
-    $input.= '"'.$_POST['redundantType'].'" ';
-    $input.= $_POST['extra_parameters'];
+    //$input.= '"'.$_POST['redundantType'].'" ';
+    //$input.= $_POST['extra_parameters'];
 
-    //for debug purposes
+    // //for debug purposes
     // http_response_code(201);
     // $JsonReq = array('title' => 'Debug', 'message' => $input);
     // print json_encode($JsonReq);
