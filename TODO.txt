@@ -10,7 +10,9 @@
 24/06/2024   Search.Html Ln:192 TODO
              The existence of header file items must not be mandatory. Only for filter purposes.
              RetrieveRules.php ln 153 --> Creation / append to metadatafile. For help.
-             datasetType 3. grocery_timestamp.csv. Error in application when choose the dataset
+             For every dataset type special parametering search.html ln 634 For. help
+             2Sales.csv wrong delimiter detection : instead of ;
+
 
 
 

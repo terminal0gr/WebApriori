@@ -366,16 +366,13 @@ def webApriori(itemsets, **kwargs):
   
 '''
 Dataset types:
-1--> Market Basket list. No header is expected, The number of columns is undefined (Default). 
-     If header, then participant columns must be declared in args starting from arg[1:], 
-     In arg[0] the absent of item string must be declared. If absent item is nothing then assign '' or 'nan' 
+1--> Market Basket list. There is no header. The number of columns is undefined (Default). 
 2--> Order/Invoice detail. Header line is mandatory. Number of columns is fixed, 
-     arg[0] primary key column and arg[1] items column are required in *args
+     Group Value Column and Item Value must be declared in .metadatafile
 3--> Sparse item Dataset. Header line is mandatory. Number of columns is fixed. 
-     Items columns are mandatory to be declared in args[1:].
-     In arg[0] the absent of item string must be declared!!! If absent item is nothing then assign '' or 'nan' 
+     The absent value is mandatory to be declared in .metadatafile. If absent item is nothing then '' or 'nan' must be declared.
 4--> Columns with multiple nominal values. Header line is optional. 
-     Number of columns is fixed, optional items columns are expected in case header line exists.
+     Number of columns is fixed.
 '''
 ###################################################################
 # preprocessing section
@@ -391,7 +388,7 @@ def prepare_records():
             filepath=os.path.join('public', datasetName)
 
         if len(jsonData['participatingItems'])>max_items:
-            print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' of the ' + str(len(args)) + ' columns will be processed.')
+            print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' of the ' + str(len(jsonData['participatingItems'])) + ' columns will be processed.')
             jsonData['participatingItems']=jsonData['participatingItems'][0:max_items+1]
 
         #Read the dataset from file
@@ -416,25 +413,36 @@ def prepare_records():
                 
         elif datasetType==2:
 
-            groupCol = args[0]
-            itemsCol = args[1]
+            if not 'groupItem' in jsonData:
+                # Grouping Column not set!
+                # Set the first column as the grouping one
+                groupItem=dataset.columns[0]
+            else:
+                groupItem =jsonData['groupItem']
 
-            dataset = dataset[[groupCol, itemsCol]]
+            if not 'valueItem' in jsonData:
+                # Value item Column not set!
+                # Set the second column
+                valueItem=dataset.columns[1]
+            else:
+                valueItem =jsonData['valueItem']
+
+            dataset = dataset[[groupItem, valueItem]]
             
-            datasetSorted=dataset.sort_values(by=groupCol)
+            datasetSorted=dataset.sort_values(by=groupItem)
 
             TempInv=''
             records=[]
             setrec=set()
             for index, row in datasetSorted.iterrows():
-                if TempInv!=row[groupCol]:
+                if TempInv!=row[groupItem]:
                     if len(setrec)>1:
                         records.append(sorted(setrec))
                     setrec=set()
-                    setrec.add(str(row[itemsCol]).strip())
-                    TempInv=row[groupCol]
+                    setrec.add(str(row[valueItem]).strip())
+                    TempInv=row[groupItem]
                 else:
-                    setrec.add(str(row[itemsCol]).strip())
+                    setrec.add(str(row[valueItem]).strip())
                     
 
             if len(setrec)>1:
@@ -444,11 +452,12 @@ def prepare_records():
                     
         elif datasetType==3:
             
-            if len(jsonData['participatingItems'])>0:
-                dataset = dataset[jsonData['participatingItems']]
+            if 'participatingItems' in jsonData:
+                if len(jsonData['participatingItems'])>0:
+                    dataset = dataset[jsonData['participatingItems']]
             
             #put the name of product in item#
-            for arg in jsonData['participatingItems']:
+            for arg in dataset.columns:
                 dataset[arg]=[str(arg) if str(x)!=jsonData['absentValue'] else jsonData['absentValue'] for x in dataset[arg]]
             
             #pandas to list
@@ -548,18 +557,19 @@ def output_association_rules(association_results, sort_index, descending=True, f
 ###########
 '''
 Dataset types:
-1--> Market Basket list. No header is expected, The number of columns is undefined (Default). 
-     If header, then participant columns must be declared in args starting from arg[1:], 
-     In arg[0] the absent of item string must be declared. If absent item is nothing then assign '' or 'nan' 
-2--> Order/Invoice detail. Header line is mandatory. Number of columns is fixed, 
-     arg[0] primary key column and arg[1] items column are required in *args
-3--> Sparse item Dataset. Header line is mandatory. Number of columns is fixed. 
-     Items columns are mandatory to be declared in args[1:].
-     In arg[0] the absent of item string must be declared!!! If absent item is nothing then assign '' or 'nan' 
-4--> Columns with multiple nominal values. Header line is optional. 
-     Number of columns is fixed, optional items columns are expected in case header line exists.
+1 MBL --> Market Basket list. No header is expected, The number of columns is undefined (Default). 
+          If header, then participant columns must be declared in args starting from arg[1:], 
+          In arg[0] the absent of item string must be declared. If absent item is nothing then assign '' or 'nan' 
+2 INV --> Order/Invoice detail. Header line is mandatory. Number of columns is fixed, 
+          arg[0] primary key column and arg[1] items column are required in *args
+3 SI  --> Sparse item Dataset. Header line is mandatory. Number of columns is fixed. 
+          Items columns are mandatory to be declared in args[1:].
+          In arg[0] the absent of item string must be declared!!! If absent item is nothing then assign '' or 'nan' 
+4 NOA --> Columns with multiple nominal values. Header line is optional. 
+          Number of columns is fixed, optional items columns are expected in case header line exists.
 
-1) Identity   2) min_support   3) min_confidence   4) min_lift   5) max_length   6) SortIndex   7) datasetName   8) public   9) redundantRemoveType 10) datasetArgs
+Call arguments          
+1) Identity   2) datasetName   3) public   
 '''
 
 

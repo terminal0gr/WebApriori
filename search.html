@@ -207,6 +207,11 @@
 
 				formData.push({name: "datasetType", value: document.getElementById('datasetType').value});
 
+				if (document.getElementById('datasetType').value) {
+					formData.push({name: "groupItem", value: document.getElementById('groupItem').value});
+					formData.push({name: "valueItem", value: document.getElementById('valueItem').value});
+				}
+
                 //Redundant rules process
 				bws=0;
 				if ($("#Redundant1").is(":checked")) bws+=1;
@@ -631,16 +636,18 @@
 								document.getElementById("Redundant3").checked=false;
 							}
 
-							//loads res.datasetArgs as a python list like =>['a', 'b'].
-							//but we need the format =>"a" "b" so, we apply the above regex!
-							var regex = /[\[\],]/g;
-							var extraparams=res.datasetArgs.replace(regex,'');
-							var regex = /,/g;
-							extraparams=extraparams.replace(regex,' ');  
-							var regex = /'/g;
-							extraparams=extraparams.replace(regex,'"'); 
-							
-							document.getElementById('extra_parameters').value=extraparams; 
+							// if (typeof res.datasetArgs !== 'undefined') {
+							// 	//loads res.datasetArgs as a python list like =>['a', 'b'].
+							// 	//but we need the format =>"a" "b" so, we apply the above regex!
+							// 	var regex = /[\[\],]/g;
+							// 	var extraparams=res.datasetArgs.replace(regex,'');
+							// 	var regex = /,/g;
+							// 	extraparams=extraparams.replace(regex,' ');  
+							// 	var regex = /'/g;
+							// 	extraparams=extraparams.replace(regex,'"'); 
+							// 	document.getElementById('extra_parameters').value=extraparams; 
+							// }
+						
 
 							fillTable(res);
 						}
@@ -755,20 +762,26 @@
 							document.getElementById("datasetType").value=res.datasetType;
 							datasetTypeChanged();
 
+							if (res.datasetType==2) {
+								str='<option value="" disabled selected >?</option>';
+								res.header.forEach(function(data){
+									str += '<option value="' + data + '">' + data + '</option>' 
+								});
+								$("#groupItem").html(str);
+								$("#valueItem").html(str);
+							}
+
 							if (res.datasetType==3) {
 								document.getElementById("absentValue").value=res.absentValue
 							}
                             
-							if (res.header) {
-								// Transform the array to a string
-								var transformedString = res.header.map(function(item) {
-    								return '"' + item + '"';
-								}).join(' ');
-								if (res.datasetType==3) {
-									document.getElementById('absentValue').value=res.datasetFeatures.Top1Value[1]
-								}
-								document.getElementById('extra_parameters').value=transformedString;
-							}
+							// if (res.header) {
+							// 	// Transform the array to a string
+							// 	var transformedString = res.header.map(function(item) {
+    						// 		return '"' + item + '"';
+							// 	}).join(' ');
+							// 	document.getElementById('extra_parameters').value=transformedString;
+							// }
 						}
 					}
 					catch(err) {
@@ -1379,13 +1392,13 @@ class,age,sex,survived<br>
 					</div>
 					<div class="col-6">
 						<select id="datasetType" class="browser-default form-select form-control" onchange="datasetTypeChanged()" data-bs-html="true" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' 
-						data-bs-title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparse item Dataset<br>4) Columns with multiple nomimal values</p><p>For more details click the <img src='./images/help24grey.png' width='24' height='24' alt='help'> icon.">
-						<option value="0" selected>unmanaged dataset type</option>
-						<option value="1">1 - Market basket list</option>
-						<option value="2">2 - Order/Invoice detail</option>
-						<option value="3">3 - Sparse item dataset</option>
-						<option value="4">4 - Multiple nomimal values</option>
-					</select>
+							data-bs-title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparse item Dataset<br>4) Columns with multiple nomimal values</p><p>For more details click the <img src='./images/help24grey.png' width='24' height='24' alt='help'> icon.">
+							<option value="0" selected>unmanaged dataset type</option>
+							<option value="1">1 - Market basket list</option>
+							<option value="2">2 - Order/Invoice detail</option>
+							<option value="3">3 - Sparse item dataset</option>
+							<option value="4">4 - Multiple nomimal values</option>
+						</select>
 					</div>
 				</div>	
 
@@ -1393,11 +1406,15 @@ class,age,sex,survived<br>
 				<div class="row">
 					<div id="INV-2-groupItem" class="col-2" style="display:none">
 						<label for="groupItem" class="form-label">Group<br>Item</label>
-						<input type="text" id="groupItem" name="groupItem" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the column that groups a single transaction without quotes, for 2 - Invoice Detail (INV) dataset type, if not already predicted successfully. Possible Names Product Name, Product Id etc. For more details please press ?" placeholder="Group Item">
+						<select id="groupItem" class="browser-default form-select form-control" data-bs-html="false" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' 
+							data-bs-title="Please choose the grouping column.">
+						</select>
 					</div>
 					<div id="INV-2-valueItem" class="col-2" style="display:none">
 						<label for="valueItem" class="form-label">Value<br>Item</label>
-						<input type="text" id="valueItem" name="valueItem" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the column that consists of the participating items in transactions without quotes, for 2 - Invoice Detail (INV) dataset type in not already predicted successfully. For more details please press ?" placeholder="Value Item">
+						<select id="valueItem" class="browser-default form-select form-control" data-bs-html="false" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' 
+							data-bs-title="Please choose the column that includes the items participating in mining.">
+						</select>
 					</div>
 					<div id="SI-3-absentValue" class="col-2" style="display:none">
 						<label for="absentValue" class="form-label">Absent<br>Item</label>
