@@ -453,7 +453,7 @@ def prepare_records():
         elif datasetType==3:
             
             if 'participatingItems' in jsonData:
-                if len(jsonData['participatingItems'])>0:
+                if len(jsonData['participatingItems'])>0 and jsonData['participatingItems']!='[]':
                     dataset = dataset[jsonData['participatingItems']]
             
             #put the name of product in item#

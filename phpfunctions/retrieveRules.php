@@ -212,8 +212,6 @@
         preg_match_all('/"([^"]+)"/', $_POST['extra_parameters'], $matches);
         // Extract the matches
         $json_data['participatingItems'] = $matches[1];
-        
-        //$json_data['participatingItems'] = explode($_POST['separator'], str_replace('"', '', $_POST['extra_parameters']));
     }    
 
     // It is an append. the key/value pair is appended or, edited if it exists 
@@ -236,15 +234,8 @@
     $input = PYTHON;
     $input.= ' Main05.py ';
     $input.= '"'.$identity.'" ';
-    //$input.= '"'.$_POST['min_support'].'" ';
-    //$input.= '"'.$_POST['min_confidence'].'" ';
-    //$input.= '"'.$_POST['min_lift'].'" ';
-    //$input.= '"'.$_POST['max_length'].'" ';
-    //$input.= '"-3" ';
     $input.= '"'.$filename.'" ';
     $input.= '"'.$isPublic.'" ';
-    //$input.= '"'.$_POST['redundantType'].'" ';
-    //$input.= $_POST['extra_parameters'];
 
     // //for debug purposes
     // http_response_code(201);

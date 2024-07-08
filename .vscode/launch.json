@@ -89,7 +89,7 @@
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "args": [
-                "79d1727987f200802593e3599119c966", "grocery_timestamp.csv", "0"
+                "79d1727987f200802593e3599119c966", "2sales.csv", "1"
             ],
             "console": "integratedTerminal"
         },

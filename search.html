@@ -185,20 +185,32 @@
 					return;
 				}
 
+
+				// Serialize the form data first in array form so to add more elements.
+				var formData = $('#retrieveRules').serializeArray(); // convert form to array
+
+
 				//If the dataset is of type 2 it is mandatory to have Group Item and Value Item declared
 				//datasetType.value format: ?name or p|?name where ? dataset type (1,2,3,4) and name the filename of the dataset
 				var str =  dataset.value
 				if (str.charAt(0)==='2' || (str.charAt(0)==='p' && str.charAt(2)==='2')) { //If it is type 2 dataset
-					var textboxValue = document.getElementById("group").value ;
-					var pattern = /^".*"\s".*"$/;
-					if (!pattern.test(textboxValue)) {
-						MyModal("Information", "In extra parameters field it is mandatory to declare 2 parameters when type 2 (INV) dataset is used. The 1st parameter represents the primary key column while 2nd represents the items column.");
-						return;
-					}
-				}
 
-                // Serialize the form data first in array form so to add more elements.
-				var formData = $('#retrieveRules').serializeArray(); // convert form to array
+					let textboxValue = document.getElementById("groupItem").value;
+					if (!textboxValue || textboxValue=="?") {
+					   	MyModal("Information", "It is mandatory to declare the grouping field/item/column in the dataset that represents the primary key for a given transaction when type 2 (INV) dataset is used.");
+						document.getElementById("groupItem").focus();
+					 	return;
+					}
+					formData.push({name: "groupItem", value: textboxValue});
+
+					textboxValue = document.getElementById("valueItem").value;
+					if (!textboxValue || textboxValue=="?") {
+					   	MyModal("Information", "It is mandatory to declare the value field/item/column which represents the items participating in ARM when type 2 (INV) dataset is used.");
+						document.getElementById("valueItem").focus();
+					 	return;
+					}
+					formData.push({name: "valueItem", value: textboxValue});
+				}
 
 				//header existence
 				hd1=0;
@@ -769,6 +781,9 @@
 								});
 								$("#groupItem").html(str);
 								$("#valueItem").html(str);
+
+								document.getElementById('groupItem').value=res.groupItem;
+								document.getElementById('valueItem').value=res.valueItem;
 							}
 
 							if (res.datasetType==3) {

@@ -1,98 +1,99 @@
 {
     "hasHeader": true,
     "header": [
-        "InvoiceNo",
-        "StockCode",
-        "Description",
-        "Quantity",
-        "InvoiceDate",
-        "UnitPrice",
-        "CustomerID",
-        "Country"
+        "",
+        "filename",
+        "sides",
+        "bg_color",
+        "fg_color",
+        "bound_circle_x",
+        "bound_circle_y",
+        "bound_circle_r",
+        "rotation"
     ],
-    "delimiter": ";",
+    "delimiter": ",",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            8,
-            8,
-            "The total number of columns\/features in the Dataset"
+            9,
+            9,
+            "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
-            "2OrderDetails.csv",
-            "2OrderDetails.csv",
+            "0targets.csv",
+            "0targets.csv",
             "The name of the dataset"
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.22200000000000003,
-            "22.2%",
+            0.3373333333333333,
+            "33.7%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.222,
-            "22.2%",
+            0.22444444444444445,
+            "22.4%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            1,
-            "100.0%",
+            0.988222222222223,
+            "98.8%",
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "United Kingdom",
-            "United Kingdom",
+            "4",
+            "4",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.116,
-            "11.6%",
+            0.03088888888888889,
+            "3.1%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.02225,
-            "2.2%",
+            0.029111111111111112,
+            "2.9%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.021,
-            "2.1%",
+            0.02711111111111111,
+            "2.7%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.25,
-            "25.0%",
+            0.6666666666666666,
+            "66.7%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0.125,
-            "12.5%",
+            0.0,
+            "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0.125,
-            "12.5%",
+            0.0,
+            "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            0.5,
-            "50.0%",
+            0.333333,
+            "33.3%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -104,25 +105,25 @@
         ],
         "MaxItemLen": [
             "Max Item Length",
-            35,
-            35,
+            40,
+            40,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            9.59025,
-            "9.6",
+            6.893777777777777,
+            "6.9",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0,
-            "0.0%",
+            0.1111111111111111,
+            "11.1%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0,
+            0.0,
             "0.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
@@ -134,28 +135,17 @@
         ],
         "delimiter": [
             "delimiter",
-            ";",
-            ";",
+            ",",
+            ",",
             "The delimiter between the columns of the dataset"
         ],
         "type2Words": [
             "Type 2-INV Words",
-            4,
-            4,
+            0,
+            0,
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
         ]
     },
-    "datasetTypePredicted": 2,
-    "datasetType": 2,
-    "min_support": 0.01,
-    "min_confidence": 0.2,
-    "min_lift": 1.5,
-    "max_length": 4,
-    "ssort": -3,
-    "datasetName": "2OrderDetails.csv",
-    "public": 1,
-    "redundantRemoveType": 0,
-    "participatingItems": "[]",
-    "groupItem": "InvoiceNo",
-    "valueItem": "StockCode"
+    "datasetTypePredicted": 0,
+    "datasetType": 0
 }

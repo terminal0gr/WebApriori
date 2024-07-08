@@ -189,7 +189,7 @@ class Sniffer:
         else: #Malliaridis 23/12/2023
             # we use _guess_delimiter only for examine if it is dataset of type 1-MBL - Market Basket list.
             # This is neseccary because that kind of dataset has indistinct number of columns in each line
-            # making easy to be detected and not use the ML detection
+            # making easy to be detected without engaging the ML detection that follows in other dataset types.
             delimiter1, temp_skipinitialspace, datasetType = self._guess_delimiter(sample, delimiters)
             if delimiter1:
                 if delimiter1 in self.preferred:
@@ -221,9 +221,15 @@ class Sniffer:
         For example:
                          ,'some text',
         The quote with the most wins, same with the delimiter.
+
+        #Malliaridis 08/07/2024 The number of matches found must be at least 90% of the number of rows in sample.
+        #e.g. if sample rows are 500, then matches found must be at least 450.
+
         If there is no quotechar the delimiter can't be determined
         this way.
         """
+
+        dataRowsCount = len(list(filter(None, data.split('\n'))))
 
         matches = []
         for restr in (r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\']).*?(?P=quote)(?P=delim)', # ,".*?",
@@ -238,6 +244,11 @@ class Sniffer:
         if not matches:
             # (quotechar, doublequote, delimiter, skipinitialspace)
             return ('', False, None, 0)
+        
+        if len(matches)<dataRowsCount*0.9:
+            # (quotechar, doublequote, delimiter, skipinitialspace)
+            return ('', False, None, 0)
+
         quotes = {}
         delims = {}
         spaces = 0
