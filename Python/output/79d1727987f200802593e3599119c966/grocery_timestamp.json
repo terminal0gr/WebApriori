@@ -7,9 +7,9 @@
     "datasetName": "grocery_timestamp.csv",
     "redundantRemoveType": 0,
     "Records": 5000,
-    "RecordsCreationTime": "0.288",
+    "RecordsCreationTime": "0.295",
     "RulesCount": 998,
-    "RulesCreationTime": "1.095",
+    "RulesCreationTime": "0.992",
     "rules": [
         {
             "LHS": [
@@ -34,8 +34,8 @@
                 "cleaning products"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "paper goods"
+                "paper goods",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.37777777777777777,
             "Lift": 4.529709565680789,
@@ -50,8 +50,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "cleaning products"
+                "cleaning products",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "paper goods"
@@ -90,8 +90,8 @@
                 "pasta sauce"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "dry pasta"
+                "dry pasta",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.32826747720364746,
             "Lift": 4.330705504005903,
@@ -106,8 +106,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "pasta sauce"
+                "pasta sauce",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "dry pasta"
@@ -146,8 +146,8 @@
                 "dry pasta"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "pasta sauce"
+                "pasta sauce",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.28496042216358836,
             "Lift": 4.330705504005902,
@@ -162,8 +162,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "dry pasta"
+                "dry pasta",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "pasta sauce"
@@ -202,8 +202,8 @@
                 "buns rolls"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "hot dogs bacon sausage"
+                "hot dogs bacon sausage",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.30526315789473685,
             "Lift": 3.6514731805590537,
@@ -218,8 +218,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "buns rolls"
+                "buns rolls",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "hot dogs bacon sausage"
@@ -295,8 +295,8 @@
                 "canned jarred vegetables"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "canned meals beans"
+                "canned meals beans",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.24040920716112532,
             "Lift": 3.3114215862413956,
@@ -314,8 +314,8 @@
                 "canned meals beans"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "canned jarred vegetables"
+                "canned jarred vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.25895316804407714,
             "Lift": 3.3114215862413956,
@@ -330,8 +330,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned jarred vegetables"
+                "canned jarred vegetables",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "canned meals beans"
@@ -349,8 +349,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned meals beans"
+                "canned meals beans",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "canned jarred vegetables"
@@ -389,8 +389,8 @@
                 "frozen pizza"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "frozen meals"
+                "frozen meals",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2720306513409962,
             "Lift": 3.2617584093644627,
@@ -405,8 +405,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen pizza"
+                "frozen pizza",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "frozen meals"
@@ -445,8 +445,8 @@
                 "spices seasonings"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "oils vinegars"
+                "oils vinegars",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2053872053872054,
             "Lift": 2.950965594643756,
@@ -461,8 +461,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "spices seasonings"
+                "spices seasonings",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "oils vinegars"
@@ -501,8 +501,8 @@
                 "preserved dips spreads"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.4770114942528736,
             "Lift": 2.8666556145004423,
@@ -517,8 +517,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "preserved dips spreads"
+                "preserved dips spreads",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -539,8 +539,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "milk",
-                "packaged vegetables fruits"
+                "packaged vegetables fruits",
+                "milk"
             ],
             "Confidence": 0.3118279569892473,
             "Lift": 2.804208246306181,
@@ -595,8 +595,8 @@
                 "canned meals beans"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "soup broth bouillon"
+                "soup broth bouillon",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.24517906336088155,
             "Lift": 2.7486442080816316,
@@ -611,8 +611,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned meals beans"
+                "canned meals beans",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "soup broth bouillon"
@@ -651,8 +651,8 @@
                 "frozen breakfast"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "frozen meals"
+                "frozen meals",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.22641509433962262,
             "Lift": 2.714809284647753,
@@ -667,8 +667,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen breakfast"
+                "frozen breakfast",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "frozen meals"
@@ -689,8 +689,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "days_since_prior_order",
-                "fresh dips tapenades"
+                "fresh dips tapenades",
+                "days_since_prior_order"
             ],
             "Confidence": 0.2741935483870968,
             "Lift": 2.6724517386656608,
@@ -726,8 +726,8 @@
                 "canned jarred vegetables"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "dry pasta"
+                "dry pasta",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2020460358056266,
             "Lift": 2.665514984243095,
@@ -742,8 +742,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned jarred vegetables"
+                "canned jarred vegetables",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "dry pasta"
@@ -782,8 +782,8 @@
                 "dry pasta"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "canned jarred vegetables"
+                "canned jarred vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.20844327176781002,
             "Lift": 2.6655149842430945,
@@ -798,8 +798,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "dry pasta"
+                "dry pasta",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "canned jarred vegetables"
@@ -820,8 +820,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "fresh dips tapenades",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "fresh dips tapenades"
             ],
             "Confidence": 0.2741935483870968,
             "Lift": 2.6569142285571394,
@@ -855,8 +855,8 @@
         },
         {
             "LHS": [
-                "baby food formula",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "baby food formula"
             ],
             "RHS": [
                 "fresh dips tapenades"
@@ -877,8 +877,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "fresh herbs",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "fresh herbs"
             ],
             "Confidence": 0.2631578947368421,
             "Lift": 2.6528013582342953,
@@ -914,7 +914,26 @@
                 "spices seasonings"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "fresh herbs",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.265993265993266,
+            "Lift": 2.6493353186580277,
+            "Conviction": 1.2256018348623854,
+            "Leverage": 0.009836240000000001,
+            "LHS_Count": 297,
+            "LHS_Support": 0.0594,
+            "RHS_Count": 502,
+            "RHS_Support": 0.1004,
+            "Support": 0.0158,
+            "Count": 79
+        },
+        {
+            "LHS": [
+                "spices seasonings",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "fresh herbs"
             ],
             "Confidence": 0.265993265993266,
@@ -930,25 +949,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "spices seasonings"
-            ],
-            "RHS": [
-                "fresh herbs"
-            ],
-            "Confidence": 0.265993265993266,
-            "Lift": 2.6493353186580277,
-            "Conviction": 1.2256018348623854,
-            "Leverage": 0.009836240000000001,
-            "LHS_Count": 297,
-            "LHS_Support": 0.0594,
-            "RHS_Count": 502,
-            "RHS_Support": 0.1004,
-            "Support": 0.0158,
-            "Count": 79
-        },
-        {
-            "LHS": [
                 "breakfast bakery"
             ],
             "RHS": [
@@ -1007,8 +1007,8 @@
                 "other creams cheeses"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "breakfast bakery"
+                "breakfast bakery",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2,
             "Lift": 2.6455026455026456,
@@ -1023,8 +1023,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "breakfast bakery"
+                "breakfast bakery",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "other creams cheeses"
@@ -1082,8 +1082,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh dips tapenades"
+                "fresh dips tapenades",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2741935483870968,
             "Lift": 2.6415563428429363,
@@ -1120,8 +1120,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "finish_service_time",
-                "fresh dips tapenades"
+                "fresh dips tapenades",
+                "finish_service_time"
             ],
             "Confidence": 0.2741935483870968,
             "Lift": 2.6415563428429363,
@@ -1158,8 +1158,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "order_id",
-                "fresh dips tapenades"
+                "fresh dips tapenades",
+                "order_id"
             ],
             "Confidence": 0.2741935483870968,
             "Lift": 2.6415563428429363,
@@ -1212,8 +1212,8 @@
         },
         {
             "LHS": [
-                "baby food formula",
-                "pay_method"
+                "pay_method",
+                "baby food formula"
             ],
             "RHS": [
                 "fresh dips tapenades"
@@ -1250,8 +1250,8 @@
         },
         {
             "LHS": [
-                "baby food formula",
-                "pickup_timestamp"
+                "pickup_timestamp",
+                "baby food formula"
             ],
             "RHS": [
                 "fresh dips tapenades"
@@ -1272,8 +1272,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "start_service_time",
-                "fresh dips tapenades"
+                "fresh dips tapenades",
+                "start_service_time"
             ],
             "Confidence": 0.2741935483870968,
             "Lift": 2.6415563428429363,
@@ -1307,8 +1307,8 @@
         },
         {
             "LHS": [
-                "asian foods",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "asian foods"
             ],
             "RHS": [
                 "fresh herbs"
@@ -1366,8 +1366,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh herbs"
+                "fresh herbs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2631578947368421,
             "Lift": 2.6210945690920524,
@@ -1382,8 +1382,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "asian foods"
+                "asian foods",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh herbs"
@@ -1420,8 +1420,8 @@
         },
         {
             "LHS": [
-                "finish_service_time",
-                "asian foods"
+                "asian foods",
+                "finish_service_time"
             ],
             "RHS": [
                 "fresh herbs"
@@ -1442,8 +1442,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "order_id",
-                "fresh herbs"
+                "fresh herbs",
+                "order_id"
             ],
             "Confidence": 0.2631578947368421,
             "Lift": 2.6210945690920524,
@@ -1458,8 +1458,8 @@
         },
         {
             "LHS": [
-                "order_id",
-                "asian foods"
+                "asian foods",
+                "order_id"
             ],
             "RHS": [
                 "fresh herbs"
@@ -1612,8 +1612,8 @@
                 "canned jarred vegetables"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "soup broth bouillon"
+                "soup broth bouillon",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.23273657289002558,
             "Lift": 2.6091544045966995,
@@ -1628,8 +1628,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned jarred vegetables"
+                "canned jarred vegetables",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "soup broth bouillon"
@@ -1668,8 +1668,8 @@
                 "soup broth bouillon"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "canned jarred vegetables"
+                "canned jarred vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2040358744394619,
             "Lift": 2.609154404596699,
@@ -1684,8 +1684,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "soup broth bouillon"
+                "soup broth bouillon",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "canned jarred vegetables"
@@ -1742,8 +1742,8 @@
                 "canned jarred vegetables"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh herbs"
+                "fresh herbs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2608695652173913,
             "Lift": 2.5983024424042958,
@@ -1761,8 +1761,8 @@
                 "fresh herbs"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "canned jarred vegetables"
+                "canned jarred vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.20318725099601595,
             "Lift": 2.5983024424042958,
@@ -1777,8 +1777,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned jarred vegetables"
+                "canned jarred vegetables",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh herbs"
@@ -1796,8 +1796,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fresh herbs"
+                "fresh herbs",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "canned jarred vegetables"
@@ -1855,8 +1855,8 @@
                 "spices seasonings"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "canned jarred vegetables"
+                "canned jarred vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.20202020202020202,
             "Lift": 2.583378542457826,
@@ -1871,8 +1871,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "spices seasonings"
+                "spices seasonings",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "canned jarred vegetables"
@@ -1893,8 +1893,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "milk",
-                "fresh vegetables"
+                "fresh vegetables",
+                "milk"
             ],
             "Confidence": 0.32258064516129037,
             "Lift": 2.5724134382878017,
@@ -1930,8 +1930,8 @@
                 "frozen appetizers sides"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "frozen meals"
+                "frozen meals",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21016949152542375,
             "Lift": 2.5200178839978866,
@@ -1965,8 +1965,8 @@
         },
         {
             "LHS": [
-                "milk",
-                "bread"
+                "bread",
+                "milk"
             ],
             "RHS": [
                 "cereal"
@@ -1987,8 +1987,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "milk",
-                "fresh fruits"
+                "fresh fruits",
+                "milk"
             ],
             "Confidence": 0.38172043010752693,
             "Lift": 2.4469258340226085,
@@ -2062,8 +2062,8 @@
                 "fruit vegetable snacks"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "energy granola bars"
+                "energy granola bars",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.22178988326848248,
             "Lift": 2.4160118003102666,
@@ -2078,8 +2078,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fruit vegetable snacks"
+                "fruit vegetable snacks",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "energy granola bars"
@@ -2116,8 +2116,8 @@
         },
         {
             "LHS": [
-                "packaged cheese",
-                "breakfast bakery"
+                "breakfast bakery",
+                "packaged cheese"
             ],
             "RHS": [
                 "bread"
@@ -2156,8 +2156,8 @@
                 "oils vinegars"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh herbs"
+                "fresh herbs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2385057471264368,
             "Lift": 2.375555250263315,
@@ -2172,8 +2172,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "oils vinegars"
+                "oils vinegars",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh herbs"
@@ -2212,8 +2212,8 @@
                 "fruit vegetable snacks"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2723735408560311,
             "Lift": 2.352103116200614,
@@ -2228,8 +2228,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fruit vegetable snacks"
+                "fruit vegetable snacks",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "crackers"
@@ -2268,8 +2268,8 @@
                 "popcorn jerky"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2697095435684647,
             "Lift": 2.3290979582768974,
@@ -2284,8 +2284,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "popcorn jerky"
+                "popcorn jerky",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "crackers"
@@ -2378,8 +2378,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "tortillas flat bread"
+                "tortillas flat bread",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "other creams cheeses"
@@ -2418,8 +2418,8 @@
                 "fruit vegetable snacks"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.38132295719844356,
             "Lift": 2.2916043100868,
@@ -2434,8 +2434,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fruit vegetable snacks"
+                "fruit vegetable snacks",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -2512,8 +2512,8 @@
                 "cookies cakes"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2631578947368421,
             "Lift": 2.272520679938187,
@@ -2528,8 +2528,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "cookies cakes"
+                "cookies cakes",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "crackers"
@@ -2568,8 +2568,8 @@
                 "cookies cakes"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.375,
             "Lift": 2.253605769230769,
@@ -2584,8 +2584,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "cookies cakes"
+                "cookies cakes",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -2640,8 +2640,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "tortillas flat bread"
+                "tortillas flat bread",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -2680,8 +2680,8 @@
                 "instant foods"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.25418060200668896,
             "Lift": 2.1949965630974866,
@@ -2696,8 +2696,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "instant foods"
+                "instant foods",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "crackers"
@@ -2736,8 +2736,8 @@
                 "frozen breakfast"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "energy granola bars"
+                "energy granola bars",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.20125786163522014,
             "Lift": 2.1923514339348595,
@@ -2752,8 +2752,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen breakfast"
+                "frozen breakfast",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "energy granola bars"
@@ -2774,8 +2774,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "packaged cheese",
-                "fresh vegetables"
+                "fresh vegetables",
+                "packaged cheese"
             ],
             "Confidence": 0.30622009569377995,
             "Lift": 2.1904155629025746,
@@ -2790,8 +2790,8 @@
         },
         {
             "LHS": [
-                "baby food formula",
-                "fresh vegetables"
+                "fresh vegetables",
+                "baby food formula"
             ],
             "RHS": [
                 "milk"
@@ -2846,8 +2846,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "pasta sauce"
+                "pasta sauce",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -2902,8 +2902,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "granola"
+                "granola",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -2921,8 +2921,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "bread"
+                "bread",
+                "yogurt"
             ],
             "RHS": [
                 "cereal"
@@ -2980,8 +2980,8 @@
                 "cookies cakes"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "soft drinks"
+                "soft drinks",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.20065789473684212,
             "Lift": 2.143780926675664,
@@ -2996,8 +2996,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "cookies cakes"
+                "cookies cakes",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "soft drinks"
@@ -3018,8 +3018,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "yogurt",
-                "fresh vegetables"
+                "fresh vegetables",
+                "yogurt"
             ],
             "Confidence": 0.3172043010752688,
             "Lift": 2.1374952902646145,
@@ -3037,8 +3037,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "milk",
-                "days_since_prior_order"
+                "days_since_prior_order",
+                "milk"
             ],
             "Confidence": 0.478494623655914,
             "Lift": 2.1342311492235235,
@@ -3074,8 +3074,8 @@
                 "popcorn jerky"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.35269709543568467,
             "Lift": 2.119573890839451,
@@ -3090,8 +3090,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "popcorn jerky"
+                "popcorn jerky",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -3225,8 +3225,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "milk",
-                "order_id"
+                "order_id",
+                "milk"
             ],
             "Confidence": 0.478494623655914,
             "Lift": 2.1060502801756775,
@@ -3279,8 +3279,8 @@
         },
         {
             "LHS": [
-                "baby food formula",
-                "pay_method"
+                "pay_method",
+                "baby food formula"
             ],
             "RHS": [
                 "milk"
@@ -3317,8 +3317,8 @@
         },
         {
             "LHS": [
-                "baby food formula",
-                "pickup_timestamp"
+                "pickup_timestamp",
+                "baby food formula"
             ],
             "RHS": [
                 "milk"
@@ -3377,8 +3377,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "yogurt",
-                "fresh fruits"
+                "fresh fruits",
+                "yogurt"
             ],
             "Confidence": 0.38709677419354843,
             "Lift": 2.103786816269285,
@@ -3393,8 +3393,8 @@
         },
         {
             "LHS": [
-                "baby food formula",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "baby food formula"
             ],
             "RHS": [
                 "milk"
@@ -3451,8 +3451,8 @@
                 "bread"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "lunch meat"
+                "lunch meat",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.22778473091364207,
             "Lift": 2.0936096591327398,
@@ -3470,8 +3470,8 @@
                 "lunch meat"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.3345588235294118,
             "Lift": 2.0936096591327398,
@@ -3486,8 +3486,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "lunch meat"
@@ -3505,8 +3505,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "lunch meat"
+                "lunch meat",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -3545,8 +3545,8 @@
                 "tortillas flat bread"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.3345323741007194,
             "Lift": 2.093444143308632,
@@ -3561,8 +3561,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "tortillas flat bread"
+                "tortillas flat bread",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -3583,8 +3583,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "milk",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "milk"
             ],
             "Confidence": 0.47311827956989255,
             "Lift": 2.0934437149110288,
@@ -3639,8 +3639,8 @@
                 "canned meals beans"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh herbs"
+                "fresh herbs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.209366391184573,
             "Lift": 2.0853226213602887,
@@ -3655,8 +3655,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned meals beans"
+                "canned meals beans",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh herbs"
@@ -3714,7 +3714,26 @@
                 "frozen pizza"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "chips pretzels",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.3448275862068965,
+            "Lift": 2.0722811671087533,
+            "Conviction": 1.2723368421052632,
+            "Leverage": 0.009313919999999998,
+            "LHS_Count": 261,
+            "LHS_Support": 0.0522,
+            "RHS_Count": 832,
+            "RHS_Support": 0.1664,
+            "Support": 0.018,
+            "Count": 90
+        },
+        {
+            "LHS": [
+                "frozen pizza",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "chips pretzels"
             ],
             "Confidence": 0.3448275862068965,
@@ -3730,25 +3749,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen pizza"
-            ],
-            "RHS": [
-                "chips pretzels"
-            ],
-            "Confidence": 0.3448275862068965,
-            "Lift": 2.0722811671087533,
-            "Conviction": 1.2723368421052632,
-            "Leverage": 0.009313919999999998,
-            "LHS_Count": 261,
-            "LHS_Support": 0.0522,
-            "RHS_Count": 832,
-            "RHS_Support": 0.1664,
-            "Support": 0.018,
-            "Count": 90
-        },
-        {
-            "LHS": [
                 "cookies cakes"
             ],
             "RHS": [
@@ -3786,8 +3786,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "cookies cakes"
+                "cookies cakes",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "cereal"
@@ -3805,8 +3805,8 @@
         },
         {
             "LHS": [
-                "fresh fruits",
-                "breakfast bakery"
+                "breakfast bakery",
+                "fresh fruits"
             ],
             "RHS": [
                 "bread"
@@ -3863,8 +3863,8 @@
                 "cereal"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.23705179282868527,
             "Lift": 2.0470793853945186,
@@ -3917,8 +3917,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "cereal"
@@ -3976,8 +3976,8 @@
                 "spreads"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2338308457711443,
             "Lift": 2.0192646439649766,
@@ -4032,8 +4032,8 @@
                 "frozen pizza"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.23371647509578544,
             "Lift": 2.018276987010237,
@@ -4048,8 +4048,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen pizza"
+                "frozen pizza",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "crackers"
@@ -4163,8 +4163,8 @@
                 "fruit vegetable snacks"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh dips tapenades"
+                "fresh dips tapenades",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.20622568093385213,
             "Lift": 1.9867599319253577,
@@ -4179,8 +4179,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fruit vegetable snacks"
+                "fruit vegetable snacks",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh dips tapenades"
@@ -4219,8 +4219,8 @@
                 "pasta sauce"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "lunch meat"
+                "lunch meat",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2158054711246201,
             "Lift": 1.9835061684248172,
@@ -4235,8 +4235,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "pasta sauce"
+                "pasta sauce",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "lunch meat"
@@ -4312,8 +4312,8 @@
                 "chips pretzels"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh dips tapenades"
+                "fresh dips tapenades",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.20552884615384617,
             "Lift": 1.9800466874166298,
@@ -4331,8 +4331,8 @@
                 "fresh dips tapenades"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.32947976878612717,
             "Lift": 1.9800466874166298,
@@ -4347,8 +4347,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh dips tapenades"
@@ -4366,8 +4366,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fresh dips tapenades"
+                "fresh dips tapenades",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -4406,8 +4406,8 @@
                 "hot dogs bacon sausage"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "lunch meat"
+                "lunch meat",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.215311004784689,
             "Lift": 1.9789614410357448,
@@ -4422,8 +4422,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "hot dogs bacon sausage"
+                "hot dogs bacon sausage",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "lunch meat"
@@ -4460,8 +4460,8 @@
         },
         {
             "LHS": [
-                "cereal",
-                "fresh vegetables"
+                "fresh vegetables",
+                "cereal"
             ],
             "RHS": [
                 "bread"
@@ -4500,8 +4500,8 @@
                 "instant foods"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.3277591973244147,
             "Lift": 1.9697067146899925,
@@ -4516,8 +4516,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "instant foods"
+                "instant foods",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -4594,8 +4594,8 @@
                 "buns rolls"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.3263157894736842,
             "Lift": 1.9610323886639678,
@@ -4610,8 +4610,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "buns rolls"
+                "buns rolls",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -4650,8 +4650,8 @@
                 "spreads"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.3109452736318408,
             "Lift": 1.945840260524661,
@@ -4778,8 +4778,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fruit vegetable snacks"
+                "fruit vegetable snacks",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "ice cream ice"
@@ -4818,8 +4818,8 @@
                 "poultry counter"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2698412698412699,
             "Lift": 1.9246880873129093,
@@ -4834,8 +4834,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "poultry counter"
+                "poultry counter",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -4874,8 +4874,8 @@
                 "pasta sauce"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.3069908814589666,
             "Lift": 1.9210943770899036,
@@ -4890,8 +4890,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "pasta sauce"
+                "pasta sauce",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -4967,8 +4967,8 @@
                 "packaged cheese"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "lunch meat"
+                "lunch meat",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.20833333333333334,
             "Lift": 1.9148284313725492,
@@ -4983,8 +4983,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "lunch meat"
+                "lunch meat",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -5002,8 +5002,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "packaged cheese"
+                "packaged cheese",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "lunch meat"
@@ -5061,8 +5061,8 @@
                 "instant foods"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.30434782608695654,
             "Lift": 1.9045546063013552,
@@ -5077,8 +5077,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "instant foods"
+                "instant foods",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -5136,8 +5136,8 @@
                 "juice nectars"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "refrigerated"
+                "refrigerated",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.25050916496945014,
             "Lift": 1.9035650833544844,
@@ -5152,8 +5152,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "juice nectars"
+                "juice nectars",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "refrigerated"
@@ -5211,8 +5211,8 @@
                 "frozen breakfast"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.220125786163522,
             "Lift": 1.9009135247281692,
@@ -5227,8 +5227,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen breakfast"
+                "frozen breakfast",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "crackers"
@@ -5249,8 +5249,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "yogurt",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "yogurt"
             ],
             "Confidence": 0.4838709677419355,
             "Lift": 1.899022636349825,
@@ -5265,8 +5265,8 @@
         },
         {
             "LHS": [
-                "baby food formula",
-                "fresh vegetables"
+                "fresh vegetables",
+                "baby food formula"
             ],
             "RHS": [
                 "yogurt"
@@ -5284,8 +5284,8 @@
         },
         {
             "LHS": [
-                "baby food formula",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "baby food formula"
             ],
             "RHS": [
                 "yogurt"
@@ -5343,7 +5343,26 @@
                 "chips pretzels"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "crackers",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.21875000000000003,
+            "Lift": 1.8890328151986187,
+            "Conviction": 1.131776,
+            "Leverage": 0.01713088,
+            "LHS_Count": 832,
+            "LHS_Support": 0.1664,
+            "RHS_Count": 579,
+            "RHS_Support": 0.1158,
+            "Support": 0.0364,
+            "Count": 182
+        },
+        {
+            "LHS": [
+                "chips pretzels",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "crackers"
             ],
             "Confidence": 0.21875000000000003,
@@ -5359,25 +5378,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
-            ],
-            "RHS": [
-                "crackers"
-            ],
-            "Confidence": 0.21875000000000003,
-            "Lift": 1.8890328151986187,
-            "Conviction": 1.131776,
-            "Leverage": 0.01713088,
-            "LHS_Count": 832,
-            "LHS_Support": 0.1664,
-            "RHS_Count": 579,
-            "RHS_Support": 0.1158,
-            "Support": 0.0364,
-            "Count": 182
-        },
-        {
-            "LHS": [
                 "crackers"
             ],
             "RHS": [
@@ -5399,8 +5399,8 @@
                 "crackers"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.3143350604490501,
             "Lift": 1.8890328151986184,
@@ -5415,8 +5415,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -5434,8 +5434,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "baking ingredients"
+                "baking ingredients",
+                "yogurt"
             ],
             "RHS": [
                 "packaged cheese"
@@ -5490,8 +5490,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned meals beans"
+                "canned meals beans",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "frozen produce"
@@ -5587,8 +5587,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "finish_service_time",
-                "yogurt"
+                "yogurt",
+                "finish_service_time"
             ],
             "Confidence": 0.4838709677419355,
             "Lift": 1.8842327404280979,
@@ -5663,8 +5663,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "yogurt",
-                "pay_method"
+                "pay_method",
+                "yogurt"
             ],
             "Confidence": 0.4838709677419355,
             "Lift": 1.8842327404280979,
@@ -5679,8 +5679,8 @@
         },
         {
             "LHS": [
-                "baby food formula",
-                "pay_method"
+                "pay_method",
+                "baby food formula"
             ],
             "RHS": [
                 "yogurt"
@@ -5717,8 +5717,8 @@
         },
         {
             "LHS": [
-                "baby food formula",
-                "pickup_timestamp"
+                "pickup_timestamp",
+                "baby food formula"
             ],
             "RHS": [
                 "yogurt"
@@ -5795,8 +5795,8 @@
                 "fresh dips tapenades"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21772639691714835,
             "Lift": 1.8801934103380686,
@@ -5811,8 +5811,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fresh dips tapenades"
+                "fresh dips tapenades",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "crackers"
@@ -5867,8 +5867,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "cookies cakes"
+                "cookies cakes",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "ice cream ice"
@@ -5907,8 +5907,8 @@
                 "instant foods"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "lunch meat"
+                "lunch meat",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2040133779264214,
             "Lift": 1.8751229588825498,
@@ -5923,8 +5923,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "instant foods"
+                "instant foods",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "lunch meat"
@@ -5982,8 +5982,8 @@
                 "breakfast bakery"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21693121693121695,
             "Lift": 1.8733265710813207,
@@ -5998,8 +5998,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "breakfast bakery"
+                "breakfast bakery",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "crackers"
@@ -6056,8 +6056,8 @@
                 "crackers"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "lunch meat"
+                "lunch meat",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.20379965457685664,
             "Lift": 1.8731585898608147,
@@ -6075,8 +6075,8 @@
                 "lunch meat"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21691176470588236,
             "Lift": 1.8731585898608147,
@@ -6091,8 +6091,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "lunch meat"
@@ -6110,8 +6110,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "lunch meat"
+                "lunch meat",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "crackers"
@@ -6150,8 +6150,8 @@
                 "frozen breakfast"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.3113207547169811,
             "Lift": 1.8709179970972425,
@@ -6166,8 +6166,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen breakfast"
+                "frozen breakfast",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -6206,8 +6206,8 @@
                 "frozen breakfast"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.29874213836477986,
             "Lift": 1.8694752087908628,
@@ -6222,8 +6222,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen breakfast"
+                "frozen breakfast",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -6262,8 +6262,8 @@
                 "fresh herbs"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh vegetables"
+                "fresh vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.8565737051792828,
             "Lift": 1.8686162852951196,
@@ -6278,8 +6278,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fresh herbs"
+                "fresh herbs",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -6337,8 +6337,8 @@
                 "tortillas flat bread"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21582733812949642,
             "Lift": 1.8637939389421108,
@@ -6353,8 +6353,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "tortillas flat bread"
+                "tortillas flat bread",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "crackers"
@@ -6391,8 +6391,8 @@
         },
         {
             "LHS": [
-                "bread",
-                "canned jarred vegetables"
+                "canned jarred vegetables",
+                "bread"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -6410,8 +6410,8 @@
         },
         {
             "LHS": [
-                "fresh fruits",
-                "baking ingredients"
+                "baking ingredients",
+                "fresh fruits"
             ],
             "RHS": [
                 "eggs"
@@ -6469,8 +6469,8 @@
                 "frozen appetizers sides"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21355932203389832,
             "Lift": 1.8442083077193292,
@@ -6544,8 +6544,8 @@
                 "butter"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.25779036827195473,
             "Lift": 1.8387330119254974,
@@ -6618,8 +6618,8 @@
                 "bread"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21276595744680854,
             "Lift": 1.837357145481939,
@@ -6637,8 +6637,8 @@
                 "crackers"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.29360967184801384,
             "Lift": 1.837357145481939,
@@ -6653,8 +6653,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "crackers"
@@ -6672,8 +6672,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -6731,7 +6731,26 @@
                 "hot dogs bacon sausage"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "eggs",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.25598086124401914,
+            "Lift": 1.8258263997433606,
+            "Conviction": 1.1556154340836011,
+            "Leverage": 0.00967928,
+            "LHS_Count": 418,
+            "LHS_Support": 0.0836,
+            "RHS_Count": 701,
+            "RHS_Support": 0.1402,
+            "Support": 0.0214,
+            "Count": 107
+        },
+        {
+            "LHS": [
+                "hot dogs bacon sausage",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "eggs"
             ],
             "Confidence": 0.25598086124401914,
@@ -6747,25 +6766,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "hot dogs bacon sausage"
-            ],
-            "RHS": [
-                "eggs"
-            ],
-            "Confidence": 0.25598086124401914,
-            "Lift": 1.8258263997433606,
-            "Conviction": 1.1556154340836011,
-            "Leverage": 0.00967928,
-            "LHS_Count": 418,
-            "LHS_Support": 0.0836,
-            "RHS_Count": 701,
-            "RHS_Support": 0.1402,
-            "Support": 0.0214,
-            "Count": 107
-        },
-        {
-            "LHS": [
                 "dry pasta"
             ],
             "RHS": [
@@ -6803,8 +6803,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "dry pasta"
+                "dry pasta",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -6822,8 +6822,8 @@
         },
         {
             "LHS": [
-                "fresh herbs",
-                "baking ingredients"
+                "baking ingredients",
+                "fresh herbs"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -6860,8 +6860,8 @@
         },
         {
             "LHS": [
-                "bread",
-                "canned jarred vegetables"
+                "canned jarred vegetables",
+                "bread"
             ],
             "RHS": [
                 "packaged vegetables fruits"
@@ -6935,8 +6935,8 @@
         },
         {
             "LHS": [
-                "baby food formula",
-                "fresh vegetables"
+                "fresh vegetables",
+                "baby food formula"
             ],
             "RHS": [
                 "packaged vegetables fruits"
@@ -6975,8 +6975,8 @@
                 "candy chocolate"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.29878048780487804,
             "Lift": 1.7955558161350844,
@@ -6991,8 +6991,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "candy chocolate"
+                "candy chocolate",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -7031,8 +7031,8 @@
                 "frozen appetizers sides"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2983050847457627,
             "Lift": 1.7926988265971318,
@@ -7106,8 +7106,8 @@
                 "grains rice dried goods"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "soy lactosefree"
+                "soy lactosefree",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.3018867924528302,
             "Lift": 1.7905503704201078,
@@ -7122,8 +7122,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "grains rice dried goods"
+                "grains rice dried goods",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "soy lactosefree"
@@ -7162,8 +7162,8 @@
                 "salad dressing toppings"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2976190476190476,
             "Lift": 1.7885760073260073,
@@ -7256,8 +7256,8 @@
                 "tofu meat alternatives"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh vegetables"
+                "fresh vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.8133333333333335,
             "Lift": 1.7742873763816176,
@@ -7272,8 +7272,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "tofu meat alternatives"
+                "tofu meat alternatives",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -7328,8 +7328,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen meals"
+                "frozen meals",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "ice cream ice"
@@ -7403,8 +7403,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "instant foods"
+                "instant foods",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -7459,8 +7459,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "missing"
+                "missing",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "ice cream ice"
@@ -7534,8 +7534,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "pickled goods olives"
+                "pickled goods olives",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -7553,8 +7553,8 @@
         },
         {
             "LHS": [
-                "packaged cheese",
-                "baking ingredients"
+                "baking ingredients",
+                "packaged cheese"
             ],
             "RHS": [
                 "yogurt"
@@ -7609,8 +7609,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "soft drinks"
+                "soft drinks",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "ice cream ice"
@@ -7649,8 +7649,8 @@
                 "hot dogs bacon sausage"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2799043062200957,
             "Lift": 1.7515914031295101,
@@ -7665,8 +7665,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "hot dogs bacon sausage"
+                "hot dogs bacon sausage",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -7705,8 +7705,8 @@
                 "frozen pizza"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2796934865900383,
             "Lift": 1.7502721313519292,
@@ -7721,8 +7721,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen pizza"
+                "frozen pizza",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -7761,8 +7761,8 @@
                 "canned meals beans"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "soy lactosefree"
+                "soy lactosefree",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.29476584022038566,
             "Lift": 1.748314592054482,
@@ -7777,8 +7777,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned meals beans"
+                "canned meals beans",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "soy lactosefree"
@@ -7836,8 +7836,8 @@
                 "frozen meals"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.290167865707434,
             "Lift": 1.7437972698764064,
@@ -7852,8 +7852,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen meals"
+                "frozen meals",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -7908,8 +7908,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "dry pasta"
+                "dry pasta",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "frozen produce"
@@ -7930,8 +7930,8 @@
                 "breakfast bakery"
             ],
             "RHS": [
-                "bread",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "bread"
             ],
             "Confidence": 0.2777777777777778,
             "Lift": 1.7404622667780565,
@@ -7949,8 +7949,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "packaged cheese",
-                "fresh fruits"
+                "fresh fruits",
+                "packaged cheese"
             ],
             "Confidence": 0.2741935483870968,
             "Lift": 1.7398067791059444,
@@ -8002,8 +8002,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen pizza"
+                "frozen pizza",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "frozen produce"
@@ -8042,8 +8042,8 @@
                 "breakfast bakery"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2777777777777778,
             "Lift": 1.738283966068697,
@@ -8058,8 +8058,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "breakfast bakery"
+                "breakfast bakery",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -8080,8 +8080,8 @@
                 "breakfast bakery"
             ],
             "RHS": [
-                "finish_service_time",
-                "bread"
+                "bread",
+                "finish_service_time"
             ],
             "Confidence": 0.2777777777777778,
             "Lift": 1.738283966068697,
@@ -8096,8 +8096,8 @@
         },
         {
             "LHS": [
-                "finish_service_time",
-                "breakfast bakery"
+                "breakfast bakery",
+                "finish_service_time"
             ],
             "RHS": [
                 "bread"
@@ -8118,8 +8118,8 @@
                 "breakfast bakery"
             ],
             "RHS": [
-                "order_id",
-                "bread"
+                "bread",
+                "order_id"
             ],
             "Confidence": 0.2777777777777778,
             "Lift": 1.738283966068697,
@@ -8172,8 +8172,8 @@
         },
         {
             "LHS": [
-                "pay_method",
-                "breakfast bakery"
+                "breakfast bakery",
+                "pay_method"
             ],
             "RHS": [
                 "bread"
@@ -8210,8 +8210,8 @@
         },
         {
             "LHS": [
-                "pickup_timestamp",
-                "breakfast bakery"
+                "breakfast bakery",
+                "pickup_timestamp"
             ],
             "RHS": [
                 "bread"
@@ -8232,8 +8232,8 @@
                 "breakfast bakery"
             ],
             "RHS": [
-                "start_service_time",
-                "bread"
+                "bread",
+                "start_service_time"
             ],
             "Confidence": 0.2777777777777778,
             "Lift": 1.738283966068697,
@@ -8248,8 +8248,8 @@
         },
         {
             "LHS": [
-                "start_service_time",
-                "breakfast bakery"
+                "breakfast bakery",
+                "start_service_time"
             ],
             "RHS": [
                 "bread"
@@ -8270,8 +8270,8 @@
                 "breakfast bakery"
             ],
             "RHS": [
-                "days_since_prior_order",
-                "bread"
+                "bread",
+                "days_since_prior_order"
             ],
             "Confidence": 0.2751322751322751,
             "Lift": 1.734755833116489,
@@ -8326,8 +8326,8 @@
                 "dry pasta"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2770448548812665,
             "Lift": 1.7336974648389645,
@@ -8342,8 +8342,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "dry pasta"
+                "dry pasta",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -8382,8 +8382,8 @@
                 "pasta sauce"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2006079027355623,
             "Lift": 1.7323653085972566,
@@ -8398,8 +8398,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "pasta sauce"
+                "pasta sauce",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "crackers"
@@ -8457,8 +8457,8 @@
                 "meat counter"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh vegetables"
+                "fresh vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.7906976744186047,
             "Lift": 1.724907666707253,
@@ -8473,8 +8473,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "meat counter"
+                "meat counter",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -8588,7 +8588,26 @@
                 "canned jarred vegetables"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "fresh vegetables",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.7877237851662404,
+            "Lift": 1.7184201247082034,
+            "Conviction": 2.551392771084338,
+            "Leverage": 0.025753120000000004,
+            "LHS_Count": 391,
+            "LHS_Support": 0.0782,
+            "RHS_Count": 2292,
+            "RHS_Support": 0.4584,
+            "Support": 0.0616,
+            "Count": 308
+        },
+        {
+            "LHS": [
+                "canned jarred vegetables",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "fresh vegetables"
             ],
             "Confidence": 0.7877237851662404,
@@ -8604,25 +8623,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned jarred vegetables"
-            ],
-            "RHS": [
-                "fresh vegetables"
-            ],
-            "Confidence": 0.7877237851662404,
-            "Lift": 1.7184201247082034,
-            "Conviction": 2.551392771084338,
-            "Leverage": 0.025753120000000004,
-            "LHS_Count": 391,
-            "LHS_Support": 0.0782,
-            "RHS_Count": 2292,
-            "RHS_Support": 0.4584,
-            "Support": 0.0616,
-            "Count": 308
-        },
-        {
-            "LHS": [
                 "frozen appetizers sides"
             ],
             "RHS": [
@@ -8644,8 +8644,8 @@
                 "frozen appetizers sides"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2745762711864407,
             "Lift": 1.7182495067987527,
@@ -8718,8 +8718,8 @@
                 "breakfast bakery"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.28571428571428575,
             "Lift": 1.7170329670329674,
@@ -8734,8 +8734,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "breakfast bakery"
+                "breakfast bakery",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -8756,7 +8756,26 @@
                 "pasta sauce"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "chips pretzels",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.28571428571428575,
+            "Lift": 1.7170329670329674,
+            "Conviction": 1.16704,
+            "Leverage": 0.007850880000000001,
+            "LHS_Count": 329,
+            "LHS_Support": 0.0658,
+            "RHS_Count": 832,
+            "RHS_Support": 0.1664,
+            "Support": 0.0188,
+            "Count": 94
+        },
+        {
+            "LHS": [
+                "pasta sauce",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "chips pretzels"
             ],
             "Confidence": 0.28571428571428575,
@@ -8772,25 +8791,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "pasta sauce"
-            ],
-            "RHS": [
-                "chips pretzels"
-            ],
-            "Confidence": 0.28571428571428575,
-            "Lift": 1.7170329670329674,
-            "Conviction": 1.16704,
-            "Leverage": 0.007850880000000001,
-            "LHS_Count": 329,
-            "LHS_Support": 0.0658,
-            "RHS_Count": 832,
-            "RHS_Support": 0.1664,
-            "Support": 0.0188,
-            "Count": 94
-        },
-        {
-            "LHS": [
                 "energy granola bars"
             ],
             "RHS": [
@@ -8812,8 +8812,8 @@
                 "energy granola bars"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.28540305010893247,
             "Lift": 1.715162560750796,
@@ -8828,8 +8828,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "energy granola bars"
+                "energy granola bars",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -8847,8 +8847,8 @@
         },
         {
             "LHS": [
-                "soy lactosefree",
-                "baking ingredients"
+                "baking ingredients",
+                "soy lactosefree"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -8887,8 +8887,8 @@
                 "other creams cheeses"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.28314606741573034,
             "Lift": 1.701598962834918,
@@ -9016,8 +9016,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen pizza"
+                "frozen pizza",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "ice cream ice"
@@ -9035,8 +9035,8 @@
         },
         {
             "LHS": [
-                "cereal",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "cereal"
             ],
             "RHS": [
                 "bread"
@@ -9075,102 +9075,102 @@
                 "poultry counter"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
-            ],
-            "Confidence": 0.2698412698412699,
-            "Lift": 1.6886187098953058,
-            "Conviction": 1.1507086956521742,
-            "Leverage": 0.0041595600000000005,
-            "LHS_Count": 189,
-            "LHS_Support": 0.0378,
-            "RHS_Count": 799,
-            "RHS_Support": 0.1598,
-            "Support": 0.0102,
-            "Count": 51
-        },
-        {
-            "LHS": [
-                "arrival_ timestamp",
-                "poultry counter"
-            ],
-            "RHS": [
-                "bread"
-            ],
-            "Confidence": 0.2698412698412699,
-            "Lift": 1.6886187098953058,
-            "Conviction": 1.1507086956521742,
-            "Leverage": 0.0041595600000000005,
-            "LHS_Count": 189,
-            "LHS_Support": 0.0378,
-            "RHS_Count": 799,
-            "RHS_Support": 0.1598,
-            "Support": 0.0102,
-            "Count": 51
-        },
-        {
-            "LHS": [
-                "cereal"
-            ],
-            "RHS": [
-                "chips pretzels"
-            ],
-            "Confidence": 0.28087649402390436,
-            "Lift": 1.6879596996628867,
-            "Conviction": 1.15918891966759,
-            "Leverage": 0.01149344,
-            "LHS_Count": 502,
-            "LHS_Support": 0.1004,
-            "RHS_Count": 832,
-            "RHS_Support": 0.1664,
-            "Support": 0.0282,
-            "Count": 141
-        },
-        {
-            "LHS": [
-                "cereal"
-            ],
-            "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
-            ],
-            "Confidence": 0.28087649402390436,
-            "Lift": 1.6879596996628867,
-            "Conviction": 1.15918891966759,
-            "Leverage": 0.01149344,
-            "LHS_Count": 502,
-            "LHS_Support": 0.1004,
-            "RHS_Count": 832,
-            "RHS_Support": 0.1664,
-            "Support": 0.0282,
-            "Count": 141
-        },
-        {
-            "LHS": [
-                "arrival_ timestamp",
-                "cereal"
-            ],
-            "RHS": [
-                "chips pretzels"
-            ],
-            "Confidence": 0.28087649402390436,
-            "Lift": 1.6879596996628867,
-            "Conviction": 1.15918891966759,
-            "Leverage": 0.01149344,
-            "LHS_Count": 502,
-            "LHS_Support": 0.1004,
-            "RHS_Count": 832,
-            "RHS_Support": 0.1664,
-            "Support": 0.0282,
-            "Count": 141
-        },
-        {
-            "LHS": [
-                "cereal"
-            ],
-            "RHS": [
                 "bread",
-                "order_hour_of_day"
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.2698412698412699,
+            "Lift": 1.6886187098953058,
+            "Conviction": 1.1507086956521742,
+            "Leverage": 0.0041595600000000005,
+            "LHS_Count": 189,
+            "LHS_Support": 0.0378,
+            "RHS_Count": 799,
+            "RHS_Support": 0.1598,
+            "Support": 0.0102,
+            "Count": 51
+        },
+        {
+            "LHS": [
+                "poultry counter",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
+                "bread"
+            ],
+            "Confidence": 0.2698412698412699,
+            "Lift": 1.6886187098953058,
+            "Conviction": 1.1507086956521742,
+            "Leverage": 0.0041595600000000005,
+            "LHS_Count": 189,
+            "LHS_Support": 0.0378,
+            "RHS_Count": 799,
+            "RHS_Support": 0.1598,
+            "Support": 0.0102,
+            "Count": 51
+        },
+        {
+            "LHS": [
+                "cereal"
+            ],
+            "RHS": [
+                "chips pretzels"
+            ],
+            "Confidence": 0.28087649402390436,
+            "Lift": 1.6879596996628867,
+            "Conviction": 1.15918891966759,
+            "Leverage": 0.01149344,
+            "LHS_Count": 502,
+            "LHS_Support": 0.1004,
+            "RHS_Count": 832,
+            "RHS_Support": 0.1664,
+            "Support": 0.0282,
+            "Count": 141
+        },
+        {
+            "LHS": [
+                "cereal"
+            ],
+            "RHS": [
+                "chips pretzels",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.28087649402390436,
+            "Lift": 1.6879596996628867,
+            "Conviction": 1.15918891966759,
+            "Leverage": 0.01149344,
+            "LHS_Count": 502,
+            "LHS_Support": 0.1004,
+            "RHS_Count": 832,
+            "RHS_Support": 0.1664,
+            "Support": 0.0282,
+            "Count": 141
+        },
+        {
+            "LHS": [
+                "arrival_ timestamp",
+                "cereal"
+            ],
+            "RHS": [
+                "chips pretzels"
+            ],
+            "Confidence": 0.28087649402390436,
+            "Lift": 1.6879596996628867,
+            "Conviction": 1.15918891966759,
+            "Leverage": 0.01149344,
+            "LHS_Count": 502,
+            "LHS_Support": 0.1004,
+            "RHS_Count": 832,
+            "RHS_Support": 0.1664,
+            "Support": 0.0282,
+            "Count": 141
+        },
+        {
+            "LHS": [
+                "cereal"
+            ],
+            "RHS": [
+                "order_hour_of_day",
+                "bread"
             ],
             "Confidence": 0.2689243027888446,
             "Lift": 1.6849893658448911,
@@ -9206,8 +9206,8 @@
                 "cereal"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2689243027888446,
             "Lift": 1.682880493046587,
@@ -9244,8 +9244,8 @@
                 "cereal"
             ],
             "RHS": [
-                "finish_service_time",
-                "bread"
+                "bread",
+                "finish_service_time"
             ],
             "Confidence": 0.2689243027888446,
             "Lift": 1.682880493046587,
@@ -9282,8 +9282,8 @@
                 "cereal"
             ],
             "RHS": [
-                "order_id",
-                "bread"
+                "bread",
+                "order_id"
             ],
             "Confidence": 0.2689243027888446,
             "Lift": 1.682880493046587,
@@ -9336,8 +9336,8 @@
         },
         {
             "LHS": [
-                "cereal",
-                "pay_method"
+                "pay_method",
+                "cereal"
             ],
             "RHS": [
                 "bread"
@@ -9374,8 +9374,8 @@
         },
         {
             "LHS": [
-                "cereal",
-                "pickup_timestamp"
+                "pickup_timestamp",
+                "cereal"
             ],
             "RHS": [
                 "bread"
@@ -9396,8 +9396,8 @@
                 "cereal"
             ],
             "RHS": [
-                "start_service_time",
-                "bread"
+                "bread",
+                "start_service_time"
             ],
             "Confidence": 0.2689243027888446,
             "Lift": 1.682880493046587,
@@ -9471,8 +9471,8 @@
                 "poultry counter"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh vegetables"
+                "fresh vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.7671957671957672,
             "Lift": 1.6736382355928605,
@@ -9487,8 +9487,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "poultry counter"
+                "poultry counter",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -9546,8 +9546,8 @@
                 "frozen breakfast"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "refrigerated"
+                "refrigerated",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.220125786163522,
             "Lift": 1.672688344707614,
@@ -9562,8 +9562,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen breakfast"
+                "frozen breakfast",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "refrigerated"
@@ -9581,8 +9581,8 @@
         },
         {
             "LHS": [
-                "packaged vegetables fruits",
-                "baking ingredients"
+                "baking ingredients",
+                "packaged vegetables fruits"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -9603,8 +9603,8 @@
                 "cereal"
             ],
             "RHS": [
-                "days_since_prior_order",
-                "bread"
+                "bread",
+                "days_since_prior_order"
             ],
             "Confidence": 0.2649402390438247,
             "Lift": 1.670493310490698,
@@ -9622,8 +9622,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "packaged cheese",
-                "fresh fruits"
+                "fresh fruits",
+                "packaged cheese"
             ],
             "Confidence": 0.2631578947368421,
             "Lift": 1.6697835960459524,
@@ -9659,8 +9659,8 @@
                 "cream"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2334096109839817,
             "Lift": 1.6648331739228368,
@@ -9675,8 +9675,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "cream"
+                "cream",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -9734,7 +9734,26 @@
                 "dish detergents"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "water seltzer sparkling water",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.3448275862068965,
+            "Lift": 1.6610192013819678,
+            "Conviction": 1.2094526315789473,
+            "Leverage": 0.0039796,
+            "LHS_Count": 145,
+            "LHS_Support": 0.029,
+            "RHS_Count": 1038,
+            "RHS_Support": 0.2076,
+            "Support": 0.01,
+            "Count": 50
+        },
+        {
+            "LHS": [
+                "dish detergents",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "water seltzer sparkling water"
             ],
             "Confidence": 0.3448275862068965,
@@ -9750,25 +9769,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "dish detergents"
-            ],
-            "RHS": [
-                "water seltzer sparkling water"
-            ],
-            "Confidence": 0.3448275862068965,
-            "Lift": 1.6610192013819678,
-            "Conviction": 1.2094526315789473,
-            "Leverage": 0.0039796,
-            "LHS_Count": 145,
-            "LHS_Support": 0.029,
-            "RHS_Count": 1038,
-            "RHS_Support": 0.2076,
-            "Support": 0.01,
-            "Count": 50
-        },
-        {
-            "LHS": [
                 "missing"
             ],
             "RHS": [
@@ -9790,8 +9790,8 @@
                 "missing"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "soy lactosefree"
+                "soy lactosefree",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.27999999999999997,
             "Lift": 1.6607354685646498,
@@ -9806,8 +9806,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "missing"
+                "missing",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "soy lactosefree"
@@ -9846,7 +9846,26 @@
                 "oils vinegars"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "eggs",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.23275862068965517,
+            "Lift": 1.660189876531064,
+            "Conviction": 1.120638202247191,
+            "Leverage": 0.006442080000000001,
+            "LHS_Count": 348,
+            "LHS_Support": 0.0696,
+            "RHS_Count": 701,
+            "RHS_Support": 0.1402,
+            "Support": 0.0162,
+            "Count": 81
+        },
+        {
+            "LHS": [
+                "oils vinegars",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "eggs"
             ],
             "Confidence": 0.23275862068965517,
@@ -9862,25 +9881,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "oils vinegars"
-            ],
-            "RHS": [
-                "eggs"
-            ],
-            "Confidence": 0.23275862068965517,
-            "Lift": 1.660189876531064,
-            "Conviction": 1.120638202247191,
-            "Leverage": 0.006442080000000001,
-            "LHS_Count": 348,
-            "LHS_Support": 0.0696,
-            "RHS_Count": 701,
-            "RHS_Support": 0.1402,
-            "Support": 0.0162,
-            "Count": 81
-        },
-        {
-            "LHS": [
                 "canned jarred vegetables"
             ],
             "RHS": [
@@ -9902,8 +9902,8 @@
                 "canned jarred vegetables"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.23273657289002558,
             "Lift": 1.660032616904605,
@@ -9918,8 +9918,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned jarred vegetables"
+                "canned jarred vegetables",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -9937,8 +9937,8 @@
         },
         {
             "LHS": [
-                "packaged vegetables fruits",
-                "canned meals beans"
+                "canned meals beans",
+                "packaged vegetables fruits"
             ],
             "RHS": [
                 "bread"
@@ -9993,8 +9993,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "missing"
+                "missing",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "frozen produce"
@@ -10033,8 +10033,8 @@
                 "salad dressing toppings"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "packaged vegetables fruits"
+                "packaged vegetables fruits",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.6369047619047619,
             "Lift": 1.6560186216972488,
@@ -10105,8 +10105,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fruit vegetable snacks"
+                "fruit vegetable snacks",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -10161,8 +10161,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "poultry counter"
+                "poultry counter",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -10217,8 +10217,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "hot dogs bacon sausage"
+                "hot dogs bacon sausage",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -10273,8 +10273,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "pasta sauce"
+                "pasta sauce",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -10329,8 +10329,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "soup broth bouillon"
+                "soup broth bouillon",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "frozen produce"
@@ -10385,8 +10385,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fresh dips tapenades"
+                "fresh dips tapenades",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "frozen produce"
@@ -10444,8 +10444,8 @@
                 "hot cereal pancake mixes"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "soy lactosefree"
+                "soy lactosefree",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.27601809954751133,
             "Lift": 1.63711802815843,
@@ -10516,8 +10516,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned fruit applesauce"
+                "canned fruit applesauce",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -10572,8 +10572,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fruit vegetable snacks"
+                "fruit vegetable snacks",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -10612,7 +10612,26 @@
                 "milk"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "bread",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.261443661971831,
+            "Lift": 1.6360679722893054,
+            "Conviction": 1.1376247914183553,
+            "Leverage": 0.02309344,
+            "LHS_Count": 1136,
+            "LHS_Support": 0.2272,
+            "RHS_Count": 799,
+            "RHS_Support": 0.1598,
+            "Support": 0.0594,
+            "Count": 297
+        },
+        {
+            "LHS": [
+                "milk",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "bread"
             ],
             "Confidence": 0.261443661971831,
@@ -10628,25 +10647,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "milk"
-            ],
-            "RHS": [
-                "bread"
-            ],
-            "Confidence": 0.261443661971831,
-            "Lift": 1.6360679722893054,
-            "Conviction": 1.1376247914183553,
-            "Leverage": 0.02309344,
-            "LHS_Count": 1136,
-            "LHS_Support": 0.2272,
-            "RHS_Count": 799,
-            "RHS_Support": 0.1598,
-            "Support": 0.0594,
-            "Count": 297
-        },
-        {
-            "LHS": [
                 "bread"
             ],
             "RHS": [
@@ -10684,8 +10684,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "milk"
@@ -10761,8 +10761,8 @@
                 "packaged cheese"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2612847222222222,
             "Lift": 1.635073355583368,
@@ -10777,8 +10777,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -10796,8 +10796,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "packaged cheese"
+                "packaged cheese",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -10852,8 +10852,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "energy granola bars"
+                "energy granola bars",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -10908,8 +10908,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen breakfast"
+                "frozen breakfast",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -10964,8 +10964,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "crackers"
+                "crackers",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -11004,7 +11004,26 @@
                 "instant foods"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "refrigerated",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.21404682274247494,
+            "Lift": 1.6264956135446424,
+            "Conviction": 1.104900425531915,
+            "Leverage": 0.004930320000000002,
+            "LHS_Count": 299,
+            "LHS_Support": 0.0598,
+            "RHS_Count": 658,
+            "RHS_Support": 0.1316,
+            "Support": 0.0128,
+            "Count": 64
+        },
+        {
+            "LHS": [
+                "instant foods",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "refrigerated"
             ],
             "Confidence": 0.21404682274247494,
@@ -11020,25 +11039,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "instant foods"
-            ],
-            "RHS": [
-                "refrigerated"
-            ],
-            "Confidence": 0.21404682274247494,
-            "Lift": 1.6264956135446424,
-            "Conviction": 1.104900425531915,
-            "Leverage": 0.004930320000000002,
-            "LHS_Count": 299,
-            "LHS_Support": 0.0598,
-            "RHS_Count": 658,
-            "RHS_Support": 0.1316,
-            "Support": 0.0128,
-            "Count": 64
-        },
-        {
-            "LHS": [
                 "missing"
             ],
             "RHS": [
@@ -11060,8 +11060,8 @@
                 "missing"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.228,
             "Lift": 1.6262482168330958,
@@ -11076,8 +11076,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "missing"
+                "missing",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -11116,8 +11116,8 @@
                 "pasta sauce"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.22796352583586627,
             "Lift": 1.6259880587436968,
@@ -11132,8 +11132,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "pasta sauce"
+                "pasta sauce",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -11151,8 +11151,8 @@
         },
         {
             "LHS": [
-                "fresh fruits",
-                "canned meals beans"
+                "canned meals beans",
+                "fresh fruits"
             ],
             "RHS": [
                 "bread"
@@ -11209,8 +11209,8 @@
                 "bread"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.22778473091364207,
             "Lift": 1.624712773991741,
@@ -11228,8 +11228,8 @@
                 "eggs"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2596291012838802,
             "Lift": 1.624712773991741,
@@ -11244,8 +11244,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -11263,8 +11263,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -11321,8 +11321,8 @@
                 "frozen produce"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "soy lactosefree"
+                "soy lactosefree",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2738853503184714,
             "Lift": 1.6244682699790711,
@@ -11356,8 +11356,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen produce"
+                "frozen produce",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "soy lactosefree"
@@ -11375,8 +11375,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "soy lactosefree"
+                "soy lactosefree",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "frozen produce"
@@ -11397,8 +11397,8 @@
                 "baby food formula"
             ],
             "RHS": [
-                "fresh fruits",
-                "fresh vegetables"
+                "fresh vegetables",
+                "fresh fruits"
             ],
             "Confidence": 0.5322580645161291,
             "Lift": 1.6217491301527396,
@@ -11506,8 +11506,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "juice nectars"
+                "juice nectars",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "ice cream ice"
@@ -11562,8 +11562,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned jarred vegetables"
+                "canned jarred vegetables",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -11600,8 +11600,8 @@
         },
         {
             "LHS": [
-                "days_since_prior_order",
-                "baking ingredients"
+                "baking ingredients",
+                "days_since_prior_order"
             ],
             "RHS": [
                 "eggs"
@@ -11622,8 +11622,8 @@
                 "baking ingredients"
             ],
             "RHS": [
-                "days_since_prior_order",
-                "eggs"
+                "eggs",
+                "days_since_prior_order"
             ],
             "Confidence": 0.2236180904522613,
             "Lift": 1.6134061360192014,
@@ -11675,8 +11675,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen pizza"
+                "frozen pizza",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -11715,8 +11715,8 @@
                 "baking ingredients"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.22613065326633164,
             "Lift": 1.6129147879196266,
@@ -11731,8 +11731,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "baking ingredients"
+                "baking ingredients",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -11753,8 +11753,8 @@
                 "baking ingredients"
             ],
             "RHS": [
-                "finish_service_time",
-                "eggs"
+                "eggs",
+                "finish_service_time"
             ],
             "Confidence": 0.22613065326633164,
             "Lift": 1.6129147879196266,
@@ -11769,8 +11769,8 @@
         },
         {
             "LHS": [
-                "finish_service_time",
-                "baking ingredients"
+                "baking ingredients",
+                "finish_service_time"
             ],
             "RHS": [
                 "eggs"
@@ -11791,8 +11791,8 @@
                 "baking ingredients"
             ],
             "RHS": [
-                "order_id",
-                "eggs"
+                "eggs",
+                "order_id"
             ],
             "Confidence": 0.22613065326633164,
             "Lift": 1.6129147879196266,
@@ -11807,8 +11807,8 @@
         },
         {
             "LHS": [
-                "order_id",
-                "baking ingredients"
+                "baking ingredients",
+                "order_id"
             ],
             "RHS": [
                 "eggs"
@@ -11905,8 +11905,8 @@
                 "baking ingredients"
             ],
             "RHS": [
-                "start_service_time",
-                "eggs"
+                "eggs",
+                "start_service_time"
             ],
             "Confidence": 0.22613065326633164,
             "Lift": 1.6129147879196266,
@@ -11921,8 +11921,8 @@
         },
         {
             "LHS": [
-                "start_service_time",
-                "baking ingredients"
+                "baking ingredients",
+                "start_service_time"
             ],
             "RHS": [
                 "eggs"
@@ -11962,8 +11962,8 @@
                 "baking ingredients"
             ],
             "RHS": [
-                "eggs",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "eggs"
             ],
             "Confidence": 0.2236180904522613,
             "Lift": 1.6110813433160036,
@@ -12018,8 +12018,8 @@
                 "fruit vegetable snacks"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.25680933852140075,
             "Lift": 1.607067199758453,
@@ -12034,8 +12034,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fruit vegetable snacks"
+                "fruit vegetable snacks",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -12093,8 +12093,8 @@
                 "packaged poultry"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh vegetables"
+                "fresh vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.7363184079601991,
             "Lift": 1.6062792494768743,
@@ -12109,8 +12109,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "packaged poultry"
+                "packaged poultry",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -12149,8 +12149,8 @@
                 "cookies cakes"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.256578947368421,
             "Lift": 1.6056254528687173,
@@ -12165,8 +12165,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "cookies cakes"
+                "cookies cakes",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -12187,8 +12187,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "days_since_prior_order",
-                "chips pretzels"
+                "chips pretzels",
+                "days_since_prior_order"
             ],
             "Confidence": 0.2631578947368421,
             "Lift": 1.6046213093709882,
@@ -12224,8 +12224,8 @@
                 "canned meals beans"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh vegetables"
+                "fresh vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.7355371900826447,
             "Lift": 1.6045750219952983,
@@ -12240,8 +12240,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned meals beans"
+                "canned meals beans",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -12262,8 +12262,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "fresh fruits",
-                "fresh vegetables"
+                "fresh vegetables",
+                "fresh fruits"
             ],
             "Confidence": 0.5263157894736842,
             "Lift": 1.603643477981975,
@@ -12299,8 +12299,8 @@
                 "other creams cheeses"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2561797752808989,
             "Lift": 1.6031275048867266,
@@ -12371,8 +12371,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen breakfast"
+                "frozen breakfast",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "frozen produce"
@@ -12430,7 +12430,26 @@
                 "tortillas flat bread"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "chips pretzels",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.26618705035971224,
+            "Lift": 1.599681793027117,
+            "Conviction": 1.1359843137254901,
+            "Leverage": 0.005548160000000002,
+            "LHS_Count": 278,
+            "LHS_Support": 0.0556,
+            "RHS_Count": 832,
+            "RHS_Support": 0.1664,
+            "Support": 0.0148,
+            "Count": 74
+        },
+        {
+            "LHS": [
+                "tortillas flat bread",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "chips pretzels"
             ],
             "Confidence": 0.26618705035971224,
@@ -12446,25 +12465,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "tortillas flat bread"
-            ],
-            "RHS": [
-                "chips pretzels"
-            ],
-            "Confidence": 0.26618705035971224,
-            "Lift": 1.599681793027117,
-            "Conviction": 1.1359843137254901,
-            "Leverage": 0.005548160000000002,
-            "LHS_Count": 278,
-            "LHS_Support": 0.0556,
-            "RHS_Count": 832,
-            "RHS_Support": 0.1664,
-            "Support": 0.0148,
-            "Count": 74
-        },
-        {
-            "LHS": [
                 "popcorn jerky"
             ],
             "RHS": [
@@ -12486,8 +12486,8 @@
                 "popcorn jerky"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "water seltzer sparkling water"
+                "water seltzer sparkling water",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.33195020746887965,
             "Lift": 1.5989894386747574,
@@ -12502,8 +12502,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "popcorn jerky"
+                "popcorn jerky",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "water seltzer sparkling water"
@@ -12598,7 +12598,26 @@
                 "fruit vegetable snacks"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "refrigerated",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.21011673151750973,
+            "Lift": 1.5966316984613202,
+            "Conviction": 1.0994029556650247,
+            "Leverage": 0.004035760000000001,
+            "LHS_Count": 257,
+            "LHS_Support": 0.0514,
+            "RHS_Count": 658,
+            "RHS_Support": 0.1316,
+            "Support": 0.0108,
+            "Count": 54
+        },
+        {
+            "LHS": [
+                "fruit vegetable snacks",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "refrigerated"
             ],
             "Confidence": 0.21011673151750973,
@@ -12614,25 +12633,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fruit vegetable snacks"
-            ],
-            "RHS": [
-                "refrigerated"
-            ],
-            "Confidence": 0.21011673151750973,
-            "Lift": 1.5966316984613202,
-            "Conviction": 1.0994029556650247,
-            "Leverage": 0.004035760000000001,
-            "LHS_Count": 257,
-            "LHS_Support": 0.0514,
-            "RHS_Count": 658,
-            "RHS_Support": 0.1316,
-            "Support": 0.0108,
-            "Count": 54
-        },
-        {
-            "LHS": [
                 "canned fruit applesauce"
             ],
             "RHS": [
@@ -12670,8 +12670,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned fruit applesauce"
+                "canned fruit applesauce",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "milk"
@@ -12689,8 +12689,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "baking ingredients"
+                "baking ingredients",
+                "yogurt"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -12729,8 +12729,8 @@
                 "meat counter"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "packaged vegetables fruits"
+                "packaged vegetables fruits",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.6124031007751939,
             "Lift": 1.5923117544856835,
@@ -12745,8 +12745,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "meat counter"
+                "meat counter",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged vegetables fruits"
@@ -12767,8 +12767,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "packaged cheese",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "packaged cheese"
             ],
             "Confidence": 0.36363636363636365,
             "Lift": 1.590710252127575,
@@ -12820,8 +12820,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fresh dips tapenades"
+                "fresh dips tapenades",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -12860,8 +12860,8 @@
                 "latino foods"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh vegetables"
+                "fresh vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.7289719626168224,
             "Lift": 1.5902529725497871,
@@ -12876,8 +12876,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "latino foods"
+                "latino foods",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -12914,8 +12914,8 @@
         },
         {
             "LHS": [
-                "asian foods",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "asian foods"
             ],
             "RHS": [
                 "chips pretzels"
@@ -12954,8 +12954,8 @@
                 "pasta sauce"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "packaged vegetables fruits"
+                "packaged vegetables fruits",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.6109422492401216,
             "Lift": 1.5885133885598586,
@@ -12970,8 +12970,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "pasta sauce"
+                "pasta sauce",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged vegetables fruits"
@@ -13010,8 +13010,8 @@
                 "ice cream ice"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "refrigerated"
+                "refrigerated",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2090032154340836,
             "Lift": 1.588170330046228,
@@ -13026,8 +13026,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "ice cream ice"
+                "ice cream ice",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "refrigerated"
@@ -13102,8 +13102,8 @@
         },
         {
             "LHS": [
-                "bread",
-                "canned meals beans"
+                "canned meals beans",
+                "bread"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -13121,8 +13121,8 @@
         },
         {
             "LHS": [
-                "asian foods",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "asian foods"
             ],
             "RHS": [
                 "packaged cheese"
@@ -13161,7 +13161,26 @@
                 "fresh herbs"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "packaged vegetables fruits",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.6095617529880477,
+            "Lift": 1.5849239547271132,
+            "Conviction": 1.5761775510204077,
+            "Leverage": 0.022586159999999994,
+            "LHS_Count": 502,
+            "LHS_Support": 0.1004,
+            "RHS_Count": 1923,
+            "RHS_Support": 0.3846,
+            "Support": 0.0612,
+            "Count": 306
+        },
+        {
+            "LHS": [
+                "fresh herbs",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "packaged vegetables fruits"
             ],
             "Confidence": 0.6095617529880477,
@@ -13177,25 +13196,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fresh herbs"
-            ],
-            "RHS": [
-                "packaged vegetables fruits"
-            ],
-            "Confidence": 0.6095617529880477,
-            "Lift": 1.5849239547271132,
-            "Conviction": 1.5761775510204077,
-            "Leverage": 0.022586159999999994,
-            "LHS_Count": 502,
-            "LHS_Support": 0.1004,
-            "RHS_Count": 1923,
-            "RHS_Support": 0.3846,
-            "Support": 0.0612,
-            "Count": 306
-        },
-        {
-            "LHS": [
                 "ice cream ice"
             ],
             "RHS": [
@@ -13217,8 +13217,8 @@
                 "ice cream ice"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2636655948553055,
             "Lift": 1.584528815236211,
@@ -13233,8 +13233,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "ice cream ice"
+                "ice cream ice",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -13273,8 +13273,8 @@
                 "specialty cheeses"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "packaged vegetables fruits"
+                "packaged vegetables fruits",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.6090225563909775,
             "Lift": 1.5835219874960413,
@@ -13289,8 +13289,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "specialty cheeses"
+                "specialty cheeses",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged vegetables fruits"
@@ -13363,8 +13363,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "condiments"
+                "condiments",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -13401,8 +13401,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen breakfast"
+                "frozen breakfast",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -13457,8 +13457,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "dry pasta"
+                "dry pasta",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -13497,8 +13497,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2631578947368421,
             "Lift": 1.5814777327935223,
@@ -13513,8 +13513,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "asian foods"
+                "asian foods",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -13535,8 +13535,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "finish_service_time",
-                "chips pretzels"
+                "chips pretzels",
+                "finish_service_time"
             ],
             "Confidence": 0.2631578947368421,
             "Lift": 1.5814777327935223,
@@ -13551,8 +13551,8 @@
         },
         {
             "LHS": [
-                "finish_service_time",
-                "asian foods"
+                "asian foods",
+                "finish_service_time"
             ],
             "RHS": [
                 "chips pretzels"
@@ -13573,8 +13573,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "order_id",
-                "chips pretzels"
+                "chips pretzels",
+                "order_id"
             ],
             "Confidence": 0.2631578947368421,
             "Lift": 1.5814777327935223,
@@ -13589,8 +13589,8 @@
         },
         {
             "LHS": [
-                "order_id",
-                "asian foods"
+                "asian foods",
+                "order_id"
             ],
             "RHS": [
                 "chips pretzels"
@@ -13649,8 +13649,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "pickup_timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "pickup_timestamp"
             ],
             "Confidence": 0.2631578947368421,
             "Lift": 1.5814777327935223,
@@ -13687,8 +13687,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "start_service_time",
-                "chips pretzels"
+                "chips pretzels",
+                "start_service_time"
             ],
             "Confidence": 0.2631578947368421,
             "Lift": 1.5814777327935223,
@@ -13759,8 +13759,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "specialty cheeses"
+                "specialty cheeses",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -13815,8 +13815,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "missing"
+                "missing",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -13837,8 +13837,8 @@
                 "butter"
             ],
             "RHS": [
-                "bread",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "bread"
             ],
             "Confidence": 0.2521246458923513,
             "Lift": 1.5797283577214993,
@@ -13890,8 +13890,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "asian foods"
+                "asian foods",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -13912,8 +13912,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "finish_service_time",
-                "packaged cheese"
+                "packaged cheese",
+                "finish_service_time"
             ],
             "Confidence": 0.36363636363636365,
             "Lift": 1.5782828282828283,
@@ -13928,8 +13928,8 @@
         },
         {
             "LHS": [
-                "finish_service_time",
-                "asian foods"
+                "asian foods",
+                "finish_service_time"
             ],
             "RHS": [
                 "packaged cheese"
@@ -13966,8 +13966,8 @@
         },
         {
             "LHS": [
-                "order_id",
-                "asian foods"
+                "asian foods",
+                "order_id"
             ],
             "RHS": [
                 "packaged cheese"
@@ -14064,8 +14064,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "start_service_time",
-                "packaged cheese"
+                "packaged cheese",
+                "start_service_time"
             ],
             "Confidence": 0.36363636363636365,
             "Lift": 1.5782828282828283,
@@ -14120,8 +14120,8 @@
                 "butter"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2521246458923513,
             "Lift": 1.5777512258595199,
@@ -14158,8 +14158,8 @@
                 "butter"
             ],
             "RHS": [
-                "finish_service_time",
-                "bread"
+                "bread",
+                "finish_service_time"
             ],
             "Confidence": 0.2521246458923513,
             "Lift": 1.5777512258595199,
@@ -14196,8 +14196,8 @@
                 "butter"
             ],
             "RHS": [
-                "order_id",
-                "bread"
+                "bread",
+                "order_id"
             ],
             "Confidence": 0.2521246458923513,
             "Lift": 1.5777512258595199,
@@ -14310,8 +14310,8 @@
                 "butter"
             ],
             "RHS": [
-                "start_service_time",
-                "bread"
+                "bread",
+                "start_service_time"
             ],
             "Confidence": 0.2521246458923513,
             "Lift": 1.5777512258595199,
@@ -14366,7 +14366,26 @@
                 "fresh dips tapenades"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "soy lactosefree",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.2658959537572254,
+            "Lift": 1.577081576258751,
+            "Conviction": 1.1325370078740158,
+            "Leverage": 0.010099319999999998,
+            "LHS_Count": 519,
+            "LHS_Support": 0.1038,
+            "RHS_Count": 843,
+            "RHS_Support": 0.1686,
+            "Support": 0.0276,
+            "Count": 138
+        },
+        {
+            "LHS": [
+                "fresh dips tapenades",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "soy lactosefree"
             ],
             "Confidence": 0.2658959537572254,
@@ -14382,25 +14401,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fresh dips tapenades"
-            ],
-            "RHS": [
-                "soy lactosefree"
-            ],
-            "Confidence": 0.2658959537572254,
-            "Lift": 1.577081576258751,
-            "Conviction": 1.1325370078740158,
-            "Leverage": 0.010099319999999998,
-            "LHS_Count": 519,
-            "LHS_Support": 0.1038,
-            "RHS_Count": 843,
-            "RHS_Support": 0.1686,
-            "Support": 0.0276,
-            "Count": 138
-        },
-        {
-            "LHS": [
                 "packaged poultry"
             ],
             "RHS": [
@@ -14438,8 +14438,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "packaged poultry"
+                "packaged poultry",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -14494,8 +14494,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "buns rolls"
+                "buns rolls",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -14534,8 +14534,8 @@
                 "canned jarred vegetables"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "packaged vegetables fruits"
+                "packaged vegetables fruits",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.6061381074168797,
             "Lift": 1.576022120168694,
@@ -14550,8 +14550,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned jarred vegetables"
+                "canned jarred vegetables",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged vegetables fruits"
@@ -14569,8 +14569,8 @@
         },
         {
             "LHS": [
-                "eggs",
-                "baking ingredients"
+                "baking ingredients",
+                "eggs"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -14609,8 +14609,8 @@
                 "instant foods"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.22073578595317725,
             "Lift": 1.5744349925333614,
@@ -14625,8 +14625,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "instant foods"
+                "instant foods",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -14665,8 +14665,8 @@
                 "condiments"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.25157232704402516,
             "Lift": 1.5742949126659898,
@@ -14681,8 +14681,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "condiments"
+                "condiments",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -14703,8 +14703,8 @@
                 "butter"
             ],
             "RHS": [
-                "days_since_prior_order",
-                "bread"
+                "bread",
+                "days_since_prior_order"
             ],
             "Confidence": 0.2492917847025496,
             "Lift": 1.5718271418824061,
@@ -14756,8 +14756,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen pizza"
+                "frozen pizza",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "milk"
@@ -14794,8 +14794,8 @@
         },
         {
             "LHS": [
-                "bread",
-                "canned meals beans"
+                "canned meals beans",
+                "bread"
             ],
             "RHS": [
                 "packaged vegetables fruits"
@@ -14834,8 +14834,8 @@
                 "eggs"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "soy lactosefree"
+                "soy lactosefree",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2639087018544936,
             "Lift": 1.5652947915450393,
@@ -14850,8 +14850,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "soy lactosefree"
@@ -14890,8 +14890,8 @@
                 "soy lactosefree"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21945432977461446,
             "Lift": 1.565294791545039,
@@ -14906,8 +14906,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "soy lactosefree"
+                "soy lactosefree",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -14946,8 +14946,8 @@
                 "spices seasonings"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh vegetables"
+                "fresh vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.7171717171717171,
             "Lift": 1.5645107268143916,
@@ -14962,8 +14962,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "spices seasonings"
+                "spices seasonings",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -15002,8 +15002,8 @@
                 "fresh herbs"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2191235059760956,
             "Lift": 1.5629351353501826,
@@ -15018,8 +15018,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fresh herbs"
+                "fresh herbs",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -15074,8 +15074,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "breakfast bakery"
+                "breakfast bakery",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -15114,8 +15114,8 @@
                 "cereal"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "soy lactosefree"
+                "soy lactosefree",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.26294820717131473,
             "Lift": 1.5595979073031716,
@@ -15170,8 +15170,8 @@
                 "tortillas flat bread"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "refrigerated"
+                "refrigerated",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2050359712230216,
             "Lift": 1.558024097439374,
@@ -15186,8 +15186,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "tortillas flat bread"
+                "tortillas flat bread",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "refrigerated"
@@ -15226,8 +15226,8 @@
                 "energy granola bars"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "refrigerated"
+                "refrigerated",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2047930283224401,
             "Lift": 1.5561780267662622,
@@ -15242,8 +15242,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "energy granola bars"
+                "energy granola bars",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "refrigerated"
@@ -15282,8 +15282,8 @@
                 "latino foods"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "packaged vegetables fruits"
+                "packaged vegetables fruits",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.5981308411214954,
             "Lift": 1.5552023950116884,
@@ -15298,8 +15298,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "latino foods"
+                "latino foods",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged vegetables fruits"
@@ -15338,8 +15338,8 @@
                 "grains rice dried goods"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh vegetables"
+                "fresh vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.7122641509433962,
             "Lift": 1.5538048668049658,
@@ -15354,8 +15354,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "grains rice dried goods"
+                "grains rice dried goods",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -15413,8 +15413,8 @@
                 "candy chocolate"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "refrigerated"
+                "refrigerated",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.20426829268292682,
             "Lift": 1.5521906738824227,
@@ -15429,8 +15429,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "candy chocolate"
+                "candy chocolate",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "refrigerated"
@@ -15469,8 +15469,8 @@
                 "fresh dips tapenades"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "packaged vegetables fruits"
+                "packaged vegetables fruits",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.5953757225433526,
             "Lift": 1.5480388001647234,
@@ -15485,8 +15485,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fresh dips tapenades"
+                "fresh dips tapenades",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged vegetables fruits"
@@ -15525,8 +15525,8 @@
                 "frozen breakfast"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21698113207547168,
             "Lift": 1.5476542944042204,
@@ -15541,8 +15541,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen breakfast"
+                "frozen breakfast",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -15600,7 +15600,26 @@
                 "pasta sauce"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "fresh vegetables",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.7082066869300913,
+            "Lift": 1.5449535055193964,
+            "Conviction": 1.8561083333333341,
+            "Leverage": 0.016437280000000005,
+            "LHS_Count": 329,
+            "LHS_Support": 0.0658,
+            "RHS_Count": 2292,
+            "RHS_Support": 0.4584,
+            "Support": 0.0466,
+            "Count": 233
+        },
+        {
+            "LHS": [
+                "pasta sauce",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "fresh vegetables"
             ],
             "Confidence": 0.7082066869300913,
@@ -15616,25 +15635,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "pasta sauce"
-            ],
-            "RHS": [
-                "fresh vegetables"
-            ],
-            "Confidence": 0.7082066869300913,
-            "Lift": 1.5449535055193964,
-            "Conviction": 1.8561083333333341,
-            "Leverage": 0.016437280000000005,
-            "LHS_Count": 329,
-            "LHS_Support": 0.0658,
-            "RHS_Count": 2292,
-            "RHS_Support": 0.4584,
-            "Support": 0.0466,
-            "Count": 233
-        },
-        {
-            "LHS": [
                 "canned meals beans"
             ],
             "RHS": [
@@ -15672,8 +15672,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned meals beans"
+                "canned meals beans",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -15728,8 +15728,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "cream"
+                "cream",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "milk"
@@ -15768,8 +15768,8 @@
                 "soft drinks"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2564102564102564,
             "Lift": 1.5409270216962525,
@@ -15784,8 +15784,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "soft drinks"
+                "soft drinks",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -15840,8 +15840,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "tortillas flat bread"
+                "tortillas flat bread",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -15896,8 +15896,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "meat counter"
+                "meat counter",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -15971,8 +15971,8 @@
         },
         {
             "LHS": [
-                "yogurt",
-                "baking ingredients"
+                "baking ingredients",
+                "yogurt"
             ],
             "RHS": [
                 "packaged vegetables fruits"
@@ -16067,7 +16067,26 @@
                 "crackers"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "refrigerated",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.20207253886010362,
+            "Lift": 1.5355056144384776,
+            "Conviction": 1.0883194805194807,
+            "Leverage": 0.008160720000000002,
+            "LHS_Count": 579,
+            "LHS_Support": 0.1158,
+            "RHS_Count": 658,
+            "RHS_Support": 0.1316,
+            "Support": 0.0234,
+            "Count": 117
+        },
+        {
+            "LHS": [
+                "crackers",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "refrigerated"
             ],
             "Confidence": 0.20207253886010362,
@@ -16083,25 +16102,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "crackers"
-            ],
-            "RHS": [
-                "refrigerated"
-            ],
-            "Confidence": 0.20207253886010362,
-            "Lift": 1.5355056144384776,
-            "Conviction": 1.0883194805194807,
-            "Leverage": 0.008160720000000002,
-            "LHS_Count": 579,
-            "LHS_Support": 0.1158,
-            "RHS_Count": 658,
-            "RHS_Support": 0.1316,
-            "Support": 0.0234,
-            "Count": 117
-        },
-        {
-            "LHS": [
                 "lunch meat"
             ],
             "RHS": [
@@ -16123,8 +16123,8 @@
                 "lunch meat"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21507352941176472,
             "Lift": 1.5340479986573805,
@@ -16139,8 +16139,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "lunch meat"
+                "lunch meat",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -16158,8 +16158,8 @@
         },
         {
             "LHS": [
-                "packaged vegetables fruits",
-                "baking ingredients"
+                "baking ingredients",
+                "packaged vegetables fruits"
             ],
             "RHS": [
                 "packaged cheese"
@@ -16177,8 +16177,8 @@
         },
         {
             "LHS": [
-                "packaged cheese",
-                "baking ingredients"
+                "baking ingredients",
+                "packaged cheese"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -16217,8 +16217,8 @@
                 "coffee"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.24482758620689654,
             "Lift": 1.5320875231970998,
@@ -16233,8 +16233,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "coffee"
+                "coffee",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -16289,8 +16289,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "tofu meat alternatives"
+                "tofu meat alternatives",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -16345,8 +16345,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "dish detergents"
+                "dish detergents",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -16401,8 +16401,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen meals"
+                "frozen meals",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -16478,8 +16478,8 @@
                 "packaged cheese"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21440972222222224,
             "Lift": 1.5293132826121416,
@@ -16494,8 +16494,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -16513,8 +16513,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "packaged cheese"
+                "packaged cheese",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -16606,8 +16606,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "milk"
+                "milk",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -16647,8 +16647,8 @@
                 "canned meals beans"
             ],
             "RHS": [
-                "days_since_prior_order",
-                "bread"
+                "bread",
+                "days_since_prior_order"
             ],
             "Confidence": 0.24242424242424246,
             "Lift": 1.5285261186900534,
@@ -16703,8 +16703,8 @@
                 "fresh dips tapenades"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2138728323699422,
             "Lift": 1.525483825748518,
@@ -16719,8 +16719,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fresh dips tapenades"
+                "fresh dips tapenades",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -16738,8 +16738,8 @@
         },
         {
             "LHS": [
-                "canned meals beans",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "canned meals beans"
             ],
             "RHS": [
                 "bread"
@@ -16778,7 +16778,26 @@
                 "specialty cheeses"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "fresh vegetables",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.6992481203007519,
+            "Lift": 1.5254103846002443,
+            "Conviction": 1.8008200000000003,
+            "Leverage": 0.00640656,
+            "LHS_Count": 133,
+            "LHS_Support": 0.0266,
+            "RHS_Count": 2292,
+            "RHS_Support": 0.4584,
+            "Support": 0.0186,
+            "Count": 93
+        },
+        {
+            "LHS": [
+                "specialty cheeses",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "fresh vegetables"
             ],
             "Confidence": 0.6992481203007519,
@@ -16794,25 +16813,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "specialty cheeses"
-            ],
-            "RHS": [
-                "fresh vegetables"
-            ],
-            "Confidence": 0.6992481203007519,
-            "Lift": 1.5254103846002443,
-            "Conviction": 1.8008200000000003,
-            "Leverage": 0.00640656,
-            "LHS_Count": 133,
-            "LHS_Support": 0.0266,
-            "RHS_Count": 2292,
-            "RHS_Support": 0.4584,
-            "Support": 0.0186,
-            "Count": 93
-        },
-        {
-            "LHS": [
                 "condiments"
             ],
             "RHS": [
@@ -16834,8 +16834,8 @@
                 "condiments"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21383647798742136,
             "Lift": 1.5252245220215506,
@@ -16850,8 +16850,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "condiments"
+                "condiments",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -16890,7 +16890,26 @@
                 "cookies cakes"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "refrigerated",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.20065789473684212,
+            "Lift": 1.5247560390337547,
+            "Conviction": 1.0863934156378603,
+            "Leverage": 0.004198720000000001,
+            "LHS_Count": 304,
+            "LHS_Support": 0.0608,
+            "RHS_Count": 658,
+            "RHS_Support": 0.1316,
+            "Support": 0.0122,
+            "Count": 61
+        },
+        {
+            "LHS": [
+                "cookies cakes",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "refrigerated"
             ],
             "Confidence": 0.20065789473684212,
@@ -16906,25 +16925,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "cookies cakes"
-            ],
-            "RHS": [
-                "refrigerated"
-            ],
-            "Confidence": 0.20065789473684212,
-            "Lift": 1.5247560390337547,
-            "Conviction": 1.0863934156378603,
-            "Leverage": 0.004198720000000001,
-            "LHS_Count": 304,
-            "LHS_Support": 0.0608,
-            "RHS_Count": 658,
-            "RHS_Support": 0.1316,
-            "Support": 0.0122,
-            "Count": 61
-        },
-        {
-            "LHS": [
                 "asian foods"
             ],
             "RHS": [
@@ -16946,8 +16946,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh vegetables"
+                "fresh vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.6985645933014355,
             "Lift": 1.5239192698547896,
@@ -16962,8 +16962,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "asian foods"
+                "asian foods",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -16984,8 +16984,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "finish_service_time",
-                "fresh vegetables"
+                "fresh vegetables",
+                "finish_service_time"
             ],
             "Confidence": 0.6985645933014355,
             "Lift": 1.5239192698547896,
@@ -17000,8 +17000,8 @@
         },
         {
             "LHS": [
-                "finish_service_time",
-                "asian foods"
+                "asian foods",
+                "finish_service_time"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -17022,8 +17022,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "order_id",
-                "fresh vegetables"
+                "fresh vegetables",
+                "order_id"
             ],
             "Confidence": 0.6985645933014355,
             "Lift": 1.5239192698547896,
@@ -17038,8 +17038,8 @@
         },
         {
             "LHS": [
-                "order_id",
-                "asian foods"
+                "asian foods",
+                "order_id"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -17098,8 +17098,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "pickup_timestamp",
-                "fresh vegetables"
+                "fresh vegetables",
+                "pickup_timestamp"
             ],
             "Confidence": 0.6985645933014355,
             "Lift": 1.5239192698547896,
@@ -17136,8 +17136,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "start_service_time",
-                "fresh vegetables"
+                "fresh vegetables",
+                "start_service_time"
             ],
             "Confidence": 0.6985645933014355,
             "Lift": 1.5239192698547896,
@@ -17171,8 +17171,8 @@
         },
         {
             "LHS": [
-                "packaged cheese",
-                "baking ingredients"
+                "baking ingredients",
+                "packaged cheese"
             ],
             "RHS": [
                 "packaged vegetables fruits"
@@ -17227,8 +17227,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen pizza"
+                "frozen pizza",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -17321,8 +17321,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "preserved dips spreads"
+                "preserved dips spreads",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged cheese"
@@ -17361,7 +17361,26 @@
                 "cream"
             ],
             "RHS": [
-                "arrival_ timestamp",
+                "water seltzer sparkling water",
+                "arrival_ timestamp"
+            ],
+            "Confidence": 0.3157894736842105,
+            "Lift": 1.52114390021296,
+            "Conviction": 1.1581230769230768,
+            "Leverage": 0.009455759999999997,
+            "LHS_Count": 437,
+            "LHS_Support": 0.0874,
+            "RHS_Count": 1038,
+            "RHS_Support": 0.2076,
+            "Support": 0.0276,
+            "Count": 138
+        },
+        {
+            "LHS": [
+                "cream",
+                "arrival_ timestamp"
+            ],
+            "RHS": [
                 "water seltzer sparkling water"
             ],
             "Confidence": 0.3157894736842105,
@@ -17377,25 +17396,6 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "cream"
-            ],
-            "RHS": [
-                "water seltzer sparkling water"
-            ],
-            "Confidence": 0.3157894736842105,
-            "Lift": 1.52114390021296,
-            "Conviction": 1.1581230769230768,
-            "Leverage": 0.009455759999999997,
-            "LHS_Count": 437,
-            "LHS_Support": 0.0874,
-            "RHS_Count": 1038,
-            "RHS_Support": 0.2076,
-            "Support": 0.0276,
-            "Count": 138
-        },
-        {
-            "LHS": [
                 "packaged cheese"
             ],
             "RHS": [
@@ -17470,8 +17470,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "packaged cheese"
+                "packaged cheese",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "yogurt"
@@ -17508,8 +17508,8 @@
         },
         {
             "LHS": [
-                "asian foods",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "asian foods"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -17548,8 +17548,8 @@
                 "frozen appetizers sides"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "refrigerated"
+                "refrigerated",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2,
             "Lift": 1.5197568389057752,
@@ -17641,8 +17641,8 @@
                 "bread"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.2528160200250313,
             "Lift": 1.5193270434196593,
@@ -17660,8 +17660,8 @@
                 "chips pretzels"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.24278846153846154,
             "Lift": 1.5193270434196593,
@@ -17676,8 +17676,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -17695,8 +17695,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -17717,8 +17717,8 @@
                 "canned meals beans"
             ],
             "RHS": [
-                "bread",
-                "order_hour_of_day"
+                "order_hour_of_day",
+                "bread"
             ],
             "Confidence": 0.24242424242424246,
             "Lift": 1.5189488873699404,
@@ -17754,8 +17754,8 @@
                 "canned meals beans"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "bread"
+                "bread",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.24242424242424246,
             "Lift": 1.5170478249326813,
@@ -17770,8 +17770,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned meals beans"
+                "canned meals beans",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "bread"
@@ -17789,46 +17789,8 @@
         },
         {
             "LHS": [
-                "days_since_prior_order",
-                "canned meals beans"
-            ],
-            "RHS": [
-                "bread"
-            ],
-            "Confidence": 0.24242424242424246,
-            "Lift": 1.5170478249326813,
-            "Conviction": 1.109064,
-            "Leverage": 0.005998520000000002,
-            "LHS_Count": 363,
-            "LHS_Support": 0.0726,
-            "RHS_Count": 799,
-            "RHS_Support": 0.1598,
-            "Support": 0.0176,
-            "Count": 88
-        },
-        {
-            "LHS": [
-                "canned meals beans"
-            ],
-            "RHS": [
-                "finish_service_time",
-                "bread"
-            ],
-            "Confidence": 0.24242424242424246,
-            "Lift": 1.5170478249326813,
-            "Conviction": 1.109064,
-            "Leverage": 0.005998520000000002,
-            "LHS_Count": 363,
-            "LHS_Support": 0.0726,
-            "RHS_Count": 799,
-            "RHS_Support": 0.1598,
-            "Support": 0.0176,
-            "Count": 88
-        },
-        {
-            "LHS": [
-                "finish_service_time",
-                "canned meals beans"
+                "canned meals beans",
+                "days_since_prior_order"
             ],
             "RHS": [
                 "bread"
@@ -17849,7 +17811,26 @@
                 "canned meals beans"
             ],
             "RHS": [
-                "order_id",
+                "bread",
+                "finish_service_time"
+            ],
+            "Confidence": 0.24242424242424246,
+            "Lift": 1.5170478249326813,
+            "Conviction": 1.109064,
+            "Leverage": 0.005998520000000002,
+            "LHS_Count": 363,
+            "LHS_Support": 0.0726,
+            "RHS_Count": 799,
+            "RHS_Support": 0.1598,
+            "Support": 0.0176,
+            "Count": 88
+        },
+        {
+            "LHS": [
+                "canned meals beans",
+                "finish_service_time"
+            ],
+            "RHS": [
                 "bread"
             ],
             "Confidence": 0.24242424242424246,
@@ -17865,8 +17846,27 @@
         },
         {
             "LHS": [
-                "order_id",
                 "canned meals beans"
+            ],
+            "RHS": [
+                "bread",
+                "order_id"
+            ],
+            "Confidence": 0.24242424242424246,
+            "Lift": 1.5170478249326813,
+            "Conviction": 1.109064,
+            "Leverage": 0.005998520000000002,
+            "LHS_Count": 363,
+            "LHS_Support": 0.0726,
+            "RHS_Count": 799,
+            "RHS_Support": 0.1598,
+            "Support": 0.0176,
+            "Count": 88
+        },
+        {
+            "LHS": [
+                "canned meals beans",
+                "order_id"
             ],
             "RHS": [
                 "bread"
@@ -17963,8 +17963,8 @@
                 "canned meals beans"
             ],
             "RHS": [
-                "start_service_time",
-                "bread"
+                "bread",
+                "start_service_time"
             ],
             "Confidence": 0.24242424242424246,
             "Lift": 1.5170478249326813,
@@ -17979,8 +17979,8 @@
         },
         {
             "LHS": [
-                "start_service_time",
-                "canned meals beans"
+                "canned meals beans",
+                "start_service_time"
             ],
             "RHS": [
                 "bread"
@@ -18056,8 +18056,8 @@
                 "canned meals beans"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21212121212121213,
             "Lift": 1.5129901007219126,
@@ -18072,8 +18072,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "canned meals beans"
+                "canned meals beans",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -18094,8 +18094,8 @@
                 "spices seasonings"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21212121212121213,
             "Lift": 1.5129901007219126,
@@ -18110,8 +18110,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "spices seasonings"
+                "spices seasonings",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -18129,8 +18129,8 @@
         },
         {
             "LHS": [
-                "fresh fruits",
-                "baking ingredients"
+                "baking ingredients",
+                "fresh fruits"
             ],
             "RHS": [
                 "packaged vegetables fruits"
@@ -18169,8 +18169,8 @@
                 "frozen produce"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21178343949044587,
             "Lift": 1.5105808808163044,
@@ -18185,8 +18185,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "frozen produce"
+                "frozen produce",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -18225,8 +18225,8 @@
                 "hot dogs bacon sausage"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.25119617224880386,
             "Lift": 1.509592381302908,
@@ -18241,8 +18241,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "hot dogs bacon sausage"
+                "hot dogs bacon sausage",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -18299,8 +18299,8 @@
                 "eggs"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh vegetables"
+                "fresh vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.6918687589158345,
             "Lift": 1.5093123012998138,
@@ -18318,8 +18318,8 @@
                 "fresh vegetables"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.21160558464223386,
             "Lift": 1.5093123012998138,
@@ -18334,8 +18334,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "eggs"
+                "eggs",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -18353,8 +18353,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "fresh vegetables"
+                "fresh vegetables",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "eggs"
@@ -18393,8 +18393,8 @@
                 "soup broth bouillon"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "chips pretzels"
+                "chips pretzels",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.25112107623318386,
             "Lift": 1.5091410831321146,
@@ -18409,8 +18409,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "soup broth bouillon"
+                "soup broth bouillon",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "chips pretzels"
@@ -18487,8 +18487,8 @@
                 "asian foods"
             ],
             "RHS": [
-                "yogurt",
-                "fresh fruits"
+                "fresh fruits",
+                "yogurt"
             ],
             "Confidence": 0.27751196172248804,
             "Lift": 1.5082171832743916,
@@ -18503,8 +18503,8 @@
         },
         {
             "LHS": [
-                "water seltzer sparkling water",
-                "baking ingredients"
+                "baking ingredients",
+                "water seltzer sparkling water"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -18543,8 +18543,8 @@
                 "tofu meat alternatives"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "packaged vegetables fruits"
+                "packaged vegetables fruits",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.58,
             "Lift": 1.5080603224128963,
@@ -18559,8 +18559,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "tofu meat alternatives"
+                "tofu meat alternatives",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "packaged vegetables fruits"
@@ -18599,8 +18599,8 @@
                 "pickled goods olives"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "fresh vegetables"
+                "fresh vegetables",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.6909090909090909,
             "Lift": 1.5072187847056957,
@@ -18615,8 +18615,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "pickled goods olives"
+                "pickled goods olives",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "fresh vegetables"
@@ -18674,8 +18674,8 @@
                 "dry pasta"
             ],
             "RHS": [
-                "arrival_ timestamp",
-                "soy lactosefree"
+                "soy lactosefree",
+                "arrival_ timestamp"
             ],
             "Confidence": 0.25329815303430075,
             "Lift": 1.5023615245213569,
@@ -18690,8 +18690,8 @@
         },
         {
             "LHS": [
-                "arrival_ timestamp",
-                "dry pasta"
+                "dry pasta",
+                "arrival_ timestamp"
             ],
             "RHS": [
                 "soy lactosefree"

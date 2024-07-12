@@ -31,6 +31,11 @@
 
 	<script src="scripts/scripts.js"></script>
 
+	<!-- Used for formulas -->
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
     <link rel="icon" type="image/png" href="images/basketwhite.png"/>
 
     <title>AutoML WebApriori Association rules mining</title>
@@ -208,6 +213,9 @@
 					}
 					formData.push({name: "valueItem", value: textboxValue});
 				}
+
+				//For Dataset type 3 is not neccessary to do extra steps in order to update formData
+				//because the absent value which is the unique value for type 3-SI is automatically included via the html form.
 
 				//header existence
 				hd1=0;
@@ -749,6 +757,13 @@
 					element = document.getElementById('autoDetecting');
 					element.classList.add("d-block");
 					element.classList.remove("d-none");
+					//Show spinner while waiting
+					element = document.getElementById('datasetInfo');
+					element.classList.add("d-none");
+					element.classList.remove("d-block");
+					element = document.getElementById('datasetInfoSpinner');
+					element.classList.add("d-block");
+					element.classList.remove("d-none");			
 				}
 			}) 	
 			.done(function(response, textStatus, jqXHR) {
@@ -832,7 +847,14 @@
 				element.classList.remove("d-block");
 				element = document.getElementById('autoDetect1');
 				element.classList.add("d-block");
-				element.classList.remove("d-none");				
+				element.classList.remove("d-none");	
+				//Show spinner while waiting
+				element = document.getElementById('datasetInfoSpinner');
+				element.classList.add("d-none");
+				element.classList.remove("d-block");
+				var element = document.getElementById('datasetInfo');
+				element.classList.add("d-block");
+				element.classList.remove("d-none");			
 			});
 		};
 
@@ -1553,6 +1575,66 @@ class,age,sex,survived<br>
 	</form>
 
 	<br>
+
+	<div id="infoForResults" class="lightgraybackground udfwidth mx-auto border rounded p-2" style="display:none">
+		<div class="container">
+			<div class="row">
+				<div class="col-11">
+					<h4 class="text-primary">Information about results and metrics</h4>
+				</div>
+				<div class="col-1">
+					<button type="button" class="btn btn-sm" onclick="toggleDisplay('#infoForResults')" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Hides dataset type guide section"><img src="./images/close24grey.png" width="24" height="24" alt="hide">	</button>
+				</div>
+			</div>
+		</div>
+
+		<br>
+		<ul>
+			<li>
+				<p><b>Association rule (AR) - LHS - RHS</b>
+				</p>
+				<p>An <b>association rule (AR)</b> involves a <b>LHS</b> (Left-Hand Side or antecedent or body) itemset and a <b>RHS</b> (Right-Hand Side or consequent or head) itemset. The rule itemset is the union of all items present in the rule's body and head. An association rule can be represented as:
+					\[ \left\{ x, y \right\} \to \left\{ a, b \right\} \]
+					where \( \left\{ x, y \right\} \) is the <b>LHS</b>, \( \left\{ a, b \right\} \) is the <b>RHS</b>, and \( \left\{ x, y, a, b \right\} \) is the <b>rule's itemset</b>.
+				</p>
+			</li>
+			<li>
+				<p><b>Support (Sup)</b> is the frequency of occurrence of the rule itemset in the given set of transactions. Its value lies in the range [0, 1]. An itemset is considered frequent if its support value is greater than or equal to a minimum support threshold set by the user. For instance, if the threshold is set to 0.1, an itemset is frequent if all its items appear together in at least 10% of all transactions in the given dataset. Support is estimated as follows:
+					\[Support(\{A\}\rightarrow \{B\})= \frac{transactions\ containing\ both\ A\ \&\ B}{Total\ number\ of\ transactions}\]
+				</p>
+			</li>
+			<li>
+				<p><b>Confidence</b> is the conditional probability of the occurrence of the head itemset given that the body itemset is already present in a typical transaction. Its value also lies in the range [0, 1].
+				\[Confidence(\{A\}\rightarrow \{B\})= \frac{transactions\ containing\ both\ A\ \&\ B}{transactions\ containing\ A}\]
+				The closer support and confidence lie to 1, the stronger is the rule. However, a strong association rule may not necessarily be interesting. For instance, both the confidence and support of the rule \( \{A\} \rightarrow \{B\} \) may equal 1, yet there may be no causality implying that \( A \) infers \( B \). This issue is addressed by the <b>Lift</b> measure.</li>
+				</p>
+			</li>
+			<li>
+				<b>Lift</b>  is a metric used in association rule mining to measure the strength of an association rule. It helps to determine whether the occurrence of one itemset is truly dependent on the occurrence of another itemset, beyond what would be expected by chance. Lift is defined as:
+				\[Lift(\{A\}\rightarrow \{B\})= \frac{Confidence(\{A\}\rightarrow \{B\})}{Support(\{B\})}\]
+				<p>If Lift = 1 then the occurrence of A and B together is exactly what would be expected if A and B were independent.</p>
+				<p>If Lift > 1 then there is a positive correlation between	A and B; they occur together more often than expected if they were independent.</p>
+				<p>If Lift < 1 then there is a negative correlation between A and B; they occur together less often than expected if they were independent.</p>
+				<p>Lift provides more insight than just support and confidence by taking into account the actual occurrence of both itemsets compared to their expected occurrence under independence. This makes it a valuable metric for identifying truly interesting and useful association rules.</p>
+				<p>The greater the lift is, the more useful the AR is. The symmetric property applies for lift: \( \{A\} \rightarrow \{B\} \) lift value is equal to \( \{B\} \rightarrow \{A\} \) value.</p>
+			</li>
+			<li>
+				<p><b>Conviction</b> is another interesting metric that also measures the independence of A and B, but goes a little bit further. Contrarily to lift, conviction is sensitive in the logical definition of implication and attempts to measure the degree of rule direction. In that manner,</p>
+				\[Conviction(\{A\}\rightarrow \{B\}) \not\equiv Conviction(\{B\}\rightarrow \{A\}) \]
+				<p>Conviction is defined as:</p>
+				\[Conviction(\{A\}\rightarrow \{B\})= \frac{1 - Support(\{B\})}{1 - Confidence(\{A\}\rightarrow \{B\})}\]
+			</li>
+			<li>
+				<p><b>Leverage</b>, like the <b>Lift</b>, measures the relation between the probability of a given association rule to occur and its expected probability if the items were independent of each other. The only difference between the two measures is that leverage calculates the difference of the probabilities while the lift calculates their ratio. Therefore, while the lift tends to rank higher strong associations involving less frequent itemsets, the leverage prioritizes first itemsets involving higher support values. As in the case with the lift, the symmetric property applies to the leverage: </p>
+				\[ \textit {leverage}(\{A\} \rightarrow \{B\}) = \textit {leverage}(\{B\} \rightarrow \{A\}) \]
+				<p>Leverage is defined as:</p>
+				\[leverage(\{A\} \rightarrow \{B\}) = support(\{A\} \rightarrow \{B\}) - support(\{A\}) \times support(\{B\})\]
+			</li>
+		</ul>
+
+
+	</div>
+
 	<br>
 
 	<div id="showResults" class="table-responsive dataTables_wrapper dt-bootstrap4 " style="display: none">
@@ -1565,7 +1647,10 @@ class,age,sex,survived<br>
 				<div class="col-4">
 					<label for="RecordsCreationTime">Dataset read Time</label>
 				</div>
-				<div class="col-2">
+				<div class="col-1">
+					<button type="button" class="btn mt-n1 float-right" onclick="toggleDisplay('#infoForResults')" id="infoForResults" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Information for the results and the metrics used"><img src="./images/help24grey.png" width="24" height="24" alt="help">	</button>
+				</div>
+				<div class="col-1">
 					<button type="button" class="btn mt-n2 float-right" onclick="DoDownload()" id="DownloadJson" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Download association rules in a json format file"><img src="./images/downArrow24grey.png" width="24" height="24" alt="">	</button>
 				</div>
 			</div>
