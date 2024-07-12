@@ -191,10 +191,7 @@
 
 
 				//If the dataset is of type 2 it is mandatory to have Group Item and Value Item declared
-				//datasetType.value format: ?name or p|?name where ? dataset type (1,2,3,4) and name the filename of the dataset
-				var str =  dataset.value
-				if (str.charAt(0)==='2' || (str.charAt(0)==='p' && str.charAt(2)==='2')) { //If it is type 2 dataset
-
+				if (datasetType=="2") {
 					let textboxValue = document.getElementById("groupItem").value;
 					if (!textboxValue || textboxValue=="?") {
 					   	MyModal("Information", "It is mandatory to declare the grouping field/item/column in the dataset that represents the primary key for a given transaction when type 2 (INV) dataset is used.");
@@ -1433,7 +1430,7 @@ class,age,sex,survived<br>
 					</div>
 					<div id="SI-3-absentValue" class="col-2" style="display:none">
 						<label for="absentValue" class="form-label">Absent<br>Item</label>
-						<input type="text" id="absentValue" name="absentValue" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the absent value without quotes, for 3 - Sparse Item (SI) dataset type, if not already predicted successfully. For more details please press ?" placeholder="absent Item e.g. 0">
+						<input type="text" id="absentValue" name="absentValue" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the absent value without quotes, for 3 - Sparse Item (SI) dataset type, if not already predicted successfully. If it is the empty value declare (nan). For more details please press ?" placeholder="absent Item e.g. 0">
 					</div>
 					<div id="extraParametersDiv" class="col-12">
 						<label for="extra_parameters" class="form-label">Participating<br>Items</label>

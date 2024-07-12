@@ -63,14 +63,8 @@
         exit();
     }
 
-    //get dataset type is the first character of $_POST['dataset']
-    if (substr($_POST['dataset'],0,2)=='p|') {
-        // public dataset
-        $filename=substr($_POST['dataset'],2);
-    }else{
-        // private dataset
-        $filename=$_POST['dataset'];
-    }
+    //If is public then it would start as (p|.... ). So change | with / to format the path!!
+    $filename=str_replace("|","/",$_POST['dataset']);
 
     //Create output path
     $fpatho="../Python/output/".$identity."/".$filename;

@@ -12,10 +12,10 @@
                08/07/2024 Now working on 2,3 dataset types in order
              RetrieveRules.php ln 153 --> Creation / append to metadatafile. For help.
              For every dataset type special parametering is in search.html ln 634 For help
-             Won't show last retrieved ARM fot type 2 datasets e.e 2sales.csv
 
 
 
+DONE - V01.00.00 11/07/2024 24/06/2024 Won't show last retrieved ARM fot type 2 datasets e.g 2sales.csv. Fixed in retrieveInputParameters.php Ln 67
 DONE - V01.00.00 08/07/2024 24/06/2024 2Sales.csv wrong delimiter detection : instead of ;. MyCsv.py _guess_quote_and_delimiter Procedure transformed for better quote detection in not well weighted datasets. quote matches must be at least the 90% of the number of sample rows.
 DONE - V01.00.00 23/06/2024 20/06/2024 Put an X button in Dataset information container
 DONE - V01.00.00 17/06/2024 09/12/2023 AutoML type 4-NOA Extra parameters (e.g. name of the dataset's columns)
