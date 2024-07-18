@@ -23,7 +23,7 @@
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "args": [
-                "79d1727987f200802593e3599119c966","2pizza_sales.csv","-1","1","1"
+                "79d1727987f200802593e3599119c966","2Sales.csv","-1","1","1"
             ],
             "console": "integratedTerminal"
         },
@@ -89,7 +89,7 @@
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "args": [
-                "79d1727987f200802593e3599119c966", "grocery_timestamp.csv", "0"
+                "79d1727987f200802593e3599119c966", "2sales.csv", "1"
             ],
             "console": "integratedTerminal"
         },
@@ -101,15 +101,8 @@
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "args": ["79d1727987f200802593e3599119c966",
-                     "0.01",
-                     "0.2",
-                     "1.5",
-                     "4",
-                     "-3",
-                     "3_L-0003_2019.csv",
-                     "1",
-                     "0",
-                     "#","01.01.20200","03.01.01015","03.01.01016","03.01.01133","03.01.01135", "15.00.00001","15.00.00003"],
+                     "invoice.csv",
+                     "0"],
             "console": "integratedTerminal"
         }
 

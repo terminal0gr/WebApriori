@@ -31,6 +31,11 @@
 
 	<script src="scripts/scripts.js"></script>
 
+	<!-- Used for formulas -->
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
     <link rel="icon" type="image/png" href="images/basketwhite.png"/>
 
     <title>AutoML WebApriori Association rules mining</title>
@@ -185,20 +190,32 @@
 					return;
 				}
 
+
+				// Serialize the form data first in array form so to add more elements.
+				var formData = $('#retrieveRules').serializeArray(); // convert form to array
+
+
 				//If the dataset is of type 2 it is mandatory to have Group Item and Value Item declared
-				//datasetType.value format: ?name or p|?name where ? dataset type (1,2,3,4) and name the filename of the dataset
-				var str =  dataset.value
-				if (str.charAt(0)==='2' || (str.charAt(0)==='p' && str.charAt(2)==='2')) { //If it is type 2 dataset
-					var textboxValue = document.getElementById("group").value ;
-					var pattern = /^".*"\s".*"$/;
-					if (!pattern.test(textboxValue)) {
-						MyModal("Information", "In extra parameters field it is mandatory to declare 2 parameters when type 2 (INV) dataset is used. The 1st parameter represents the primary key column while 2nd represents the items column.");
-						return;
+				if (datasetType=="2") {
+					let textboxValue = document.getElementById("groupItem").value;
+					if (!textboxValue || textboxValue=="?") {
+					   	MyModal("Information", "It is mandatory to declare the grouping field/item/column in the dataset that represents the primary key for a given transaction when type 2 (INV) dataset is used.");
+						document.getElementById("groupItem").focus();
+					 	return;
 					}
+					formData.push({name: "groupItem", value: textboxValue});
+
+					textboxValue = document.getElementById("valueItem").value;
+					if (!textboxValue || textboxValue=="?") {
+					   	MyModal("Information", "It is mandatory to declare the value field/item/column which represents the items participating in ARM when type 2 (INV) dataset is used.");
+						document.getElementById("valueItem").focus();
+					 	return;
+					}
+					formData.push({name: "valueItem", value: textboxValue});
 				}
 
-                // Serialize the form data first in array form so to add more elements.
-				var formData = $('#retrieveRules').serializeArray(); // convert form to array
+				//For Dataset type 3 is not neccessary to do extra steps in order to update formData
+				//because the absent value which is the unique value for type 3-SI is automatically included via the html form.
 
 				//header existence
 				hd1=0;
@@ -206,6 +223,11 @@
 				formData.push({name: "header1", value: hd1});
 
 				formData.push({name: "datasetType", value: document.getElementById('datasetType').value});
+
+				if (document.getElementById('datasetType').value) {
+					formData.push({name: "groupItem", value: document.getElementById('groupItem').value});
+					formData.push({name: "valueItem", value: document.getElementById('valueItem').value});
+				}
 
                 //Redundant rules process
 				bws=0;
@@ -631,16 +653,18 @@
 								document.getElementById("Redundant3").checked=false;
 							}
 
-							//loads res.datasetArgs as a python list like =>['a', 'b'].
-							//but we need the format =>"a" "b" so, we apply the above regex!
-							var regex = /[\[\],]/g;
-							var extraparams=res.datasetArgs.replace(regex,'');
-							var regex = /,/g;
-							extraparams=extraparams.replace(regex,' ');  
-							var regex = /'/g;
-							extraparams=extraparams.replace(regex,'"'); 
-							
-							document.getElementById('extra_parameters').value=extraparams; 
+							// if (typeof res.datasetArgs !== 'undefined') {
+							// 	//loads res.datasetArgs as a python list like =>['a', 'b'].
+							// 	//but we need the format =>"a" "b" so, we apply the above regex!
+							// 	var regex = /[\[\],]/g;
+							// 	var extraparams=res.datasetArgs.replace(regex,'');
+							// 	var regex = /,/g;
+							// 	extraparams=extraparams.replace(regex,' ');  
+							// 	var regex = /'/g;
+							// 	extraparams=extraparams.replace(regex,'"'); 
+							// 	document.getElementById('extra_parameters').value=extraparams; 
+							// }
+						
 
 							fillTable(res);
 						}
@@ -733,6 +757,13 @@
 					element = document.getElementById('autoDetecting');
 					element.classList.add("d-block");
 					element.classList.remove("d-none");
+					//Show spinner while waiting
+					element = document.getElementById('datasetInfo');
+					element.classList.add("d-none");
+					element.classList.remove("d-block");
+					element = document.getElementById('datasetInfoSpinner');
+					element.classList.add("d-block");
+					element.classList.remove("d-none");			
 				}
 			}) 	
 			.done(function(response, textStatus, jqXHR) {
@@ -755,20 +786,29 @@
 							document.getElementById("datasetType").value=res.datasetType;
 							datasetTypeChanged();
 
+							if (res.datasetType==2) {
+								str='<option value="" disabled selected >?</option>';
+								res.header.forEach(function(data){
+									str += '<option value="' + data + '">' + data + '</option>' 
+								});
+								$("#groupItem").html(str);
+								$("#valueItem").html(str);
+
+								document.getElementById('groupItem').value=res.groupItem;
+								document.getElementById('valueItem').value=res.valueItem;
+							}
+
 							if (res.datasetType==3) {
 								document.getElementById("absentValue").value=res.absentValue
 							}
                             
-							if (res.header) {
-								// Transform the array to a string
-								var transformedString = res.header.map(function(item) {
-    								return '"' + item + '"';
-								}).join(' ');
-								if (res.datasetType==3) {
-									document.getElementById('absentValue').value=res.datasetFeatures.Top1Value[1]
-								}
-								document.getElementById('extra_parameters').value=transformedString;
-							}
+							// if (res.header) {
+							// 	// Transform the array to a string
+							// 	var transformedString = res.header.map(function(item) {
+    						// 		return '"' + item + '"';
+							// 	}).join(' ');
+							// 	document.getElementById('extra_parameters').value=transformedString;
+							// }
 						}
 					}
 					catch(err) {
@@ -807,7 +847,14 @@
 				element.classList.remove("d-block");
 				element = document.getElementById('autoDetect1');
 				element.classList.add("d-block");
-				element.classList.remove("d-none");				
+				element.classList.remove("d-none");	
+				//Show spinner while waiting
+				element = document.getElementById('datasetInfoSpinner');
+				element.classList.add("d-none");
+				element.classList.remove("d-block");
+				var element = document.getElementById('datasetInfo');
+				element.classList.add("d-block");
+				element.classList.remove("d-none");			
 			});
 		};
 
@@ -1379,13 +1426,13 @@ class,age,sex,survived<br>
 					</div>
 					<div class="col-6">
 						<select id="datasetType" class="browser-default form-select form-control" onchange="datasetTypeChanged()" data-bs-html="true" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' 
-						data-bs-title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparse item Dataset<br>4) Columns with multiple nomimal values</p><p>For more details click the <img src='./images/help24grey.png' width='24' height='24' alt='help'> icon.">
-						<option value="0" selected>unmanaged dataset type</option>
-						<option value="1">1 - Market basket list</option>
-						<option value="2">2 - Order/Invoice detail</option>
-						<option value="3">3 - Sparse item dataset</option>
-						<option value="4">4 - Multiple nomimal values</option>
-					</select>
+							data-bs-title="<p>1) Market Basket list<br>2) Order/Invoice detail<br>3) Sparse item Dataset<br>4) Columns with multiple nomimal values</p><p>For more details click the <img src='./images/help24grey.png' width='24' height='24' alt='help'> icon.">
+							<option value="0" selected>unmanaged dataset type</option>
+							<option value="1">1 - Market basket list</option>
+							<option value="2">2 - Order/Invoice detail</option>
+							<option value="3">3 - Sparse item dataset</option>
+							<option value="4">4 - Multiple nomimal values</option>
+						</select>
 					</div>
 				</div>	
 
@@ -1393,15 +1440,19 @@ class,age,sex,survived<br>
 				<div class="row">
 					<div id="INV-2-groupItem" class="col-2" style="display:none">
 						<label for="groupItem" class="form-label">Group<br>Item</label>
-						<input type="text" id="groupItem" name="groupItem" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the column that groups a single transaction without quotes, for 2 - Invoice Detail (INV) dataset type, if not already predicted successfully. Possible Names Product Name, Product Id etc. For more details please press ?" placeholder="Group Item">
+						<select id="groupItem" class="browser-default form-select form-control" data-bs-html="false" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' 
+							data-bs-title="Please choose the grouping column.">
+						</select>
 					</div>
 					<div id="INV-2-valueItem" class="col-2" style="display:none">
 						<label for="valueItem" class="form-label">Value<br>Item</label>
-						<input type="text" id="valueItem" name="valueItem" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the column that consists of the participating items in transactions without quotes, for 2 - Invoice Detail (INV) dataset type in not already predicted successfully. For more details please press ?" placeholder="Value Item">
+						<select id="valueItem" class="browser-default form-select form-control" data-bs-html="false" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' 
+							data-bs-title="Please choose the column that includes the items participating in mining.">
+						</select>
 					</div>
 					<div id="SI-3-absentValue" class="col-2" style="display:none">
 						<label for="absentValue" class="form-label">Absent<br>Item</label>
-						<input type="text" id="absentValue" name="absentValue" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the absent value without quotes, for 3 - Sparse Item (SI) dataset type, if not already predicted successfully. For more details please press ?" placeholder="absent Item e.g. 0">
+						<input type="text" id="absentValue" name="absentValue" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the absent value without quotes, for 3 - Sparse Item (SI) dataset type, if not already predicted successfully. If it is the empty value declare (nan). For more details please press ?" placeholder="absent Item e.g. 0">
 					</div>
 					<div id="extraParametersDiv" class="col-12">
 						<label for="extra_parameters" class="form-label">Participating<br>Items</label>
@@ -1524,6 +1575,66 @@ class,age,sex,survived<br>
 	</form>
 
 	<br>
+
+	<div id="infoForResults" class="lightgraybackground udfwidth mx-auto border rounded p-2" style="display:none">
+		<div class="container">
+			<div class="row">
+				<div class="col-11">
+					<h4 class="text-primary">Information about results and metrics</h4>
+				</div>
+				<div class="col-1">
+					<button type="button" class="btn btn-sm" onclick="toggleDisplay('#infoForResults')" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Hides dataset type guide section"><img src="./images/close24grey.png" width="24" height="24" alt="hide">	</button>
+				</div>
+			</div>
+		</div>
+
+		<br>
+		<ul>
+			<li>
+				<p><b>Association rule (AR) - LHS - RHS</b>
+				</p>
+				<p>An <b>association rule (AR)</b> involves a <b>LHS</b> (Left-Hand Side or antecedent or body) itemset and a <b>RHS</b> (Right-Hand Side or consequent or head) itemset. The rule itemset is the union of all items present in the rule's body and head. An association rule can be represented as:
+					\[ \left\{ x, y \right\} \to \left\{ a, b \right\} \]
+					where \( \left\{ x, y \right\} \) is the <b>LHS</b>, \( \left\{ a, b \right\} \) is the <b>RHS</b>, and \( \left\{ x, y, a, b \right\} \) is the <b>rule's itemset</b>.
+				</p>
+			</li>
+			<li>
+				<p><b>Support (Sup)</b> is the frequency of occurrence of the rule itemset in the given set of transactions. Its value lies in the range [0, 1]. An itemset is considered frequent if its support value is greater than or equal to a minimum support threshold set by the user. For instance, if the threshold is set to 0.1, an itemset is frequent if all its items appear together in at least 10% of all transactions in the given dataset. Support is estimated as follows:
+					\[Support(\{A\}\rightarrow \{B\})= \frac{transactions\ containing\ both\ A\ \&\ B}{Total\ number\ of\ transactions}\]
+				</p>
+			</li>
+			<li>
+				<p><b>Confidence</b> is the conditional probability of the occurrence of the head itemset given that the body itemset is already present in a typical transaction. Its value also lies in the range [0, 1].
+				\[Confidence(\{A\}\rightarrow \{B\})= \frac{transactions\ containing\ both\ A\ \&\ B}{transactions\ containing\ A}\]
+				The closer support and confidence lie to 1, the stronger is the rule. However, a strong association rule may not necessarily be interesting. For instance, both the confidence and support of the rule \( \{A\} \rightarrow \{B\} \) may equal 1, yet there may be no causality implying that \( A \) infers \( B \). This issue is addressed by the <b>Lift</b> measure.</li>
+				</p>
+			</li>
+			<li>
+				<b>Lift</b>  is a metric used in association rule mining to measure the strength of an association rule. It helps to determine whether the occurrence of one itemset is truly dependent on the occurrence of another itemset, beyond what would be expected by chance. Lift is defined as:
+				\[Lift(\{A\}\rightarrow \{B\})= \frac{Confidence(\{A\}\rightarrow \{B\})}{Support(\{B\})}\]
+				<p>If Lift = 1 then the occurrence of A and B together is exactly what would be expected if A and B were independent.</p>
+				<p>If Lift > 1 then there is a positive correlation between	A and B; they occur together more often than expected if they were independent.</p>
+				<p>If Lift < 1 then there is a negative correlation between A and B; they occur together less often than expected if they were independent.</p>
+				<p>Lift provides more insight than just support and confidence by taking into account the actual occurrence of both itemsets compared to their expected occurrence under independence. This makes it a valuable metric for identifying truly interesting and useful association rules.</p>
+				<p>The greater the lift is, the more useful the AR is. The symmetric property applies for lift: \( \{A\} \rightarrow \{B\} \) lift value is equal to \( \{B\} \rightarrow \{A\} \) value.</p>
+			</li>
+			<li>
+				<p><b>Conviction</b> is another interesting metric that also measures the independence of A and B, but goes a little bit further. Contrarily to lift, conviction is sensitive in the logical definition of implication and attempts to measure the degree of rule direction. In that manner,</p>
+				\[Conviction(\{A\}\rightarrow \{B\}) \not\equiv Conviction(\{B\}\rightarrow \{A\}) \]
+				<p>Conviction is defined as:</p>
+				\[Conviction(\{A\}\rightarrow \{B\})= \frac{1 - Support(\{B\})}{1 - Confidence(\{A\}\rightarrow \{B\})}\]
+			</li>
+			<li>
+				<p><b>Leverage</b>, like the <b>Lift</b>, measures the relation between the probability of a given association rule to occur and its expected probability if the items were independent of each other. The only difference between the two measures is that leverage calculates the difference of the probabilities while the lift calculates their ratio. Therefore, while the lift tends to rank higher strong associations involving less frequent itemsets, the leverage prioritizes first itemsets involving higher support values. As in the case with the lift, the symmetric property applies to the leverage: </p>
+				\[ \textit {leverage}(\{A\} \rightarrow \{B\}) = \textit {leverage}(\{B\} \rightarrow \{A\}) \]
+				<p>Leverage is defined as:</p>
+				\[leverage(\{A\} \rightarrow \{B\}) = support(\{A\} \rightarrow \{B\}) - support(\{A\}) \times support(\{B\})\]
+			</li>
+		</ul>
+
+
+	</div>
+
 	<br>
 
 	<div id="showResults" class="table-responsive dataTables_wrapper dt-bootstrap4 " style="display: none">
@@ -1536,7 +1647,10 @@ class,age,sex,survived<br>
 				<div class="col-4">
 					<label for="RecordsCreationTime">Dataset read Time</label>
 				</div>
-				<div class="col-2">
+				<div class="col-1">
+					<button type="button" class="btn mt-n1 float-right" onclick="toggleDisplay('#infoForResults')" id="infoForResults" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Information for the results and the metrics used"><img src="./images/help24grey.png" width="24" height="24" alt="help">	</button>
+				</div>
+				<div class="col-1">
 					<button type="button" class="btn mt-n2 float-right" onclick="DoDownload()" id="DownloadJson" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Download association rules in a json format file"><img src="./images/downArrow24grey.png" width="24" height="24" alt="">	</button>
 				</div>
 			</div>

@@ -1,114 +1,90 @@
 {
     "hasHeader": true,
     "header": [
-        "DateInvoice",
-        "CustomerID",
-        "ProduitID",
-        "SalesAmount",
-        "Quantity",
-        "CodeWarehousesineachzone",
-        "IDInvoice",
-        "ExpirationDate",
-        "RemainingQuantity",
-        "DocumentNo",
-        "DocumentType",
-        "SourceName",
-        "DescriptionProduit",
-        "MaxAgeofProductATOSProduits",
-        "CountrOriginProduits",
-        "ShelfLifeProduits",
-        "ExpiredRegistrationDateProduits",
-        "PackingProduits",
-        "InventoryProduits",
-        "UnitPriceProduits",
-        "VendorNoProduits",
-        "SearchDescriptionProduits",
-        "ItemCategoryProduits",
-        "VAT ProdPostingGroup",
-        "NameCustomers",
-        "AddressCostumers",
-        "DistrictCustomers",
-        "CityCustomers",
-        "CustomerPostingGroup"
+        "class",
+        "ageofthepatient",
+        "spectacleprescription",
+        "astigmatic",
+        "tearproductionrate"
     ],
-    "delimiter": ";",
+    "delimiter": " ",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            29,
-            29,
+            5,
+            5,
             "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
-            "invoice.csv",
-            "invoice.csv",
+            "lenses.data",
+            "lenses.data",
             "The name of the dataset"
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.09655172413793098,
-            "9.7%",
+            0.09999999999999999,
+            "10.0%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.096,
-            "9.6%",
+            0.025,
+            "2.5%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            0.992827586206896,
-            "99.3%",
+            0.5083333333333332,
+            "50.8%",
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "FR",
-            "FR",
+            "2",
+            "2",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.034482758620689655,
-            "3.4%",
+            0.4083333333333333,
+            "40.8%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.033931034482758624,
-            "3.4%",
+            0.4,
+            "40.0%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.03379310344827586,
-            "3.4%",
+            0.19166666666666668,
+            "19.2%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.10344827586206896,
-            "10.3%",
+            1,
+            "100.0%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0.10344827586206896,
-            "10.3%",
+            0,
+            "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0.10344827586206896,
-            "10.3%",
+            0,
+            "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            0.689655,
-            "69.0%",
+            0,
+            "0.0%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
@@ -125,26 +101,26 @@
         ],
         "MaxItemLen": [
             "Max Item Length",
-            60,
-            60,
+            1,
+            1,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            9.290000000000001,
-            "9.3",
+            1,
+            "1.0",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0.034482758620689655,
-            "3.4%",
+            1,
+            "100.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.13793103448275862,
-            "13.8%",
+            0.6,
+            "60.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
         "HasHeader": [
@@ -155,28 +131,26 @@
         ],
         "delimiter": [
             "delimiter",
-            ";",
-            ";",
+            " ",
+            " ",
             "The delimiter between the columns of the dataset"
         ],
         "type2Words": [
             "Type 2-INV Words",
-            11,
-            11,
+            1,
+            1,
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
         ]
     },
-    "datasetTypePredicted": 2,
-    "datasetType": 2,
+    "datasetTypePredicted": 4,
+    "datasetType": 4,
     "min_support": 0.01,
     "min_confidence": 0.2,
     "min_lift": 1.5,
     "max_length": 4,
     "ssort": -3,
-    "datasetName": "invoice.csv",
+    "datasetName": "lenses.data",
     "public": 1,
     "redundantRemoveType": 0,
-    "participatingItems": "[]",
-    "groupItem": "IDInvoice",
-    "valueItem": "DescriptionProduit"
+    "participatingItems": "[]"
 }
