@@ -653,18 +653,7 @@
 								document.getElementById("Redundant3").checked=false;
 							}
 
-							// if (typeof res.datasetArgs !== 'undefined') {
-							// 	//loads res.datasetArgs as a python list like =>['a', 'b'].
-							// 	//but we need the format =>"a" "b" so, we apply the above regex!
-							// 	var regex = /[\[\],]/g;
-							// 	var extraparams=res.datasetArgs.replace(regex,'');
-							// 	var regex = /,/g;
-							// 	extraparams=extraparams.replace(regex,' ');  
-							// 	var regex = /'/g;
-							// 	extraparams=extraparams.replace(regex,'"'); 
-							// 	document.getElementById('extra_parameters').value=extraparams; 
-							// }
-						
+							//Todo: Fill the user item choices here...
 
 							fillTable(res);
 						}
@@ -1490,6 +1479,155 @@ class,age,sex,survived<br>
 							<!-- Rows will be inserted here by JavaScript -->
 						</tbody>
 					</table>
+				</div>
+			</div>
+		</div>
+
+		<br>
+
+
+		<div id="itemsSelection" class="lightgraybackground udfwidth mx-auto border rounded p-2" style="display:block">
+			<div class="container mt-2">
+				<div class="row">
+					<div class="col-11">
+						<h4 class="text-center text-primary">Items participating in ARM selection</h4>
+					</div>
+					<div class="col-1">
+						<button type="button" class="btn btn-sm" onclick="toggleDisplay('#itemsSelection')" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Hides dataset type guide section"><img src="./images/close24grey.png" width="24" height="24" alt="hide">	</button>
+					</div>
+				</div>
+
+				<!-- Rows will be inserted here by JavaScript -->
+				<div class="container ">
+					<div id="itemsSelectionDiv" class="row row-cols-2 row-cols-sm-4 row-cols-md-6 ">
+
+						<div class="col text-bg-secondary border" tabindex="0">
+
+							<h6 class="text-warning text-nowrap" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Hides dataset type guide section">Item-1 Item-1 Item-1 Item-1</h6>
+
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+								<label class="form-check-label" for="flexRadioDefault1">
+									  included
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+								<label class="form-check-label" for="flexRadioDefault2">
+									  Only in LHS
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+								<label class="form-check-label" for="flexRadioDefault3">
+									  Only in RHS
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+								<label class="form-check-label" for="flexRadioDefault4">
+									  excluded
+								</label>
+							</div>
+						</div>
+
+						<div class="col text-bg-secondary border" tabindex="0">
+
+							<!-- Rows will be inserted here by JavaScript -->
+							<h6 class="text-primary">Item-2</h6>
+
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+								<label class="form-check-label" for="flexRadioDefault1">
+									  Included
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+								<label class="form-check-label" for="flexRadioDefault2">
+									  Only in LHS
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+								<label class="form-check-label" for="flexRadioDefault3">
+									  Only in RHS
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+								<label class="form-check-label" for="flexRadioDefault4">
+									  Excluded
+								</label>
+							</div>
+						</div>
+
+
+						<div class="col text-bg-secondary border" tabindex="0">
+
+							<!-- Rows will be inserted here by JavaScript -->
+							<h6 class="text-primary">Item-2</h6>
+
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+								<label class="form-check-label" for="flexRadioDefault1">
+									  Included
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+								<label class="form-check-label" for="flexRadioDefault2">
+									  Only in LHS
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+								<label class="form-check-label" for="flexRadioDefault3">
+									  Only in RHS
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+								<label class="form-check-label" for="flexRadioDefault4">
+									  Excluded
+								</label>
+							</div>
+						</div>
+
+						<div class="col text-bg-secondary border" tabindex="0">
+
+							<!-- Rows will be inserted here by JavaScript -->
+							<h6 class="text-primary">Item-2</h6>
+
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+								<label class="form-check-label" for="flexRadioDefault1">
+									  Included
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+								<label class="form-check-label" for="flexRadioDefault2">
+									  Only in LHS
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+								<label class="form-check-label" for="flexRadioDefault3">
+									  Only in RHS
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+								<label class="form-check-label" for="flexRadioDefault4">
+									  Excluded
+								</label>
+							</div>
+						</div>
+
+
+
+					</div>
 				</div>
 			</div>
 		</div>

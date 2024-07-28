@@ -2,10 +2,9 @@
 09/06/2024 Thorough Test for all datasets in retrieve AR must be done!
 10/06/2024 AutoML type 2-INV Dataset type for finding the qrouping and item column
 21/01/2024 Columns/items participating in LHS,RHS,Itemsets in 1,2,3,4 dataset types
-12/06/2024 (1) Change the Main05 call without the need of all the columns or delimiter etc
-12/02/2024 Apriori Engine Main04.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv. Should be checked After (1)
-12/06/2024 Extra parameters / item names field must be initialized and beautified!
+12/06/2024 (1) Extra parameters / item names field must be initialized and beautified!
                is in search.html ln 648 is the point
+12/02/2024 Apriori Engine Main04.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv. Should be checked After (1)
 12/07/2024 Real multithread environment
 16/06/2024 Upload AutoML WebApriori to NIREAS
 24/06/2024 Search.Html Ln:192 TODO

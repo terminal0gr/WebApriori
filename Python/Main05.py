@@ -555,19 +555,8 @@ def output_association_rules(association_results, sort_index, descending=True, f
 ###########
 ###########
 ###########
-'''
-Dataset types:
-1 MBL --> Market Basket list. No header is expected, The number of columns is undefined (Default). 
-          If header, then participant columns must be declared in args starting from arg[1:], 
-          In arg[0] the absent of item string must be declared. If absent item is nothing then assign '' or 'nan' 
-2 INV --> Order/Invoice detail. Header line is mandatory. Number of columns is fixed, 
-          arg[0] primary key column and arg[1] items column are required in *args
-3 SI  --> Sparse item Dataset. Header line is mandatory. Number of columns is fixed. 
-          Items columns are mandatory to be declared in args[1:].
-          In arg[0] the absent of item string must be declared!!! If absent item is nothing then assign '' or 'nan' 
-4 NOA --> Columns with multiple nominal values. Header line is optional. 
-          Number of columns is fixed, optional items columns are expected in case header line exists.
 
+'''
 Call arguments          
 1) Identity   2) datasetName   3) public   
 '''
