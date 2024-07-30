@@ -468,10 +468,11 @@ def prepare_records():
                                 
         elif datasetType==4:
                 
-            dataset = dataset[list(args)]
-            
-            for arg in args:
-                dataset[arg] = arg + '=' + dataset[arg].astype(str)
+            if 'participatingItems' in jsonData:
+                if len(jsonData['participatingItems'])>0 and jsonData['participatingItems']!='[]':
+                    dataset = dataset[jsonData['participatingItems']]
+                    for arg in jsonData['participatingItems']:
+                        dataset[arg] = arg + '=' + dataset[arg].astype(str)
             
             records=dataset.values.tolist()
             return(records)
@@ -683,6 +684,7 @@ try:
     records=prepare_records()
         
     if records:
+        
 
         recordTime=time()-recordTime
 

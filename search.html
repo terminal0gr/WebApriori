@@ -1128,19 +1128,25 @@
 			itemsSelectionDiv=document.getElementById("itemsSelectionDiv");
 			if (isElementHidden(element) && itemsSelectionDiv.innerHTML.includes("<!-- Rows")) { //It means the function has not initiated yet for the dataset.
 				if (metadataObj) {
-					if (metadataObj.header) {
+					if (metadataObj.hasHeader) {
+						if (metadataObj.header) {
 
-						itemsSelectionDiv.innerHTML=""
+							itemsSelectionDiv.innerHTML="";
 
-						metadataObj.header.forEach(function(data){
-							itemFilter(data);
-						});
+							metadataObj.header.forEach(function(data) {
+								itemFilter(data);
+							});
 
 						// for (const itemName in metadataObj.header) {
 
 						// 	itemFilter(itemName);
 
 						// }
+						}
+
+					} else {
+						MyModal("Information","No header found for this dataset.");
+						return;
 					}
 				}
 			}
@@ -1149,56 +1155,64 @@
 		}
 
 		function datasetTypeChanged() {
-			const datasetType=document.getElementById("datasetType").value;
+
 			let element=null
+
+			element=document.getElementById("itemsSelection"); 
+			element.style.display = 'none';
+
+			element=document.getElementById("itemsSelectionDiv"); 
+			element.innerHTML="<!-- Rows will be inserted here by JavaScript -->"  //Initialization for use in new dataset
+
+			const datasetType=document.getElementById("datasetType").value;
+			
 			switch(datasetType) {
-				case '2':
-					element = document.getElementById('INV-2-groupItem');
-					element.classList.remove("d-none");
-					element.classList.add("d-block");
-					element = document.getElementById('INV-2-valueItem');
-					element.classList.remove("d-none");
-					element.classList.add("d-block");
-					element = document.getElementById('SI-3-absentValue');
-					element.classList.remove("d-block");
-					element.classList.add("d-none");
-					element = document.getElementById('extraParametersDiv');
-					element.classList.remove("col-12");
-					element.classList.remove("col-10");
-					element.classList.add("col-8");
-					break;
-				case '3':
-					element = document.getElementById('INV-2-groupItem');
-					element.classList.remove("d-block");
-					element.classList.add("d-none");
-					element = document.getElementById('INV-2-valueItem');
-					element.classList.remove("d-block");
-					element.classList.add("d-none");
-					element = document.getElementById('SI-3-absentValue');
-					element.classList.remove("d-none");
-					element.classList.add("d-block");
-					element = document.getElementById('extraParametersDiv');
-					element.classList.remove("col-12");
-					element.classList.remove("col-8");
-					element.classList.add("col-10");
-					break;
-				default:
-					element = document.getElementById('INV-2-groupItem');
-					element.classList.remove("d-block");
-					element.classList.add("d-none");
-					element = document.getElementById('INV-2-valueItem');
-					element.classList.remove("d-block");
-					element.classList.add("d-none");
-					element = document.getElementById('SI-3-absentValue');
-					element.classList.remove("d-block");
-					element.classList.add("d-none");
-					element = document.getElementById('extraParametersDiv');
-					element.classList.remove("col-10");
-					element.classList.remove("col-8");
-					element.classList.add("col-12");
-					break;			
+			case '2':
+				element = document.getElementById('INV-2-groupItem');
+				element.classList.remove("d-none");
+				element.classList.add("d-block");
+				element = document.getElementById('INV-2-valueItem');
+				element.classList.remove("d-none");
+				element.classList.add("d-block");
+				element = document.getElementById('SI-3-absentValue');
+				element.classList.remove("d-block");
+				element.classList.add("d-none");
+				element = document.getElementById('extraParametersDiv');
+				element.classList.remove("col-12");
+				element.classList.remove("col-10");
+				element.classList.add("col-8");
+				break;
+			case '3':
+				element = document.getElementById('INV-2-groupItem');
+				element.classList.remove("d-block");
+				element.classList.add("d-none");
+				element = document.getElementById('INV-2-valueItem');
+				element.classList.remove("d-block");
+				element.classList.add("d-none");
+				element = document.getElementById('SI-3-absentValue');
+				element.classList.remove("d-none");
+				element.classList.add("d-block");
+				element = document.getElementById('extraParametersDiv');
+				element.classList.remove("col-12");
+				element.classList.remove("col-8");
+				element.classList.add("col-10");
+				break;
+			default:
+				element = document.getElementById('INV-2-groupItem');
+				element.classList.remove("d-block");
+				element.classList.add("d-none");
+				element = document.getElementById('INV-2-valueItem');
+				element.classList.remove("d-block");
+				element.classList.add("d-none");
+				element = document.getElementById('SI-3-absentValue');
+				element.classList.remove("d-block");
+				element.classList.add("d-none");
+				element = document.getElementById('extraParametersDiv');
+				element.classList.remove("col-10");
+				element.classList.remove("col-8");
+				element.classList.add("col-12");
+				break;			
 			}
-					
 		}
 
     </script>
@@ -1519,25 +1533,24 @@ class,age,sex,survived<br>
 
 
 				<div class="row">
-					<div id="INV-2-groupItem" class="col-2" style="display:none">
-						<label for="groupItem" class="form-label">Group<br>Item</label>
+					<div id="INV-2-groupItem" class="col-6" style="display:none">
+						<label for="groupItem" class="form-label">Group item</label>
 						<select id="groupItem" class="browser-default form-select form-control" data-bs-html="false" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' 
 							data-bs-title="Please choose the grouping column.">
 						</select>
 					</div>
-					<div id="INV-2-valueItem" class="col-2" style="display:none">
-						<label for="valueItem" class="form-label">Value<br>Item</label>
+					<div id="INV-2-valueItem" class="col-6" style="display:none">
+						<label for="valueItem" class="form-label">Value item</label>
 						<select id="valueItem" class="browser-default form-select form-control" data-bs-html="false" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' 
 							data-bs-title="Please choose the column that includes the items participating in mining.">
 						</select>
 					</div>
-					<div id="SI-3-absentValue" class="col-2" style="display:none">
-						<label for="absentValue" class="form-label">Absent<br>Item</label>
+					<div id="SI-3-absentValue" class="col-6" style="display:none">
+						<label for="absentValue" class="form-label">Absent item</label>
 						<input type="text" id="absentValue" name="absentValue" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the absent value without quotes, for 3 - Sparse Item (SI) dataset type, if not already predicted successfully. If it is the empty value declare (nan). For more details please press ?" placeholder="absent Item e.g. 0">
 					</div>
 					<div id="extraParametersDiv" class="col-12">
 						<label id="filterParticipatingItems1" class="d-block" ><a href="#" onclick="filterParticipatingItems()" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Filter the items that would participate in AR mining. ">Filter participating items</a></label>			
-						<!-- <label class="form-label">Filter participating items</label> -->
 					</div>
 				</div>
 			</div>
@@ -1591,7 +1604,7 @@ class,age,sex,survived<br>
 				</div>
 
 				<div class="container ">
-					<div id="itemsSelectionDiv" class="row row-cols-2 row-cols-sm-4 row-cols-md-6" style="display:block">
+					<div id="itemsSelectionDiv" class="row row-cols-sm-3 row-cols-md-4 row-cols-xl-5">
 						<!-- Rows will be inserted here by JavaScript -->
 					</div>
 				</div>

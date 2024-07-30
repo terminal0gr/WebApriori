@@ -11,6 +11,33 @@
              The existence of  participating items must not be mandatory. Only for filter purposes. 
                08/07/2024 Now working on 2,3 dataset types in order
 
+Find universal participating items
+# Original list of lists
+list_of_lists = [
+    ['A', 'B'],
+    ['C', 'D', 'E'],
+    ['C', 'E'],
+    ['B', 'F', 'G'],
+    ['A', 'G', 'B']
+]
+
+# Use a set to store unique items
+unique_items = set()
+
+# Iterate through each sublist and add items to the set
+for sublist in list_of_lists:
+    for item in sublist:
+        unique_items.add(item)
+
+# Convert the set back to a list
+unique_list = list(unique_items)
+
+# Optionally, sort the list
+unique_list.sort()
+
+print(unique_list)
+
+['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
 DONE - V01.00.00 12/07/2024 19/06/2024 type 3-SI  Dataset type absent item manipulation
 DONE - V01.00.00 12/07/2024 24/06/2024 RetrieveRules.php ln 153 --> Creation / append to metadatafile.
