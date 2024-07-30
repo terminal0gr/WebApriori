@@ -45,6 +45,7 @@
 		var resultsTable;
 		var ajaxReq;
 		var tmpHtml;
+		var metadataObj;
 
 		$(function() {
 
@@ -306,16 +307,6 @@
 					$('#submitBtn').html("Retrieve association rules").removeClass("btn-warning").addClass("btn-primary");
 				});
 			});
-
-			$('#extra_parameters').blur(function() {
-				let regex = /[\[\]]/g;
-				let extraParams=this.value.replace(regex,''); 
-				regex = /,/g;
-				extraParams=extraParams.replace(regex,' '); 
-				regex = /'/g;
-				extraParams=extraParams.replace(regex,'"'); 
-				this.value=extraParams;
-			}); 
 
 		});
 
@@ -721,6 +712,7 @@
 			}
 
 			// If the dataset info div is open the close it first.
+			const element = document.getElementById('datasetDescribe');
 			if (!isElementHidden(element)) {
 				toggleDisplay('#datasetDescribe');
 			}
@@ -759,6 +751,7 @@
 				//cover both null and undefined circumstanses and if it is a JSON obj
 				if (response!=undefined && response!=null && isJSON(response)) {
 					res=JSON.parse(response);
+					metadataObj=res;
 					try {
 						if (jqXHR.status!=200) {
 							MyModal(jqXHR.status+res.title, res.message);
@@ -791,13 +784,6 @@
 								document.getElementById("absentValue").value=res.absentValue
 							}
                             
-							// if (res.header) {
-							// 	// Transform the array to a string
-							// 	var transformedString = res.header.map(function(item) {
-    						// 		return '"' + item + '"';
-							// 	}).join(' ');
-							// 	document.getElementById('extra_parameters').value=transformedString;
-							// }
 						}
 					}
 					catch(err) {
@@ -853,7 +839,6 @@
 			document.getElementById('min_confidence').value="0.2"; 
 			document.getElementById('min_lift').value="1.5"; 
 			document.getElementById('max_length').value="4"; 
-			document.getElementById('extra_parameters').value="";
 
 			document.getElementById('separator').value=";"; 
 			document.getElementById("header1").checked=false; 
@@ -1054,6 +1039,113 @@
 
 		function changeRowsAndCols() {
 			renderTable(true);
+		}
+
+		function itemFilter(itemName, value=0) {
+
+			// Create the main div element
+			var mainDiv = document.createElement('div');
+			mainDiv.className = 'col text-bg-secondary border';
+			mainDiv.tabIndex = 0;
+
+			// Create the h6 element
+			var h6 = document.createElement('h6');
+			h6.className = 'text-warning text-nowrap';
+			h6.setAttribute('data-bs-toggle', 'tooltip');
+			h6.setAttribute('data-bs-delay', '{"show":800,"hide":100}');
+			h6.setAttribute('data-bs-title', itemName);
+			h6.textContent = itemName;
+			mainDiv.appendChild(h6);
+
+			// Function to create form-check elements
+			function createFormCheck(groupId, inputId, labelContent, isChecked = false) {
+				var formCheckDiv = document.createElement('div');
+				formCheckDiv.className = 'form-check';
+
+				var input = document.createElement('input');
+				input.className = 'form-check-input';
+				input.type = 'radio';
+				input.name = groupId;
+				input.id = inputId;
+				if (isChecked) {
+					input.checked = true;
+				}
+
+				var label = document.createElement('label');
+				label.className = 'form-check-label';
+				label.htmlFor = inputId;
+				label.textContent = labelContent;
+
+				formCheckDiv.appendChild(input);
+				formCheckDiv.appendChild(label);
+
+				return formCheckDiv;
+			}
+
+			// Create and append form-check elements
+			switch (value) {
+				case 1:
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '0', 'Included'));
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '1', 'Only in LHS', true));
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '2', 'Only in RHS'));
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '3', 'Excluded'));
+					break;
+				case 2:
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '0', 'Included'));
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '1', 'Only in LHS'));
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '2', 'Only in RHS', true));
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '3', 'Excluded'));
+					break;
+				case 3:
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '0', 'Included'));
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '1', 'Only in LHS'));
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '2', 'Only in RHS'));
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '3', 'Excluded', true));
+					break;
+				default:
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '0', 'Included', true));
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '1', 'Only in LHS'));
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '2', 'Only in RHS'));
+					mainDiv.appendChild(createFormCheck(itemName, itemName + '3', 'Excluded'));
+					break;
+			}
+
+			itemsSelectionDiv.appendChild(mainDiv);
+
+		}
+
+		function filterParticipatingItems() {
+
+			//Check if user has chosen any dataset.
+			var dataset =  document.getElementById("dataset");
+			if(!dataset.value){
+				MyModal("Info function aborted!", "No dataset has been selected!");
+				return;
+			}
+
+			element=document.getElementById("itemsSelection");
+
+			itemsSelectionDiv=document.getElementById("itemsSelectionDiv");
+			if (isElementHidden(element) && itemsSelectionDiv.innerHTML.includes("<!-- Rows")) { //It means the function has not initiated yet for the dataset.
+				if (metadataObj) {
+					if (metadataObj.header) {
+
+						itemsSelectionDiv.innerHTML=""
+
+						metadataObj.header.forEach(function(data){
+							itemFilter(data);
+						});
+
+						// for (const itemName in metadataObj.header) {
+
+						// 	itemFilter(itemName);
+
+						// }
+					}
+				}
+			}
+
+			toggleDisplay('#itemsSelection');
 		}
 
 		function datasetTypeChanged() {
@@ -1444,8 +1536,8 @@ class,age,sex,survived<br>
 						<input type="text" id="absentValue" name="absentValue" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the absent value without quotes, for 3 - Sparse Item (SI) dataset type, if not already predicted successfully. If it is the empty value declare (nan). For more details please press ?" placeholder="absent Item e.g. 0">
 					</div>
 					<div id="extraParametersDiv" class="col-12">
-						<label for="extra_parameters" class="form-label">Participating<br>Items</label>
-						<input type="text" id="extra_parameters" name="extra_parameters" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="In extra parameters, the items must be enclosed in double quotes and be seperated with space. For more details please press ?" placeholder="special data (e.g item names)">
+						<label id="filterParticipatingItems1" class="d-block" ><a href="#" onclick="filterParticipatingItems()" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Filter the items that would participate in AR mining. ">Filter participating items</a></label>			
+						<!-- <label class="form-label">Filter participating items</label> -->
 					</div>
 				</div>
 			</div>
@@ -1483,11 +1575,12 @@ class,age,sex,survived<br>
 			</div>
 		</div>
 
-		<br>
+		<div id="itemsSelection"  style="display:none">
 
+			<br>
 
-		<div id="itemsSelection" class="lightgraybackground udfwidth mx-auto border rounded p-2" style="display:block">
-			<div class="container mt-2">
+			<div class="container mt-2 lightgraybackground udfwidth mx-auto border rounded p-2">
+
 				<div class="row">
 					<div class="col-11">
 						<h4 class="text-center text-primary">Items participating in ARM selection</h4>
@@ -1497,11 +1590,16 @@ class,age,sex,survived<br>
 					</div>
 				</div>
 
-				<!-- Rows will be inserted here by JavaScript -->
 				<div class="container ">
-					<div id="itemsSelectionDiv" class="row row-cols-2 row-cols-sm-4 row-cols-md-6 ">
+					<div id="itemsSelectionDiv" class="row row-cols-2 row-cols-sm-4 row-cols-md-6" style="display:block">
+						<!-- Rows will be inserted here by JavaScript -->
+					</div>
+				</div>
 
-						<div class="col text-bg-secondary border" tabindex="0">
+
+
+
+						<!-- <div class="col text-bg-secondary border" tabindex="0">
 
 							<h6 class="text-warning text-nowrap" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Hides dataset type guide section">Item-1 Item-1 Item-1 Item-1</h6>
 
@@ -1533,7 +1631,6 @@ class,age,sex,survived<br>
 
 						<div class="col text-bg-secondary border" tabindex="0">
 
-							<!-- Rows will be inserted here by JavaScript -->
 							<h6 class="text-primary">Item-2</h6>
 
 							<div class="form-check">
@@ -1565,7 +1662,6 @@ class,age,sex,survived<br>
 
 						<div class="col text-bg-secondary border" tabindex="0">
 
-							<!-- Rows will be inserted here by JavaScript -->
 							<h6 class="text-primary">Item-2</h6>
 
 							<div class="form-check">
@@ -1596,7 +1692,6 @@ class,age,sex,survived<br>
 
 						<div class="col text-bg-secondary border" tabindex="0">
 
-							<!-- Rows will be inserted here by JavaScript -->
 							<h6 class="text-primary">Item-2</h6>
 
 							<div class="form-check">
@@ -1623,12 +1718,12 @@ class,age,sex,survived<br>
 									  Excluded
 								</label>
 							</div>
-						</div>
+						</div> -->
 
 
 
-					</div>
-				</div>
+
+				
 			</div>
 		</div>
 
