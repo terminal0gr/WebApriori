@@ -387,9 +387,10 @@ def prepare_records():
         else:
             filepath=os.path.join('public', datasetName)
 
-        if len(jsonData['participatingItems'])>max_items:
-            print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' of the ' + str(len(jsonData['participatingItems'])) + ' columns will be processed.')
-            jsonData['participatingItems']=jsonData['participatingItems'][0:max_items+1]
+        if 'participatingItems' in jsonData:
+            if len(jsonData['participatingItems'])>max_items:
+                print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' of the ' + str(len(jsonData['participatingItems'])) + ' columns will be processed.')
+                jsonData['participatingItems']=jsonData['participatingItems'][0:max_items+1]
 
         #Read the dataset from file
         dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig', hasHeader=jsonData['hasHeader'])
@@ -473,6 +474,12 @@ def prepare_records():
                     dataset = dataset[jsonData['participatingItems']]
                     for arg in jsonData['participatingItems']:
                         dataset[arg] = arg + '=' + dataset[arg].astype(str)
+            elif hasHeader==True:
+                if 'header' in jsonData:
+                    if len(jsonData['header'])>0 and jsonData['header']!='[]':
+                        dataset = dataset[jsonData['header']]
+                        for arg in jsonData['header']:
+                            dataset[arg] = arg + '=' + dataset[arg].astype(str)
             
             records=dataset.values.tolist()
             return(records)
@@ -548,6 +555,30 @@ def output_association_rules(association_results, sort_index, descending=True, f
         print(f"An error occurred: {e}")     
         sys.exit()       
 
+def retrieveParticipatingItems(records):
+    try:
+
+        # Use a set to store unique items
+        unique_items = set()
+
+        # Iterate through each sublist and add items to the set
+        for sublist in records:
+            for item in sublist:
+                unique_items.add(item)
+                if len(unique_items)>max_items:
+                    break
+
+        # Convert the set back to a list
+        unique_list = list(unique_items)
+
+        unique_list.sort()
+
+        print(json.dumps(unique_list, indent=4)) 
+
+    except Exception as e:
+        print(f"An error occurred: {e}")     
+        sys.exit()              
+
 
 ###########
 ###########
@@ -559,7 +590,7 @@ def output_association_rules(association_results, sort_index, descending=True, f
 
 '''
 Call arguments          
-1) Identity   2) datasetName   3) public   
+1) Identity   2) datasetName   3) public   4) callType
 '''
 
 
@@ -593,6 +624,13 @@ if len(sys.argv)>3:
 	except:
 		public=0 # Default is 0 private Dataset.
 
+#0=Association rules, 1=Retrieve participating items
+callType=0
+if len(sys.argv)>4:
+	try:
+		callType=int(sys.argv[4])
+	except:
+		callType=0 # Default is 0 - Association rules mining.
 
 #Main Program
 try:
@@ -685,6 +723,10 @@ try:
         
     if records:
         
+        # Retrieve the current participating Item List in JSON format.
+        if callType==1:
+            retrieveParticipatingItems(records)
+            sys.exit()
 
         recordTime=time()-recordTime
 

@@ -1114,6 +1114,134 @@
 
 		}
 
+		function retrieveParticipatingItems() {
+
+			if (!sessionStorage.getItem('token')) {
+				MyModal("Error", "You are not signed in!!! Please sign in/up");
+				setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
+				return;
+			}
+
+			//Check if user has chosen any dataset.
+			var dataset =  document.getElementById("dataset");
+			if(!dataset.value){
+				MyModal("Information", "No dataset has been selected!");
+				return;
+			}
+
+			const datasetType=document.getElementById("datasetType").value;
+			if (datasetType==0) {
+				MyModal("Information", "The dataset is classified as type 0-Unmanaged, so its items cannot be retrieved.");
+				return;			
+			}
+
+			var formData = new FormData();
+			formData.set("token",sessionStorage.getItem('token'));
+			formData.set("dataset",dataset.value);
+			formData.set("datasetType",datasetType);
+
+			switch (datasetType) {
+				case 2:
+
+				let textboxValue = document.getElementById("groupItem").value;
+					if (!textboxValue || textboxValue=="?") {
+					   	MyModal("Information", "It is mandatory to declare the grouping field/item/column in the dataset that represents the primary key for a given transaction when type 2 (INV) dataset is used.");
+						document.getElementById("groupItem").focus();
+					 	return;
+					}
+					formData.push({name: "groupItem", value: textboxValue});
+
+					textboxValue = document.getElementById("valueItem").value;
+					if (!textboxValue || textboxValue=="?") {
+					   	MyModal("Information", "It is mandatory to declare the value field/item/column which represents the items participating in ARM when type 2 (INV) dataset is used.");
+						document.getElementById("valueItem").focus();
+					 	return;
+					}
+					formData.push({name: "valueItem", value: textboxValue});				
+				case 3:
+					textboxValue = document.getElementById("absentValue").value;
+					if (!textboxValue) {
+					   	MyModal("Information", "It is mandatory to declare the absent value in ARM when type 3 (SI) dataset is used.");
+						document.getElementById("absentValue").focus();
+					 	return;
+					}
+					formData.push({name: "absentValue", value: textboxValue});
+			}
+
+			$.ajax({
+				url: 'phpfunctions/retrieveParticipatingItems.php',
+				method: 'POST',
+				dataType: 'json',
+				data: formData,
+				contentType: false,
+				cache: false,
+				processData:false,
+
+				beforeSend: function( xhr ) {
+				var element = document.getElementById('datasetInfo');
+				element.classList.add("d-none");
+				element.classList.remove("d-block");
+				var element = document.getElementById('datasetInfoSpinner');
+				element.classList.add("d-block");
+				element.classList.remove("d-none");
+				}
+			}) 	
+			.done(function(response, textStatus, jqXHR) {
+				//cover both null and undefined circumstances and if it is a JSON obj
+				if (response!=undefined && response!=null) {
+					res=response;
+					try {
+						res=JSON.parse(res);
+					}
+					catch {}
+
+					try {
+						if (jqXHR.status!=200) {
+							MyModal(res.title + '(' + jqXHR.status + ')', res.message);
+						}
+						else {	
+							return res;
+						}
+					}
+					catch(err) {
+						MyModal("Error1", err.message);
+						return;
+					}
+				}
+				else {
+					MyModal("Error", "Unknown error occured");
+					return;
+				}
+			}).fail(function( jqXHR, textStatus, thrownError ) {
+				if (jqXHR.responseText) {
+					if (isJSON(jqXHR.responseText)) {
+						res=JSON.parse(jqXHR.responseText);
+						MyModal(res.title, res.message);
+						if (jqXHR.status>=400) {
+							setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
+						}
+					}
+					else alert(jqXHR.responseText);
+				} else {
+					MyModal("Error",'Unknown error occured!');
+					return;
+				}
+			}).always(function() {
+				var element = document.getElementById('datasetInfoSpinner');
+				element.classList.add("d-none");
+				element.classList.remove("d-block");
+				var element = document.getElementById('datasetInfo');
+				element.classList.add("d-block");
+				element.classList.remove("d-none");		
+			});					
+		}
+			
 		function filterParticipatingItems() {
 
 			//Check if user has chosen any dataset.
@@ -1127,27 +1255,32 @@
 
 			itemsSelectionDiv=document.getElementById("itemsSelectionDiv");
 			if (isElementHidden(element) && itemsSelectionDiv.innerHTML.includes("<!-- Rows")) { //It means the function has not initiated yet for the dataset.
-				if (metadataObj) {
-					if (metadataObj.hasHeader) {
-						if (metadataObj.header) {
 
-							itemsSelectionDiv.innerHTML="";
+				rPI=retrieveParticipatingItems();
 
-							metadataObj.header.forEach(function(data) {
-								itemFilter(data);
-							});
+				if (rPI) {
 
-						// for (const itemName in metadataObj.header) {
+					itemsSelectionDiv.innerHTML="";
 
-						// 	itemFilter(itemName);
+					rPI.forEach(function(data) {
+						itemFilter(data);
+					});
 
-						// }
-						}
+					// if (metadataObj.hasHeader) {
+					// 	if (metadataObj.header) {
 
-					} else {
-						MyModal("Information","No header found for this dataset.");
-						return;
-					}
+					// 		itemsSelectionDiv.innerHTML="";
+
+					// 		metadataObj.header.forEach(function(data) {
+					// 			itemFilter(data);
+					// 		});
+
+					// 	}
+
+					// } else {
+					// 	MyModal("Information","No header found for this dataset.");
+					// 	return;
+					// }
 				}
 			}
 
