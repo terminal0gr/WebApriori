@@ -9,6 +9,7 @@
 24/06/2024 Search.Html Ln:192 TODO
              The existence of  participating items must not be mandatory. Only for filter purposes. 
                08/07/2024 Now working on 2,3 dataset types in order
+12/08/2024 Filter participating items. Must working before running arm when choosing Group and value Argument.               
 
 12/07/2024 Real multithread environment
 16/06/2024 Upload AutoML WebApriori to NIREAS

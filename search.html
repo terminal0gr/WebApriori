@@ -1143,16 +1143,18 @@
 			formData.set("dataset",dataset.value);
 			formData.set("datasetType",datasetType);
 
-			switch (datasetType) {
-				case 2:
+			let textboxValue = '';
 
-				let textboxValue = document.getElementById("groupItem").value;
+			switch (datasetType) {
+				case '2':
+
+					textboxValue = document.getElementById("groupItem").value;
 					if (!textboxValue || textboxValue=="?") {
 					   	MyModal("Information", "It is mandatory to declare the grouping field/item/column in the dataset that represents the primary key for a given transaction when type 2 (INV) dataset is used.");
 						document.getElementById("groupItem").focus();
 					 	return;
 					}
-					formData.push({name: "groupItem", value: textboxValue});
+					formData.set("groupItem",textboxValue);
 
 					textboxValue = document.getElementById("valueItem").value;
 					if (!textboxValue || textboxValue=="?") {
@@ -1160,15 +1162,18 @@
 						document.getElementById("valueItem").focus();
 					 	return;
 					}
-					formData.push({name: "valueItem", value: textboxValue});				
-				case 3:
-					textboxValue = document.getElementById("absentValue").value;
+					formData.set("valueItem",textboxValue);
+					break;			
+				case '3':
+
+   					textboxValue = document.getElementById("absentValue").value;
 					if (!textboxValue) {
 					   	MyModal("Information", "It is mandatory to declare the absent value in ARM when type 3 (SI) dataset is used.");
 						document.getElementById("absentValue").focus();
 					 	return;
 					}
-					formData.push({name: "absentValue", value: textboxValue});
+					formData.set("absentValue",textboxValue);
+					break;			
 			}
 
 			$.ajax({
@@ -1194,16 +1199,26 @@
 				if (response!=undefined && response!=null) {
 					res=response;
 					try {
-						res=JSON.parse(res);
+						res=JSON.parse(res.message);
 					}
-					catch {}
+					catch(err) {
+						MyModal("Error2", err.message + res);
+						return;
+					}
 
 					try {
 						if (jqXHR.status!=200) {
 							MyModal(res.title + '(' + jqXHR.status + ')', res.message);
 						}
 						else {	
-							return res;
+							itemsSelectionDiv.innerHTML="";
+
+							res.forEach(function(data) {
+								itemFilter(data);
+							});
+
+							toggleDisplay('#itemsSelection');
+							
 						}
 					}
 					catch(err) {
@@ -1255,36 +1270,9 @@
 
 			itemsSelectionDiv=document.getElementById("itemsSelectionDiv");
 			if (isElementHidden(element) && itemsSelectionDiv.innerHTML.includes("<!-- Rows")) { //It means the function has not initiated yet for the dataset.
-
-				rPI=retrieveParticipatingItems();
-
-				if (rPI) {
-
-					itemsSelectionDiv.innerHTML="";
-
-					rPI.forEach(function(data) {
-						itemFilter(data);
-					});
-
-					// if (metadataObj.hasHeader) {
-					// 	if (metadataObj.header) {
-
-					// 		itemsSelectionDiv.innerHTML="";
-
-					// 		metadataObj.header.forEach(function(data) {
-					// 			itemFilter(data);
-					// 		});
-
-					// 	}
-
-					// } else {
-					// 	MyModal("Information","No header found for this dataset.");
-					// 	return;
-					// }
-				}
+				retrieveParticipatingItems();
 			}
 
-			toggleDisplay('#itemsSelection');
 		}
 
 		function datasetTypeChanged() {

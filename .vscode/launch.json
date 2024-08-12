@@ -23,7 +23,11 @@
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "args": [
-                "79d1727987f200802593e3599119c966","2Sales.csv","-1","1","1"
+                "79d1727987f200802593e3599119c966",
+                "2Sales.csv",
+                "-1",
+                "1",
+                "1"
             ],
             "console": "integratedTerminal"
         },
@@ -34,7 +38,7 @@
             "program": "${file}",
             "cwd": "${fileDirname}",
             "justMyCode": false,
-            "args": [ 
+            "args": [
                 "79d1727987f200802593e3599119c966",
                 "0data_balita.csv",
                 "-1",
@@ -42,7 +46,7 @@
                 "1"
             ],
             "console": "integratedTerminal"
-        },     
+        },
         {
             "name": "Run datasetDescribe 01",
             "type": "debugpy",
@@ -50,7 +54,7 @@
             "program": "${file}",
             "cwd": "${fileDirname}",
             "justMyCode": false,
-            "args": [ 
+            "args": [
                 "79d1727987f200802593e3599119c966",
                 "invoice.csv",
                 "10",
@@ -58,7 +62,7 @@
                 "0"
             ],
             "console": "integratedTerminal"
-        },    
+        },
         {
             "name": "Run python...",
             "type": "debugpy",
@@ -67,7 +71,7 @@
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "console": "integratedTerminal"
-        },        
+        },
         {
             "name": "Run Main04...",
             "type": "debugpy",
@@ -76,8 +80,40 @@
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "args": [
-                "79d1727987f200802593e3599119c966", 
-                "0.01","0.2","1.5","4","-3","4imports-85.csv",";","4","3","0","symboling","make","fuel","aspiration","doors","style","drive-wheels","engine-location","wheel-base","length","width","height","curb-weight","engine-type","num-of-cylinders","engine-size","fuel-system","compression-ratio","horsepower","peak-rpm","city-mpg","highway-mpg","price"            
+                "79d1727987f200802593e3599119c966",
+                "0.01",
+                "0.2",
+                "1.5",
+                "4",
+                "-3",
+                "4imports-85.csv",
+                ";",
+                "4",
+                "3",
+                "0",
+                "symboling",
+                "make",
+                "fuel",
+                "aspiration",
+                "doors",
+                "style",
+                "drive-wheels",
+                "engine-location",
+                "wheel-base",
+                "length",
+                "width",
+                "height",
+                "curb-weight",
+                "engine-type",
+                "num-of-cylinders",
+                "engine-size",
+                "fuel-system",
+                "compression-ratio",
+                "horsepower",
+                "peak-rpm",
+                "city-mpg",
+                "highway-mpg",
+                "price"
             ],
             "console": "integratedTerminal"
         },
@@ -89,7 +125,10 @@
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "args": [
-                "79d1727987f200802593e3599119c966", "2sales.csv", "1", "1"
+                "79d1727987f200802593e3599119c966",
+                "2sales.csv",
+                "1",
+                "1"
             ],
             "console": "integratedTerminal"
         },
@@ -101,9 +140,61 @@
             "cwd": "${fileDirname}",
             "justMyCode": false,
             "args": [
-                "79d1727987f200802593e3599119c966","invoice.csv","0"],
+                "79d1727987f200802593e3599119c966",
+                "invoice.csv",
+                "0"
+            ],
             "console": "integratedTerminal"
+        },
+        {
+            "type": "pwa-msedge",
+            "name": "Launch Microsoft Edge",
+            "request": "launch",
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ],
+            "url": "c:\\Users\\Start Again\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.5\\out\\startpage\\index.html", // Provide your project's url to finish configuring
+            "presentation": {
+                "hidden": true
+            }
+        },
+        {
+            "type": "pwa-msedge",
+            "name": "Launch Microsoft Edge in headless mode",
+            "request": "launch",
+            "runtimeArgs": [
+                "--headless",
+                "--remote-debugging-port=9222"
+            ],
+            "url": "c:\\Users\\Start Again\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.5\\out\\startpage\\index.html", // Provide your project's url to finish configuring
+            "presentation": {
+                "hidden": true
+            }
+        },
+        {
+            "type": "vscode-edge-devtools.debug",
+            "name": "Open Edge DevTools",
+            "request": "attach",
+            "url": "c:\\Users\\Start Again\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.5\\out\\startpage\\index.html", // Provide your project's url to finish configuring
+            "presentation": {
+                "hidden": true
+            }
         }
-
+    ],
+    "compounds": [
+        {
+            "name": "Launch Edge Headless and attach DevTools",
+            "configurations": [
+                "Launch Microsoft Edge in headless mode",
+                "Open Edge DevTools"
+            ]
+        },
+        {
+            "name": "Launch Edge and attach DevTools",
+            "configurations": [
+                "Launch Microsoft Edge",
+                "Open Edge DevTools"
+            ]
+        }
     ]
 }
