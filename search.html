@@ -1046,11 +1046,12 @@
 			// Create the main div element
 			var mainDiv = document.createElement('div');
 			mainDiv.className = 'col text-bg-secondary border';
-			mainDiv.tabIndex = 0;
+			//mainDiv.tabIndex = 0;
 
 			// Create the h6 element
 			var h6 = document.createElement('h6');
 			h6.className = 'text-warning text-nowrap';
+			h6.setAttribute('tabindex',"0");
 			h6.setAttribute('data-bs-toggle', 'tooltip');
 			h6.setAttribute('data-bs-delay', '{"show":800,"hide":100}');
 			h6.setAttribute('data-bs-title', itemName);
@@ -1217,7 +1218,11 @@
 								itemFilter(data);
 							});
 
-							toggleDisplay('#itemsSelection');
+							const elementName='#itemsSelection'
+							$(elementName).find('[data-bs-toggle="tooltip"]').tooltip();
+							if (!$(elementName).is(":visible")) {
+            					$(elementName).show( "slow" );
+							}	
 							
 						}
 					}
@@ -1259,6 +1264,12 @@
 			
 		function filterParticipatingItems() {
 
+			const element=document.getElementById("itemsSelection");
+			if (!isElementHidden(element)) {
+				toggleDisplay('#itemsSelection');
+				return;
+			}
+
 			//Check if user has chosen any dataset.
 			var dataset =  document.getElementById("dataset");
 			if(!dataset.value){
@@ -1266,14 +1277,66 @@
 				return;
 			}
 
-			element=document.getElementById("itemsSelection");
-
 			itemsSelectionDiv=document.getElementById("itemsSelectionDiv");
-			if (isElementHidden(element) && itemsSelectionDiv.innerHTML.includes("<!-- Rows")) { //It means the function has not initiated yet for the dataset.
-				retrieveParticipatingItems();
+			if (isElementHidden(element)) {
+				if (itemsSelectionDiv.innerHTML.includes("<!-- Rows"))	{
+					retrieveParticipatingItems();
+				} else {
+					toggleDisplay('#itemsSelection');
+				}
+			}
+		}
+
+		function BatchChangeParticipatingItems(value) {
+			let parentElement = document.getElementById("itemsSelectionDiv");
+			let children = parentElement.children;
+
+			for (let i = 0; i < children.length; i++) {
+    			children[i].children[value+1].children[0].checked=true;
+			}
+		}
+
+		function BatchActionsParticipatingItems(value) {
+
+			switch (value) {
+				case -1:
+					if (!confirm("Waring!!!\nAre you sure you want to reinitialize all the items?")) {
+						return;
+					};
+
+					retrieveParticipatingItems();
+					return;
+
+					case 0:
+					if (!confirm("Waring!!!\nAre you sure you want to include all the items?")) {
+						return;
+					};
+
+					break;
+				case 1:
+					if (!confirm("Waring!!!\nAre you sure you want to declare all the items appear only on the left-hand side (LHS)?")) {
+						return;
+					};
+
+					break;
+				case 2:
+					if (!confirm("Waring!!!\nAre you sure you want to declare all the items appear only on the right-hand side (RHS)?")) {
+						return;
+					};
+
+					break;
+				case 3:
+					if (!confirm("Waring!!!\nAre you sure you want to exclude all the items?")) {
+						return;
+					};
+
+					break;
 			}
 
+			BatchChangeParticipatingItems(value);
+
 		}
+
 
 		function datasetTypeChanged() {
 
@@ -1724,139 +1787,33 @@ class,age,sex,survived<br>
 					</div>
 				</div>
 
+				<div class="row">
+					<div class="col-2">
+						<p class="text-center text-primary">Batch Actions</p>
+					</div>
+					<div class="col-2">
+						<button type="button" class="btn btn-sm btn-secondary m-0 p-0 w-100" onclick="BatchActionsParticipatingItems(-1)" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Reinitializes all items in the dataset and marks them as included.">Reinitialize</button>
+					</div>
+					<div class="col-2">
+						<button type="button" class="btn btn-sm btn-secondary m-0 p-0 w-100" onclick="BatchActionsParticipatingItems(0)" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="This action includes all items in AR mining.">All included</button>
+					</div>
+					<div class="col-2">
+						<button type="button" class="btn btn-sm btn-secondary m-0 p-0 w-100" onclick="BatchActionsParticipatingItems(1)" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Specifies that all items are restricted to only appear on the left-hand side (LHS) in association rule mining.">All in LHS</button>
+					</div>
+					<div class="col-2">
+						<button type="button" class="btn btn-sm btn-secondary m-0 p-0 w-100" onclick="BatchActionsParticipatingItems(2)" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Specifies that all items are restricted to only appear on the right-hand side (RHS) in association rule mining.">All in RHS</button>
+					</div>
+					<div class="col-2">
+						<button type="button" class="btn btn-sm btn-secondary m-0 p-0 w-100" onclick="BatchActionsParticipatingItems(3)" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="This action excludes all items in AR mining.">All excluded</button>
+					</div>
+				</div>
+
+
 				<div class="container ">
 					<div id="itemsSelectionDiv" class="row row-cols-sm-3 row-cols-md-4 row-cols-xl-5">
 						<!-- Rows will be inserted here by JavaScript -->
 					</div>
 				</div>
-
-
-
-
-						<!-- <div class="col text-bg-secondary border" tabindex="0">
-
-							<h6 class="text-warning text-nowrap" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Hides dataset type guide section">Item-1 Item-1 Item-1 Item-1</h6>
-
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-								<label class="form-check-label" for="flexRadioDefault1">
-									  included
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-								<label class="form-check-label" for="flexRadioDefault2">
-									  Only in LHS
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
-								<label class="form-check-label" for="flexRadioDefault3">
-									  Only in RHS
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
-								<label class="form-check-label" for="flexRadioDefault4">
-									  excluded
-								</label>
-							</div>
-						</div>
-
-						<div class="col text-bg-secondary border" tabindex="0">
-
-							<h6 class="text-primary">Item-2</h6>
-
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-								<label class="form-check-label" for="flexRadioDefault1">
-									  Included
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-								<label class="form-check-label" for="flexRadioDefault2">
-									  Only in LHS
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-								<label class="form-check-label" for="flexRadioDefault3">
-									  Only in RHS
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
-								<label class="form-check-label" for="flexRadioDefault4">
-									  Excluded
-								</label>
-							</div>
-						</div>
-
-
-						<div class="col text-bg-secondary border" tabindex="0">
-
-							<h6 class="text-primary">Item-2</h6>
-
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-								<label class="form-check-label" for="flexRadioDefault1">
-									  Included
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-								<label class="form-check-label" for="flexRadioDefault2">
-									  Only in LHS
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-								<label class="form-check-label" for="flexRadioDefault3">
-									  Only in RHS
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
-								<label class="form-check-label" for="flexRadioDefault4">
-									  Excluded
-								</label>
-							</div>
-						</div>
-
-						<div class="col text-bg-secondary border" tabindex="0">
-
-							<h6 class="text-primary">Item-2</h6>
-
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-								<label class="form-check-label" for="flexRadioDefault1">
-									  Included
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-								<label class="form-check-label" for="flexRadioDefault2">
-									  Only in LHS
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-								<label class="form-check-label" for="flexRadioDefault3">
-									  Only in RHS
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
-								<label class="form-check-label" for="flexRadioDefault4">
-									  Excluded
-								</label>
-							</div>
-						</div> -->
-
-
-
-
 				
 			</div>
 		</div>
