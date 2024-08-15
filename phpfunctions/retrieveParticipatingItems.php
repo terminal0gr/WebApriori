@@ -114,6 +114,16 @@
     $input.= '"'.$filename.'" ';
     $input.= '"'.$isPublic.'" ';
     $input.= '"1" ';
+    if ((int) $_POST['datasetType']==2 && isset($_POST['groupItem'])) {
+        $input.= '"'.$_POST['groupItem'].'" ';
+    }
+    if ((int) $_POST['datasetType']==2 && isset($_POST['valueItem'])) {
+        $input.= '"'.$_POST['valueItem'].'" ';
+    }
+    if ((int) $_POST['datasetType']==3 && isset($_POST['absentValue'])) {
+        $input.= '"'.$_POST['absentValue'].'" ';
+    }
+
 
     // //for debug purposes
     // http_response_code(201);

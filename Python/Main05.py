@@ -59,7 +59,14 @@ class itemsetManager(object):
         Arguments:
             itemset -- A itemset as an iterable object (['A', 'B', 'C']).
         """
-        for item in itemset:
+        for index,item in enumerate(itemset):
+            
+            #Malliaridis 15/8/2024.
+            if hasHeader and datasetType==4 and 'header' in jsonData:
+                item=str(jsonData['header'][index]) + '=' + str(item)
+            else:
+                item=str(item)
+
             if item not in self.__itemset_index_map:
                 self.__items.append(item)
                 self.__itemset_index_map[item] = set()
@@ -379,6 +386,9 @@ Dataset types:
 ###################################################################
 def prepare_records():
     global max_items
+    global groupItem
+    global valueItem
+    global absentValue
 
     try:
 
@@ -414,19 +424,15 @@ def prepare_records():
                 
         elif datasetType==2:
 
-            if not 'groupItem' in jsonData:
+            if groupItem is None:
                 # Grouping Column not set!
                 # Set the first column as the grouping one
                 groupItem=dataset.columns[0]
-            else:
-                groupItem =jsonData['groupItem']
 
-            if not 'valueItem' in jsonData:
+            if valueItem is None:
                 # Value item Column not set!
                 # Set the second column
                 valueItem=dataset.columns[1]
-            else:
-                valueItem =jsonData['valueItem']
 
             dataset = dataset[[groupItem, valueItem]]
             
@@ -459,12 +465,12 @@ def prepare_records():
             
             #put the name of product in item#
             for arg in dataset.columns:
-                dataset[arg]=[str(arg) if str(x)!=jsonData['absentValue'] else jsonData['absentValue'] for x in dataset[arg]]
+                dataset[arg]=[str(arg) if str(x)!=absentValue else absentValue for x in dataset[arg]]
             
             #pandas to list
             records=dataset.values.tolist()
             #remove nan elements from this 2-dimensional list in order to be transformed as a dataset type 1-MBL'
-            records = [[y for y in x if str(y) !=jsonData['absentValue']] for x in records]
+            records = [[y for y in x if str(y) !=absentValue] for x in records]
             return(records)
                                 
         elif datasetType==4:
@@ -563,8 +569,13 @@ def retrieveParticipatingItems(records):
 
         # Iterate through each sublist and add items to the set
         for sublist in records:
-            for item in sublist:
-                unique_items.add(item)
+            for index, item in enumerate(sublist):
+
+                if hasHeader and datasetType==4 and 'header' in jsonData:
+                    unique_items.add(str(jsonData['header'][index]) + '=' + str(item))
+                else:    
+                    unique_items.add(str(item))
+
                 if len(unique_items)>max_items:
                     break
 
@@ -632,6 +643,20 @@ if len(sys.argv)>4:
 	except:
 		callType=0 # Default is 0 - Association rules mining.
 
+arg1=None #In case of callType=1 it may be groupItem of datasetType 2-INV or absentValue of datasetType 3-SI'
+if len(sys.argv)>5:
+	try:
+		arg1=sys.argv[5]
+	except:
+		arg1=None 
+
+arg2=None #In case of callType=1 it may be valueItem of datasetType 2-INV'
+if len(sys.argv)>6:
+	try:
+		arg2=sys.argv[6]
+	except:
+		arg2=None 
+
 #Main Program
 try:
 
@@ -658,15 +683,39 @@ try:
         print("An error occurred: Could not retrieve the dataset's header!") 
         sys.exit() 
 
-    if jsonData['datasetType']==2 and not 'groupItem' in jsonData:
-        print("An error occurred: Could not retrieve the Group Item of 2-INV dataset!")
-        sys.exit()  
-    if jsonData['datasetType']==2 and not 'valueItem' in jsonData:
-        print("An error occurred: Could not retrieve the Value Item of 2-INV dataset!")
-        sys.exit()  
-    if jsonData['datasetType']==3 and not 'absentValue' in jsonData:
-        print("An error occurred: Could not retrieve the absent value of 3-SI dataset!")
-        sys.exit()  
+    groupItem = None
+    valueItem = None
+    if jsonData['datasetType']==2:
+        if callType==0: #AR Mining
+            if 'groupItem' in jsonData:
+                groupItem=jsonData['groupItem']
+            if 'valueItem' in jsonData:
+                valueItem=jsonData['valueItem']
+        elif callType==1: #retrieveParticipatingItems
+            if arg1 is not None:
+                groupItem=arg1
+            elif 'groupItem' in jsonData:
+                groupItem=jsonData['groupItem']
+            if arg2 is not None:
+                valueItem=arg2
+            elif 'valueItem' in jsonData:
+                valueItem=jsonData['valueItem']
+
+    if jsonData['datasetType']==3:
+        if callType==0: #AR Mining
+            if 'absentValue' in jsonData:
+                absentValue=jsonData['absentValue']
+            else:    
+                print("An error occurred: Could not retrieve the absent value of 3-SI dataset!")
+                sys.exit()  
+        elif callType==1: #retrieveParticipatingItems
+            if arg1 is not None:
+                absentValue=arg1
+            elif 'absentValue' in jsonData:
+                absentValue=jsonData['absentValue']
+            else:    
+                print("An error occurred: Could not retrieve the absent value of 3-SI dataset!")
+                sys.exit()   
 
     datasetSep=jsonData['delimiter']
     datasetType=int(jsonData['datasetType'])

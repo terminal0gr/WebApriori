@@ -12,7 +12,7 @@
             "Number Of Columns",
             4,
             4,
-            "The total number of columns/features in the Dataset"
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -34,7 +34,7 @@
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            1.0,
+            1,
             "100.0%",
             "The Average of distinct values per row over the total rows"
         ],
@@ -64,7 +64,7 @@
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of integer columns to the total number of columns"
         ],
@@ -76,7 +76,7 @@
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
@@ -142,5 +142,14 @@
         ]
     },
     "datasetTypePredicted": 0,
-    "datasetType": 0
+    "datasetType": 4,
+    "min_support": 1.0e-5,
+    "min_confidence": 0.2,
+    "min_lift": 1,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "0data_balita.csv",
+    "public": 1,
+    "redundantRemoveType": 0,
+    "participatingItems": "[]"
 }

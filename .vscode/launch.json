@@ -126,9 +126,10 @@
             "justMyCode": false,
             "args": [
                 "79d1727987f200802593e3599119c966",
-                "2sales.csv",
+                "invoice.csv",
+                "0",
                 "1",
-                "1"
+                "IDInvoice","ProduitID"
             ],
             "console": "integratedTerminal"
         },
@@ -141,13 +142,13 @@
             "justMyCode": false,
             "args": [
                 "79d1727987f200802593e3599119c966",
-                "invoice.csv",
-                "0"
+                "titanic02.csv",
+                "0","0"
             ],
             "console": "integratedTerminal"
         },
         {
-            "type": "pwa-msedge",
+            "type": "msedge",
             "name": "Launch Microsoft Edge",
             "request": "launch",
             "runtimeArgs": [
@@ -159,7 +160,7 @@
             }
         },
         {
-            "type": "pwa-msedge",
+            "type": "msedge",
             "name": "Launch Microsoft Edge in headless mode",
             "request": "launch",
             "runtimeArgs": [

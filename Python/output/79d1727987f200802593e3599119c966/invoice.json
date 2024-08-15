@@ -7,9 +7,9 @@
     "datasetName": "invoice.csv",
     "redundantRemoveType": 0,
     "Records": 4816,
-    "RecordsCreationTime": "1.307",
+    "RecordsCreationTime": "23.687",
     "RulesCount": 654,
-    "RulesCreationTime": "0.062",
+    "RulesCreationTime": "0.273",
     "rules": [
         {
             "LHS": [
@@ -313,8 +313,8 @@
                 "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
             ],
             "RHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
-                "MARGARINE PALFFY UNSALTED 15KG"
+                "MARGARINE PALFFY UNSALTED 15KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "Confidence": 0.4958677685950413,
             "Lift": 18.95316804407713,
@@ -329,8 +329,8 @@
         },
         {
             "LHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
-                "MARGARINE PALFFY UNSALTED 15KG"
+                "MARGARINE PALFFY UNSALTED 15KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "RHS": [
                 "DAIRYMONT CREAM CHEESE 2KG",
@@ -425,8 +425,8 @@
                 "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
             ],
             "RHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
-                "DAIRYMONT CREAM CHEESE 2KG"
+                "DAIRYMONT CREAM CHEESE 2KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "Confidence": 0.25641025641025644,
             "Lift": 17.896692679301378,
@@ -441,8 +441,8 @@
         },
         {
             "LHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
-                "DAIRYMONT CREAM CHEESE 2KG"
+                "DAIRYMONT CREAM CHEESE 2KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "RHS": [
                 "MARGARINE PALFFY UNSALTED 15KG",
@@ -629,8 +629,8 @@
         },
         {
             "LHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
                 "DAIRYMONT CREAM CHEESE 2KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
                 "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
             ],
             "RHS": [
@@ -652,8 +652,8 @@
                 "MARGARINE PALFFY UNSALTED 15KG"
             ],
             "RHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
-                "DAIRYMONT CREAM CHEESE 2KG"
+                "DAIRYMONT CREAM CHEESE 2KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "Confidence": 0.20569620253164558,
             "Lift": 14.356998715831958,
@@ -668,8 +668,8 @@
         },
         {
             "LHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
-                "DAIRYMONT CREAM CHEESE 2KG"
+                "DAIRYMONT CREAM CHEESE 2KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "RHS": [
                 "MARGARINE PALFFY UNSALTED 15KG"
@@ -691,8 +691,8 @@
                 "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
             ],
             "RHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
-                "MARGARINE PALFFY UNSALTED 15KG"
+                "MARGARINE PALFFY UNSALTED 15KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "Confidence": 0.3732394366197183,
             "Lift": 14.266040688575899,
@@ -707,12 +707,12 @@
         },
         {
             "LHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
-                "MARGARINE PALFFY UNSALTED 15KG"
+                "MARGARINE PALFFY UNSALTED 15KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG",
-                "VIVO CLASSICO SHEET MARGARINE 1 KG"
+                "VIVO CLASSICO SHEET MARGARINE 1 KG",
+                "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
             ],
             "Confidence": 0.4206349206349206,
             "Lift": 14.266040688575899,
@@ -770,8 +770,8 @@
                 "MARGARINE PALFFY UNSALTED 15KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG",
-                "VIVO CLASSICO SHEET MARGARINE 1 KG"
+                "VIVO CLASSICO SHEET MARGARINE 1 KG",
+                "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
             ],
             "Confidence": 0.4098360655737705,
             "Lift": 13.899792195797739,
@@ -982,8 +982,8 @@
                 "MARGARINE PALFFY UNSALTED 15KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG",
-                "VIVO CLASSICO SHEET MARGARINE 1 KG"
+                "VIVO CLASSICO SHEET MARGARINE 1 KG",
+                "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
             ],
             "Confidence": 0.3670886075949367,
             "Lift": 12.449991085755038,
@@ -1038,8 +1038,8 @@
         },
         {
             "LHS": [
-                "HEINZ TOMATO KETCHUP 300G",
-                "HEINZ CHILLI SAUCE 300G"
+                "HEINZ CHILLI SAUCE 300G",
+                "HEINZ TOMATO KETCHUP 300G"
             ],
             "RHS": [
                 "HEINZ TOMATO KETCHUP A10 3.3KG"
@@ -1060,8 +1060,8 @@
                 "HEINZ TOMATO KETCHUP A10 3.3KG"
             ],
             "RHS": [
-                "HEINZ TOMATO KETCHUP 300G",
-                "HEINZ CHILLI SAUCE 300G"
+                "HEINZ CHILLI SAUCE 300G",
+                "HEINZ TOMATO KETCHUP 300G"
             ],
             "Confidence": 0.2,
             "Lift": 11.746341463414634,
@@ -1114,9 +1114,9 @@
         },
         {
             "LHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
                 "DAIRYMONT CREAM CHEESE 2KG",
-                "MARGARINE PALFFY UNSALTED 15KG"
+                "MARGARINE PALFFY UNSALTED 15KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
@@ -1170,8 +1170,8 @@
         },
         {
             "LHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
-                "DAIRYMONT CREAM CHEESE 2KG"
+                "DAIRYMONT CREAM CHEESE 2KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
@@ -1192,8 +1192,8 @@
                 "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
             ],
             "RHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
-                "MARGARINE PALFFY UNSALTED 15KG"
+                "MARGARINE PALFFY UNSALTED 15KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "Confidence": 0.2853403141361256,
             "Lift": 10.90634089586969,
@@ -1208,8 +1208,8 @@
         },
         {
             "LHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
-                "MARGARINE PALFFY UNSALTED 15KG"
+                "MARGARINE PALFFY UNSALTED 15KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
@@ -1227,8 +1227,8 @@
         },
         {
             "LHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
                 "MARGARINE PALFFY UNSALTED 15KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
                 "VIVO CLASSICO SHEET MARGARINE 1 KG"
             ],
             "RHS": [
@@ -1247,8 +1247,8 @@
         },
         {
             "LHS": [
-                "FROMAGIO CHEESE GRATED 1KG",
-                "MARGARINE PALFFY UNSALTED 15KG"
+                "MARGARINE PALFFY UNSALTED 15KG",
+                "FROMAGIO CHEESE GRATED 1KG"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
@@ -1584,8 +1584,8 @@
         },
         {
             "LHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
                 "MARGARINE PALFFY UNSALTED 15KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
                 "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
             ],
             "RHS": [
@@ -1645,9 +1645,9 @@
                 "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG",
                 "MARGARINE PALFFY UNSALTED 15KG",
-                "VIVO CLASSICO SHEET MARGARINE 1 KG"
+                "VIVO CLASSICO SHEET MARGARINE 1 KG",
+                "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
             ],
             "Confidence": 0.20152091254752852,
             "Lift": 8.366592369214631,
@@ -1662,8 +1662,8 @@
         },
         {
             "LHS": [
-                "VIVO CLASSICO SHEET MARGARINE 1 KG",
                 "MARGARINE PALFFY UNSALTED 15KG",
+                "VIVO CLASSICO SHEET MARGARINE 1 KG",
                 "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
             ],
             "RHS": [
@@ -1685,8 +1685,8 @@
                 "DAIRYMONT CREAM CHEESE 2KG"
             ],
             "RHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
-                "MARGARINE PALFFY UNSALTED 15KG"
+                "MARGARINE PALFFY UNSALTED 15KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "Confidence": 0.21103896103896103,
             "Lift": 8.066378066378066,
@@ -1701,8 +1701,8 @@
         },
         {
             "LHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
-                "MARGARINE PALFFY UNSALTED 15KG"
+                "MARGARINE PALFFY UNSALTED 15KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "RHS": [
                 "DAIRYMONT CREAM CHEESE 2KG"
@@ -1875,8 +1875,8 @@
                 "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG",
-                "VIVO CLASSICO SHEET MARGARINE 1 KG"
+                "VIVO CLASSICO SHEET MARGARINE 1 KG",
+                "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
             ],
             "Confidence": 0.20912547528517111,
             "Lift": 7.092593584319607,
@@ -1910,8 +1910,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG",
@@ -1934,8 +1934,8 @@
                 "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.33879781420765026,
             "Lift": 6.855673416907747,
@@ -1950,8 +1950,8 @@
         },
         {
             "LHS": [
-                "VIVO CLASSICO SHEET MARGARINE 1 KG",
                 "MARGARINE PALFFY UNSALTED 15KG",
+                "VIVO CLASSICO SHEET MARGARINE 1 KG",
                 "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
             ],
             "RHS": [
@@ -1974,8 +1974,8 @@
                 "CREAM CHEESE 2KG"
             ],
             "RHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "Confidence": 0.32155477031802115,
             "Lift": 6.7330772776156085,
@@ -1990,8 +1990,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -2014,8 +2014,8 @@
                 "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "Confidence": 0.31693989071038253,
             "Lift": 6.6364457115704445,
@@ -2030,8 +2030,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG",
@@ -2050,12 +2050,12 @@
         },
         {
             "LHS": [
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.496,
             "Lift": 6.562461538461539,
@@ -2070,8 +2070,8 @@
         },
         {
             "LHS": [
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG",
@@ -2225,8 +2225,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -2249,8 +2249,8 @@
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.4682080924855491,
             "Lift": 6.194753223654958,
@@ -2325,8 +2325,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.304093567251462,
             "Lift": 6.15342277261782,
@@ -2341,8 +2341,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG",
@@ -2397,12 +2397,12 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.45217391304347826,
             "Lift": 5.982608695652174,
@@ -2417,12 +2417,12 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "Confidence": 0.2857142857142857,
             "Lift": 5.982608695652173,
@@ -2492,8 +2492,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -2516,8 +2516,8 @@
                 "CREAM CHEESE 2KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.2862190812720848,
             "Lift": 5.791727291623363,
@@ -2589,8 +2589,8 @@
         },
         {
             "LHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
-                "MARGARINE PALFFY UNSALTED 15KG"
+                "MARGARINE PALFFY UNSALTED 15KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L"
             ],
             "RHS": [
                 "VIVO CLASSICO SHEET MARGARINE 1 KG"
@@ -2644,8 +2644,8 @@
         },
         {
             "LHS": [
-                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
                 "MARGARINE PALFFY UNSALTED 15KG",
+                "CREMIERE DE FRANCE UHT WHOLE MILK 1L",
                 "BOTTEGA ZELACHI SHREDDED MOZZARELLA CHEESE 1KG"
             ],
             "RHS": [
@@ -2668,8 +2668,8 @@
                 "CREAM CHEESE 2KG"
             ],
             "RHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "Confidence": 0.26104417670682734,
             "Lift": 5.466038065304698,
@@ -2684,12 +2684,12 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.5652173913043478,
             "Lift": 5.466038065304697,
@@ -2707,9 +2707,9 @@
                 "HEINZ YELLOW MUSTARD 255G"
             ],
             "RHS": [
+                "SUPER SWEET CUT CORN 1KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "SUPER SWEET CUT CORN 1KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "Confidence": 0.37404580152671757,
             "Lift": 5.458801758038399,
@@ -2747,8 +2747,8 @@
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.5549132947976878,
             "Lift": 5.366390417159969,
@@ -2767,8 +2767,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.3801169590643275,
             "Lift": 5.337152404821578,
@@ -2783,8 +2783,8 @@
         },
         {
             "LHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG",
@@ -2803,12 +2803,12 @@
         },
         {
             "LHS": [
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.544,
             "Lift": 5.260851405622491,
@@ -2827,8 +2827,8 @@
                 "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.37158469945355194,
             "Lift": 5.217352514776403,
@@ -2882,12 +2882,12 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.5210084033613446,
             "Lift": 5.038506969052682,
@@ -2906,8 +2906,8 @@
                 "CREAM CHEESE 2KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.24899598393574296,
             "Lift": 5.038506969052682,
@@ -2946,8 +2946,8 @@
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "Confidence": 0.25149700598802394,
             "Lift": 4.963973691960342,
@@ -2962,8 +2962,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -3060,8 +3060,8 @@
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "Confidence": 0.23652694610778444,
             "Lift": 4.952668575891695,
@@ -3076,8 +3076,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -3096,8 +3096,8 @@
         },
         {
             "LHS": [
-                "HEINZ YELLOW MUSTARD 255G",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "HEINZ YELLOW MUSTARD 255G"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
@@ -3120,8 +3120,8 @@
                 "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "Confidence": 0.24666666666666665,
             "Lift": 4.86863387978142,
@@ -3136,8 +3136,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -3176,12 +3176,12 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.34065934065934067,
             "Lift": 4.783135232114824,
@@ -3196,12 +3196,12 @@
         },
         {
             "LHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.36151603498542273,
             "Lift": 4.783135232114824,
@@ -3240,8 +3240,8 @@
                 "CREAM CHEESE 2KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.33922261484098937,
             "Lift": 4.762962428787769,
@@ -3256,8 +3256,8 @@
         },
         {
             "LHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -3372,8 +3372,8 @@
                 "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "Confidence": 0.22,
             "Lift": 4.606608695652174,
@@ -3388,8 +3388,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -3409,8 +3409,8 @@
         {
             "LHS": [
                 "CREAM CHEESE 2KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
@@ -3428,8 +3428,8 @@
         },
         {
             "LHS": [
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
@@ -3507,12 +3507,12 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "Confidence": 0.22689075630252103,
             "Lift": 4.478302796528448,
@@ -3527,12 +3527,12 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.2213114754098361,
             "Lift": 4.478302796528448,
@@ -3548,8 +3548,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
@@ -3610,8 +3610,8 @@
                 "CRESPO SLICED BLACK OLIVES 2840ML"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.4545454545454546,
             "Lift": 4.395764877692589,
@@ -3646,8 +3646,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
                 "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
@@ -3685,9 +3685,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "LAMBWESTON GREEN PEAS 1KG",
                 "CREAM CHEESE 2KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
@@ -3709,8 +3709,8 @@
                 "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.3257142857142857,
             "Lift": 4.309450549450549,
@@ -3761,9 +3761,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -3781,8 +3781,8 @@
         },
         {
             "LHS": [
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -3821,8 +3821,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -3880,8 +3880,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.5903614457831327,
             "Lift": 4.230923694779118,
@@ -3896,9 +3896,9 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -3917,8 +3917,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -3936,9 +3936,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -3956,8 +3956,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -3980,8 +3980,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.20519480519480518,
             "Lift": 4.152177234530176,
@@ -3999,8 +3999,8 @@
                 "CREAM CHEESE 2KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.20459770114942527,
             "Lift": 4.1400946585530765,
@@ -4015,8 +4015,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -4077,8 +4077,8 @@
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
                 "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG",
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "Confidence": 0.21775544388609716,
@@ -4114,9 +4114,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -4190,8 +4190,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
@@ -4250,8 +4250,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -4273,8 +4273,8 @@
                 "CREAM CHEESE 2KG"
             ],
             "RHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "Confidence": 0.2049469964664311,
             "Lift": 4.045183340091525,
@@ -4289,8 +4289,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -4309,8 +4309,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -4328,8 +4328,8 @@
         },
         {
             "LHS": [
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG",
@@ -4370,8 +4370,8 @@
                 "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.2857142857142857,
             "Lift": 4.011661807580174,
@@ -4386,9 +4386,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -4446,9 +4446,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -4565,8 +4565,8 @@
         {
             "LHS": [
                 "CREAM CHEESE 2KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -4587,8 +4587,8 @@
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.2981574539363484,
             "Lift": 3.944852467465533,
@@ -4603,8 +4603,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
@@ -4622,9 +4622,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -4705,9 +4705,9 @@
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
                 "CREAM CHEESE 2KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.20770519262981574,
             "Lift": 3.9074539363484084,
@@ -4722,9 +4722,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "SUPER SWEET CUT CORN 1KG",
                 "CREAM CHEESE 2KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
@@ -4742,9 +4742,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -4782,8 +4782,8 @@
         },
         {
             "LHS": [
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -4801,12 +4801,12 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.29098360655737704,
             "Lift": 3.849936948297604,
@@ -4861,8 +4861,8 @@
         {
             "LHS": [
                 "SUPER SWEET CUT CORN 1KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -4880,8 +4880,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -4920,8 +4920,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
                 "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
@@ -4940,9 +4940,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "CREAM CHEESE 2KG",
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -4960,9 +4960,9 @@
         },
         {
             "LHS": [
+                "LAMBWESTON GREEN PEAS 1KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -4980,9 +4980,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "CREAM CHEESE 2KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -5000,9 +5000,9 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -5024,8 +5024,8 @@
                 "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.5257142857142857,
             "Lift": 3.7676190476190476,
@@ -5040,9 +5040,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -5139,8 +5139,8 @@
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.3869346733668342,
             "Lift": 3.741922463724244,
@@ -5177,8 +5177,8 @@
                 "CREAM CHEESE 2KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.2655172413793104,
             "Lift": 3.7280788177339903,
@@ -5193,8 +5193,8 @@
         },
         {
             "LHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -5213,8 +5213,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -5256,8 +5256,8 @@
                 "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.38285714285714284,
             "Lift": 3.7024899598393572,
@@ -5272,12 +5272,12 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.5163934426229508,
             "Lift": 3.7008196721311477,
@@ -5293,8 +5293,8 @@
         {
             "LHS": [
                 "CREAM CHEESE 2KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -5312,12 +5312,12 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.26229508196721313,
             "Lift": 3.682837069253931,
@@ -5375,9 +5375,9 @@
                 "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
+                "SUPER SWEET CUT CORN 1KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "SUPER SWEET CUT CORN 1KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "Confidence": 0.251497005988024,
             "Lift": 3.670332063146435,
@@ -5392,9 +5392,9 @@
         },
         {
             "LHS": [
+                "SUPER SWEET CUT CORN 1KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "SUPER SWEET CUT CORN 1KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -5412,12 +5412,12 @@
         },
         {
             "LHS": [
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.512,
             "Lift": 3.6693333333333333,
@@ -5433,8 +5433,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -5455,8 +5455,8 @@
                 "HEINZ YELLOW MUSTARD 255G"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.5114503816793893,
             "Lift": 3.665394402035623,
@@ -5471,9 +5471,9 @@
         },
         {
             "LHS": [
+                "SUPER SWEET CUT CORN 1KG",
                 "HEINZ YELLOW MUSTARD 255G",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "SUPER SWEET CUT CORN 1KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -5492,8 +5492,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -5531,8 +5531,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -5570,8 +5570,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG",
@@ -5632,8 +5632,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.2571428571428571,
             "Lift": 3.610495626822157,
@@ -5648,8 +5648,8 @@
         },
         {
             "LHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -5668,8 +5668,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -5692,8 +5692,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.2727272727272727,
             "Lift": 3.6083916083916083,
@@ -5728,8 +5728,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG",
@@ -5768,8 +5768,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -5788,8 +5788,8 @@
         },
         {
             "LHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "BOTTEGA ZELACHI CHEDDAR CHEESE BLOCK 2KG"
+                "BOTTEGA ZELACHI CHEDDAR CHEESE BLOCK 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -5807,9 +5807,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -5846,9 +5846,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -5886,8 +5886,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -5906,8 +5906,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -5926,8 +5926,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -5945,9 +5945,9 @@
         },
         {
             "LHS": [
+                "SUPER SWEET CUT CORN 1KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "SUPER SWEET CUT CORN 1KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -5968,9 +5968,9 @@
                 "CONAPROLE UHT MILK FULL CREAM 1L"
             ],
             "RHS": [
+                "SUPER SWEET CUT CORN 1KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "SUPER SWEET CUT CORN 1KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "Confidence": 0.24421965317919075,
             "Lift": 3.5641268173060077,
@@ -5989,8 +5989,8 @@
                 "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.4972677595628415,
             "Lift": 3.563752276867031,
@@ -6025,8 +6025,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
                 "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
@@ -6085,9 +6085,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -6105,8 +6105,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -6145,9 +6145,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -6166,8 +6166,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -6185,8 +6185,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG",
@@ -6205,9 +6205,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "LAMBWESTON GREEN PEAS 1KG",
                 "CREAM CHEESE 2KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -6263,9 +6263,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "SUPER SWEET CUT CORN 1KG",
                 "CREAM CHEESE 2KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -6283,8 +6283,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG",
@@ -6303,12 +6303,12 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.3524590163934426,
             "Lift": 3.408519323194417,
@@ -6381,8 +6381,8 @@
         },
         {
             "LHS": [
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -6461,8 +6461,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -6520,8 +6520,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -6539,8 +6539,8 @@
         },
         {
             "LHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -6563,8 +6563,8 @@
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.23952095808383236,
             "Lift": 3.3630697788097277,
@@ -6617,8 +6617,8 @@
         },
         {
             "LHS": [
-                "HEINZ YELLOW MUSTARD 255G",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "HEINZ YELLOW MUSTARD 255G"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -6637,8 +6637,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -6656,9 +6656,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -6680,8 +6680,8 @@
                 "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.2511111111111111,
             "Lift": 3.322393162393163,
@@ -6696,8 +6696,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -6736,9 +6736,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "CREAM CHEESE 2KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -6780,8 +6780,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.3428571428571428,
             "Lift": 3.3156626506024094,
@@ -6820,8 +6820,8 @@
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.46242774566473993,
             "Lift": 3.314065510597303,
@@ -6837,8 +6837,8 @@
         {
             "LHS": [
                 "SUPER SWEET CUT CORN 1KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -6896,8 +6896,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG",
@@ -6936,9 +6936,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "CREAM CHEESE 2KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -7035,8 +7035,8 @@
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.33832335329341323,
             "Lift": 3.2718178101628075,
@@ -7089,12 +7089,12 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.2318840579710145,
             "Lift": 3.2558414670215914,
@@ -7110,8 +7110,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -7167,12 +7167,12 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.45217391304347826,
             "Lift": 3.2405797101449276,
@@ -7188,8 +7188,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -7207,9 +7207,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -7265,8 +7265,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -7284,8 +7284,8 @@
         },
         {
             "LHS": [
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -7361,8 +7361,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -7384,8 +7384,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.22857142857142856,
             "Lift": 3.2093294460641397,
@@ -7400,8 +7400,8 @@
         },
         {
             "LHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
@@ -7438,8 +7438,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG",
@@ -7462,8 +7462,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.24222585924713586,
             "Lift": 3.2048344454236437,
@@ -7517,12 +7517,12 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.3297101449275362,
             "Lift": 3.188522204761073,
@@ -7537,8 +7537,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "BOTTEGA ZELACHI CHEDDAR CHEESE BLOCK 2KG"
+                "BOTTEGA ZELACHI CHEDDAR CHEESE BLOCK 2KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -7556,8 +7556,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -7576,8 +7576,8 @@
         {
             "LHS": [
                 "CREAM CHEESE 2KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -7633,8 +7633,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -7652,9 +7652,9 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -7672,9 +7672,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -7733,8 +7733,8 @@
                 "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.44111776447105794,
             "Lift": 3.1613439787092488,
@@ -7749,8 +7749,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -7808,9 +7808,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -7828,8 +7828,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -7852,8 +7852,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.43896103896103894,
             "Lift": 3.1458874458874457,
@@ -7872,8 +7872,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.3252747252747253,
             "Lift": 3.145628668520235,
@@ -7908,8 +7908,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -7985,8 +7985,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -8060,8 +8060,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG",
@@ -8084,8 +8084,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.43274853801169594,
             "Lift": 3.101364522417154,
@@ -8197,9 +8197,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "SUPER SWEET CUT CORN 1KG",
                 "CREAM CHEESE 2KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -8217,8 +8217,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -8236,9 +8236,9 @@
         },
         {
             "LHS": [
+                "LAMBWESTON GREEN PEAS 1KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -8256,8 +8256,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG",
@@ -8280,8 +8280,8 @@
                 "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.23155216284987276,
             "Lift": 3.063613231552163,
@@ -8299,8 +8299,8 @@
                 "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.23153692614770463,
             "Lift": 3.0634116382619383,
@@ -8315,8 +8315,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -8390,8 +8390,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -8409,9 +8409,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -8581,9 +8581,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "LAMBWESTON GREEN PEAS 1KG",
                 "CREAM CHEESE 2KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -8637,8 +8637,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "BOTTEGA ZELACHI CHEDDAR CHEESE BLOCK 2KG"
+                "BOTTEGA ZELACHI CHEDDAR CHEESE BLOCK 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -8656,9 +8656,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "CREAM CHEESE 2KG",
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -8676,8 +8676,8 @@
         },
         {
             "LHS": [
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -8751,8 +8751,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -8788,9 +8788,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "CREAM CHEESE 2KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -8848,8 +8848,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -8867,9 +8867,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
                 "LAMBWESTON GREEN PEAS 1KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -8888,8 +8888,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -8907,9 +8907,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -8927,8 +8927,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
                 "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
@@ -8951,8 +8951,8 @@
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "Confidence": 0.24251497005988024,
             "Lift": 2.883832335329341,
@@ -8968,8 +8968,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -9027,8 +9027,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -9164,8 +9164,8 @@
                 "CREAM CHEESE 2KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.3992932862190813,
             "Lift": 2.8616018845700824,
@@ -9200,8 +9200,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -9219,9 +9219,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -9239,9 +9239,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -9259,9 +9259,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -9297,12 +9297,12 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "Confidence": 0.2377049180327869,
             "Lift": 2.826634284557782,
@@ -9360,8 +9360,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "Confidence": 0.23636363636363633,
             "Lift": 2.810684624017957,
@@ -9376,8 +9376,8 @@
         },
         {
             "LHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -9399,8 +9399,8 @@
                 "CONAPROLE UHT MILK FULL CREAM 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.21242774566473988,
             "Lift": 2.8105824811027125,
@@ -9415,8 +9415,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -9435,8 +9435,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -9454,9 +9454,9 @@
         },
         {
             "LHS": [
+                "LAMBWESTON GREEN PEAS 1KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
@@ -9493,8 +9493,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -9647,8 +9647,8 @@
                 "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.2834331337325349,
             "Lift": 2.7409919117588117,
@@ -9743,8 +9743,8 @@
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.2819383259911894,
             "Lift": 2.7265361003485307,
@@ -9778,8 +9778,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -9817,8 +9817,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -9837,8 +9837,8 @@
         {
             "LHS": [
                 "HEINZ YELLOW MUSTARD 255G",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -9856,8 +9856,8 @@
         },
         {
             "LHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -9879,8 +9879,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "Confidence": 0.22857142857142856,
             "Lift": 2.7180246913580244,
@@ -9895,8 +9895,8 @@
         },
         {
             "LHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
@@ -9971,12 +9971,12 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "Confidence": 0.2246376811594203,
             "Lift": 2.671247092503131,
@@ -9992,8 +9992,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -10029,8 +10029,8 @@
         },
         {
             "LHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -10048,8 +10048,8 @@
         },
         {
             "LHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -10068,8 +10068,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -10107,8 +10107,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
@@ -10129,8 +10129,8 @@
                 "CONAPROLE UHT MILK FULL CREAM 1L"
             ],
             "RHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "Confidence": 0.2745664739884393,
             "Lift": 2.65524525849061,
@@ -10167,8 +10167,8 @@
                 "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.2004698512137823,
             "Lift": 2.652370339136197,
@@ -10183,8 +10183,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -10202,9 +10202,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -10281,8 +10281,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -10340,8 +10340,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -10359,8 +10359,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "BOTTEGA ZELACHI CHEDDAR CHEESE BLOCK 2KG"
+                "BOTTEGA ZELACHI CHEDDAR CHEESE BLOCK 2KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -10418,8 +10418,8 @@
         {
             "LHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -10474,8 +10474,8 @@
         {
             "LHS": [
                 "SUPER SWEET CUT CORN 1KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
@@ -10493,9 +10493,9 @@
         },
         {
             "LHS": [
+                "SUPER SWEET CUT CORN 1KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "SUPER SWEET CUT CORN 1KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
@@ -10517,8 +10517,8 @@
                 "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "Confidence": 0.21333333333333332,
             "Lift": 2.5368230452674894,
@@ -10533,8 +10533,8 @@
         },
         {
             "LHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L",
@@ -10572,9 +10572,9 @@
         },
         {
             "LHS": [
+                "LAMBWESTON GREEN PEAS 1KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -10630,8 +10630,8 @@
         },
         {
             "LHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG",
@@ -10654,8 +10654,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "Confidence": 0.2127659574468085,
             "Lift": 2.530076175466246,
@@ -10673,8 +10673,8 @@
                 "CONAPROLE UHT MILK FULL CREAM 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.3511560693641618,
             "Lift": 2.5166184971098264,
@@ -10689,8 +10689,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -10746,8 +10746,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
@@ -10765,9 +10765,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -10824,8 +10824,8 @@
         },
         {
             "LHS": [
-                "HEINZ YELLOW MUSTARD 255G",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "HEINZ YELLOW MUSTARD 255G"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -10843,9 +10843,9 @@
         },
         {
             "LHS": [
+                "SUPER SWEET CUT CORN 1KG",
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "SUPER SWEET CUT CORN 1KG"
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -10863,9 +10863,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "CREAM CHEESE 2KG",
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -10902,9 +10902,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -11015,8 +11015,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "BOTTEGA ZELACHI CHEDDAR CHEESE BLOCK 2KG"
+                "BOTTEGA ZELACHI CHEDDAR CHEESE BLOCK 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -11089,8 +11089,8 @@
         },
         {
             "LHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "BOTTEGA ZELACHI CHEDDAR CHEESE BLOCK 2KG"
+                "BOTTEGA ZELACHI CHEDDAR CHEESE BLOCK 2KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -11127,8 +11127,8 @@
         {
             "LHS": [
                 "SUPER SWEET CUT CORN 1KG",
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -11296,8 +11296,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
@@ -11353,9 +11353,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
                 "LAMBWESTON GREEN PEAS 1KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
@@ -11373,8 +11373,8 @@
         },
         {
             "LHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
@@ -11392,8 +11392,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -11411,8 +11411,8 @@
         },
         {
             "LHS": [
-                "TATUA WHIPPING CREAM 36% 1L",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -11506,9 +11506,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
                 "LAMBWESTON GREEN PEAS 1KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -11526,9 +11526,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "LAMBWESTON GREEN PEAS 1KG",
                 "CREAM CHEESE 2KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -11582,8 +11582,8 @@
         },
         {
             "LHS": [
-                "LAMBWESTON GREEN PEAS 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "LAMBWESTON GREEN PEAS 1KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -11621,9 +11621,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -11696,12 +11696,12 @@
         },
         {
             "LHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.3061728395061728,
             "Lift": 2.1942386831275718,
@@ -11716,8 +11716,8 @@
         },
         {
             "LHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "CONAPROLE UHT MILK FULL CREAM 1L"
@@ -11735,9 +11735,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -11827,8 +11827,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -11846,8 +11846,8 @@
         },
         {
             "LHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "SUPER SWEET CUT CORN 1KG"
@@ -11865,9 +11865,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
+                "SUPER SWEET CUT CORN 1KG",
                 "CREAM CHEESE 2KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -11922,9 +11922,9 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
                 "LAMBWESTON GREEN PEAS 1KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -11981,8 +11981,8 @@
                 "CREAM CHEESE 2KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.2942528735632184,
             "Lift": 2.1088122605363986,
@@ -11997,8 +11997,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "CREAM CHEESE 2KG"
@@ -12016,9 +12016,9 @@
         },
         {
             "LHS": [
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
                 "SUPER SWEET CUT CORN 1KG",
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -12036,8 +12036,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "LAMBWESTON GREEN PEAS 1KG"
+                "LAMBWESTON GREEN PEAS 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -12110,8 +12110,8 @@
         },
         {
             "LHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "LAMBWESTON GREEN PEAS 1KG"
@@ -12132,8 +12132,8 @@
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.288107202680067,
             "Lift": 2.0647682858738134,
@@ -12148,8 +12148,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "FROMAGIO CHEESE BLOCK ~3.5KG"
@@ -12170,8 +12170,8 @@
                 "BOTTEGA ZELACHI CHEDDAR CHEESE BLOCK 2KG"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.2863849765258216,
             "Lift": 2.0524256651017216,
@@ -12350,8 +12350,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "CREAM CHEESE 2KG"
+                "CREAM CHEESE 2KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -12425,8 +12425,8 @@
         },
         {
             "LHS": [
-                "SUPER SWEET CUT CORN 1KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "SUPER SWEET CUT CORN 1KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -12502,8 +12502,8 @@
                 "TATUA WHIPPING CREAM 36% 1L"
             ],
             "RHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "Confidence": 0.25482625482625487,
             "Lift": 1.8262548262548266,
@@ -12518,8 +12518,8 @@
         },
         {
             "LHS": [
-                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG",
-                "SUPER SWEET CUT CORN 1KG"
+                "SUPER SWEET CUT CORN 1KG",
+                "BOTTEGA ZELACHI MARGARINE PALFFY U/S 5KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"
@@ -12627,8 +12627,8 @@
         },
         {
             "LHS": [
-                "CREAM CHEESE 2KG",
-                "FROMAGIO CHEESE BLOCK ~3.5KG"
+                "FROMAGIO CHEESE BLOCK ~3.5KG",
+                "CREAM CHEESE 2KG"
             ],
             "RHS": [
                 "TATUA WHIPPING CREAM 36% 1L"

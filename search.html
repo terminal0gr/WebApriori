@@ -1199,19 +1199,21 @@
 				//cover both null and undefined circumstances and if it is a JSON obj
 				if (response!=undefined && response!=null) {
 					res=response;
-					try {
-						res=JSON.parse(res.message);
-					}
-					catch(err) {
-						MyModal("Error2", err.message + res);
-						return;
-					}
 
 					try {
 						if (jqXHR.status!=200) {
 							MyModal(res.title + '(' + jqXHR.status + ')', res.message);
 						}
 						else {	
+
+							try {
+								res=JSON.parse(res.message);
+							}
+							catch(err) {
+								MyModal("Error2", err.message + res);
+								return;
+							}
+
 							itemsSelectionDiv.innerHTML="";
 
 							res.forEach(function(data) {

@@ -6,16 +6,17 @@
 12/06/2024 (1) Extra parameters / item names field must be initialized and beautified!
                is in search.html ln 648 is the point
 12/02/2024 Apriori Engine Main05.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv. Should be checked After (1)
-24/06/2024 Search.Html Ln:192 TODO
-             The existence of  participating items must not be mandatory. Only for filter purposes. 
-               08/07/2024 Now working on 2,3 dataset types in order
-12/08/2024 Filter participating items. Must working before running arm when choosing Group and value Argument.               
+15/08/2024 Thorough Test for all datasets in 'filter participating items' must be done!
+15/08/2024 In batch participating items, and input is needed in order to declare value only in that items.
+
 
 12/07/2024 Real multithread environment
 16/06/2024 Upload AutoML WebApriori to NIREAS
 
 
 
+DONE - V01.00.00 15/08/2024 24/06/2024 Search.Html Ln:192. The existence of  participating items must not be mandatory. Only for filter purposes. 
+DONE - V01.00.00 15/08/2024 12/08/2024 Filter participating items. Must working before running arm when choosing Group and value Argument.               
 DONE - V01.00.00 12/07/2024 19/06/2024 type 3-SI  Dataset type absent item manipulation
 DONE - V01.00.00 12/07/2024 24/06/2024 RetrieveRules.php ln 153 --> Creation / append to metadatafile.
 DONE - V01.00.00 11/07/2024 24/06/2024 Won't show last retrieved ARM fot type 2 datasets e.g 2sales.csv. Fixed in retrieveInputParameters.php Ln 67
