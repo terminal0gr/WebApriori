@@ -1810,6 +1810,21 @@ class,age,sex,survived<br>
 					</div>
 				</div>
 
+				<div class="row">
+					<div class="col-4">
+						<p class="text-center text-primary">Apply the function above to items that </p>
+					</div>	
+					<div class="col-4">
+						<select id="stringFilterType" class="form-select form-select-sm">
+							<option value="0" selected>Start with</option>
+							<option value="1">contains</option>
+							<option value="2">match exactly</option>
+						</select>
+					</div>
+					<div class=""col-4">
+						<input type="text" id="subStr1" class="primary " data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="The separator of the items in the CSV file. The most common characters used as delimiters are ';', ',' '{TAB}' '{SPACE}' and (:). Keep in mind that especially the {TAB} character is presended by {TAB} or \t string." value=";" placeholder=";">		
+					</div>
+
 
 				<div class="container ">
 					<div id="itemsSelectionDiv" class="row row-cols-sm-3 row-cols-md-4 row-cols-xl-5">
