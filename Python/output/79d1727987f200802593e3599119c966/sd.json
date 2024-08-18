@@ -5,13 +5,11 @@
     "max_length": 4,
     "ssort": -3,
     "datasetName": "sd.csv",
-    "public": 0,
     "redundantRemoveType": 0,
-    "datasetArgs": "",
     "Records": 7501,
-    "RecordsCreationTime": "0.060",
+    "RecordsCreationTime": "0.031",
     "RulesCount": 96,
-    "RulesCreationTime": "0.085",
+    "RulesCreationTime": "0.050",
     "rules": [
         {
             "LHS": [
@@ -254,8 +252,8 @@
         },
         {
             "LHS": [
-                "chocolate",
-                "spaghetti"
+                "spaghetti",
+                "chocolate"
             ],
             "RHS": [
                 "milk"
@@ -330,8 +328,8 @@
         },
         {
             "LHS": [
-                "milk",
-                "ground beef"
+                "ground beef",
+                "milk"
             ],
             "RHS": [
                 "mineral water"
@@ -479,8 +477,8 @@
         },
         {
             "LHS": [
-                "chocolate",
-                "ground beef"
+                "ground beef",
+                "chocolate"
             ],
             "RHS": [
                 "mineral water"
@@ -517,8 +515,8 @@
         },
         {
             "LHS": [
-                "milk",
-                "frozen vegetables"
+                "frozen vegetables",
+                "milk"
             ],
             "RHS": [
                 "mineral water"
@@ -536,8 +534,8 @@
         },
         {
             "LHS": [
-                "chocolate",
-                "milk"
+                "milk",
+                "chocolate"
             ],
             "RHS": [
                 "spaghetti"
@@ -796,8 +794,8 @@
         },
         {
             "LHS": [
-                "chocolate",
-                "milk"
+                "milk",
+                "chocolate"
             ],
             "RHS": [
                 "mineral water"
@@ -815,8 +813,8 @@
         },
         {
             "LHS": [
-                "spaghetti",
-                "ground beef"
+                "ground beef",
+                "spaghetti"
             ],
             "RHS": [
                 "mineral water"
@@ -834,8 +832,8 @@
         },
         {
             "LHS": [
-                "chocolate",
-                "eggs"
+                "eggs",
+                "chocolate"
             ],
             "RHS": [
                 "spaghetti"
@@ -945,8 +943,8 @@
         },
         {
             "LHS": [
-                "milk",
-                "eggs"
+                "eggs",
+                "milk"
             ],
             "RHS": [
                 "mineral water"
@@ -1165,8 +1163,8 @@
         },
         {
             "LHS": [
-                "chocolate",
-                "eggs"
+                "eggs",
+                "chocolate"
             ],
             "RHS": [
                 "mineral water"
@@ -1184,8 +1182,8 @@
         },
         {
             "LHS": [
-                "chocolate",
-                "spaghetti"
+                "spaghetti",
+                "chocolate"
             ],
             "RHS": [
                 "mineral water"

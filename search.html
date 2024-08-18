@@ -1289,16 +1289,57 @@
 			}
 		}
 
-		function BatchChangeParticipatingItems(value) {
+		function BatchChangeParticipatingItems(value, filterType='0', searchstr="") {
 			let parentElement = document.getElementById("itemsSelectionDiv");
 			let children = parentElement.children;
 
 			for (let i = 0; i < children.length; i++) {
-    			children[i].children[value+1].children[0].checked=true;
+				if (searchstr=='') {
+					children[i].children[value+1].children[0].checked=true;
+				} else {
+					switch (filterType) {
+					case '0':
+						if (children[i].children[0].innerText.startsWith(searchstr)) {
+							children[i].children[value+1].children[0].checked=true;
+						}
+						break;
+					case '1':
+						if (children[i].children[0].innerText.includes(searchstr)) {
+							children[i].children[value+1].children[0].checked=true;
+						}
+						break;
+					case '2':
+						if (searchstr == children[i].children[0].innerText) {
+							children[i].children[value+1].children[0].checked=true;
+						}
+						break;
+					}
+				}				
 			}
+
+			document.getElementById("subStr1").value="";
+
 		}
 
 		function BatchActionsParticipatingItems(value) {
+
+			str1="all the items";
+			str=document.getElementById("subStr1").value;
+			filterType='0';
+			if (str!="") {
+				filterType=document.getElementById("stringFilterType").value;
+				switch (filterType) {
+					case '0':
+						str1 = "all the items starting with the text " + str;
+						break;
+					case '1':
+						str1 = "all the items including the text " + str;
+						break;
+					case '2':
+						str1 = "the items that match " + str;
+						break;
+				}
+			}
 
 			switch (value) {
 				case -1:
@@ -1309,33 +1350,33 @@
 					retrieveParticipatingItems();
 					return;
 
-					case 0:
-					if (!confirm("Waring!!!\nAre you sure you want to include all the items?")) {
+				case 0:
+					if (!confirm("Waring!!!\nAre you sure you want to include " + str1 + "?")) {
 						return;
 					};
 
 					break;
 				case 1:
-					if (!confirm("Waring!!!\nAre you sure you want to declare all the items appear only on the left-hand side (LHS)?")) {
+					if (!confirm("Waring!!!\nAre you sure you want to declare " + str1 + " appear only on the left-hand side (LHS)?")) {
 						return;
 					};
 
 					break;
 				case 2:
-					if (!confirm("Waring!!!\nAre you sure you want to declare all the items appear only on the right-hand side (RHS)?")) {
+					if (!confirm("Waring!!!\nAre you sure you want to declare " + str1 + " appear only on the right-hand side (RHS)?")) {
 						return;
 					};
 
 					break;
 				case 3:
-					if (!confirm("Waring!!!\nAre you sure you want to exclude all the items?")) {
+					if (!confirm("Waring!!!\nAre you sure you want to exclude " + str1 + "?")) {
 						return;
 					};
 
 					break;
 			}
 
-			BatchChangeParticipatingItems(value);
+			BatchChangeParticipatingItems(value, filterType, str);
 
 		}
 
@@ -1821,9 +1862,10 @@ class,age,sex,survived<br>
 							<option value="2">match exactly</option>
 						</select>
 					</div>
-					<div class=""col-4">
-						<input type="text" id="subStr1" class="primary " data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="The separator of the items in the CSV file. The most common characters used as delimiters are ';', ',' '{TAB}' '{SPACE}' and (:). Keep in mind that especially the {TAB} character is presended by {TAB} or \t string." value=";" placeholder=";">		
+					<div class="col-4">
+						<input type="text" id="subStr1" class="form-control form-control-sm" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="The separator of the items in the CSV file. The most common characters used as delimiters are ';', ',' '{TAB}' '{SPACE}' and (:). Keep in mind that especially the {TAB} character is presended by {TAB} or \t string." value="" placeholder="text segment">		
 					</div>
+				</div>
 
 
 				<div class="container ">

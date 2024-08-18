@@ -3,18 +3,19 @@
 10/06/2024 AutoML type 2-INV Dataset type for finding the qrouping and item column
 
 21/01/2024 Columns/items participating in LHS,RHS,Itemsets in 1,2,3,4 dataset types
-12/06/2024 (1) Extra parameters / item names field must be initialized and beautified!
-               is in search.html ln 648 is the point
 12/02/2024 Apriori Engine Main05.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv. Should be checked After (1)
-15/08/2024 Thorough Test for all datasets in 'filter participating items' must be done!
-15/08/2024 In batch participating items, and input is needed in order to declare value only in that items.
+12/06/2024 (1) Extra parameters / item names field must be initialized and beautified!
+               is in search.html ln 648 is the point15/08/2024 Thorough Test for all datasets in 'filter participating items' must be done!
+16/08/2024 Save filter participating items
+16/08/2024 Apriori engine must check filter participating items
+18/08/2024 Main05 Ln:225. The point where LHS, RHS can be filtered...
 
 
 12/07/2024 Real multithread environment
 16/06/2024 Upload AutoML WebApriori to NIREAS
 
 
-
+DONE - V01.00.00 16/08/2024 15/08/2024 In batch participating items, and input is needed in order to declare value only in that items.
 DONE - V01.00.00 15/08/2024 24/06/2024 Search.Html Ln:192. The existence of  participating items must not be mandatory. Only for filter purposes. 
 DONE - V01.00.00 15/08/2024 12/08/2024 Filter participating items. Must working before running arm when choosing Group and value Argument.               
 DONE - V01.00.00 12/07/2024 19/06/2024 type 3-SI  Dataset type absent item manipulation

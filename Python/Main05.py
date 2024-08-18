@@ -220,7 +220,7 @@ def gen_rule_statistics(itemset_manager, itemset, **kwargs):
 
     items = itemset.items
     sorted_items = sorted(items)
-    for base_length in range(len(items)):
+    for base_length in range(1,len(items)):
         for combination_set in combinations(sorted_items, base_length):
             LHS = frozenset(combination_set)
             RHS = frozenset(items.difference(LHS))
