@@ -6,7 +6,7 @@
 12/02/2024 Apriori Engine Main05.py won't work with many arguments (>700) e.g 3_L-0012_2023.csv. Should be checked After (1)
 12/06/2024 (1) Extra parameters / item names field must be initialized and beautified!
                is in search.html ln 648 is the point15/08/2024 Thorough Test for all datasets in 'filter participating items' must be done!
-16/08/2024 Save filter participating items
+16/08/2024 Save filter participating items Search.html Ln:1290
 16/08/2024 Apriori engine must check filter participating items
 18/08/2024 Main05 Ln:225. The point where LHS, RHS can be filtered...
 

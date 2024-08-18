@@ -45,7 +45,7 @@
 		var resultsTable;
 		var ajaxReq;
 		var tmpHtml;
-		var metadataObj;
+		var askForSaveParticipatingItems=false;
 
 		$(function() {
 
@@ -748,10 +748,9 @@
 				}
 			}) 	
 			.done(function(response, textStatus, jqXHR) {
-				//cover both null and undefined circumstanses and if it is a JSON obj
+				//cover both null and undefined circumstances and if it is a JSON obj
 				if (response!=undefined && response!=null && isJSON(response)) {
 					res=JSON.parse(response);
-					metadataObj=res;
 					try {
 						if (jqXHR.status!=200) {
 							MyModal(jqXHR.status+res.title, res.message);
@@ -791,7 +790,7 @@
 					}
 				}
 				else {
-					//cover both null and undefined circumstanses
+					//cover both null and undefined circumstances
 					if (response!=undefined && response!=null) {
 						MyModal("Error", response);
 					} else {
@@ -1264,13 +1263,53 @@
 			});					
 		}
 			
+		function saveParticipatingItems() {
+
+			//Check if user has chosen any dataset.
+			var dataset =  document.getElementById("dataset");
+			if(!dataset.value){
+				MyModal("Info function aborted!", "No dataset has been selected!");
+				return;
+			}
+
+			let parentElement = document.getElementById("itemsSelectionDiv");
+			let children = parentElement.children;
+
+			// Initialize an empty object
+			let excludedItems = {};
+
+			for (let i = 0; i < children.length; i++) {
+
+				for (let j=2; j<children[i].children.length; j++) {
+					if (children[i].children[j].children[0].checked==true) {
+						excludedItems[children[i].children[0].innerText]=j-1;
+					}
+				}
+			}			
+
+			if (Object.keys(excludedItems).length>0) {
+				MyModal(Object.keys(excludedItems).length,excludedItems);
+
+
+				//TODO Save to a file...
+				excludedItems = JSON.stringify(excludedItems);
+			}
+
+			}
+
 		function filterParticipatingItems() {
 
 			const element=document.getElementById("itemsSelection");
 			if (!isElementHidden(element)) {
+				if (askForSaveParticipatingItems) {
+					saveParticipatingItems();
+					askForSaveParticipatingItems=false;
+				}
 				toggleDisplay('#itemsSelection');
 				return;
 			}
+
+			askForSaveParticipatingItems=true;
 
 			//Check if user has chosen any dataset.
 			var dataset =  document.getElementById("dataset");
@@ -1826,7 +1865,7 @@ class,age,sex,survived<br>
 						<h4 class="text-center text-primary">Items participating in ARM selection</h4>
 					</div>
 					<div class="col-1">
-						<button type="button" class="btn btn-sm" onclick="toggleDisplay('#itemsSelection')" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Hides dataset type guide section"><img src="./images/close24grey.png" width="24" height="24" alt="hide">	</button>
+						<button type="button" class="btn btn-sm" onclick="filterParticipatingItems()" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Hides dataset type guide section"><img src="./images/close24grey.png" width="24" height="24" alt="hide">	</button>
 					</div>
 				</div>
 
