@@ -143,7 +143,7 @@
             "args": [
                 "79d1727987f200802593e3599119c966",
                 "titanic02.csv",
-                "0","0"
+                "0","1"
             ],
             "console": "integratedTerminal"
         },

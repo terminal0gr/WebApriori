@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from itertools import islice
 import csv
+import json
 
 #Detect if a file is in arff format
 def is_arff_file(file_path, Show_Errors=False):
@@ -76,3 +77,22 @@ def countDatasetRecords(filepath):
     with open(filepath, 'r', encoding='utf-8-sig') as file:
         line_count = sum(1 for line in file)
     return line_count
+
+def readJSONFromFile(filepath):
+
+    if not os.path.exists(filepath): 
+        return None
+    else:
+        try:
+
+            # Open the JSON file in read mode
+            with open(filepath, 'r') as file:
+                # Load the JSON data from the file
+                json_data = json.load(file)
+
+        except Exception as e:
+            return None
+        
+        # Now you can work with the JSON data as a Python dictionary or list
+        return json_data
+        

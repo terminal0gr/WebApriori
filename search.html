@@ -1215,9 +1215,16 @@
 
 							itemsSelectionDiv.innerHTML="";
 
-							res.forEach(function(data) {
-								itemFilter(data);
-							});
+							// Iterate over the object using a for...in loop
+							for (const key in res) {
+  								if (res.hasOwnProperty(key)) {
+									itemFilter(key,res[key]);
+								}
+							}
+
+							// res.forEach(function(data) {
+							// 	itemFilter(data);
+							// });
 
 							const elementName='#itemsSelection'
 							$(elementName).find('[data-bs-toggle="tooltip"]').tooltip();
@@ -1287,15 +1294,75 @@
 				}
 			}			
 
+			var formData = new FormData();
+			formData.set("token",sessionStorage.getItem('token'));
+			formData.set("dataset",dataset.value);
 			if (Object.keys(excludedItems).length>0) {
-				MyModal(Object.keys(excludedItems).length,excludedItems);
-
-
-				//TODO Save to a file...
 				excludedItems = JSON.stringify(excludedItems);
+				formData.set("excludedParticipatingItems",excludedItems);
 			}
 
-			}
+			$.ajax({
+				url: 'phpfunctions/saveParticipatingItems.php',
+				method: 'POST',
+				dataType: 'json',
+				data: formData,
+				contentType: false,
+				cache: false,
+				processData:false,
+
+				beforeSend: function( xhr ) {
+				var element = document.getElementById('datasetInfo');
+				element.classList.add("d-none");
+				element.classList.remove("d-block");
+				var element = document.getElementById('datasetInfoSpinner');
+				element.classList.add("d-block");
+				element.classList.remove("d-none");
+				}
+			}) 	
+			.done(function(response, textStatus, jqXHR) {
+				//cover both null and undefined circumstances and if it is a JSON obj
+				if (response!=undefined && response!=null) {
+					res=response;
+
+					try {
+						MyModal(res.title + '(' + jqXHR.status + ')', res.message);
+					}
+					catch(err) {
+						MyModal("Error1", err.message);
+						return;
+					}
+				}
+				else {
+					MyModal("Error", "Unknown error occured");
+					return;
+				}
+			}).fail(function( jqXHR, textStatus, thrownError ) {
+				if (jqXHR.responseText) {
+					if (isJSON(jqXHR.responseText)) {
+						res=JSON.parse(jqXHR.responseText);
+						MyModal(res.title, res.message);
+						if (jqXHR.status>=400) {
+							setTimeout(function() {
+								sessionStorage.clear();
+								window.location.href='index.html';
+							}, 3000);	
+						}
+					}
+					else alert(jqXHR.responseText);
+				} else {
+					MyModal("Error",'Unknown error occured!');
+					return;
+				}
+			}).always(function() {
+				var element = document.getElementById('datasetInfoSpinner');
+				element.classList.add("d-none");
+				element.classList.remove("d-block");
+				var element = document.getElementById('datasetInfo');
+				element.classList.add("d-block");
+				element.classList.remove("d-none");		
+			});					
+		}
 
 		function filterParticipatingItems() {
 

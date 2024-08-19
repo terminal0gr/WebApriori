@@ -564,27 +564,71 @@ def output_association_rules(association_results, sort_index, descending=True, f
 def retrieveParticipatingItems(records):
     try:
 
-        # Use a set to store unique items
-        unique_items = set()
+        # # Use a set to store unique items
+        # unique_items = set()
 
-        # Iterate through each sublist and add items to the set
+        # # Iterate through each sublist and add items to the set
+        # for sublist in records:
+        #     for index, item in enumerate(sublist):
+
+        #         if hasHeader and datasetType==4 and 'header' in jsonData:
+        #             unique_items.add(str(jsonData['header'][index]) + '=' + str(item))
+        #         else:    
+        #             unique_items.add(str(item))
+
+        #         if len(unique_items)>max_items:
+        #             break
+
+        # # Convert the set back to a list
+        # uniqueItems = list(unique_items)
+
+        # uniqueItems.sort()
+
+        filepath=os.path.join('output', identity)
+        if not os.path.exists(filepath):
+            os.makedirs(filepath)
+
+        ext='.epi'
+
+        if public==0: #Private Dataset'
+            filepath = os.path.join('output', identity, os.path.splitext(datasetName)[0] + ext)
+        elif public==1: #Public Dataset
+            filepath=os.path.join('output', identity, 'p')
+            if not os.path.exists(filepath):
+                os.makedirs(filepath)
+            filepath = os.path.join('output', identity, 'p', os.path.splitext(datasetName)[0] + ext)
+
+        excludedItems=Global.readJSONFromFile(filepath)
+
+        # Initialize the dictionary
+        uniqueItems = {}
+
+        # Iterate through the list and populate the dictionary
         for sublist in records:
             for index, item in enumerate(sublist):
 
                 if hasHeader and datasetType==4 and 'header' in jsonData:
-                    unique_items.add(str(jsonData['header'][index]) + '=' + str(item))
+                    uniqueItem=str(jsonData['header'][index]) + '=' + str(item)
                 else:    
-                    unique_items.add(str(item))
+                    uniqueItem=str(item)
 
-                if len(unique_items)>max_items:
+                if uniqueItem not in uniqueItems:
+                     
+                    # Initialize it as a participating item
+                    uniqueItems[uniqueItem] = 0
+
+                    if excludedItems!=None:
+                        if uniqueItem in excludedItems:
+                            uniqueItems[uniqueItem] = excludedItems[uniqueItem]
+        
+                if len(uniqueItems)>max_items:
                     break
 
-        # Convert the set back to a list
-        unique_list = list(unique_items)
 
-        unique_list.sort()
+        # Sorting the dictionary by keys
+        uniqueItems = {key: uniqueItems[key] for key in sorted(uniqueItems)}
 
-        print(json.dumps(unique_list, indent=4)) 
+        print(json.dumps(uniqueItems, indent=4)) 
 
     except Exception as e:
         print(f"An error occurred: {e}")     
