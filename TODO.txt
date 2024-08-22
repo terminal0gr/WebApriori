@@ -9,6 +9,8 @@
 16/08/2024 Save filter participating items Search.html Ln:1290
 16/08/2024 Apriori engine must check filter participating items
 18/08/2024 Main05 Ln:225. The point where LHS, RHS can be filtered...
+22/08/2024 InitializeDatasetType2 ln 830 must be corrected
+22/08/2024 # must put in dataset table showing the row id.
 
 
 12/07/2024 Real multithread environment

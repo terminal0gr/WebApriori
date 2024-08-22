@@ -178,5 +178,5 @@
     "redundantRemoveType": 0,
     "participatingItems": "[]",
     "groupItem": "IDInvoice",
-    "valueItem": "DescriptionProduit"
+    "valueItem": "ProduitID"
 }

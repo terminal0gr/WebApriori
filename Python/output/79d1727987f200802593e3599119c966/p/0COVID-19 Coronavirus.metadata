@@ -1,77 +1,83 @@
 {
     "hasHeader": true,
     "header": [
-        "Umur (bulan)",
-        "Jenis Kelamin",
-        "Tinggi Badan (cm)",
-        "Status Gizi"
+        "Country",
+        "Other names",
+        "ISO 3166-1 alpha-3 CODE",
+        "Population",
+        "Continent",
+        "Total Cases",
+        "Total Deaths",
+        "Tot\u00a0Cases//1M pop",
+        "Tot\u00a0Deaths/1M pop",
+        "Death percentage"
     ],
     "delimiter": ",",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            4,
-            4,
+            10,
+            10,
             "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
-            "0data_balita.csv",
-            "0data_balita.csv",
+            "0COVID-19 Coronavirus.csv",
+            "0COVID-19 Coronavirus.csv",
             "The name of the dataset"
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.253,
-            "25.3%",
+            0.8800000000000001,
+            "88.0%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.253,
-            "25.3%",
+            0.7817777777777778,
+            "78.2%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            1.0,
-            "100.0%",
+            0.9066666666666696,
+            "90.7%",
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "0",
-            "0",
+            "Africa",
+            "Africa",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.25,
-            "25.0%",
+            0.025777777777777778,
+            "2.6%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.25,
-            "25.0%",
+            0.021777777777777778,
+            "2.2%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.1305,
-            "13.1%",
+            0.021333333333333333,
+            "2.1%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.0,
-            "0.0%",
+            0.5,
+            "50.0%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0.25,
-            "25.0%",
+            0.1,
+            "10.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
@@ -82,14 +88,14 @@
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            0.5,
-            "50.0%",
+            0.4,
+            "40.0%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.25,
-            "25.0%",
+            0.0,
+            "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
         "MinItemLen": [
@@ -100,26 +106,26 @@
         ],
         "MaxItemLen": [
             "Max Item Length",
-            16,
-            16,
+            52,
+            52,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            8.306999999999999,
-            "8.3",
+            6.882666666666667,
+            "6.9",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0.25,
-            "25.0%",
+            0.0,
+            "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.5,
-            "50.0%",
+            0.0,
+            "0.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
         "HasHeader": [

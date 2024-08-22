@@ -46,6 +46,7 @@
 		var ajaxReq;
 		var tmpHtml;
 		var askForSaveParticipatingItems=false;
+		var datasetMetadata;
 
 		$(function() {
 
@@ -755,6 +756,8 @@
 						if (jqXHR.status!=200) {
 							MyModal(jqXHR.status+res.title, res.message);
 						} else {
+							//Make it global
+							//datasetMetadata=res
 
 							if (res.delimiter=='\t') {
 								document.getElementById('separator').value='{TAB}'
@@ -768,15 +771,7 @@
 							datasetTypeChanged();
 
 							if (res.datasetType==2) {
-								str='<option value="" disabled selected >?</option>';
-								res.header.forEach(function(data){
-									str += '<option value="' + data + '">' + data + '</option>' 
-								});
-								$("#groupItem").html(str);
-								$("#valueItem").html(str);
-
-								document.getElementById('groupItem').value=res.groupItem;
-								document.getElementById('valueItem').value=res.valueItem;
+								InitializeDatasetType2();
 							}
 
 							if (res.datasetType==3) {
@@ -832,6 +827,23 @@
 			});
 		};
 
+		function InitializeDatasetType2() {
+			str='<option value="" disabled selected >?</option>';
+			if (!datasetMetadata) {
+				MyModal("exclamation",'Could not initialize dataset type 2');
+				return;
+			}
+
+			datasetMetadata.header.forEach(function(data){
+				str += '<option value="' + data + '">' + data + '</option>' ;
+			});
+			$("#groupItem").html(str);
+			$("#valueItem").html(str);
+
+			document.getElementById('groupItem').value=datasetMetadata.groupItem;
+			document.getElementById('valueItem').value=datasetMetadata.valueItem;
+		}
+
 		function clearDatasetAttr() {
 			
 			document.getElementById('min_support').value="0.01"; 
@@ -843,8 +855,8 @@
 			document.getElementById("header1").checked=false; 
 
 			document.getElementById('absentValue').value="";
-			document.getElementById('groupItem').value="";
-			document.getElementById('valueItem').value="";
+			document.getElementById('groupItem').value="?";
+			document.getElementById('valueItem').value="?";
 
 			element=document.getElementById("datasetDescribe");
             if (!isElementHidden(element)) {

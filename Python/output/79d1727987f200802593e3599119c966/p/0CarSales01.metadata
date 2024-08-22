@@ -1,35 +1,39 @@
 {
     "hasHeader": true,
     "header": [
-        "Umur (bulan)",
-        "Jenis Kelamin",
-        "Tinggi Badan (cm)",
-        "Status Gizi"
+        "",
+        "Title",
+        "Model",
+        "Fuel",
+        "Engine",
+        "Transmission_type",
+        "Location",
+        "Price"
     ],
     "delimiter": ",",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            4,
-            4,
+            8,
+            8,
             "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
-            "0data_balita.csv",
-            "0data_balita.csv",
+            "0CarSales01.csv",
+            "0CarSales01.csv",
             "The name of the dataset"
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.253,
-            "25.3%",
+            0.15750000000000003,
+            "15.8%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.253,
-            "25.3%",
+            0.1575,
+            "15.8%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
@@ -40,38 +44,38 @@
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "0",
-            "0",
+            "Petrol",
+            "Petrol",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.25,
-            "25.0%",
+            0.114,
+            "11.4%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.25,
-            "25.0%",
+            0.105,
+            "10.5%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.1305,
-            "13.1%",
+            0.06275,
+            "6.3%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.0,
-            "0.0%",
+            0.25,
+            "25.0%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0.25,
-            "25.0%",
+            0.0,
+            "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
@@ -82,14 +86,14 @@
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            0.5,
-            "50.0%",
+            0.75,
+            "75.0%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.25,
-            "25.0%",
+            0.0,
+            "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
         "MinItemLen": [
@@ -100,26 +104,26 @@
         ],
         "MaxItemLen": [
             "Max Item Length",
-            16,
-            16,
+            49,
+            49,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            8.306999999999999,
-            "8.3",
+            10.876999999999999,
+            "10.9",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0.25,
-            "25.0%",
+            0.0,
+            "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.5,
-            "50.0%",
+            0.125,
+            "12.5%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
         "HasHeader": [
