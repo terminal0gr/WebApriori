@@ -219,11 +219,26 @@ def gen_rule_statistics(itemset_manager, itemset, **kwargs):
     min_lift = kwargs.get('min_lift', 0.0)
 
     items = itemset.items
+    # Check if any item from the itemset exists in excludedItems with the value of 3(excluded)
+    if excludedItems is not None:
+        if any(item in excludedItems and excludedItems[item] == 3 for item in items):
+            return #if so exclude this itemset
+
     sorted_items = sorted(items)
     for base_length in range(1,len(items)):
         for combination_set in combinations(sorted_items, base_length):
             LHS = frozenset(combination_set)
+            # Check if any item from LHS exists in excludedItems with the value of 2(Only in RHS)
+            if excludedItems is not None:
+                if any(item in excludedItems and excludedItems[item] == 2 for item in LHS):
+                    continue #if so exclude this itemset
+
             RHS = frozenset(items.difference(LHS))
+            # Check if any item from RHS exists in excludedItems with the value of 1(Only in LHS)
+            if excludedItems is not None:
+                if any(item in excludedItems and excludedItems[item] == 1 for item in RHS):
+                    continue #if so exclude this itemset
+
             LHS_count = itemset_manager.calc_count(LHS)
             RHS_count = itemset_manager.calc_count(RHS)
             LHS_support = float(LHS_count / itemset_manager.num_itemset)
@@ -561,28 +576,10 @@ def output_association_rules(association_results, sort_index, descending=True, f
         print(f"An error occurred: {e}")     
         sys.exit()       
 
-def retrieveParticipatingItems(records):
+def retrieveParticipatingItems(records=None):
+    global excludedItems
+
     try:
-
-        # # Use a set to store unique items
-        # unique_items = set()
-
-        # # Iterate through each sublist and add items to the set
-        # for sublist in records:
-        #     for index, item in enumerate(sublist):
-
-        #         if hasHeader and datasetType==4 and 'header' in jsonData:
-        #             unique_items.add(str(jsonData['header'][index]) + '=' + str(item))
-        #         else:    
-        #             unique_items.add(str(item))
-
-        #         if len(unique_items)>max_items:
-        #             break
-
-        # # Convert the set back to a list
-        # uniqueItems = list(unique_items)
-
-        # uniqueItems.sort()
 
         filepath=os.path.join('output', identity)
         if not os.path.exists(filepath):
@@ -599,6 +596,9 @@ def retrieveParticipatingItems(records):
             filepath = os.path.join('output', identity, 'p', os.path.splitext(datasetName)[0] + ext)
 
         excludedItems=Global.readJSONFromFile(filepath)
+
+        if records is None: #We want only to read excluded Items if any not to save them
+            return  
 
         # Initialize the dictionary
         uniqueItems = {}
@@ -624,9 +624,10 @@ def retrieveParticipatingItems(records):
                 if len(uniqueItems)>max_items:
                     break
 
-
-        # Sorting the dictionary by keys
-        uniqueItems = {key: uniqueItems[key] for key in sorted(uniqueItems)}
+        
+        if not hasHeader or datasetType in [1,2]:
+            # Sorting the dictionary by keys
+            uniqueItems = {key: uniqueItems[key] for key in sorted(uniqueItems)}
 
         print(json.dumps(uniqueItems, indent=4)) 
 
@@ -817,9 +818,12 @@ try:
     if records:
         
         # Retrieve the current participating Item List in JSON format.
+        excludedItems={}
         if callType==1:
             retrieveParticipatingItems(records)
             sys.exit()
+        else:
+            retrieveParticipatingItems()
 
         recordTime=time()-recordTime
 

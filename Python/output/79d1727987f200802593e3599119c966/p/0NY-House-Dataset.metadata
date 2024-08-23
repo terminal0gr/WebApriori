@@ -1,112 +1,108 @@
 {
     "hasHeader": true,
     "header": [
-        "Image Index",
-        "Follow-up #",
-        "Patient ID",
-        "Patient Age",
-        "Patient Gender",
-        "View Position",
-        "Cardiomegaly",
-        "Emphysema",
-        "Effusion",
-        "Hernia",
-        "Infiltration",
-        "Mass",
-        "Nodule",
-        "Atelectasis",
-        "Pneumothorax",
-        "Pleural_Thickening",
-        "Pneumonia",
-        "Fibrosis",
-        "Edema",
-        "Consolidation",
-        "fold"
+        "BROKERTITLE",
+        "TYPE",
+        "PRICE",
+        "BEDS",
+        "BATH",
+        "PROPERTYSQFT",
+        "ADDRESS",
+        "STATE",
+        "MAIN_ADDRESS",
+        "ADMINISTRATIVE_AREA_LEVEL_2",
+        "LOCALITY",
+        "SUBLOCALITY",
+        "STREET_NAME",
+        "LONG_NAME",
+        "FORMATTED_ADDRESS",
+        "LATITUDE",
+        "LONGITUDE"
     ],
     "delimiter": ",",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            21,
-            21,
-            "The total number of columns\/features in the Dataset"
+            17,
+            17,
+            "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
-            "34nih_labels.csv",
-            "34nih_labels.csv",
+            "0NY-House-Dataset.csv",
+            "0NY-House-Dataset.csv",
             "The name of the dataset"
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.07238095238095238,
-            "7.2%",
+            0.46894117647058814,
+            "46.9%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.064,
-            "6.4%",
+            0.46505882352941175,
+            "46.5%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            0.39695238095237884,
-            "39.7%",
+            0.9727058823529399,
+            "97.3%",
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "0",
-            "0",
+            "New York",
+            "New York",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.6256190476190476,
-            "62.6%",
+            0.07047058823529412,
+            "7.0%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.05819047619047619,
-            "5.8%",
+            0.03870588235294117,
+            "3.9%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.034666666666666665,
-            "3.5%",
+            0.03164705882352941,
+            "3.2%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.09523809523809523,
-            "9.5%",
+            0.11764705882352941,
+            "11.8%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0,
-            "0.0%",
+            0.23529411764705882,
+            "23.5%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            0.238095,
-            "23.8%",
+            0.647059,
+            "64.7%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.6666666666666666,
-            "66.7%",
+            0.0,
+            "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
         "MinItemLen": [
@@ -117,26 +113,26 @@
         ],
         "MaxItemLen": [
             "Max Item Length",
-            16,
-            16,
+            87,
+            87,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            3.477523809523809,
-            "3.5",
+            15.275058823529411,
+            "15.3",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0.047619047619047616,
-            "4.8%",
+            0.0,
+            "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.7619047619047619,
-            "76.2%",
+            0.0,
+            "0.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
         "HasHeader": [
@@ -158,16 +154,6 @@
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
         ]
     },
-    "datasetTypePredicted": 4,
-    "datasetType": 3,
-    "min_support": 0.001,
-    "min_confidence": 0.01,
-    "min_lift": 1.5,
-    "max_length": 3,
-    "ssort": -3,
-    "datasetName": "34nih_labels.csv",
-    "public": 1,
-    "redundantRemoveType": 0,
-    "participatingItems": "[]",
-    "absentValue": "undefined"
+    "datasetTypePredicted": 1,
+    "datasetType": 1
 }

@@ -7,7 +7,7 @@
             "Number Of Columns",
             11,
             11,
-            "The total number of columns/features in the Dataset"
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -71,19 +71,19 @@
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            -0.0,
+            -0,
             "-0.0%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -113,7 +113,7 @@
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.0,
+            0,
             "0.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
@@ -137,5 +137,14 @@
         ]
     },
     "datasetTypePredicted": 0,
-    "datasetType": 0
+    "datasetType": 4,
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "0glass.data",
+    "public": 1,
+    "redundantRemoveType": 0,
+    "participatingItems": "[]"
 }

@@ -107,6 +107,22 @@
         }
     }
 
+    $reInitialize=false;
+    if (!empty($_POST['reInitialize'])) {
+        $reInitialize=$_POST['reInitialize'];
+    }
+    
+    if ($reInitialize) {
+        if ($isPublic==0) {
+            $fpatho="../Python/output/".$identity."/".$filename;
+        } else {
+            $fpatho="../Python/output/".$identity."/p/".$filename;            
+        }
+        $fpatho_parts = pathinfo($fpatho);
+        $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".epi";
+        unlink($fpatho);
+    }         
+
     //Call Python for Association rules mining
     $input = PYTHON;
     $input.= ' Main05.py ';

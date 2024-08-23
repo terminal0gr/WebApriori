@@ -192,6 +192,12 @@
 					return;
 				}
 
+				//If the participating items filter is shown then save changes and hide it
+				const elementName='#itemsSelection'
+				if ($(elementName).is(":visible")) {
+					saveParticipatingItems(false);
+   					$(elementName).hide( "slow" );
+				}	
 
 				// Serialize the form data first in array form so to add more elements.
 				var formData = $('#retrieveRules').serializeArray(); // convert form to array
@@ -757,7 +763,7 @@
 							MyModal(jqXHR.status+res.title, res.message);
 						} else {
 							//Make it global
-							//datasetMetadata=res
+							datasetMetadata=res
 
 							if (res.delimiter=='\t') {
 								document.getElementById('separator').value='{TAB}'
@@ -830,7 +836,7 @@
 		function InitializeDatasetType2() {
 			str='<option value="" disabled selected >?</option>';
 			if (!datasetMetadata) {
-				MyModal("exclamation",'Could not initialize dataset type 2');
+				MyModal("exclamation",'Could not initialize dataset type 2. Please execute the Autodetect link and retry.');
 				return;
 			}
 
@@ -843,6 +849,19 @@
 			document.getElementById('groupItem').value=datasetMetadata.groupItem;
 			document.getElementById('valueItem').value=datasetMetadata.valueItem;
 		}
+
+		function InitializeDatasetType3() {
+			if (!datasetMetadata) {
+				MyModal("exclamation",'Could not initialize dataset type 3. Please execute the Autodetect link and retry.');
+				return;
+			}
+			if (typeof datasetMetadata.datasetFeatures=='undefined'){
+				MyModal("exclamation",'Could not initialize dataset type 3. Please execute the Autodetect link and retry.');
+				return;
+			}
+            document.getElementById('absentValue').value=datasetMetadata.datasetFeatures["Top1Value"][1];
+		}
+
 
 		function clearDatasetAttr() {
 			
@@ -946,7 +965,13 @@
 									// Create a new div element with the class "col" and populate it with key-value pairs from jsonData
 									const newDiv = document.createElement("div");
 
-									if (key.startsWith("datasetType")){
+									if (key=="datasetType"){
+										if (jsonData[key][1]==jsonData["datasetTypePredicted"][1]) {
+											newDiv.className = "col text-bg-primary border";
+										} else {
+											newDiv.className = "col text-bg-warning border";
+										}
+									} else if  (key=="datasetTypePredicted"){
 										newDiv.className = "col text-bg-primary border";
 									}
 									else{
@@ -979,7 +1004,7 @@
 							// If the dataset has Header --> res.features['HasHeader'][1]
 							if (res.features['HasHeader'][1]) {
 
-								var row = $('<tr></tr>');
+								var row = $('<tr><th class="text-end">#</th></tr>');
 								// Loop through each key
 								keys.forEach(key => {
 									row.append('<th>' + key + '</th>');
@@ -991,8 +1016,9 @@
 							tableBody.empty(); // Clear any existing rows
 
 							// Loop through each item in the JSON data
-							jsonData.forEach(function(item) {
-								var row = $('<tr></tr>');
+							//jsonData.forEach(function(item) {
+							jsonData.forEach((item,index) => {
+								var row = $(`<tr><td class="text-end">${index+1}</td></tr>`);
 
 								keys.forEach(key => {
 									if (res.features['datasetType'][1]==1 && (item[key] === null || item[key]=='NaN')) {
@@ -1126,7 +1152,7 @@
 
 		}
 
-		function retrieveParticipatingItems() {
+		function retrieveParticipatingItems(reInitialize=false) {
 
 			if (!sessionStorage.getItem('token')) {
 				MyModal("Error", "You are not signed in!!! Please sign in/up");
@@ -1154,6 +1180,9 @@
 			formData.set("token",sessionStorage.getItem('token'));
 			formData.set("dataset",dataset.value);
 			formData.set("datasetType",datasetType);
+			if (reInitialize) {
+				formData.set("reInitialize",true);
+			}
 
 			let textboxValue = '';
 
@@ -1282,7 +1311,7 @@
 			});					
 		}
 			
-		function saveParticipatingItems() {
+		function saveParticipatingItems(ShowMessages=true) {
 
 			//Check if user has chosen any dataset.
 			var dataset =  document.getElementById("dataset");
@@ -1336,16 +1365,26 @@
 				//cover both null and undefined circumstances and if it is a JSON obj
 				if (response!=undefined && response!=null) {
 					res=response;
-
-					try {
-						MyModal(res.title + '(' + jqXHR.status + ')', res.message);
+					if (jqXHR.status!=200) {
+						try {
+							MyModal(res.title + ' (' + jqXHR.status + ')', res.message);
+						}
+						catch(err) {
+							MyModal("Error1", err.message);
+							return;
+						} 
+					} else {
+						try {
+							if (ShowMessages) {
+								MyModal(res.title, res.message);
+							}
+						}
+						catch(err) {
+							MyModal("Error1", err.message);
+							return;
+						}
 					}
-					catch(err) {
-						MyModal("Error1", err.message);
-						return;
-					}
-				}
-				else {
+				} else {
 					MyModal("Error", "Unknown error occured");
 					return;
 				}
@@ -1465,8 +1504,10 @@
 						return;
 					};
 
-					retrieveParticipatingItems();
-					return;
+					break;
+
+					//retrieveParticipatingItems(reInitialize=true);
+					//return;
 
 				case 0:
 					if (!confirm("Waring!!!\nAre you sure you want to include " + str1 + "?")) {
@@ -1494,10 +1535,14 @@
 					break;
 			}
 
-			BatchChangeParticipatingItems(value, filterType, str);
-
+			if (value==-1) {
+				BatchChangeParticipatingItems(0);
+				saveParticipatingItems();
+				toggleDisplay('#itemsSelection');
+			} else {
+				BatchChangeParticipatingItems(value, filterType, str);
+			}
 		}
-
 
 		function datasetTypeChanged() {
 
@@ -1509,10 +1554,19 @@
 			element=document.getElementById("itemsSelectionDiv"); 
 			element.innerHTML="<!-- Rows will be inserted here by JavaScript -->"  //Initialization for use in new dataset
 
-			const datasetType=document.getElementById("datasetType").value;
-			
-			switch(datasetType) {
+			const datasetType=document.getElementById("datasetType");
+			datasetType.style.color='black';
+			if (typeof datasetMetadata.datasetTypePredicted !== 'undefined') {
+				if (datasetMetadata.datasetTypePredicted!=datasetType.value) {
+					datasetType.style.color = 'orange';
+				}	
+			}
+
+			switch(datasetType.value) {
 			case '2':
+
+				InitializeDatasetType2();
+
 				element = document.getElementById('INV-2-groupItem');
 				element.classList.remove("d-none");
 				element.classList.add("d-block");
@@ -1528,6 +1582,9 @@
 				element.classList.add("col-8");
 				break;
 			case '3':
+
+				InitializeDatasetType3();
+
 				element = document.getElementById('INV-2-groupItem');
 				element.classList.remove("d-block");
 				element.classList.add("d-none");

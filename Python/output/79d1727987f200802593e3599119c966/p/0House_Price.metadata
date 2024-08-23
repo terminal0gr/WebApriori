@@ -23,6 +23,12 @@
     ],
     "delimiter": ",",
     "datasetFeatures": {
+        "NumberOfColumns": [
+            "Number Of Columns",
+            19,
+            19,
+            "The total number of columns/features in the Dataset"
+        ],
         "_name": [
             "Name",
             "0House_Price.csv",
@@ -47,29 +53,29 @@
             "95.1%",
             "The Average of distinct values per row over the total rows"
         ],
-        "FreqoFTop1FreqValue": [
-            "Top 1 Value",
+        "Top1Value": [
+            "Most Frequent Value",
+            "YES",
+            "YES",
+            "The most frequent value in the dataset"
+        ],
+        "FreqOfTop1FreqValue": [
+            "Top 1 Value %",
             0.08168421052631579,
             "8.2%",
-            "The ratio of the number of the most frequent value to the number of elements"
+            "The ratio Of the number of the most frequent value to the number of elements"
         ],
-        "FreqoFTop2FreqValue": [
-            "Top 2 Value",
+        "FreqOfTop2FreqValue": [
+            "Top 2 Value %",
             0.023578947368421053,
             "2.4%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
-        "FreqoFTop3FreqValue": [
-            "Top 3 Value",
+        "FreqOfTop3FreqValue": [
+            "Top 3 Value %",
             0.019263157894736843,
             "1.9%",
             "The ratio of the number of the third most frequent value to the number of elements"
-        ],
-        "NumberOfColumns": [
-            "Number Of Columns",
-            19,
-            19,
-            "The total number of columns in the Dataset"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
@@ -147,7 +153,7 @@
             "Type 2-INV Words",
             1,
             1,
-            "The number of columns containing words used in Type 2-INV datasets"
+            "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
         ]
     },
     "datasetTypePredicted": 0,

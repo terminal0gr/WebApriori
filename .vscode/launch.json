@@ -142,8 +142,8 @@
             "justMyCode": false,
             "args": [
                 "79d1727987f200802593e3599119c966",
-                "titanic02.csv",
-                "0","1"
+                "34nih_labels.csv",
+                "1","1"
             ],
             "console": "integratedTerminal"
         },

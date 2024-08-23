@@ -1,0 +1,248 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "0CarSales01.csv",
+    "redundantRemoveType": 0,
+    "Records": 24,
+    "RecordsCreationTime": "0.851",
+    "RulesCount": 12,
+    "RulesCreationTime": "0.001",
+    "rules": [
+        {
+            "LHS": [
+                "Electric"
+            ],
+            "RHS": [
+                "Diesel",
+                "Hybrid"
+            ],
+            "Confidence": 0.6666666666666666,
+            "Lift": 1.7777777777777777,
+            "Conviction": 1.8749999999999998,
+            "Leverage": 0.03645833333333333,
+            "LHS_Count": 3,
+            "LHS_Support": 0.125,
+            "RHS_Count": 9,
+            "RHS_Support": 0.375,
+            "Support": 0.08333333333333333,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "Diesel",
+                "Hybrid"
+            ],
+            "RHS": [
+                "Electric"
+            ],
+            "Confidence": 0.2222222222222222,
+            "Lift": 1.7777777777777777,
+            "Conviction": 1.125,
+            "Leverage": 0.03645833333333333,
+            "LHS_Count": 9,
+            "LHS_Support": 0.375,
+            "RHS_Count": 3,
+            "RHS_Support": 0.125,
+            "Support": 0.08333333333333333,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "Electric"
+            ],
+            "RHS": [
+                "Diesel",
+                "Hybrid",
+                "Petrol"
+            ],
+            "Confidence": 0.6666666666666666,
+            "Lift": 1.7777777777777777,
+            "Conviction": 1.8749999999999998,
+            "Leverage": 0.03645833333333333,
+            "LHS_Count": 3,
+            "LHS_Support": 0.125,
+            "RHS_Count": 9,
+            "RHS_Support": 0.375,
+            "Support": 0.08333333333333333,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "Diesel",
+                "Hybrid"
+            ],
+            "RHS": [
+                "Petrol",
+                "Electric"
+            ],
+            "Confidence": 0.2222222222222222,
+            "Lift": 1.7777777777777777,
+            "Conviction": 1.125,
+            "Leverage": 0.03645833333333333,
+            "LHS_Count": 9,
+            "LHS_Support": 0.375,
+            "RHS_Count": 3,
+            "RHS_Support": 0.125,
+            "Support": 0.08333333333333333,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "Petrol",
+                "Electric"
+            ],
+            "RHS": [
+                "Diesel",
+                "Hybrid"
+            ],
+            "Confidence": 0.6666666666666666,
+            "Lift": 1.7777777777777777,
+            "Conviction": 1.8749999999999998,
+            "Leverage": 0.03645833333333333,
+            "LHS_Count": 3,
+            "LHS_Support": 0.125,
+            "RHS_Count": 9,
+            "RHS_Support": 0.375,
+            "Support": 0.08333333333333333,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "Diesel",
+                "Hybrid",
+                "Petrol"
+            ],
+            "RHS": [
+                "Electric"
+            ],
+            "Confidence": 0.2222222222222222,
+            "Lift": 1.7777777777777777,
+            "Conviction": 1.125,
+            "Leverage": 0.03645833333333333,
+            "LHS_Count": 9,
+            "LHS_Support": 0.375,
+            "RHS_Count": 3,
+            "RHS_Support": 0.125,
+            "Support": 0.08333333333333333,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "Electric"
+            ],
+            "RHS": [
+                "Hybrid"
+            ],
+            "Confidence": 0.6666666666666666,
+            "Lift": 1.5999999999999999,
+            "Conviction": 1.7499999999999996,
+            "Leverage": 0.031249999999999993,
+            "LHS_Count": 3,
+            "LHS_Support": 0.125,
+            "RHS_Count": 10,
+            "RHS_Support": 0.4166666666666667,
+            "Support": 0.08333333333333333,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "Diesel",
+                "Electric"
+            ],
+            "RHS": [
+                "Hybrid"
+            ],
+            "Confidence": 0.6666666666666666,
+            "Lift": 1.5999999999999999,
+            "Conviction": 1.7499999999999996,
+            "Leverage": 0.031249999999999993,
+            "LHS_Count": 3,
+            "LHS_Support": 0.125,
+            "RHS_Count": 10,
+            "RHS_Support": 0.4166666666666667,
+            "Support": 0.08333333333333333,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "Electric"
+            ],
+            "RHS": [
+                "Hybrid",
+                "Petrol"
+            ],
+            "Confidence": 0.6666666666666666,
+            "Lift": 1.5999999999999999,
+            "Conviction": 1.7499999999999996,
+            "Leverage": 0.031249999999999993,
+            "LHS_Count": 3,
+            "LHS_Support": 0.125,
+            "RHS_Count": 10,
+            "RHS_Support": 0.4166666666666667,
+            "Support": 0.08333333333333333,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "Petrol",
+                "Electric"
+            ],
+            "RHS": [
+                "Hybrid"
+            ],
+            "Confidence": 0.6666666666666666,
+            "Lift": 1.5999999999999999,
+            "Conviction": 1.7499999999999996,
+            "Leverage": 0.031249999999999993,
+            "LHS_Count": 3,
+            "LHS_Support": 0.125,
+            "RHS_Count": 10,
+            "RHS_Support": 0.4166666666666667,
+            "Support": 0.08333333333333333,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "Diesel",
+                "Electric"
+            ],
+            "RHS": [
+                "Hybrid",
+                "Petrol"
+            ],
+            "Confidence": 0.6666666666666666,
+            "Lift": 1.5999999999999999,
+            "Conviction": 1.7499999999999996,
+            "Leverage": 0.031249999999999993,
+            "LHS_Count": 3,
+            "LHS_Support": 0.125,
+            "RHS_Count": 10,
+            "RHS_Support": 0.4166666666666667,
+            "Support": 0.08333333333333333,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "Diesel",
+                "Petrol",
+                "Electric"
+            ],
+            "RHS": [
+                "Hybrid"
+            ],
+            "Confidence": 0.6666666666666666,
+            "Lift": 1.5999999999999999,
+            "Conviction": 1.7499999999999996,
+            "Leverage": 0.031249999999999993,
+            "LHS_Count": 3,
+            "LHS_Support": 0.125,
+            "RHS_Count": 10,
+            "RHS_Support": 0.4166666666666667,
+            "Support": 0.08333333333333333,
+            "Count": 2
+        }
+    ]
+}
