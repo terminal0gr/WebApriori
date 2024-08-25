@@ -1,0 +1,339 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "0academic_detail.csv",
+    "redundantRemoveType": 0,
+    "Records": 216,
+    "RecordsCreationTime": "0.004",
+    "RulesCount": 18,
+    "RulesCreationTime": "0.011",
+    "rules": [
+        {
+            "LHS": [
+                "academic_level=OPT"
+            ],
+            "RHS": [
+                "academic_type=OPT"
+            ],
+            "Confidence": 1.0,
+            "Lift": 9.0,
+            "Conviction": 999.999,
+            "Leverage": 0.09876543209876543,
+            "LHS_Count": 24,
+            "LHS_Support": 0.1111111111111111,
+            "RHS_Count": 24,
+            "RHS_Support": 0.1111111111111111,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_type=OPT"
+            ],
+            "RHS": [
+                "academic_level=OPT"
+            ],
+            "Confidence": 1.0,
+            "Lift": 9.0,
+            "Conviction": 999.999,
+            "Leverage": 0.09876543209876543,
+            "LHS_Count": 24,
+            "LHS_Support": 0.1111111111111111,
+            "RHS_Count": 24,
+            "RHS_Support": 0.1111111111111111,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_level=Associate's"
+            ],
+            "RHS": [
+                "academic_type=Undergraduate"
+            ],
+            "Confidence": 1.0,
+            "Lift": 4.5,
+            "Conviction": 999.999,
+            "Leverage": 0.08641975308641975,
+            "LHS_Count": 24,
+            "LHS_Support": 0.1111111111111111,
+            "RHS_Count": 48,
+            "RHS_Support": 0.2222222222222222,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_type=Undergraduate"
+            ],
+            "RHS": [
+                "academic_level=Associate's"
+            ],
+            "Confidence": 0.5,
+            "Lift": 4.5,
+            "Conviction": 1.7777777777777777,
+            "Leverage": 0.08641975308641975,
+            "LHS_Count": 48,
+            "LHS_Support": 0.2222222222222222,
+            "RHS_Count": 24,
+            "RHS_Support": 0.1111111111111111,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_level=Bachelor's"
+            ],
+            "RHS": [
+                "academic_type=Undergraduate"
+            ],
+            "Confidence": 1.0,
+            "Lift": 4.5,
+            "Conviction": 999.999,
+            "Leverage": 0.08641975308641975,
+            "LHS_Count": 24,
+            "LHS_Support": 0.1111111111111111,
+            "RHS_Count": 48,
+            "RHS_Support": 0.2222222222222222,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_type=Undergraduate"
+            ],
+            "RHS": [
+                "academic_level=Bachelor's"
+            ],
+            "Confidence": 0.5,
+            "Lift": 4.5,
+            "Conviction": 1.7777777777777777,
+            "Leverage": 0.08641975308641975,
+            "LHS_Count": 48,
+            "LHS_Support": 0.2222222222222222,
+            "RHS_Count": 24,
+            "RHS_Support": 0.1111111111111111,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_level=Non-Degree Intensive English"
+            ],
+            "RHS": [
+                "academic_type=Non-Degree"
+            ],
+            "Confidence": 1.0,
+            "Lift": 4.5,
+            "Conviction": 999.999,
+            "Leverage": 0.08641975308641975,
+            "LHS_Count": 24,
+            "LHS_Support": 0.1111111111111111,
+            "RHS_Count": 48,
+            "RHS_Support": 0.2222222222222222,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_type=Non-Degree"
+            ],
+            "RHS": [
+                "academic_level=Non-Degree Intensive English"
+            ],
+            "Confidence": 0.5,
+            "Lift": 4.5,
+            "Conviction": 1.7777777777777777,
+            "Leverage": 0.08641975308641975,
+            "LHS_Count": 48,
+            "LHS_Support": 0.2222222222222222,
+            "RHS_Count": 24,
+            "RHS_Support": 0.1111111111111111,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_level=Non-Degree Other"
+            ],
+            "RHS": [
+                "academic_type=Non-Degree"
+            ],
+            "Confidence": 1.0,
+            "Lift": 4.5,
+            "Conviction": 999.999,
+            "Leverage": 0.08641975308641975,
+            "LHS_Count": 24,
+            "LHS_Support": 0.1111111111111111,
+            "RHS_Count": 48,
+            "RHS_Support": 0.2222222222222222,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_type=Non-Degree"
+            ],
+            "RHS": [
+                "academic_level=Non-Degree Other"
+            ],
+            "Confidence": 0.5,
+            "Lift": 4.5,
+            "Conviction": 1.7777777777777777,
+            "Leverage": 0.08641975308641975,
+            "LHS_Count": 48,
+            "LHS_Support": 0.2222222222222222,
+            "RHS_Count": 24,
+            "RHS_Support": 0.1111111111111111,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_level=Doctoral"
+            ],
+            "RHS": [
+                "academic_type=Graduate"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.25,
+            "Conviction": 999.999,
+            "Leverage": 0.06172839506172839,
+            "LHS_Count": 24,
+            "LHS_Support": 0.1111111111111111,
+            "RHS_Count": 96,
+            "RHS_Support": 0.4444444444444444,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_type=Graduate"
+            ],
+            "RHS": [
+                "academic_level=Doctoral"
+            ],
+            "Confidence": 0.25,
+            "Lift": 2.25,
+            "Conviction": 1.1851851851851851,
+            "Leverage": 0.06172839506172839,
+            "LHS_Count": 96,
+            "LHS_Support": 0.4444444444444444,
+            "RHS_Count": 24,
+            "RHS_Support": 0.1111111111111111,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_level=Graduate Unspecified"
+            ],
+            "RHS": [
+                "academic_type=Graduate"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.25,
+            "Conviction": 999.999,
+            "Leverage": 0.06172839506172839,
+            "LHS_Count": 24,
+            "LHS_Support": 0.1111111111111111,
+            "RHS_Count": 96,
+            "RHS_Support": 0.4444444444444444,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_type=Graduate"
+            ],
+            "RHS": [
+                "academic_level=Graduate Unspecified"
+            ],
+            "Confidence": 0.25,
+            "Lift": 2.25,
+            "Conviction": 1.1851851851851851,
+            "Leverage": 0.06172839506172839,
+            "LHS_Count": 96,
+            "LHS_Support": 0.4444444444444444,
+            "RHS_Count": 24,
+            "RHS_Support": 0.1111111111111111,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_level=Master's"
+            ],
+            "RHS": [
+                "academic_type=Graduate"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.25,
+            "Conviction": 999.999,
+            "Leverage": 0.06172839506172839,
+            "LHS_Count": 24,
+            "LHS_Support": 0.1111111111111111,
+            "RHS_Count": 96,
+            "RHS_Support": 0.4444444444444444,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_type=Graduate"
+            ],
+            "RHS": [
+                "academic_level=Master's"
+            ],
+            "Confidence": 0.25,
+            "Lift": 2.25,
+            "Conviction": 1.1851851851851851,
+            "Leverage": 0.06172839506172839,
+            "LHS_Count": 96,
+            "LHS_Support": 0.4444444444444444,
+            "RHS_Count": 24,
+            "RHS_Support": 0.1111111111111111,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_level=Professional"
+            ],
+            "RHS": [
+                "academic_type=Graduate"
+            ],
+            "Confidence": 1.0,
+            "Lift": 2.25,
+            "Conviction": 999.999,
+            "Leverage": 0.06172839506172839,
+            "LHS_Count": 24,
+            "LHS_Support": 0.1111111111111111,
+            "RHS_Count": 96,
+            "RHS_Support": 0.4444444444444444,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        },
+        {
+            "LHS": [
+                "academic_type=Graduate"
+            ],
+            "RHS": [
+                "academic_level=Professional"
+            ],
+            "Confidence": 0.25,
+            "Lift": 2.25,
+            "Conviction": 1.1851851851851851,
+            "Leverage": 0.06172839506172839,
+            "LHS_Count": 96,
+            "LHS_Support": 0.4444444444444444,
+            "RHS_Count": 24,
+            "RHS_Support": 0.1111111111111111,
+            "Support": 0.1111111111111111,
+            "Count": 24
+        }
+    ]
+}

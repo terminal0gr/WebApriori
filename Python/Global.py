@@ -5,6 +5,7 @@ import numpy as np
 from itertools import islice
 import csv
 import json
+import math
 
 #Detect if a file is in arff format
 def is_arff_file(file_path, Show_Errors=False):
@@ -96,3 +97,7 @@ def readJSONFromFile(filepath):
         # Now you can work with the JSON data as a Python dictionary or list
         return json_data
         
+def is_nan(value):
+    if isinstance(value, float):
+        return math.isnan(value)
+    return False

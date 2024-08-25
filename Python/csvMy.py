@@ -223,7 +223,8 @@ class Sniffer:
         The quote with the most wins, same with the delimiter.
 
         #Malliaridis 08/07/2024 The number of matches found must be at least 90% of the number of rows in sample.
-        #e.g. if sample rows are 500, then matches found must be at least 450.
+        #e.g. if sample rows are 500, then matches found must be at least 450. 
+        #Note that the number of matches could be greater than rows (e.g.+500 matches for 500 rows) if more than one quoted string exists in a row
 
         If there is no quotechar the delimiter can't be determined
         this way.
@@ -232,21 +233,34 @@ class Sniffer:
         dataRowsCount = len(list(filter(None, data.split('\n'))))
 
         matches = []
-        for restr in (r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\']).*?(?P=quote)(?P=delim)', # ,".*?",
-                      r'(?:^|\n)(?P<quote>["\']).*?(?P=quote)(?P<delim>[^\w\n"\'])(?P<space> ?)',   #  ".*?",
-                      r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\']).*?(?P=quote)(?:$|\n)',   # ,".*?"
-                      r'(?:^|\n)(?P<quote>["\']).*?(?P=quote)(?:$|\n)'):                            #  ".*?" (no delim, no space)
+        #Malliaridis 25/08/2024
+        #Some dataset have ,"abc", but also ,"ab ""c"" d", case which confuses the compiler. the 5~8 regex do solve this problem.
+        for restr in (r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\']).*?(?P=quote)(?P=delim)',           # ,".*?",
+                      r'(?:^|\n)(?P<quote>["\']).*?(?P=quote)(?P<delim>[^\w\n"\'])(?P<space> ?)',             #  ".*?",
+                      r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\']).*?(?P=quote)(?:$|\n)',             # ,".*?"
+                      r'(?:^|\n)(?P<quote>["\']).*?(?P=quote)(?:$|\n)',                                       #  ".*?" (no delim, no space)
+                      r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\'])(?:(?!\3).)+?(?P=quote)(?P=delim)', # ,".*?", excluding "" or '' case
+                      r'(?:^|\n)(?P<quote>["\'])(?:(?!\3).)+?(?P=quote)(?P<delim>[^\w\n"\'])(?P<space> ?)',   #  ".*?", excluding "" or '' case
+                      r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\'])(?:(?!\3).)+?(?P=quote)(?:$|\n)',   # ,".*?"  excluding "" or '' case
+                      r'(?:^|\n)(?P<quote>["\'])(?:(?!\3).)+?(?P=quote)(?:$|\n)'):                            #  ".*?" (no delim, no space) excluding "" or '' case
+            
+         
+        # for restr in (r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\']).*?(?P=quote)(?P=delim)', # ,".*?",
+        #               r'(?:^|\n)(?P<quote>["\']).*?(?P=quote)(?P<delim>[^\w\n"\'])(?P<space> ?)',   #  ".*?",
+        #               r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\']).*?(?P=quote)(?:$|\n)',   # ,".*?"
+        #               r'(?:^|\n)(?P<quote>["\']).*?(?P=quote)(?:$|\n)'):                            #  ".*?" (no delim, no space)
             regexp = re.compile(restr, re.DOTALL | re.MULTILINE)
             matches = regexp.findall(data)
-            if matches:
+            if len(matches)>=dataRowsCount*0.9:
+            #if matches:
                 break
 
+        # If no matches found corresponding to the regex above -> no quotechar and delimitel is not detected.
         if not matches:
-            # (quotechar, doublequote, delimiter, skipinitialspace)
             return ('', False, None, 0)
         
+        # If matches found but less than the thresohold below corresponding to the regex above -> no quotechar and delimitel is not detected.
         if len(matches)<dataRowsCount*0.9:
-            # (quotechar, doublequote, delimiter, skipinitialspace)
             return ('', False, None, 0)
 
         quotes = {}
@@ -372,11 +386,37 @@ class Sniffer:
                             delims[k] = v
                 consistency -= 0.01
 
-            if len(delims) == 1:
-                delim = list(delims.keys())[0]
-                skipinitialspace = (data[0].count(delim) ==
-                                    data[0].count("%c " % delim))
-                return (delim, skipinitialspace, 0)
+            # Malliaridis 20240825
+            if len(delims) > 0:
+                # Malliaridis 20231209  
+                # if there's more than one, fall back to a 'preferred' list
+                # However, for better detection, the dict is beeing sorted by the highest frequency character
+                    
+                # Sort the list by the first item of each tuple in descending order
+                sortDelimsByMaxFrequency = dict(sorted(delims.items(), key=lambda item: item[1][0], reverse=True))
+                for item in sortDelimsByMaxFrequency:
+                    if item[0] in self.preferred:
+                        #Match! return it!
+                        skipinitialspace = (data[0].count(item[0]) ==
+                                            data[0].count("%c " % item[0]))             
+                        return (item[0], skipinitialspace, 0)  
+
+                #None of the characters in the dataset's delimiter candidates is in preferred list
+                #OoooK! return the most frequent even if is not in the list of preferred delimiters
+                for item in sortDelimsByMaxFrequency:
+                    skipinitialspace = (data[0].count(item[0]) ==
+                                        data[0].count("%c " % item[0]))             
+                    return (item[0], skipinitialspace, 0)  
+                # skipinitialspace = (data[0].count(sortDelimsByMaxFrequency[0][0]) ==
+                #                     data[0].count("%c " % sortDelimsByMaxFrequency[0][0]))             
+                # return (sortDelimsByMaxFrequency[0][0], skipinitialspace, 0)                
+
+            #Original code
+            # if len(delims) == 1:
+            #     delim = list(delims.keys())[0]
+            #     skipinitialspace = (data[0].count(delim) ==
+            #                         data[0].count("%c " % delim))
+            #     return (delim, skipinitialspace, 0)
 
             # analyze another chunkLength lines
             start = end
@@ -410,43 +450,6 @@ class Sniffer:
             #return('',0)
                     
 
-        if len(delims) > 0:
-            # Malliaridis 20231209  
-            # if there's more than one, fall back to a 'preferred' list
-            # However, ofr better detection, the dict is beeing sorted by the highest frequency character
-            
-            # max_value = max(item[1][0] for item in delims.items())
-            # FilterDelimsByMaxFrequency = dict([item for item in delims.items() if item[1][0] == max_value])
-            # for d in self.preferred: #For every character in the ordered preferred list
-            #     if d in sortDelimsByMaxFrequency.keys(): #see if the character exists in the dataset's delimiter candidates'
-            #         #Match! return it!
-            #         skipinitialspace = (data[0].count(d) ==
-            #                             data[0].count("%c " % d))             
-            #         return (d, skipinitialspace, 0) 
-                
-            # Sort the list by the first item of each tuple
-            sortDelimsByMaxFrequency = sorted(delims.items(), key=lambda x: x[0])
-            for item in sortDelimsByMaxFrequency:
-                if item[0] in self.preferred:
-                    #Match! return it!
-                    skipinitialspace = (data[0].count(item[0]) ==
-                                        data[0].count("%c " % item[0]))             
-                    return (item[0], skipinitialspace, 0)  
-
-            #None of the characters in the dataset's delimiter candidates is in preferred list
-            #OoooK! return the most frequent even if is not in the list of preferred delimiters
-            skipinitialspace = (data[0].count(sortDelimsByMaxFrequency[0][0]) ==
-                                data[0].count("%c " % sortDelimsByMaxFrequency[0][0]))             
-            return (sortDelimsByMaxFrequency[0][0], skipinitialspace, 0)      
-                
-            # Original code replace by the above
-            # for d in self.preferred:
-            #     if d in delims.keys():
-            #         skipinitialspace = (data[0].count(d) ==
-            #                             data[0].count("%c " % d))
-            #         print(type(delims[';']))                
-            #         return (d, skipinitialspace)
-
         # Malliaridis 20240121. Replaced original lines
         # Delimiter could not be detected.
         return(None, None, 0)
@@ -467,7 +470,8 @@ class Sniffer:
         # Finally, a 'vote' is taken at the end for each column, adding or
         # subtracting from the likelihood of the first row being a header.
 
-        rdr = reader(StringIO(sample), self.sniff(sample))
+        dialect = self.sniff(sample)
+        rdr = reader(StringIO(sample), dialect)
 
         header = next(rdr) # assume first row is header
 
@@ -518,11 +522,11 @@ class Sniffer:
             #if the dataset is of the type 1) Market Basket list then it must not have a header.
             #if the ratio of lines with different number of columns from header is more than 0.2 then we assume we have an 1) Market Basket list
             if rowsWithDifferentNumberOfColumnsFromFirstRowColumns/checked>0.2:
-                return (False, None)
+                return (False, None, dialect)
             
         #If not even one item from the header found in the next # lines then it is propably header!
         if headerItemFound==0:
-            return (True, header)
+            return (True, header, dialect)
         #Malliaridis 03/12/2023 end
 
         # finally, compare results against first row and "vote"
@@ -543,6 +547,6 @@ class Sniffer:
                     hasHeader -= 1
 
         if hasHeader > 0:
-            return (True, header)
+            return (True, header, dialect)
         else:
-            return (False, None)
+            return (False, None, dialect)

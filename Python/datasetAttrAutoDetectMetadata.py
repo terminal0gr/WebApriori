@@ -30,8 +30,9 @@ class Metadata():
             for x in range(nRows):
                 s100+=f.readline()
 
-            datasetAttributes['hasHeader'], datasetAttributes['header'] = csv.Sniffer().has_header(s100)
-            dialect = csv.Sniffer().sniff(s100)  # Check what kind of csv/tsv file we have.
+
+            datasetAttributes['hasHeader'], datasetAttributes['header'],dialect = csv.Sniffer().has_header(s100)
+            # dialect = csv.Sniffer().sniff(s100)  # Check what kind of csv/tsv file we have.
             datasetAttributes['delimiter']=dialect.delimiter
 
             DFI=df.datasetFeatures()._datasetFeatures_a(filepath,dialect,datasetAttributes['hasHeader'],nRows=nRows)

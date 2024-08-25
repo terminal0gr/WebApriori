@@ -69,7 +69,11 @@ class datasetFeatures:
                 tempV=all_values.value_counts(dropna=True).idxmax()
             else:
                 tempV=all_values.value_counts(dropna=False).idxmax()
-            if pd.api.types.is_number(tempV) and math.floor(tempV)==tempV:
+
+            # Global.is_nan, check if the value is nan, but dows not raise error like the math.isnan() if it is string.  
+            if Global.is_nan(tempV):
+                datasetFeaturesInst.Top1Value='nan'
+            elif pd.api.types.is_number(tempV) and math.floor(tempV)==tempV:
                 datasetFeaturesInst.Top1Value=str(math.floor(tempV))
             else:
                 datasetFeaturesInst.Top1Value = str(tempV)

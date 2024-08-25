@@ -1,13 +1,18 @@
 {
-    "hasHeader": false,
-    "header": null,
-    "delimiter": "/",
+    "hasHeader": true,
+    "header": [
+        "year",
+        "academic_type",
+        "academic_level",
+        "students"
+    ],
+    "delimiter": ",",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            2,
-            2,
-            "The total number of columns/features in the Dataset"
+            4,
+            4,
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -17,116 +22,116 @@
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.5552995391705069,
-            "55.5%",
+            0.29282407407407407,
+            "29.3%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.5552995391705069,
-            "55.5%",
+            0.2916666666666667,
+            "29.2%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            0.9976958525345622,
-            "99.8%",
+            0.9722222222222222,
+            "97.2%",
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "2016",
-            "2016",
+            "Graduate",
+            "Graduate",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.020737327188940093,
-            "2.1%",
+            0.1111111111111111,
+            "11.1%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.020737327188940093,
-            "2.1%",
+            0.05555555555555555,
+            "5.6%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.020737327188940093,
-            "2.1%",
+            0.05555555555555555,
+            "5.6%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.0,
-            "0.0%",
+            0.25,
+            "25.0%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            1.0,
-            "100.0%",
+            0.75,
+            "75.0%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
         "MinItemLen": [
             "Min Item length",
-            0,
-            0,
+            3,
+            3,
             "The length of the smallest element in dataset"
         ],
         "MaxItemLen": [
             "Max Item Length",
-            51,
-            51,
+            28,
+            28,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            18.608294930875577,
-            "18.6",
+            8.54861111111111,
+            "8.5",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0.0,
+            0,
             "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.0,
+            0,
             "0.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
         "HasHeader": [
             "Has Header?",
-            false,
-            false,
+            true,
+            true,
             "Does the dataset have Header?"
         ],
         "delimiter": [
             "delimiter",
-            "/",
-            "/",
+            ",",
+            ",",
             "The delimiter between the columns of the dataset"
         ],
         "type2Words": [
@@ -137,5 +142,14 @@
         ]
     },
     "datasetTypePredicted": 0,
-    "datasetType": 0
+    "datasetType": 4,
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "0academic_detail.csv",
+    "public": 1,
+    "redundantRemoveType": 0,
+    "participatingItems": "[]"
 }

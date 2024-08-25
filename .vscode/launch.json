@@ -24,7 +24,7 @@
             "justMyCode": false,
             "args": [
                 "79d1727987f200802593e3599119c966",
-                "2Sales.csv",
+                "dok1.txt",
                 "-1",
                 "1",
                 "1"
@@ -40,9 +40,9 @@
             "justMyCode": false,
             "args": [
                 "79d1727987f200802593e3599119c966",
-                "0data_balita.csv",
+                "02W_amazon.csv",
                 "-1",
-                "0",
+                "1",
                 "1"
             ],
             "console": "integratedTerminal"
