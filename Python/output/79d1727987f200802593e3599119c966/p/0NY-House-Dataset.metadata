@@ -154,6 +154,6 @@
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
         ]
     },
-    "datasetTypePredicted": 1,
-    "datasetType": 1
+    "datasetTypePredicted": 0,
+    "datasetType": 0
 }

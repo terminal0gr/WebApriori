@@ -29,7 +29,7 @@ def loadarfftoDataframe(file_path, encoding='utf-8-sig', nRows=None):
     try:
         data, meta = arff.loadarff(file_path)
         # Convert the structured array to a Pandas DataFrame
-        dataframe1 = pd.DataFrame.from_records(data,nRows=nRows)
+        dataframe1 = pd.DataFrame.from_records(data,nrows=nRows)
 
         # Decode categorical attributes to strings
         for column in dataframe1.columns:

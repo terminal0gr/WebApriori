@@ -184,13 +184,22 @@ class Sniffer:
         """
 
         quotechar, doublequote, delimiter, skipinitialspace = self._guess_quote_and_delimiter(sample, delimiters)
+
+        #Malliaridis 28/08/2024 We want to know if there is quotechar in self._guess_delimiter
+        #                       because when we count the frequency of a character in a line 
+        #                       we want to exclude the character from counting if it is inside quotation marks.
+        # e.g.    a,b,"ab,cd,ed,a",c,d we want to return count=4
+        quoteCh=None
+        if quotechar!='' and doublequote:
+            quoteCh=quotechar
+
         if not delimiter:
-            delimiter, skipinitialspace, datasetType = self._guess_delimiter(sample, delimiters)
+            delimiter, skipinitialspace, datasetType = self._guess_delimiter(sample, delimiters, quoteCh)
         else: #Malliaridis 23/12/2023
             # we use _guess_delimiter only for examine if it is dataset of type 1-MBL - Market Basket list.
             # This is neseccary because that kind of dataset has indistinct number of columns in each line
             # making easy to be detected without engaging the ML detection that follows in other dataset types.
-            delimiter1, temp_skipinitialspace, datasetType = self._guess_delimiter(sample, delimiters)
+            delimiter1, temp_skipinitialspace, datasetType = self._guess_delimiter(sample, delimiters, quoteCh)
             if delimiter1:
                 if delimiter1 in self.preferred:
                     delimiter=delimiter1
@@ -240,11 +249,8 @@ class Sniffer:
                       r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\']).*?(?P=quote)(?:$|\n)',             # ,".*?"
                       r'(?:^|\n)(?P<quote>["\']).*?(?P=quote)(?:$|\n)',                                       #  ".*?" (no delim, no space)
                       r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\'])(?:(?!\3).)+?(?P=quote)(?P=delim)', # ,".*?", excluding "" or '' case
-                      r'(?:^|\n)(?P<quote>["\'])(?:(?!\3).)+?(?P=quote)(?P<delim>[^\w\n"\'])(?P<space> ?)',   #  ".*?", excluding "" or '' case
-                      r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\'])(?:(?!\3).)+?(?P=quote)(?:$|\n)',   # ,".*?"  excluding "" or '' case
-                      r'(?:^|\n)(?P<quote>["\'])(?:(?!\3).)+?(?P=quote)(?:$|\n)'):                            #  ".*?" (no delim, no space) excluding "" or '' case
-            
-         
+                     ):    
+        #Original...         
         # for restr in (r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\']).*?(?P=quote)(?P=delim)', # ,".*?",
         #               r'(?:^|\n)(?P<quote>["\']).*?(?P=quote)(?P<delim>[^\w\n"\'])(?P<space> ?)',   #  ".*?",
         #               r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\']).*?(?P=quote)(?:$|\n)',   # ,".*?"
@@ -252,6 +258,7 @@ class Sniffer:
             regexp = re.compile(restr, re.DOTALL | re.MULTILINE)
             matches = regexp.findall(data)
             if len(matches)>=dataRowsCount*0.9:
+            #original...
             #if matches:
                 break
 
@@ -314,7 +321,7 @@ class Sniffer:
         return (quotechar, doublequote, delim, skipinitialspace)
 
 
-    def     _guess_delimiter(self, data, delimiters):
+    def     _guess_delimiter(self, data, delimiters, quoteChar=None):
         """
         The delimiter /should/ occur the same number of times on
         each row. However, due to malformed data, it may not. We don't want
@@ -351,7 +358,23 @@ class Sniffer:
                 for char in ascii:
                     metaFrequency = charFrequency.get(char, {})
                     # must count even if frequency is 0
-                    freq = line.count(char)
+
+                    #Malliaridis 27/08/2024
+                    #original freq = line.count(char) 
+                    if quoteChar is None:
+                        freq = line.count(char)
+                    else:
+                        # Count manually because we want to exclude character counting if is in quotation Marks
+                        freq=0
+                        inside_quotes = False
+                        for ch in line:
+                            if ch == quoteChar:
+                                # Toggle the inside_quotes flag whenever a quote is encountered
+                                inside_quotes = not inside_quotes
+                            elif ch == char and not inside_quotes:
+                                # Count the comma if we are not inside quotes
+                                freq+=1
+
                     # value is the mode
                     metaFrequency[freq] = metaFrequency.get(freq, 0) + 1
                     charFrequency[char] = metaFrequency

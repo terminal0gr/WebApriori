@@ -1,12 +1,14 @@
 09/06/2024 Thorough Test for all datasets in info        must be done!
-           02W_amazon.csv probles with quotechar detected.
+           DONE 02W_amazon.csv probles with quotechar detected.
            DONE 0Fake04_1.csv Cannot read properties of null (reading 'delimiter')
-           python datasetDescribe.py "79d1727987f200802593e3599119c966" "0Raisin_Dataset.arff" "10" "15" "1"
+           DONE python datasetDescribe.py "79d1727987f200802593e3599119c966" "0Raisin_Dataset.arff" "10" "15" "1"
            DONE 0Video_Games_Sales_as_at_22_Dec_2016 Cannot read properties of null (reading 'delimiter')
-           python datasetDescribe.py "79d1727987f200802593e3599119c966" "0_Dry_Bean_Dataset.arff" "10" "15" "1"
+           DONE 0NY-House-Dataset wrong classification 1 instead of 0
+           DONE python datasetDescribe.py "79d1727987f200802593e3599119c966" "0_Dry_Bean_Dataset.arff" "10" "15" "1"
            DONE 0academic_detail Wrong separator '/' instead of ','
-           0fakeNews.csv Cannot read properties of null (reading 'delimiter')
+           DONE 0fakeNews.csv Cannot read properties of null (reading 'delimiter')
            0field_of_study.csv Wrong separator ' ' instead of ','
+           0fish_catches.csv wrong classification 4 instead of 0
            python DatasetAttrAutoDetect.py "79d1727987f200802593e3599119c966" "0global_education_data.csv" "-1" "1" "1" 201Invalid parameters! Please check
 
 

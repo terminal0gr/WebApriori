@@ -39,27 +39,27 @@
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
-            "Top1Value",
+            "Most Frequent Value",
             "News",
             "News",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.0,
-            "0.0%",
+            0.25,
+            "25.0%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.0,
-            "0.0%",
+            0.0045,
+            "0.4%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.0,
-            "0.0%",
+            0.0045,
+            "0.4%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [

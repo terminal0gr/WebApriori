@@ -17,7 +17,7 @@ class Metadata():
             filepath=os.path.join('public', datasetName)	
 
         if Global.is_arff_file(filepath):
-           dataset=Global.loadarfftoDataframe(filepath, encoding='utf-8-sig')
+           dataset=Global.loadarfftoDataframe(filepath, encoding='utf-8-sig',nRows=nRows)
            filepathcsv=os.path.join('temp',datasetName)
            filepath=os.path.splitext(filepathcsv)[0] + '.csv'
            dataset.to_csv(filepath,index=False)

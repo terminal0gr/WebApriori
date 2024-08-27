@@ -16,7 +16,7 @@
             "Number Of Columns",
             8,
             8,
-            "The total number of columns\/features in the Dataset"
+            "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -38,7 +38,7 @@
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            1,
+            1.0,
             "100.0%",
             "The Average of distinct values per row over the total rows"
         ],
@@ -74,13 +74,13 @@
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
@@ -92,7 +92,7 @@
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -116,7 +116,7 @@
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0,
+            0.0,
             "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
@@ -146,16 +146,5 @@
         ]
     },
     "datasetTypePredicted": 0,
-    "datasetType": 2,
-    "min_support": 0.01,
-    "min_confidence": 0.2,
-    "min_lift": 1.5,
-    "max_length": 4,
-    "ssort": -3,
-    "datasetName": "0CarSales01.csv",
-    "public": 1,
-    "redundantRemoveType": 0,
-    "participatingItems": "[]",
-    "groupItem": "Model",
-    "valueItem": "Fuel"
+    "datasetType": 0
 }
