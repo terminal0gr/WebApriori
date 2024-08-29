@@ -1,10 +1,151 @@
 {
     "hasHeader": true,
     "header": [
+        "Transaction ID",
         "Date",
-        "Product",
-        "Category"
+        "Customer ID",
+        "Gender",
+        "Age",
+        "Product Category",
+        "Quantity",
+        "Price per Unit",
+        "Total Amount"
     ],
     "delimiter": ",",
+    "datasetFeatures": {
+        "NumberOfColumns": [
+            "Number Of Columns",
+            9,
+            9,
+            "The total number of columns/features in the Dataset"
+        ],
+        "_name": [
+            "Name",
+            "2retail_sales_dataset.csv",
+            "2retail_sales_dataset.csv",
+            "The name of the dataset"
+        ],
+        "AvgOfDistinctValuesPerCol": [
+            "AvgOfDistinctValuesPerCol",
+            0.2993333333333333,
+            "29.9%",
+            "The Average of distinct values per column over the total columns"
+        ],
+        "AvgOfDistinctValuesOverAll": [
+            "AvgOfDistinctValuesOverAll",
+            0.2842222222222222,
+            "28.4%",
+            "The ratio of the number of total unique values to the number of elements"
+        ],
+        "AvgOfDistinctValuesPerRow": [
+            "AvgOfDistinctValuesPerRow",
+            0.9717777777777801,
+            "97.2%",
+            "The Average of distinct values per row over the total rows"
+        ],
+        "Top1Value": [
+            "Most Frequent Value",
+            "Female",
+            "Female",
+            "The most frequent value in the dataset"
+        ],
+        "FreqOfTop1FreqValue": [
+            "Top 1 Value %",
+            0.05688888888888889,
+            "5.7%",
+            "The ratio Of the number of the most frequent value to the number of elements"
+        ],
+        "FreqOfTop2FreqValue": [
+            "Top 2 Value %",
+            0.05422222222222222,
+            "5.4%",
+            "The ratio of the number of the second most frequent value to the number of elements"
+        ],
+        "FreqOfTop3FreqValue": [
+            "Top 3 Value %",
+            0.03955555555555555,
+            "4.0%",
+            "The ratio of the number of the third most frequent value to the number of elements"
+        ],
+        "FreqOfIntegerCol": [
+            "Integer Columns %",
+            0.5555555555555556,
+            "55.6%",
+            "The ratio of integer columns to the total number of columns"
+        ],
+        "FreqOfNumberCol": [
+            "Number Columns %",
+            0.0,
+            "0.0%",
+            "The ratio of float number columns to the total number of columns"
+        ],
+        "FreqOfDateCol": [
+            "Date Columns %",
+            0.1111111111111111,
+            "11.1%",
+            "The ratio of date columns to the total number of columns"
+        ],
+        "FreqOfStringCol": [
+            "String Columns %",
+            0.333333,
+            "33.3%",
+            "The ratio of columns with text to the total number of columns"
+        ],
+        "FreqOfBoolCol": [
+            "Boolean Columns %",
+            0.0,
+            "0.0%",
+            "The ratio of boolean columns to the total number of columns"
+        ],
+        "MinItemLen": [
+            "Min Item length",
+            1,
+            1,
+            "The length of the smallest element in dataset"
+        ],
+        "MaxItemLen": [
+            "Max Item Length",
+            11,
+            11,
+            "The length of the largest element in dataset"
+        ],
+        "AvgItemLen": [
+            "Avg Item Length",
+            4.61088888888889,
+            "4.6",
+            "The average length of the elements in dataset"
+        ],
+        "Freq1CharColumns": [
+            "1-Char Columns %",
+            0.1111111111111111,
+            "11.1%",
+            "The columns count with exclusively 1-character elements by the total of columns"
+        ],
+        "Freq2ValuesItemColumns": [
+            "2-Value Item Columns %",
+            0.1111111111111111,
+            "11.1%",
+            "The columns count having exclusively 2 values by the total number of columns"
+        ],
+        "HasHeader": [
+            "Has Header?",
+            true,
+            true,
+            "Does the dataset have Header?"
+        ],
+        "delimiter": [
+            "delimiter",
+            ",",
+            ",",
+            "The delimiter between the columns of the dataset"
+        ],
+        "type2Words": [
+            "Type 2-INV Words",
+            3,
+            3,
+            "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
+        ]
+    },
+    "datasetTypePredicted": 2,
     "datasetType": 2
 }

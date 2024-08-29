@@ -14,7 +14,7 @@
             "Number Of Columns",
             6,
             6,
-            "The total number of columns/features in the Dataset"
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -40,20 +40,26 @@
             "95.5%",
             "The Average of distinct values per row over the total rows"
         ],
-        "FreqoFTop1FreqValue": [
-            "Top 1 Value",
+        "Top1Value": [
+            "Most Frequent Value",
+            "Credit Card",
+            "Credit Card",
+            "The most frequent value in the dataset"
+        ],
+        "FreqOfTop1FreqValue": [
+            "Top 1 Value %",
             0.086,
             "8.6%",
-            "The ratio of the number of the most frequent value to the number of elements"
+            "The ratio Of the number of the most frequent value to the number of elements"
         ],
-        "FreqoFTop2FreqValue": [
-            "Top 2 Value",
+        "FreqOfTop2FreqValue": [
+            "Top 2 Value %",
             0.08066666666666666,
             "8.1%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
-        "FreqoFTop3FreqValue": [
-            "Top 3 Value",
+        "FreqOfTop3FreqValue": [
+            "Top 3 Value %",
             0.006333333333333333,
             "0.6%",
             "The ratio of the number of the third most frequent value to the number of elements"
@@ -84,7 +90,7 @@
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -108,7 +114,7 @@
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0.0,
+            0,
             "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
@@ -138,5 +144,16 @@
         ]
     },
     "datasetTypePredicted": 2,
-    "datasetType": 2
+    "datasetType": 2,
+    "min_support": 0.1,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "2Fashion_Retail_Sales.csv",
+    "public": 1,
+    "redundantRemoveType": 0,
+    "participatingItems": "[]",
+    "groupItem": "Customer Reference ID",
+    "valueItem": "Item Purchased"
 }

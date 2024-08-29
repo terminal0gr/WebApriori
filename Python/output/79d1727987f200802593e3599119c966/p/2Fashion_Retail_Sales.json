@@ -5,14 +5,11 @@
     "max_length": 4,
     "ssort": -3,
     "datasetName": "2Fashion_Retail_Sales.csv",
-    "datasetType": 2,
-    "outputType": 3,
     "redundantRemoveType": 0,
-    "datasetArgs": "['Customer Reference ID', 'Item Purchased']",
     "Records": 166,
-    "RecordsCreationTime": "0.263",
+    "RecordsCreationTime": "0.135",
     "RulesCount": 14,
-    "RulesCreationTime": "0.114",
+    "RulesCreationTime": "0.061",
     "rules": [
         {
             "LHS": [
@@ -171,8 +168,8 @@
                 "Skirt"
             ],
             "RHS": [
-                "Sneakers",
-                "Handbag"
+                "Handbag",
+                "Sneakers"
             ],
             "Confidence": 0.25,
             "Lift": 1.7291666666666667,
@@ -187,8 +184,8 @@
         },
         {
             "LHS": [
-                "Sneakers",
-                "Handbag"
+                "Handbag",
+                "Sneakers"
             ],
             "RHS": [
                 "Skirt"

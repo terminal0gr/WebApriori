@@ -14,6 +14,21 @@ from _csv import Dialect as _Dialect
 from collections import OrderedDict
 from io import StringIO
 
+# Malliaridis 20240829 Created to subtistude the original regex in def _guess_quote_and_delimiter which is not working always right
+def is_double_quoted(data, delimiter=',', quotechar='"'):
+    # Split the string into lines
+    lines = data.splitlines()
+
+    # Loop over each line in the string
+    for line in lines:
+        in_quotes = False  # Flag to check if we are inside quotes
+        for char in line:
+            if char == quotechar:
+                in_quotes = not in_quotes  # Toggle the in_quotes flag
+        if in_quotes:
+            return False  # If still in quotes by the end of the line, it's improperly quoted
+    return True  # If no issues were found, the string is properly quoted
+
 __all__ = ["QUOTE_MINIMAL", "QUOTE_ALL", "QUOTE_NONNUMERIC", "QUOTE_NONE",
            "Error", "Dialect", "__doc__", "excel", "excel_tab",
            "field_size_limit", "reader", "writer",
@@ -267,8 +282,8 @@ class Sniffer:
             return ('', False, None, 0)
         
         # If matches found but less than the thresohold below corresponding to the regex above -> no quotechar and delimitel is not detected.
-        if len(matches)<dataRowsCount*0.9:
-            return ('', False, None, 0)
+        #if len(matches)<dataRowsCount*0.9:
+        #   return ('', False, None, 0)
 
         quotes = {}
         delims = {}
@@ -307,16 +322,15 @@ class Sniffer:
 
         # if we see an extra quote between delimiters, we've got a
         # double quoted format
-        dq_regexp = re.compile(
-                               r"((%(delim)s)|^)\W*%(quote)s[^%(delim)s\n]*%(quote)s[^%(delim)s\n]*%(quote)s\W*((%(delim)s)|$)" % \
-                               {'delim':re.escape(delim), 'quote':quotechar}, re.MULTILINE)
-
-
-
-        if dq_regexp.search(data):
-            doublequote = True
-        else:
-            doublequote = False
+        # Malliaridis 20240829 Created to subtistude the original regex below which is not working always right
+        doublequote = is_double_quoted(data, delim, quotechar)
+        # dq_regexp = re.compile(
+        #                        r"((%(delim)s)|^)\W*%(quote)s[^%(delim)s\n]*%(quote)s[^%(delim)s\n]*%(quote)s\W*((%(delim)s)|$)" % \
+        #                        {'delim':re.escape(delim), 'quote':quotechar}, re.MULTILINE)
+        # if dq_regexp.search(data):
+        #     doublequote = True
+        # else:
+        #     doublequote = False
 
         return (quotechar, doublequote, delim, skipinitialspace)
 
@@ -400,7 +414,7 @@ class Sniffer:
             # (rows of consistent data) / (number of rows) = 100%
             consistency = 1.0
             # minimum consistency threshold
-            threshold = 0.9
+            threshold = 0.85
             while len(delims) == 0 and consistency >= threshold:
                 for k, v in modeList:
                     if v[0] > 0 and v[1] > 0:

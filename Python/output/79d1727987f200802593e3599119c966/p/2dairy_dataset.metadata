@@ -1,9 +1,29 @@
 {
     "hasHeader": true,
     "header": [
+        "Location",
+        "Total Land Area (acres)",
+        "Number of Cows",
+        "Farm Size",
         "Date",
-        "Product",
-        "Name"
+        "Product ID",
+        "Product Name",
+        "Brand",
+        "Quantity (liters/kg)",
+        "Price per Unit",
+        "Total Value",
+        "Shelf Life (days)",
+        "Storage Condition",
+        "Production Date",
+        "Expiration Date",
+        "Quantity Sold (liters/kg)",
+        "Price per Unit (sold)",
+        "Approx. Total Revenue(INR)",
+        "Customer Location",
+        "Sales Channel",
+        "Quantity in Stock (liters/kg)",
+        "Minimum Stock Threshold (liters/kg)",
+        "Reorder Quantity (liters/kg)"
     ],
     "delimiter": ",",
     "datasetFeatures": {
@@ -11,7 +31,7 @@
             "Number Of Columns",
             23,
             23,
-            "The total number of columns\/features in the Dataset"
+            "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -87,7 +107,7 @@
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -111,13 +131,13 @@
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0,
+            0.0,
             "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0,
+            0.0,
             "0.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],

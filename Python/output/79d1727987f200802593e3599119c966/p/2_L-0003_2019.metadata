@@ -2,8 +2,14 @@
     "hasHeader": true,
     "header": [
         "InvoiceId",
-        "\u039a\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2",
-        "\u0395\u03af\u03b4\u03bf\u03c5\u03c2"
+        "\u0397\u03bc\u03b5\u03c1\u03bf\u03bc\u03b7\u03bd\u03af\u03b1",
+        "\u03a0\u03b1\u03c1\u03b1\u03c3\u03c4\u03b1\u03c4\u03b9\u03ba\u03cc",
+        "\u0391\u03c1\u03b9\u03b8\u03bc\u03cc\u03c2",
+        "\u039a\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 \u039b\u03bf\u03b3\u03b9\u03c3\u03c4\u03b9\u03ba\u03ae\u03c2",
+        "\u03a3\u03c5\u03bd\u03b1\u03bb\u03bb\u03b1\u03c3\u03c3\u03cc\u03bc\u03b5\u03bd\u03bf\u03c2",
+        "\u039a\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 \u0395\u03af\u03b4\u03bf\u03c5\u03c2",
+        "\u03a0\u03b5\u03c1\u03b9\u03b3\u03c1\u03b1\u03c6\u03ae \u03b5\u03af\u03b4\u03bf\u03c5\u03c2",
+        "\u0395\u03be\u03b1\u03b3\u03c9\u03b3\u03ad\u03c2"
     ],
     "delimiter": ";",
     "datasetFeatures": {
@@ -11,7 +17,7 @@
             "Number Of Columns",
             9,
             9,
-            "The total number of columns\/features in the Dataset"
+            "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -87,7 +93,7 @@
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -111,13 +117,13 @@
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0,
+            0.0,
             "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0,
+            0.0,
             "0.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],

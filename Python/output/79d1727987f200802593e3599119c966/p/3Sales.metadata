@@ -1,0 +1,252 @@
+{
+    "hasHeader": true,
+    "header": [
+        "S10_1678",
+        "S10_1949",
+        "S10_2016",
+        "S10_4698",
+        "S10_4757",
+        "S10_4962",
+        "S12_1099",
+        "S12_1108",
+        "S12_1666",
+        "S12_2823",
+        "S12_3148",
+        "S12_3380",
+        "S12_3891",
+        "S12_3990",
+        "S12_4473",
+        "S12_4675",
+        "S18_1097",
+        "S18_1129",
+        "S18_1342",
+        "S18_1367",
+        "S18_1589",
+        "S18_1662",
+        "S18_1749",
+        "S18_1889",
+        "S18_1984",
+        "S18_2238",
+        "S18_2248",
+        "S18_2319",
+        "S18_2325",
+        "S18_2432",
+        "S18_2581",
+        "S18_2625",
+        "S18_2795",
+        "S18_2870",
+        "S18_2949",
+        "S18_2957",
+        "S18_3029",
+        "S18_3136",
+        "S18_3140",
+        "S18_3232",
+        "S18_3259",
+        "S18_3278",
+        "S18_3320",
+        "S18_3482",
+        "S18_3685",
+        "S18_3782",
+        "S18_3856",
+        "S18_4027",
+        "S18_4409",
+        "S18_4522",
+        "S18_4600",
+        "S18_4668",
+        "S18_4721",
+        "S18_4933",
+        "S24_1046",
+        "S24_1444",
+        "S24_1578",
+        "S24_1628",
+        "S24_1785",
+        "S24_1937",
+        "S24_2000",
+        "S24_2011",
+        "S24_2022",
+        "S24_2300",
+        "S24_2360",
+        "S24_2766",
+        "S24_2840",
+        "S24_2841",
+        "S24_2887",
+        "S24_2972",
+        "S24_3151",
+        "S24_3191",
+        "S24_3371",
+        "S24_3420",
+        "S24_3432",
+        "S24_3816",
+        "S24_3856",
+        "S24_3949",
+        "S24_3969",
+        "S24_4048",
+        "S24_4258",
+        "S24_4278",
+        "S24_4620",
+        "S32_1268",
+        "S32_1374",
+        "S32_2206",
+        "S32_2509",
+        "S32_3207",
+        "S32_3522",
+        "S32_4289",
+        "S32_4485",
+        "S50_1341",
+        "S50_1392",
+        "S50_1514",
+        "S50_4713",
+        "S700_1138",
+        "S700_1691",
+        "S700_1938",
+        "S700_2047",
+        "S700_2466",
+        "S700_2610",
+        "S700_2824",
+        "S700_2834",
+        "S700_3167",
+        "S700_3505",
+        "S700_3962",
+        "S700_4002",
+        "S72_1253",
+        "S72_3212"
+    ],
+    "delimiter": "\t",
+    "datasetFeatures": {
+        "NumberOfColumns": [
+            "Number Of Columns",
+            109,
+            109,
+            "The total number of columns/features in the Dataset"
+        ],
+        "_name": [
+            "Name",
+            "3Sales.csv",
+            "3Sales.csv",
+            "The name of the dataset"
+        ],
+        "AvgOfDistinctValuesPerCol": [
+            "AvgOfDistinctValuesPerCol",
+            0.006514657980456028,
+            "0.7%",
+            "The Average of distinct values per column over the total columns"
+        ],
+        "AvgOfDistinctValuesOverAll": [
+            "AvgOfDistinctValuesOverAll",
+            5.976750440785345e-05,
+            "0.0%",
+            "The ratio of the number of total unique values to the number of elements"
+        ],
+        "AvgOfDistinctValuesPerRow": [
+            "AvgOfDistinctValuesPerRow",
+            0.01834862385321105,
+            "1.8%",
+            "The Average of distinct values per row over the total rows"
+        ],
+        "Top1Value": [
+            "Most Frequent Value",
+            "0",
+            "0",
+            "The most frequent value in the dataset"
+        ],
+        "FreqOfTop1FreqValue": [
+            "Top 1 Value %",
+            0.9156381675283148,
+            "91.6%",
+            "The ratio Of the number of the most frequent value to the number of elements"
+        ],
+        "FreqOfTop2FreqValue": [
+            "Top 2 Value %",
+            0.08436183247168515,
+            "8.4%",
+            "The ratio of the number of the second most frequent value to the number of elements"
+        ],
+        "FreqOfTop3FreqValue": [
+            "Top 3 Value %",
+            0.0,
+            "0.0%",
+            "The ratio of the number of the third most frequent value to the number of elements"
+        ],
+        "FreqOfIntegerCol": [
+            "Integer Columns %",
+            0.0,
+            "0.0%",
+            "The ratio of integer columns to the total number of columns"
+        ],
+        "FreqOfNumberCol": [
+            "Number Columns %",
+            0.0,
+            "0.0%",
+            "The ratio of float number columns to the total number of columns"
+        ],
+        "FreqOfDateCol": [
+            "Date Columns %",
+            0.0,
+            "0.0%",
+            "The ratio of date columns to the total number of columns"
+        ],
+        "FreqOfStringCol": [
+            "String Columns %",
+            0.0,
+            "0.0%",
+            "The ratio of columns with text to the total number of columns"
+        ],
+        "FreqOfBoolCol": [
+            "Boolean Columns %",
+            1.0,
+            "100.0%",
+            "The ratio of boolean columns to the total number of columns"
+        ],
+        "MinItemLen": [
+            "Min Item length",
+            1,
+            1,
+            "The length of the smallest element in dataset"
+        ],
+        "MaxItemLen": [
+            "Max Item Length",
+            1,
+            1,
+            "The length of the largest element in dataset"
+        ],
+        "AvgItemLen": [
+            "Avg Item Length",
+            1.0,
+            "1.0",
+            "The average length of the elements in dataset"
+        ],
+        "Freq1CharColumns": [
+            "1-Char Columns %",
+            1.0,
+            "100.0%",
+            "The columns count with exclusively 1-character elements by the total of columns"
+        ],
+        "Freq2ValuesItemColumns": [
+            "2-Value Item Columns %",
+            1.0,
+            "100.0%",
+            "The columns count having exclusively 2 values by the total number of columns"
+        ],
+        "HasHeader": [
+            "Has Header?",
+            true,
+            true,
+            "Does the dataset have Header?"
+        ],
+        "delimiter": [
+            "delimiter",
+            "\t",
+            "\t",
+            "The delimiter between the columns of the dataset"
+        ],
+        "type2Words": [
+            "Type 2-INV Words",
+            0,
+            0,
+            "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
+        ]
+    },
+    "datasetTypePredicted": 3,
+    "datasetType": 3,
+    "absentValue": "0"
+}

@@ -763,6 +763,9 @@ try:
                 sys.exit()   
 
     datasetSep=jsonData['delimiter']
+    if datasetSep=='{TAB}':
+        datasetSep='\t'
+
     datasetType=int(jsonData['datasetType'])
     hasHeader=bool(jsonData['hasHeader'])
 

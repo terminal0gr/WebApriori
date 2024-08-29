@@ -1,0 +1,171 @@
+{
+    "hasHeader": true,
+    "header": [
+        "Countries and areas",
+        "Latitude ",
+        "Longitude",
+        "OOSR_Pre0Primary_Age_Male",
+        "OOSR_Pre0Primary_Age_Female",
+        "OOSR_Primary_Age_Male",
+        "OOSR_Primary_Age_Female",
+        "OOSR_Lower_Secondary_Age_Male",
+        "OOSR_Lower_Secondary_Age_Female",
+        "OOSR_Upper_Secondary_Age_Male",
+        "OOSR_Upper_Secondary_Age_Female",
+        "Completion_Rate_Primary_Male",
+        "Completion_Rate_Primary_Female",
+        "Completion_Rate_Lower_Secondary_Male",
+        "Completion_Rate_Lower_Secondary_Female",
+        "Completion_Rate_Upper_Secondary_Male",
+        "Completion_Rate_Upper_Secondary_Female",
+        "Grade_2_3_Proficiency_Reading",
+        "Grade_2_3_Proficiency_Math",
+        "Primary_End_Proficiency_Reading",
+        "Primary_End_Proficiency_Math",
+        "Lower_Secondary_End_Proficiency_Reading",
+        "Lower_Secondary_End_Proficiency_Math",
+        "Youth_15_24_Literacy_Rate_Male",
+        "Youth_15_24_Literacy_Rate_Female",
+        "Birth_Rate",
+        "Gross_Primary_Education_Enrollment",
+        "Gross_Tertiary_Education_Enrollment",
+        "Unemployment_Rate"
+    ],
+    "delimiter": ",",
+    "datasetFeatures": {
+        "NumberOfColumns": [
+            "Number Of Columns",
+            29,
+            29,
+            "The total number of columns/features in the Dataset"
+        ],
+        "_name": [
+            "Name",
+            "0global_education_data.csv",
+            "0global_education_data.csv",
+            "The name of the dataset"
+        ],
+        "AvgOfDistinctValuesPerCol": [
+            "AvgOfDistinctValuesPerCol",
+            0.39603960396039606,
+            "39.6%",
+            "The Average of distinct values per column over the total columns"
+        ],
+        "AvgOfDistinctValuesOverAll": [
+            "AvgOfDistinctValuesOverAll",
+            0.22072379651758278,
+            "22.1%",
+            "The ratio of the number of total unique values to the number of elements"
+        ],
+        "AvgOfDistinctValuesPerRow": [
+            "AvgOfDistinctValuesPerRow",
+            0.5938886992147493,
+            "59.4%",
+            "The Average of distinct values per row over the total rows"
+        ],
+        "Top1Value": [
+            "Most Frequent Value",
+            "0",
+            "0",
+            "The most frequent value in the dataset"
+        ],
+        "FreqOfTop1FreqValue": [
+            "Top 1 Value %",
+            0.3794810515534312,
+            "37.9%",
+            "The ratio Of the number of the most frequent value to the number of elements"
+        ],
+        "FreqOfTop2FreqValue": [
+            "Top 2 Value %",
+            0.020314100375554797,
+            "2.0%",
+            "The ratio of the number of the second most frequent value to the number of elements"
+        ],
+        "FreqOfTop3FreqValue": [
+            "Top 3 Value %",
+            0.01485148514851485,
+            "1.5%",
+            "The ratio of the number of the third most frequent value to the number of elements"
+        ],
+        "FreqOfIntegerCol": [
+            "Integer Columns %",
+            0.7586206896551724,
+            "75.9%",
+            "The ratio of integer columns to the total number of columns"
+        ],
+        "FreqOfNumberCol": [
+            "Number Columns %",
+            0.20689655172413793,
+            "20.7%",
+            "The ratio of float number columns to the total number of columns"
+        ],
+        "FreqOfDateCol": [
+            "Date Columns %",
+            0.0,
+            "0.0%",
+            "The ratio of date columns to the total number of columns"
+        ],
+        "FreqOfStringCol": [
+            "String Columns %",
+            0.034483,
+            "3.4%",
+            "The ratio of columns with text to the total number of columns"
+        ],
+        "FreqOfBoolCol": [
+            "Boolean Columns %",
+            0.0,
+            "0.0%",
+            "The ratio of boolean columns to the total number of columns"
+        ],
+        "MinItemLen": [
+            "Min Item length",
+            1,
+            1,
+            "The length of the smallest element in dataset"
+        ],
+        "MaxItemLen": [
+            "Max Item Length",
+            32,
+            32,
+            "The length of the largest element in dataset"
+        ],
+        "AvgItemLen": [
+            "Avg Item Length",
+            2.5563332195288493,
+            "2.6",
+            "The average length of the elements in dataset"
+        ],
+        "Freq1CharColumns": [
+            "1-Char Columns %",
+            0.0,
+            "0.0%",
+            "The columns count with exclusively 1-character elements by the total of columns"
+        ],
+        "Freq2ValuesItemColumns": [
+            "2-Value Item Columns %",
+            0.0,
+            "0.0%",
+            "The columns count having exclusively 2 values by the total number of columns"
+        ],
+        "HasHeader": [
+            "Has Header?",
+            true,
+            true,
+            "Does the dataset have Header?"
+        ],
+        "delimiter": [
+            "delimiter",
+            ",",
+            ",",
+            "The delimiter between the columns of the dataset"
+        ],
+        "type2Words": [
+            "Type 2-INV Words",
+            0,
+            0,
+            "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
+        ]
+    },
+    "datasetTypePredicted": 0,
+    "datasetType": 0
+}

@@ -7,10 +7,10 @@
            DONE python datasetDescribe.py "79d1727987f200802593e3599119c966" "0_Dry_Bean_Dataset.arff" "10" "15" "1"
            DONE 0academic_detail Wrong separator '/' instead of ','
            DONE 0fakeNews.csv Cannot read properties of null (reading 'delimiter')
-           0field_of_study.csv Wrong separator ' ' instead of ','
-           0fish_catches.csv wrong classification 4 instead of 0
-           python DatasetAttrAutoDetect.py "79d1727987f200802593e3599119c966" "0global_education_data.csv" "-1" "1" "1" 201Invalid parameters! Please check
-
+           DONE 0field_of_study.csv Wrong separator ' ' instead of ','
+           DONE OK... Can work as 4 0fish_catches.csv wrong classification 4 instead of 0
+           DONE python DatasetAttrAutoDetect.py "79d1727987f200802593e3599119c966" "0global_education_data.csv" "-1" "1" "1" 201Invalid parameters! Please check
+           DONE 3Bakery Sales.csv Cannot read properties of null (reading 'delimiter') value nan added in dropna values
 
 09/06/2024 Thorough Test for all datasets in retrieve AR must be done!
            0fish_catches.csv Error 30

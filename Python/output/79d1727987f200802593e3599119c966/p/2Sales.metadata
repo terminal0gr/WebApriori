@@ -30,7 +30,7 @@
             "Number Of Columns",
             22,
             22,
-            "The total number of columns\/features in the Dataset"
+            "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -106,7 +106,7 @@
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -136,7 +136,7 @@
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0,
+            0.0,
             "0.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
@@ -160,16 +160,5 @@
         ]
     },
     "datasetTypePredicted": 2,
-    "datasetType": 2,
-    "min_support": 0.07,
-    "min_confidence": 0.8,
-    "min_lift": 10,
-    "max_length": 4,
-    "ssort": -3,
-    "datasetName": "2Sales.csv",
-    "public": 1,
-    "redundantRemoveType": 0,
-    "participatingItems": "[]",
-    "groupItem": "ORDERNUMBER",
-    "valueItem": "PRODUCTCODE"
+    "datasetType": 2
 }

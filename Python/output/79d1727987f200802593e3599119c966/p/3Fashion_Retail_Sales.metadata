@@ -1,7 +1,6 @@
 {
     "hasHeader": true,
     "header": [
-        "?",
         "Backpack",
         "Belt",
         "Blazer",
@@ -12,8 +11,7 @@
         "Cardigan",
         "Coat",
         "Dress",
-        "Flannel",
-        "Shirt",
+        "Flannel Shirt",
         "Flip-Flops",
         "Gloves",
         "Handbag",
@@ -29,8 +27,7 @@
         "Overalls",
         "Pajamas",
         "Pants",
-        "Polo",
-        "Shirt",
+        "Polo Shirt",
         "Poncho",
         "Raincoat",
         "Romper",
@@ -41,17 +38,14 @@
         "Slippers",
         "Sneakers",
         "Socks",
-        "Sun",
-        "Hat",
+        "Sun Hat",
         "Sunglasses",
         "Sweater",
         "Swimsuit",
         "T-shirt",
-        "Tank",
-        "Top",
+        "Tank Top",
         "Tie",
-        "Trench",
-        "Coat",
+        "Trench Coat",
         "Trousers",
         "Tunic",
         "Umbrella",
@@ -59,5 +53,150 @@
         "Wallet"
     ],
     "delimiter": ",",
-    "datasetType": 3
+    "datasetFeatures": {
+        "NumberOfColumns": [
+            "Number Of Columns",
+            50,
+            50,
+            "The total number of columns\/features in the Dataset"
+        ],
+        "_name": [
+            "Name",
+            "3Fashion_Retail_Sales.csv",
+            "3Fashion_Retail_Sales.csv",
+            "The name of the dataset"
+        ],
+        "AvgOfDistinctValuesPerCol": [
+            "AvgOfDistinctValuesPerCol",
+            0.012048192771084338,
+            "1.2%",
+            "The Average of distinct values per column over the total columns"
+        ],
+        "AvgOfDistinctValuesOverAll": [
+            "AvgOfDistinctValuesOverAll",
+            0.00024096385542168674,
+            "0.0%",
+            "The ratio of the number of total unique values to the number of elements"
+        ],
+        "AvgOfDistinctValuesPerRow": [
+            "AvgOfDistinctValuesPerRow",
+            0.04000000000000003,
+            "4.0%",
+            "The Average of distinct values per row over the total rows"
+        ],
+        "Top1Value": [
+            "Most Frequent Value",
+            "?",
+            "?",
+            "The most frequent value in the dataset"
+        ],
+        "FreqOfTop1FreqValue": [
+            "Top 1 Value %",
+            0.6659036144578313,
+            "66.6%",
+            "The ratio Of the number of the most frequent value to the number of elements"
+        ],
+        "FreqOfTop2FreqValue": [
+            "Top 2 Value %",
+            0.3340963855421687,
+            "33.4%",
+            "The ratio of the number of the second most frequent value to the number of elements"
+        ],
+        "FreqOfTop3FreqValue": [
+            "Top 3 Value %",
+            0,
+            "0.0%",
+            "The ratio of the number of the third most frequent value to the number of elements"
+        ],
+        "FreqOfIntegerCol": [
+            "Integer Columns %",
+            0,
+            "0.0%",
+            "The ratio of integer columns to the total number of columns"
+        ],
+        "FreqOfNumberCol": [
+            "Number Columns %",
+            0,
+            "0.0%",
+            "The ratio of float number columns to the total number of columns"
+        ],
+        "FreqOfDateCol": [
+            "Date Columns %",
+            0,
+            "0.0%",
+            "The ratio of date columns to the total number of columns"
+        ],
+        "FreqOfStringCol": [
+            "String Columns %",
+            1,
+            "100.0%",
+            "The ratio of columns with text to the total number of columns"
+        ],
+        "FreqOfBoolCol": [
+            "Boolean Columns %",
+            0,
+            "0.0%",
+            "The ratio of boolean columns to the total number of columns"
+        ],
+        "MinItemLen": [
+            "Min Item length",
+            1,
+            1,
+            "The length of the smallest element in dataset"
+        ],
+        "MaxItemLen": [
+            "Max Item Length",
+            1,
+            1,
+            "The length of the largest element in dataset"
+        ],
+        "AvgItemLen": [
+            "Avg Item Length",
+            1,
+            "1.0",
+            "The average length of the elements in dataset"
+        ],
+        "Freq1CharColumns": [
+            "1-Char Columns %",
+            1,
+            "100.0%",
+            "The columns count with exclusively 1-character elements by the total of columns"
+        ],
+        "Freq2ValuesItemColumns": [
+            "2-Value Item Columns %",
+            1,
+            "100.0%",
+            "The columns count having exclusively 2 values by the total number of columns"
+        ],
+        "HasHeader": [
+            "Has Header?",
+            true,
+            true,
+            "Does the dataset have Header?"
+        ],
+        "delimiter": [
+            "delimiter",
+            ",",
+            ",",
+            "The delimiter between the columns of the dataset"
+        ],
+        "type2Words": [
+            "Type 2-INV Words",
+            0,
+            0,
+            "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
+        ]
+    },
+    "datasetTypePredicted": 3,
+    "datasetType": 3,
+    "absentValue": "?",
+    "min_support": 0.1,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "3Fashion_Retail_Sales.csv",
+    "public": 1,
+    "redundantRemoveType": 0,
+    "participatingItems": "[]"
 }

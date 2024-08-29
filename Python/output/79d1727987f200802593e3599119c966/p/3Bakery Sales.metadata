@@ -35,7 +35,7 @@
             "Number Of Columns",
             27,
             27,
-            "The total number of columns/features in the Dataset"
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -61,20 +61,26 @@
             "22.1%",
             "The Average of distinct values per row over the total rows"
         ],
-        "FreqoFTop1FreqValue": [
-            "Top 1 Value",
+        "Top1Value": [
+            "Most Frequent Value",
+            "nan",
+            "nan",
+            "The most frequent value in the dataset"
+        ],
+        "FreqOfTop1FreqValue": [
+            "Top 1 Value %",
             0.7428148148148148,
             "74.3%",
-            "The ratio of the number of the most frequent value to the number of elements"
+            "The ratio Of the number of the most frequent value to the number of elements"
         ],
-        "FreqoFTop2FreqValue": [
-            "Top 2 Value",
+        "FreqOfTop2FreqValue": [
+            "Top 2 Value %",
             0.1014074074074074,
             "10.1%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
-        "FreqoFTop3FreqValue": [
-            "Top 3 Value",
+        "FreqOfTop3FreqValue": [
+            "Top 3 Value %",
             0.01888888888888889,
             "1.9%",
             "The ratio of the number of the third most frequent value to the number of elements"
@@ -87,7 +93,7 @@
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
@@ -129,7 +135,7 @@
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0.0,
+            0,
             "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
@@ -159,5 +165,15 @@
         ]
     },
     "datasetTypePredicted": 3,
-    "datasetType": 3
+    "datasetType": 3,
+    "absentValue": "nan",
+    "min_support": 0.005,
+    "min_confidence": 0.02,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "3Bakery Sales.csv",
+    "public": 1,
+    "redundantRemoveType": 0,
+    "participatingItems": "[]"
 }

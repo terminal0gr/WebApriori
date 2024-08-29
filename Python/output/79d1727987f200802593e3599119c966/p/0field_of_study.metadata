@@ -1,12 +1,17 @@
 {
-    "hasHeader": false,
-    "header": null,
-    "delimiter": " ",
+    "hasHeader": true,
+    "header": [
+        "year",
+        "field_of_study",
+        "major",
+        "students"
+    ],
+    "delimiter": ",",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            10,
-            10,
+            4,
+            4,
             "The total number of columns/features in the Dataset"
         ],
         "_name": [
@@ -17,50 +22,50 @@
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.15739999999999998,
-            "15.7%",
+            0.264,
+            "26.4%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.156,
-            "15.6%",
+            0.26,
+            "26.0%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            0.43539999999999995,
-            "43.5%",
+            0.9355,
+            "93.5%",
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "and",
-            "and",
+            "Engineering",
+            "Engineering",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.0748,
-            "7.5%",
+            0.048,
+            "4.8%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.0176,
-            "1.8%",
+            0.0445,
+            "4.5%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.0176,
-            "1.8%",
+            0.033,
+            "3.3%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.0,
-            "0.0%",
+            0.25,
+            "25.0%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
@@ -77,8 +82,8 @@
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            1.0,
-            "100.0%",
+            0.75,
+            "75.0%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
@@ -89,20 +94,20 @@
         ],
         "MinItemLen": [
             "Min Item length",
-            0,
-            0,
+            3,
+            3,
             "The length of the smallest element in dataset"
         ],
         "MaxItemLen": [
             "Max Item Length",
-            38,
-            38,
+            52,
+            52,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            5.5632,
-            "5.6",
+            14.506499999999999,
+            "14.5",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
@@ -119,14 +124,14 @@
         ],
         "HasHeader": [
             "Has Header?",
-            false,
-            false,
+            true,
+            true,
             "Does the dataset have Header?"
         ],
         "delimiter": [
             "delimiter",
-            " ",
-            " ",
+            ",",
+            ",",
             "The delimiter between the columns of the dataset"
         ],
         "type2Words": [
@@ -136,6 +141,6 @@
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
         ]
     },
-    "datasetTypePredicted": 1,
-    "datasetType": 1
+    "datasetTypePredicted": 0,
+    "datasetType": 0
 }

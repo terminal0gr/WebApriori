@@ -80,7 +80,7 @@ class datasetFeatures:
             
             if dialect.datasetType!=1:
                 # Check if the Most frequent value is one of the P\possible strings that could represent the absent value in 3-SI dataset type
-                if datasetFeaturesInst.Top1Value in ["n/a", "na", "-", "?", "#", False, "no", "No", "0"]:
+                if datasetFeaturesInst.Top1Value in ["n/a", "na", "nan", "-", "?", "#", False, "no", "No", "0"]:
                     # If the most frequent value is more than 50% of all the values of the dataset then 
                     # It is the absent value and the
                     # dataset is 100% of type 3-SI. Additionally change NaN values to 0 For smoothness in the procedures below because is 3-SI we don't want absent value to be treated as missing value

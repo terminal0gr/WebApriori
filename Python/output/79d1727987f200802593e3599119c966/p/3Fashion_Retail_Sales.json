@@ -5,22 +5,19 @@
     "max_length": 4,
     "ssort": -3,
     "datasetName": "3Fashion_Retail_Sales.csv",
-    "datasetType": 3,
-    "outputType": 3,
     "redundantRemoveType": 0,
-    "datasetArgs": "['?', 'Backpack', 'Belt', 'Blazer', 'Blouse', 'Boots', 'Bowtie', 'Camisole', 'Cardigan', 'Coat', 'Dress', 'Flannel Shirt', 'Flip-Flops', 'Gloves', 'Handbag', 'Hat', 'Hoodie', 'Jacket', 'Jeans', 'Jumpsuit', 'Kimono', 'Leggings', 'Loafers', 'Onesie', 'Overalls', 'Pajamas', 'Pants', 'Polo Shirt', 'Poncho', 'Raincoat', 'Romper', 'Sandals', 'Scarf', 'Shorts', 'Skirt', 'Slippers', 'Sneakers', 'Socks', 'Sun Hat', 'Sunglasses', 'Sweater', 'Swimsuit', 'T-shirt', 'Tank Top', 'Tie', 'Trench Coat', 'Trousers', 'Tunic', 'Umbrella', 'Vest', 'Wallet']",
     "Records": 166,
-    "RecordsCreationTime": "0.025",
+    "RecordsCreationTime": "0.014",
     "RulesCount": 14,
-    "RulesCreationTime": "0.124",
+    "RulesCreationTime": "0.061",
     "rules": [
         {
             "LHS": [
                 "Raincoat"
             ],
             "RHS": [
-                "Loafers",
-                "Backpack"
+                "Backpack",
+                "Loafers"
             ],
             "Confidence": 0.3207547169811321,
             "Lift": 2.315012305168171,
@@ -35,8 +32,8 @@
         },
         {
             "LHS": [
-                "Loafers",
-                "Backpack"
+                "Backpack",
+                "Loafers"
             ],
             "RHS": [
                 "Raincoat"
@@ -209,8 +206,8 @@
                 "Handbag"
             ],
             "RHS": [
-                "Skirt",
-                "Sneakers"
+                "Sneakers",
+                "Skirt"
             ],
             "Confidence": 0.29310344827586204,
             "Lift": 1.6777645659928655,
@@ -225,8 +222,8 @@
         },
         {
             "LHS": [
-                "Skirt",
-                "Sneakers"
+                "Sneakers",
+                "Skirt"
             ],
             "RHS": [
                 "Handbag"

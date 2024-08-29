@@ -1,0 +1,14 @@
+{
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "0u.data",
+    "redundantRemoveType": 0,
+    "Records": 1516,
+    "RecordsCreationTime": "2.658",
+    "RulesCount": 0,
+    "RulesCreationTime": "0.009",
+    "rules": []
+}

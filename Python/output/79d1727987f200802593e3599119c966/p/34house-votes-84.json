@@ -5,1840 +5,304 @@
     "max_length": 4,
     "ssort": -3,
     "datasetName": "34house-votes-84.csv",
-    "datasetType": 4,
-    "outputType": 3,
-    "redundantRemoveType": 7,
-    "datasetArgs": "['party', 'infant', 'water', 'budget', 'physician', 'salvador', 'religious', 'satellite', 'aid', 'missile', 'immigration', 'synfuels', 'education', 'superfund', 'crime', 'dutyfree exports']",
+    "redundantRemoveType": 0,
     "Records": 435,
-    "RecordsCreationTime": "0.016",
-    "RulesCount": 94,
-    "RulesCreationTime": "0.033",
+    "RecordsCreationTime": "0.008",
+    "RulesCount": 15,
+    "RulesCreationTime": "0.007",
     "rules": [
         {
             "LHS": [
-                "satellite=1",
-                "aid=1",
-                "party=democrat"
+                "physician"
             ],
             "RHS": [
-                "salvador=0"
+                "salvador"
             ],
-            "Confidence": 0.9470899470899472,
-            "Lift": 1.9806929181929185,
-            "Conviction": 9.862758620689677,
-            "Leverage": 0.20374157748711852,
-            "LHS_Count": 189,
-            "LHS_Support": 0.43448275862068964,
-            "RHS_Count": 208,
-            "RHS_Support": 0.4781609195402299,
-            "Support": 0.4114942528735632,
-            "Count": 179
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "physician=0",
-                "aid=1"
-            ],
-            "RHS": [
-                "salvador=0"
-            ],
-            "Confidence": 0.945945945945946,
-            "Lift": 1.978300415800416,
-            "Conviction": 9.654022988505767,
-            "Leverage": 0.19894305720702868,
-            "LHS_Count": 185,
-            "LHS_Support": 0.42528735632183906,
-            "RHS_Count": 208,
-            "RHS_Support": 0.4781609195402299,
-            "Support": 0.40229885057471265,
-            "Count": 175
-        },
-        {
-            "LHS": [
-                "salvador=0",
-                "budget=1"
-            ],
-            "RHS": [
-                "aid=1",
-                "party=democrat"
-            ],
-            "Confidence": 0.9680851063829787,
-            "Lift": 1.9317294553972284,
-            "Conviction": 15.630651340996174,
-            "Leverage": 0.20180208746201617,
+            "Confidence": 0.9308510638297872,
+            "Lift": 1.7837894835504733,
+            "Conviction": 6.91494252873563,
+            "Leverage": 0.17676839741049016,
             "LHS_Count": 188,
             "LHS_Support": 0.432183908045977,
-            "RHS_Count": 218,
-            "RHS_Support": 0.5011494252873563,
-            "Support": 0.41839080459770117,
-            "Count": 182
-        },
-        {
-            "LHS": [
-                "missile=1",
-                "aid=1"
-            ],
-            "RHS": [
-                "salvador=0"
-            ],
-            "Confidence": 0.9114583333333334,
-            "Lift": 1.9061748798076925,
-            "Conviction": 5.8937119675456415,
-            "Leverage": 0.1912485136741974,
-            "LHS_Count": 192,
-            "LHS_Support": 0.4413793103448276,
-            "RHS_Count": 208,
-            "RHS_Support": 0.4781609195402299,
+            "RHS_Count": 227,
+            "RHS_Support": 0.5218390804597701,
             "Support": 0.40229885057471265,
             "Count": 175
         },
         {
             "LHS": [
-                "satellite=1",
-                "party=democrat"
+                "physician"
             ],
             "RHS": [
-                "salvador=0"
+                "party",
+                "salvador"
+            ],
+            "Confidence": 0.9308510638297872,
+            "Lift": 1.7837894835504733,
+            "Conviction": 6.91494252873563,
+            "Leverage": 0.17676839741049016,
+            "LHS_Count": 188,
+            "LHS_Support": 0.432183908045977,
+            "RHS_Count": 227,
+            "RHS_Support": 0.5218390804597701,
+            "Support": 0.40229885057471265,
+            "Count": 175
+        },
+        {
+            "LHS": [
+                "party",
+                "physician"
+            ],
+            "RHS": [
+                "salvador"
+            ],
+            "Confidence": 0.9308510638297872,
+            "Lift": 1.7837894835504733,
+            "Conviction": 6.91494252873563,
+            "Leverage": 0.17676839741049016,
+            "LHS_Count": 188,
+            "LHS_Support": 0.432183908045977,
+            "RHS_Count": 227,
+            "RHS_Support": 0.5218390804597701,
+            "Support": 0.40229885057471265,
+            "Count": 175
+        },
+        {
+            "LHS": [
+                "religious",
+                "superfund",
+                "crime"
+            ],
+            "RHS": [
+                "salvador"
+            ],
+            "Confidence": 0.9255319148936171,
+            "Lift": 1.773596400787328,
+            "Conviction": 6.421018062397378,
+            "Leverage": 0.17446954683577753,
+            "LHS_Count": 188,
+            "LHS_Support": 0.432183908045977,
+            "RHS_Count": 227,
+            "RHS_Support": 0.5218390804597701,
+            "Support": 0.4,
+            "Count": 174
+        },
+        {
+            "LHS": [
+                "superfund",
+                "crime"
+            ],
+            "RHS": [
+                "salvador"
             ],
             "Confidence": 0.91,
-            "Lift": 1.9031250000000002,
-            "Conviction": 5.798212005108559,
-            "Leverage": 0.19854670365966445,
+            "Lift": 1.7438325991189427,
+            "Conviction": 5.312899106002556,
+            "Leverage": 0.17846479059320916,
             "LHS_Count": 200,
             "LHS_Support": 0.45977011494252873,
-            "RHS_Count": 208,
-            "RHS_Support": 0.4781609195402299,
+            "RHS_Count": 227,
+            "RHS_Support": 0.5218390804597701,
             "Support": 0.41839080459770117,
             "Count": 182
         },
         {
             "LHS": [
-                "satellite=1",
-                "salvador=0"
+                "superfund",
+                "crime"
             ],
             "RHS": [
-                "aid=1",
-                "party=democrat"
+                "party",
+                "salvador"
             ],
-            "Confidence": 0.9521276595744681,
-            "Lift": 1.8998877610774938,
-            "Conviction": 10.420434227330784,
-            "Leverage": 0.19490553573787822,
-            "LHS_Count": 188,
-            "LHS_Support": 0.432183908045977,
-            "RHS_Count": 218,
-            "RHS_Support": 0.5011494252873563,
-            "Support": 0.4114942528735632,
-            "Count": 179
+            "Confidence": 0.91,
+            "Lift": 1.7438325991189427,
+            "Conviction": 5.312899106002556,
+            "Leverage": 0.17846479059320916,
+            "LHS_Count": 200,
+            "LHS_Support": 0.45977011494252873,
+            "RHS_Count": 227,
+            "RHS_Support": 0.5218390804597701,
+            "Support": 0.41839080459770117,
+            "Count": 182
         },
         {
             "LHS": [
-                "satellite=1",
-                "physician=0",
-                "party=democrat"
+                "party",
+                "crime",
+                "superfund"
             ],
             "RHS": [
-                "salvador=0"
+                "salvador"
             ],
-            "Confidence": 0.9076923076923077,
-            "Lift": 1.8982988165680474,
-            "Conviction": 5.653256704980842,
-            "Leverage": 0.1925485533095521,
-            "LHS_Count": 195,
-            "LHS_Support": 0.4482758620689655,
-            "RHS_Count": 208,
-            "RHS_Support": 0.4781609195402299,
-            "Support": 0.4068965517241379,
-            "Count": 177
+            "Confidence": 0.91,
+            "Lift": 1.7438325991189427,
+            "Conviction": 5.312899106002556,
+            "Leverage": 0.17846479059320916,
+            "LHS_Count": 200,
+            "LHS_Support": 0.45977011494252873,
+            "RHS_Count": 227,
+            "RHS_Support": 0.5218390804597701,
+            "Support": 0.41839080459770117,
+            "Count": 182
         },
         {
             "LHS": [
-                "physician=0",
-                "aid=1",
-                "budget=1"
+                "superfund",
+                "salvador"
             ],
             "RHS": [
-                "salvador=0"
-            ],
-            "Confidence": 0.904040404040404,
-            "Lift": 1.8906614219114217,
-            "Conviction": 5.438112522686022,
-            "Leverage": 0.19384859294490686,
-            "LHS_Count": 198,
-            "LHS_Support": 0.45517241379310347,
-            "RHS_Count": 208,
-            "RHS_Support": 0.4781609195402299,
-            "Support": 0.4114942528735632,
-            "Count": 179
-        },
-        {
-            "LHS": [
-                "salvador=0"
-            ],
-            "RHS": [
-                "aid=1",
-                "party=democrat"
-            ],
-            "Confidence": 0.9471153846153846,
-            "Lift": 1.889886203246295,
-            "Conviction": 9.43281086729362,
-            "Leverage": 0.21324349319593078,
-            "LHS_Count": 208,
-            "LHS_Support": 0.4781609195402299,
-            "RHS_Count": 218,
-            "RHS_Support": 0.5011494252873563,
-            "Support": 0.4528735632183908,
-            "Count": 197
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "physician=0"
-            ],
-            "RHS": [
-                "salvador=0"
-            ],
-            "Confidence": 0.9035532994923858,
-            "Lift": 1.8896427176884032,
-            "Conviction": 5.410647307924988,
-            "Leverage": 0.19264896287488442,
-            "LHS_Count": 197,
-            "LHS_Support": 0.4528735632183908,
-            "RHS_Count": 208,
-            "RHS_Support": 0.4781609195402299,
-            "Support": 0.4091954022988506,
-            "Count": 178
-        },
-        {
-            "LHS": [
-                "religious=1",
-                "missile=0"
-            ],
-            "RHS": [
-                "salvador=1"
+                "religious",
+                "crime"
             ],
             "Confidence": 0.9206349206349207,
-            "Lift": 1.8890386343216534,
-            "Conviction": 6.459310344827592,
-            "Leverage": 0.1882520808561237,
+            "Lift": 1.74120082815735,
+            "Conviction": 5.937931034482763,
+            "Leverage": 0.17027348394768135,
             "LHS_Count": 189,
             "LHS_Support": 0.43448275862068964,
-            "RHS_Count": 212,
-            "RHS_Support": 0.48735632183908045,
+            "RHS_Count": 230,
+            "RHS_Support": 0.5287356321839081,
             "Support": 0.4,
             "Count": 174
         },
         {
             "LHS": [
-                "physician=0",
-                "salvador=0"
+                "satellite",
+                "missile",
+                "budget"
             ],
             "RHS": [
-                "aid=1",
-                "budget=1"
+                "aid"
             ],
-            "Confidence": 0.9179487179487179,
-            "Lift": 1.8572450805008944,
-            "Conviction": 6.163793103448273,
-            "Leverage": 0.18993261989694807,
-            "LHS_Count": 195,
-            "LHS_Support": 0.4482758620689655,
-            "RHS_Count": 215,
-            "RHS_Support": 0.4942528735632184,
-            "Support": 0.4114942528735632,
-            "Count": 179
-        },
-        {
-            "LHS": [
-                "salvador=0",
-                "party=democrat"
-            ],
-            "RHS": [
-                "aid=1",
-                "budget=1"
-            ],
-            "Confidence": 0.91,
-            "Lift": 1.8411627906976744,
-            "Conviction": 5.6194125159642425,
-            "Leverage": 0.19114810410886512,
-            "LHS_Count": 200,
-            "LHS_Support": 0.45977011494252873,
-            "RHS_Count": 215,
-            "RHS_Support": 0.4942528735632184,
-            "Support": 0.41839080459770117,
-            "Count": 182
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "party=democrat"
-            ],
-            "RHS": [
-                "physician=0",
-                "budget=1"
-            ],
-            "Confidence": 0.91,
-            "Lift": 1.8075342465753426,
-            "Conviction": 5.517241379310347,
-            "Leverage": 0.18692033293697982,
-            "LHS_Count": 200,
-            "LHS_Support": 0.45977011494252873,
-            "RHS_Count": 219,
-            "RHS_Support": 0.503448275862069,
-            "Support": 0.41839080459770117,
-            "Count": 182
-        },
-        {
-            "LHS": [
-                "salvador=0",
-                "party=democrat"
-            ],
-            "RHS": [
-                "physician=0",
-                "budget=1"
-            ],
-            "Confidence": 0.9049999999999999,
-            "Lift": 1.7976027397260272,
-            "Conviction": 5.22686025408348,
-            "Leverage": 0.18462148236226714,
-            "LHS_Count": 200,
-            "LHS_Support": 0.45977011494252873,
-            "RHS_Count": 219,
-            "RHS_Support": 0.503448275862069,
-            "Support": 0.4160919540229885,
-            "Count": 181
-        },
-        {
-            "LHS": [
-                "salvador=0",
-                "budget=1"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.9893617021276596,
-            "Lift": 1.7783981009319503,
-            "Conviction": 41.70574712643694,
-            "Leverage": 0.18715286035143353,
-            "LHS_Count": 188,
-            "LHS_Support": 0.432183908045977,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.42758620689655175,
-            "Count": 186
-        },
-        {
-            "LHS": [
-                "salvador=0",
-                "party=democrat",
-                "budget=1"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.9891304347826088,
-            "Lift": 1.7779823931009704,
-            "Conviction": 40.81839080459794,
-            "Leverage": 0.18307306117056418,
-            "LHS_Count": 184,
-            "LHS_Support": 0.42298850574712643,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.41839080459770117,
-            "Count": 182
-        },
-        {
-            "LHS": [
-                "salvador=0",
-                "party=democrat"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.985,
-            "Lift": 1.7705578512396696,
-            "Conviction": 29.578544061302658,
-            "Leverage": 0.19709340731932884,
-            "LHS_Count": 200,
-            "LHS_Support": 0.45977011494252873,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.4528735632183908,
-            "Count": 197
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "salvador=0"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.9846153846153846,
-            "Lift": 1.7698664971392244,
-            "Conviction": 28.839080459770013,
-            "Leverage": 0.19199365834324217,
-            "LHS_Count": 195,
-            "LHS_Support": 0.4482758620689655,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.4413793103448276,
-            "Count": 192
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "salvador=0",
-                "party=democrat"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.9845360824742267,
-            "Lift": 1.7697239499020192,
-            "Conviction": 28.6911877394635,
-            "Leverage": 0.19097370854802484,
-            "LHS_Count": 194,
-            "LHS_Support": 0.4459770114942529,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.43908045977011495,
-            "Count": 191
-        },
-        {
-            "LHS": [
-                "salvador=0",
-                "education=0"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.9830508474576273,
-            "Lift": 1.7670542092730077,
-            "Conviction": 26.177011494253115,
-            "Leverage": 0.1736345620293302,
-            "LHS_Count": 177,
-            "LHS_Support": 0.4068965517241379,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.4,
-            "Count": 174
-        },
-        {
-            "LHS": [
-                "salvador=0"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.9807692307692307,
-            "Lift": 1.7629529561347743,
-            "Conviction": 23.071264367816042,
-            "Leverage": 0.2029541551063549,
-            "LHS_Count": 208,
-            "LHS_Support": 0.4781609195402299,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.4689655172413793,
-            "Count": 204
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "salvador=0"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.9787234042553191,
-            "Lift": 1.7592755407068754,
-            "Conviction": 20.852873563218363,
-            "Leverage": 0.1825551592020082,
-            "LHS_Count": 188,
-            "LHS_Support": 0.432183908045977,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.42298850574712643,
-            "Count": 184
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "salvador=0"
-            ],
-            "RHS": [
-                "party=democrat",
-                "budget=1"
-            ],
-            "Confidence": 0.9282051282051281,
-            "Lift": 1.747918747918748,
-            "Conviction": 6.532019704433491,
-            "Leverage": 0.1780420134760206,
-            "LHS_Count": 195,
-            "LHS_Support": 0.4482758620689655,
-            "RHS_Count": 231,
-            "RHS_Support": 0.5310344827586206,
-            "Support": 0.4160919540229885,
-            "Count": 181
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "party=democrat",
-                "budget=1"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.9891304347826088,
-            "Lift": 1.7419908466819225,
-            "Conviction": 39.76091954023012,
-            "Leverage": 0.17821112432289607,
-            "LHS_Count": 184,
-            "LHS_Support": 0.42298850574712643,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.41839080459770117,
-            "Count": 182
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "physician=0"
-            ],
-            "RHS": [
-                "party=democrat",
-                "budget=1"
-            ],
-            "Confidence": 0.9238578680203047,
-            "Lift": 1.739732348869405,
-            "Conviction": 6.159080459770124,
-            "Leverage": 0.17789932619896953,
-            "LHS_Count": 197,
-            "LHS_Support": 0.4528735632183908,
-            "RHS_Count": 231,
-            "RHS_Support": 0.5310344827586206,
-            "Support": 0.41839080459770117,
-            "Count": 182
-        },
-        {
-            "LHS": [
-                "missile=1",
-                "physician=0"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.9666666666666668,
-            "Lift": 1.7376033057851243,
-            "Conviction": 13.310344827586254,
-            "Leverage": 0.16979785969084427,
-            "LHS_Count": 180,
-            "LHS_Support": 0.41379310344827586,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.4,
-            "Count": 174
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "education=0"
-            ],
-            "RHS": [
-                "party=democrat",
-                "budget=1"
-            ],
-            "Confidence": 0.9207920792079208,
-            "Lift": 1.7339591101967342,
-            "Conviction": 5.920689655172417,
-            "Leverage": 0.18099088386841067,
-            "LHS_Count": 202,
-            "LHS_Support": 0.46436781609195404,
-            "RHS_Count": 231,
-            "RHS_Support": 0.5310344827586206,
-            "Support": 0.42758620689655175,
-            "Count": 186
-        },
-        {
-            "LHS": [
-                "superfund=0",
-                "party=democrat"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.9832402234636871,
-            "Lift": 1.7316173975979916,
-            "Conviction": 25.786973180076572,
-            "Leverage": 0.17094464262121814,
-            "LHS_Count": 179,
-            "LHS_Support": 0.4114942528735632,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.4045977011494253,
-            "Count": 176
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "party=democrat",
-                "budget=1"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.9565217391304348,
-            "Lift": 1.7193675889328064,
-            "Conviction": 10.204597701149433,
-            "Leverage": 0.1692799577222883,
-            "LHS_Count": 184,
-            "LHS_Support": 0.42298850574712643,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.4045977011494253,
-            "Count": 176
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "party=democrat"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.975,
-            "Lift": 1.717105263157895,
-            "Conviction": 17.287356321839066,
-            "Leverage": 0.18721099220504694,
-            "LHS_Count": 200,
-            "LHS_Support": 0.45977011494252873,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.4482758620689655,
-            "Count": 195
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "aid=1",
-                "party=democrat"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.9735449735449736,
-            "Lift": 1.7145427671743463,
-            "Conviction": 16.33655172413797,
-            "Leverage": 0.17628220372572337,
-            "LHS_Count": 189,
-            "LHS_Support": 0.43448275862068964,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.42298850574712643,
-            "Count": 184
-        },
-        {
-            "LHS": [
-                "missile=1",
-                "party=democrat"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.9521276595744681,
-            "Lift": 1.7114691401441886,
-            "Conviction": 9.267943805874843,
-            "Leverage": 0.171060906328445,
-            "LHS_Count": 188,
-            "LHS_Support": 0.432183908045977,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.4114942528735632,
-            "Count": 179
-        },
-        {
-            "LHS": [
-                "salvador=0",
-                "budget=1"
-            ],
-            "RHS": [
-                "physician=0",
-                "party=democrat"
-            ],
-            "Confidence": 0.9627659574468085,
-            "Lift": 1.7094007815892314,
-            "Conviction": 11.730706075533654,
-            "Leverage": 0.1726780288016911,
-            "LHS_Count": 188,
-            "LHS_Support": 0.432183908045977,
-            "RHS_Count": 245,
-            "RHS_Support": 0.5632183908045977,
-            "Support": 0.4160919540229885,
-            "Count": 181
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "party=democrat"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.945,
-            "Lift": 1.6986570247933885,
-            "Conviction": 8.066875653082542,
-            "Leverage": 0.1787026027216277,
-            "LHS_Count": 200,
-            "LHS_Support": 0.45977011494252873,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.43448275862068964,
-            "Count": 189
-        },
-        {
-            "LHS": [
-                "aid=1",
-                "party=democrat"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.9633027522935781,
-            "Lift": 1.6965048471567066,
-            "Conviction": 11.77701149425291,
-            "Leverage": 0.19819791253798397,
-            "LHS_Count": 218,
-            "LHS_Support": 0.5011494252873563,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.4827586206896552,
-            "Count": 210
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "physician=0",
-                "party=democrat"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.9435897435897436,
-            "Lift": 1.6961220597584235,
-            "Conviction": 7.865203761755484,
-            "Leverage": 0.17360285374554102,
-            "LHS_Count": 195,
-            "LHS_Support": 0.4482758620689655,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.42298850574712643,
-            "Count": 184
-        },
-        {
-            "LHS": [
-                "salvador=0",
-                "budget=1"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.9627659574468085,
-            "Lift": 1.695559479714015,
-            "Conviction": 11.60722495894909,
-            "Leverage": 0.17069097635090502,
-            "LHS_Count": 188,
-            "LHS_Support": 0.432183908045977,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.4160919540229885,
-            "Count": 181
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "physician=0"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.9390862944162437,
-            "Lift": 1.6880270168225868,
-            "Conviction": 7.28371647509579,
-            "Leverage": 0.17334390276126305,
-            "LHS_Count": 197,
-            "LHS_Support": 0.4528735632183908,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.42528735632183906,
-            "Count": 185
-        },
-        {
-            "LHS": [
-                "missile=1",
-                "party=democrat"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.9521276595744681,
-            "Lift": 1.6768240158497718,
-            "Conviction": 9.02784163473819,
-            "Leverage": 0.16609327520147976,
-            "LHS_Count": 188,
-            "LHS_Support": 0.432183908045977,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.4114942528735632,
-            "Count": 179
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "aid=1",
-                "salvador=0"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.9510869565217391,
-            "Lift": 1.6749911987326176,
-            "Conviction": 8.835759897828865,
-            "Leverage": 0.16211917029990755,
-            "LHS_Count": 184,
-            "LHS_Support": 0.42298850574712643,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
+            "Confidence": 0.9668508287292819,
+            "Lift": 1.636498484425049,
+            "Conviction": 12.344061302682023,
+            "Leverage": 0.15646981107147576,
+            "LHS_Count": 181,
+            "LHS_Support": 0.4160919540229885,
+            "RHS_Count": 257,
+            "RHS_Support": 0.5908045977011495,
             "Support": 0.40229885057471265,
             "Count": 175
         },
         {
             "LHS": [
-                "satellite=1",
-                "budget=1"
+                "satellite",
+                "missile"
             ],
             "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.9303482587064678,
-            "Lift": 1.6723202170963367,
-            "Conviction": 6.369950738916265,
-            "Leverage": 0.17282600079270716,
-            "LHS_Count": 201,
-            "LHS_Support": 0.46206896551724136,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.4298850574712644,
-            "Count": 187
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "salvador=0"
-            ],
-            "RHS": [
-                "physician=0",
-                "party=democrat"
-            ],
-            "Confidence": 0.9414893617021276,
-            "Lift": 1.6716239687364307,
-            "Conviction": 7.464994775339596,
-            "Leverage": 0.16348262650284054,
-            "LHS_Count": 188,
-            "LHS_Support": 0.432183908045977,
-            "RHS_Count": 245,
-            "RHS_Support": 0.5632183908045977,
-            "Support": 0.4068965517241379,
-            "Count": 177
-        },
-        {
-            "LHS": [
-                "party=democrat",
-                "budget=1"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.9480519480519481,
-            "Lift": 1.6696461433303542,
-            "Conviction": 8.319540229885073,
-            "Leverage": 0.201918351169243,
-            "LHS_Count": 231,
-            "LHS_Support": 0.5310344827586206,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.503448275862069,
-            "Count": 219
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "salvador=0"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.946808510638298,
-            "Lift": 1.6674562839176503,
-            "Conviction": 8.125057471264382,
-            "Leverage": 0.16379442462676713,
-            "LHS_Count": 188,
-            "LHS_Support": 0.432183908045977,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.4091954022988506,
-            "Count": 178
-        },
-        {
-            "LHS": [
-                "missile=1"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.927536231884058,
-            "Lift": 1.6672655407833274,
-            "Conviction": 6.122758620689656,
-            "Leverage": 0.17664684898929844,
-            "LHS_Count": 207,
-            "LHS_Support": 0.47586206896551725,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.4413793103448276,
-            "Count": 192
-        },
-        {
-            "LHS": [
-                "aid=1",
-                "salvador=0"
-            ],
-            "RHS": [
-                "physician=0",
-                "party=democrat"
-            ],
-            "Confidence": 0.9362745098039216,
-            "Lift": 1.6623649459783914,
-            "Conviction": 6.854111405835544,
-            "Leverage": 0.17495045580657947,
-            "LHS_Count": 204,
-            "LHS_Support": 0.4689655172413793,
-            "RHS_Count": 245,
-            "RHS_Support": 0.5632183908045977,
-            "Support": 0.43908045977011495,
-            "Count": 191
-        },
-        {
-            "LHS": [
-                "party=democrat",
-                "education=0"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.9436619718309859,
-            "Lift": 1.661914808690198,
-            "Conviction": 7.671264367816088,
-            "Leverage": 0.1840348791121681,
-            "LHS_Count": 213,
-            "LHS_Support": 0.4896551724137931,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.46206896551724136,
-            "Count": 201
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "salvador=0"
-            ],
-            "RHS": [
-                "satellite=1"
-            ],
-            "Confidence": 0.9128205128205129,
-            "Lift": 1.661409719987126,
-            "Conviction": 5.168356997971609,
-            "Leverage": 0.16290130796670635,
-            "LHS_Count": 195,
-            "LHS_Support": 0.4482758620689655,
-            "RHS_Count": 239,
-            "RHS_Support": 0.5494252873563218,
-            "Support": 0.4091954022988506,
-            "Count": 178
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "salvador=0",
-                "party=democrat"
-            ],
-            "RHS": [
-                "satellite=1"
-            ],
-            "Confidence": 0.9123711340206184,
-            "Lift": 1.6605918129663977,
-            "Conviction": 5.141852603110203,
-            "Leverage": 0.16186550402959438,
-            "LHS_Count": 194,
-            "LHS_Support": 0.4459770114942529,
-            "RHS_Count": 239,
-            "RHS_Support": 0.5494252873563218,
-            "Support": 0.4068965517241379,
-            "Count": 177
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "aid=1",
-                "salvador=0"
-            ],
-            "RHS": [
-                "satellite=1"
-            ],
-            "Confidence": 0.9114583333333334,
-            "Lift": 1.6589304393305442,
-            "Conviction": 5.0888438133874265,
-            "Leverage": 0.15979389615537062,
-            "LHS_Count": 192,
-            "LHS_Support": 0.4413793103448276,
-            "RHS_Count": 239,
-            "RHS_Support": 0.5494252873563218,
-            "Support": 0.40229885057471265,
-            "Count": 175
-        },
-        {
-            "LHS": [
-                "aid=1",
-                "salvador=0"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.9411764705882353,
-            "Lift": 1.6575375089306978,
-            "Conviction": 7.3471264367816085,
-            "Leverage": 0.1750931430836306,
-            "LHS_Count": 204,
-            "LHS_Support": 0.4689655172413793,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.4413793103448276,
-            "Count": 192
-        },
-        {
-            "LHS": [
-                "salvador=0",
-                "party=democrat"
-            ],
-            "RHS": [
-                "satellite=1"
-            ],
-            "Confidence": 0.91,
-            "Lift": 1.6562761506276154,
-            "Conviction": 5.006385696040871,
-            "Leverage": 0.16578147707755325,
-            "LHS_Count": 200,
-            "LHS_Support": 0.45977011494252873,
-            "RHS_Count": 239,
-            "RHS_Support": 0.5494252873563218,
-            "Support": 0.41839080459770117,
-            "Count": 182
-        },
-        {
-            "LHS": [
-                "salvador=0"
-            ],
-            "RHS": [
-                "physician=0",
-                "party=democrat"
-            ],
-            "Confidence": 0.9326923076923077,
-            "Lift": 1.6560047095761383,
-            "Conviction": 6.489326765188836,
-            "Leverage": 0.17666798784515791,
-            "LHS_Count": 208,
-            "LHS_Support": 0.4781609195402299,
-            "RHS_Count": 245,
-            "RHS_Support": 0.5632183908045977,
-            "Support": 0.4459770114942529,
-            "Count": 194
-        },
-        {
-            "LHS": [
-                "aid=1",
-                "party=democrat",
-                "salvador=0"
-            ],
-            "RHS": [
-                "satellite=1"
-            ],
-            "Confidence": 0.9086294416243655,
-            "Lift": 1.653781619692883,
-            "Conviction": 4.931289910600259,
-            "Leverage": 0.1626740652662175,
-            "LHS_Count": 197,
-            "LHS_Support": 0.4528735632183908,
-            "RHS_Count": 239,
-            "RHS_Support": 0.5494252873563218,
-            "Support": 0.4114942528735632,
-            "Count": 179
-        },
-        {
-            "LHS": [
-                "salvador=0"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.9375,
-            "Lift": 1.6510627530364375,
-            "Conviction": 6.914942528735633,
-            "Leverage": 0.17676839741049022,
-            "LHS_Count": 208,
-            "LHS_Support": 0.4781609195402299,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.4482758620689655,
-            "Count": 195
-        },
-        {
-            "LHS": [
-                "aid=1",
-                "education=0"
-            ],
-            "RHS": [
-                "physician=0",
-                "party=democrat"
-            ],
-            "Confidence": 0.9278350515463917,
-            "Lift": 1.6473806017252262,
-            "Conviction": 6.052545155993426,
-            "Leverage": 0.16261064869863917,
-            "LHS_Count": 194,
-            "LHS_Support": 0.4459770114942529,
-            "RHS_Count": 245,
-            "RHS_Support": 0.5632183908045977,
-            "Support": 0.41379310344827586,
-            "Count": 180
-        },
-        {
-            "LHS": [
-                "salvador=0"
-            ],
-            "RHS": [
-                "satellite=1"
-            ],
-            "Confidence": 0.9038461538461539,
-            "Lift": 1.6450756356614098,
-            "Conviction": 4.685977011494254,
-            "Leverage": 0.16947020742502317,
-            "LHS_Count": 208,
-            "LHS_Support": 0.4781609195402299,
-            "RHS_Count": 239,
-            "RHS_Support": 0.5494252873563218,
-            "Support": 0.432183908045977,
-            "Count": 188
-        },
-        {
-            "LHS": [
-                "aid=1",
-                "education=0"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.9329896907216494,
-            "Lift": 1.6431194958053341,
-            "Conviction": 6.44951370468611,
-            "Leverage": 0.16285903025498744,
-            "LHS_Count": 194,
-            "LHS_Support": 0.4459770114942529,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.4160919540229885,
-            "Count": 181
-        },
-        {
-            "LHS": [
-                "budget=1",
-                "education=0"
-            ],
-            "RHS": [
-                "physician=0",
-                "party=democrat"
-            ],
-            "Confidence": 0.9253731343283583,
-            "Lift": 1.6430094425830035,
-            "Conviction": 5.852873563218401,
-            "Leverage": 0.1673404676971859,
-            "LHS_Count": 201,
-            "LHS_Support": 0.46206896551724136,
-            "RHS_Count": 245,
-            "RHS_Support": 0.5632183908045977,
-            "Support": 0.42758620689655175,
-            "Count": 186
-        },
-        {
-            "LHS": [
-                "aid=1",
-                "salvador=0"
-            ],
-            "RHS": [
-                "satellite=1"
-            ],
-            "Confidence": 0.9019607843137255,
-            "Lift": 1.6416441053408812,
-            "Conviction": 4.595862068965518,
-            "Leverage": 0.16532699167657555,
-            "LHS_Count": 204,
-            "LHS_Support": 0.4689655172413793,
-            "RHS_Count": 239,
-            "RHS_Support": 0.5494252873563218,
-            "Support": 0.42298850574712643,
-            "Count": 184
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "aid=1",
-                "budget=1"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.93048128342246,
-            "Lift": 1.6387018554201218,
-            "Conviction": 6.216799292661367,
-            "Leverage": 0.15590434667723613,
-            "LHS_Count": 187,
-            "LHS_Support": 0.4298850574712644,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.4,
-            "Count": 174
-        },
-        {
-            "LHS": [
-                "aid=1",
-                "budget=1"
-            ],
-            "RHS": [
-                "physician=0",
-                "party=democrat"
-            ],
-            "Confidence": 0.9209302325581395,
-            "Lift": 1.6351210251542478,
-            "Conviction": 5.524002704530089,
-            "Leverage": 0.17680010569427934,
-            "LHS_Count": 215,
-            "LHS_Support": 0.4942528735632184,
-            "RHS_Count": 245,
-            "RHS_Support": 0.5632183908045977,
-            "Support": 0.45517241379310347,
-            "Count": 198
-        },
-        {
-            "LHS": [
-                "budget=1",
-                "education=0"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.9253731343283583,
-            "Lift": 1.6297057224001454,
-            "Conviction": 5.791264367816102,
-            "Leverage": 0.1652160126833136,
-            "LHS_Count": 201,
-            "LHS_Support": 0.46206896551724136,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.42758620689655175,
-            "Count": 186
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "budget=1"
-            ],
-            "RHS": [
-                "party=democrat"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6292134831460674,
-            "Conviction": 100,
-            "Leverage": 0.19443519619500593,
-            "LHS_Count": 219,
-            "LHS_Support": 0.503448275862069,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.503448275862069,
-            "Count": 219
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "aid=1",
-                "budget=1"
-            ],
-            "RHS": [
-                "party=democrat"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6292134831460674,
-            "Conviction": 100,
-            "Leverage": 0.1757907253269917,
-            "LHS_Count": 198,
-            "LHS_Support": 0.45517241379310347,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.45517241379310347,
-            "Count": 198
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "budget=1",
-                "education=0"
-            ],
-            "RHS": [
-                "party=democrat"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6292134831460674,
-            "Conviction": 100,
-            "Leverage": 0.16513674197384065,
-            "LHS_Count": 186,
-            "LHS_Support": 0.42758620689655175,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.42758620689655175,
-            "Count": 186
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "salvador=0",
-                "budget=1"
-            ],
-            "RHS": [
-                "party=democrat"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6292134831460674,
-            "Conviction": 100,
-            "Leverage": 0.16069758224336106,
-            "LHS_Count": 181,
-            "LHS_Support": 0.4160919540229885,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.4160919540229885,
-            "Count": 181
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "physician=0",
-                "budget=1"
-            ],
-            "RHS": [
-                "party=democrat"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6292134831460674,
-            "Conviction": 100,
-            "Leverage": 0.161585414189457,
-            "LHS_Count": 182,
-            "LHS_Support": 0.41839080459770117,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.41839080459770117,
-            "Count": 182
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "budget=1"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.904109589041096,
-            "Lift": 1.625155666251557,
-            "Conviction": 4.6269293924466375,
-            "Leverage": 0.1750931430836306,
-            "LHS_Count": 219,
-            "LHS_Support": 0.503448275862069,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.45517241379310347,
-            "Count": 198
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "party=democrat",
-                "budget=1"
-            ],
-            "RHS": [
-                "aid=1"
-            ],
-            "Confidence": 0.904109589041096,
-            "Lift": 1.625155666251557,
-            "Conviction": 4.6269293924466375,
-            "Leverage": 0.1750931430836306,
-            "LHS_Count": 219,
-            "LHS_Support": 0.503448275862069,
-            "RHS_Count": 242,
-            "RHS_Support": 0.5563218390804597,
-            "Support": 0.45517241379310347,
-            "Count": 198
-        },
-        {
-            "LHS": [
-                "aid=1",
-                "budget=1"
-            ],
-            "RHS": [
-                "physician=0"
-            ],
-            "Confidence": 0.9209302325581395,
-            "Lift": 1.6218811787967236,
-            "Conviction": 5.465855307640299,
-            "Leverage": 0.17452767868939095,
-            "LHS_Count": 215,
-            "LHS_Support": 0.4942528735632184,
-            "RHS_Count": 247,
-            "RHS_Support": 0.5678160919540229,
-            "Support": 0.45517241379310347,
-            "Count": 198
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "aid=1"
-            ],
-            "RHS": [
-                "party=democrat"
-            ],
-            "Confidence": 0.9952606635071091,
-            "Lift": 1.6214920922306832,
-            "Conviction": 81.48965517241486,
-            "Leverage": 0.18503369005152598,
-            "LHS_Count": 211,
-            "LHS_Support": 0.4850574712643678,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.4827586206896552,
-            "Count": 210
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "education=0"
-            ],
-            "RHS": [
-                "party=democrat"
-            ],
-            "Confidence": 0.9950495049504949,
-            "Lift": 1.621148069863166,
-            "Conviction": 78.01379310344646,
-            "Leverage": 0.17704320253666267,
+                "aid"
+            ],
+            "Confidence": 0.9554455445544554,
+            "Lift": 1.6171938205493699,
+            "Conviction": 9.184163473818638,
+            "Leverage": 0.16932752014797192,
             "LHS_Count": 202,
             "LHS_Support": 0.46436781609195404,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.46206896551724136,
-            "Count": 201
+            "RHS_Count": 257,
+            "RHS_Support": 0.5908045977011495,
+            "Support": 0.4436781609195402,
+            "Count": 193
         },
         {
             "LHS": [
-                "physician=0",
-                "aid=1",
-                "party=democrat"
+                "satellite",
+                "missile"
             ],
             "RHS": [
-                "budget=1"
+                "aid",
+                "party"
             ],
-            "Confidence": 0.9428571428571428,
-            "Lift": 1.6211180124223603,
-            "Conviction": 7.321839080459768,
-            "Leverage": 0.17439556084026953,
-            "LHS_Count": 210,
-            "LHS_Support": 0.4827586206896552,
-            "RHS_Count": 253,
-            "RHS_Support": 0.5816091954022988,
-            "Support": 0.45517241379310347,
-            "Count": 198
+            "Confidence": 0.9554455445544554,
+            "Lift": 1.6171938205493699,
+            "Conviction": 9.184163473818638,
+            "Leverage": 0.16932752014797192,
+            "LHS_Count": 202,
+            "LHS_Support": 0.46436781609195404,
+            "RHS_Count": 257,
+            "RHS_Support": 0.5908045977011495,
+            "Support": 0.4436781609195402,
+            "Count": 193
         },
         {
             "LHS": [
-                "physician=0",
-                "salvador=0"
+                "satellite",
+                "party",
+                "missile"
             ],
             "RHS": [
-                "party=democrat"
+                "aid"
             ],
-            "Confidence": 0.9948717948717949,
-            "Lift": 1.6208585422068569,
-            "Conviction": 75.31034482758648,
-            "Leverage": 0.17082837891399127,
-            "LHS_Count": 195,
-            "LHS_Support": 0.4482758620689655,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.4459770114942529,
-            "Count": 194
+            "Confidence": 0.9554455445544554,
+            "Lift": 1.6171938205493699,
+            "Conviction": 9.184163473818638,
+            "Leverage": 0.16932752014797192,
+            "LHS_Count": 202,
+            "LHS_Support": 0.46436781609195404,
+            "RHS_Count": 257,
+            "RHS_Support": 0.5908045977011495,
+            "Support": 0.4436781609195402,
+            "Count": 193
         },
         {
             "LHS": [
-                "physician=0",
-                "aid=1",
-                "salvador=0"
+                "missile",
+                "budget"
             ],
             "RHS": [
-                "party=democrat"
+                "aid"
             ],
-            "Confidence": 0.9947916666666667,
-            "Lift": 1.6207279962546817,
-            "Conviction": 74.15172413793209,
-            "Leverage": 0.16816488307570354,
-            "LHS_Count": 192,
-            "LHS_Support": 0.4413793103448276,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.43908045977011495,
-            "Count": 191
+            "Confidence": 0.9458128078817734,
+            "Lift": 1.6008893829905502,
+            "Conviction": 7.551515151515145,
+            "Leverage": 0.16567049808429118,
+            "LHS_Count": 203,
+            "LHS_Support": 0.4666666666666667,
+            "RHS_Count": 257,
+            "RHS_Support": 0.5908045977011495,
+            "Support": 0.4413793103448276,
+            "Count": 192
         },
         {
             "LHS": [
-                "satellite=1",
-                "physician=0",
-                "aid=1"
+                "missile",
+                "budget"
             ],
             "RHS": [
-                "party=democrat"
+                "aid",
+                "party"
             ],
-            "Confidence": 0.9945945945945946,
-            "Lift": 1.6204069237777103,
-            "Conviction": 71.44827586206969,
-            "Leverage": 0.1619500594530321,
-            "LHS_Count": 185,
-            "LHS_Support": 0.42528735632183906,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.42298850574712643,
-            "Count": 184
+            "Confidence": 0.9458128078817734,
+            "Lift": 1.6008893829905502,
+            "Conviction": 7.551515151515145,
+            "Leverage": 0.16567049808429118,
+            "LHS_Count": 203,
+            "LHS_Support": 0.4666666666666667,
+            "RHS_Count": 257,
+            "RHS_Support": 0.5908045977011495,
+            "Support": 0.4413793103448276,
+            "Count": 192
         },
         {
             "LHS": [
-                "physician=0",
-                "aid=1",
-                "education=0"
+                "party",
+                "missile",
+                "budget"
             ],
             "RHS": [
-                "party=democrat"
+                "aid"
             ],
-            "Confidence": 0.994475138121547,
-            "Lift": 1.620212303681172,
-            "Conviction": 69.90344827586225,
-            "Leverage": 0.15839873166864843,
-            "LHS_Count": 181,
-            "LHS_Support": 0.4160919540229885,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.41379310344827586,
-            "Count": 180
-        },
-        {
-            "LHS": [
-                "missile=1",
-                "physician=0"
-            ],
-            "RHS": [
-                "party=democrat"
-            ],
-            "Confidence": 0.9944444444444445,
-            "Lift": 1.6201622971285894,
-            "Conviction": 69.51724137931059,
-            "Leverage": 0.1575108997225525,
-            "LHS_Count": 180,
-            "LHS_Support": 0.41379310344827586,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.4114942528735632,
-            "Count": 179
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "physician=0",
-                "salvador=0"
-            ],
-            "RHS": [
-                "party=democrat"
-            ],
-            "Confidence": 0.99438202247191,
-            "Lift": 1.6200605984092915,
-            "Conviction": 68.74482758620537,
-            "Leverage": 0.15573523583036064,
-            "LHS_Count": 178,
-            "LHS_Support": 0.4091954022988506,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.4068965517241379,
-            "Count": 177
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "physician=0",
-                "aid=1"
-            ],
-            "RHS": [
-                "budget=1"
-            ],
-            "Confidence": 0.9405405405405406,
-            "Lift": 1.6171349214827477,
-            "Conviction": 7.036572622779526,
-            "Leverage": 0.15264896287488444,
-            "LHS_Count": 185,
-            "LHS_Support": 0.42528735632183906,
-            "RHS_Count": 253,
-            "RHS_Support": 0.5816091954022988,
-            "Support": 0.4,
-            "Count": 174
-        },
-        {
-            "LHS": [
-                "physician=0"
-            ],
-            "RHS": [
-                "party=democrat"
-            ],
-            "Confidence": 0.9919028340080972,
-            "Lift": 1.6160214711367875,
-            "Conviction": 47.69655172413813,
-            "Leverage": 0.21469678953626636,
-            "LHS_Count": 247,
-            "LHS_Support": 0.5678160919540229,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.5632183908045977,
-            "Count": 245
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "aid=1"
-            ],
-            "RHS": [
-                "budget=1"
-            ],
-            "Confidence": 0.9383886255924171,
-            "Lift": 1.6134349886668042,
-            "Conviction": 6.790804597701153,
-            "Leverage": 0.17305852820716083,
-            "LHS_Count": 211,
-            "LHS_Support": 0.4850574712643678,
-            "RHS_Count": 253,
-            "RHS_Support": 0.5816091954022988,
-            "Support": 0.45517241379310347,
-            "Count": 198
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "physician=0"
-            ],
-            "RHS": [
-                "party=democrat"
-            ],
-            "Confidence": 0.9898477157360407,
-            "Lift": 1.6126732447384933,
-            "Conviction": 38.04137931034513,
-            "Leverage": 0.1703051922314705,
-            "LHS_Count": 197,
-            "LHS_Support": 0.4528735632183908,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.4482758620689655,
-            "Count": 195
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "superfund=0"
-            ],
-            "RHS": [
-                "party=democrat"
-            ],
-            "Confidence": 0.9887640449438202,
-            "Lift": 1.610907713672516,
-            "Conviction": 34.37241379310336,
-            "Leverage": 0.153436385255648,
-            "LHS_Count": 178,
-            "LHS_Support": 0.4091954022988506,
-            "RHS_Count": 267,
-            "RHS_Support": 0.6137931034482759,
-            "Support": 0.4045977011494253,
-            "Count": 176
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "budget=1"
-            ],
-            "RHS": [
-                "physician=0",
-                "party=democrat"
-            ],
-            "Confidence": 0.9054726368159205,
-            "Lift": 1.6076759061833692,
-            "Conviction": 4.620689655172419,
-            "Leverage": 0.15814506539833534,
-            "LHS_Count": 201,
-            "LHS_Support": 0.46206896551724136,
-            "RHS_Count": 245,
-            "RHS_Support": 0.5632183908045977,
-            "Support": 0.41839080459770117,
-            "Count": 182
-        },
-        {
-            "LHS": [
-                "salvador=1"
-            ],
-            "RHS": [
-                "crime=1"
-            ],
-            "Confidence": 0.9150943396226415,
-            "Lift": 1.6051049908703592,
-            "Conviction": 5.063090676883782,
-            "Leverage": 0.16812789007794954,
-            "LHS_Count": 212,
-            "LHS_Support": 0.48735632183908045,
-            "RHS_Count": 248,
-            "RHS_Support": 0.5701149425287356,
-            "Support": 0.4459770114942529,
-            "Count": 194
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "physician=0",
-                "party=democrat"
-            ],
-            "RHS": [
-                "budget=1"
-            ],
-            "Confidence": 0.9333333333333333,
-            "Lift": 1.6047430830039526,
-            "Conviction": 6.275862068965519,
-            "Leverage": 0.15766944114149822,
-            "LHS_Count": 195,
-            "LHS_Support": 0.4482758620689655,
-            "RHS_Count": 253,
-            "RHS_Support": 0.5816091954022988,
-            "Support": 0.41839080459770117,
-            "Count": 182
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "salvador=0",
-                "party=democrat"
-            ],
-            "RHS": [
-                "budget=1"
-            ],
-            "Confidence": 0.9329896907216494,
-            "Lift": 1.604152235035247,
-            "Conviction": 6.243678160919532,
-            "Leverage": 0.15670762319989429,
-            "LHS_Count": 194,
-            "LHS_Support": 0.4459770114942529,
-            "RHS_Count": 253,
-            "RHS_Support": 0.5816091954022988,
-            "Support": 0.4160919540229885,
-            "Count": 181
-        },
-        {
-            "LHS": [
-                "physician=0",
-                "aid=1",
-                "salvador=0"
-            ],
-            "RHS": [
-                "budget=1"
-            ],
-            "Confidence": 0.9322916666666667,
-            "Lift": 1.6029520750988144,
-            "Conviction": 6.179310344827593,
-            "Leverage": 0.15478398731668652,
-            "LHS_Count": 192,
-            "LHS_Support": 0.4413793103448276,
-            "RHS_Count": 253,
-            "RHS_Support": 0.5816091954022988,
-            "Support": 0.4114942528735632,
-            "Count": 179
-        },
-        {
-            "LHS": [
-                "religious=1",
-                "salvador=1"
-            ],
-            "RHS": [
-                "crime=1"
-            ],
-            "Confidence": 0.9137055837563453,
-            "Lift": 1.602669068282299,
-            "Conviction": 4.981609195402303,
-            "Leverage": 0.15560311798123927,
-            "LHS_Count": 197,
-            "LHS_Support": 0.4528735632183908,
-            "RHS_Count": 248,
-            "RHS_Support": 0.5701149425287356,
-            "Support": 0.41379310344827586,
-            "Count": 180
-        },
-        {
-            "LHS": [
-                "satellite=1",
-                "aid=1",
-                "party=democrat"
-            ],
-            "RHS": [
-                "budget=1"
-            ],
-            "Confidence": 0.9312169312169313,
-            "Lift": 1.6011042097998622,
-            "Conviction": 6.082758620689661,
-            "Leverage": 0.15189853349187477,
-            "LHS_Count": 189,
-            "LHS_Support": 0.43448275862068964,
-            "RHS_Count": 253,
-            "RHS_Support": 0.5816091954022988,
-            "Support": 0.4045977011494253,
-            "Count": 176
-        },
-        {
-            "LHS": [
-                "aid=1",
-                "party=democrat"
-            ],
-            "RHS": [
-                "budget=1"
-            ],
-            "Confidence": 0.9311926605504588,
-            "Lift": 1.6010624796025676,
-            "Conviction": 6.080613026819931,
-            "Leverage": 0.1751935526489629,
-            "LHS_Count": 218,
-            "LHS_Support": 0.5011494252873563,
-            "RHS_Count": 253,
-            "RHS_Support": 0.5816091954022988,
-            "Support": 0.4666666666666667,
-            "Count": 203
+            "Confidence": 0.9458128078817734,
+            "Lift": 1.6008893829905502,
+            "Conviction": 7.551515151515145,
+            "Leverage": 0.16567049808429118,
+            "LHS_Count": 203,
+            "LHS_Support": 0.4666666666666667,
+            "RHS_Count": 257,
+            "RHS_Support": 0.5908045977011495,
+            "Support": 0.4413793103448276,
+            "Count": 192
         }
     ]
 }
