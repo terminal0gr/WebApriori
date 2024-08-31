@@ -1,7 +1,6 @@
 {
     "hasHeader": true,
     "header": [
-        "N",
         "1.05",
         "1.07",
         "1.08",
@@ -103,7 +102,7 @@
             "Number Of Columns",
             94,
             94,
-            "The total number of columns\/features in the Dataset"
+            "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -119,7 +118,7 @@
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            6.382978723404255e-5,
+            6.382978723404255e-05,
             "0.0%",
             "The ratio of the number of total unique values to the number of elements"
         ],
@@ -149,25 +148,25 @@
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            2.1276595744680852e-5,
+            2.1276595744680852e-05,
             "0.0%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
@@ -197,13 +196,13 @@
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            1,
+            1.0,
             "1.0",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            1,
+            1.0,
             "100.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
@@ -233,5 +232,6 @@
         ]
     },
     "datasetTypePredicted": 3,
-    "datasetType": 3
+    "datasetType": 3,
+    "absentValue": "N"
 }

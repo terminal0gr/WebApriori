@@ -1,0 +1,5371 @@
+{
+    "min_support": 0.001,
+    "min_confidence": 0.01,
+    "min_lift": 1,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "4mammographic.dat",
+    "redundantRemoveType": 0,
+    "Records": 961,
+    "RecordsCreationTime": "0.006",
+    "RulesCount": 274,
+    "RulesCreationTime": "0.015",
+    "rules": [
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Shape",
+                " Density"
+            ],
+            "Confidence": 0.9156626506024096,
+            "Lift": 1.025584856910158,
+            "Conviction": 1.270848818195332,
+            "Leverage": 0.021701726327825743,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 858,
+            "RHS_Support": 0.8928199791883454,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Density"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9743589743589743,
+            "Lift": 1.025584856910158,
+            "Conviction": 1.9479708636836601,
+            "Leverage": 0.021701726327825743,
+            "LHS_Count": 858,
+            "LHS_Support": 0.8928199791883454,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Severity",
+                " Density",
+                " Shape"
+            ],
+            "Confidence": 0.9156626506024096,
+            "Lift": 1.025584856910158,
+            "Conviction": 1.270848818195332,
+            "Leverage": 0.021701726327825743,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 858,
+            "RHS_Support": 0.8928199791883454,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Density"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin"
+            ],
+            "Confidence": 0.9743589743589743,
+            "Lift": 1.025584856910158,
+            "Conviction": 1.9479708636836601,
+            "Leverage": 0.021701726327825743,
+            "LHS_Count": 858,
+            "LHS_Support": 0.8928199791883454,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin"
+            ],
+            "RHS": [
+                " Shape",
+                " Density"
+            ],
+            "Confidence": 0.9156626506024096,
+            "Lift": 1.025584856910158,
+            "Conviction": 1.270848818195332,
+            "Leverage": 0.021701726327825743,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 858,
+            "RHS_Support": 0.8928199791883454,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Density",
+                " Shape"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9743589743589743,
+            "Lift": 1.025584856910158,
+            "Conviction": 1.9479708636836601,
+            "Leverage": 0.021701726327825743,
+            "LHS_Count": 858,
+            "LHS_Support": 0.8928199791883454,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Shape",
+                "BI-RADS",
+                " Density"
+            ],
+            "Confidence": 0.9145673603504929,
+            "Lift": 1.0255533644070287,
+            "Conviction": 1.266736038848422,
+            "Leverage": 0.021649751332129985,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 857,
+            "RHS_Support": 0.8917793964620188,
+            "Support": 0.8688865764828304,
+            "Count": 835
+        },
+        {
+            "LHS": [
+                " Shape",
+                "BI-RADS",
+                " Density"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9743290548424738,
+            "Lift": 1.0255533644070287,
+            "Conviction": 1.945700501371679,
+            "Leverage": 0.021649751332129985,
+            "LHS_Count": 857,
+            "LHS_Support": 0.8917793964620188,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.8688865764828304,
+            "Count": 835
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Density"
+            ],
+            "RHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9731934731934733,
+            "Lift": 1.0254812804154911,
+            "Conviction": 1.9020947382708289,
+            "Leverage": 0.021590196649561966,
+            "LHS_Count": 858,
+            "LHS_Support": 0.8928199791883454,
+            "RHS_Count": 912,
+            "RHS_Support": 0.9490114464099896,
+            "Support": 0.8688865764828304,
+            "Count": 835
+        },
+        {
+            "LHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape",
+                " Density"
+            ],
+            "Confidence": 0.9155701754385965,
+            "Lift": 1.0254812804154911,
+            "Conviction": 1.2694568698731041,
+            "Leverage": 0.021590196649561966,
+            "LHS_Count": 912,
+            "LHS_Support": 0.9490114464099896,
+            "RHS_Count": 858,
+            "RHS_Support": 0.8928199791883454,
+            "Support": 0.8688865764828304,
+            "Count": 835
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Shape",
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.9101861993428257,
+            "Lift": 1.025426656000534,
+            "Conviction": 1.2512880383746596,
+            "Leverage": 0.02144185134934662,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 853,
+            "RHS_Support": 0.8876170655567117,
+            "Support": 0.8647242455775234,
+            "Count": 831
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9742086752637749,
+            "Lift": 1.025426656000534,
+            "Conviction": 1.9366190521237296,
+            "Leverage": 0.02144185134934662,
+            "LHS_Count": 853,
+            "LHS_Support": 0.8876170655567117,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.8647242455775234,
+            "Count": 831
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                " Shape",
+                " Density"
+            ],
+            "Confidence": 0.9151982378854625,
+            "Lift": 1.0250646930162348,
+            "Conviction": 1.2638890765841855,
+            "Leverage": 0.021144077936505967,
+            "LHS_Count": 908,
+            "LHS_Support": 0.9448491155046826,
+            "RHS_Count": 858,
+            "RHS_Support": 0.8928199791883454,
+            "Support": 0.8647242455775234,
+            "Count": 831
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Density"
+            ],
+            "RHS": [
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.9685314685314685,
+            "Lift": 1.0250646930162348,
+            "Conviction": 1.7525725517400854,
+            "Leverage": 0.021144077936505967,
+            "LHS_Count": 858,
+            "LHS_Support": 0.8928199791883454,
+            "RHS_Count": 908,
+            "RHS_Support": 0.9448491155046826,
+            "Support": 0.8647242455775234,
+            "Count": 831
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin"
+            ],
+            "Confidence": 0.9456398640996603,
+            "Lift": 1.018789136098401,
+            "Conviction": 1.3208246618106154,
+            "Leverage": 0.016024540860467784,
+            "LHS_Count": 883,
+            "LHS_Support": 0.918834547346514,
+            "RHS_Count": 892,
+            "RHS_Support": 0.9281997918834547,
+            "Support": 0.8688865764828304,
+            "Count": 835
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "Confidence": 0.9360986547085203,
+            "Lift": 1.018789136098401,
+            "Conviction": 1.2701681362615715,
+            "Leverage": 0.016024540860467784,
+            "LHS_Count": 892,
+            "LHS_Support": 0.9281997918834547,
+            "RHS_Count": 883,
+            "RHS_Support": 0.918834547346514,
+            "Support": 0.8688865764828304,
+            "Count": 835
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin"
+            ],
+            "Confidence": 0.9446327683615819,
+            "Lift": 1.017704137214664,
+            "Conviction": 1.2967996772069923,
+            "Leverage": 0.015133386246766523,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 892,
+            "RHS_Support": 0.9281997918834547,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9372197309417041,
+            "Lift": 1.017704137214664,
+            "Conviction": 1.2596997175561184,
+            "Leverage": 0.015133386246766523,
+            "LHS_Count": 892,
+            "LHS_Support": 0.9281997918834547,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin",
+                " Shape"
+            ],
+            "Confidence": 0.9446327683615819,
+            "Lift": 1.017704137214664,
+            "Conviction": 1.2967996772069923,
+            "Leverage": 0.015133386246766523,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 892,
+            "RHS_Support": 0.9281997918834547,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Density"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin"
+            ],
+            "Confidence": 0.9446327683615819,
+            "Lift": 1.017704137214664,
+            "Conviction": 1.2967996772069923,
+            "Leverage": 0.015133386246766523,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 892,
+            "RHS_Support": 0.9281997918834547,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin"
+            ],
+            "RHS": [
+                " Severity",
+                " Density"
+            ],
+            "Confidence": 0.9372197309417041,
+            "Lift": 1.017704137214664,
+            "Conviction": 1.2596997175561184,
+            "Leverage": 0.015133386246766523,
+            "LHS_Count": 892,
+            "LHS_Support": 0.9281997918834547,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin",
+                " Shape"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9372197309417041,
+            "Lift": 1.017704137214664,
+            "Conviction": 1.2596997175561184,
+            "Leverage": 0.015133386246766523,
+            "LHS_Count": 892,
+            "LHS_Support": 0.9281997918834547,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9435028248587571,
+            "Lift": 1.0176276259138783,
+            "Conviction": 1.289281997918836,
+            "Leverage": 0.015051092503581387,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 891,
+            "RHS_Support": 0.927159209157128,
+            "Support": 0.8688865764828304,
+            "Count": 835
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9371492704826038,
+            "Lift": 1.0176276259138783,
+            "Conviction": 1.258287498141816,
+            "Leverage": 0.015051092503581387,
+            "LHS_Count": 891,
+            "LHS_Support": 0.927159209157128,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8688865764828304,
+            "Count": 835
+        },
+        {
+            "LHS": [
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin"
+            ],
+            "Confidence": 0.9443181818181818,
+            "Lift": 1.017365216061965,
+            "Conviction": 1.2894731253583651,
+            "Leverage": 0.014759815965202705,
+            "LHS_Count": 880,
+            "LHS_Support": 0.9157127991675338,
+            "RHS_Count": 892,
+            "RHS_Support": 0.9281997918834547,
+            "Support": 0.8647242455775234,
+            "Count": 831
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin"
+            ],
+            "RHS": [
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.9316143497757847,
+            "Lift": 1.0173652160619648,
+            "Conviction": 1.2325275925009809,
+            "Leverage": 0.014759815965202705,
+            "LHS_Count": 892,
+            "LHS_Support": 0.9281997918834547,
+            "RHS_Count": 880,
+            "RHS_Support": 0.9157127991675338,
+            "Support": 0.8647242455775234,
+            "Count": 831
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.9389830508474576,
+            "Lift": 1.0173198555404812,
+            "Conviction": 1.2619956064284887,
+            "Leverage": 0.014721917530841178,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 887,
+            "RHS_Support": 0.922996878251821,
+            "Support": 0.8647242455775234,
+            "Count": 831
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9368658399098083,
+            "Lift": 1.0173198555404812,
+            "Conviction": 1.2526386204846143,
+            "Leverage": 0.014721917530841178,
+            "LHS_Count": 887,
+            "LHS_Support": 0.922996878251821,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8647242455775234,
+            "Count": 831
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "Confidence": 0.9331872946330778,
+            "Lift": 1.015620600387755,
+            "Conviction": 1.2148206274202087,
+            "Leverage": 0.0136358566832806,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 883,
+            "RHS_Support": 0.918834547346514,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9648924122310306,
+            "Lift": 1.015620600387755,
+            "Conviction": 1.4227115571817,
+            "Leverage": 0.0136358566832806,
+            "LHS_Count": 883,
+            "LHS_Support": 0.918834547346514,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Severity",
+                "BI-RADS",
+                " Density"
+            ],
+            "Confidence": 0.9331872946330778,
+            "Lift": 1.015620600387755,
+            "Conviction": 1.2148206274202087,
+            "Leverage": 0.0136358566832806,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 883,
+            "RHS_Support": 0.918834547346514,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin"
+            ],
+            "Confidence": 0.9648924122310306,
+            "Lift": 1.015620600387755,
+            "Conviction": 1.4227115571817,
+            "Leverage": 0.0136358566832806,
+            "LHS_Count": 883,
+            "LHS_Support": 0.918834547346514,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "Confidence": 0.9331872946330778,
+            "Lift": 1.015620600387755,
+            "Conviction": 1.2148206274202087,
+            "Leverage": 0.0136358566832806,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 883,
+            "RHS_Support": 0.918834547346514,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Severity",
+                "BI-RADS",
+                " Density"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9648924122310306,
+            "Lift": 1.015620600387755,
+            "Conviction": 1.4227115571817,
+            "Leverage": 0.0136358566832806,
+            "LHS_Count": 883,
+            "LHS_Support": 0.918834547346514,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.927710843373494,
+            "Lift": 1.0154101600021956,
+            "Conviction": 1.1947624002774888,
+            "Leverage": 0.013375981704801476,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 878,
+            "RHS_Support": 0.9136316337148803,
+            "Support": 0.8813735691987513,
+            "Count": 847
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9646924829157175,
+            "Lift": 1.0154101600021954,
+            "Conviction": 1.4146554328488452,
+            "Leverage": 0.013375981704801476,
+            "LHS_Count": 878,
+            "LHS_Support": 0.9136316337148803,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.8813735691987513,
+            "Count": 847
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "Confidence": 0.9328193832599119,
+            "Lift": 1.0152201894821917,
+            "Conviction": 1.2081677214650037,
+            "Leverage": 0.01321355984325212,
+            "LHS_Count": 908,
+            "LHS_Support": 0.9448491155046826,
+            "RHS_Count": 883,
+            "RHS_Support": 0.918834547346514,
+            "Support": 0.8813735691987513,
+            "Count": 847
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "RHS": [
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.9592298980747452,
+            "Lift": 1.0152201894821917,
+            "Conviction": 1.3527286391490356,
+            "Leverage": 0.01321355984325212,
+            "LHS_Count": 883,
+            "LHS_Support": 0.918834547346514,
+            "RHS_Count": 908,
+            "RHS_Support": 0.9448491155046826,
+            "Support": 0.8813735691987513,
+            "Count": 847
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9638418079096045,
+            "Lift": 1.0145147616660788,
+            "Conviction": 1.3813735691987497,
+            "Leverage": 0.01269922394834544,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9342825848849945,
+            "Lift": 1.0145147616660788,
+            "Conviction": 1.2033992369060005,
+            "Leverage": 0.01269922394834544,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin"
+            ],
+            "Confidence": 0.9638418079096045,
+            "Lift": 1.0145147616660788,
+            "Conviction": 1.3813735691987497,
+            "Leverage": 0.01269922394834544,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Severity",
+                " Density"
+            ],
+            "Confidence": 0.9342825848849945,
+            "Lift": 1.0145147616660788,
+            "Conviction": 1.2033992369060005,
+            "Leverage": 0.01269922394834544,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Density"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9638418079096045,
+            "Lift": 1.0145147616660788,
+            "Conviction": 1.3813735691987497,
+            "Leverage": 0.01269922394834544,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9342825848849945,
+            "Lift": 1.0145147616660788,
+            "Conviction": 1.2033992369060005,
+            "Leverage": 0.01269922394834544,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9627118644067797,
+            "Lift": 1.0144365150163546,
+            "Conviction": 1.367420300823008,
+            "Leverage": 0.012616930205160526,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 912,
+            "RHS_Support": 0.9490114464099896,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9342105263157895,
+            "Lift": 1.0144365150163546,
+            "Conviction": 1.2020811654526542,
+            "Leverage": 0.012616930205160526,
+            "LHS_Count": 912,
+            "LHS_Support": 0.9490114464099896,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9627118644067797,
+            "Lift": 1.0144365150163546,
+            "Conviction": 1.367420300823008,
+            "Leverage": 0.012616930205160526,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 912,
+            "RHS_Support": 0.9490114464099896,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Density"
+            ],
+            "RHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9627118644067797,
+            "Lift": 1.0144365150163546,
+            "Conviction": 1.367420300823008,
+            "Leverage": 0.012616930205160526,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 912,
+            "RHS_Support": 0.9490114464099896,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity",
+                " Density"
+            ],
+            "Confidence": 0.9342105263157895,
+            "Lift": 1.0144365150163546,
+            "Conviction": 1.2020811654526542,
+            "Leverage": 0.012616930205160526,
+            "LHS_Count": 912,
+            "LHS_Support": 0.9490114464099896,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9342105263157895,
+            "Lift": 1.0144365150163546,
+            "Conviction": 1.2020811654526542,
+            "Leverage": 0.012616930205160526,
+            "LHS_Count": 912,
+            "LHS_Support": 0.9490114464099896,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9636363636363636,
+            "Lift": 1.014298516379568,
+            "Conviction": 1.3735691987512995,
+            "Leverage": 0.012439348969866315,
+            "LHS_Count": 880,
+            "LHS_Support": 0.9157127991675338,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.882414151925078,
+            "Count": 848
+        },
+        {
+            "LHS": [
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin"
+            ],
+            "Confidence": 0.9636363636363636,
+            "Lift": 1.014298516379568,
+            "Conviction": 1.3735691987512995,
+            "Leverage": 0.012439348969866315,
+            "LHS_Count": 880,
+            "LHS_Support": 0.9157127991675338,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.882414151925078,
+            "Count": 848
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9636363636363636,
+            "Lift": 1.014298516379568,
+            "Conviction": 1.3735691987512995,
+            "Leverage": 0.012439348969866315,
+            "LHS_Count": 880,
+            "LHS_Support": 0.9157127991675338,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.882414151925078,
+            "Count": 848
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.9288061336254106,
+            "Lift": 1.0142985163795677,
+            "Conviction": 1.1839109901544855,
+            "Leverage": 0.012439348969866315,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 880,
+            "RHS_Support": 0.9157127991675338,
+            "Support": 0.882414151925078,
+            "Count": 848
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Severity",
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.9288061336254106,
+            "Lift": 1.0142985163795677,
+            "Conviction": 1.1839109901544855,
+            "Leverage": 0.012439348969866315,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 880,
+            "RHS_Support": 0.9157127991675338,
+            "Support": 0.882414151925078,
+            "Count": 848
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin"
+            ],
+            "RHS": [
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.9288061336254106,
+            "Lift": 1.0142985163795677,
+            "Conviction": 1.1839109901544855,
+            "Leverage": 0.012439348969866315,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 880,
+            "RHS_Support": 0.9157127991675338,
+            "Support": 0.882414151925078,
+            "Count": 848
+        },
+        {
+            "LHS": [
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9625,
+            "Lift": 1.0142132675438598,
+            "Conviction": 1.3596947624002786,
+            "Leverage": 0.012351641164629723,
+            "LHS_Count": 880,
+            "LHS_Support": 0.9157127991675338,
+            "RHS_Count": 912,
+            "RHS_Support": 0.9490114464099896,
+            "Support": 0.8813735691987513,
+            "Count": 847
+        },
+        {
+            "LHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.9287280701754387,
+            "Lift": 1.0142132675438598,
+            "Conviction": 1.182614263987835,
+            "Leverage": 0.012351641164629723,
+            "LHS_Count": 912,
+            "LHS_Support": 0.9490114464099896,
+            "RHS_Count": 880,
+            "RHS_Support": 0.9157127991675338,
+            "Support": 0.8813735691987513,
+            "Count": 847
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.9581920903954801,
+            "Lift": 1.0141218049229697,
+            "Conviction": 1.3191495345501558,
+            "Leverage": 0.012287755232420206,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 908,
+            "RHS_Support": 0.9448491155046826,
+            "Support": 0.882414151925078,
+            "Count": 848
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9339207048458149,
+            "Lift": 1.0141218049229697,
+            "Conviction": 1.1968088796392637,
+            "Leverage": 0.012287755232420206,
+            "LHS_Count": 908,
+            "LHS_Support": 0.9448491155046826,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.882414151925078,
+            "Count": 848
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.9581920903954801,
+            "Lift": 1.0141218049229697,
+            "Conviction": 1.3191495345501558,
+            "Leverage": 0.012287755232420206,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 908,
+            "RHS_Support": 0.9448491155046826,
+            "Support": 0.882414151925078,
+            "Count": 848
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                " Severity",
+                " Density"
+            ],
+            "Confidence": 0.9339207048458149,
+            "Lift": 1.0141218049229697,
+            "Conviction": 1.1968088796392637,
+            "Leverage": 0.012287755232420206,
+            "LHS_Count": 908,
+            "LHS_Support": 0.9448491155046826,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.882414151925078,
+            "Count": 848
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Density"
+            ],
+            "RHS": [
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.9581920903954801,
+            "Lift": 1.0141218049229697,
+            "Conviction": 1.3191495345501558,
+            "Leverage": 0.012287755232420206,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 908,
+            "RHS_Support": 0.9448491155046826,
+            "Support": 0.882414151925078,
+            "Count": 848
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9339207048458149,
+            "Lift": 1.0141218049229697,
+            "Conviction": 1.1968088796392637,
+            "Leverage": 0.012287755232420206,
+            "LHS_Count": 908,
+            "LHS_Support": 0.9448491155046826,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.882414151925078,
+            "Count": 848
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Margin",
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.9570621468926555,
+            "Lift": 1.0140426936756801,
+            "Conviction": 1.3086696971356622,
+            "Leverage": 0.012205461489235292,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 907,
+            "RHS_Support": 0.9438085327783559,
+            "Support": 0.8813735691987513,
+            "Count": 847
+        },
+        {
+            "LHS": [
+                " Margin",
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9338478500551268,
+            "Lift": 1.0140426936756801,
+            "Conviction": 1.1954908081859186,
+            "Leverage": 0.012205461489235292,
+            "LHS_Count": 907,
+            "LHS_Support": 0.9438085327783559,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8813735691987513,
+            "Count": 847
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Density"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9800703399765534,
+            "Lift": 1.0127393513091052,
+            "Conviction": 1.6185958254269444,
+            "Leverage": 0.010942902218790906,
+            "LHS_Count": 853,
+            "LHS_Support": 0.8876170655567117,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Density"
+            ],
+            "RHS": [
+                " Severity",
+                " Shape"
+            ],
+            "Confidence": 0.9800703399765534,
+            "Lift": 1.0127393513091052,
+            "Conviction": 1.6185958254269444,
+            "Leverage": 0.010942902218790906,
+            "LHS_Count": 853,
+            "LHS_Support": 0.8876170655567117,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin",
+                " Density"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9800703399765534,
+            "Lift": 1.0127393513091052,
+            "Conviction": 1.6185958254269444,
+            "Leverage": 0.010942902218790906,
+            "LHS_Count": 853,
+            "LHS_Support": 0.8876170655567117,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Margin",
+                " Density"
+            ],
+            "Confidence": 0.8989247311827956,
+            "Lift": 1.012739351309105,
+            "Conviction": 1.1118737131091276,
+            "Leverage": 0.010942902218790906,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 853,
+            "RHS_Support": 0.8876170655567117,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin",
+                " Density"
+            ],
+            "Confidence": 0.8989247311827956,
+            "Lift": 1.012739351309105,
+            "Conviction": 1.1118737131091276,
+            "Leverage": 0.010942902218790906,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 853,
+            "RHS_Support": 0.8876170655567117,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Shape"
+            ],
+            "RHS": [
+                " Margin",
+                " Density"
+            ],
+            "Confidence": 0.8989247311827956,
+            "Lift": 1.012739351309105,
+            "Conviction": 1.1118737131091276,
+            "Leverage": 0.010942902218790906,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 853,
+            "RHS_Support": 0.8876170655567117,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Margin",
+                "BI-RADS",
+                " Density"
+            ],
+            "Confidence": 0.8978494623655914,
+            "Lift": 1.012715179968701,
+            "Conviction": 1.1103565365025463,
+            "Leverage": 0.010909335034070655,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 852,
+            "RHS_Support": 0.886576482830385,
+            "Support": 0.8688865764828304,
+            "Count": 835
+        },
+        {
+            "LHS": [
+                " Margin",
+                "BI-RADS",
+                " Density"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9800469483568075,
+            "Lift": 1.012715179968701,
+            "Conviction": 1.6166982922201116,
+            "Leverage": 0.010909335034070655,
+            "LHS_Count": 852,
+            "LHS_Support": 0.886576482830385,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.8688865764828304,
+            "Count": 835
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Margin",
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.8935483870967741,
+            "Lift": 1.0126179245283018,
+            "Conviction": 1.1045943304007815,
+            "Leverage": 0.010775066295189761,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 848,
+            "RHS_Support": 0.882414151925078,
+            "Support": 0.8647242455775234,
+            "Count": 831
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9799528301886793,
+            "Lift": 1.0126179245283018,
+            "Conviction": 1.6091081593927916,
+            "Leverage": 0.010775066295189761,
+            "LHS_Count": 848,
+            "LHS_Support": 0.882414151925078,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.8647242455775234,
+            "Count": 831
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Density"
+            ],
+            "RHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9788980070339978,
+            "Lift": 1.0126167758446414,
+            "Conviction": 1.577985894323052,
+            "Leverage": 0.01082595847847534,
+            "LHS_Count": 853,
+            "LHS_Support": 0.8876170655567117,
+            "RHS_Count": 929,
+            "RHS_Support": 0.9667013527575442,
+            "Support": 0.8688865764828304,
+            "Count": 835
+        },
+        {
+            "LHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Margin",
+                " Density"
+            ],
+            "Confidence": 0.898815931108719,
+            "Lift": 1.0126167758446414,
+            "Conviction": 1.1106781499767533,
+            "Leverage": 0.01082595847847534,
+            "LHS_Count": 929,
+            "LHS_Support": 0.9667013527575442,
+            "RHS_Count": 853,
+            "RHS_Support": 0.8876170655567117,
+            "Support": 0.8688865764828304,
+            "Count": 835
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Age"
+            ],
+            "RHS": [
+                " Margin",
+                " Density"
+            ],
+            "Confidence": 0.8983783783783783,
+            "Lift": 1.0121238237064731,
+            "Conviction": 1.105895897447251,
+            "Leverage": 0.010358183517212849,
+            "LHS_Count": 925,
+            "LHS_Support": 0.9625390218522373,
+            "RHS_Count": 853,
+            "RHS_Support": 0.8876170655567117,
+            "Support": 0.8647242455775234,
+            "Count": 831
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Density"
+            ],
+            "RHS": [
+                " Shape",
+                " Age"
+            ],
+            "Confidence": 0.9742086752637749,
+            "Lift": 1.0121238237064731,
+            "Conviction": 1.4524642890927972,
+            "Leverage": 0.010358183517212849,
+            "LHS_Count": 853,
+            "LHS_Support": 0.8876170655567117,
+            "RHS_Count": 925,
+            "RHS_Support": 0.9625390218522373,
+            "Support": 0.8647242455775234,
+            "Count": 831
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.976998904709748,
+            "Lift": 1.0095655348667396,
+            "Conviction": 1.4024577572964632,
+            "Leverage": 0.008794602396696938,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.9281997918834547,
+            "Count": 892
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9591397849462365,
+            "Lift": 1.0095655348667396,
+            "Conviction": 1.2224108658743618,
+            "Leverage": 0.008794602396696938,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.9281997918834547,
+            "Count": 892
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Severity",
+                " Shape"
+            ],
+            "Confidence": 0.976998904709748,
+            "Lift": 1.0095655348667396,
+            "Conviction": 1.4024577572964632,
+            "Leverage": 0.008794602396696938,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.9281997918834547,
+            "Count": 892
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin"
+            ],
+            "Confidence": 0.9591397849462365,
+            "Lift": 1.0095655348667396,
+            "Conviction": 1.2224108658743618,
+            "Leverage": 0.008794602396696938,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.9281997918834547,
+            "Count": 892
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.976998904709748,
+            "Lift": 1.0095655348667396,
+            "Conviction": 1.4024577572964632,
+            "Leverage": 0.008794602396696938,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.9281997918834547,
+            "Count": 892
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Shape"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9591397849462365,
+            "Lift": 1.0095655348667396,
+            "Conviction": 1.2224108658743618,
+            "Leverage": 0.008794602396696938,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.9281997918834547,
+            "Count": 892
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9580645161290322,
+            "Lift": 1.0095394736842105,
+            "Conviction": 1.215880893300247,
+            "Leverage": 0.008761035211976798,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 912,
+            "RHS_Support": 0.9490114464099896,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9769736842105263,
+            "Lift": 1.0095394736842105,
+            "Conviction": 1.4009216589861746,
+            "Leverage": 0.008761035211976798,
+            "LHS_Count": 912,
+            "LHS_Support": 0.9490114464099896,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9580645161290322,
+            "Lift": 1.0095394736842105,
+            "Conviction": 1.215880893300247,
+            "Leverage": 0.008761035211976798,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 912,
+            "RHS_Support": 0.9490114464099896,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity",
+                " Shape"
+            ],
+            "Confidence": 0.9769736842105263,
+            "Lift": 1.0095394736842105,
+            "Conviction": 1.4009216589861746,
+            "Leverage": 0.008761035211976798,
+            "LHS_Count": 912,
+            "LHS_Support": 0.9490114464099896,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Shape"
+            ],
+            "RHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9580645161290322,
+            "Lift": 1.0095394736842105,
+            "Conviction": 1.215880893300247,
+            "Leverage": 0.008761035211976798,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 912,
+            "RHS_Support": 0.9490114464099896,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9769736842105263,
+            "Lift": 1.0095394736842105,
+            "Conviction": 1.4009216589861746,
+            "Leverage": 0.008761035211976798,
+            "LHS_Count": 912,
+            "LHS_Support": 0.9490114464099896,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9759036144578314,
+            "Lift": 1.0095192394983594,
+            "Conviction": 1.3818938605619173,
+            "Leverage": 0.00874262740100118,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 929,
+            "RHS_Support": 0.9667013527575442,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9590958019375673,
+            "Lift": 1.0095192394983594,
+            "Conviction": 1.221096445588476,
+            "Leverage": 0.00874262740100118,
+            "LHS_Count": 929,
+            "LHS_Support": 0.9667013527575442,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Severity",
+                "BI-RADS",
+                " Shape"
+            ],
+            "Confidence": 0.9759036144578314,
+            "Lift": 1.0095192394983594,
+            "Conviction": 1.3818938605619173,
+            "Leverage": 0.00874262740100118,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 929,
+            "RHS_Support": 0.9667013527575442,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin"
+            ],
+            "RHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9759036144578314,
+            "Lift": 1.0095192394983594,
+            "Conviction": 1.3818938605619173,
+            "Leverage": 0.00874262740100118,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 929,
+            "RHS_Support": 0.9667013527575442,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin"
+            ],
+            "Confidence": 0.9590958019375673,
+            "Lift": 1.0095192394983594,
+            "Conviction": 1.221096445588476,
+            "Leverage": 0.00874262740100118,
+            "LHS_Count": 929,
+            "LHS_Support": 0.9667013527575442,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Severity",
+                "BI-RADS",
+                " Shape"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9590958019375673,
+            "Lift": 1.0095192394983594,
+            "Conviction": 1.221096445588476,
+            "Leverage": 0.00874262740100118,
+            "LHS_Count": 929,
+            "LHS_Support": 0.9667013527575442,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.953763440860215,
+            "Lift": 1.0094346549192363,
+            "Conviction": 1.1927981995498862,
+            "Leverage": 0.008626766473095793,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 908,
+            "RHS_Support": 0.9448491155046826,
+            "Support": 0.922996878251821,
+            "Count": 887
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9768722466960351,
+            "Lift": 1.0094346549192363,
+            "Conviction": 1.394777265744999,
+            "Leverage": 0.008626766473095793,
+            "LHS_Count": 908,
+            "LHS_Support": 0.9448491155046826,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.922996878251821,
+            "Count": 887
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.953763440860215,
+            "Lift": 1.0094346549192363,
+            "Conviction": 1.1927981995498862,
+            "Leverage": 0.008626766473095793,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 908,
+            "RHS_Support": 0.9448491155046826,
+            "Support": 0.922996878251821,
+            "Count": 887
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                " Severity",
+                " Shape"
+            ],
+            "Confidence": 0.9768722466960351,
+            "Lift": 1.0094346549192363,
+            "Conviction": 1.394777265744999,
+            "Leverage": 0.008626766473095793,
+            "LHS_Count": 908,
+            "LHS_Support": 0.9448491155046826,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.922996878251821,
+            "Count": 887
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Shape"
+            ],
+            "RHS": [
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.953763440860215,
+            "Lift": 1.0094346549192363,
+            "Conviction": 1.1927981995498862,
+            "Leverage": 0.008626766473095793,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 908,
+            "RHS_Support": 0.9448491155046826,
+            "Support": 0.922996878251821,
+            "Count": 887
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9768722466960351,
+            "Lift": 1.0094346549192363,
+            "Conviction": 1.394777265744999,
+            "Leverage": 0.008626766473095793,
+            "LHS_Count": 908,
+            "LHS_Support": 0.9448491155046826,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.922996878251821,
+            "Count": 887
+        },
+        {
+            "LHS": [
+                " Margin",
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9768467475192945,
+            "Lift": 1.0094083057699377,
+            "Conviction": 1.3932411674347194,
+            "Leverage": 0.008593199288375653,
+            "LHS_Count": 907,
+            "LHS_Support": 0.9438085327783559,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.9219562955254943,
+            "Count": 886
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Margin",
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.9526881720430107,
+            "Lift": 1.0094083057699375,
+            "Conviction": 1.1876832844574774,
+            "Leverage": 0.008593199288375653,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 907,
+            "RHS_Support": 0.9438085327783559,
+            "Support": 0.9219562955254943,
+            "Count": 886
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9757709251101322,
+            "Lift": 1.0093819795810948,
+            "Conviction": 1.3743259861886319,
+            "Leverage": 0.008569377415348467,
+            "LHS_Count": 908,
+            "LHS_Support": 0.9448491155046826,
+            "RHS_Count": 929,
+            "RHS_Support": 0.9667013527575442,
+            "Support": 0.9219562955254943,
+            "Count": 886
+        },
+        {
+            "LHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.953713670613563,
+            "Lift": 1.0093819795810948,
+            "Conviction": 1.1915156208406954,
+            "Leverage": 0.008569377415348467,
+            "LHS_Count": 929,
+            "LHS_Support": 0.9667013527575442,
+            "RHS_Count": 908,
+            "RHS_Support": 0.9448491155046826,
+            "Support": 0.9219562955254943,
+            "Count": 886
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Shape",
+                " Age"
+            ],
+            "Confidence": 0.9715224534501642,
+            "Lift": 1.0093330570439003,
+            "Conviction": 1.3154566557272018,
+            "Leverage": 0.008534727418217813,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 925,
+            "RHS_Support": 0.9625390218522373,
+            "Support": 0.922996878251821,
+            "Count": 887
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Age"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9589189189189189,
+            "Lift": 1.0093330570439003,
+            "Conviction": 1.2158387644449298,
+            "Leverage": 0.008534727418217813,
+            "LHS_Count": 925,
+            "LHS_Support": 0.9625390218522373,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.922996878251821,
+            "Count": 887
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Severity",
+                " Age",
+                " Shape"
+            ],
+            "Confidence": 0.9715224534501642,
+            "Lift": 1.0093330570439003,
+            "Conviction": 1.3154566557272018,
+            "Leverage": 0.008534727418217813,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 925,
+            "RHS_Support": 0.9625390218522373,
+            "Support": 0.922996878251821,
+            "Count": 887
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Age"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin"
+            ],
+            "Confidence": 0.9589189189189189,
+            "Lift": 1.0093330570439003,
+            "Conviction": 1.2158387644449298,
+            "Leverage": 0.008534727418217813,
+            "LHS_Count": 925,
+            "LHS_Support": 0.9625390218522373,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.922996878251821,
+            "Count": 887
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin"
+            ],
+            "RHS": [
+                " Shape",
+                " Age"
+            ],
+            "Confidence": 0.9715224534501642,
+            "Lift": 1.0093330570439003,
+            "Conviction": 1.3154566557272018,
+            "Leverage": 0.008534727418217813,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 925,
+            "RHS_Support": 0.9625390218522373,
+            "Support": 0.922996878251821,
+            "Count": 887
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Shape",
+                " Age"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9589189189189189,
+            "Lift": 1.0093330570439003,
+            "Conviction": 1.2158387644449298,
+            "Leverage": 0.008534727418217813,
+            "LHS_Count": 925,
+            "LHS_Support": 0.9625390218522373,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.922996878251821,
+            "Count": 887
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Age"
+            ],
+            "RHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9578378378378378,
+            "Lift": 1.0093006164058795,
+            "Conviction": 1.2093438992502468,
+            "Leverage": 0.008495746171445995,
+            "LHS_Count": 925,
+            "LHS_Support": 0.9625390218522373,
+            "RHS_Count": 912,
+            "RHS_Support": 0.9490114464099896,
+            "Support": 0.9219562955254943,
+            "Count": 886
+        },
+        {
+            "LHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape",
+                " Age"
+            ],
+            "Confidence": 0.9714912280701755,
+            "Lift": 1.0093006164058795,
+            "Conviction": 1.314015848875373,
+            "Leverage": 0.008495746171445995,
+            "LHS_Count": 912,
+            "LHS_Support": 0.9490114464099896,
+            "RHS_Count": 925,
+            "RHS_Support": 0.9625390218522373,
+            "Support": 0.9219562955254943,
+            "Count": 886
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Shape",
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.9704271631982475,
+            "Lift": 1.0092862595600822,
+            "Conviction": 1.3019231510386555,
+            "Leverage": 0.008482752422522055,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 924,
+            "RHS_Support": 0.9614984391259105,
+            "Support": 0.9219562955254943,
+            "Count": 886
+        },
+        {
+            "LHS": [
+                " Shape",
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9588744588744589,
+            "Lift": 1.009286259560082,
+            "Conviction": 1.2145243441590443,
+            "Leverage": 0.008482752422522055,
+            "LHS_Count": 924,
+            "LHS_Support": 0.9614984391259105,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.9219562955254943,
+            "Count": 886
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "Confidence": 0.921505376344086,
+            "Lift": 1.0029067572668933,
+            "Conviction": 1.0340256296950951,
+            "Leverage": 0.0025846732234567904,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 883,
+            "RHS_Support": 0.918834547346514,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.970554926387316,
+            "Lift": 1.0029067572668933,
+            "Conviction": 1.0955334987593053,
+            "Leverage": 0.0025846732234567904,
+            "LHS_Count": 883,
+            "LHS_Support": 0.918834547346514,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Severity",
+                "BI-RADS",
+                " Density"
+            ],
+            "Confidence": 0.921505376344086,
+            "Lift": 1.0029067572668933,
+            "Conviction": 1.0340256296950951,
+            "Leverage": 0.0025846732234567904,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 883,
+            "RHS_Support": 0.918834547346514,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "RHS": [
+                " Severity",
+                " Shape"
+            ],
+            "Confidence": 0.970554926387316,
+            "Lift": 1.0029067572668933,
+            "Conviction": 1.0955334987593053,
+            "Leverage": 0.0025846732234567904,
+            "LHS_Count": 883,
+            "LHS_Support": 0.918834547346514,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Shape"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "Confidence": 0.921505376344086,
+            "Lift": 1.0029067572668933,
+            "Conviction": 1.0340256296950951,
+            "Leverage": 0.0025846732234567904,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 883,
+            "RHS_Support": 0.918834547346514,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Severity",
+                "BI-RADS",
+                " Density"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.970554926387316,
+            "Lift": 1.0029067572668933,
+            "Conviction": 1.0955334987593053,
+            "Leverage": 0.0025846732234567904,
+            "LHS_Count": 883,
+            "LHS_Support": 0.918834547346514,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.9161290322580645,
+            "Lift": 1.0027334851936218,
+            "Conviction": 1.0297766749379655,
+            "Leverage": 0.0024168372998556453,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 878,
+            "RHS_Support": 0.9136316337148803,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9703872437357631,
+            "Lift": 1.0027334851936218,
+            "Conviction": 1.089330024813896,
+            "Leverage": 0.0024168372998556453,
+            "LHS_Count": 878,
+            "LHS_Support": 0.9136316337148803,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Age"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "Confidence": 0.9210810810810811,
+            "Lift": 1.0024449817881302,
+            "Conviction": 1.0284663521160895,
+            "Leverage": 0.0021623763834281995,
+            "LHS_Count": 925,
+            "LHS_Support": 0.9625390218522373,
+            "RHS_Count": 883,
+            "RHS_Support": 0.918834547346514,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "RHS": [
+                " Shape",
+                " Age"
+            ],
+            "Confidence": 0.9648924122310306,
+            "Lift": 1.0024449817881302,
+            "Conviction": 1.0670336678862749,
+            "Leverage": 0.0021623763834281995,
+            "LHS_Count": 883,
+            "LHS_Support": 0.918834547346514,
+            "RHS_Count": 925,
+            "RHS_Support": 0.9625390218522373,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9694915254237289,
+            "Lift": 1.0018079096045198,
+            "Conviction": 1.0573476702508964,
+            "Leverage": 0.0016112248665703932,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.8928199791883454,
+            "Count": 858
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9225806451612902,
+            "Lift": 1.0018079096045198,
+            "Conviction": 1.0215053763440851,
+            "Leverage": 0.0016112248665703932,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8928199791883454,
+            "Count": 858
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Severity",
+                " Shape"
+            ],
+            "Confidence": 0.9694915254237289,
+            "Lift": 1.0018079096045198,
+            "Conviction": 1.0573476702508964,
+            "Leverage": 0.0016112248665703932,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.8928199791883454,
+            "Count": 858
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Severity",
+                " Density"
+            ],
+            "Confidence": 0.9225806451612902,
+            "Lift": 1.0018079096045198,
+            "Conviction": 1.0215053763440851,
+            "Leverage": 0.0016112248665703932,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8928199791883454,
+            "Count": 858
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Density"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9694915254237289,
+            "Lift": 1.0018079096045198,
+            "Conviction": 1.0573476702508964,
+            "Leverage": 0.0016112248665703932,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.8928199791883454,
+            "Count": 858
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Shape"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9225806451612902,
+            "Lift": 1.0018079096045198,
+            "Conviction": 1.0215053763440851,
+            "Leverage": 0.0016112248665703932,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8928199791883454,
+            "Count": 858
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "Confidence": 0.968361581920904,
+            "Lift": 1.0017174168202247,
+            "Conviction": 1.0524751003419093,
+            "Leverage": 0.0015289311233854797,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 929,
+            "RHS_Support": 0.9667013527575442,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.922497308934338,
+            "Lift": 1.0017174168202247,
+            "Conviction": 1.0204069834662972,
+            "Leverage": 0.0015289311233854797,
+            "LHS_Count": 929,
+            "LHS_Support": 0.9667013527575442,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Severity",
+                "BI-RADS",
+                " Shape"
+            ],
+            "Confidence": 0.968361581920904,
+            "Lift": 1.0017174168202247,
+            "Conviction": 1.0524751003419093,
+            "Leverage": 0.0015289311233854797,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 929,
+            "RHS_Support": 0.9667013527575442,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Density"
+            ],
+            "RHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "Confidence": 0.968361581920904,
+            "Lift": 1.0017174168202247,
+            "Conviction": 1.0524751003419093,
+            "Leverage": 0.0015289311233854797,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 929,
+            "RHS_Support": 0.9667013527575442,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity",
+                " Density"
+            ],
+            "Confidence": 0.922497308934338,
+            "Lift": 1.0017174168202247,
+            "Conviction": 1.0204069834662972,
+            "Leverage": 0.0015289311233854797,
+            "LHS_Count": 929,
+            "LHS_Support": 0.9667013527575442,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Severity",
+                "BI-RADS",
+                " Shape"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.922497308934338,
+            "Lift": 1.0017174168202247,
+            "Conviction": 1.0204069834662972,
+            "Leverage": 0.0015289311233854797,
+            "LHS_Count": 929,
+            "LHS_Support": 0.9667013527575442,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9693181818181819,
+            "Lift": 1.001628787878788,
+            "Conviction": 1.0513739545997614,
+            "Leverage": 0.0014433889429693592,
+            "LHS_Count": 880,
+            "LHS_Support": 0.9157127991675338,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Severity",
+                " Shape"
+            ],
+            "Confidence": 0.9693181818181819,
+            "Lift": 1.001628787878788,
+            "Conviction": 1.0513739545997614,
+            "Leverage": 0.0014433889429693592,
+            "LHS_Count": 880,
+            "LHS_Support": 0.9157127991675338,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9693181818181819,
+            "Lift": 1.001628787878788,
+            "Conviction": 1.0513739545997614,
+            "Leverage": 0.0014433889429693592,
+            "LHS_Count": 880,
+            "LHS_Support": 0.9157127991675338,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.9172043010752687,
+            "Lift": 1.0016287878787877,
+            "Conviction": 1.0180142438206947,
+            "Leverage": 0.0014433889429693592,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 880,
+            "RHS_Support": 0.9157127991675338,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Severity",
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.9172043010752687,
+            "Lift": 1.0016287878787877,
+            "Conviction": 1.0180142438206947,
+            "Leverage": 0.0014433889429693592,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 880,
+            "RHS_Support": 0.9157127991675338,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Shape"
+            ],
+            "RHS": [
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.9172043010752687,
+            "Lift": 1.0016287878787877,
+            "Conviction": 1.0180142438206947,
+            "Leverage": 0.0014433889429693592,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 880,
+            "RHS_Support": 0.9157127991675338,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9681818181818183,
+            "Lift": 1.0015314610040122,
+            "Conviction": 1.0465289133343272,
+            "Leverage": 0.001355681137732767,
+            "LHS_Count": 880,
+            "LHS_Support": 0.9157127991675338,
+            "RHS_Count": 929,
+            "RHS_Support": 0.9667013527575442,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.9171151776103337,
+            "Lift": 1.0015314610040122,
+            "Conviction": 1.0169196048488454,
+            "Leverage": 0.001355681137732767,
+            "LHS_Count": 929,
+            "LHS_Support": 0.9667013527575442,
+            "RHS_Count": 880,
+            "RHS_Support": 0.9157127991675338,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Shape",
+                " Age"
+            ],
+            "Confidence": 0.9638418079096045,
+            "Lift": 1.0013534890823026,
+            "Conviction": 1.0360301768990623,
+            "Leverage": 0.0011997561506451593,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 925,
+            "RHS_Support": 0.9625390218522373,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Age"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9221621621621621,
+            "Lift": 1.0013534890823026,
+            "Conviction": 1.0160134119551385,
+            "Leverage": 0.0011997561506451593,
+            "LHS_Count": 925,
+            "LHS_Support": 0.9625390218522373,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Severity",
+                " Age",
+                " Shape"
+            ],
+            "Confidence": 0.9638418079096045,
+            "Lift": 1.0013534890823026,
+            "Conviction": 1.0360301768990623,
+            "Leverage": 0.0011997561506451593,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 925,
+            "RHS_Support": 0.9625390218522373,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Age"
+            ],
+            "RHS": [
+                " Severity",
+                " Density"
+            ],
+            "Confidence": 0.9221621621621621,
+            "Lift": 1.0013534890823026,
+            "Conviction": 1.0160134119551385,
+            "Leverage": 0.0011997561506451593,
+            "LHS_Count": 925,
+            "LHS_Support": 0.9625390218522373,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Density"
+            ],
+            "RHS": [
+                " Shape",
+                " Age"
+            ],
+            "Confidence": 0.9638418079096045,
+            "Lift": 1.0013534890823026,
+            "Conviction": 1.0360301768990623,
+            "Leverage": 0.0011997561506451593,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 925,
+            "RHS_Support": 0.9625390218522373,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Shape",
+                " Age"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9221621621621621,
+            "Lift": 1.0013534890823026,
+            "Conviction": 1.0160134119551385,
+            "Leverage": 0.0011997561506451593,
+            "LHS_Count": 925,
+            "LHS_Support": 0.9625390218522373,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Shape",
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.9627118644067797,
+            "Lift": 1.001262014821337,
+            "Conviction": 1.0325418598051288,
+            "Leverage": 0.0011174624074602457,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 924,
+            "RHS_Support": 0.9614984391259105,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Shape",
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9220779220779222,
+            "Lift": 1.001262014821337,
+            "Conviction": 1.0149150190773515,
+            "Leverage": 0.0011174624074602457,
+            "LHS_Count": 924,
+            "LHS_Support": 0.9614984391259105,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9989247311827957,
+            "Lift": 1.0010079944386514,
+            "Conviction": 1.9354838709676854,
+            "Leverage": 0.0009734483568862862,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.9667013527575442,
+            "Count": 929
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Severity",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9989247311827957,
+            "Lift": 1.0010079944386514,
+            "Conviction": 1.9354838709676854,
+            "Leverage": 0.0009734483568862862,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.9667013527575442,
+            "Count": 929
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Shape"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9989247311827957,
+            "Lift": 1.0010079944386514,
+            "Conviction": 1.9354838709676854,
+            "Leverage": 0.0009734483568862862,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.9667013527575442,
+            "Count": 929
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9687174139728884,
+            "Lift": 1.0010079944386512,
+            "Conviction": 1.0311827956989215,
+            "Leverage": 0.0009734483568862862,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.9667013527575442,
+            "Count": 929
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity",
+                " Shape"
+            ],
+            "Confidence": 0.9687174139728884,
+            "Lift": 1.0010079944386512,
+            "Conviction": 1.0311827956989215,
+            "Leverage": 0.0009734483568862862,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.9667013527575442,
+            "Count": 929
+        },
+        {
+            "LHS": [
+                " Severity",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9687174139728884,
+            "Lift": 1.0010079944386512,
+            "Conviction": 1.0311827956989215,
+            "Leverage": 0.0009734483568862862,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.9667013527575442,
+            "Count": 929
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape",
+                " Age"
+            ],
+            "Confidence": 0.9635036496350364,
+            "Lift": 1.0010021700532648,
+            "Conviction": 1.0264308012486967,
+            "Leverage": 0.0009626202327829292,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 925,
+            "RHS_Support": 0.9625390218522373,
+            "Support": 0.9614984391259105,
+            "Count": 924
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Age"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9989189189189188,
+            "Lift": 1.0010021700532648,
+            "Conviction": 1.9250780437042783,
+            "Leverage": 0.0009626202327829292,
+            "LHS_Count": 925,
+            "LHS_Support": 0.9625390218522373,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.9614984391259105,
+            "Count": 924
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity",
+                " Age",
+                " Shape"
+            ],
+            "Confidence": 0.9635036496350364,
+            "Lift": 1.0010021700532648,
+            "Conviction": 1.0264308012486967,
+            "Leverage": 0.0009626202327829292,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 925,
+            "RHS_Support": 0.9625390218522373,
+            "Support": 0.9614984391259105,
+            "Count": 924
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Age"
+            ],
+            "RHS": [
+                " Severity",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9989189189189188,
+            "Lift": 1.0010021700532648,
+            "Conviction": 1.9250780437042783,
+            "Leverage": 0.0009626202327829292,
+            "LHS_Count": 925,
+            "LHS_Support": 0.9625390218522373,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.9614984391259105,
+            "Count": 924
+        },
+        {
+            "LHS": [
+                " Severity",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape",
+                " Age"
+            ],
+            "Confidence": 0.9635036496350364,
+            "Lift": 1.0010021700532648,
+            "Conviction": 1.0264308012486967,
+            "Leverage": 0.0009626202327829292,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 925,
+            "RHS_Support": 0.9625390218522373,
+            "Support": 0.9614984391259105,
+            "Count": 924
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Shape",
+                " Age"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9989189189189188,
+            "Lift": 1.0010021700532648,
+            "Conviction": 1.9250780437042783,
+            "Leverage": 0.0009626202327829292,
+            "LHS_Count": 925,
+            "LHS_Support": 0.9625390218522373,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.9614984391259105,
+            "Count": 924
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9989047097480832,
+            "Lift": 1.0009879312491219,
+            "Conviction": 1.900104058272556,
+            "Leverage": 0.0009366327349350501,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.9490114464099896,
+            "Count": 912
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9509906152241918,
+            "Lift": 1.0009879312491219,
+            "Conviction": 1.0191511501760118,
+            "Leverage": 0.0009366327349350501,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.9490114464099896,
+            "Count": 912
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Severity",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9989047097480832,
+            "Lift": 1.0009879312491219,
+            "Conviction": 1.900104058272556,
+            "Leverage": 0.0009366327349350501,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.9490114464099896,
+            "Count": 912
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin"
+            ],
+            "Confidence": 0.9509906152241918,
+            "Lift": 1.0009879312491219,
+            "Conviction": 1.0191511501760118,
+            "Leverage": 0.0009366327349350501,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.9490114464099896,
+            "Count": 912
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9989047097480832,
+            "Lift": 1.0009879312491219,
+            "Conviction": 1.900104058272556,
+            "Leverage": 0.0009366327349350501,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.9490114464099896,
+            "Count": 912
+        },
+        {
+            "LHS": [
+                " Severity",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9509906152241918,
+            "Lift": 1.0009879312491219,
+            "Conviction": 1.0191511501760118,
+            "Leverage": 0.0009366327349350501,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.9490114464099896,
+            "Count": 912
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.9457768508863399,
+            "Lift": 1.000981887336754,
+            "Conviction": 1.0171095813655635,
+            "Leverage": 0.0009258046108316931,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 908,
+            "RHS_Support": 0.9448491155046826,
+            "Support": 0.9438085327783559,
+            "Count": 907
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988986784140969,
+            "Lift": 1.000981887336754,
+            "Conviction": 1.8896982310092374,
+            "Leverage": 0.0009258046108316931,
+            "LHS_Count": 908,
+            "LHS_Support": 0.9448491155046826,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.9438085327783559,
+            "Count": 907
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.9457768508863399,
+            "Lift": 1.000981887336754,
+            "Conviction": 1.0171095813655635,
+            "Leverage": 0.0009258046108316931,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 908,
+            "RHS_Support": 0.9448491155046826,
+            "Support": 0.9438085327783559,
+            "Count": 907
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                " Severity",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988986784140969,
+            "Lift": 1.000981887336754,
+            "Conviction": 1.8896982310092374,
+            "Leverage": 0.0009258046108316931,
+            "LHS_Count": 908,
+            "LHS_Support": 0.9448491155046826,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.9438085327783559,
+            "Count": 907
+        },
+        {
+            "LHS": [
+                " Severity",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.9457768508863399,
+            "Lift": 1.000981887336754,
+            "Conviction": 1.0171095813655635,
+            "Leverage": 0.0009258046108316931,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 908,
+            "RHS_Support": 0.9448491155046826,
+            "Support": 0.9438085327783559,
+            "Count": 907
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988986784140969,
+            "Lift": 1.000981887336754,
+            "Conviction": 1.8896982310092374,
+            "Leverage": 0.0009258046108316931,
+            "LHS_Count": 908,
+            "LHS_Support": 0.9448491155046826,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.9438085327783559,
+            "Count": 907
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin"
+            ],
+            "Confidence": 0.9290928050052137,
+            "Lift": 1.000962091491043,
+            "Conviction": 1.0125941115259842,
+            "Leverage": 0.0008911546137012616,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 892,
+            "RHS_Support": 0.9281997918834547,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988789237668162,
+            "Lift": 1.000962091491043,
+            "Conviction": 1.8563995837669784,
+            "Leverage": 0.0008911546137012616,
+            "LHS_Count": 892,
+            "LHS_Support": 0.9281997918834547,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin",
+                " Shape"
+            ],
+            "Confidence": 0.9290928050052137,
+            "Lift": 1.000962091491043,
+            "Conviction": 1.0125941115259842,
+            "Leverage": 0.0008911546137012616,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 892,
+            "RHS_Support": 0.9281997918834547,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin"
+            ],
+            "RHS": [
+                " Severity",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988789237668162,
+            "Lift": 1.000962091491043,
+            "Conviction": 1.8563995837669784,
+            "Leverage": 0.0008911546137012616,
+            "LHS_Count": 892,
+            "LHS_Support": 0.9281997918834547,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Severity",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin"
+            ],
+            "Confidence": 0.9290928050052137,
+            "Lift": 1.000962091491043,
+            "Conviction": 1.0125941115259842,
+            "Leverage": 0.0008911546137012616,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 892,
+            "RHS_Support": 0.9281997918834547,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin",
+                " Shape"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988789237668162,
+            "Lift": 1.000962091491043,
+            "Conviction": 1.8563995837669784,
+            "Leverage": 0.0008911546137012616,
+            "LHS_Count": 892,
+            "LHS_Support": 0.9281997918834547,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.9238790406673618,
+            "Lift": 1.0009557588290132,
+            "Conviction": 1.0115889555685433,
+            "Leverage": 0.0008803264895980156,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 887,
+            "RHS_Support": 0.922996878251821,
+            "Support": 0.9219562955254943,
+            "Count": 886
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988726042841037,
+            "Lift": 1.0009557588290132,
+            "Conviction": 1.845993756503653,
+            "Leverage": 0.0008803264895980156,
+            "LHS_Count": 887,
+            "LHS_Support": 0.922996878251821,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.9219562955254943,
+            "Count": 886
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape",
+                " Density"
+            ],
+            "Confidence": 0.8936392075078207,
+            "Lift": 1.0009175739102747,
+            "Conviction": 1.0077023525331053,
+            "Leverage": 0.0008175233697989004,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 858,
+            "RHS_Support": 0.8928199791883454,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Density"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988344988344989,
+            "Lift": 1.0009175739102747,
+            "Conviction": 1.7856399583768194,
+            "Leverage": 0.0008175233697989004,
+            "LHS_Count": 858,
+            "LHS_Support": 0.8928199791883454,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity",
+                " Density",
+                " Shape"
+            ],
+            "Confidence": 0.8936392075078207,
+            "Lift": 1.0009175739102747,
+            "Conviction": 1.0077023525331053,
+            "Leverage": 0.0008175233697989004,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 858,
+            "RHS_Support": 0.8928199791883454,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Density"
+            ],
+            "RHS": [
+                " Severity",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988344988344989,
+            "Lift": 1.0009175739102747,
+            "Conviction": 1.7856399583768194,
+            "Leverage": 0.0008175233697989004,
+            "LHS_Count": 858,
+            "LHS_Support": 0.8928199791883454,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Severity",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape",
+                " Density"
+            ],
+            "Confidence": 0.8936392075078207,
+            "Lift": 1.0009175739102747,
+            "Conviction": 1.0077023525331053,
+            "Leverage": 0.0008175233697989004,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 858,
+            "RHS_Support": 0.8928199791883454,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Density",
+                " Shape"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988344988344989,
+            "Lift": 1.0009175739102747,
+            "Conviction": 1.7856399583768194,
+            "Leverage": 0.0008175233697989004,
+            "LHS_Count": 858,
+            "LHS_Support": 0.8928199791883454,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Margin",
+                " Density"
+            ],
+            "Confidence": 0.8884254431699687,
+            "Lift": 1.00091072788551,
+            "Conviction": 1.0072451787954533,
+            "Leverage": 0.0008066952456955434,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 853,
+            "RHS_Support": 0.8876170655567117,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Density"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988276670574444,
+            "Lift": 1.00091072788551,
+            "Conviction": 1.7752341311135558,
+            "Leverage": 0.0008066952456955434,
+            "LHS_Count": 853,
+            "LHS_Support": 0.8876170655567117,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape",
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.8884254431699687,
+            "Lift": 1.00091072788551,
+            "Conviction": 1.0072451787954533,
+            "Leverage": 0.0008066952456955434,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 853,
+            "RHS_Support": 0.8876170655567117,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988276670574444,
+            "Lift": 1.00091072788551,
+            "Conviction": 1.7752341311135558,
+            "Leverage": 0.0008066952456955434,
+            "LHS_Count": 853,
+            "LHS_Support": 0.8876170655567117,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin",
+                " Density"
+            ],
+            "Confidence": 0.8884254431699687,
+            "Lift": 1.00091072788551,
+            "Conviction": 1.0072451787954533,
+            "Leverage": 0.0008066952456955434,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 853,
+            "RHS_Support": 0.8876170655567117,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Density"
+            ],
+            "RHS": [
+                " Severity",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988276670574444,
+            "Lift": 1.00091072788551,
+            "Conviction": 1.7752341311135558,
+            "Leverage": 0.0008066952456955434,
+            "LHS_Count": 853,
+            "LHS_Support": 0.8876170655567117,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Severity",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Margin",
+                " Density"
+            ],
+            "Confidence": 0.8884254431699687,
+            "Lift": 1.00091072788551,
+            "Conviction": 1.0072451787954533,
+            "Leverage": 0.0008066952456955434,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 853,
+            "RHS_Support": 0.8876170655567117,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin",
+                " Density"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988276670574444,
+            "Lift": 1.00091072788551,
+            "Conviction": 1.7752341311135558,
+            "Leverage": 0.0008066952456955434,
+            "LHS_Count": 853,
+            "LHS_Support": 0.8876170655567117,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Margin",
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.8832116788321168,
+            "Lift": 1.0009038011293212,
+            "Conviction": 1.00682882414152,
+            "Leverage": 0.0007958671215922974,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 848,
+            "RHS_Support": 0.882414151925078,
+            "Support": 0.8813735691987513,
+            "Count": 847
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988207547169812,
+            "Lift": 1.000903801129321,
+            "Conviction": 1.764828303850202,
+            "Leverage": 0.0007958671215922974,
+            "LHS_Count": 848,
+            "LHS_Support": 0.882414151925078,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.8813735691987513,
+            "Count": 847
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin",
+                " Density"
+            ],
+            "Confidence": 0.8706986444212722,
+            "Lift": 1.000886838862252,
+            "Conviction": 1.0059665670840194,
+            "Leverage": 0.0007698796237444183,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 836,
+            "RHS_Support": 0.8699271592091571,
+            "Support": 0.8688865764828304,
+            "Count": 835
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin",
+                " Density"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9988038277511962,
+            "Lift": 1.0008868388622518,
+            "Conviction": 1.7398543184184099,
+            "Leverage": 0.0007698796237444183,
+            "LHS_Count": 836,
+            "LHS_Support": 0.8699271592091571,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.8688865764828304,
+            "Count": 835
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.9935483870967742,
+            "Lift": 1.00083857442348,
+            "Conviction": 1.1290322580645111,
+            "Leverage": 0.0008056124332851411,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 954,
+            "RHS_Support": 0.9927159209157128,
+            "Support": 0.9614984391259105,
+            "Count": 924
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9685534591194969,
+            "Lift": 1.00083857442348,
+            "Conviction": 1.0258064516129026,
+            "Leverage": 0.0008056124332851411,
+            "LHS_Count": 954,
+            "LHS_Support": 0.9927159209157128,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.9614984391259105,
+            "Count": 924
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Severity",
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.9935483870967742,
+            "Lift": 1.00083857442348,
+            "Conviction": 1.1290322580645111,
+            "Leverage": 0.0008056124332851411,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 954,
+            "RHS_Support": 0.9927159209157128,
+            "Support": 0.9614984391259105,
+            "Count": 924
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Severity",
+                " Shape"
+            ],
+            "Confidence": 0.9685534591194969,
+            "Lift": 1.00083857442348,
+            "Conviction": 1.0258064516129026,
+            "Leverage": 0.0008056124332851411,
+            "LHS_Count": 954,
+            "LHS_Support": 0.9927159209157128,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.9614984391259105,
+            "Count": 924
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Shape"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.9935483870967742,
+            "Lift": 1.00083857442348,
+            "Conviction": 1.1290322580645111,
+            "Leverage": 0.0008056124332851411,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 954,
+            "RHS_Support": 0.9927159209157128,
+            "Support": 0.9614984391259105,
+            "Count": 924
+        },
+        {
+            "LHS": [
+                " Severity",
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.9685534591194969,
+            "Lift": 1.00083857442348,
+            "Conviction": 1.0258064516129026,
+            "Leverage": 0.0008056124332851411,
+            "LHS_Count": 954,
+            "LHS_Support": 0.9927159209157128,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.9614984391259105,
+            "Count": 924
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.9934282584884994,
+            "Lift": 1.000717564368394,
+            "Conviction": 1.1083940339923515,
+            "Leverage": 0.0006767577564559257,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 954,
+            "RHS_Support": 0.9927159209157128,
+            "Support": 0.9438085327783559,
+            "Count": 907
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.950733752620545,
+            "Lift": 1.000717564368394,
+            "Conviction": 1.013837536254344,
+            "Leverage": 0.0006767577564559257,
+            "LHS_Count": 954,
+            "LHS_Support": 0.9927159209157128,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.9438085327783559,
+            "Count": 907
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Severity",
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.9934282584884994,
+            "Lift": 1.000717564368394,
+            "Conviction": 1.1083940339923515,
+            "Leverage": 0.0006767577564559257,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 954,
+            "RHS_Support": 0.9927159209157128,
+            "Support": 0.9438085327783559,
+            "Count": 907
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Severity",
+                " Margin"
+            ],
+            "Confidence": 0.950733752620545,
+            "Lift": 1.000717564368394,
+            "Conviction": 1.013837536254344,
+            "Leverage": 0.0006767577564559257,
+            "LHS_Count": 954,
+            "LHS_Support": 0.9927159209157128,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.9438085327783559,
+            "Count": 907
+        },
+        {
+            "LHS": [
+                " Severity",
+                " Margin"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.9934282584884994,
+            "Lift": 1.000717564368394,
+            "Conviction": 1.1083940339923515,
+            "Leverage": 0.0006767577564559257,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 954,
+            "RHS_Support": 0.9927159209157128,
+            "Support": 0.9438085327783559,
+            "Count": 907
+        },
+        {
+            "LHS": [
+                " Severity",
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.950733752620545,
+            "Lift": 1.000717564368394,
+            "Conviction": 1.013837536254344,
+            "Leverage": 0.0006767577564559257,
+            "LHS_Count": 954,
+            "LHS_Support": 0.9927159209157128,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.9438085327783559,
+            "Count": 907
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.993273542600897,
+            "Lift": 1.000561713248912,
+            "Conviction": 1.0828997571973766,
+            "Leverage": 0.0005175843321375551,
+            "LHS_Count": 892,
+            "LHS_Support": 0.9281997918834547,
+            "RHS_Count": 954,
+            "RHS_Support": 0.9927159209157128,
+            "Support": 0.9219562955254943,
+            "Count": 886
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin"
+            ],
+            "Confidence": 0.9287211740041929,
+            "Lift": 1.0005617132489117,
+            "Conviction": 1.0073146844585912,
+            "Leverage": 0.0005175843321375551,
+            "LHS_Count": 954,
+            "LHS_Support": 0.9927159209157128,
+            "RHS_Count": 892,
+            "RHS_Support": 0.9281997918834547,
+            "Support": 0.9219562955254943,
+            "Count": 886
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Shape",
+                " Density"
+            ],
+            "Confidence": 0.8930817610062893,
+            "Lift": 1.0002932078403777,
+            "Conviction": 1.0024484299442988,
+            "Leverage": 0.00025987497847912433,
+            "LHS_Count": 954,
+            "LHS_Support": 0.9927159209157128,
+            "RHS_Count": 858,
+            "RHS_Support": 0.8928199791883454,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Density"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.993006993006993,
+            "Lift": 1.0002932078403777,
+            "Conviction": 1.04162330905307,
+            "Leverage": 0.00025987497847912433,
+            "LHS_Count": 858,
+            "LHS_Support": 0.8928199791883454,
+            "RHS_Count": 954,
+            "RHS_Support": 0.9927159209157128,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Margin",
+                " Density"
+            ],
+            "Confidence": 0.8878406708595388,
+            "Lift": 1.0002519164079915,
+            "Conviction": 1.0019936398027758,
+            "Leverage": 0.00022197654411759693,
+            "LHS_Count": 954,
+            "LHS_Support": 0.9927159209157128,
+            "RHS_Count": 853,
+            "RHS_Support": 0.8876170655567117,
+            "Support": 0.8813735691987513,
+            "Count": 847
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Density"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.9929660023446659,
+            "Lift": 1.0002519164079915,
+            "Conviction": 1.0355532431495005,
+            "Leverage": 0.00022197654411759693,
+            "LHS_Count": 853,
+            "LHS_Support": 0.8876170655567117,
+            "RHS_Count": 954,
+            "RHS_Support": 0.9927159209157128,
+            "Support": 0.8813735691987513,
+            "Count": 847
+        },
+        {
+            "LHS": [
+                " Age"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 956,
+            "LHS_Support": 0.9947970863683663,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.9947970863683663,
+            "Count": 956
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Age"
+            ],
+            "Confidence": 0.9947970863683663,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 956,
+            "RHS_Support": 0.9947970863683663,
+            "Support": 0.9947970863683663,
+            "Count": 956
+        },
+        {
+            "LHS": [
+                " Density"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 885,
+            "LHS_Support": 0.9209157127991675,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.9209157127991675,
+            "Count": 885
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Density"
+            ],
+            "Confidence": 0.9209157127991675,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 885,
+            "RHS_Support": 0.9209157127991675,
+            "Support": 0.9209157127991675,
+            "Count": 885
+        },
+        {
+            "LHS": [
+                " Margin"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 913,
+            "LHS_Support": 0.9500520291363164,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.9500520291363164,
+            "Count": 913
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Margin"
+            ],
+            "Confidence": 0.9500520291363164,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 913,
+            "RHS_Support": 0.9500520291363164,
+            "Support": 0.9500520291363164,
+            "Count": 913
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Shape"
+            ],
+            "Confidence": 0.967741935483871,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 930,
+            "RHS_Support": 0.967741935483871,
+            "Support": 0.967741935483871,
+            "Count": 930
+        },
+        {
+            "LHS": [
+                " Shape"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 930,
+            "LHS_Support": 0.967741935483871,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.967741935483871,
+            "Count": 930
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                "BI-RADS"
+            ],
+            "Confidence": 0.9979188345473465,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 959,
+            "RHS_Support": 0.9979188345473465,
+            "Support": 0.9979188345473465,
+            "Count": 959
+        },
+        {
+            "LHS": [
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 959,
+            "LHS_Support": 0.9979188345473465,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.9979188345473465,
+            "Count": 959
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.9157127991675338,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 880,
+            "RHS_Support": 0.9157127991675338,
+            "Support": 0.9157127991675338,
+            "Count": 880
+        },
+        {
+            "LHS": [
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 880,
+            "LHS_Support": 0.9157127991675338,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.9157127991675338,
+            "Count": 880
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.9448491155046826,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 908,
+            "RHS_Support": 0.9448491155046826,
+            "Support": 0.9448491155046826,
+            "Count": 908
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 908,
+            "LHS_Support": 0.9448491155046826,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.9448491155046826,
+            "Count": 908
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Shape",
+                " Age"
+            ],
+            "Confidence": 0.9625390218522373,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 925,
+            "RHS_Support": 0.9625390218522373,
+            "Support": 0.9625390218522373,
+            "Count": 925
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Age"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 925,
+            "LHS_Support": 0.9625390218522373,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.9625390218522373,
+            "Count": 925
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.9927159209157128,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 954,
+            "RHS_Support": 0.9927159209157128,
+            "Support": 0.9927159209157128,
+            "Count": 954
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 954,
+            "LHS_Support": 0.9927159209157128,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.9927159209157128,
+            "Count": 954
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Margin",
+                " Density"
+            ],
+            "Confidence": 0.8876170655567117,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 853,
+            "RHS_Support": 0.8876170655567117,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Density"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 853,
+            "LHS_Support": 0.8876170655567117,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Shape",
+                " Density"
+            ],
+            "Confidence": 0.8928199791883454,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 858,
+            "RHS_Support": 0.8928199791883454,
+            "Support": 0.8928199791883454,
+            "Count": 858
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Density"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 858,
+            "LHS_Support": 0.8928199791883454,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.8928199791883454,
+            "Count": 858
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "Confidence": 0.918834547346514,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 883,
+            "RHS_Support": 0.918834547346514,
+            "Support": 0.918834547346514,
+            "Count": 883
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Density"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 883,
+            "LHS_Support": 0.918834547346514,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.918834547346514,
+            "Count": 883
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin"
+            ],
+            "Confidence": 0.9281997918834547,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 892,
+            "RHS_Support": 0.9281997918834547,
+            "Support": 0.9281997918834547,
+            "Count": 892
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 892,
+            "LHS_Support": 0.9281997918834547,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.9281997918834547,
+            "Count": 892
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9490114464099896,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 912,
+            "RHS_Support": 0.9490114464099896,
+            "Support": 0.9490114464099896,
+            "Count": 912
+        },
+        {
+            "LHS": [
+                " Margin",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 912,
+            "LHS_Support": 0.9490114464099896,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.9490114464099896,
+            "Count": 912
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "Confidence": 0.9667013527575442,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 929,
+            "RHS_Support": 0.9667013527575442,
+            "Support": 0.9667013527575442,
+            "Count": 929
+        },
+        {
+            "LHS": [
+                " Shape",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 929,
+            "LHS_Support": 0.9667013527575442,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.9667013527575442,
+            "Count": 929
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Margin",
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.882414151925078,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 848,
+            "RHS_Support": 0.882414151925078,
+            "Support": 0.882414151925078,
+            "Count": 848
+        },
+        {
+            "LHS": [
+                " Margin",
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 848,
+            "LHS_Support": 0.882414151925078,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.882414151925078,
+            "Count": 848
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Shape",
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.8876170655567117,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 853,
+            "RHS_Support": 0.8876170655567117,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 853,
+            "LHS_Support": 0.8876170655567117,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.8876170655567117,
+            "Count": 853
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                "BI-RADS",
+                " Density",
+                " Age"
+            ],
+            "Confidence": 0.9136316337148803,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 878,
+            "RHS_Support": 0.9136316337148803,
+            "Support": 0.9136316337148803,
+            "Count": 878
+        },
+        {
+            "LHS": [
+                "BI-RADS",
+                " Density",
+                " Age"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 878,
+            "LHS_Support": 0.9136316337148803,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.9136316337148803,
+            "Count": 878
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin",
+                " Age"
+            ],
+            "Confidence": 0.922996878251821,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 887,
+            "RHS_Support": 0.922996878251821,
+            "Support": 0.922996878251821,
+            "Count": 887
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin",
+                " Age"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 887,
+            "LHS_Support": 0.922996878251821,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.922996878251821,
+            "Count": 887
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Margin",
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.9438085327783559,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 907,
+            "RHS_Support": 0.9438085327783559,
+            "Support": 0.9438085327783559,
+            "Count": 907
+        },
+        {
+            "LHS": [
+                " Margin",
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 907,
+            "LHS_Support": 0.9438085327783559,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.9438085327783559,
+            "Count": 907
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Shape",
+                "BI-RADS",
+                " Age"
+            ],
+            "Confidence": 0.9614984391259105,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 924,
+            "RHS_Support": 0.9614984391259105,
+            "Support": 0.9614984391259105,
+            "Count": 924
+        },
+        {
+            "LHS": [
+                " Shape",
+                "BI-RADS",
+                " Age"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 924,
+            "LHS_Support": 0.9614984391259105,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.9614984391259105,
+            "Count": 924
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin",
+                " Density"
+            ],
+            "Confidence": 0.8699271592091571,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 836,
+            "RHS_Support": 0.8699271592091571,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin",
+                " Density"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 836,
+            "LHS_Support": 0.8699271592091571,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.8699271592091571,
+            "Count": 836
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Margin",
+                "BI-RADS",
+                " Density"
+            ],
+            "Confidence": 0.886576482830385,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 852,
+            "RHS_Support": 0.886576482830385,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Margin",
+                "BI-RADS",
+                " Density"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 852,
+            "LHS_Support": 0.886576482830385,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.886576482830385,
+            "Count": 852
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Shape",
+                "BI-RADS",
+                " Density"
+            ],
+            "Confidence": 0.8917793964620188,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 857,
+            "RHS_Support": 0.8917793964620188,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Shape",
+                "BI-RADS",
+                " Density"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 857,
+            "LHS_Support": 0.8917793964620188,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.8917793964620188,
+            "Count": 857
+        },
+        {
+            "LHS": [
+                " Severity"
+            ],
+            "RHS": [
+                " Shape",
+                " Margin",
+                "BI-RADS"
+            ],
+            "Confidence": 0.927159209157128,
+            "Lift": 1.0,
+            "Conviction": 1.0,
+            "Leverage": 0.0,
+            "LHS_Count": 961,
+            "LHS_Support": 1.0,
+            "RHS_Count": 891,
+            "RHS_Support": 0.927159209157128,
+            "Support": 0.927159209157128,
+            "Count": 891
+        },
+        {
+            "LHS": [
+                " Shape",
+                " Margin",
+                "BI-RADS"
+            ],
+            "RHS": [
+                " Severity"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.0,
+            "Conviction": 999.999,
+            "Leverage": 0.0,
+            "LHS_Count": 891,
+            "LHS_Support": 0.927159209157128,
+            "RHS_Count": 961,
+            "RHS_Support": 1.0,
+            "Support": 0.927159209157128,
+            "Count": 891
+        }
+    ]
+}

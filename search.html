@@ -1887,17 +1887,16 @@ class,age,sex,survived<br>
 						<option value="" disabled selected>Choose a dataset from the list</option>
 					</select>
 				</div>
-				<div class="col-2">	
-					<button id="datasetInfo" type="button" class="btn btn-primary d-block" onclick="renderTable();" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Information about the dataset as well as its first rows of its up to 15 first features.">Info</button>
-					<div id="datasetInfoSpinner" class="spinner-border text-warning d-none" role="status">
-						<span class="visually-hidden">Loading...</span>
-					</div>
-				</div>
 				<div class="col-4">
 					<label id="autoDetect1" class="d-block" ><a href="#" onclick="autoDetectDatasetAttr(true)" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Autodetect the dataset attributes. (header, separator)">Autodetect</a> dataset attributes</label>			
 					<label id="autoDetecting" class="d-none">Autodetecting attributes... Please wait</label>
 				</div>
-			</div>
+				<div class="col-2">	
+					<button id="datasetInfo" type="button" class="btn btn-primary d-block" style="height:100%; width:100%" onclick="renderTable();" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Information about the dataset as well as its first rows of its up to 15 first features.">Info</button>
+					<div id="datasetInfoSpinner" class="spinner-border text-warning d-none" role="status">
+						<span class="visually-hidden">Loading...</span>
+					</div>
+				</div>			</div>
 
 			<div id="DatasetAttrSection">
 				<div class="row">

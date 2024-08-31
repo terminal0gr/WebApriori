@@ -1,7 +1,6 @@
 {
     "hasHeader": true,
     "header": [
-        "?",
         "a",
         "b",
         "c",
@@ -24,36 +23,42 @@
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.01,
-            "1.0%",
+            0.02,
+            "2.0%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.002,
-            "0.2%",
+            0.004,
+            "0.4%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            0.19999999999999962,
-            "20.0%",
+            0.35999999999999943,
+            "36.0%",
             "The Average of distinct values per row over the total rows"
         ],
-        "FreqoFTop1FreqValue": [
-            "Top 1 Value",
+        "Top1Value": [
+            "Most Frequent Value",
+            "t",
+            "t",
+            "The most frequent value in the dataset"
+        ],
+        "FreqOfTop1FreqValue": [
+            "Top 1 Value %",
             0.6,
             "60.0%",
-            "The ratio of the number of the most frequent value to the number of elements"
+            "The ratio Of the number of the most frequent value to the number of elements"
         ],
-        "FreqoFTop2FreqValue": [
-            "Top 2 Value",
-            0,
-            "0.0%",
+        "FreqOfTop2FreqValue": [
+            "Top 2 Value %",
+            0.4,
+            "40.0%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
-        "FreqoFTop3FreqValue": [
-            "Top 3 Value",
+        "FreqOfTop3FreqValue": [
+            "Top 3 Value %",
             0,
             "0.0%",
             "The ratio of the number of the third most frequent value to the number of elements"
@@ -78,14 +83,14 @@
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            0,
-            "0.0%",
+            1,
+            "100.0%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            1,
-            "100.0%",
+            0,
+            "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
         "MinItemLen": [
@@ -96,20 +101,20 @@
         ],
         "MaxItemLen": [
             "Max Item Length",
-            3,
-            3,
+            1,
+            1,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            1.8000000000000003,
-            "1.8",
+            1,
+            "1.0",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0,
-            "0.0%",
+            1,
+            "100.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
@@ -138,5 +143,15 @@
         ]
     },
     "datasetTypePredicted": 3,
-    "datasetType": 3
+    "datasetType": 3,
+    "absentValue": "?",
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "3a2100.csv",
+    "public": 1,
+    "redundantRemoveType": 0,
+    "participatingItems": "[]"
 }

@@ -793,7 +793,7 @@
             "Number Of Columns",
             785,
             785,
-            "The total number of columns\/features in the Dataset"
+            "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -839,7 +839,7 @@
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            2.5477707006369425e-6,
+            2.5477707006369425e-06,
             "0.0%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
@@ -851,19 +851,19 @@
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of columns with text to the total number of columns"
         ],
@@ -924,14 +924,5 @@
     },
     "datasetTypePredicted": 3,
     "datasetType": 3,
-    "absentValue": "0",
-    "min_support": 0.005,
-    "min_confidence": 0.2,
-    "min_lift": 1.5,
-    "max_length": 4,
-    "ssort": -3,
-    "datasetName": "3_L-0012_2023.csv",
-    "public": 1,
-    "redundantRemoveType": 0,
-    "participatingItems": "[]"
+    "absentValue": "0"
 }

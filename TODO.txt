@@ -1,4 +1,15 @@
-09/06/2024 Thorough Test for all datasets in info        must be done!
+
+09/06/2024 Thorough Test for all datasets in retrieve AR must be done!
+           0fish_catches.csv Error 30
+
+10/06/2024 AutoML type 2-INV Dataset type for finding the grouping and item column
+
+12/07/2024 Real multithread environment
+16/06/2024 Upload AutoML WebApriori to NIREAS
+
+
+DONE - V01.00.00 31/08/2024 23/08/2024 Thorough Test for all datasets in 'filter participating items' must be done! Done partially in huge item datasets
+DONE - V01.00.00 31/08/2024 09/06/2024 Thorough Test for all datasets in info        must be done!
            DONE 02W_amazon.csv probles with quotechar detected.
            DONE 0Fake04_1.csv Cannot read properties of null (reading 'delimiter')
            DONE python datasetDescribe.py "79d1727987f200802593e3599119c966" "0Raisin_Dataset.arff" "10" "15" "1"
@@ -11,17 +22,7 @@
            DONE OK... Can work as 4 0fish_catches.csv wrong classification 4 instead of 0
            DONE python DatasetAttrAutoDetect.py "79d1727987f200802593e3599119c966" "0global_education_data.csv" "-1" "1" "1" 201Invalid parameters! Please check
            DONE 3Bakery Sales.csv Cannot read properties of null (reading 'delimiter') value nan added in dropna values
-
-09/06/2024 Thorough Test for all datasets in retrieve AR must be done!
-           0fish_catches.csv Error 30
-
-23/08/2024 Thorough Test for all datasets in 'filter participating items' must be done!
-10/06/2024 AutoML type 2-INV Dataset type for finding the grouping and item column
-
-12/07/2024 Real multithread environment
-16/06/2024 Upload AutoML WebApriori to NIREAS
-
-
+           DONE 4horse.csv
 DONE - V01.00.00 23/08/2024 23/08/2024 AutoML type 3-SI  Dataset type for finding the absent item column in case user changed manually dataset type
 DONE - V01.00.00 23/08/2024 16/08/2024 Apriori engine must filter participating items (Only in LHS, only in RHS, excluded)
 DONE - V01.00.00 23/08/2024 16/08/2024 Save filter participating items Search.html Ln:1290

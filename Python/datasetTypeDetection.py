@@ -99,7 +99,8 @@ class datasetFeatures:
                     dfCol = df[myCol].dropna()
                     if dfCol.shape[0]<(df[myCol].shape[0]*missingValuesThreshold): #The column {dfcol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and can't be analysed. The procedure ends with error.
                         columnsWithUnacceptedMissingValues+=1
-                        print(f"The column {dfCol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and it will be omitted")
+                        # omitted because error returned in Front end instead of autodetect...
+                        # print(f"The column {dfCol.name} of the dataset {os.path.basename(filepath)} is full (estimated more than 80%) of missing values and it will be omitted")
 
                 if columnsWithUnacceptedMissingValues>columnsCount*missingValuesThreshold: 
                     print(f"{columnsWithUnacceptedMissingValues} columns {columnsCount} of the dataset {os.path.basename(filepath)} has missing values more than 80% and the dataset and can't be analyzed. The procedure ends with error.")
