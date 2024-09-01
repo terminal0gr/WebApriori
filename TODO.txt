@@ -7,18 +7,33 @@
     01/09/2024 Stopped research in public 2invoice.csv
 
   Group  
-      invoice, inv, document, order, παραστατικό, τιμολόγιο, τιμολ, παραγγελία, παραγ,
+      invoice, inv, τιμολόγιο, τιμολ, facture, rechnung 
+      document, doc, παραστατικό, belegdokument, beleg
+      order, ord, παραγγελία, παραγ, commande, bestellung 
+      transaction, trans, συναλλαγή, transaktion
+      article, άρθρο, article, artikel
     Helping words
-      id, number, no, #, Reference, Ref, α/α, αα, 
+      id, number, numéro, nummer
+      no, #, nr
+      reference, ref, référence, referenz
+      α/α, αα, a/a
     Minor
-      date, customer, συναλ
+      date, ημερομηνία, datum 
+      customer, client, πελάτης, client, cliente, kunde, kundin, kund
+      trader, συναλλασσόμενος, συναλ, commerçant, händler
 
   Value Columns
-      product, prod, produit, produkt, προιόν, είδος, είδους, ειδος, ειδους, είδ, item, stock, 
+      product, prod, προιόν, produit, prod, produkt,  
+      item, είδος, είδους, ειδος, ειδους, είδ, gentil
+      stock, αντικείμενο, objectif, aktie
     Helping words
-      id, code, number, no, #, description, desc, κωδικός, κωδ, περιγραφή, ονομασία
+      id, number, numéro, nummer
+      no, #, nr
+      code, κωδικός, κωδ
+      description, desc, περιγραφή, beschreibung
+      name, ονομασία, nom
     Minor
-      Category  
+      category, κατηγορία, catégorie, kategorie
 
 
 12/07/2024 Real multithread environment
