@@ -4,6 +4,23 @@
 
 10/06/2024 AutoML type 2-INV Dataset type for finding the grouping and item column
 
+    01/09/2024 Stopped research in public 2invoice.csv
+
+  Group  
+      invoice, inv, document, order, παραστατικό, τιμολόγιο, τιμολ, παραγγελία, παραγ,
+    Helping words
+      id, number, no, #, Reference, Ref, α/α, αα, 
+    Minor
+      date, customer, συναλ
+
+  Value Columns
+      product, prod, produit, produkt, προιόν, είδος, είδους, ειδος, ειδους, είδ, item, stock, 
+    Helping words
+      id, code, number, no, #, description, desc, κωδικός, κωδ, περιγραφή, ονομασία
+    Minor
+      Category  
+
+
 12/07/2024 Real multithread environment
 16/06/2024 Upload AutoML WebApriori to NIREAS
 

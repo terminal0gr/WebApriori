@@ -14,7 +14,7 @@
             "Number Of Columns",
             6,
             6,
-            "The total number of columns\/features in the Dataset"
+            "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -90,7 +90,7 @@
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -114,7 +114,7 @@
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0,
+            0.0,
             "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
@@ -144,16 +144,5 @@
         ]
     },
     "datasetTypePredicted": 2,
-    "datasetType": 2,
-    "min_support": 0.1,
-    "min_confidence": 0.2,
-    "min_lift": 1.5,
-    "max_length": 4,
-    "ssort": -3,
-    "datasetName": "2Fashion_Retail_Sales.csv",
-    "public": 1,
-    "redundantRemoveType": 0,
-    "participatingItems": "[]",
-    "groupItem": "Customer Reference ID",
-    "valueItem": "Item Purchased"
+    "datasetType": 2
 }
