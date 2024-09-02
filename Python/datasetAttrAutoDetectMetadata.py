@@ -84,6 +84,9 @@ class Metadata():
             else: 
                 datasetAttributes['datasetType']=int(datasetType)
 
+        if datasetAttributes['datasetType']==2:
+            # TODO
+
         if datasetAttributes['datasetType']==3:
             datasetAttributes['absentValue']=str(DFI.Top1Value)
 
@@ -133,10 +136,20 @@ class Metadata():
             # Load the JSON data from the file
             json_data = json.load(file)
 
-        if not 'datasetFeatures' in json_data:
+        mustReinitialize=False
+        if not 'datasetFeatures'  in json_data or not 'datasetType' in json_data:
+            mustReinitialize=True
+
+        # If the dataset type is Inv-2 and groupItem or valueItem cannot be detected recreate metadataFile
+        if json_data['datasetType']==2 and (not 'groupItem'  in json_data or not 'valueItem' in json_data):
+            mustReinitialize=True
+
+        if mustReinitialize:
             self.createMetadataFile(identity,datasetName,-1,public) 
             with open(filepath, 'r') as file:
                 json_data = json.load(file)
 
         # Now you can work with the JSON data as a Python dictionary or list
         return json_data
+
+
