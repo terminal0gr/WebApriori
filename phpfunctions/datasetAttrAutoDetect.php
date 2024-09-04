@@ -151,10 +151,15 @@
         exit();
     }
 
-    http_response_code(200);
-    $jsonReq = json_decode($output, true);
-    print json_encode($jsonReq);
-    
+    if (isJson($output)) {
+        http_response_code(200);
+        $jsonReq = json_decode($output, true);
+        print json_encode($jsonReq);
+    } else {
+        http_response_code(201);
+        $JsonReq = array('title' => 'The following error occured!', 'message' => $output);
+        print json_encode($JsonReq);
+    }
     exit();
 
 ?>

@@ -144,5 +144,7 @@
         ]
     },
     "datasetTypePredicted": 2,
-    "datasetType": 2
+    "datasetType": 2,
+    "groupItem": "Customer Reference ID",
+    "valueItem": "Item Purchased"
 }

@@ -55,4 +55,12 @@
 		}
 	} 
 
+	function isJson($string) {
+		// Attempt to decode the string
+		json_decode($string);
+		
+		// Check if an error occurred during the decoding process
+		return (json_last_error() == JSON_ERROR_NONE);
+	}
+
 ?>

@@ -150,5 +150,7 @@
         ]
     },
     "datasetTypePredicted": 2,
-    "datasetType": 2
+    "datasetType": 2,
+    "groupItem": "order_id",
+    "valueItem": "pizza_name_id"
 }

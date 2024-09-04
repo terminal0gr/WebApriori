@@ -167,5 +167,7 @@
         ]
     },
     "datasetTypePredicted": 2,
-    "datasetType": 2
+    "datasetType": 2,
+    "groupItem": "IDInvoice",
+    "valueItem": "ItemCategoryProduits"
 }

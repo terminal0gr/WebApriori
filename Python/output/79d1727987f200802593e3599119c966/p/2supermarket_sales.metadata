@@ -155,5 +155,7 @@
         ]
     },
     "datasetTypePredicted": 2,
-    "datasetType": 2
+    "datasetType": 2,
+    "groupItem": "Invoice ID",
+    "valueItem": "Product line"
 }

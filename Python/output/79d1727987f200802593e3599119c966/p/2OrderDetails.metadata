@@ -146,5 +146,7 @@
         ]
     },
     "datasetTypePredicted": 2,
-    "datasetType": 2
+    "datasetType": 2,
+    "groupItem": "InvoiceNo",
+    "valueItem": "StockCode"
 }

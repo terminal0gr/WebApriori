@@ -760,7 +760,7 @@
 					res=JSON.parse(response);
 					try {
 						if (jqXHR.status!=200) {
-							MyModal(jqXHR.status+res.title, res.message);
+							MyModal(jqXHR.status + ' - ' + res.title, res.message);
 						} else {
 							//Make it global
 							datasetMetadata=res

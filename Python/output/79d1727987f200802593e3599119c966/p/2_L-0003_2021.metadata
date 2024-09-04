@@ -154,5 +154,7 @@
         ]
     },
     "datasetTypePredicted": 2,
-    "datasetType": 2
+    "datasetType": 2,
+    "groupItem": "InvoiceId",
+    "valueItem": "\u039a\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 \u0395\u03af\u03b4\u03bf\u03c5\u03c2"
 }

@@ -86,6 +86,8 @@
     }
 
     http_response_code(200);
+    //$jsonReq is alrady json for sure...
     print json_encode($jsonReq);
     exit();  
+
 ?>

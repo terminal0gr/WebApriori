@@ -156,5 +156,7 @@
         ]
     },
     "datasetTypePredicted": 2,
-    "datasetType": 2
+    "datasetType": 2,
+    "groupItem": "Order ID",
+    "valueItem": "Product ID"
 }
