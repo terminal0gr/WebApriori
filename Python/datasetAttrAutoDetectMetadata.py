@@ -3,6 +3,7 @@ import os
 import json
 import csvMy as csv
 import datasetTypeDetection as df
+from Inv_2_Sorter import Inv_2_Sorter
 import Global
 
 nRows=500
@@ -85,7 +86,75 @@ class Metadata():
                 datasetAttributes['datasetType']=int(datasetType)
 
         if datasetAttributes['datasetType']==2:
-            # TODO
+            #####################            
+            #GROUP ITEM DETECTION
+            #####################
+
+            #Initialization to None
+            datasetAttributes['groupItem']='?'
+
+            filepath=os.path.join('datasets')	
+        
+            #Firstly I check if the folder exists. If not, then create it and auto detect dataset attributes.
+            if not os.path.exists(filepath):
+                print(f"Failed to detect datasets folder!!!")     
+                sys.exit    
+
+            filepath=os.path.join('datasets', 'Inc_2_Group_Words.json')	
+            #Secondly I check if the the lexicon file exists. If not
+            if os.path.exists(filepath): 
+
+                value_dict={}
+
+                # Open the JSON file in read mode
+                with open(filepath, encoding='utf-8-sig') as file:
+                    # Load the JSON data from the file
+                    try:
+                        value_dict = json.load(file)
+                    except Exception as e:
+                        # Handle the case where no JSON data is found or the file is empty
+                        print(f"An error occurred: {e}")
+                        sys.exit()
+
+                if value_dict:
+                    # Create an instance of DictionarySorter
+                    sorter = Inv_2_Sorter(datasetAttributes['header'], value_dict)
+                    datasetAttributes['groupItem']=sorter.generate_best_item()
+
+            #####################            
+            #VALUE ITEM DETECTION
+            #####################
+
+            #Initialization to None
+            datasetAttributes['valueItem']='?'
+
+            filepath=os.path.join('datasets')	
+        
+            #Firstly I check if the folder exists. If not, then create it and auto detect dataset attributes.
+            if not os.path.exists(filepath):
+                print(f"Failed to detect datasets folder!!!")     
+                sys.exit    
+
+            filepath=os.path.join('datasets', 'Inc_2_Value_Words.json')	
+            #Secondly I check if the the lexicon file exists. If not
+            if os.path.exists(filepath): 
+
+                value_dict={}
+
+                # Open the JSON file in read mode
+                with open(filepath, encoding='utf-8-sig') as file:
+                    # Load the JSON data from the file
+                    try:
+                        value_dict = json.load(file)
+                    except Exception as e:
+                        # Handle the case where no JSON data is found or the file is empty
+                        print(f"An error occurred: {e}")
+                        sys.exit()
+
+                if value_dict:
+                    # Create an instance of DictionarySorter
+                    sorter = Inv_2_Sorter(datasetAttributes['header'], value_dict)
+                    datasetAttributes['valueItem']=sorter.generate_best_item()
 
         if datasetAttributes['datasetType']==3:
             datasetAttributes['absentValue']=str(DFI.Top1Value)

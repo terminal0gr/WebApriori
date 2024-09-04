@@ -3,38 +3,9 @@
            0fish_catches.csv Error 30
 
 10/06/2024 AutoML type 2-INV Dataset type for finding the grouping and item column
-
-    01/09/2024 Stopped research in public 2invoice.csv
-
-  Group  
-      invoice, inv, τιμολόγιο, τιμολ, facture, rechnung 
-      document, doc, παραστατικό, belegdokument, beleg
-      order, ord, παραγγελία, παραγ, commande, bestellung 
-      transaction, trans, συναλλαγή, transaktion
-      article, άρθρο, article, artikel
-    Helping words
-      id, number, numéro, nummer
-      no, #, nr
-      reference, ref, référence, referenz
-      α/α, αα, a/a
-    Minor
-      date, ημερομηνία, datum 
-      customer, client, πελάτης, client, cliente, kunde, kundin, kund
-      trader, συναλλασσόμενος, συναλ, commerçant, händler
-
-  Value Columns
-      product, prod, προιόν, produit, prod, produkt,  
-      item, είδος, είδους, ειδος, ειδους, είδ, gentil
-      stock, αντικείμενο, objectif, aktie
-    Helping words
-      id, number, numéro, nummer
-      no, #, nr
-      code, κωδικός, κωδ
-      description, desc, περιγραφή, beschreibung
-      name, ονομασία, nom
-    Minor
-      category, κατηγορία, catégorie, kategorie
-
+   Testing in all INV Type datasets.
+   Error1: Cannot read properties of null (reading 'delimiter') must be specific from python.
+      In tha case I have a comma in Inc_2_Value_Words.json in the last word just to reproduce the error in line 116 of datasetAttrAutoDetectMetadata.py
 
 12/07/2024 Real multithread environment
 16/06/2024 Upload AutoML WebApriori to NIREAS
