@@ -193,16 +193,16 @@
     if (!empty($_POST['max_length'])) {
         $json_data['max_length'] = (int) $_POST['max_length'];
     }
-    $json_data['ssort']=-3; # order by lift descending
-    if (!empty($_POST['ssort'])) {
-        $json_data['ssort'] = (int) $_POST['ssort'];
+    $json_data['sSort']=-3; # order by lift descending
+    if (!empty($_POST['sSort'])) {
+        $json_data['sSort'] = (int) $_POST['sSort'];
     }
     $json_data['datasetName']=$filename;
     $json_data['public']=1; # 0=Private, 1=public
     if (!empty($_POST['public'])) {
         $json_data['public'] = (int) $_POST['public'];
     }    
-    $json_data['redundantRemoveType']=0; # 0=No redunrtant, bitwise parameter
+    $json_data['redundantRemoveType']=0; # 0=No redundant, bitwise parameter
     if (!empty($_POST['redundantType'])) {
         $json_data['redundantRemoveType'] = (int) $_POST['redundantType'];
     }    

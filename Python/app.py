@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 import time
-# import Main05
+import Main06
 
 app = Flask(__name__)
 
@@ -14,6 +14,16 @@ app = Flask(__name__)
 
 
 app = Flask(__name__)
+
+@app.route('/webApriori', methods=['POST'])
+def webApriori():
+    
+    a = request.form.get('a')
+    b = request.form.get('b')
+    print(f"Received: a={a}, b={b}")
+    time.sleep(8)  # Simulates a long-running task
+    # return jsonify({"result": "Task completed!"})
+    return f"Task completed! Received a={a}, b={b}"
 
 @app.route('/run-script', methods=['POST'])
 def run_script():

@@ -2,13 +2,11 @@
 
 import sys
 import os
-import csv
 import json
 from collections import namedtuple
 from itertools import combinations
 from time import time
 import pandas as pd
-import numpy as np
 import datasetAttrAutoDetectMetadata as Metadata
 import Global
 # global variables section
@@ -23,114 +21,153 @@ __University__= 'International Hellenic University'
 ################################################################################
 # Data structures.
 ################################################################################
-class itemsetManager(object):
-
-    def __init__(self, itemsets):
-        """
-        Initialization
-
-        Arguments:
-            itemsets -- A itemset iterable object
-                            (example [['A', 'B', 'C'], ['B', 'C']]).
-        """
-        self.__num_itemset = 0
-        self.__items = []
-        self.__itemset_index_map = {}
-
-        for itemset in itemsets:
-            self.add_itemset(itemset)
-
-    def add_itemset(self, itemset):
-        """
-        Add a itemset.
-
-        Arguments:
-            itemset -- A itemset as an iterable object (['A', 'B', 'C']).
-        """
-        for index,item in enumerate(itemset):
-            
-            #Malliaridis 15/8/2024.
-            if hasHeader and datasetType==4 and 'header' in jsonData:
-                item=str(jsonData['header'][index]) + '=' + str(item)
-            else:
-                item=str(item)
-
-            if item not in self.__itemset_index_map:
-                self.__items.append(item)
-                self.__itemset_index_map[item] = set()
-            self.__itemset_index_map[item].add(self.__num_itemset)
-        self.__num_itemset += 1
-
-    def calc_count(self, items):
-        """
-        Returns the number of items.
-        Arguments:
-            items -- Items as an iterable object (['A', 'B', 'C']).
-        """
-        # Empty items is supported by all itemsets.
-        if not items:
-            return self.__num_itemset
-        # Empty itemsets supports no items.
-        if not self.num_itemset:
-            return 0
-        # Create the itemset index intersection.
-        sum_indexes = None
-        for item in items:
-            indexes = self.__itemset_index_map.get(item)
-            if indexes is None:
-                # No support for any set that contains a not existing item.
-                return 0
-            if sum_indexes is None:
-                # Assign the indexes on the first time.
-                sum_indexes = indexes
-            else:
-                # Calculate the intersection on not the first time.
-                sum_indexes = sum_indexes.intersection(indexes)
-        # Calculate and return the support.
-        return len(sum_indexes)  
-    
-    def initial_candidates(self):
-        """
-        Returns the initial candidates.
-        """
-        return [frozenset([item]) for item in self.items]
-
-    @property
-    def num_itemset(self):
-        """
-        Returns the count of itemsets.
-        """
-        return self.__num_itemset
-
-    @property
-    def items(self):
-        """
-        Returns the items list that the itemset is consisted of.
-        """
-        return sorted(self.__items)
-
-    @staticmethod
-    def create(itemsets):
-        """
-        Create the itemsetManager with an itemset instance.
-        If the given instance is a itemsetManager then it returns itself.
-        """
-        if isinstance(itemsets, itemsetManager):
-            return itemsets
-        return itemsetManager(itemsets)
-    
-
-
 class webApriori():
+
+    '''
+    Call arguments          
+    1) Identity   2) datasetName   3) public   4) callType
+    '''
+    def __init__(self, identity=None, datasetName=None, public=0, callType=0, arg1=None, arg2=None):
+
+        if len(identity)>0:
+            try:
+                self.identity=str(identity)
+            except:
+                print("An error occurred: Could not retrieve identity of the user!")
+                sys.exit()
+        else:        
+            print("An error occurred: User identity not given!")
+            sys.exit()
+
+        if datasetName is None:
+            print("An error occurred: Dataset name not given!")
+            sys.exit()
+        else:
+            self.datasetName=datasetName
+
+        #0=private, 1=public
+        self.public=0
+        if len(public)>0:
+            try:
+                self.public=int(public)
+            except:
+                self.public=0 # Default is 0 private Dataset.
+
+        #0=Association rules, 1=Retrieve participating items
+        self.callType=0
+        if len(callType)>4:
+            try:
+                self.callType=int(callType)
+            except:
+                self.callType=0 # Default is 0 - Association rules mining.
+
+        self.arg1=arg1 #In case of callType=1 it may be groupItem of datasetType 2-INV or absentValue of datasetType 3-SI'
+        self.arg2=arg2 #In case of callType=1 it may be valueItem of datasetType 2-INV'
 
     FrequentItemset = namedtuple('FrequentItemset', ('items', 'support', 'count'))
     # Association_rule = namedtuple('Association_rule', FrequentItemset._fields + ('rule_statistics',))
     ruleStatistic = namedtuple('ruleStatistic', ('itemset', 'support', 'count', 'LHS', 'RHS', 'confidence', 'lift', 'conviction', 'leverage', 'LHS_count', 'LHS_support', 'RHS_count', 'RHS_support'))
 
+    class itemsetManager(object):
+
+        def __init__(self, itemsets):
+            """
+            Initialization
+
+            Arguments:
+                itemsets -- A itemset iterable object
+                                (example [['A', 'B', 'C'], ['B', 'C']]).
+            """
+            self.__num_itemset = 0
+            self.__items = []
+            self.__itemset_index_map = {}
+
+            for itemset in itemsets:
+                self.add_itemset(itemset)
+
+        def add_itemset(self, itemset):
+            """
+            Add a itemset.
+
+            Arguments:
+                itemset -- A itemset as an iterable object (['A', 'B', 'C']).
+            """
+            for index,item in enumerate(itemset):
+                
+                #Malliaridis 15/8/2024.
+                if webApriori.hasHeader and webApriori.datasetType==4 and 'header' in webApriori.jsonData:
+                    item=str(webApriori.jsonData['header'][index]) + '=' + str(item)
+                else:
+                    item=str(item)
+
+                if item not in self.__itemset_index_map:
+                    self.__items.append(item)
+                    self.__itemset_index_map[item] = set()
+                self.__itemset_index_map[item].add(self.__num_itemset)
+            self.__num_itemset += 1
+
+        def calc_count(self, items):
+            """
+            Returns the number of items.
+            Arguments:
+                items -- Items as an iterable object (['A', 'B', 'C']).
+            """
+            # Empty items is supported by all itemsets.
+            if not items:
+                return self.__num_itemset
+            # Empty itemsets supports no items.
+            if not self.num_itemset:
+                return 0
+            # Create the itemset index intersection.
+            sum_indexes = None
+            for item in items:
+                indexes = self.__itemset_index_map.get(item)
+                if indexes is None:
+                    # No support for any set that contains a not existing item.
+                    return 0
+                if sum_indexes is None:
+                    # Assign the indexes on the first time.
+                    sum_indexes = indexes
+                else:
+                    # Calculate the intersection on not the first time.
+                    sum_indexes = sum_indexes.intersection(indexes)
+            # Calculate and return the support.
+            return len(sum_indexes)  
+        
+        def initial_candidates(self):
+            """
+            Returns the initial candidates.
+            """
+            return [frozenset([item]) for item in self.items]
+
+        @property
+        def num_itemset(self):
+            """
+            Returns the count of itemsets.
+            """
+            return self.__num_itemset
+
+        @property
+        def items(self):
+            """
+            Returns the items list that the itemset is consisted of.
+            """
+            return sorted(self.__items)
+
+        @staticmethod
+        def create(itemsets):
+            """
+            Create the itemsetManager with an itemset instance.
+            If the given instance is a itemsetManager then it returns itself.
+            """
+            if isinstance(itemsets, webApriori.itemsetManager):
+                return itemsets
+            return webApriori.itemsetManager(itemsets)
+
     ################################################################################
     # Inner core functions.
     ################################################################################
-    def extract_next_candidates(prev_candidates, length):
+    def extract_next_candidates(self, prev_candidates, length):
         """
         Returns the association rules candidates as a list.
 
@@ -164,7 +201,7 @@ class webApriori():
         ]
         return next_candidates
 
-    def generate_frequent_itemsets(itemset_manager, min_support, **kwargs):
+    def generate_frequent_itemsets(self, itemset_manager, min_support, **kwargs):
         """
         Returns a generator of support records with given itemsets.
 
@@ -192,19 +229,19 @@ class webApriori():
                 candidate_set = frozenset(association_rule_candidate)
                 association_rules.add(candidate_set)
                 
-                yield FrequentItemset(candidate_set, support, count)
+                yield self.FrequentItemset(candidate_set, support, count)
             length += 1
             if max_length and length > max_length:
                 break
-            candidates = extract_next_candidates(association_rules, length)
+            candidates = self.extract_next_candidates(association_rules, length)
 
-    def gen_rule_statistics(itemset_manager, itemset, **kwargs):
+    def gen_rule_statistics(self, itemset_manager, itemset, **kwargs):
         """
         Returns a generator of rule statistics as ruleStatistic instances.
 
         Arguments:
             itemset_manager -- itemsets as a itemsetManager instance.
-            itemset -- An itemset as a Supportitemset instance.
+            itemset -- An itemset as a supportItemset instance.
         """
     
         min_confidence = kwargs.get('min_confidence', 0.0)
@@ -212,8 +249,8 @@ class webApriori():
 
         items = itemset.items
         # Check if any item from the itemset exists in excludedItems with the value of 3(excluded)
-        if excludedItems is not None:
-            if any(item in excludedItems and excludedItems[item] == 3 for item in items):
+        if self.excludedItems is not None:
+            if any(item in self.excludedItems and self.excludedItems[item] == 3 for item in items):
                 return #if so exclude this itemset
 
         sorted_items = sorted(items)
@@ -221,14 +258,14 @@ class webApriori():
             for combination_set in combinations(sorted_items, base_length):
                 LHS = frozenset(combination_set)
                 # Check if any item from LHS exists in excludedItems with the value of 2(Only in RHS)
-                if excludedItems is not None:
-                    if any(item in excludedItems and excludedItems[item] == 2 for item in LHS):
+                if self.excludedItems is not None:
+                    if any(item in self.excludedItems and self.excludedItems[item] == 2 for item in LHS):
                         continue #if so exclude this itemset
 
                 RHS = frozenset(items.difference(LHS))
                 # Check if any item from RHS exists in excludedItems with the value of 1(Only in LHS)
-                if excludedItems is not None:
-                    if any(item in excludedItems and excludedItems[item] == 1 for item in RHS):
+                if self.excludedItems is not None:
+                    if any(item in self.excludedItems and self.excludedItems[item] == 1 for item in RHS):
                         continue #if so exclude this itemset
 
                 LHS_count = itemset_manager.calc_count(LHS)
@@ -248,7 +285,7 @@ class webApriori():
                 if lift < min_lift:
                     continue
 
-                yield ruleStatistic(sorted_items, itemset.support, itemset.count,
+                yield self.ruleStatistic(sorted_items, itemset.support, itemset.count,
                                         frozenset(LHS), 
                                         frozenset(RHS), 
                                         confidence, lift, conviction, leverage, 
@@ -258,7 +295,7 @@ class webApriori():
     #####################################        
     #Special purpose functions        
     #####################################
-    def transform_association_rules(A_R,RedundantType=0):
+    def transform_association_rules(self, A_R,RedundantType=0):
         rules=[]
 
         for item in [x[y] for x in A_R for y in range(0, len(x))]:
@@ -280,10 +317,10 @@ class webApriori():
                 # If LHS length > 1
                 if len(item[3])>1:
                     # Find all the LHS length-1 sub itemsets 
-                    ssets = (set(x) for x in combinations(item[3], len(item[3])-1) )
+                    sSets = (set(x) for x in combinations(item[3], len(item[3])-1) )
                     i=0
                     # Count how many are the LHS length-1 sub itemsets participating to the A_R
-                    for c in ssets:
+                    for c in sSets:
                         matchRule = [x[y] for x in A_R for y in range(0, len(x)) if x[y][3]==c and x[y][4]==item[4]]
                         if len(matchRule)>0:
                             i+=1
@@ -298,10 +335,10 @@ class webApriori():
                 # If RHS length > 1
                 if len(item[4])>1:
                     # Find all the RHS length-1 sub itemsets 
-                    ssets = (set(x) for x in combinations(item[4], len(item[4])-1) )
+                    sSets = (set(x) for x in combinations(item[4], len(item[4])-1) )
                     i=0
                     # Count how many are the RHS length-1 sub itemsets participating to the A_R
-                    for c in ssets:
+                    for c in sSets:
                         matchRule = [x[y] for x in A_R for y in range(0, len(x)) if x[y][4]==c and x[y][3]==item[3]]
                         if len(matchRule)>0:
                             i+=1   
@@ -325,7 +362,7 @@ class webApriori():
     ################################################################################
     # Main Apriori engine.
     ################################################################################
-    def webApriori(itemsets, **kwargs):
+    def webApriori(self, itemsets, **kwargs):
         """
         Executes Apriori algorithm and returns an association rules generator.
 
@@ -359,12 +396,12 @@ class webApriori():
             raise ValueError('Rules max length can''t be negative number!!!') 
 
         # Calculate supports.
-        itemset_manager = itemsetManager.create(itemsets)
-        frequent_itemsets = generate_frequent_itemsets(itemset_manager, min_support, max_length=max_length)
+        itemset_manager = self.itemsetManager.create(itemsets)
+        frequent_itemsets = self.generate_frequent_itemsets(itemset_manager, min_support, max_length=max_length)
         
         # Calculate rule stats.
         for frequent_itemset in frequent_itemsets:
-            rule_statistics = list(gen_rule_statistics(itemset_manager, frequent_itemset, min_confidence=min_confidence, min_lift=min_lift))
+            rule_statistics = list(self.gen_rule_statistics(itemset_manager, frequent_itemset, min_confidence=min_confidence, min_lift=min_lift))
             
             if not rule_statistics:
                 continue  
@@ -382,40 +419,37 @@ class webApriori():
     Dataset types:
     1--> Market Basket list. There is no header. The number of columns is undefined (Default). 
     2--> Order/Invoice detail. Header line is mandatory. Number of columns is fixed, 
-        Group Value Column and Item Value must be declared in .metadatafile
+        Group Value Column and Item Value must be declared in .metaDatafile
     3--> Sparse item Dataset. Header line is mandatory. Number of columns is fixed. 
-        The absent value is mandatory to be declared in .metadatafile. If absent item is nothing then '' or 'nan' must be declared.
+        The absent value is mandatory to be declared in .metaDatafile. If absent item is nothing then '' or 'nan' must be declared.
     4--> Columns with multiple nominal values. Header line is optional. 
         Number of columns is fixed.
     '''
     ###################################################################
     # preprocessing section
     ###################################################################
-    def prepare_records():
+    def prepare_records(self):
         global max_items
-        global groupItem
-        global valueItem
-        global absentValue
 
         try:
 
-            if public==0:
-                filepath=os.path.join('datasets', identity, datasetName)
+            if self.public==0:
+                filepath=os.path.join('datasets', self.identity, self.datasetName)
             else:
-                filepath=os.path.join('public', datasetName)
+                filepath=os.path.join('public', self.datasetName)
 
-            if 'participatingItems' in jsonData:
-                if len(jsonData['participatingItems'])>max_items:
-                    print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' of the ' + str(len(jsonData['participatingItems'])) + ' columns will be processed.')
-                    jsonData['participatingItems']=jsonData['participatingItems'][0:max_items+1]
+            if 'participatingItems' in self.jsonData:
+                if len(self.jsonData['participatingItems'])>max_items:
+                    print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' of the ' + str(len(self.jsonData['participatingItems'])) + ' columns will be processed.')
+                    self.jsonData['participatingItems']=self.jsonData['participatingItems'][0:max_items+1]
 
             #Read the dataset from file
-            dataset=Global.readDataset(filepath, sep=datasetSep, encoding='utf-8-sig', hasHeader=jsonData['hasHeader'])
+            dataset=Global.readDataset(filepath, sep=self.datasetSep, encoding='utf-8-sig', hasHeader=self.jsonData['hasHeader'])
             if not isinstance(dataset, pd.DataFrame):
                 print(f"An error occurred: Could not read dataset! {e}")     
                 sys.exit
 
-            if int(datasetType)==1:
+            if int(self.datasetType)==1:
                         
                 # #use only the columns that the user has chosen
                 # if len(args)>0:
@@ -429,76 +463,76 @@ class webApriori():
 
                 return(records)
                     
-            elif datasetType==2:
+            elif self.datasetType==2:
 
-                if groupItem is None:
+                if self.groupItem is None:
                     # Grouping Column not set!
                     # Set the first column as the grouping one
-                    groupItem=dataset.columns[0]
+                     self.groupItem=dataset.columns[0]
 
-                if valueItem is None:
+                if self.valueItem is None:
                     # Value item Column not set!
                     # Set the second column
-                    valueItem=dataset.columns[1]
+                    self.valueItem=dataset.columns[1]
 
-                dataset = dataset[[groupItem, valueItem]]
+                dataset = dataset[[self.groupItem, self.valueItem]]
                 
-                datasetSorted=dataset.sort_values(by=groupItem)
+                datasetSorted=dataset.sort_values(by=self.groupItem)
 
                 TempInv=''
                 records=[]
-                setrec=set()
+                setRec=set()
                 for index, row in datasetSorted.iterrows():
-                    if TempInv!=row[groupItem]:
-                        if len(setrec)>1:
-                            records.append(sorted(setrec))
-                        setrec=set()
-                        setrec.add(str(row[valueItem]).strip())
-                        TempInv=row[groupItem]
+                    if TempInv!=row[self.groupItem]:
+                        if len(setRec)>1:
+                            records.append(sorted(setRec))
+                        setRec=set()
+                        setRec.add(str(row[self.valueItem]).strip())
+                        TempInv=row[self.groupItem]
                     else:
-                        setrec.add(str(row[valueItem]).strip())
+                        setRec.add(str(row[self.valueItem]).strip())
                         
 
-                if len(setrec)>1:
-                    records.append(sorted(setrec))
+                if len(setRec)>1:
+                    records.append(sorted(setRec))
                     
                 return(records)
                         
-            elif datasetType==3:
+            elif self.datasetType==3:
                 
-                if 'participatingItems' in jsonData:
-                    if len(jsonData['participatingItems'])>0 and jsonData['participatingItems']!='[]':
-                        dataset = dataset[jsonData['participatingItems']]
+                if 'participatingItems' in self.jsonData:
+                    if len(self.jsonData['participatingItems'])>0 and self.jsonData['participatingItems']!='[]':
+                        dataset = dataset[self.jsonData['participatingItems']]
                 
                 #put the name of product in item#
                 for arg in dataset.columns:
-                    dataset[arg]=[str(arg) if str(x)!=absentValue else absentValue for x in dataset[arg]]
+                    dataset[arg]=[str(arg) if str(x)!=self.absentValue else self.absentValue for x in dataset[arg]]
                 
                 #pandas to list
                 records=dataset.values.tolist()
                 #remove nan elements from this 2-dimensional list in order to be transformed as a dataset type 1-MBL'
-                records = [[y for y in x if str(y) !=absentValue] for x in records]
+                records = [[y for y in x if str(y) !=self.absentValue] for x in records]
                 return(records)
                                     
-            elif datasetType==4:
+            elif self.datasetType==4:
                     
-                if 'participatingItems' in jsonData:
-                    if len(jsonData['participatingItems'])>0 and jsonData['participatingItems']!='[]':
-                        dataset = dataset[jsonData['participatingItems']]
-                        for arg in jsonData['participatingItems']:
+                if 'participatingItems' in self.jsonData:
+                    if len(self.jsonData['participatingItems'])>0 and self.jsonData['participatingItems']!='[]':
+                        dataset = dataset[self.jsonData['participatingItems']]
+                        for arg in self.jsonData['participatingItems']:
                             dataset[arg] = arg + '=' + dataset[arg].astype(str)
-                elif hasHeader==True:
-                    if 'header' in jsonData:
-                        if len(jsonData['header'])>0 and jsonData['header']!='[]':
-                            dataset = dataset[jsonData['header']]
-                            for arg in jsonData['header']:
+                elif self.hasHeader==True:
+                    if 'header' in self.jsonData:
+                        if len(self.jsonData['header'])>0 and self.jsonData['header']!='[]':
+                            dataset = dataset[self.jsonData['header']]
+                            for arg in self.jsonData['header']:
                                 dataset[arg] = arg + '=' + dataset[arg].astype(str)
                 
                 records=dataset.values.tolist()
                 return(records)
                     
             else:
-                print("An error occurred: Unknown or unable to process the dataset. Its dataset type is 0 which means it can't be used for association rules mining as it can't produce intresting frequent itemsets.")
+                print("An error occurred: Unknown or unable to process the dataset. Its dataset type is 0 which means it can't be used for association rules mining as it can't produce interesting frequent itemsets.")
                 sys.exit()
 
         except Exception as e:
@@ -511,7 +545,7 @@ class webApriori():
     # output operations
     ##################################################################################
 
-    def output_association_rules(association_results, sort_index, descending=True, fileName=None, public=0, **kwargs):
+    def output_association_rules(self, association_results, sort_index, descending=True, fileName=None, public=0, **kwargs):
         try:
             
             association_results.sort(reverse=descending, key=lambda x: x[sort_index])
@@ -523,30 +557,30 @@ class webApriori():
             
             if fileName:
 
-                filepath=os.path.join('output', identity)
+                filepath=os.path.join('output', self.identity)
                 if not os.path.exists(filepath):
                     os.makedirs(filepath)
 
                 ext='.json'
 
                 if public==0: #Private Dataset'
-                    file = open(os.path.join('output', identity, os.path.splitext(fileName)[0] + ext),'w')
+                    file = open(os.path.join('output', self.identity, os.path.splitext(fileName)[0] + ext),'w')
                 elif public==1: #Public Dataset
-                    publicFilePath=os.path.join('output', identity, 'p')
+                    publicFilePath=os.path.join('output', self.identity, 'p')
                     if not os.path.exists(publicFilePath):
                         os.makedirs(publicFilePath)
-                    file = open(os.path.join('output', identity, 'p', os.path.splitext(fileName)[0] + ext),'w')
+                    file = open(os.path.join('output', self.identity, 'p', os.path.splitext(fileName)[0] + ext),'w')
                     
                 Hlist = ['LHS', 'RHS', 'Confidence', 'Lift', 'Conviction', 'Leverage', 'LHS_Count', 'LHS_Support', 'RHS_Count', 'RHS_Support', 'Support', 'Count'] 
                 dictRules = {}
                 
-                dictRules['min_support'] = min_support
-                dictRules['min_confidence'] = min_confidence
-                dictRules['min_lift'] = min_lift
-                dictRules['max_length'] = max_length
-                dictRules['ssort'] = ssort
-                dictRules['datasetName'] = datasetName
-                dictRules['redundantRemoveType'] = redundantRemoveType
+                dictRules['min_support'] = self.min_support
+                dictRules['min_confidence'] = self.min_confidence
+                dictRules['min_lift'] = self.min_lift
+                dictRules['max_length'] = self.max_length
+                dictRules['sSort'] = self.sSort
+                dictRules['datasetName'] = self.datasetName
+                dictRules['redundantRemoveType'] = self.redundantRemoveType
 
                 dictRules['Records'] = records
                 dictRules['RecordsCreationTime'] = '{0:.3f}'.format(recordTime)
@@ -568,26 +602,25 @@ class webApriori():
             print(f"An error occurred: {e}")     
             sys.exit()       
 
-    def retrieveParticipatingItems(records=None):
-        global excludedItems
+    def retrieveParticipatingItems(self, records=None):
 
         try:
 
-            filepath=os.path.join('output', identity)
+            filepath=os.path.join('output', self.identity)
             if not os.path.exists(filepath):
                 os.makedirs(filepath)
 
             ext='.epi'
 
-            if public==0: #Private Dataset'
-                filepath = os.path.join('output', identity, os.path.splitext(datasetName)[0] + ext)
-            elif public==1: #Public Dataset
-                filepath=os.path.join('output', identity, 'p')
+            if self.public==0: #Private Dataset'
+                filepath = os.path.join('output', self.identity, os.path.splitext(self.datasetName)[0] + ext)
+            elif self.public==1: #Public Dataset
+                filepath=os.path.join('output', self.identity, 'p')
                 if not os.path.exists(filepath):
                     os.makedirs(filepath)
-                filepath = os.path.join('output', identity, 'p', os.path.splitext(datasetName)[0] + ext)
+                filepath = os.path.join('output', self.identity, 'p', os.path.splitext(self.datasetName)[0] + ext)
 
-            excludedItems=Global.readJSONFromFile(filepath)
+            self.excludedItems=Global.readJSONFromFile(filepath)
 
             if records is None: #We want only to read excluded Items if any not to save them
                 return  
@@ -596,11 +629,11 @@ class webApriori():
             uniqueItems = {}
 
             # Iterate through the list and populate the dictionary
-            for sublist in records:
+            for sublist in self.records:
                 for index, item in enumerate(sublist):
 
-                    if hasHeader and datasetType==4 and 'header' in jsonData:
-                        uniqueItem=str(jsonData['header'][index]) + '=' + str(item)
+                    if self.hasHeader and self.datasetType==4 and 'header' in self.jsonData:
+                        uniqueItem=str(self.jsonData['header'][index]) + '=' + str(item)
                     else:    
                         uniqueItem=str(item)
 
@@ -609,15 +642,15 @@ class webApriori():
                         # Initialize it as a participating item
                         uniqueItems[uniqueItem] = 0
 
-                        if excludedItems!=None:
-                            if uniqueItem in excludedItems:
-                                uniqueItems[uniqueItem] = excludedItems[uniqueItem]
+                        if self.excludedItems!=None:
+                            if uniqueItem in self.excludedItems:
+                                uniqueItems[uniqueItem] = self.excludedItems[uniqueItem]
             
                     if len(uniqueItems)>max_items:
                         break
 
             
-            if not hasHeader or datasetType in [1,2]:
+            if not self.hasHeader or self.datasetType in [1,2]:
                 # Sorting the dictionary by keys
                 uniqueItems = {key: uniqueItems[key] for key in sorted(uniqueItems)}
 
@@ -636,203 +669,152 @@ class webApriori():
     ###########
     ###########
 
-    def __init__(self, identity=None, datasetName=None, public=0):
-        '''
-        Call arguments          
-        1) Identity   2) datasetName   3) public   4) callType
-        '''
-        
-
-        #identity
-        identity=None
-        if len(identity)>0:
-            try:
-                identity=str(identity)
-            except:
-                print("An error occurred: Could not retrieve identity of the user!")
-                sys.exit()
-        else:        
-            print("An error occurred: User identity not given!")
-            sys.exit()
-
-        if datasetName is None:
-            print("An error occurred: Dataset name not given!")
-            sys.exit()
-
-        #0=private, 1=public
-        if len(public)>0:
-            try:
-                public=int(public)
-            except:
-                public=0 # Default is 0 private Dataset.
-
-    #0=Association rules, 1=Retrieve participating items
-    callType=0
-    if len(sys.argv)>4:
+    def runWebApriori(self):
+        #Main Program
         try:
-            callType=int(sys.argv[4])
-        except:
-            callType=0 # Default is 0 - Association rules mining.
 
-    arg1=None #In case of callType=1 it may be groupItem of datasetType 2-INV or absentValue of datasetType 3-SI'
-    if len(sys.argv)>5:
-        try:
-            arg1=sys.argv[5]
-        except:
-            arg1=None 
-
-    arg2=None #In case of callType=1 it may be valueItem of datasetType 2-INV'
-    if len(sys.argv)>6:
-        try:
-            arg2=sys.argv[6]
-        except:
-            arg2=None 
-
-    #Main Program
-    try:
-
-        #Read dataset's metadatafile to retrieve its attributes. If not exists then it will AutoML create it.
-        metadataInst=Metadata.Metadata()
-        jsonData=metadataInst.readMetadataFile(identity, datasetName, public)
-        if not {'delimiter', 'datasetType', 'hasHeader'}.issubset(jsonData):
-            jsonData=metadataInst.createMetadataFile(identity, datasetName, public)
-        if jsonData['datasetType']==3 and not 'absentValue' in jsonData:
-            jsonData=metadataInst.createMetadataFile(identity, datasetName, public)
-        
-        if not 'delimiter' in jsonData:
-            print("An error occurred: Could not retrieve the delimiter of the dataset!")
-            sys.exit()  
-
-        if not 'datasetType' in jsonData:
-            print("An error occurred: Could not retrieve the dataset type of the dataset!") 
-            sys.exit()    
-
-        if not 'hasHeader' in jsonData:
-            print("An error occurred: Could not retrieve the dataset has header or not!") 
-            sys.exit() 
-        elif jsonData['hasHeader'] and not 'header' in jsonData:
-            print("An error occurred: Could not retrieve the dataset's header!") 
-            sys.exit() 
-
-        groupItem = None
-        valueItem = None
-        if jsonData['datasetType']==2:
-            if callType==0: #AR Mining
-                if 'groupItem' in jsonData:
-                    groupItem=jsonData['groupItem']
-                if 'valueItem' in jsonData:
-                    valueItem=jsonData['valueItem']
-            elif callType==1: #retrieveParticipatingItems
-                if arg1 is not None:
-                    groupItem=arg1
-                elif 'groupItem' in jsonData:
-                    groupItem=jsonData['groupItem']
-                if arg2 is not None:
-                    valueItem=arg2
-                elif 'valueItem' in jsonData:
-                    valueItem=jsonData['valueItem']
-
-        if jsonData['datasetType']==3:
-            if callType==0: #AR Mining
-                if 'absentValue' in jsonData:
-                    absentValue=jsonData['absentValue']
-                else:    
-                    print("An error occurred: Could not retrieve the absent value of 3-SI dataset!")
-                    sys.exit()  
-            elif callType==1: #retrieveParticipatingItems
-                if arg1 is not None:
-                    absentValue=arg1
-                elif 'absentValue' in jsonData:
-                    absentValue=jsonData['absentValue']
-                else:    
-                    print("An error occurred: Could not retrieve the absent value of 3-SI dataset!")
-                    sys.exit()   
-
-        datasetSep=jsonData['delimiter']
-        if datasetSep=='{TAB}':
-            datasetSep='\t'
-
-        datasetType=int(jsonData['datasetType'])
-        hasHeader=bool(jsonData['hasHeader'])
-
-        min_support=0.01
-        if 'min_support' in jsonData:
-            min_support=jsonData['min_support']
-
-        min_confidence=0.2
-        if 'min_confidence' in jsonData:
-            min_confidence=jsonData['min_confidence']
-
-        min_lift=1.5
-        if 'min_lift' in jsonData:
-            min_lift=jsonData['min_lift']
-
-        max_length=2
-        if 'max_length' in jsonData:
-            max_length=jsonData['max_length']
-
-        #sort_order
-        #0 by LHS, 1 by RHS, 2 by confidence, 3 by lift, 4 by conviction, 5 by LHS support, 6 by RHS support, 7 by rule support 
-        #negatives meaning descending
-        ssort=-3
-        if 'ssort' in jsonData:
-            ssort=jsonData['ssort']
-
-        '''
-        bitwise 0 non redundant removal
-        bitwise 1 Interchange the antecedent/LHS and consequence/RHS case 
-        bitwise 2 Redundant Rules with Fixed Consequence/RHS
-        bitwise 4 Redundant Rules with Fixed Antecedent/LHS
-        #output to to both console and file if datasetName is given
-        '''
-        redundantRemoveType=0 
-        if 'redundantRemoveType' in jsonData:
-            redundantRemoveType=jsonData['redundantRemoveType']
-
-        ssort=-3
-        if 'ssort' in jsonData:
-            ssort=jsonData['ssort']
-
-        participatingItems=[]
-        if 'participatingItems' in jsonData:
-            participatingItems=jsonData['participatingItems'] 
-
-        #Time starts here
-        #################
-        recordTime=time()
-        #################    
-
-        records=prepare_records()
+            #Read dataset's metaDatafile to retrieve its attributes. If not exists then it will AutoML create it.
+            metadataInst=Metadata.Metadata()
+            self.jsonData=metadataInst.readMetadataFile(self.identity, self.datasetName, self.public)
+            if not {'delimiter', 'datasetType', 'hasHeader'}.issubset(self.jsonData):
+                self.jsonData=metadataInst.createMetadataFile(self.identity, self.datasetName, self.public)
+            if self.jsonData['datasetType']==3 and not 'absentValue' in self.jsonData:
+                self.jsonData=metadataInst.createMetadataFile(self.identity, self.datasetName, self.public)
             
-        if records:
-            
-            # Retrieve the current participating Item List in JSON format.
-            excludedItems={}
-            if callType==1:
-                retrieveParticipatingItems(records)
-                sys.exit()
+            if not 'delimiter' in self.jsonData:
+                print("An error occurred: Could not retrieve the delimiter of the dataset!")
+                sys.exit()  
+
+            if not 'datasetType' in self.jsonData:
+                print("An error occurred: Could not retrieve the dataset type of the dataset!") 
+                sys.exit()    
+
+            if not 'hasHeader' in self.jsonData:
+                print("An error occurred: Could not retrieve the dataset has header or not!") 
+                sys.exit() 
+            elif self.jsonData['hasHeader'] and not 'header' in self.jsonData:
+                print("An error occurred: Could not retrieve the dataset's header!") 
+                sys.exit() 
+
+            self.groupItem = None
+            self.valueItem = None
+            if self.jsonData['datasetType']==2:
+                if self.callType==0: #AR Mining
+                    if 'groupItem' in self.jsonData:
+                        self.groupItem=self.jsonData['groupItem']
+                    if 'valueItem' in self.jsonData:
+                        self.valueItem=self.jsonData['valueItem']
+                elif self.callType==1: #retrieveParticipatingItems
+                    if self.arg1 is not None:
+                        self.groupItem=self.arg1
+                    elif 'groupItem' in self.jsonData:
+                        self.groupItem=self.jsonData['groupItem']
+                    if self.arg2 is not None:
+                        self.valueItem=self.arg2
+                    elif 'valueItem' in self.jsonData:
+                        self.valueItem=self.jsonData['valueItem']
+
+            if self.jsonData['datasetType']==3:
+                if self.callType==0: #AR Mining
+                    if 'absentValue' in self.jsonData:
+                        self.absentValue=self.jsonData['absentValue']
+                    else:    
+                        print("An error occurred: Could not retrieve the absent value of 3-SI dataset!")
+                        sys.exit()  
+                elif self.callType==1: #retrieveParticipatingItems
+                    if self.arg1 is not None:
+                        self.absentValue=self.arg1
+                    elif 'absentValue' in self.jsonData:
+                        self.absentValue=self.jsonData['absentValue']
+                    else:    
+                        print("An error occurred: Could not retrieve the absent value of 3-SI dataset!")
+                        sys.exit()   
+
+            self.datasetSep=self.jsonData['delimiter']
+            if self.datasetSep=='{TAB}':
+                self.datasetSep='\t'
+
+            self.datasetType=int(self.jsonData['datasetType'])
+            self.hasHeader=bool(self.jsonData['hasHeader'])
+
+            self.min_support=0.01
+            if 'min_support' in self.jsonData:
+                self.min_support=self.jsonData['min_support']
+
+            self.min_confidence=0.2
+            if 'min_confidence' in self.jsonData:
+                self.min_confidence=self.jsonData['min_confidence']
+
+            self.min_lift=1.5
+            if 'min_lift' in self.jsonData:
+                self.min_lift=self.jsonData['min_lift']
+
+            self.max_length=2
+            if 'max_length' in self.jsonData:
+                self.max_length=self.jsonData['max_length']
+
+            #sort_order
+            #0 by LHS, 1 by RHS, 2 by confidence, 3 by lift, 4 by conviction, 5 by LHS support, 6 by RHS support, 7 by rule support 
+            #negatives meaning descending
+            self.sSort=-3
+            if 'sSort' in self.jsonData:
+                self.sSort=self.jsonData['sSort']
+
+            '''
+            bitwise 0 non redundant removal
+            bitwise 1 Interchange the antecedent/LHS and consequence/RHS case 
+            bitwise 2 Redundant Rules with Fixed Consequence/RHS
+            bitwise 4 Redundant Rules with Fixed Antecedent/LHS
+            #output to to both console and file if datasetName is given
+            '''
+            self.redundantRemoveType=0 
+            if 'redundantRemoveType' in self.jsonData:
+                self.redundantRemoveType=self.jsonData['redundantRemoveType']
+
+            self.sSort=-3
+            if 'sSort' in self.jsonData:
+                self.sSort=self.jsonData['sSort']
+
+            self.participatingItems=[]
+            if 'participatingItems' in self.jsonData:
+                self.participatingItems=self.jsonData['participatingItems'] 
+
+            #Time starts here
+            #################
+            recordTime=time()
+            #################    
+
+            records=self.prepare_records()
+                
+            if records:
+                
+                # Retrieve the current participating Item List in JSON format.
+                self.excludedItems={}
+                if self.callType==1:
+                    self.retrieveParticipatingItems(records)
+                    sys.exit()
+                else:
+                    self.retrieveParticipatingItems()
+
+                recordTime=time()-recordTime
+
+                assocTime=time()
+                association_results = list(webApriori(records, min_support=self.min_support, min_confidence=self.min_confidence, min_lift=self.min_lift, max_length=self.max_length))
+                association_results = self.transform_association_rules(association_results,self.redundantRemoveType)
+                assocTime=time()-assocTime
+
+                descending=False
+                if self.sSort<0:
+                    descending=True
+
+                self.output_association_rules(association_results, sort_index=abs(self.sSort), descending=descending, fileName=self.datasetName, public=self.public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
+
             else:
-                retrieveParticipatingItems()
-
-            recordTime=time()-recordTime
-
-            assocTime=time()
-            association_results = list(webApriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length))
-            association_results = transform_association_rules(association_results,redundantRemoveType)
-            assocTime=time()-assocTime
-
-            descending=False
-            if ssort<0:
-                descending=True
-
-            output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, public=public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
-
-        else:
-            print("An error occurred: Could not retrieve records capable for frequent itemsets or Association Rules Mining")
-        
-    except Exception as e:
-        print(f"An error occurred: {e}")     
-        sys.exit()       
+                print("An error occurred: Could not retrieve records capable for frequent itemsets or Association Rules Mining")
+            
+        except Exception as e:
+            print(f"An error occurred: {e}")     
+            sys.exit()       
 
 
         
