@@ -7,6 +7,30 @@ import csv
 import json
 import math
 
+
+###########################
+# general purpose functions
+###########################
+def is_nan(value):
+    if isinstance(value, float):
+        return math.isnan(value)
+    return False
+
+def left(s, amount):
+    return s[:amount]
+
+def right(s, amount):
+    return s[-amount:]
+
+def mid(s, offset, amount):
+    return s[offset:offset+amount]
+
+
+
+#######################
+# arff file handling
+#######################
+
 #Detect if a file is in arff format
 def is_arff_file(file_path, Show_Errors=False):
     try:
@@ -41,6 +65,12 @@ def loadarfftoDataframe(file_path, encoding='utf-8-sig', nRows=None):
     except arff.ParseArffError as e:
         return None
     
+
+
+#######################
+# dataset handling
+#######################
+
 def readDataset(filepath, sep=';', encoding='utf-8-sig', hasHeader=True, nRows=None):
     dataset=None
     try:
@@ -97,7 +127,5 @@ def readJSONFromFile(filepath):
         # Now you can work with the JSON data as a Python dictionary or list
         return json_data
         
-def is_nan(value):
-    if isinstance(value, float):
-        return math.isnan(value)
-    return False
+
+

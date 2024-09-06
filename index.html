@@ -128,19 +128,20 @@
             M_F();
         });
 
-		function runApp() {
+		function runApp(callType=0) {
 
-            // var formData = new FormData();
-            // formData.set("token",sessionStorage.getItem('token'));
-            // formData.set("dataset",dataset.value);
-            // formData.set('rows', document.getElementById("NRows").value);
-            // formData.set('columns',document.getElementById("NCols").value);
+        var formData = new FormData();
+        // formData.set("token",sessionStorage.getItem('token'));
+        // formData.set("dataset",dataset.value);
+        formData.set("a","ABC");
+        formData.set("b","DEF");
+        formData.set("callType",callType)
 
         $.ajax({
             url: 'php/app.php',
             method: 'POST',
             dataType: 'json',
-            //data: formData,
+            data: formData,
             contentType: false,
             cache: false,
             processData:false,
@@ -265,6 +266,7 @@
     </div>  
     
     <button type="button" class="btn btn-sm" onclick="runApp()" ><img src="./images/close24grey.png" width="24" height="24" alt="hide">ABC</button>
+    <button type="button" class="btn btn-sm" onclick="runApp(1)" ><img src="./images/close24grey.png" width="24" height="24" alt="hide">DEF</button>
 
     
 	<footer>

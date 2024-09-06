@@ -37,7 +37,7 @@
             "Number Of Columns",
             29,
             29,
-            "The total number of columns/features in the Dataset"
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -113,7 +113,7 @@
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -167,5 +167,16 @@
         ]
     },
     "datasetTypePredicted": 2,
-    "datasetType": 2
+    "datasetType": 2,
+    "groupItem": "IDInvoice",
+    "valueItem": "ItemCategoryProduits",
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "ssort": -3,
+    "datasetName": "invoice.csv",
+    "public": 1,
+    "redundantRemoveType": 0,
+    "participatingItems": "[]"
 }

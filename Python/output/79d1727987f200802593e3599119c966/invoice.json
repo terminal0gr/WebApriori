@@ -6,9 +6,9 @@
     "ssort": -3,
     "datasetName": "invoice.csv",
     "redundantRemoveType": 0,
-    "Records": 29265,
-    "RecordsCreationTime": "0.385",
+    "Records": 2869,
+    "RecordsCreationTime": "1.356",
     "RulesCount": 0,
-    "RulesCreationTime": "786.846",
+    "RulesCreationTime": "0.002",
     "rules": []
 }
