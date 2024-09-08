@@ -1,0 +1,25 @@
+class A():
+  V1=1
+  class B():
+    V2=2
+	def abc(self)
+	  print(V1)
+	  
+	  
+class A()
+	V1=1
+	
+	def abc(self)
+	    self.V1=2
+		
+		print(self.V1)
+		print(A.V1)
+		
+class A():
+
+	class B():
+		def abc(self)
+			print(V1)
+	  
+	def def(self)
+		self.V1=1
