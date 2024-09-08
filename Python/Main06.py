@@ -45,21 +45,10 @@ class webApriori():
         else:
             self.datasetName=datasetName
 
-        #0=private, 1=public
-        self.public=0
-        if len(public)>0:
-            try:
-                self.public=int(public)
-            except:
-                self.public=0 # Default is 0 private Dataset.
+        self.public=public
 
         #0=Association rules, 1=Retrieve participating items
-        self.callType=0
-        if len(callType)>4:
-            try:
-                self.callType=int(callType)
-            except:
-                self.callType=0 # Default is 0 - Association rules mining.
+        self.callType=callType
 
         self.arg1=arg1 #In case of callType=1 it may be groupItem of datasetType 2-INV or absentValue of datasetType 3-SI'
         self.arg2=arg2 #In case of callType=1 it may be valueItem of datasetType 2-INV'
@@ -70,7 +59,7 @@ class webApriori():
 
     class itemsetManager(object):
 
-        def __init__(self, itemsets):
+        def __init__(self, webAprioriInst, itemsets):
             """
             Initialization
 
@@ -81,6 +70,7 @@ class webApriori():
             self.__num_itemset = 0
             self.__items = []
             self.__itemset_index_map = {}
+            self.webAprioriInst=webAprioriInst
 
             for itemset in itemsets:
                 self.add_itemset(itemset)
@@ -95,8 +85,8 @@ class webApriori():
             for index,item in enumerate(itemset):
                 
                 #Malliaridis 15/8/2024.
-                if webApriori.hasHeader and webApriori.datasetType==4 and 'header' in webApriori.jsonData:
-                    item=str(webApriori.jsonData['header'][index]) + '=' + str(item)
+                if self.webAprioriInst.hasHeader and self.webAprioriInst.datasetType==4 and 'header' in self.webAprioriInst.jsonData:
+                    item=str(self.webAprioriInst.jsonData['header'][index]) + '=' + str(item)
                 else:
                     item=str(item)
 
@@ -155,14 +145,14 @@ class webApriori():
             return sorted(self.__items)
 
         @staticmethod
-        def create(itemsets):
+        def create(webAprioriInst, itemsets):
             """
             Create the itemsetManager with an itemset instance.
             If the given instance is a itemsetManager then it returns itself.
             """
-            if isinstance(itemsets, webApriori.itemsetManager):
+            if isinstance(itemsets):
                 return itemsets
-            return webApriori.itemsetManager(itemsets)
+            return webApriori.itemsetManager(webAprioriInst, itemsets)
 
     ################################################################################
     # Inner core functions.
@@ -362,7 +352,7 @@ class webApriori():
     ################################################################################
     # Main Apriori engine.
     ################################################################################
-    def webApriori(self, itemsets, **kwargs):
+    def mainApriori(self, itemsets, **kwargs):
         """
         Executes Apriori algorithm and returns an association rules generator.
 
@@ -396,7 +386,7 @@ class webApriori():
             raise ValueError('Rules max length can''t be negative number!!!') 
 
         # Calculate supports.
-        itemset_manager = self.itemsetManager.create(itemsets)
+        itemset_manager = self.itemsetManager.create(self, itemsets)
         frequent_itemsets = self.generate_frequent_itemsets(itemset_manager, min_support, max_length=max_length)
         
         # Calculate rule stats.
@@ -771,10 +761,6 @@ class webApriori():
             if 'redundantRemoveType' in self.jsonData:
                 self.redundantRemoveType=self.jsonData['redundantRemoveType']
 
-            self.sSort=-3
-            if 'sSort' in self.jsonData:
-                self.sSort=self.jsonData['sSort']
-
             self.participatingItems=[]
             if 'participatingItems' in self.jsonData:
                 self.participatingItems=self.jsonData['participatingItems'] 
@@ -799,7 +785,7 @@ class webApriori():
                 recordTime=time()-recordTime
 
                 assocTime=time()
-                association_results = list(webApriori(records, min_support=self.min_support, min_confidence=self.min_confidence, min_lift=self.min_lift, max_length=self.max_length))
+                association_results = list(self.mainApriori(records, min_support=self.min_support, min_confidence=self.min_confidence, min_lift=self.min_lift, max_length=self.max_length))
                 association_results = self.transform_association_rules(association_results,self.redundantRemoveType)
                 assocTime=time()-assocTime
 
