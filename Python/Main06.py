@@ -150,7 +150,7 @@ class webApriori():
             Create the itemsetManager with an itemset instance.
             If the given instance is a itemsetManager then it returns itself.
             """
-            if isinstance(itemsets):
+            if isinstance(itemsets, webApriori.itemsetManager):
                 return itemsets
             return webApriori.itemsetManager(webAprioriInst, itemsets)
 
@@ -535,7 +535,7 @@ class webApriori():
     # output operations
     ##################################################################################
 
-    def output_association_rules(self, association_results, sort_index, descending=True, fileName=None, public=0, **kwargs):
+    def output_association_rules(self, association_results, sort_index, descending=True, fileName=None, **kwargs):
         try:
             
             association_results.sort(reverse=descending, key=lambda x: x[sort_index])
@@ -553,9 +553,9 @@ class webApriori():
 
                 ext='.json'
 
-                if public==0: #Private Dataset'
+                if self.public==0: #Private Dataset'
                     file = open(os.path.join('output', self.identity, os.path.splitext(fileName)[0] + ext),'w')
-                elif public==1: #Public Dataset
+                elif self.public==1: #Public Dataset
                     publicFilePath=os.path.join('output', self.identity, 'p')
                     if not os.path.exists(publicFilePath):
                         os.makedirs(publicFilePath)
@@ -582,15 +582,14 @@ class webApriori():
                     dictRules['rules'].append(dict(zip(Hlist, rule)))
                     
                 json.dump(dictRules, file, indent=4)
-                print(json.dumps(dictRules, indent=4)) 
-                file.close()     
-
+                file.close()  
+                return json.dumps(dictRules, indent=4)
+       
             else:
-                print("An error occurred: Dataset filepath not given!")
+                return("An error occurred: Dataset filepath not given!")
         
         except Exception as e:
-            print(f"An error occurred: {e}")     
-            sys.exit()       
+            return(f"An error occurred: {e}")         
 
     def retrieveParticipatingItems(self, records=None):
 
@@ -793,14 +792,13 @@ class webApriori():
                 if self.sSort<0:
                     descending=True
 
-                self.output_association_rules(association_results, sort_index=abs(self.sSort), descending=descending, fileName=self.datasetName, public=self.public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
+                return self.output_association_rules(association_results, sort_index=abs(self.sSort), descending=descending, fileName=self.datasetName, public=self.public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
 
             else:
                 print("An error occurred: Could not retrieve records capable for frequent itemsets or Association Rules Mining")
             
         except Exception as e:
-            print(f"An error occurred: {e}")     
-            sys.exit()       
+            return(f"An error occurred: {e}")       
 
 
         

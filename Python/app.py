@@ -1,6 +1,8 @@
+import sys
+import os
 from flask import Flask, request, jsonify
 import time
-import Main06
+import Main06 as apriori
 
 app = Flask(__name__)
 
@@ -48,6 +50,24 @@ def run_script1():
     time.sleep(2)  # Simulates a long-running task
     # return jsonify({"result": "Task completed!"})
     return f"Task completed! Received a={b}, b={a}"
+
+@app.route('/retrieveRules', methods=['POST'])
+def retrieveRules():
+
+    identity = request.form.get('identity')
+    filename = request.form.get('filename')
+    isPublic = request.form.get('isPublic')
+    callType = request.form.get('callType')
+    if callType is None:
+        callType=0
+    arg1     = request.form.get('arg1')
+    arg2     = request.form.get('arg2')
+
+    # return(f"identity={identity}, filename={filename}, isPublic={isPublic}, callType={callType}, arg1={arg1}, arg2={arg2}")
+    # return(f"Current Working Directory: {current_directory}")
+
+    WAInst=apriori.webApriori(identity,filename,isPublic,callType,arg1,arg2)
+    return WAInst.runWebApriori()
 
 if __name__ == '__main__':
     from waitress import serve
