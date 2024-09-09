@@ -29,7 +29,7 @@
             "Number Of Columns",
             21,
             21,
-            "The total number of columns/features in the Dataset"
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -87,13 +87,13 @@
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
@@ -160,5 +160,14 @@
     },
     "datasetTypePredicted": 4,
     "datasetType": 3,
-    "absentValue": "0"
+    "absentValue": "0",
+    "min_support": 0.001,
+    "min_confidence": 0.01,
+    "min_lift": 1.5,
+    "max_length": 3,
+    "sSort": -3,
+    "datasetName": "34nih_labels.csv",
+    "public": 1,
+    "redundantRemoveType": 0,
+    "participatingItems": "[]"
 }

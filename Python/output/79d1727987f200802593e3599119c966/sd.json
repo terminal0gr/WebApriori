@@ -3,13 +3,13 @@
     "min_confidence": 0.2,
     "min_lift": 1.5,
     "max_length": 4,
-    "ssort": -3,
+    "sSort": -3,
     "datasetName": "sd.csv",
     "redundantRemoveType": 0,
     "Records": 7501,
-    "RecordsCreationTime": "0.031",
+    "RecordsCreationTime": "0.112",
     "RulesCount": 96,
-    "RulesCreationTime": "0.050",
+    "RulesCreationTime": "0.246",
     "rules": [
         {
             "LHS": [
@@ -86,8 +86,8 @@
         },
         {
             "LHS": [
-                "milk",
-                "mineral water"
+                "mineral water",
+                "milk"
             ],
             "RHS": [
                 "frozen vegetables"
@@ -105,8 +105,8 @@
         },
         {
             "LHS": [
-                "ground beef",
-                "mineral water"
+                "mineral water",
+                "ground beef"
             ],
             "RHS": [
                 "spaghetti"
@@ -143,8 +143,8 @@
         },
         {
             "LHS": [
-                "milk",
-                "mineral water"
+                "mineral water",
+                "milk"
             ],
             "RHS": [
                 "ground beef"
@@ -252,8 +252,8 @@
         },
         {
             "LHS": [
-                "spaghetti",
-                "chocolate"
+                "chocolate",
+                "spaghetti"
             ],
             "RHS": [
                 "milk"
@@ -271,8 +271,8 @@
         },
         {
             "LHS": [
-                "olive oil",
-                "mineral water"
+                "mineral water",
+                "olive oil"
             ],
             "RHS": [
                 "spaghetti"
@@ -384,8 +384,8 @@
         },
         {
             "LHS": [
-                "ground beef",
-                "mineral water"
+                "mineral water",
+                "ground beef"
             ],
             "RHS": [
                 "milk"
@@ -477,8 +477,8 @@
         },
         {
             "LHS": [
-                "ground beef",
-                "chocolate"
+                "chocolate",
+                "ground beef"
             ],
             "RHS": [
                 "mineral water"
@@ -496,8 +496,8 @@
         },
         {
             "LHS": [
-                "eggs",
-                "mineral water"
+                "mineral water",
+                "eggs"
             ],
             "RHS": [
                 "milk"
@@ -534,8 +534,8 @@
         },
         {
             "LHS": [
-                "milk",
-                "chocolate"
+                "chocolate",
+                "milk"
             ],
             "RHS": [
                 "spaghetti"
@@ -553,8 +553,8 @@
         },
         {
             "LHS": [
-                "pancakes",
-                "mineral water"
+                "mineral water",
+                "pancakes"
             ],
             "RHS": [
                 "spaghetti"
@@ -700,8 +700,8 @@
         },
         {
             "LHS": [
-                "milk",
-                "mineral water"
+                "mineral water",
+                "milk"
             ],
             "RHS": [
                 "spaghetti"
@@ -794,8 +794,8 @@
         },
         {
             "LHS": [
-                "milk",
-                "chocolate"
+                "chocolate",
+                "milk"
             ],
             "RHS": [
                 "mineral water"
@@ -813,8 +813,8 @@
         },
         {
             "LHS": [
-                "ground beef",
-                "spaghetti"
+                "spaghetti",
+                "ground beef"
             ],
             "RHS": [
                 "mineral water"
@@ -832,8 +832,8 @@
         },
         {
             "LHS": [
-                "eggs",
-                "chocolate"
+                "chocolate",
+                "eggs"
             ],
             "RHS": [
                 "spaghetti"
@@ -887,8 +887,8 @@
         },
         {
             "LHS": [
-                "spaghetti",
-                "frozen vegetables"
+                "frozen vegetables",
+                "spaghetti"
             ],
             "RHS": [
                 "mineral water"
@@ -924,8 +924,8 @@
         },
         {
             "LHS": [
-                "milk",
-                "mineral water"
+                "mineral water",
+                "milk"
             ],
             "RHS": [
                 "chocolate"
@@ -1126,8 +1126,8 @@
         },
         {
             "LHS": [
-                "french fries",
-                "mineral water"
+                "mineral water",
+                "french fries"
             ],
             "RHS": [
                 "spaghetti"
@@ -1163,8 +1163,8 @@
         },
         {
             "LHS": [
-                "eggs",
-                "chocolate"
+                "chocolate",
+                "eggs"
             ],
             "RHS": [
                 "mineral water"
@@ -1182,8 +1182,8 @@
         },
         {
             "LHS": [
-                "spaghetti",
-                "chocolate"
+                "chocolate",
+                "spaghetti"
             ],
             "RHS": [
                 "mineral water"
@@ -1328,8 +1328,8 @@
         },
         {
             "LHS": [
-                "ground beef",
-                "mineral water"
+                "mineral water",
+                "ground beef"
             ],
             "RHS": [
                 "chocolate"
@@ -1402,8 +1402,8 @@
         },
         {
             "LHS": [
-                "eggs",
-                "mineral water"
+                "mineral water",
+                "eggs"
             ],
             "RHS": [
                 "chocolate"
@@ -1421,8 +1421,8 @@
         },
         {
             "LHS": [
-                "eggs",
-                "mineral water"
+                "mineral water",
+                "eggs"
             ],
             "RHS": [
                 "spaghetti"
@@ -1729,8 +1729,8 @@
         },
         {
             "LHS": [
-                "milk",
-                "mineral water"
+                "mineral water",
+                "milk"
             ],
             "RHS": [
                 "eggs"

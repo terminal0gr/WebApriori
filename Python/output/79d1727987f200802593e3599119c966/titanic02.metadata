@@ -151,6 +151,5 @@
     "datasetName": "titanic02.csv",
     "public": 1,
     "redundantRemoveType": 0,
-    "participatingItems": "[]",
-    "sSort": -3
+    "participatingItems": "[]"
 }

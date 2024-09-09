@@ -89,6 +89,24 @@
             "console": "integratedTerminal"
         },
         {
+            "name": "Python: Flask",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "flask",
+            "cwd": "${workspaceFolder}/python",
+            "env": {
+                "FLASK_APP": "app.py",  // replace 'app.py' with your entry point
+                "FLASK_ENV": "development"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ],
+            "jinja": true,
+            "justMyCode": false
+        },        
+        {
             "name": "Run Main04...",
             "type": "debugpy",
             "request": "launch",

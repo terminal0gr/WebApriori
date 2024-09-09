@@ -3,12 +3,12 @@
     "min_confidence": 0.01,
     "min_lift": 1.5,
     "max_length": 3,
-    "ssort": -3,
+    "sSort": -3,
     "datasetName": "34nih_labels.csv",
     "redundantRemoveType": 0,
     "Records": 112120,
-    "RecordsCreationTime": "0.996",
+    "RecordsCreationTime": "1.015",
     "RulesCount": 0,
-    "RulesCreationTime": "25.105",
+    "RulesCreationTime": "24.969",
     "rules": []
 }

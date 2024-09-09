@@ -672,18 +672,18 @@ class webApriori():
             
             if not 'delimiter' in self.jsonData:
                 print("An error occurred: Could not retrieve the delimiter of the dataset!")
-                sys.exit()  
+                return "An error occurred: Could not retrieve the delimiter of the dataset!"
 
             if not 'datasetType' in self.jsonData:
                 print("An error occurred: Could not retrieve the dataset type of the dataset!") 
-                sys.exit()    
+                return "An error occurred: Could not retrieve the dataset type of the dataset!"
 
             if not 'hasHeader' in self.jsonData:
                 print("An error occurred: Could not retrieve the dataset has header or not!") 
-                sys.exit() 
+                return "An error occurred: Could not retrieve the dataset has header or not!"
             elif self.jsonData['hasHeader'] and not 'header' in self.jsonData:
                 print("An error occurred: Could not retrieve the dataset's header!") 
-                sys.exit() 
+                return "An error occurred: Could not retrieve the dataset's header!"
 
             self.groupItem = None
             self.valueItem = None
@@ -709,7 +709,7 @@ class webApriori():
                         self.absentValue=self.jsonData['absentValue']
                     else:    
                         print("An error occurred: Could not retrieve the absent value of 3-SI dataset!")
-                        sys.exit()  
+                        return "An error occurred: Could not retrieve the absent value of 3-SI dataset!"
                 elif self.callType==1: #retrieveParticipatingItems
                     if self.arg1 is not None:
                         self.absentValue=self.arg1
@@ -717,7 +717,7 @@ class webApriori():
                         self.absentValue=self.jsonData['absentValue']
                     else:    
                         print("An error occurred: Could not retrieve the absent value of 3-SI dataset!")
-                        sys.exit()   
+                        return("An error occurred: Could not retrieve the absent value of 3-SI dataset!")
 
             self.datasetSep=self.jsonData['delimiter']
             if self.datasetSep=='{TAB}':
@@ -777,7 +777,7 @@ class webApriori():
                 self.excludedItems={}
                 if self.callType==1:
                     self.retrieveParticipatingItems(records)
-                    sys.exit()
+                    return "Ok"
                 else:
                     self.retrieveParticipatingItems()
 
@@ -792,14 +792,15 @@ class webApriori():
                 if self.sSort<0:
                     descending=True
 
-                return self.output_association_rules(association_results, sort_index=abs(self.sSort), descending=descending, fileName=self.datasetName, public=self.public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
+                str=self.output_association_rules(association_results, sort_index=abs(self.sSort), descending=descending, fileName=self.datasetName, public=self.public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
+                print(str)
+                return(str)
 
             else:
                 print("An error occurred: Could not retrieve records capable for frequent itemsets or Association Rules Mining")
+                return("An error occurred: Could not retrieve records capable for frequent itemsets or Association Rules Mining")
             
         except Exception as e:
-            return(f"An error occurred: {e}")       
-
-
-        
+            print(f"An error occurred: {e}")       
+            return(f"An error occurred: {e}")      
         
