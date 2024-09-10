@@ -19,8 +19,4 @@
     define('smtpFrom','noc@teithe.gr');
     define('smtpFromName','WebApriori association rules');
 
-
-	
-	
-
 ?>

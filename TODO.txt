@@ -6,22 +6,6 @@
 16/06/2024 Upload AutoML WebApriori to NIREAS
 
 
-    My issue is that when using the command pip install flask it installs it to myDocument folder and not under the Program Files\Python312\Lib where it is supposed to. How to correct this?
-
-    Check write path of the installation
-    python --version
-    python -m pip --version
-
-    Reinstall pip for the Correct Python Installation
-    python -m ensurepip --upgrade
-    python -m pip install --upgrade pip
-
-    Use python -m pip install Instead of Just pip install
-    Instead of just using pip install flask, try explicitly using python -m pip to ensure the correct pip for your Python version is being used:
-    python -m pip install flask
-
-    pip config list
-    set PIP_USER=false
 
 DONE - V01.00.00 04/09/2024 10/06/2024 AutoML type 2-INV Dataset type for finding the grouping and item column - Tested in all INV Type datasets. High accuracy achieved
 DONE - V01.00.00 31/08/2024 23/08/2024 Thorough Test for all datasets in 'filter participating items' must be done! Done partially in huge item datasets

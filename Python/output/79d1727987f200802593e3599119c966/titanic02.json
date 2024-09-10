@@ -7,17 +7,17 @@
     "datasetName": "titanic02.csv",
     "redundantRemoveType": 0,
     "Records": 2201,
-    "RecordsCreationTime": "0.311",
+    "RecordsCreationTime": "0.002",
     "RulesCount": 81,
-    "RulesCreationTime": "0.035",
+    "RulesCreationTime": "0.011",
     "rules": [
         {
             "LHS": [
                 "age=child"
             ],
             "RHS": [
-                "class=2nd",
-                "survived=yes"
+                "survived=yes",
+                "class=2nd"
             ],
             "Confidence": 0.22018348623853212,
             "Lift": 4.10698180687296,
@@ -32,8 +32,8 @@
         },
         {
             "LHS": [
-                "class=2nd",
-                "survived=yes"
+                "survived=yes",
+                "class=2nd"
             ],
             "RHS": [
                 "age=child"
@@ -51,9 +51,9 @@
         },
         {
             "LHS": [
-                "age=adult",
+                "survived=yes",
                 "class=2nd",
-                "survived=yes"
+                "age=adult"
             ],
             "RHS": [
                 "sex=female"
@@ -71,8 +71,8 @@
         },
         {
             "LHS": [
-                "class=2nd",
-                "survived=yes"
+                "survived=yes",
+                "class=2nd"
             ],
             "RHS": [
                 "sex=female"
@@ -130,8 +130,8 @@
         },
         {
             "LHS": [
-                "class=2nd",
-                "survived=yes"
+                "survived=yes",
+                "class=2nd"
             ],
             "RHS": [
                 "sex=female",
@@ -153,9 +153,9 @@
                 "sex=female"
             ],
             "RHS": [
+                "class=1st",
                 "age=adult",
-                "survived=yes",
-                "class=1st"
+                "survived=yes"
             ],
             "Confidence": 0.2978723404255319,
             "Lift": 3.328005184145156,
@@ -170,9 +170,9 @@
         },
         {
             "LHS": [
+                "class=1st",
                 "age=adult",
-                "survived=yes",
-                "class=1st"
+                "survived=yes"
             ],
             "RHS": [
                 "sex=female"
@@ -247,12 +247,12 @@
         },
         {
             "LHS": [
-                "age=adult",
-                "survived=yes"
+                "survived=yes",
+                "age=adult"
             ],
             "RHS": [
-                "sex=female",
-                "class=1st"
+                "class=1st",
+                "sex=female"
             ],
             "Confidence": 0.21406727828746175,
             "Lift": 3.2493936517979534,
@@ -267,12 +267,12 @@
         },
         {
             "LHS": [
-                "sex=female",
-                "class=1st"
+                "class=1st",
+                "sex=female"
             ],
             "RHS": [
-                "age=adult",
-                "survived=yes"
+                "survived=yes",
+                "age=adult"
             ],
             "Confidence": 0.9655172413793102,
             "Lift": 3.2493936517979534,
@@ -325,8 +325,8 @@
         },
         {
             "LHS": [
-                "sex=male",
                 "survived=no",
+                "sex=male",
                 "age=child"
             ],
             "RHS": [
@@ -383,8 +383,8 @@
         },
         {
             "LHS": [
-                "sex=female",
-                "class=1st"
+                "class=1st",
+                "sex=female"
             ],
             "RHS": [
                 "survived=yes"
@@ -402,9 +402,9 @@
         },
         {
             "LHS": [
+                "class=1st",
                 "sex=female",
-                "age=adult",
-                "class=1st"
+                "age=adult"
             ],
             "RHS": [
                 "survived=yes"
@@ -425,9 +425,9 @@
                 "class=1st"
             ],
             "RHS": [
+                "survived=yes",
                 "sex=female",
-                "age=adult",
-                "survived=yes"
+                "age=adult"
             ],
             "Confidence": 0.43076923076923074,
             "Lift": 3.0003894839337875,
@@ -442,9 +442,9 @@
         },
         {
             "LHS": [
+                "survived=yes",
                 "sex=female",
-                "age=adult",
-                "survived=yes"
+                "age=adult"
             ],
             "RHS": [
                 "class=1st"
@@ -482,12 +482,12 @@
         },
         {
             "LHS": [
-                "age=adult",
-                "class=1st"
+                "class=1st",
+                "age=adult"
             ],
             "RHS": [
-                "sex=female",
-                "survived=yes"
+                "survived=yes",
+                "sex=female"
             ],
             "Confidence": 0.438871473354232,
             "Lift": 2.8080119559670482,
@@ -502,12 +502,12 @@
         },
         {
             "LHS": [
-                "sex=female",
-                "survived=yes"
+                "survived=yes",
+                "sex=female"
             ],
             "RHS": [
-                "age=adult",
-                "class=1st"
+                "class=1st",
+                "age=adult"
             ],
             "Confidence": 0.40697674418604646,
             "Lift": 2.8080119559670482,
@@ -525,8 +525,8 @@
                 "class=1st"
             ],
             "RHS": [
-                "sex=female",
-                "survived=yes"
+                "survived=yes",
+                "sex=female"
             ],
             "Confidence": 0.4338461538461538,
             "Lift": 2.775858676207513,
@@ -541,8 +541,8 @@
         },
         {
             "LHS": [
-                "sex=female",
-                "survived=yes"
+                "survived=yes",
+                "sex=female"
             ],
             "RHS": [
                 "class=1st"
@@ -580,8 +580,8 @@
         {
             "LHS": [
                 "sex=female",
-                "age=adult",
-                "class=2nd"
+                "class=2nd",
+                "age=adult"
             ],
             "RHS": [
                 "survived=yes"
@@ -642,8 +642,8 @@
                 "class=2nd"
             ],
             "RHS": [
-                "age=adult",
-                "survived=yes"
+                "survived=yes",
+                "age=adult"
             ],
             "Confidence": 0.7547169811320755,
             "Lift": 2.5399573019444928,
@@ -697,8 +697,8 @@
         },
         {
             "LHS": [
-                "age=adult",
                 "survived=yes",
+                "age=adult",
                 "class=3rd"
             ],
             "RHS": [
@@ -835,8 +835,8 @@
                 "age=child"
             ],
             "RHS": [
-                "survived=no",
-                "class=3rd"
+                "class=3rd",
+                "survived=no"
             ],
             "Confidence": 0.546875,
             "Lift": 2.279681581439394,
@@ -890,8 +890,8 @@
                 "sex=female"
             ],
             "RHS": [
-                "age=adult",
-                "survived=yes"
+                "survived=yes",
+                "age=adult"
             ],
             "Confidence": 0.6723404255319149,
             "Lift": 2.2627236645194873,
@@ -906,8 +906,8 @@
         },
         {
             "LHS": [
-                "age=adult",
-                "survived=yes"
+                "survived=yes",
+                "age=adult"
             ],
             "RHS": [
                 "sex=female"
@@ -982,8 +982,8 @@
         },
         {
             "LHS": [
-                "age=adult",
-                "class=1st"
+                "class=1st",
+                "age=adult"
             ],
             "RHS": [
                 "sex=female"
@@ -1004,8 +1004,8 @@
                 "sex=female"
             ],
             "RHS": [
-                "age=adult",
-                "class=1st"
+                "class=1st",
+                "age=adult"
             ],
             "Confidence": 0.30638297872340425,
             "Lift": 2.113946508370573,
@@ -1059,8 +1059,8 @@
                 "class=2nd"
             ],
             "RHS": [
-                "sex=female",
-                "survived=yes"
+                "survived=yes",
+                "sex=female"
             ],
             "Confidence": 0.32631578947368417,
             "Lift": 2.087851897184822,
@@ -1075,8 +1075,8 @@
         },
         {
             "LHS": [
-                "sex=female",
-                "survived=yes"
+                "survived=yes",
+                "sex=female"
             ],
             "RHS": [
                 "class=2nd"
@@ -1097,8 +1097,8 @@
                 "class=1st"
             ],
             "RHS": [
-                "age=adult",
-                "survived=yes"
+                "survived=yes",
+                "age=adult"
             ],
             "Confidence": 0.6061538461538462,
             "Lift": 2.039976476123265,
@@ -1113,8 +1113,8 @@
         },
         {
             "LHS": [
-                "age=adult",
-                "survived=yes"
+                "survived=yes",
+                "age=adult"
             ],
             "RHS": [
                 "class=1st"
@@ -1135,8 +1135,8 @@
                 "age=child"
             ],
             "RHS": [
-                "survived=no",
-                "class=3rd"
+                "class=3rd",
+                "survived=no"
             ],
             "Confidence": 0.47706422018348627,
             "Lift": 1.988671114817904,
@@ -1151,12 +1151,12 @@
         },
         {
             "LHS": [
-                "age=adult",
-                "class=2nd"
+                "class=2nd",
+                "age=adult"
             ],
             "RHS": [
-                "sex=female",
-                "survived=yes"
+                "survived=yes",
+                "sex=female"
             ],
             "Confidence": 0.30651340996168586,
             "Lift": 1.9611512073420654,
@@ -1171,12 +1171,12 @@
         },
         {
             "LHS": [
-                "sex=female",
-                "survived=yes"
+                "survived=yes",
+                "sex=female"
             ],
             "RHS": [
-                "age=adult",
-                "class=2nd"
+                "class=2nd",
+                "age=adult"
             ],
             "Confidence": 0.23255813953488372,
             "Lift": 1.9611512073420654,
@@ -1194,9 +1194,9 @@
                 "class=2nd"
             ],
             "RHS": [
+                "survived=yes",
                 "sex=female",
-                "age=adult",
-                "survived=yes"
+                "age=adult"
             ],
             "Confidence": 0.2807017543859649,
             "Lift": 1.9551410170997112,
@@ -1211,9 +1211,9 @@
         },
         {
             "LHS": [
+                "survived=yes",
                 "sex=female",
-                "age=adult",
-                "survived=yes"
+                "age=adult"
             ],
             "RHS": [
                 "class=2nd"
@@ -1307,8 +1307,8 @@
                 "survived=yes"
             ],
             "RHS": [
-                "age=adult",
-                "class=1st"
+                "class=1st",
+                "age=adult"
             ],
             "Confidence": 0.27707454289732775,
             "Lift": 1.9117274887680828,
@@ -1323,8 +1323,8 @@
         },
         {
             "LHS": [
-                "age=adult",
-                "class=1st"
+                "class=1st",
+                "age=adult"
             ],
             "RHS": [
                 "survived=yes"
@@ -1476,8 +1476,8 @@
             ],
             "RHS": [
                 "sex=male",
-                "survived=no",
-                "class=3rd"
+                "class=3rd",
+                "survived=no"
             ],
             "Confidence": 0.3211009174311926,
             "Lift": 1.6747467281186135,
@@ -1492,8 +1492,8 @@
         },
         {
             "LHS": [
-                "age=adult",
-                "class=2nd"
+                "class=2nd",
+                "age=adult"
             ],
             "RHS": [
                 "sex=female"
@@ -1514,8 +1514,8 @@
                 "age=child"
             ],
             "RHS": [
-                "sex=female",
-                "survived=yes"
+                "survived=yes",
+                "sex=female"
             ],
             "Confidence": 0.25688073394495414,
             "Lift": 1.643588649455942,
