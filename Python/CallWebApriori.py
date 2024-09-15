@@ -1,4 +1,4 @@
-import Main06 as Apriori
+import Python.Main01W as Apriori
 
 identity='79d1727987f200802593e3599119c966'
 datasetName='titanic02.csv'
