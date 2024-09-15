@@ -7,9 +7,9 @@
     "datasetName": "2_L-0008.csv",
     "redundantRemoveType": 0,
     "Records": 4,
-    "RecordsCreationTime": "0.082",
+    "RecordsCreationTime": "0.050",
     "RulesCount": 998,
-    "RulesCreationTime": "0.215",
+    "RulesCreationTime": "0.204",
     "rules": [
         {
             "LHS": [
