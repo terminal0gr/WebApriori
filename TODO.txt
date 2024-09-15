@@ -3,6 +3,7 @@
            0fish_catches.csv Error 30
 
 12/07/2024 Real multithread environment
+   Works in Main06. But print and returns must be checked. Also the other programs must be transformed to run from waitress and flask
 16/06/2024 Upload AutoML WebApriori to NIREAS
 
 
