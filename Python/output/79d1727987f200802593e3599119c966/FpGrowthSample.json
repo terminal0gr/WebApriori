@@ -1,0 +1,701 @@
+{
+    "min_support": 0.4,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 6,
+    "ssort": -3,
+    "datasetName": "FpGrowthSample.txt",
+    "redundantRemoveType": 7,
+    "Records": 5,
+    "RecordsCreationTime": "0.010",
+    "RulesCount": 35,
+    "RulesCreationTime": "0.046",
+    "rules": [
+        {
+            "LHS": [
+                "'l'"
+            ],
+            "RHS": [
+                "'a'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'o'"
+            ],
+            "RHS": [
+                "'b'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'l'"
+            ],
+            "RHS": [
+                "'m'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'l'"
+            ],
+            "RHS": [
+                "'a'",
+                "'c'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'l'",
+                "'c'"
+            ],
+            "RHS": [
+                "'a'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'l'"
+            ],
+            "RHS": [
+                "'a'",
+                "'f'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'l'",
+                "'f'"
+            ],
+            "RHS": [
+                "'a'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'a'",
+                "'p'"
+            ],
+            "RHS": [
+                "'m'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'m'",
+                "'p'"
+            ],
+            "RHS": [
+                "'a'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'f'",
+                "'o'"
+            ],
+            "RHS": [
+                "'b'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'l'"
+            ],
+            "RHS": [
+                "'f'",
+                "'c'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'l'"
+            ],
+            "RHS": [
+                "'m'",
+                "'c'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'l'",
+                "'c'"
+            ],
+            "RHS": [
+                "'m'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'l'"
+            ],
+            "RHS": [
+                "'m'",
+                "'f'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'l'",
+                "'f'"
+            ],
+            "RHS": [
+                "'m'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'l'",
+                "'c'"
+            ],
+            "RHS": [
+                "'a'",
+                "'f'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'l'",
+                "'f'"
+            ],
+            "RHS": [
+                "'a'",
+                "'c'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'a'",
+                "'p'"
+            ],
+            "RHS": [
+                "'f'",
+                "'c'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'f'",
+                "'c'",
+                "'p'"
+            ],
+            "RHS": [
+                "'a'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'a'",
+                "'p'"
+            ],
+            "RHS": [
+                "'m'",
+                "'c'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'m'",
+                "'p'"
+            ],
+            "RHS": [
+                "'a'",
+                "'c'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'a'",
+                "'c'",
+                "'p'"
+            ],
+            "RHS": [
+                "'m'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'m'",
+                "'c'",
+                "'p'"
+            ],
+            "RHS": [
+                "'a'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'a'",
+                "'p'"
+            ],
+            "RHS": [
+                "'m'",
+                "'f'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'m'",
+                "'p'"
+            ],
+            "RHS": [
+                "'a'",
+                "'f'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'a'",
+                "'f'",
+                "'p'"
+            ],
+            "RHS": [
+                "'m'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'m'",
+                "'f'",
+                "'p'"
+            ],
+            "RHS": [
+                "'a'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'l'",
+                "'c'"
+            ],
+            "RHS": [
+                "'m'",
+                "'f'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'l'",
+                "'f'"
+            ],
+            "RHS": [
+                "'m'",
+                "'c'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'m'",
+                "'p'"
+            ],
+            "RHS": [
+                "'f'",
+                "'c'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'f'",
+                "'c'",
+                "'p'"
+            ],
+            "RHS": [
+                "'m'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'a'",
+                "'c'",
+                "'p'"
+            ],
+            "RHS": [
+                "'m'",
+                "'f'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'a'",
+                "'f'",
+                "'p'"
+            ],
+            "RHS": [
+                "'m'",
+                "'c'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'m'",
+                "'c'",
+                "'p'"
+            ],
+            "RHS": [
+                "'a'",
+                "'f'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "'m'",
+                "'f'",
+                "'p'"
+            ],
+            "RHS": [
+                "'a'",
+                "'c'"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        }
+    ]
+}

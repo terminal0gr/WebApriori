@@ -7,6 +7,10 @@
 16/06/2024 Upload AutoML WebApriori to NIREAS
 
 
+All Frequent Itemsets: Apriori, FpGrowth, dclat, H-Mine, LCM, Fin, LCMFreq
+Top K AR: TopKRules, TNR (without redundancy)
+
+
 
 DONE - V01.00.00 04/09/2024 10/06/2024 AutoML type 2-INV Dataset type for finding the grouping and item column - Tested in all INV Type datasets. High accuracy achieved
 DONE - V01.00.00 31/08/2024 23/08/2024 Thorough Test for all datasets in 'filter participating items' must be done! Done partially in huge item datasets

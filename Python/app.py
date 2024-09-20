@@ -2,7 +2,7 @@ import sys
 import os
 from flask import Flask, request, jsonify
 import time
-import Python.Main01W as apriori
+import Main01W as apriori
 
 app = Flask(__name__)
 

@@ -1,0 +1,31 @@
+from mlxtend.frequent_patterns import fpgrowth
+from mlxtend.frequent_patterns import apriori
+from time import time
+import pandas as pd
+
+# Sample transactions
+transactions = [
+    ['f', 'a', 'c', 'd', 'g', 'i', 'm', 'p'],
+    ['a', 'b', 'c', 'f', 'l', 'm', 'o'],
+    ['b', 'f', 'h', 'j', 'o', 'p'],
+    ['b', 'c', 'k', 's', 'p'],
+    ['a', 'f', 'c', 'e', 'l', 'p', 'm', 'n']
+]
+
+# Convert transactions to one-hot encoded DataFrame
+from mlxtend.preprocessing import TransactionEncoder
+te = TransactionEncoder()
+te_ary = te.fit(transactions).transform(transactions)
+df = pd.DataFrame(te_ary, columns=te.columns_)
+
+recordTime=time()
+frequent_itemsets = apriori(df, min_support=0.6, low_memory=True, use_colnames=True)
+print(frequent_itemsets)
+recordTime=time()-recordTime
+print(recordTime)
+
+recordTime=time()
+frequent_itemsets = fpgrowth(df, min_support=0.6, use_colnames=True)
+print(frequent_itemsets)
+recordTime=time()-recordTime
+print(recordTime)

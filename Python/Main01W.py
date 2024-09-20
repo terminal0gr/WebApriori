@@ -622,9 +622,9 @@ class webApriori():
                 for index, item in enumerate(sublist):
 
                     if self.hasHeader and self.datasetType==4 and 'header' in self.jsonData:
-                        uniqueItem=str(self.jsonData['header'][index]) + '=' + str(item)
+                        uniqueItem=str(self.jsonData['header'][index]) + '=' + str(item.strip())
                     else:    
-                        uniqueItem=str(item)
+                        uniqueItem=str(item.strip())
 
                     if uniqueItem not in uniqueItems:
                         

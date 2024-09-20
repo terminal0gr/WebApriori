@@ -51,9 +51,9 @@ class itemsetManager(object):
             
             #Malliaridis 15/8/2024.
             if hasHeader and datasetType==4 and 'header' in jsonData:
-                item=str(jsonData['header'][index]) + '=' + str(item)
+                item=str(jsonData['header'][index]) + '=' + str(item.strip())
             else:
-                item=str(item)
+                item=str(item.strip())
 
             if item not in self.__itemset_index_map:
                 self.__items.append(item)
@@ -359,7 +359,10 @@ def webApriori(itemsets, **kwargs):
     frequent_itemsets = generate_frequent_itemsets(itemset_manager, min_support, max_length=max_length)
     
     # Calculate rule stats.
+    idx=0
     for frequent_itemset in frequent_itemsets:
+        print(f"{idx}\t{frequent_itemset.items}\t{frequent_itemset.support}")
+        idx+=1
         rule_statistics = list(gen_rule_statistics(itemset_manager, frequent_itemset, min_confidence=min_confidence, min_lift=min_lift))
         
         if not rule_statistics:
@@ -596,9 +599,9 @@ def retrieveParticipatingItems(records=None):
             for index, item in enumerate(sublist):
 
                 if hasHeader and datasetType==4 and 'header' in jsonData:
-                    uniqueItem=str(jsonData['header'][index]) + '=' + str(item)
+                    uniqueItem=str(jsonData['header'][index]) + '=' + str(item.strip())
                 else:    
-                    uniqueItem=str(item)
+                    uniqueItem=str(item.strip())
 
                 if uniqueItem not in uniqueItems:
                      
@@ -769,7 +772,7 @@ try:
     if 'min_lift' in jsonData:
         min_lift=jsonData['min_lift']
 
-    max_length=2
+    max_length=4
     if 'max_length' in jsonData:
         max_length=jsonData['max_length']
 
