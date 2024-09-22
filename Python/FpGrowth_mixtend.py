@@ -35,6 +35,6 @@ print(recordTime)
 
 recordTime=time()
 frequent_itemsets = fpgrowth(df, min_support=0.6, use_colnames=True)
-print(frequent_itemsets)
 recordTime=time()-recordTime
+print(frequent_itemsets)
 print(recordTime)

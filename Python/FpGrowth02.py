@@ -118,7 +118,12 @@ def find_frequent_itemsets(transactions, minimum_support):
             item_support[item] += 1
 
     # Keep only items that meet the minimum support threshold
-    frequent_items = {item for item, count in item_support.items() if count >= minimum_support}
+    # frequent_items = {item for item, count in item_support.items() if count >= minimum_support}
+    # Create a set with keys where the value is >= minimum support threshold, ordered by support desc and key asc
+    # frequent_items = {key for key, value in sorted(item_support.items(), key=lambda x: (-x[1], x[0])) if value >= minimum_support}
+
+    item_support = {item: count for item, count in sorted(item_support.items(), key=lambda x: (-x[1], x[0])) if count >= minimum_support}
+    frequent_items = {item for item, value in item_support.items()}
 
     # Sort transactions by item frequency in descending order and add to the tree
     for transaction in transactions:
