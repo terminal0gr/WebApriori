@@ -12,6 +12,15 @@ transactions = [
     ['a', 'f', 'c', 'e', 'l', 'p', 'm', 'n']
 ]
 
+# https://chatgpt.com/share/66f005dc-9a30-800b-b3d3-60500be509ae
+
+# transactions = [
+#     ['A', 'B', 'D'],
+#     ['B', 'C', 'E'],
+#     ['A', 'B', 'C', 'E'],
+#     ['B', 'E']
+# ]
+
 # Convert transactions to one-hot encoded DataFrame
 from mlxtend.preprocessing import TransactionEncoder
 te = TransactionEncoder()
