@@ -1,5 +1,4 @@
-from mlxtend.frequent_patterns import fpgrowth
-from mlxtend.frequent_patterns import apriori
+from mlxtend.frequent_patterns import apriori, fpgrowth, association_rules
 from time import time
 import pandas as pd
 
@@ -27,14 +26,21 @@ te = TransactionEncoder()
 te_ary = te.fit(transactions).transform(transactions)
 df = pd.DataFrame(te_ary, columns=te.columns_)
 
-recordTime=time()
-frequent_itemsets = apriori(df, min_support=0.6, low_memory=True, use_colnames=True)
-print(frequent_itemsets)
-recordTime=time()-recordTime
-print(recordTime)
+# recordTime=time()
+# frequent_itemsets = apriori(df, min_support=0.6, low_memory=True, use_colnames=True)
+# print(frequent_itemsets)
+# recordTime=time()-recordTime
+# print(recordTime)
 
 recordTime=time()
 frequent_itemsets = fpgrowth(df, min_support=0.6, use_colnames=True)
 recordTime=time()-recordTime
 print(frequent_itemsets)
 print(recordTime)
+
+recordTime=time()
+ARs = association_rules(frequent_itemsets, metric="lift", min_threshold=1.5)
+recordTime=time()-recordTime
+print(recordTime)
+print(ARs)
+

@@ -13,7 +13,7 @@ import Global
 max_rules=1000
 max_items=999
 
-__Version__ = '02.00.00 28/03/2024'
+__Version__ = '02.00.00 29/09/2024'
 __Developer__ = 'Malliaridis konstantinos'
 __DeveloperEmail__= 'terminal_gr@yahoo.com'
 __University__= 'International Hellenic University'
@@ -793,7 +793,7 @@ class webApriori():
                     descending=True
 
                 str=self.output_association_rules(association_results, sort_index=abs(self.sSort), descending=descending, fileName=self.datasetName, public=self.public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
-                print(str)
+                # print(str)
                 return(str)
 
             else:

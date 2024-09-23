@@ -231,8 +231,8 @@
     file_put_contents($fpatho, $json_string);
 
 
-    $Call = "http://localhost:8081/retrieveRules";
-    // $Call = "http://localhost:5000/retrieveRules";
+    //$Call = "http://localhost:8081/retrieveRules";
+    $Call = "http://localhost:5000/retrieveRules";
     //Call Python for Association rules mining via flask and waitress
     $input=http_build_query(array('identity' => $identity, 
                                  'filename' => $filename,
