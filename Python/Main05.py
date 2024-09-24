@@ -536,7 +536,7 @@ def output_association_rules(association_results, sort_index, descending=True, f
                     os.makedirs(publicFilePath)
                 file = open(os.path.join('output', identity, 'p', os.path.splitext(fileName)[0] + ext),'w')
                 
-            Hlist = ['LHS', 'RHS', 'Confidence', 'Lift', 'Conviction', 'Leverage', 'LHS_Count', 'LHS_Support', 'RHS_Count', 'RHS_Support', 'Support', 'Count'] 
+            Hlist = ['LHS', 'RHS', 'Confidence', 'Lift', 'Conviction', 'Leverage', 'LHS_Count', 'LHS_Support', 'RHS_Count', 'RHS_Support', 'Support', 'Count', 'FrequentItemset'] 
             dictRules = {}
             
             dictRules['min_support'] = min_support
@@ -553,6 +553,10 @@ def output_association_rules(association_results, sort_index, descending=True, f
             dictRules['RulesCreationTime'] = '{0:.3f}'.format(assocTime)
             
             dictRules['rules'] = []
+
+
+
+
             for rule in association_results:
                 dictRules['rules'].append(dict(zip(Hlist, rule)))
                 
@@ -821,16 +825,49 @@ try:
 
         recordTime=time()-recordTime
 
-        assocTime=time()
-        association_results = list(webApriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length))
-        association_results = transform_association_rules(association_results,redundantRemoveType)
-        assocTime=time()-assocTime
+        if callType==0: # Apriori Algorithm
 
-        descending=False
-        if ssort<0:
-            descending=True
+            assocTime=time()
+            association_results = list(webApriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length))
+            association_results = transform_association_rules(association_results,redundantRemoveType)
+            assocTime=time()-assocTime
 
-        output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, public=public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
+            descending=False
+            if ssort<0:
+                descending=True
+
+            # print(association_results)
+            output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, public=public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
+
+
+        if callType==2: # FPGrowth Algorithm
+            # Convert transactions to one-hot encoded DataFrame
+            from mlxtend.preprocessing import TransactionEncoder
+            from mlxtend.frequent_patterns import apriori, fpgrowth, association_rules
+
+            te = TransactionEncoder()
+            te_ary = te.fit(records).transform(records)
+            df = pd.DataFrame(te_ary, columns=te.columns_)
+
+            recordTime=time()
+            # Find frequent Itemsets
+            frequent_itemsets = fpgrowth(df, min_support=min_support, use_colnames=True)
+            # print(frequent_itemsets)
+
+            # Find Association Rules
+            ARs = association_rules(frequent_itemsets, metric="lift", min_threshold=min_lift)
+
+            ARs = ARs.drop('zhangs_metric', axis=1) #Delete the column
+            ARs=ARs.set_axis(['LHS', 'RHS', 'LHS_Support', 'RHS_Support', 'Support', 'Confidence', 'Lift', 'Leverage', 'Conviction'], axis=1) #Rename the columns
+            ARs['LHS_Count']=(ARs['LHS_Support']*len(records)).round().astype(int)
+            ARs['RHS_Count']=(ARs['RHS_Support']*len(records)).round().astype(int)
+            ARs['Count']=(ARs['Support']*len(records)).round().astype(int)
+            ARs = ARs[['LHS', 'RHS', 'Confidence', 'Lift', 'Conviction', 'Leverage', 'LHS_Count', 'LHS_Support', 'RHS_Count', 'RHS_Support', 'Support', 'Count']]
+
+            recordTime=time()-recordTime
+            print(recordTime)
+            print(ARs)
+
 
     else:
         print("An error occurred: Could not retrieve records capable for frequent itemsets or Association Rules Mining")

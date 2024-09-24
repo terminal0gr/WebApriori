@@ -174,8 +174,8 @@
             "justMyCode": false,
             "args": [
                 "79d1727987f200802593e3599119c966",
-                "FpGrowthSample.txt",
-                "0","0"
+                "FpGrowthSampleWithoutquotes.txt",
+                "0","2"
             ],
             "console": "integratedTerminal"
         },

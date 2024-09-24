@@ -1,7 +1,7 @@
 <?php 
     //Msqli Settings
 	define( 'USERNAME', 'root' );
-	define( 'PWD', '' );   
+	define( 'PWD', 'Mntreo!@' );   
 	define( 'DB', 'aprioriBase' );   
 	define( 'HOST', 'localhost' ); 
 

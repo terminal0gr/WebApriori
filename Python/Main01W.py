@@ -783,18 +783,40 @@ class webApriori():
 
                 recordTime=time()-recordTime
 
-                assocTime=time()
-                association_results = list(self.mainApriori(records, min_support=self.min_support, min_confidence=self.min_confidence, min_lift=self.min_lift, max_length=self.max_length))
-                association_results = self.transform_association_rules(association_results,self.redundantRemoveType)
-                assocTime=time()-assocTime
+                if self.callType==0: # Apriori Algorithm
 
-                descending=False
-                if self.sSort<0:
-                    descending=True
+                    assocTime=time()
+                    association_results = list(self.mainApriori(records, min_support=self.min_support, min_confidence=self.min_confidence, min_lift=self.min_lift, max_length=self.max_length))
+                    association_results = self.transform_association_rules(association_results,self.redundantRemoveType)
+                    assocTime=time()-assocTime
 
-                str=self.output_association_rules(association_results, sort_index=abs(self.sSort), descending=descending, fileName=self.datasetName, public=self.public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
-                # print(str)
-                return(str)
+                    descending=False
+                    if self.sSort<0:
+                        descending=True
+
+                    str=self.output_association_rules(association_results, sort_index=abs(self.sSort), descending=descending, fileName=self.datasetName, public=self.public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
+                    # print(str)
+                    return(str)
+                
+                if self.callType==2: # FPGrowth Algorithm
+                    # Convert transactions to one-hot encoded DataFrame
+                    from mlxtend.preprocessing import TransactionEncoder
+                    from mlxtend.frequent_patterns import apriori, fpgrowth, association_rules
+
+                    te = TransactionEncoder()
+                    te_ary = te.fit(records).transform(records)
+                    df = pd.DataFrame(te_ary, columns=te.columns_)
+
+                    recordTime=time()
+                    # Find frequent Itemsets
+                    frequent_itemsets = fpgrowth(df, min_support=0.6, use_colnames=True)
+                    # print(frequent_itemsets)
+
+                    # Find Association Rules
+                    ARs = association_rules(frequent_itemsets, metric="lift", min_threshold=1.5)
+                    recordTime=time()-recordTime
+                    print(recordTime)
+                    print(ARs)
 
             else:
                 print("An error occurred: Could not retrieve records capable for frequent itemsets or Association Rules Mining")

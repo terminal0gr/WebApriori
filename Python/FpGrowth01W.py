@@ -2,6 +2,8 @@ from mlxtend.frequent_patterns import apriori, fpgrowth, association_rules
 from time import time
 import pandas as pd
 
+
+
 # Sample transactions
 transactions = [
     ['f', 'a', 'c', 'd', 'g', 'i', 'm', 'p'],
@@ -33,7 +35,7 @@ df = pd.DataFrame(te_ary, columns=te.columns_)
 # print(recordTime)
 
 recordTime=time()
-frequent_itemsets = fpgrowth(df, min_support=0.4, use_colnames=True)
+frequent_itemsets = fpgrowth(df, min_support=0.6, use_colnames=True)
 recordTime=time()-recordTime
 print(frequent_itemsets)
 print(recordTime)
