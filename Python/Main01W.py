@@ -765,6 +765,7 @@ class webApriori():
                 self.participatingItems=self.jsonData['participatingItems'] 
 
             #Time starts here
+            # recordTime: The time of reading and transforming adequally the dataset for use in ARM
             #################
             recordTime=time()
             #################    
@@ -775,7 +776,7 @@ class webApriori():
                 
                 # Retrieve the current participating Item List in JSON format.
                 self.excludedItems={}
-                if self.callType==1:
+                if self.callType==1: # Retrieval of the participating items
                     self.retrieveParticipatingItems(records)
                     return "Ok"
                 else:
@@ -783,40 +784,64 @@ class webApriori():
 
                 recordTime=time()-recordTime
 
-                if self.callType==0: # Apriori Algorithm
+                # Σειρά ή μετρική εξόδου
+                descending=False
+                if self.sSort<0:
+                    descending=True
 
-                    assocTime=time()
+                # assocTime: The time of creating the frequent itemsets and ARs plus the time for the adquate transformation for the results.
+                #################
+                assocTime=time()
+                ################# 
+
+                if self.callType==0: # Mine Apriori Algorithm
+
                     association_results = list(self.mainApriori(records, min_support=self.min_support, min_confidence=self.min_confidence, min_lift=self.min_lift, max_length=self.max_length))
                     association_results = self.transform_association_rules(association_results,self.redundantRemoveType)
-                    assocTime=time()-assocTime
-
-                    descending=False
-                    if self.sSort<0:
-                        descending=True
-
-                    str=self.output_association_rules(association_results, sort_index=abs(self.sSort), descending=descending, fileName=self.datasetName, public=self.public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
-                    # print(str)
-                    return(str)
                 
-                if self.callType==2: # FPGrowth Algorithm
+                if self.callType>=2 and  self.callType<=4: # Apriori, FPGrowth and FP-Max (Maximal itemsets mining) Algorithm via mlxtend library
+                    # Maximal itemsets definintion: An itemset X is said to maximal if X is frequent and there exists no frequent super-pattern containing X. In other words, a frequent pattern X cannot be sub-pattern of larger frequent pattern to qualify for the definition maximal itemset.
                     # Convert transactions to one-hot encoded DataFrame
                     from mlxtend.preprocessing import TransactionEncoder
-                    from mlxtend.frequent_patterns import apriori, fpgrowth, association_rules
+                    from mlxtend.frequent_patterns import apriori, fpgrowth, fpmax, association_rules
 
                     te = TransactionEncoder()
                     te_ary = te.fit(records).transform(records)
                     df = pd.DataFrame(te_ary, columns=te.columns_)
 
-                    recordTime=time()
                     # Find frequent Itemsets
-                    frequent_itemsets = fpgrowth(df, min_support=0.6, use_colnames=True)
+                    if self.callType==2:
+                        frequent_itemsets = apriori(df, min_support=self.min_support, use_colnames=True, max_len=self.max_length)
+                    elif self.callType==3:
+                        frequent_itemsets = fpgrowth(df, min_support=self.min_support, use_colnames=True, max_len=self.max_length)
+                    else:
+                        frequent_itemsets = fpmax(df, min_support=self.min_support, use_colnames=True, max_len=self.max_length)
+
                     # print(frequent_itemsets)
 
                     # Find Association Rules
-                    ARs = association_rules(frequent_itemsets, metric="lift", min_threshold=1.5)
-                    recordTime=time()-recordTime
-                    print(recordTime)
-                    print(ARs)
+                    ARs = association_rules(frequent_itemsets, metric="lift", min_threshold=self.min_lift)
+
+                    #Delete the column
+                    ARs = ARs.drop('zhangs_metric', axis=1) 
+                    #Rename the columns to fit with the need of the frontend
+                    ARs=ARs.set_axis(['LHS', 'RHS', 'LHS_Support', 'RHS_Support', 'Support', 'Confidence', 'Lift', 'Leverage', 'Conviction'], axis=1) 
+                    #Compute LHS_Count, RHS_Count, Count from support, because are not contained if mlxtend code.
+                    ARs['LHS_Count']=(ARs['LHS_Support']*len(records)).round().astype(int)
+                    ARs['RHS_Count']=(ARs['RHS_Support']*len(records)).round().astype(int)
+                    ARs['Count']=(ARs['Support']*len(records)).round().astype(int)
+                    #Rearrange the columns to fit with the need of the frontend
+                    ARs = ARs[['LHS', 'RHS', 'Confidence', 'Lift', 'Conviction', 'Leverage', 'LHS_Count', 'LHS_Support', 'RHS_Count', 'RHS_Support', 'Support', 'Count']]
+                    ARs['LHS']=ARs['LHS'].apply(list)
+                    ARs['RHS']=ARs['RHS'].apply(list)
+                    association_results=ARs.values.tolist()
+
+                ##########################
+                assocTime=time()-assocTime
+                ##########################
+
+                str=self.output_association_rules(association_results, sort_index=abs(self.sSort), descending=descending, fileName=self.datasetName, public=self.public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
+                return(str)
 
             else:
                 print("An error occurred: Could not retrieve records capable for frequent itemsets or Association Rules Mining")

@@ -3,13 +3,13 @@
     "min_confidence": 0.2,
     "min_lift": 1.5,
     "max_length": 6,
-    "ssort": -3,
+    "sSort": -3,
     "datasetName": "FpGrowthSampleWithoutquotes.txt",
     "redundantRemoveType": 0,
     "Records": 5,
-    "RecordsCreationTime": "0.008",
+    "RecordsCreationTime": "0.007",
     "RulesCount": 176,
-    "RulesCreationTime": "0.016",
+    "RulesCreationTime": "0.009",
     "rules": [
         {
             "LHS": [
@@ -28,12 +28,7 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "b",
-                "f",
-                "o"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -52,12 +47,7 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "b",
-                "f",
-                "o"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -75,11 +65,7 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -97,11 +83,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -119,11 +101,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
@@ -141,11 +119,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
@@ -163,11 +137,7 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "b",
-                "o"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -185,11 +155,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "b",
-                "o"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -207,11 +173,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -229,11 +191,7 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -252,12 +210,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
@@ -276,12 +229,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
@@ -300,20 +248,15 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "l"
             ],
             "RHS": [
-                "a",
-                "c"
+                "c",
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -324,17 +267,12 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
-                "c"
+                "c",
+                "a"
             ],
             "RHS": [
                 "l"
@@ -348,12 +286,7 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -372,43 +305,14 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "a"
             ],
             "RHS": [
-                "c",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "a",
+                "m",
                 "c"
             ],
             "Confidence": 1.0,
@@ -420,43 +324,52 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
-                "a",
+                "m"
+            ],
+            "RHS": [
+                "c",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "c",
+                "a"
+            ],
+            "RHS": [
+                "m"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "m",
                 "c"
             ],
             "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "c",
-                "m"
-            ],
-            "RHS": [
                 "a"
             ],
             "Confidence": 1.0,
@@ -468,20 +381,15 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
                 "a"
             ],
             "RHS": [
-                "l",
-                "f"
+                "f",
+                "l"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -492,20 +400,15 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "l"
             ],
             "RHS": [
-                "a",
-                "f"
+                "f",
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -516,17 +419,12 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
-                "f"
+                "f",
+                "a"
             ],
             "RHS": [
                 "l"
@@ -540,17 +438,12 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "l",
-                "f"
+                "f",
+                "l"
             ],
             "RHS": [
                 "a"
@@ -564,43 +457,14 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "a"
             ],
             "RHS": [
-                "f",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "a",
+                "m",
                 "f"
             ],
             "Confidence": 1.0,
@@ -612,43 +476,52 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
-                "a",
+                "m"
+            ],
+            "RHS": [
+                "f",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "f",
+                "a"
+            ],
+            "RHS": [
+                "m"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "m",
                 "f"
             ],
             "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "f",
-                "m"
-            ],
-            "RHS": [
                 "a"
             ],
             "Confidence": 1.0,
@@ -660,67 +533,14 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
                 "a"
             ],
             "RHS": [
-                "l",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "l"
-            ],
-            "RHS": [
-                "a",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "a",
+                "m",
                 "l"
             ],
             "Confidence": 0.6666666666666667,
@@ -732,17 +552,50 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
                 "l"
+            ],
+            "RHS": [
+                "m",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m"
+            ],
+            "RHS": [
+                "l",
+                "a"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "l",
+                "a"
             ],
             "RHS": [
                 "m"
@@ -756,17 +609,12 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
-                "m"
+                "m",
+                "a"
             ],
             "RHS": [
                 "l"
@@ -780,17 +628,12 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "l",
-                "m"
+                "m",
+                "l"
             ],
             "RHS": [
                 "a"
@@ -804,20 +647,34 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "a"
+            ],
+            "RHS": [
+                "m",
+                "p"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m"
             ],
             "RHS": [
                 "p",
-                "m"
+                "a"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -828,65 +685,31 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "p"
-            ],
-            "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "p",
+                "a"
+            ],
+            "RHS": [
                 "m"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "p"
             ],
             "RHS": [
                 "a"
@@ -900,12 +723,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -924,12 +742,7 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "b",
-                "f",
-                "o"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -948,12 +761,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "b",
-                "f",
-                "o"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -972,12 +780,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -996,12 +799,7 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -1020,12 +818,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
@@ -1044,20 +837,15 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
                 "l"
             ],
             "RHS": [
-                "c",
-                "m"
+                "m",
+                "c"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -1068,12 +856,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -1092,12 +875,7 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -1116,17 +894,12 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "c",
-                "m"
+                "m",
+                "c"
             ],
             "RHS": [
                 "l"
@@ -1140,20 +913,15 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "l"
             ],
             "RHS": [
-                "f",
-                "m"
+                "m",
+                "f"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -1164,20 +932,15 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "m"
             ],
             "RHS": [
-                "l",
-                "f"
+                "f",
+                "l"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -1188,17 +951,12 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "l",
-                "f"
+                "f",
+                "l"
             ],
             "RHS": [
                 "m"
@@ -1212,17 +970,12 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "f",
-                "m"
+                "m",
+                "f"
             ],
             "RHS": [
                 "l"
@@ -1236,21 +989,16 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "a"
             ],
             "RHS": [
-                "l",
                 "f",
-                "c"
+                "c",
+                "l"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -1261,22 +1009,16 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "l"
             ],
             "RHS": [
-                "a",
                 "f",
-                "c"
+                "c",
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -1287,22 +1029,16 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
-                "c"
+                "c",
+                "a"
             ],
             "RHS": [
-                "l",
-                "f"
+                "f",
+                "l"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -1313,18 +1049,12 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
-                "f"
+                "f",
+                "a"
             ],
             "RHS": [
                 "l",
@@ -1339,18 +1069,12 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
-                "l"
+                "l",
+                "a"
             ],
             "RHS": [
                 "f",
@@ -1365,13 +1089,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -1379,8 +1097,8 @@
                 "c"
             ],
             "RHS": [
-                "a",
-                "l"
+                "l",
+                "a"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -1391,13 +1109,7 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -1405,8 +1117,8 @@
                 "c"
             ],
             "RHS": [
-                "a",
-                "f"
+                "f",
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -1417,22 +1129,16 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "l",
-                "f"
+                "f",
+                "l"
             ],
             "RHS": [
-                "a",
-                "c"
+                "c",
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -1443,19 +1149,13 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
                 "f",
-                "c"
+                "c",
+                "a"
             ],
             "RHS": [
                 "l"
@@ -1469,19 +1169,13 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "l",
                 "f",
-                "c"
+                "c",
+                "l"
             ],
             "RHS": [
                 "a"
@@ -1495,46 +1189,14 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "a"
             ],
             "RHS": [
-                "f",
-                "c",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "a",
+                "m",
                 "f",
                 "c"
             ],
@@ -1547,22 +1209,16 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
-                "a",
-                "c"
+                "m"
             ],
             "RHS": [
                 "f",
-                "m"
+                "c",
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -1573,22 +1229,36 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
-                "a",
+                "c",
+                "a"
+            ],
+            "RHS": [
+                "m",
                 "f"
             ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "f",
+                "a"
+            ],
             "RHS": [
-                "c",
-                "m"
+                "m",
+                "c"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -1599,18 +1269,12 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
-                "a",
-                "m"
+                "m",
+                "a"
             ],
             "RHS": [
                 "f",
@@ -1625,13 +1289,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
@@ -1639,8 +1297,8 @@
                 "c"
             ],
             "RHS": [
-                "a",
-                "m"
+                "m",
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -1651,48 +1309,36 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
-                "c",
-                "m"
+                "m",
+                "c"
             ],
             "RHS": [
-                "a",
+                "f",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "m",
                 "f"
             ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "f",
-                "m"
-            ],
             "RHS": [
-                "a",
-                "c"
+                "c",
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -1703,19 +1349,13 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
-                "a",
                 "f",
-                "c"
+                "c",
+                "a"
             ],
             "RHS": [
                 "m"
@@ -1729,19 +1369,13 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
+                "m",
                 "f",
-                "c",
-                "m"
+                "c"
             ],
             "RHS": [
                 "a"
@@ -1755,22 +1389,16 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.6,
-            "Count": 3,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m"
-            ]
+            "Count": 3
         },
         {
             "LHS": [
                 "a"
             ],
             "RHS": [
-                "p",
                 "f",
-                "c"
+                "c",
+                "p"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -1781,18 +1409,12 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
-                "p"
+                "p",
+                "a"
             ],
             "RHS": [
                 "f",
@@ -1807,13 +1429,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -1821,8 +1437,8 @@
                 "c"
             ],
             "RHS": [
-                "a",
-                "p"
+                "p",
+                "a"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -1833,19 +1449,13 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "p",
                 "f",
-                "c"
+                "c",
+                "p"
             ],
             "RHS": [
                 "a"
@@ -1859,101 +1469,17 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "a"
             ],
             "RHS": [
+                "m",
                 "l",
-                "c",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "l"
-            ],
-            "RHS": [
-                "a",
-                "c",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "c",
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
                 "c"
             ],
-            "RHS": [
-                "l",
-                "m"
-            ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
             "Conviction": 1.8000000000000003,
@@ -1963,22 +1489,16 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
                 "l"
             ],
             "RHS": [
+                "m",
                 "c",
-                "m"
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -1989,18 +1509,72 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
                 "m"
+            ],
+            "RHS": [
+                "l",
+                "c",
+                "a"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "c",
+                "a"
+            ],
+            "RHS": [
+                "m",
+                "l"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "l",
+                "a"
+            ],
+            "RHS": [
+                "m",
+                "c"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "a"
             ],
             "RHS": [
                 "l",
@@ -2015,13 +1589,7 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -2029,8 +1597,8 @@
                 "c"
             ],
             "RHS": [
-                "a",
-                "m"
+                "m",
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -2041,22 +1609,16 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "c",
-                "m"
+                "m",
+                "c"
             ],
             "RHS": [
-                "a",
-                "l"
+                "l",
+                "a"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -2067,22 +1629,16 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "l",
-                "m"
+                "m",
+                "l"
             ],
             "RHS": [
-                "a",
-                "c"
+                "c",
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -2093,19 +1649,13 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
                 "l",
-                "c"
+                "c",
+                "a"
             ],
             "RHS": [
                 "m"
@@ -2119,19 +1669,13 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
+                "m",
                 "c",
-                "m"
+                "a"
             ],
             "RHS": [
                 "l"
@@ -2145,19 +1689,13 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
+                "m",
                 "l",
-                "c",
-                "m"
+                "c"
             ],
             "RHS": [
                 "a"
@@ -2171,46 +1709,14 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "a"
             ],
             "RHS": [
-                "p",
-                "c",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
                 "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "a",
                 "c",
                 "p"
             ],
@@ -2223,72 +1729,14 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
-                "c"
-            ],
-            "RHS": [
-                "p",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "p"
-            ],
-            "RHS": [
-                "c",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "c",
                 "m"
             ],
             "RHS": [
+                "c",
                 "a",
                 "p"
             ],
@@ -2301,21 +1749,35 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
+            "Count": 2
+        },
+        {
+            "LHS": [
                 "c",
+                "a"
+            ],
+            "RHS": [
                 "m",
                 "p"
-            ]
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
         },
         {
             "LHS": [
                 "p",
-                "m"
+                "a"
             ],
             "RHS": [
-                "a",
+                "m",
                 "c"
             ],
             "Confidence": 1.0,
@@ -2327,18 +1789,52 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
+                "m",
+                "c"
+            ],
+            "RHS": [
+                "p",
+                "a"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "p"
+            ],
+            "RHS": [
                 "c",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "c",
+                "a",
                 "p"
             ],
             "RHS": [
@@ -2353,19 +1849,13 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "p",
+                "m",
                 "c",
-                "m"
+                "p"
             ],
             "RHS": [
                 "a"
@@ -2379,22 +1869,16 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "a"
             ],
             "RHS": [
-                "l",
+                "m",
                 "f",
-                "m"
+                "l"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -2405,22 +1889,16 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "l"
             ],
             "RHS": [
-                "a",
+                "m",
                 "f",
-                "m"
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -2431,21 +1909,35 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "m"
             ],
             "RHS": [
-                "a",
                 "f",
+                "l",
+                "a"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "f",
+                "a"
+            ],
+            "RHS": [
+                "m",
                 "l"
             ],
             "Confidence": 0.6666666666666667,
@@ -2457,151 +1949,15 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "f"
-            ],
-            "RHS": [
-                "l",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "l"
-            ],
-            "RHS": [
-                "f",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "m"
-            ],
-            "RHS": [
-                "l",
-                "f"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "l",
-                "f"
+                "a"
             ],
             "RHS": [
-                "a",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "f",
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "l",
-                "m"
-            ],
-            "RHS": [
-                "a",
+                "m",
                 "f"
             ],
             "Confidence": 1.0,
@@ -2613,19 +1969,93 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
+                "m",
+                "a"
+            ],
+            "RHS": [
                 "f",
                 "l"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "f",
+                "l"
+            ],
+            "RHS": [
+                "m",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "f"
+            ],
+            "RHS": [
+                "l",
+                "a"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "l"
+            ],
+            "RHS": [
+                "f",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "f",
+                "l",
+                "a"
             ],
             "RHS": [
                 "m"
@@ -2639,19 +2069,13 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
+                "m",
                 "f",
-                "m"
+                "a"
             ],
             "RHS": [
                 "l"
@@ -2665,19 +2089,13 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "l",
+                "m",
                 "f",
-                "m"
+                "l"
             ],
             "RHS": [
                 "a"
@@ -2691,22 +2109,36 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "a"
             ],
             "RHS": [
+                "m",
+                "f",
+                "p"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m"
+            ],
+            "RHS": [
+                "f",
                 "p",
-                "f",
-                "m"
+                "a"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -2717,99 +2149,15 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "f",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "f"
-            ],
-            "RHS": [
-                "p",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "p"
-            ],
-            "RHS": [
-                "f",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "f",
-                "m"
+                "a"
             ],
             "RHS": [
-                "a",
+                "m",
                 "p"
             ],
             "Confidence": 0.6666666666666667,
@@ -2821,21 +2169,15 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "p",
-                "m"
+                "a"
             ],
             "RHS": [
-                "a",
+                "m",
                 "f"
             ],
             "Confidence": 1.0,
@@ -2847,19 +2189,53 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
-                "f",
+                "m",
+                "f"
+            ],
+            "RHS": [
+                "p",
+                "a"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
                 "p"
+            ],
+            "RHS": [
+                "f",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "f",
+                "p",
+                "a"
             ],
             "RHS": [
                 "m"
@@ -2873,19 +2249,13 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "p",
+                "m",
                 "f",
-                "m"
+                "p"
             ],
             "RHS": [
                 "a"
@@ -2899,22 +2269,16 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "l"
             ],
             "RHS": [
+                "m",
                 "f",
-                "c",
-                "m"
+                "c"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -2925,22 +2289,16 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "m"
             ],
             "RHS": [
-                "l",
                 "f",
-                "c"
+                "c",
+                "l"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -2951,13 +2309,7 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -2965,8 +2317,8 @@
                 "c"
             ],
             "RHS": [
-                "l",
-                "m"
+                "m",
+                "l"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -2977,13 +2329,7 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -2991,35 +2337,29 @@
                 "c"
             ],
             "RHS": [
-                "f",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "c",
-                "m"
-            ],
-            "RHS": [
-                "l",
+                "m",
                 "f"
             ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "c"
+            ],
+            "RHS": [
+                "f",
+                "l"
+            ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
             "Conviction": 1.8000000000000003,
@@ -3029,46 +2369,34 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "l",
+                "f",
+                "l"
+            ],
+            "RHS": [
+                "m",
+                "c"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
                 "f"
             ],
             "RHS": [
-                "c",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "f",
-                "m"
-            ],
-            "RHS": [
                 "l",
                 "c"
             ],
@@ -3081,18 +2409,12 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "l",
-                "m"
+                "m",
+                "l"
             ],
             "RHS": [
                 "f",
@@ -3107,19 +2429,13 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "l",
                 "f",
-                "c"
+                "c",
+                "l"
             ],
             "RHS": [
                 "m"
@@ -3133,19 +2449,13 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
+                "m",
                 "f",
-                "c",
-                "m"
+                "c"
             ],
             "RHS": [
                 "l"
@@ -3159,22 +2469,16 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "m"
             ],
             "RHS": [
-                "p",
                 "f",
-                "c"
+                "c",
+                "p"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -3185,13 +2489,7 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -3199,8 +2497,8 @@
                 "c"
             ],
             "RHS": [
-                "p",
-                "m"
+                "m",
+                "p"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -3211,18 +2509,12 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "p",
-                "m"
+                "m",
+                "p"
             ],
             "RHS": [
                 "f",
@@ -3237,19 +2529,13 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "p",
                 "f",
-                "c"
+                "c",
+                "p"
             ],
             "RHS": [
                 "m"
@@ -3263,23 +2549,17 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "a"
             ],
             "RHS": [
-                "l",
+                "m",
                 "f",
                 "c",
-                "m"
+                "l"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -3290,24 +2570,17 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "l"
             ],
             "RHS": [
-                "a",
+                "m",
                 "f",
                 "c",
-                "m"
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -3318,14 +2591,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
@@ -3333,7 +2599,91 @@
             ],
             "RHS": [
                 "f",
-                "a",
+                "c",
+                "l",
+                "a"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "c",
+                "a"
+            ],
+            "RHS": [
+                "m",
+                "f",
+                "l"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "f",
+                "a"
+            ],
+            "RHS": [
+                "m",
+                "l",
+                "c"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "l",
+                "a"
+            ],
+            "RHS": [
+                "m",
+                "f",
+                "c"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "a"
+            ],
+            "RHS": [
+                "f",
                 "c",
                 "l"
             ],
@@ -3346,24 +2696,17 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
+                "f",
                 "c"
             ],
             "RHS": [
+                "m",
                 "l",
-                "f",
-                "m"
+                "a"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -3374,24 +2717,80 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
+                "l",
+                "c"
+            ],
+            "RHS": [
+                "m",
+                "f",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "c"
+            ],
+            "RHS": [
+                "f",
+                "l",
+                "a"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "f",
+                "l"
+            ],
+            "RHS": [
+                "m",
+                "c",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
                 "f"
             ],
             "RHS": [
                 "l",
                 "c",
-                "m"
+                "a"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -3402,24 +2801,17 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
+                "m",
                 "l"
             ],
             "RHS": [
                 "f",
                 "c",
-                "m"
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -3430,107 +2822,16 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "m"
-            ],
-            "RHS": [
-                "l",
-                "f",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "f",
-                "c"
+                "c",
+                "a"
             ],
             "RHS": [
-                "a",
-                "l",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "l",
-                "c"
-            ],
-            "RHS": [
-                "a",
-                "f",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "c",
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "f",
+                "m",
                 "l"
             ],
             "Confidence": 0.6666666666666667,
@@ -3542,331 +2843,16 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "l",
-                "f"
-            ],
-            "RHS": [
-                "a",
-                "c",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "f",
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "c",
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "l",
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "f",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "f",
-                "c"
-            ],
-            "RHS": [
-                "l",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "l",
-                "c"
-            ],
-            "RHS": [
-                "f",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "c",
-                "m"
-            ],
-            "RHS": [
-                "l",
-                "f"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "f",
-                "l"
-            ],
-            "RHS": [
-                "c",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "f",
-                "m"
-            ],
-            "RHS": [
-                "l",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "l",
-                "m"
-            ],
-            "RHS": [
-                "f",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "l",
-                "f",
-                "c"
-            ],
-            "RHS": [
-                "a",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
-        },
-        {
-            "LHS": [
-                "f",
-                "c",
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "l",
                 "c",
-                "m"
+                "a"
             ],
             "RHS": [
-                "a",
+                "m",
                 "f"
             ],
             "Confidence": 1.0,
@@ -3878,23 +2864,37 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "l",
-                "f",
-                "m"
+                "m",
+                "c",
+                "a"
             ],
             "RHS": [
-                "a",
+                "f",
+                "l"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "f",
+                "l",
+                "a"
+            ],
+            "RHS": [
+                "m",
                 "c"
             ],
             "Confidence": 1.0,
@@ -3906,20 +2906,139 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
+                "m",
+                "f",
+                "a"
+            ],
+            "RHS": [
+                "l",
+                "c"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "l",
+                "a"
+            ],
+            "RHS": [
+                "f",
+                "c"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
                 "f",
                 "c",
+                "l"
+            ],
+            "RHS": [
+                "m",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "f",
+                "c"
+            ],
+            "RHS": [
+                "l",
+                "a"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "l",
+                "c"
+            ],
+            "RHS": [
+                "f",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "f",
+                "l"
+            ],
+            "RHS": [
+                "c",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "f",
+                "c",
+                "a",
                 "l"
             ],
             "RHS": [
@@ -3934,21 +3053,14 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
+                "m",
                 "f",
                 "c",
-                "m"
+                "a"
             ],
             "RHS": [
                 "l"
@@ -3962,21 +3074,14 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "l",
+                "m",
                 "f",
                 "c",
-                "m"
+                "l"
             ],
             "RHS": [
                 "a"
@@ -3990,24 +3095,17 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "l",
-                "m"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "a"
             ],
             "RHS": [
-                "p",
+                "m",
                 "f",
                 "c",
-                "m"
+                "p"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -4018,21 +3116,77 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "m"
             ],
             "RHS": [
-                "a",
+                "f",
+                "c",
+                "p",
+                "a"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "c",
+                "a"
+            ],
+            "RHS": [
+                "m",
+                "f",
+                "p"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "f",
+                "a"
+            ],
+            "RHS": [
+                "m",
+                "c",
+                "p"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "a"
+            ],
+            "RHS": [
                 "f",
                 "c",
                 "p"
@@ -4046,24 +3200,38 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
+                "p",
+                "a"
+            ],
+            "RHS": [
+                "m",
+                "f",
+                "c"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "f",
                 "c"
             ],
             "RHS": [
+                "m",
                 "p",
-                "f",
-                "m"
+                "a"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -4074,24 +3242,38 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
+                "m",
+                "c"
+            ],
+            "RHS": [
+                "f",
+                "p",
+                "a"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
                 "f"
             ],
             "RHS": [
-                "p",
                 "c",
-                "m"
+                "p",
+                "a"
             ],
             "Confidence": 0.6666666666666667,
             "Lift": 1.6666666666666667,
@@ -4102,52 +3284,17 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
-                "m"
-            ],
-            "RHS": [
-                "p",
-                "f",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
                 "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
                 "p"
             ],
             "RHS": [
                 "f",
                 "c",
-                "m"
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -4158,51 +3305,16 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
                 "f",
-                "c"
+                "c",
+                "a"
             ],
             "RHS": [
-                "a",
-                "p",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
                 "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "c",
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "f",
                 "p"
             ],
             "Confidence": 0.6666666666666667,
@@ -4214,247 +3326,16 @@
             "RHS_Count": 2,
             "RHS_Support": 0.4,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "f",
-                "m"
-            ],
-            "RHS": [
-                "a",
                 "c",
+                "a",
                 "p"
             ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
+            "RHS": [
                 "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "p",
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "f",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "f",
-                "c"
-            ],
-            "RHS": [
-                "p",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "c",
-                "p"
-            ],
-            "RHS": [
-                "f",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "f",
-                "p"
-            ],
-            "RHS": [
-                "c",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "a",
-                "p",
-                "m"
-            ],
-            "RHS": [
-                "f",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "f",
-                "c",
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "p",
-                "f",
-                "c"
-            ],
-            "RHS": [
-                "a",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
-        },
-        {
-            "LHS": [
-                "p",
-                "c",
-                "m"
-            ],
-            "RHS": [
-                "a",
                 "f"
             ],
             "Confidence": 1.0,
@@ -4466,23 +3347,16 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "p",
                 "f",
-                "m"
+                "p",
+                "a"
             ],
             "RHS": [
-                "a",
+                "m",
                 "c"
             ],
             "Confidence": 1.0,
@@ -4494,20 +3368,118 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "a",
+                "m",
+                "p",
+                "a"
+            ],
+            "RHS": [
+                "f",
+                "c"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "f",
+                "c"
+            ],
+            "RHS": [
+                "p",
+                "a"
+            ],
+            "Confidence": 0.6666666666666667,
+            "Lift": 1.6666666666666667,
+            "Conviction": 1.8000000000000003,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 2,
+            "RHS_Support": 0.4,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
                 "f",
                 "c",
+                "p"
+            ],
+            "RHS": [
+                "m",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "c",
+                "p"
+            ],
+            "RHS": [
+                "f",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "m",
+                "f",
+                "p"
+            ],
+            "RHS": [
+                "c",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.16000000000000003,
+            "LHS_Count": 2,
+            "LHS_Support": 0.4,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.4,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "f",
+                "c",
+                "a",
                 "p"
             ],
             "RHS": [
@@ -4522,21 +3494,14 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         },
         {
             "LHS": [
-                "p",
+                "m",
                 "f",
                 "c",
-                "m"
+                "p"
             ],
             "RHS": [
                 "a"
@@ -4550,14 +3515,7 @@
             "RHS_Count": 3,
             "RHS_Support": 0.6,
             "Support": 0.4,
-            "Count": 2,
-            "FrequentItemset": [
-                "a",
-                "c",
-                "f",
-                "m",
-                "p"
-            ]
+            "Count": 2
         }
     ]
 }

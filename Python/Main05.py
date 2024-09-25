@@ -554,9 +554,6 @@ def output_association_rules(association_results, sort_index, descending=True, f
             
             dictRules['rules'] = []
 
-
-
-
             for rule in association_results:
                 dictRules['rules'].append(dict(zip(Hlist, rule)))
                 
@@ -807,9 +804,10 @@ try:
         participatingItems=jsonData['participatingItems'] 
 
     #Time starts here
+    # recordTime: The time of reading and transforming adequally the dataset for use in ARM
     #################
     recordTime=time()
-    #################    
+    #################  
 
     records=prepare_records()
         
@@ -825,31 +823,29 @@ try:
 
         recordTime=time()-recordTime
 
+        descending=False
+        if ssort<0:
+            descending=True
+
+        # assocTime: The time of creating the frequent itemsets and ARs plus the time for the adquate transformation for the results.
+        #################
+        assocTime=time()
+        ################# 
+
         if callType==0: # Apriori Algorithm
 
-            assocTime=time()
             association_results = list(webApriori(records, min_support=min_support, min_confidence=min_confidence, min_lift=min_lift, max_length=max_length))
             association_results = transform_association_rules(association_results,redundantRemoveType)
-            assocTime=time()-assocTime
-
-            descending=False
-            if ssort<0:
-                descending=True
-
-            # print(association_results)
-            output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, public=public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
-
-
+            
         if callType==2: # FPGrowth Algorithm
             # Convert transactions to one-hot encoded DataFrame
             from mlxtend.preprocessing import TransactionEncoder
-            from mlxtend.frequent_patterns import apriori, fpgrowth, association_rules
+            from mlxtend.frequent_patterns import fpgrowth, association_rules
 
             te = TransactionEncoder()
             te_ary = te.fit(records).transform(records)
             df = pd.DataFrame(te_ary, columns=te.columns_)
 
-            recordTime=time()
             # Find frequent Itemsets
             frequent_itemsets = fpgrowth(df, min_support=min_support, use_colnames=True)
             # print(frequent_itemsets)
@@ -857,16 +853,26 @@ try:
             # Find Association Rules
             ARs = association_rules(frequent_itemsets, metric="lift", min_threshold=min_lift)
 
-            ARs = ARs.drop('zhangs_metric', axis=1) #Delete the column
-            ARs=ARs.set_axis(['LHS', 'RHS', 'LHS_Support', 'RHS_Support', 'Support', 'Confidence', 'Lift', 'Leverage', 'Conviction'], axis=1) #Rename the columns
+            #Delete the column
+            ARs = ARs.drop('zhangs_metric', axis=1) 
+            #Rename the columns to fit with the need of the frontend
+            ARs=ARs.set_axis(['LHS', 'RHS', 'LHS_Support', 'RHS_Support', 'Support', 'Confidence', 'Lift', 'Leverage', 'Conviction'], axis=1) 
+            #Compute LHS_Count, RHS_Count, Count from support, because are not contained if mlxtend code.
             ARs['LHS_Count']=(ARs['LHS_Support']*len(records)).round().astype(int)
             ARs['RHS_Count']=(ARs['RHS_Support']*len(records)).round().astype(int)
             ARs['Count']=(ARs['Support']*len(records)).round().astype(int)
+            #Rearrange the columns to fit with the need of the frontend
             ARs = ARs[['LHS', 'RHS', 'Confidence', 'Lift', 'Conviction', 'Leverage', 'LHS_Count', 'LHS_Support', 'RHS_Count', 'RHS_Support', 'Support', 'Count']]
+            ARs['LHS']=ARs['LHS'].apply(list)
+            ARs['RHS']=ARs['RHS'].apply(list)
+            association_results=ARs.values.tolist()
 
-            recordTime=time()-recordTime
-            print(recordTime)
-            print(ARs)
+        ##########################
+        assocTime=time()-assocTime
+        ##########################
+
+        # print(association_results)
+        output_association_rules(association_results, sort_index=abs(ssort), descending=descending, fileName=datasetName, public=public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
 
 
     else:
