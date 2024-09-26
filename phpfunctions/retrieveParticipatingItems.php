@@ -162,10 +162,10 @@
     //     exit();
     // }
 
-    //$Call = "http://localhost:8081/retrieveRules";
-    $Call = "http://localhost:5000/retrieveRules";
+    $Call = "http://localhost:8081/retrieveRules";
+    //$Call = "http://localhost:5000/retrieveRules";
     //Call Python for Association rules mining via flask and waitress
-    $params=array('identity' => $identity, 'filename' => $filename, 'isPublic' => $isPublic, 'callType' => '1');
+    $params=array('identity' => $identity, 'filename' => $filename, 'isPublic' => $isPublic, 'callType' => 1);
     if ((int) $_POST['datasetType']==2 && isset($_POST['groupItem'])) {
         $params['arg1'].= '"'.$_POST['groupItem'].'" ';
     }

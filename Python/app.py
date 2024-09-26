@@ -57,18 +57,20 @@ def retrieveRules():
     identity = request.form.get('identity')
     filename = request.form.get('filename')
     isPublic = request.form.get('isPublic')
+    callType = request.form.get('callType')
+    
     if isPublic is None:
         return ("An error occurred: isPublic not given!") 
     else:
         isPublic=int(isPublic)
-    callType = request.form.get('callType')
+
     if callType is None:
         callType=0
+    else: 
+        callType = int(callType)
+
     arg1     = request.form.get('arg1')
     arg2     = request.form.get('arg2')
-
-    # return(f"identity={identity}, filename={filename}, isPublic={isPublic}, callType={callType}, arg1={arg1}, arg2={arg2}")
-
 
     WAInst=apriori.webApriori(identity,filename,isPublic,callType,arg1,arg2)
     # current_directory = os.getcwd()

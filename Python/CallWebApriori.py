@@ -1,7 +1,7 @@
 import Main01W as Apriori
 
 identity='79d1727987f200802593e3599119c966'
-datasetName='FpGrowthSampleWithoutquotes.txt'
+datasetName='titanic02.csv'
 public=0
 callType=3
 arg1=None

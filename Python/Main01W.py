@@ -34,14 +34,15 @@ class webApriori():
                 self.identity=str(identity)
             except:
                 print("An error occurred: Could not retrieve identity of the user!")
-                sys.exit()
+                return("An error occurred: Could not retrieve identity of the user!")
         else:        
             print("An error occurred: User identity not given!")
-            sys.exit()
+            return("An error occurred: User identity not given!")
 
         if datasetName is None:
             print("An error occurred: Dataset name not given!")
-            sys.exit()
+            return("An error occurred: Dataset name not given!")
+            
         else:
             self.datasetName=datasetName
 
@@ -618,7 +619,7 @@ class webApriori():
             uniqueItems = {}
 
             # Iterate through the list and populate the dictionary
-            for sublist in self.records:
+            for sublist in records:
                 for index, item in enumerate(sublist):
 
                     if self.hasHeader and self.datasetType==4 and 'header' in self.jsonData:
@@ -643,11 +644,10 @@ class webApriori():
                 # Sorting the dictionary by keys
                 uniqueItems = {key: uniqueItems[key] for key in sorted(uniqueItems)}
 
-            print(json.dumps(uniqueItems, indent=4)) 
+            return json.dumps(uniqueItems, indent=4)
 
         except Exception as e:
-            print(f"An error occurred: {e}")     
-            sys.exit()              
+            return(f"An error occurred: {e}")     
 
 
     ###########
@@ -777,8 +777,7 @@ class webApriori():
                 # Retrieve the current participating Item List in JSON format.
                 self.excludedItems={}
                 if self.callType==1: # Retrieval of the participating items
-                    self.retrieveParticipatingItems(records)
-                    return "Ok"
+                    return(self.retrieveParticipatingItems(records))
                 else:
                     self.retrieveParticipatingItems()
 
@@ -801,7 +800,7 @@ class webApriori():
                 
                 if self.callType>=2 and  self.callType<=3: # Apriori, FPGrowth Algorithm via mlxtend library
                     from mlxtend.preprocessing import TransactionEncoder
-                    from mlxtend.frequent_patterns import apriori, fpgrowth, fpmax, association_rules
+                    from mlxtend.frequent_patterns import apriori, fpgrowth, association_rules
 
                     te = TransactionEncoder()
                     te_ary = te.fit(records).transform(records)
@@ -816,7 +815,7 @@ class webApriori():
                     # print(frequent_itemsets)
 
                     # Find Association Rules
-                    ARs = association_rules(frequent_itemsets, metric="lift", min_threshold=self.min_lift)
+                    ARs = association_rules(frequent_itemsets, metric=['confidence', 'lift'], min_threshold=[self.min_confidence,self.min_lift])
 
                     #Delete the column
                     ARs = ARs.drop('zhangs_metric', axis=1) 

@@ -1,65 +1,26 @@
 {
-    "min_support": 0.4,
+    "min_support": 0.6,
     "min_confidence": 0.2,
     "min_lift": 1.5,
-    "max_length": 6,
+    "max_length": 4,
     "sSort": -3,
     "datasetName": "FpGrowthSampleWithoutquotes.txt",
     "redundantRemoveType": 0,
     "Records": 5,
-    "RecordsCreationTime": "0.009",
-    "RulesCount": 176,
-    "RulesCreationTime": "4.048",
+    "RecordsCreationTime": "0.002",
+    "RulesCount": 24,
+    "RulesCreationTime": "0.000",
     "rules": [
         {
             "LHS": [
-                "b",
-                "f"
-            ],
-            "RHS": [
-                "o"
-            ],
-            "Confidence": 1.0,
-            "Lift": 2.5,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "o"
-            ],
-            "RHS": [
-                "b",
-                "f"
-            ],
-            "Confidence": 1.0,
-            "Lift": 2.5,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "c"
+                "a"
             ],
             "RHS": [
                 "m"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
+            "Conviction": 999.999,
             "Leverage": 0.24,
             "LHS_Count": 3,
             "LHS_Support": 0.6,
@@ -67,105 +28,6 @@
             "RHS_Support": 0.6,
             "Support": 0.6,
             "Count": 3
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "f",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "f",
-                "p",
-                "c"
-            ],
-            "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "c"
-            ],
-            "RHS": [
-                "m",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "p"
-            ],
-            "RHS": [
-                "f",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "f",
-                "p",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
         },
         {
             "LHS": [
@@ -176,272 +38,7 @@
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "m",
-                "c"
-            ],
-            "RHS": [
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "a",
-                "c"
-            ],
-            "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "m",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "f",
-                "m"
-            ],
-            "RHS": [
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "f",
-                "a"
-            ],
-            "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "f",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "m",
-                "p"
-            ],
-            "RHS": [
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a",
-                "p"
-            ],
-            "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "m",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "c"
-            ],
-            "RHS": [
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
+            "Conviction": 999.999,
             "Leverage": 0.24,
             "LHS_Count": 3,
             "LHS_Support": 0.6,
@@ -460,7 +57,7 @@
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
+            "Conviction": 999.999,
             "Leverage": 0.24,
             "LHS_Count": 3,
             "LHS_Support": 0.6,
@@ -472,7 +69,6 @@
         {
             "LHS": [
                 "f",
-                "m",
                 "c"
             ],
             "RHS": [
@@ -480,7 +76,7 @@
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
+            "Conviction": 999.999,
             "Leverage": 0.24,
             "LHS_Count": 3,
             "LHS_Support": 0.6,
@@ -491,136 +87,15 @@
         },
         {
             "LHS": [
-                "f",
-                "a",
-                "c"
+                "a"
             ],
             "RHS": [
+                "c",
                 "m"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "f",
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "f",
-                "a"
-            ],
-            "RHS": [
-                "m",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "f",
-                "c"
-            ],
-            "RHS": [
-                "m",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "m",
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "m",
-                "c"
-            ],
-            "RHS": [
-                "f",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "a",
-                "c"
-            ],
-            "RHS": [
-                "f",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
+            "Conviction": 999.999,
             "Leverage": 0.24,
             "LHS_Count": 3,
             "LHS_Support": 0.6,
@@ -634,33 +109,12 @@
                 "m"
             ],
             "RHS": [
-                "f",
-                "a",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
+                "c",
                 "a"
             ],
-            "RHS": [
-                "f",
-                "m",
-                "c"
-            ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
+            "Conviction": 999.999,
             "Leverage": 0.24,
             "LHS_Count": 3,
             "LHS_Support": 0.6,
@@ -672,2850 +126,354 @@
         {
             "LHS": [
                 "c",
-                "m",
-                "p"
+                "a"
             ],
             "RHS": [
-                "a"
+                "m"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
             "RHS_Count": 3,
             "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
+            "Support": 0.6,
+            "Count": 3
         },
         {
             "LHS": [
                 "c",
-                "a",
-                "p"
+                "m"
             ],
             "RHS": [
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "a"
+            ],
+            "RHS": [
+                "f",
                 "m"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "p"
-            ],
-            "RHS": [
-                "a",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "c"
-            ],
-            "RHS": [
-                "a",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
             "LHS_Count": 3,
             "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a",
-                "p"
-            ],
-            "RHS": [
-                "m",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
             "RHS_Count": 3,
             "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a",
-                "c"
-            ],
-            "RHS": [
-                "m",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
+            "Support": 0.6,
+            "Count": 3
         },
         {
             "LHS": [
                 "m"
             ],
             "RHS": [
+                "f",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "f",
+                "a"
+            ],
+            "RHS": [
+                "m"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "f",
+                "m"
+            ],
+            "RHS": [
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "m"
+            ],
+            "RHS": [
+                "f",
+                "c"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "f",
+                "c"
+            ],
+            "RHS": [
+                "m"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "a"
+            ],
+            "RHS": [
+                "f",
                 "c",
-                "a",
-                "p"
+                "m"
             ],
-            "Confidence": 0.6666666666666667,
+            "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
             "LHS_Count": 3,
             "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
         },
         {
             "LHS": [
-                "a"
+                "m"
             ],
             "RHS": [
+                "f",
                 "c",
-                "m",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "m",
-                "p"
-            ],
-            "RHS": [
                 "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "a",
-                "p"
-            ],
-            "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
             "LHS_Count": 3,
             "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "a"
-            ],
-            "RHS": [
-                "m",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "p"
-            ],
-            "RHS": [
-                "f",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
             "RHS_Count": 3,
             "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a",
-                "p"
-            ],
-            "RHS": [
-                "f",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "f",
-                "a",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "m",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "p",
-                "c"
-            ],
-            "RHS": [
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "c"
-            ],
-            "RHS": [
-                "a",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a",
-                "p"
-            ],
-            "RHS": [
-                "f",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "p",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "m",
-                "p",
-                "c"
-            ],
-            "RHS": [
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "a",
-                "p",
-                "c"
-            ],
-            "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "p",
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "m",
-                "c"
-            ],
-            "RHS": [
-                "a",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "p",
-                "c"
-            ],
-            "RHS": [
-                "f",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "m",
-                "p"
-            ],
-            "RHS": [
-                "a",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "a",
-                "c"
-            ],
-            "RHS": [
-                "m",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a",
-                "p",
-                "c"
-            ],
-            "RHS": [
-                "f",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "a",
-                "p"
-            ],
-            "RHS": [
-                "m",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "p",
-                "c"
-            ],
-            "RHS": [
-                "m",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "p",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "c"
-            ],
-            "RHS": [
-                "f",
-                "a",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "p",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "p"
-            ],
-            "RHS": [
-                "f",
-                "a",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a",
-                "c"
-            ],
-            "RHS": [
-                "f",
-                "m",
-                "p"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "a"
-            ],
-            "RHS": [
-                "m",
-                "p",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a",
-                "p"
-            ],
-            "RHS": [
-                "f",
-                "m",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "c"
-            ],
-            "RHS": [
-                "m",
-                "p",
-                "a"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "f",
-                "a",
-                "p",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "m",
-                "p",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "b"
-            ],
-            "RHS": [
-                "o"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "o"
-            ],
-            "RHS": [
-                "b"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "o"
-            ],
-            "RHS": [
-                "b"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "b"
-            ],
-            "RHS": [
-                "f",
-                "o"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l"
-            ],
-            "RHS": [
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l"
-            ],
-            "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "m"
-            ],
-            "RHS": [
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "a"
-            ],
-            "RHS": [
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "a"
-            ],
-            "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "l",
-                "a"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l"
-            ],
-            "RHS": [
-                "m",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "l",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "c"
-            ],
-            "RHS": [
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a",
-                "c"
-            ],
-            "RHS": [
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l"
-            ],
-            "RHS": [
-                "a",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "l",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "l"
-            ],
-            "RHS": [
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "a"
-            ],
-            "RHS": [
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l"
-            ],
-            "RHS": [
-                "f",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "c"
-            ],
-            "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "c"
-            ],
-            "RHS": [
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l"
-            ],
-            "RHS": [
-                "m",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "l",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "l"
-            ],
-            "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "m"
-            ],
-            "RHS": [
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l"
-            ],
-            "RHS": [
-                "f",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "f",
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "c"
-            ],
-            "RHS": [
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l"
-            ],
-            "RHS": [
-                "f",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "m",
-                "c"
-            ],
-            "RHS": [
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
+            "Support": 0.6,
+            "Count": 3
         },
         {
             "LHS": [
                 "c",
-                "m",
                 "a"
             ],
             "RHS": [
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "a",
-                "c"
-            ],
-            "RHS": [
+                "f",
                 "m"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "a"
-            ],
-            "RHS": [
-                "l",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
             "LHS_Count": 3,
             "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "c"
-            ],
-            "RHS": [
-                "l",
-                "a"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "a"
-            ],
-            "RHS": [
-                "m",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
             "RHS_Count": 3,
             "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
+            "Support": 0.6,
+            "Count": 3
         },
         {
             "LHS": [
-                "l",
-                "c"
-            ],
-            "RHS": [
-                "m",
+                "f",
                 "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a",
-                "c"
-            ],
-            "RHS": [
-                "l",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "l",
-                "a",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l"
             ],
             "RHS": [
                 "c",
-                "m",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "l",
-                "m",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "l",
-                "m"
-            ],
-            "RHS": [
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "m",
-                "a"
-            ],
-            "RHS": [
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "l",
-                "a"
-            ],
-            "RHS": [
                 "m"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "m"
-            ],
-            "RHS": [
-                "l",
-                "a"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
             "LHS_Count": 3,
             "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "l"
-            ],
-            "RHS": [
-                "m",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
             "RHS_Count": 3,
             "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "a"
-            ],
-            "RHS": [
-                "l",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "m"
-            ],
-            "RHS": [
-                "f",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "f",
-                "l",
-                "a"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l"
-            ],
-            "RHS": [
-                "f",
-                "m",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "l",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "l",
-                "c"
-            ],
-            "RHS": [
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "a",
-                "c"
-            ],
-            "RHS": [
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "l"
-            ],
-            "RHS": [
-                "a",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "a"
-            ],
-            "RHS": [
-                "l",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "c"
-            ],
-            "RHS": [
-                "l",
-                "a"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "c"
-            ],
-            "RHS": [
-                "f",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
+            "Support": 0.6,
+            "Count": 3
         },
         {
             "LHS": [
                 "a",
-                "c"
+                "m"
             ],
             "RHS": [
                 "f",
-                "l"
+                "c"
             ],
-            "Confidence": 0.6666666666666667,
+            "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
             "LHS_Count": 3,
             "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
         },
         {
             "LHS": [
-                "l"
+                "f",
+                "c"
             ],
             "RHS": [
-                "f",
                 "a",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "l",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "l",
-                "c"
-            ],
-            "RHS": [
                 "m"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
             "RHS_Count": 3,
             "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
+            "Support": 0.6,
+            "Count": 3
         },
         {
             "LHS": [
-                "f",
-                "m",
-                "c"
-            ],
-            "RHS": [
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "l"
-            ],
-            "RHS": [
-                "m",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "m"
-            ],
-            "RHS": [
-                "l",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "c"
-            ],
-            "RHS": [
-                "l",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
+                "c",
                 "m"
             ],
             "RHS": [
                 "f",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "c"
-            ],
-            "RHS": [
-                "f",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "c"
-            ],
-            "RHS": [
-                "f",
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l"
-            ],
-            "RHS": [
-                "f",
-                "m",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "f",
-                "l",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "l",
-                "m",
-                "c"
-            ],
-            "RHS": [
                 "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
             "RHS_Count": 3,
             "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
+            "Support": 0.6,
+            "Count": 3
         },
         {
             "LHS": [
                 "f",
-                "l",
-                "a",
-                "c"
+                "m"
             ],
             "RHS": [
-                "m"
+                "c",
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
             "RHS_Count": 3,
             "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
+            "Support": 0.6,
+            "Count": 3
         },
         {
             "LHS": [
                 "f",
                 "c",
-                "m",
                 "a"
             ],
             "RHS": [
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "m",
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "m",
-                "c"
-            ],
-            "RHS": [
-                "f",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "l",
-                "m"
-            ],
-            "RHS": [
-                "a",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "a",
-                "c"
-            ],
-            "RHS": [
-                "f",
                 "m"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
             "RHS_Count": 3,
             "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
+            "Support": 0.6,
+            "Count": 3
         },
         {
             "LHS": [
-                "f",
-                "l",
-                "a"
-            ],
-            "RHS": [
-                "m",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "l",
-                "c"
-            ],
-            "RHS": [
-                "m",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "c",
-                "m",
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "l"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "m",
-                "a"
-            ],
-            "RHS": [
-                "l",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "m",
-                "c"
-            ],
-            "RHS": [
-                "l",
-                "a"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "a",
-                "c"
-            ],
-            "RHS": [
-                "l",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "m"
-            ],
-            "RHS": [
-                "f",
-                "a",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "m",
-                "c"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l",
-                "c"
-            ],
-            "RHS": [
-                "f",
-                "m",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "l"
-            ],
-            "RHS": [
-                "c",
-                "m",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "l",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m",
-                "c"
-            ],
-            "RHS": [
-                "f",
-                "l",
-                "a"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "m"
-            ],
-            "RHS": [
-                "l",
-                "a",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a",
-                "c"
-            ],
-            "RHS": [
-                "f",
-                "l",
-                "m"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "a"
-            ],
-            "RHS": [
-                "l",
-                "m",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "f",
-                "c"
-            ],
-            "RHS": [
-                "l",
-                "m",
-                "a"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "l"
-            ],
-            "RHS": [
                 "f",
                 "c",
-                "m",
+                "m"
+            ],
+            "RHS": [
                 "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
-            "Conviction": Infinity,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 2,
-            "LHS_Support": 0.4,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
             "RHS_Count": 3,
             "RHS_Support": 0.6,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "f",
-                "l",
-                "a",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "f",
-                "l",
-                "m",
-                "c"
-            ],
-            "Confidence": 0.6666666666666667,
-            "Lift": 1.6666666666666667,
-            "Conviction": 1.8000000000000003,
-            "Leverage": 0.16000000000000003,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 2,
-            "RHS_Support": 0.4,
-            "Support": 0.4,
-            "Count": 2
+            "Support": 0.6,
+            "Count": 3
         }
     ]
 }
