@@ -123,44 +123,67 @@
         unlink($fpatho);
     }         
 
-    //Call Python for Association rules mining
-    $input = PYTHON;
-    $input.= ' Main05.py ';
-    $input.= '"'.$identity.'" ';
-    $input.= '"'.$filename.'" ';
-    $input.= '"'.$isPublic.'" ';
-    $input.= '"1" ';
+    // //Call Python for Association rules mining
+    // $input = PYTHON;
+    // $input.= ' Main05.py ';
+    // $input.= '"'.$identity.'" ';
+    // $input.= '"'.$filename.'" ';
+    // $input.= '"'.$isPublic.'" ';
+    // $input.= '"1" ';
+    // if ((int) $_POST['datasetType']==2 && isset($_POST['groupItem'])) {
+    //     $input.= '"'.$_POST['groupItem'].'" ';
+    // }
+    // if ((int) $_POST['datasetType']==2 && isset($_POST['valueItem'])) {
+    //     $input.= '"'.$_POST['valueItem'].'" ';
+    // }
+    // if ((int) $_POST['datasetType']==3 && isset($_POST['absentValue'])) {
+    //     $input.= '"'.$_POST['absentValue'].'" ';
+    // }
+
+
+    // // //for debug purposes
+    // // http_response_code(201);
+    // // $JsonReq = array('title' => 'Debug', 'message' => $input);
+    // // print json_encode($JsonReq);
+    // // exit();
+
+    // chdir('../Python');
+ 
+    // try {
+    //     set_time_limit(1800); //in seconds
+    //     ob_start();
+    //     passthru($input);
+    //     $output = ob_get_contents();
+    //     ob_end_clean();
+    // } catch (Exception $e) {
+    //     http_response_code(201);
+    //     $JsonReq = array('title' => $input.'Error', 'message' => $e->getMessage());
+    //     print json_encode($JsonReq);
+    //     exit();
+    // }
+
+    //$Call = "http://localhost:8081/retrieveRules";
+    $Call = "http://localhost:5000/retrieveRules";
+    //Call Python for Association rules mining via flask and waitress
+    $params=array('identity' => $identity, 'filename' => $filename, 'isPublic' => $isPublic, 'callType' => '1');
     if ((int) $_POST['datasetType']==2 && isset($_POST['groupItem'])) {
-        $input.= '"'.$_POST['groupItem'].'" ';
+        $params['arg1'].= '"'.$_POST['groupItem'].'" ';
     }
     if ((int) $_POST['datasetType']==2 && isset($_POST['valueItem'])) {
-        $input.= '"'.$_POST['valueItem'].'" ';
+        $params['arg2'].= '"'.$_POST['valueItem'].'" ';
     }
     if ((int) $_POST['datasetType']==3 && isset($_POST['absentValue'])) {
-        $input.= '"'.$_POST['absentValue'].'" ';
+        $params['arg1'].= '"'.$_POST['absentValue'].'" ';
     }
+    $input=http_build_query($params);
 
-
-    // //for debug purposes
-    // http_response_code(201);
-    // $JsonReq = array('title' => 'Debug', 'message' => $input);
-    // print json_encode($JsonReq);
-    // exit();
-
-    chdir('../Python');
- 
-    try {
-        set_time_limit(1800); //in seconds
-        ob_start();
-        passthru($input);
-        $output = ob_get_contents();
-        ob_end_clean();
-    } catch (Exception $e) {
-        http_response_code(201);
-        $JsonReq = array('title' => $input.'Error', 'message' => $e->getMessage());
-        print json_encode($JsonReq);
-        exit();
-    }
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $Call);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $input);  // Passing data
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $output = curl_exec($ch);
+    curl_close($ch);
 
     if (!$output) {
         http_response_code(201);
