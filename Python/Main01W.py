@@ -798,9 +798,9 @@ class webApriori():
                     association_results = list(self.mainApriori(records, min_support=self.min_support, min_confidence=self.min_confidence, min_lift=self.min_lift, max_length=self.max_length))
                     association_results = self.transform_association_rules(association_results,self.redundantRemoveType)
                 
-                if self.callType>=2 and  self.callType<=3: # Apriori, FPGrowth Algorithm via mlxtend library
+                if self.callType>=2 and  self.callType<=4: # Apriori, FPGrowth Algorithm via mlxtend library
                     from mlxtend.preprocessing import TransactionEncoder
-                    from mlxtend.frequent_patterns import apriori, fpgrowth, association_rules
+                    from mlxtend.frequent_patterns import apriori, fpgrowth, hmine, association_rules
 
                     te = TransactionEncoder()
                     te_ary = te.fit(records).transform(records)
@@ -811,6 +811,8 @@ class webApriori():
                         frequent_itemsets = apriori(df, min_support=self.min_support, use_colnames=True, max_len=self.max_length)
                     elif self.callType==3:
                         frequent_itemsets = fpgrowth(df, min_support=self.min_support, use_colnames=True, max_len=self.max_length)
+                    elif self.callType==4:
+                        frequent_itemsets = hmine(df, min_support=self.min_support, use_colnames=True, max_len=self.max_length)
 
                     # print(frequent_itemsets)
 

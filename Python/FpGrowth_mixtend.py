@@ -20,6 +20,13 @@ transactions = [
 #     ['B', 'E']
 # ]
 
+transactions = [
+    ['c','d','e','f','g','i'],
+    ['a','c','d','e','m'],
+    ['a','b','d','e','g','k'],
+    ['a','c','d','h']
+]
+
 # Convert transactions to one-hot encoded DataFrame
 from mlxtend.preprocessing import TransactionEncoder
 te = TransactionEncoder()
@@ -38,9 +45,9 @@ recordTime=time()-recordTime
 print(frequent_itemsets)
 print(recordTime)
 
-recordTime=time()
-ARs = association_rules(frequent_itemsets, metric="lift", min_threshold=1.5)
-recordTime=time()-recordTime
-print(recordTime)
-print(ARs)
+# recordTime=time()
+# ARs = association_rules(frequent_itemsets, metric="lift", min_threshold=1.5)
+# recordTime=time()-recordTime
+# print(recordTime)
+# print(ARs)
 
