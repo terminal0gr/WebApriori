@@ -1,7 +1,8 @@
 import sys
 import os
 import json
-import csvMy as csv
+#import csvMy as csv
+import csv
 import datasetTypeDetection as df
 from Inv_2_Sorter import Inv_2_Sorter
 import Global
@@ -26,14 +27,15 @@ class Metadata():
         datasetAttributes = {}
 
         with open(filepath, encoding='utf-8-sig') as f:
-            s100=''
+            sSample=''
+            for i, line in enumerate(f):
+                if i < 100:
+                    sSample+=line
+                else:
+                    break
 
-            for x in range(nRows):
-                s100+=f.readline()
-
-
-            datasetAttributes['hasHeader'], datasetAttributes['header'],dialect = csv.Sniffer().has_header(s100)
-            # dialect = csv.Sniffer().sniff(s100)  # Check what kind of csv/tsv file we have.
+            datasetAttributes['hasHeader'], datasetAttributes['header'],dialect = csv.Sniffer().has_header(sSample)
+            # dialect = csv.Sniffer().sniff(sSample)  # Check what kind of csv/tsv file we have.
             datasetAttributes['delimiter']=dialect.delimiter
 
             DFI=df.datasetFeatures()._datasetFeatures_a(filepath,dialect,datasetAttributes['hasHeader'],nRows=nRows)

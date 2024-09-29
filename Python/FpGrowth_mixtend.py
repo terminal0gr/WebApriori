@@ -31,7 +31,7 @@ transactions = [
 from mlxtend.preprocessing import TransactionEncoder
 te = TransactionEncoder()
 te_ary = te.fit(transactions).transform(transactions)
-df = pd.DataFrame(te_ary, columns=te.columns_)
+df = pd.DataFrame(te_ary, columns=te.columns_) 
 
 # recordTime=time()
 # frequent_itemsets = apriori(df, min_support=0.6, low_memory=True, use_colnames=True)

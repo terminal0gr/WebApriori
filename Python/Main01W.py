@@ -449,8 +449,8 @@ class webApriori():
                 #pandas to list
                 records=dataset.values.tolist()
 
-                #remove nan elements from this 2-dimensional list'
-                records = [[y for y in x if str(y) != 'nan'] for x in records]
+                #remove nan elements from this list'
+                records = [[y for y in x if str(y) != ['nan','na']] for x in records]
 
                 return(records)
                     

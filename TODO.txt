@@ -1,6 +1,12 @@
 
 09/06/2024 Thorough Test for all datasets in retrieve AR must be done!
            0fish_catches.csv Error 30
+29/09/2024 Info must detect manual changes made by the user in `hasHeader, delimiter, Dataset type` before `Retrieve AR` is made
+29/09/2024 (1) participating items must be used or correced in all dataset types in native implementation of apriori
+29/09/2024 (2) participating items must be handled in mlxtend implementation after (1)
+29/09/2024 thorough tests must be done to determine if the correct AR has been mined according to confidence and lift thresholds
+29/09/2024 Autodetect, Info, Filter Participating items must be managed async.
+
 
 12/07/2024 Real multithread environment
    Works in Main01W. But print and returns must be checked. Also the other programs must be transformed to run from waitress and flask

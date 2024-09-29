@@ -391,7 +391,7 @@ class Sniffer:
 
                     # value is the mode
                     metaFrequency[freq] = metaFrequency.get(freq, 0) + 1
-                    charFrequency[char] = metaFrequency
+                    charFrequency[char] = metaFrequency 
 
             for char in charFrequency.keys():
                 items = list(charFrequency[char].items())
