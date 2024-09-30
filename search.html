@@ -917,6 +917,15 @@
 			formData.set("dataset",dataset.value);
 			formData.set('rows', document.getElementById("NRows").value);
 			formData.set('columns',document.getElementById("NCols").value);
+			formData.set('hasHeader', document.getElementById("header1").checked);
+			formData.set("delimiter",document.getElementById('separator').value);
+			formData.set("datasetType", document.getElementById('datasetType').value);
+			if (document.getElementById('datasetType').value==2) {
+				formData.set("groupItem", document.getElementById('groupItem').value);
+				formData.set("valueItem", document.getElementById('valueItem').value);
+			} else if (document.getElementById('datasetType').value==3) {
+				formData.set("absentValue", document.getElementById('absentValue').value);
+			}
 
 			$.ajax({
 				url: 'phpfunctions/datasetDescribe.php',
@@ -1001,8 +1010,8 @@
 
 							const keys = Object.keys(jsonData[0]);
 
-							// If the dataset has Header --> res.features['HasHeader'][1]
-							if (res.features['HasHeader'][1]) {
+							// If the dataset has Header --> res.features['hasHeader'][1]
+							if (res.features['hasHeader'][1]) {
 
 								var row = $('<tr><th class="text-end">#</th></tr>');
 								// Loop through each key

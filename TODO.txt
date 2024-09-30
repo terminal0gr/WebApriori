@@ -12,34 +12,8 @@
    Works in Main01W. But print and returns must be checked. Also the other programs must be transformed to run from waitress and flask
 16/06/2024 Upload AutoML WebApriori to NIREAS
 
-
-All Frequent Itemsets: Apriori, FpGrowth, dclat, H-Mine, LCM, Fin, LCMFreq
-Top K AR: TopKRules, TNR (without redundancy)
-
-    antecedents consequents  antecedent support  consequent support  support  confidence      lift  leverage  conviction  zhangs_metric
-0        (c, f)         (m)                 0.6                 0.6      0.6    1.000000  1.666667      0.24         inf       1.000000
-1           (m)      (c, f)                 0.6                 0.6      0.6    1.000000  1.666667      0.24         inf       1.000000
-2     (c, p, f)         (m)                 0.4                 0.6      0.4    1.000000  1.666667      0.16         inf       0.666667
-3        (c, f)      (p, m)                 0.6                 0.4      0.4    0.666667  1.666667      0.16         1.8       1.000000
-4        (p, m)      (c, f)                 0.4                 0.6      0.4    1.000000  1.666667      0.16         inf       0.666667
-..          ...         ...                 ...                 ...      ...         ...       ...       ...         ...            ...
-171         (o)         (b)                 0.4                 0.6      0.4    1.000000  1.666667      0.16         inf       0.666667
-172      (b, f)         (o)                 0.4                 0.4      0.4    1.000000  2.500000      0.24         inf       1.000000
-
-
-'LHS', 'RHS', 'Confidence', 'Lift', 'Conviction', 'Leverage', 'LHS_Count', 'LHS_Support', 'RHS_Count', 'RHS_Support', 'Support', 'Count', 'FrequentItemset'
-
-rename(columns={'A': 'X', 'B': 'Y'}, inplace=True)
-set_axis(['LHS', 'RHS', 'LHS_Support', 'RHS_Support', 'Support', 'Confidence', 'Lift', 'Leverage', 'Conviction', 'zhangs_metric'], axis=1, inplace=True)
-
-[[['a'], ['l'], 0.6666666666666667, 1.6666666666666667, 1.8000000000000003, 0.16000000000000003, 3, 0.6, 2, 0.4, 0.4, 2, ['a', 'l']], 
- [['l'], ['a'], 1.0, 1.6666666666666667, 999.999, 0.16000000000000003, 2, 0.4, 3, 0.6, 0.4, 2, ['a', 'l']], 
- [['a'], ['m'], 1.0, 1.6666666666666667, 999.999, 0.24, 3, 0.6, 3, 0.6, 0.6, 3, ['a', 'm']], 
- [['m'], ['a'], 1.0, 1.6666666666666667, 999.999, 0.24, 3, 0.6, 3, 0.6, 0.6, 3, ['a', 'm']], 
- [['b'], ['o'], 0.6666666666666667, 1.6666666666666667, 1.8000000000000003, 0.16000000000000003, 3, 0.6, 2, 0.4, 0.4, 2, ['b', 'o']]
-
-cbratsas@ihu.gr, konsmall@iee.ihu.gr, stoug@ihu.gr, dad@ihu.gr, asidirop@ihu.gr, kdiamant@ihu.gr
-
+datasetDescribe.py
+datasetAttrAutoDetect.py
 
 DONE - V01.00.00 04/09/2024 10/06/2024 AutoML type 2-INV Dataset type for finding the grouping and item column - Tested in all INV Type datasets. High accuracy achieved
 DONE - V01.00.00 31/08/2024 23/08/2024 Thorough Test for all datasets in 'filter participating items' must be done! Done partially in huge item datasets
@@ -150,6 +124,19 @@ NOT DONE - 30/11/2019 htaccess to calls (Need adjustment with root privileges fo
 
 
 
+All Frequent Itemsets: Apriori, FpGrowth, dclat, H-Mine, LCM, Fin, LCMFreq
+Top K AR: TopKRules, TNR (without redundancy)
+
+cbratsas@ihu.gr, konsmall@iee.ihu.gr, stoug@ihu.gr, dad@ihu.gr, asidirop@ihu.gr, kdiamant@ihu.gr
+
+.metadatafile Updated in 
+1) datasetDescribe.php
+2) retrieveRulesW.php
+3) Main01W.py
+4) datasetAttrAutoDetect.py
+
+Τα βήματα εκτέλεσης του FPGrowth frequent itemset mining
+https://chatgpt.com/share/66f005dc-9a30-800b-b3d3-60500be509ae
 
 
 
@@ -167,45 +154,8 @@ Not as easy as its name promises!
 
 
 
-Περίληψη ελληνικά
-Abstact Αγγλικά
-
-1. Section 1
-1.1 Introduction
-1.2 Motivation - Contribution
-1.2 Thesis Organazition
-
-2. Relted Work
-2.1
-2.2
-
-3. Section 3
-3.1 Association rules mining
-3.2 apriori
-3.3 Usage sections
-
-4. Section 4
-4.1 ar datasets
-4.2 web application architecture diagram (dia)
-4.3 database
-4.4 απαιτήσεις σε excel
-
-5. Τεχνολογιες
-
-6. webapriori
-6.1 python server
-6.2 web interface
-6.3 web services
-
-7. Conclusions and future work
 
 
-40-50 σελίδες
-
-
-
-Τα βήματα εκτέλεσης του FPGrowth frequent itemset mining
-https://chatgpt.com/share/66f005dc-9a30-800b-b3d3-60500be509ae
 
 
 
@@ -232,66 +182,3 @@ Physica Verlag, Heidelberg, Germany 2002
 cstat_02.pdf (105 kb) cstat_02.ps.gz (91 kb) (6 pages)
 
 
-
-
-
-\clearpage
-\section{Requirements \& technologies}
-
-\subsection{Ar Datasets}
-
-\subsection{web application architecture diagram (dia)}
-
-\subsection{Mysql database}
-
-\subsection{Requirements}
-
-\subsection{Technologies}
-
-\subsubsection{General}
-
-\subsubsection{Python}
-
-\subsubsection{PHP}
-
-\subsubsection{HTML}
-
-\subsubsection{Javascript}
-
-\subsubsection{JQuery functions}
-
-\subsubsection{bootstrap framework}
-
-\subsubsection{Rest API's}
-
-\clearpage
-\section{WebApriori}
-
-\subsection{General}
-
-\subsection{Dataset types} \label{Dataset types}
-
-\subsection{Apriori program}
-
-\subsection{Back-end web development}
-
-\subsection{Front-end web development}
-
-\subsection{Web services}
-
-
-
-
-Dataset detection Paper
-
-Gaussian Naive bayes
-Decision trees
-KNN Classification - Σταθμισμένα στο 0-1 - Hyper K 1-30
-SVM Linear
-SVm RBF Kernel
-RandomForest
-
-
-New discovery:
-Some dataset can produce meaningful association rules either if they have been characterized as 3 or 4 dataset type
-example: house-votes-84.csv & 43nih_labels in test datasets

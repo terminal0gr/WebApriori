@@ -497,7 +497,7 @@ class Sniffer:
         # items.sort()
         # delim = items[-1][1]
 
-    def has_header(self, sample):
+    def has_header(self, sample, forceDelimiter=None, forceHasHeader=None):
         # Creates a dictionary of types of data in each column. If any
         # column is of a single type (say, integers), *except* for the first
         # row, then the first row is presumed to be labels. If the type
@@ -508,8 +508,16 @@ class Sniffer:
         # subtracting from the likelihood of the first row being a header.
 
         dialect = self.sniff(sample)
-        rdr = reader(StringIO(sample), dialect)
 
+        # Update mode. Delimiter has changed from user or other reason and must be managed
+        if forceDelimiter!=None:
+            dialect.delimiter=forceDelimiter
+
+        # Update mode. Delimiter has changed from user or other reason and must be managed
+        if forceHasHeader==False:
+            return (False, None, dialect)
+
+        rdr = reader(StringIO(sample), dialect)
         header = next(rdr) # assume first row is header
 
         columns = len(header)

@@ -15,6 +15,7 @@ if len(sys.argv)>1:
 		sys.exit()
               
 datasetName='H-MineSample.txt'	
+#datasetName='titanic02.csv'	
 if len(sys.argv)>2:
     if len(sys.argv[2])>0:
         datasetName=sys.argv[2]

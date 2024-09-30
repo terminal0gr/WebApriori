@@ -95,11 +95,77 @@
         $columns=$_POST['columns'];
     }
 
+    // File path where you want to write the JSON .metadata file
+    ////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////
+    //assemble output path
+    if ($isPublic==0) {
+        $fpatho="../Python/output/".$identity."/".$filename;
+    } else {
+        $fpatho="../Python/output/".$identity."/p/".$filename;            
+    }
+    $fpatho_parts = pathinfo($fpatho);
+    $fpatho=$fpatho_parts['dirname']."/".$fpatho_parts['filename'].".metadata";
+    //I have to save the metadatafile here in case the user has customly changed dataset attributes
+    $hasHeader=filter_var($_POST['hasHeader'], FILTER_VALIDATE_BOOLEAN);
+
+    // Step 1: Read the JSON file
+    $json_string = file_get_contents($fpatho);
+    // Decode JSON data into a PHP array
+    $json_data = json_decode($json_string, true);
+
+    // Check if json_decode not succeeded
+    if ($json_data === null && json_last_error() !== JSON_ERROR_NONE) {
+        //Create new  $json_data
+        $json_data = [
+            "hasHeader"   => $hasHeader,
+            "delimiter"   => $_POST['separator'],
+            "datasetType" => (int) $_POST['datasetType']
+        ];
+    }
+    else {
+        $json_data['hasHeader'] = $hasHeader;
+        $json_data['delimiter'] = $_POST['delimiter'];
+        $json_data['datasetType'] = (int) $_POST['datasetType'];
+    }
+    // The code below is not needed. Safe to delete after 30/03/2025
+    // if ($json_data['datasetFeatures']) {
+    //     if ($json_data['datasetFeatures']['delimiter']) {
+    //         $json_data['datasetFeatures']['delimiter'][1]=$json_data['delimiter'];
+    //         $json_data['datasetFeatures']['delimiter'][2]=$json_data['delimiter'];
+    //     }
+    //     if ($json_data['datasetFeatures']['hasHeader']) {
+    //         $json_data['datasetFeatures']['hasHeader'][1]=$hasHeader;
+    //         $json_data['datasetFeatures']['hasHeader'][2]=$hasHeader;
+    //     }
+    // }
+
+    // It is an append. the key/value pair is appended or, edited if it exists 
+    if  ($json_data['datasetType']==2) { //2-INV dataset Type
+        $json_data['groupItem']=(string) $_POST['groupItem'];
+        $json_data['valueItem']=(string) $_POST['valueItem'];
+    }
+
+    if  ($json_data['datasetType']==3) { //3-SI dataset Type
+        $json_data['absentValue']=(string) $_POST['absentValue'];
+    }
+
+    // Convert the PHP array to a JSON string
+    $json_string = json_encode($json_data, JSON_PRETTY_PRINT);
+
+    //Write to file
+    file_put_contents($fpatho, $json_string);
+    // File path where you want to write the JSON .metadata file
+    ////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////
+
+
+
     //Call datasetDescribe.py
     $input = PYTHON;
     $input.= ' datasetDescribe.py ';
     $input.= '"'.$identity.'" ';
-    $input.= '"'.$filename.'" ';
+    $input.= '"'.$filename.'" '; 
     $input.= '"'.$rows.'" ';
     $input.= '"'.$columns.'" ';
     $input.= '"'.$isPublic.'" ';

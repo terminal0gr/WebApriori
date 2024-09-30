@@ -11,14 +11,14 @@ import Global
 #------------------------------
 
 #identity
-identity='111111111' #random for testing purposes 
+identity='79d1727987f200802593e3599119c966' #random for testing purposes 
 if len(sys.argv)>1:
 	try:
 		identity=str(sys.argv[1])
 	except:
 		sys.exit()
               
-datasetName='something.csv'	
+datasetName='H-MineSample.txt'	
 if len(sys.argv)>2:
     if len(sys.argv[2])>0:
         datasetName=sys.argv[2]
