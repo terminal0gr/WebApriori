@@ -6,6 +6,8 @@
 29/09/2024 (2) participating items must be handled in mlxtend implementation after (1)
 29/09/2024 thorough tests must be done to determine if the correct AR has been mined according to confidence and lift thresholds
 29/09/2024 Autodetect, Info, Filter Participating items must be managed async.
+30/09/2024 If user changes datasetType, then it always updates. It should only if changed it now ln:229 datasetAttrAutoDetectMetadata.py
+30/09/2024 1-char columns not working right with NaN's
 
 
 12/07/2024 Real multithread environment

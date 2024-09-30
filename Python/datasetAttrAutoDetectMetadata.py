@@ -225,8 +225,8 @@ class Metadata():
                 json_data = json.load(file)
 
         # Changes found in dataset. DatasetFeatures must be updated.
-        if json_data['delimiter']!=json_data['datasetFeatures']['delimiter'][1] or json_data['hasHeader']!=json_data['datasetFeatures']['hasHeader'][1]:
-            self.createMetadataFile(identity,datasetName,-1,public, json_data['delimiter'], json_data['hasHeader']) 
+        if json_data['delimiter']!=json_data['datasetFeatures']['delimiter'][1] or json_data['hasHeader']!=json_data['datasetFeatures']['hasHeader'][1] or json_data['datasetType']!=json_data['datasetTypePredicted']:
+            self.createMetadataFile(identity,datasetName,json_data['datasetType'],public, json_data['delimiter'], json_data['hasHeader']) 
 
         # Now you can work with the JSON data as a Python dictionary or list
         return json_data

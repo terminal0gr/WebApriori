@@ -39,7 +39,7 @@ class datasetFeatures:
     AvgItemLen = 0.0 #Range [0...infinite]
     Freq1CharColumns = 0.0 #Range [0...1]
     Freq2ValuesItemColumns = 0.0 #Range [0...1]
-    HasHeader=True  
+    hasHeader=True  
     delimiter=';'
     Header=[]
     type2Words=0 #Range [0...infinite]
@@ -235,14 +235,16 @@ class datasetFeatures:
             #All the other columns are of String/Object type 
             datasetFeaturesInst.FreqOfStringCol = round(1-datasetFeaturesInst.FreqOfIntegerCol-datasetFeaturesInst.FreqOfNumberCol-datasetFeaturesInst.FreqOfBoolCol-datasetFeaturesInst.FreqOfDateCol,6)
 
-            datasetFeaturesInst.MinItemLen = (df.map(lambda x: len(str(x)) if x is not None else 0).min()).min()
-            datasetFeaturesInst.MaxItemLen = (df.map(lambda x: len(str(x)) if x is not None else 0).max()).max()
-            datasetFeaturesInst.AvgItemLen = (df.map(lambda x: len(str(x)) if x is not None else 0).mean()).mean()
+            datasetFeaturesInst.MinItemLen = (df.map(lambda x: len(str(x)) if x is not None and str(x).lower() not in ['nan', 'na'] else 999).min()).min()
+            datasetFeaturesInst.MaxItemLen = (df.map(lambda x: len(str(x)) if x is not None and str(x).lower() not in ['nan', 'na'] else 0).max()).max()
+            
+            # Finds the average len excluding the missing values completely (dropna)
+            datasetFeaturesInst.AvgItemLen = (df.map(lambda x: len(str(x)) if x is not None and str(x).lower() not in ['nan', 'na'] else None).dropna().mean()).mean()
 
             # Count columns with only 1-character items
             datasetFeaturesInst.Freq1CharColumns = (df.map(lambda x: len(str(x)) == 1 if x is not None else False).all()).sum()/df.shape[1]
 
-            datasetFeaturesInst.HasHeader=hasHeader
+            datasetFeaturesInst.hasHeader=hasHeader
 
             return(datasetFeaturesInst)
 
@@ -272,7 +274,7 @@ class datasetFeatures:
                 'AvgItemLen': [dFI.AvgItemLen],
                 'Freq1CharColumns': [dFI.Freq1CharColumns],
                 'Freq2ValuesItemColumns': [dFI.Freq2ValuesItemColumns],
-                'hasHeader': [dFI.HasHeader],       
+                'hasHeader': [dFI.hasHeader],       
                 'type2Words': [dFI.type2Words]
         }                                                              
         X_Pred = pd.DataFrame(data)
