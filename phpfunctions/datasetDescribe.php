@@ -126,6 +126,9 @@
     else {
         $json_data['hasHeader'] = $hasHeader;
         $json_data['delimiter'] = $_POST['delimiter'];
+        if ($json_data['datasetType'] != (int) $_POST['datasetType']) {
+            $json_data['datasetTypeChanged']=true;
+        }
         $json_data['datasetType'] = (int) $_POST['datasetType'];
     }
     // The code below is not needed. Safe to delete after 30/03/2025

@@ -567,11 +567,22 @@ class Sniffer:
             #if the dataset is of the type 1) Market Basket list then it must not have a header.
             #if the ratio of lines with different number of columns from header is more than 0.2 then we assume we have an 1) Market Basket list
             if rowsWithDifferentNumberOfColumnsFromFirstRowColumns/checked>0.2:
-                return (False, None, dialect)
+                if forceHasHeader is None:
+                    # normal case
+                    return (False, None, dialect)
+                else:
+                    # Forced by user case
+                    return (forceHasHeader, None, dialect)
             
         #If not even one item from the header found in the next # lines then it is propably header!
         if headerItemFound==0:
-            return (True, header, dialect)
+            if forceHasHeader is None:
+                # normal case
+                return (True, header, dialect)
+            else:
+                # Forced by user case
+                return (forceHasHeader, None, dialect)
+            
         #Malliaridis 03/12/2023 end
 
         # finally, compare results against first row and "vote"
@@ -591,7 +602,14 @@ class Sniffer:
                 else:
                     hasHeader -= 1
 
-        if hasHeader > 0:
-            return (True, header, dialect)
+        if forceHasHeader is None:
+            if hasHeader > 0:
+                return (True, header, dialect)
+            else:
+                return (False, None, dialect)
         else:
-            return (False, None, dialect)
+            if forceHasHeader:
+                return (True, header, dialect)
+            else:
+                return (False, None, dialect)
+

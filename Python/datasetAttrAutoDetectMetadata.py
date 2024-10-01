@@ -203,8 +203,7 @@ class Metadata():
 
         #finally, if not then 
         if not os.path.exists(filepath): 
-            print("Failed to retrieve dataset attributes!!!")
-            sys.exit() 
+            return "ERROR!!! Failed to retrieve dataset attributes!!!"
 
         # Open the JSON file in read mode
         with open(filepath, 'r') as file:
@@ -220,13 +219,13 @@ class Metadata():
             mustReinitialize=True
 
         if mustReinitialize:
-            self.createMetadataFile(identity,datasetName,-1,public) 
-            with open(filepath, 'r') as file:
-                json_data = json.load(file)
-
-        # Changes found in dataset. DatasetFeatures must be updated.
-        if json_data['delimiter']!=json_data['datasetFeatures']['delimiter'][1] or json_data['hasHeader']!=json_data['datasetFeatures']['hasHeader'][1] or json_data['datasetType']!=json_data['datasetTypePredicted']:
-            self.createMetadataFile(identity,datasetName,json_data['datasetType'],public, json_data['delimiter'], json_data['hasHeader']) 
+            json_data=self.createMetadataFile(identity,datasetName,-1,public) 
+        else:
+            # Changes found in dataset. DatasetFeatures must be updated.
+            if json_data['delimiter']!=json_data['datasetFeatures']['delimiter'][1] or json_data['hasHeader']!=json_data['datasetFeatures']['hasHeader'][1] or 'datasetTypeChanged' in json_data:
+                # Key created in PHP call and must be erased because it was needed only to lead to this if block.
+                json_data.pop('datasetTypeChanged', None)
+                json_data=self.createMetadataFile(identity,datasetName,json_data['datasetType'],public, json_data['delimiter'], json_data['hasHeader']) 
 
         # Now you can work with the JSON data as a Python dictionary or list
         return json_data
