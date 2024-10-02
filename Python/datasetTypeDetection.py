@@ -243,6 +243,7 @@ class datasetFeatures:
 
             # Count columns with only 1-character items
             datasetFeaturesInst.Freq1CharColumns = (df.map(lambda x: len(str(x)) == 1 if x is not None and str(x).lower() not in ['nan', 'na'] else False).all()).sum()/df.shape[1]
+            datasetFeaturesInst.Freq1CharColumns = (df.map(lambda x: len(str(x)) == 1 or x is None or pd.isna(x)).all()).sum()/df.shape[1]
 
             datasetFeaturesInst.hasHeader=hasHeader
 

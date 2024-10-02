@@ -37,7 +37,7 @@
             "Number Of Columns",
             29,
             29,
-            "The total number of columns/features in the Dataset"
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -113,7 +113,7 @@
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -131,8 +131,8 @@
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            9.290000000000001,
-            "9.3",
+            9.210244392366922,
+            "9.2",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
@@ -147,7 +147,7 @@
             "13.8%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
-        "HasHeader": [
+        "hasHeader": [
             "Has Header?",
             true,
             true,
@@ -169,5 +169,14 @@
     "datasetTypePredicted": 2,
     "datasetType": 2,
     "groupItem": "IDInvoice",
-    "valueItem": "ItemCategoryProduits"
+    "valueItem": "ItemCategoryProduits",
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "sSort": -3,
+    "datasetName": "invoice.csv",
+    "public": 1,
+    "redundantRemoveType": 0,
+    "participatingItems": "[]"
 }

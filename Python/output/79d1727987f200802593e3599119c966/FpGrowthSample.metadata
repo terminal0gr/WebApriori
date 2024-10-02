@@ -101,8 +101,8 @@
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            3.725,
-            "3.7",
+            3.875,
+            "3.9",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
@@ -117,7 +117,7 @@
             "25.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
-        "HasHeader": [
+        "hasHeader": [
             "Has Header?",
             false,
             false,
@@ -137,14 +137,5 @@
         ]
     },
     "datasetTypePredicted": 1,
-    "datasetType": 1,
-    "min_support": 0.4,
-    "min_confidence": 0.2,
-    "min_lift": 1.5,
-    "max_length": 4,
-    "sSort": -3,
-    "datasetName": "FpGrowthSample.txt",
-    "public": 1,
-    "redundantRemoveType": 7,
-    "participatingItems": "[]"
+    "datasetType": 1
 }

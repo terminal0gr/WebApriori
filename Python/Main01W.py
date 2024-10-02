@@ -48,7 +48,7 @@ class webApriori():
 
         self.public=public
 
-        #0=Association rules, 1=Retrieve participating items
+        #0-99=ARM, 100=Retrieve participating items. 101=Count participating items.
         self.callType=callType
 
         self.arg1=arg1 #In case of callType=1 it may be groupItem of datasetType 2-INV or absentValue of datasetType 3-SI'
@@ -400,7 +400,7 @@ class webApriori():
             rules_counter+=len(rule_statistics)
             if rules_counter>=max_rules:
                 print('@' + '{:04d}'.format(max_rules))
-                break
+                return('@' + '{:04d}'.format(max_rules))
             
             yield rule_statistics
                 
@@ -437,8 +437,8 @@ class webApriori():
             #Read the dataset from file
             dataset=Global.readDataset(filepath, sep=self.datasetSep, encoding='utf-8-sig', hasHeader=self.jsonData['hasHeader'])
             if not isinstance(dataset, pd.DataFrame):
-                print(f"An error occurred: Could not read dataset! {e}")     
-                sys.exit
+                print(f"An error occurred: Could not read dataset!")    
+                return(f"An error occurred: Could not read dataset!")    
 
             if int(self.datasetType)==1:
                         
@@ -524,11 +524,11 @@ class webApriori():
                     
             else:
                 print("An error occurred: Unknown or unable to process the dataset. Its dataset type is 0 which means it can't be used for association rules mining as it can't produce interesting frequent itemsets.")
-                sys.exit()
+                return("An error occurred: Unknown or unable to process the dataset. Its dataset type is 0 which means it can't be used for association rules mining as it can't produce interesting frequent itemsets.")
 
         except Exception as e:
             print(f"An error occurred: {e}")     
-            sys.exit()       
+            return(f"An error occurred: {e}")     
         
 
 
@@ -693,7 +693,7 @@ class webApriori():
                         self.groupItem=self.jsonData['groupItem']
                     if 'valueItem' in self.jsonData:
                         self.valueItem=self.jsonData['valueItem']
-                elif self.callType==1: #retrieveParticipatingItems
+                elif self.callType==100: #retrieveParticipatingItems
                     if self.arg1 is not None:
                         self.groupItem=self.arg1
                     elif 'groupItem' in self.jsonData:
@@ -710,7 +710,7 @@ class webApriori():
                     else:    
                         print("An error occurred: Could not retrieve the absent value of 3-SI dataset!")
                         return "An error occurred: Could not retrieve the absent value of 3-SI dataset!"
-                elif self.callType==1: #retrieveParticipatingItems
+                elif self.callType==100: #retrieveParticipatingItems
                     if self.arg1 is not None:
                         self.absentValue=self.arg1
                     elif 'absentValue' in self.jsonData:
@@ -776,7 +776,7 @@ class webApriori():
                 
                 # Retrieve the current participating Item List in JSON format.
                 self.excludedItems={}
-                if self.callType==1: # Retrieval of the participating items
+                if self.callType==100: # Retrieval of the participating items
                     return(self.retrieveParticipatingItems(records))
                 else:
                     self.retrieveParticipatingItems()
@@ -798,20 +798,20 @@ class webApriori():
                     association_results = list(self.mainApriori(records, min_support=self.min_support, min_confidence=self.min_confidence, min_lift=self.min_lift, max_length=self.max_length))
                     association_results = self.transform_association_rules(association_results,self.redundantRemoveType)
                 
-                if self.callType>=2 and  self.callType<=4: # Apriori, FPGrowth Algorithm via mlxtend library
+                if self.callType>=10 and  self.callType<=12: # Apriori, FPGrowth, H-mine Algorithms via mlxtend library
                     from mlxtend.preprocessing import TransactionEncoder
-                    from mlxtend.frequent_patterns import apriori, fpgrowth, hmine, association_rules
+                    from lib.mlxtend import apriori, fpgrowth, hmine, association_rules
 
                     te = TransactionEncoder()
                     te_ary = te.fit(records).transform(records)
                     df = pd.DataFrame(te_ary, columns=te.columns_)
 
                     # Find frequent Itemsets
-                    if self.callType==2:
+                    if self.callType==10:
                         frequent_itemsets = apriori(df, min_support=self.min_support, use_colnames=True, max_len=self.max_length)
-                    elif self.callType==3:
+                    elif self.callType==11:
                         frequent_itemsets = fpgrowth(df, min_support=self.min_support, use_colnames=True, max_len=self.max_length)
-                    elif self.callType==4:
+                    elif self.callType==12:
                         frequent_itemsets = hmine(df, min_support=self.min_support, use_colnames=True, max_len=self.max_length)
 
                     # print(frequent_itemsets)

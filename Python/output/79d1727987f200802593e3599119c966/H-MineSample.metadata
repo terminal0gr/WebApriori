@@ -7,7 +7,7 @@
             "Number Of Columns",
             6,
             6,
-            "The total number of columns\/features in the Dataset"
+            "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -59,31 +59,31 @@
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            1,
+            1.0,
             "100.0%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -101,14 +101,14 @@
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            1,
+            1.0,
             "1.0",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0.6666666666666666,
-            "66.7%",
+            1.0,
+            "100.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
@@ -137,14 +137,5 @@
         ]
     },
     "datasetTypePredicted": 4,
-    "datasetType": 1,
-    "min_support": 0.4,
-    "min_confidence": 0.2,
-    "min_lift": 1.33,
-    "max_length": 4,
-    "sSort": -3,
-    "datasetName": "H-MineSample.txt",
-    "public": 1,
-    "redundantRemoveType": 0,
-    "participatingItems": "[]"
+    "datasetType": 1
 }

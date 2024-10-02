@@ -14,7 +14,8 @@ if len(sys.argv)>1:
 	except:
 		sys.exit()
               
-datasetName='H-MineSample.txt'	
+# datasetName='H-MineSample.txt'	
+datasetName='invoice.csv'	
 #datasetName='titanic02.csv'	
 if len(sys.argv)>2:
     if len(sys.argv[2])>0:
@@ -31,7 +32,6 @@ public=0 # 0 > private, 1 > public
 if len(sys.argv)>4:
     if len(sys.argv[4])>0:
         public=int(sys.argv[4])
-
 
 force=1
 if len(sys.argv)>5:
