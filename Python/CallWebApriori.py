@@ -2,7 +2,8 @@ import Main01W as Apriori
 
 identity='79d1727987f200802593e3599119c966' 
 datasetName='H-MineSample.txt'
-public=0
+datasetName='0fish_catches.csv'
+public=1
 callType=2
 arg1=None
 arg2=None

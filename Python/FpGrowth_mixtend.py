@@ -42,12 +42,12 @@ df = pd.DataFrame(te_ary, columns=te.columns_)
 recordTime=time()
 frequent_itemsets = fpgrowth(df, min_support=0.4, use_colnames=True)
 recordTime=time()-recordTime
-print(frequent_itemsets)
-print(recordTime)
-
-# recordTime=time()
-# ARs = association_rules(frequent_itemsets, metric="lift", min_threshold=1.5)
-# recordTime=time()-recordTime
+# print(frequent_itemsets)
 # print(recordTime)
-# print(ARs)
+
+recordTime=time()
+ARs = association_rules(frequent_itemsets, metric="lift", min_threshold=1.3)
+recordTime=time()-recordTime
+print(recordTime)
+print(ARs)
 

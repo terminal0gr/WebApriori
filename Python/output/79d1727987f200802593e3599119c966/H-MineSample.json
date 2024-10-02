@@ -1,14 +1,127 @@
 {
-    "min_support": 0.01,
+    "min_support": 0.4,
     "min_confidence": 0.2,
-    "min_lift": 1.5,
+    "min_lift": 1.33,
     "max_length": 4,
     "sSort": -3,
     "datasetName": "H-MineSample.txt",
     "redundantRemoveType": 0,
     "Records": 4,
-    "RecordsCreationTime": "0.003",
-    "RulesCount": 0,
+    "RecordsCreationTime": "0.002",
+    "RulesCount": 6,
     "RulesCreationTime": "0.000",
-    "rules": []
+    "rules": [
+        {
+            "LHS": [
+                "e"
+            ],
+            "RHS": [
+                "g"
+            ],
+            "Confidence": 0.6666666666666666,
+            "Lift": 1.3333333333333333,
+            "Conviction": 1.4999999999999998,
+            "Leverage": 0.125,
+            "LHS_Count": 3,
+            "LHS_Support": 0.75,
+            "RHS_Count": 2,
+            "RHS_Support": 0.5,
+            "Support": 0.5,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "g"
+            ],
+            "RHS": [
+                "e"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.3333333333333333,
+            "Conviction": 999.999,
+            "Leverage": 0.125,
+            "LHS_Count": 2,
+            "LHS_Support": 0.5,
+            "RHS_Count": 3,
+            "RHS_Support": 0.75,
+            "Support": 0.5,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "e"
+            ],
+            "RHS": [
+                "g",
+                "d"
+            ],
+            "Confidence": 0.6666666666666666,
+            "Lift": 1.3333333333333333,
+            "Conviction": 1.4999999999999998,
+            "Leverage": 0.125,
+            "LHS_Count": 3,
+            "LHS_Support": 0.75,
+            "RHS_Count": 2,
+            "RHS_Support": 0.5,
+            "Support": 0.5,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "g"
+            ],
+            "RHS": [
+                "d",
+                "e"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.3333333333333333,
+            "Conviction": 999.999,
+            "Leverage": 0.125,
+            "LHS_Count": 2,
+            "LHS_Support": 0.5,
+            "RHS_Count": 3,
+            "RHS_Support": 0.75,
+            "Support": 0.5,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "d",
+                "e"
+            ],
+            "RHS": [
+                "g"
+            ],
+            "Confidence": 0.6666666666666666,
+            "Lift": 1.3333333333333333,
+            "Conviction": 1.4999999999999998,
+            "Leverage": 0.125,
+            "LHS_Count": 3,
+            "LHS_Support": 0.75,
+            "RHS_Count": 2,
+            "RHS_Support": 0.5,
+            "Support": 0.5,
+            "Count": 2
+        },
+        {
+            "LHS": [
+                "g",
+                "d"
+            ],
+            "RHS": [
+                "e"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.3333333333333333,
+            "Conviction": 999.999,
+            "Leverage": 0.125,
+            "LHS_Count": 2,
+            "LHS_Support": 0.5,
+            "RHS_Count": 3,
+            "RHS_Support": 0.75,
+            "Support": 0.5,
+            "Count": 2
+        }
+    ]
 }

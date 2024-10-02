@@ -449,9 +449,8 @@ class webApriori():
                 #pandas to list
                 records=dataset.values.tolist()
 
-                #remove nan elements from this list'
-                records = [[y for y in x if str(y) != ['nan','na']] for x in records]
-
+                #remove nan elements from this list
+                records = [[x for x in sublist if not pd.isna(x)] for sublist in records]
                 return(records)
                     
             elif self.datasetType==2:
@@ -507,8 +506,9 @@ class webApriori():
                                     
             elif self.datasetType==4:
                     
-                if 'participatingItems' in self.jsonData:
-                    if len(self.jsonData['participatingItems'])>0 and self.jsonData['participatingItems']!='[]':
+                if      'participatingItems' in self.jsonData \
+                    and len(self.jsonData['participatingItems'])>0 \
+                    and self.jsonData['participatingItems']!='[]':
                         dataset = dataset[self.jsonData['participatingItems']]
                         for arg in self.jsonData['participatingItems']:
                             dataset[arg] = arg + '=' + dataset[arg].astype(str)
@@ -817,7 +817,9 @@ class webApriori():
                     # print(frequent_itemsets)
 
                     # Find Association Rules
-                    ARs = association_rules(frequent_itemsets, metric=['confidence', 'lift'], min_threshold=[self.min_confidence,self.min_lift])
+                    # ARs = association_rules(frequent_itemsets, metric=['confidence', 'lift'], min_threshold=[self.min_confidence,self.min_lift])
+                    # temporary
+                    ARs = association_rules(frequent_itemsets, metric='lift', min_threshold=self.min_lift)
 
                     #Delete the column
                     ARs = ARs.drop('zhangs_metric', axis=1) 

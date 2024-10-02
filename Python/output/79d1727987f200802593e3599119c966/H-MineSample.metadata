@@ -137,5 +137,14 @@
         ]
     },
     "datasetTypePredicted": 4,
-    "datasetType": 1
+    "datasetType": 1,
+    "min_support": 0.4,
+    "min_confidence": 0.2,
+    "min_lift": 1.33,
+    "max_length": 4,
+    "sSort": -3,
+    "datasetName": "H-MineSample.txt",
+    "public": 1,
+    "redundantRemoveType": 0,
+    "participatingItems": "[]"
 }

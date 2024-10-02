@@ -131,7 +131,7 @@
             "15.4%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
-        "HasHeader": [
+        "hasHeader": [
             "Has Header?",
             true,
             true,
@@ -153,10 +153,10 @@
     "datasetTypePredicted": 4,
     "datasetType": 4,
     "min_support": 0.01,
-    "min_confidence": 0.2,
+    "min_confidence": 0.01,
     "min_lift": 1.5,
     "max_length": 4,
-    "ssort": -3,
+    "sSort": -3,
     "datasetName": "0fish_catches.csv",
     "public": 1,
     "redundantRemoveType": 0,
