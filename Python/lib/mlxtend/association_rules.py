@@ -145,15 +145,14 @@ def association_rules(df, metric="confidence", min_threshold=0.8, support_only=F
         metric = "support"
     else:
         if isinstance(metric,list) and isinstance(min_threshold,list):
-            for mtr in metric:
-                if mtr not in metric_dict.keys():
-                    raise ValueError(
-                        "Metric must be 'confidence' or 'lift', got '{}'".format(mtr)
-                    )
+            if not all(item in metric_dict for item in metric):
+                raise ValueError(
+                    "Metric list items must be one of 'support', 'confidence', 'lift', 'leverage', 'conviction', got '{}'".format(metric)
+                )
         elif isinstance(metric,str) and isinstance(min_threshold, (int, float)):
             if metric not in metric_dict.keys():
                 raise ValueError(
-                    "Metric must be 'confidence' or 'lift', got '{}'".format(metric)
+                    "Metric must be one of 'support', 'confidence', 'lift', 'leverage', 'conviction', got '{}'".format(metric)
                 )
         else:
             raise ValueError(

@@ -688,7 +688,7 @@ class webApriori():
             self.groupItem = None
             self.valueItem = None
             if self.jsonData['datasetType']==2:
-                if self.callType==0: #AR Mining
+                if self.callType<100: #AR Mining
                     if 'groupItem' in self.jsonData:
                         self.groupItem=self.jsonData['groupItem']
                     if 'valueItem' in self.jsonData:
@@ -802,6 +802,10 @@ class webApriori():
                     from mlxtend.preprocessing import TransactionEncoder
                     from lib.mlxtend import apriori, fpgrowth, hmine, association_rules
 
+                    with open('output.txt', 'w') as file:
+                        for sublist in records:
+                            file.write(','.join(sublist) + '\n')
+
                     te = TransactionEncoder()
                     te_ary = te.fit(records).transform(records)
                     df = pd.DataFrame(te_ary, columns=te.columns_)
@@ -819,7 +823,7 @@ class webApriori():
                     # Find Association Rules
                     # ARs = association_rules(frequent_itemsets, metric=['confidence', 'lift'], min_threshold=[self.min_confidence,self.min_lift])
                     # temporary
-                    ARs = association_rules(frequent_itemsets, metric='lift', min_threshold=self.min_lift)
+                    ARs = association_rules(frequent_itemsets, metric=['lift','confidence'], min_threshold=[self.min_lift,self.min_confidence])
 
                     #Delete the column
                     ARs = ARs.drop('zhangs_metric', axis=1) 

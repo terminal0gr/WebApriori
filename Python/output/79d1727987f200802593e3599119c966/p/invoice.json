@@ -2,13 +2,13 @@
     "min_support": 0.01,
     "min_confidence": 0.2,
     "min_lift": 1.5,
-    "max_length": 4,
+    "max_length": 2,
     "sSort": -3,
     "datasetName": "invoice.csv",
     "redundantRemoveType": 0,
-    "Records": 42,
-    "RecordsCreationTime": "0.003",
+    "Records": 2869,
+    "RecordsCreationTime": "4.751",
     "RulesCount": 0,
-    "RulesCreationTime": "0.639",
+    "RulesCreationTime": "0.016",
     "rules": []
 }

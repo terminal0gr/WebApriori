@@ -5,56 +5,56 @@
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            6,
-            6,
+            85,
+            85,
             "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
-            "H-MineSample.txt",
-            "H-MineSample.txt",
+            "output.txt",
+            "output.txt",
             "The name of the dataset"
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.5833333333333334,
-            "58.3%",
+            0.21677297424994063,
+            "21.7%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.4583333333333333,
-            "45.8%",
+            0.014363335695724073,
+            "1.4%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            0.875,
-            "87.5%",
+            0.4984171982045831,
+            "49.8%",
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "d",
-            "d",
+            "31281",
+            "31281",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.16666666666666666,
-            "16.7%",
+            0.011717458067564376,
+            "1.2%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.125,
-            "12.5%",
+            0.010961493030947319,
+            "1.1%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.125,
-            "12.5%",
+            0.009827545476021734,
+            "1.0%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
@@ -65,8 +65,8 @@
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0,
-            "0.0%",
+            1,
+            "100.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
@@ -77,8 +77,8 @@
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            1,
-            "100.0%",
+            0,
+            "0.0%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
@@ -89,32 +89,32 @@
         ],
         "MinItemLen": [
             "Min Item length",
-            1,
-            1,
+            4,
+            4,
             "The length of the smallest element in dataset"
         ],
         "MaxItemLen": [
             "Max Item Length",
-            1,
-            1,
+            5,
+            5,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            1,
-            "1.0",
+            4.752941176470588,
+            "4.8",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            1,
-            "100.0%",
+            0,
+            "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.6666666666666666,
-            "66.7%",
+            0.08235294117647059,
+            "8.2%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
         "hasHeader": [
@@ -136,14 +136,14 @@
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
         ]
     },
-    "datasetTypePredicted": 4,
+    "datasetTypePredicted": 1,
     "datasetType": 1,
-    "min_support": 0.4,
+    "min_support": 0.01,
     "min_confidence": 0.2,
-    "min_lift": 1.33,
+    "min_lift": 1.5,
     "max_length": 4,
     "sSort": -3,
-    "datasetName": "H-MineSample.txt",
+    "datasetName": "output.txt",
     "public": 1,
     "redundantRemoveType": 0,
     "participatingItems": "[]"

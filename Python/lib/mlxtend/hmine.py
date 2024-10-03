@@ -8,8 +8,7 @@ import math
 import numpy as np
 import pandas as pd
 
-from ..frequent_patterns import fpcommon as fpc
-
+import lib.mlxtend.fpcommon as fpc
 
 def hmine(
     df, min_support=0.5, use_colnames=False, max_len=None, verbose=0

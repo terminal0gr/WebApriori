@@ -7,7 +7,7 @@
     "datasetName": "H-MineSample.txt",
     "redundantRemoveType": 0,
     "Records": 4,
-    "RecordsCreationTime": "0.002",
+    "RecordsCreationTime": "0.006",
     "RulesCount": 6,
     "RulesCreationTime": "0.000",
     "rules": [

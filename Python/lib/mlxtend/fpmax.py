@@ -6,7 +6,8 @@
 import collections
 import math
 
-from ..frequent_patterns import fpcommon as fpc
+import lib.mlxtend.fpcommon as fpc
+
 
 
 def fpmax(df, min_support=0.5, use_colnames=False, max_len=None, verbose=0):

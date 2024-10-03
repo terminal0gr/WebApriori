@@ -7,7 +7,9 @@
 import numpy as np
 import pandas as pd
 
-from .fpcommon import fpcommon as fpc
+import os
+
+import lib.mlxtend.fpcommon as fpc
 
 
 def generate_new_combinations(old_combinations):

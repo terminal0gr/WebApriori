@@ -169,7 +169,7 @@
     "datasetTypePredicted": 2,
     "datasetType": 2,
     "groupItem": "IDInvoice",
-    "valueItem": "ItemCategoryProduits",
+    "valueItem": "ProduitID",
     "min_support": 0.01,
     "min_confidence": 0.2,
     "min_lift": 1.5,
