@@ -5,7 +5,6 @@
 29/09/2024 (3) participating items must be handled in mlxtend implementation after (1,2)
 29/09/2024 thorough tests must be done to determine if the correct AR has been mined according to confidence and lift thresholds
 29/09/2024 Autodetect, Info, Filter Participating items must be managed async.
-MAJOR !!! 02/10/2024 integrade mlxtend source files in my repository because of the changes I have made.
 02/10/2024 Cannot Autodetect quote ' in FPGrowthSample.txt 
 
 
@@ -37,6 +36,7 @@ Must be integraded in my association_rules.py
                     "Metric list items must be one of 'support', 'confidence', 'lift', 'leverage', 'conviction', got '{}'".format(metric)
                 )
 
+DONE - V01.00.00 02/10/2024 02/10/2024 Integrade mlxtend source files in my repository because of the changes I have made.
 DONE - V01.00.00 02/10/2024 30/09/2024 1-char columns not working right with NaN's > datasetTypeDetection.py ln245
 DONE - V01.00.00 01/10/2024 29/09/2024 Info must detect manual changes made by the user in `hasHeader, delimiter, Dataset type` before `Retrieve AR` is made
 DONE - V01.00.00 01/10/2024 30/09/2024 If user changes datasetType, then it always updates. It should only if changed it now ln:229 datasetAttrAutoDetectMetadata.py

@@ -1,65 +1,60 @@
 {
-    "hasHeader": true,
-    "header": [
-        "class",
-        "age",
-        "sex",
-        "survived"
-    ],
+    "hasHeader": false,
+    "header": null,
     "delimiter": ",",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            4,
-            4,
+            9,
+            9,
             "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
-            "titanic02.csv",
-            "titanic02.csv",
+            "invoiceType1.csv",
+            "invoiceType1.csv",
             "The name of the dataset"
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.004,
-            "0.4%",
+            0.044888888888888895,
+            "4.5%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.004,
-            "0.4%",
+            0.017777777777777778,
+            "1.8%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            1,
-            "100.0%",
+            0.30866666666666887,
+            "30.9%",
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "adult",
-            "adult",
+            "1560TAFC",
+            "1560TAFC",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.247,
-            "24.7%",
+            0.043555555555555556,
+            "4.4%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.174,
-            "17.4%",
+            0.029777777777777778,
+            "3.0%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.1625,
-            "16.2%",
+            0.029555555555555557,
+            "3.0%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
@@ -82,32 +77,32 @@
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            0.75,
-            "75.0%",
+            1,
+            "100.0%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.25,
-            "25.0%",
+            0,
+            "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
         "MinItemLen": [
             "Min Item length",
-            2,
-            2,
+            8,
+            8,
             "The length of the smallest element in dataset"
         ],
         "MaxItemLen": [
             "Max Item Length",
-            6,
-            6,
+            8,
+            8,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            3.7640000000000002,
-            "3.8",
+            8,
+            "8.0",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
@@ -118,14 +113,14 @@
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            1,
-            "100.0%",
+            0.2222222222222222,
+            "22.2%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
         "hasHeader": [
             "Has Header?",
-            true,
-            true,
+            false,
+            false,
             "Does the dataset have Header?"
         ],
         "delimiter": [
@@ -141,6 +136,15 @@
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
         ]
     },
-    "datasetTypePredicted": 4,
-    "datasetType": 4
+    "datasetTypePredicted": 1,
+    "datasetType": 1,
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 32,
+    "max_length": 4,
+    "sSort": -3,
+    "datasetName": "invoiceType1.csv",
+    "public": 1,
+    "redundantRemoveType": 0,
+    "participatingItems": "[]"
 }

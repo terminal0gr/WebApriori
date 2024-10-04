@@ -144,19 +144,20 @@ def association_rules(df, metric="confidence", min_threshold=0.8, support_only=F
     if support_only:
         metric = "support"
     else:
+        # 01/10/2024 Updated by Malliaridis to handle AR filtering by more than 1 metric.
         if isinstance(metric,list) and isinstance(min_threshold,list):
             if not all(item in metric_dict for item in metric):
                 raise ValueError(
-                    "Metric list items must be one of 'support', 'confidence', 'lift', 'leverage', 'conviction', got '{}'".format(metric)
+                    "Metric list items must be one of 'support', 'confidence', 'lift', 'leverage', 'conviction' or 'zhangs_metric', got '{}'".format(metric)
                 )
         elif isinstance(metric,str) and isinstance(min_threshold, (int, float)):
             if metric not in metric_dict.keys():
                 raise ValueError(
-                    "Metric must be one of 'support', 'confidence', 'lift', 'leverage', 'conviction', got '{}'".format(metric)
+                    "Metric must be one of 'support', 'confidence', 'lift', 'leverage', 'conviction' or 'zhangs_metric', got '{}'".format(metric)
                 )
         else:
             raise ValueError(
-                "metric and min_threshold can be either a list object or single values simultaneously. Examples. First Case -> metric=[confidence,lift] and min_threshold=[0.2, 1.5]. Second case -> metric='confidence' and min_threshold=0.2"
+                "metric and min_threshold can be either a list object or single values simultaneously. Examples. First Case -> metric=['lift','confidence'] and min_threshold=[0.2, 1.5]. Second case -> metric='confidence' and min_threshold=0.2"
             )
 
 
@@ -203,6 +204,7 @@ def association_rules(df, metric="confidence", min_threshold=0.8, support_only=F
                         raise KeyError(s)
                     # check for the threshold
 
+                # 01/10/2024 Updated by Malliaridis to handle AR filtering by more than 1 metric.
                 PassedThresohold=False
                 if isinstance(metric,str):
                     if metric_dict[metric](sAC, sA, sC) >= min_threshold:

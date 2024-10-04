@@ -260,7 +260,7 @@
             "28.2%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
-        "HasHeader": [
+        "hasHeader": [
             "Has Header?",
             true,
             true,
@@ -281,14 +281,5 @@
     },
     "datasetTypePredicted": 3,
     "datasetType": 3,
-    "absentValue": "0",
-    "min_support": 0.01,
-    "min_confidence": 0.2,
-    "min_lift": 1.5,
-    "max_length": 4,
-    "ssort": -3,
-    "datasetName": "grocery_timestamp.csv",
-    "public": 1,
-    "redundantRemoveType": 0,
-    "participatingItems": "[]"
+    "absentValue": "0"
 }
