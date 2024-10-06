@@ -446,6 +446,9 @@ class webApriori():
                 # if len(args)>0:
                 #     dataset = dataset[list(args)]
 
+                if self.callType>=20 and self.callType<=29: #PAMI Implementation
+                    return dataset
+
                 #pandas to list
                 records=dataset.values.tolist()
 
