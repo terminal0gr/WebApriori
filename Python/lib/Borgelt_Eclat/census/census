@@ -1,0 +1,36 @@
+#!/bin/sh
+gawk -F, '
+BEGIN { printf("age workclass education edu_num marital occupation relationship race sex gain loss hours country salary\n"); }
+{ if      ($1  <   30) printf("young");
+  else if ($1  <   50) printf("middle-aged");
+  else if ($1  <   70) printf("senior");
+  else                printf("old");
+  printf("%s%s%s%s%s%s%s%s ", $2, $4, $5, $6, $7, $8, $9, $10);
+  if      ($11 <=   0) printf("none ");
+  else if ($11 < 2000) printf("small ");
+  else if ($11 < 5000) printf("medium ");
+  else                 printf("high ");
+  if      ($12 <=   0) printf("none ");
+  else if ($12 < 2000) printf("small ");
+  else if ($12 < 5000) printf("medium ");
+  else                 printf("high ");
+  if      ($13 <=  25) printf("half-time");
+  else if ($13 <=  40) printf("full-time");
+  else if ($13 <=  60) printf("overtime");
+  else                 printf("too-many");
+  printf("%s ", $14);
+  if (($15 == " <=50K") || ($15 == " <=50K.")) printf("<=50K\n");
+  else                                         printf(">50K\n");
+}' census.data > census.tab
+
+gawk '
+(NR <= 1) {
+  for (i = 0; ++i <= NF; )
+    att[i] = $i;
+}
+(NR >  1) {
+  for (i = k = 0; ++i < NF; ) {
+    printf("%s=%s ", att[i], $i);
+  }
+  printf("%s%s\n", att[i], $i);
+}' census.tab > census.tra

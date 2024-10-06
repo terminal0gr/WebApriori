@@ -1,0 +1,53 @@
+{
+    "min_support": 0.4,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "sSort": -3,
+    "datasetName": "1contextCFPGrowth.txt",
+    "redundantRemoveType": 0,
+    "Records": 5,
+    "RecordsCreationTime": "0.001",
+    "RulesCount": 2,
+    "RulesCreationTime": "0.000",
+    "rules": [
+        {
+            "LHS": [
+                "1"
+            ],
+            "RHS": [
+                "6",
+                "3"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "6",
+                "3"
+            ],
+            "RHS": [
+                "1"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        }
+    ]
+}
