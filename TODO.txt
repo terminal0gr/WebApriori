@@ -10,6 +10,7 @@
 
 06/10/2024 IMPORTANT! dEclat and Top K implementation in python
 
+Rapidminer, Weka, SPSS, Knime, Orange, Spark Lib
 
 12/07/2024 Real multithread environment
    Works in Main01W. But print and returns must be checked. Also the other programs must be transformed to run from waitress and flask

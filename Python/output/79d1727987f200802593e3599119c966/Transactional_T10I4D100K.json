@@ -7,7 +7,7 @@
     "datasetName": "Transactional_T10I4D100K.csv",
     "redundantRemoveType": 0,
     "Records": 99935,
-    "RecordsCreationTime": "0.916",
+    "RecordsCreationTime": "0.950",
     "RulesCount": 13,
     "RulesCreationTime": "3.403",
     "rules": [

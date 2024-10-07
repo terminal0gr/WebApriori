@@ -7,7 +7,7 @@
             "Number Of Columns",
             1,
             1,
-            "The total number of columns/features in the Dataset"
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -29,7 +29,7 @@
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            1.0,
+            1,
             "100.0%",
             "The Average of distinct values per row over the total rows"
         ],
@@ -59,31 +59,31 @@
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            1.0,
+            1,
             "100.0%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -107,13 +107,13 @@
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0.0,
+            0,
             "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.0,
+            0,
             "0.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
@@ -137,5 +137,14 @@
         ]
     },
     "datasetTypePredicted": 1,
-    "datasetType": 1
+    "datasetType": 1,
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 2,
+    "sSort": -3,
+    "datasetName": "Transactional_T10I4D100K.csv",
+    "public": 1,
+    "redundantRemoveType": 0,
+    "participatingItems": "[]"
 }
