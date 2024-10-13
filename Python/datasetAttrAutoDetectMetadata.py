@@ -6,12 +6,13 @@ import csvMy as csv
 import datasetTypeDetection as df
 from Inv_2_Sorter import Inv_2_Sorter
 import Global
+import Main01W as Apriori
 
 nRows=500
 
 class Metadata():
 
-    def createMetadataFile(self, identity, datasetName, datasetType=-1, public=0, forceDelimiter=None, forceHasHeader=None):
+    def createMetadataFile(self, identity, datasetName, datasetType=-1, public=0, forceDelimiter=None, forceHasHeader=None, forceArg1=None, forceArg2=None):
 
         if public==0:
             filepath=os.path.join('datasets', str(identity), datasetName)
@@ -92,78 +93,108 @@ class Metadata():
             datasetAttributes['datasetType']=int(datasetType)
 
         if datasetAttributes['datasetType']==2:
-            #####################            
-            #GROUP ITEM DETECTION
-            #####################
 
-            #Initialization to None
-            datasetAttributes['groupItem']='?'
+            if forceArg1 is not None:
+                datasetAttributes['groupItem']=forceArg1
+            else:
+                #####################            
+                #GROUP ITEM DETECTION
+                #####################
 
-            filepath=os.path.join('datasets')	
-        
-            #Firstly I check if the folder exists. If not, then create it and auto detect dataset attributes.
-            if not os.path.exists(filepath):
-                print(f"Failed to detect datasets folder!!!")     
-                sys.exit    
+                #Initialization to None
+                datasetAttributes['groupItem']='?'
 
-            filepath=os.path.join('datasets', 'Inc_2_Group_Words.json')	
-            #Secondly I check if the the lexicon file exists. If not
-            if os.path.exists(filepath): 
+                filepath=os.path.join('datasets')	
+            
+                #Firstly I check if the folder exists. If not, then create it and auto detect dataset attributes.
+                if not os.path.exists(filepath):
+                    print(f"Failed to detect datasets folder!!!")     
+                    sys.exit    
 
-                value_dict={}
+                filepath=os.path.join('datasets', 'Inc_2_Group_Words.json')	
+                #Secondly I check if the the lexicon file exists. If not
+                if os.path.exists(filepath): 
 
-                # Open the JSON file in read mode
-                with open(filepath, encoding='utf-8-sig') as file:
-                    # Load the JSON data from the file
-                    try:
-                        value_dict = json.load(file)
-                    except Exception as e:
-                        # Handle the case where no JSON data is found or the file is empty
-                        print(f"An error occurred: {e}")
-                        sys.exit()
+                    value_dict={}
 
-                if value_dict:
-                    # Create an instance of DictionarySorter
-                    sorter = Inv_2_Sorter(datasetAttributes['header'], value_dict)
-                    datasetAttributes['groupItem']=sorter.generate_best_item()
+                    # Open the JSON file in read mode
+                    with open(filepath, encoding='utf-8-sig') as file:
+                        # Load the JSON data from the file
+                        try:
+                            value_dict = json.load(file)
+                        except Exception as e:
+                            # Handle the case where no JSON data is found or the file is empty
+                            print(f"An error occurred: {e}")
+                            sys.exit()
 
-            #####################            
-            #VALUE ITEM DETECTION
-            #####################
+                    if value_dict:
+                        # Create an instance of DictionarySorter
+                        sorter = Inv_2_Sorter(datasetAttributes['header'], value_dict)
+                        datasetAttributes['groupItem']=sorter.generate_best_item()
 
-            #Initialization to None
-            datasetAttributes['valueItem']='?'
+            if forceArg2 is not None:
+                datasetAttributes['groupItem']=forceArg2
+            else:
+                #####################            
+                #VALUE ITEM DETECTION
+                #####################
 
-            filepath=os.path.join('datasets')	
-        
-            #Firstly I check if the folder exists. If not, then create it and auto detect dataset attributes.
-            if not os.path.exists(filepath):
-                print(f"Failed to detect datasets folder!!!")     
-                sys.exit    
+                #Initialization to None
+                datasetAttributes['valueItem']='?'
 
-            filepath=os.path.join('datasets', 'Inc_2_Value_Words.json')	
-            #Secondly I check if the the lexicon file exists. If not
-            if os.path.exists(filepath): 
+                filepath=os.path.join('datasets')	
+            
+                #Firstly I check if the folder exists. If not, then create it and auto detect dataset attributes.
+                if not os.path.exists(filepath):
+                    print(f"Failed to detect datasets folder!!!")     
+                    sys.exit    
 
-                value_dict={}
+                filepath=os.path.join('datasets', 'Inc_2_Value_Words.json')	
+                #Secondly I check if the the lexicon file exists. If not
+                if os.path.exists(filepath): 
 
-                # Open the JSON file in read mode
-                with open(filepath, encoding='utf-8-sig') as file:
-                    # Load the JSON data from the file
-                    try:
-                        value_dict = json.load(file)
-                    except Exception as e:
-                        # Handle the case where no JSON data is found or the file is empty
-                        print(f"An error occurred: {e}")
-                        sys.exit()
+                    value_dict={}
 
-                if value_dict:
-                    # Create an instance of DictionarySorter
-                    sorter = Inv_2_Sorter(datasetAttributes['header'], value_dict)
-                    datasetAttributes['valueItem']=sorter.generate_best_item()
+                    # Open the JSON file in read mode
+                    with open(filepath, encoding='utf-8-sig') as file:
+                        # Load the JSON data from the file
+                        try:
+                            value_dict = json.load(file)
+                        except Exception as e:
+                            # Handle the case where no JSON data is found or the file is empty
+                            print(f"An error occurred: {e}")
+                            sys.exit()
+
+                    if value_dict:
+                        # Create an instance of DictionarySorter
+                        sorter = Inv_2_Sorter(datasetAttributes['header'], value_dict)
+                        datasetAttributes['valueItem']=sorter.generate_best_item()
 
         if datasetAttributes['datasetType']==3:
-            datasetAttributes['absentValue']=str(DFI.Top1Value)
+            if forceArg1 is not None:
+               datasetAttributes['absentValue']=str(forceArg1)
+            else:
+               datasetAttributes['absentValue']=str(DFI.Top1Value)
+
+        ###########################################################################
+        # Append to file 4 important features of the transformed final dataset n_items, avg_transaction_size, n_transactions, density=avg_transaction_size / n_items
+        # 4th parameter=101 means --> transformed transaction description. n_items, avg_transaction_size, n_transactions, density=avg_transaction_size / n_items
+        # wrapped in a dictionary
+        WAInst=Apriori.webApriori(identity,datasetName,public,101,arg1=None,arg2=None)
+        DFI2=WAInst.runWebApriori()
+        key='n_items'
+        if key in DFI2:
+            datasetAttributes['datasetFeatures'][key]=("Items count",DFI2[key],DFI2[key],"The total number of items for ARM process")
+        key='avg_transaction_size'
+        if key in DFI2:
+            datasetAttributes['datasetFeatures'][key]=("Avg items per transaction",DFI2[key],"{:.2f}".format(DFI2[key]),"The average number of items per transaction for ARM process")
+        key='n_transactions'
+        if key in DFI2:
+            datasetAttributes['datasetFeatures'][key]=("transactions count",DFI2[key],DFI2[key],"The total number of transactions for ARM process")
+        key='density'
+        if key in DFI2:
+            datasetAttributes['datasetFeatures'][key]=("transactions density",DFI2[key],"{:.1f}%".format(DFI2[key]*100.),"The density of transactions for ARM process")
+        ###########################################################################
 
         if public==0:
             filepath=os.path.join('output', str(identity))
@@ -223,8 +254,9 @@ class Metadata():
         else:
             # Changes found in dataset. DatasetFeatures must be updated.
             if json_data['delimiter']!=json_data['datasetFeatures']['delimiter'][1] or json_data['hasHeader']!=json_data['datasetFeatures']['hasHeader'][1] or 'datasetTypeChanged' in json_data:
-                # Key created in PHP call and must be erased because it was needed only to lead to this if block.
+                # Key created in PHP call and must be erased by code below because it was needed to lead to this if block.
                 json_data.pop('datasetTypeChanged', None)
+                # Calling createMetadataFile but without autodetecting delimiter and hasHeader
                 json_data=self.createMetadataFile(identity,datasetName,json_data['datasetType'],public, json_data['delimiter'], json_data['hasHeader']) 
 
         # Now you can work with the JSON data as a Python dictionary or list

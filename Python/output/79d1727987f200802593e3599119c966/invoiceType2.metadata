@@ -164,6 +164,30 @@
             11,
             11,
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
+        ],
+        "n_items": [
+            "Items count",
+            159,
+            159,
+            "The total number of items for ARM process"
+        ],
+        "avg_transaction_size": [
+            "Avg items\/trans",
+            2.942495329042973,
+            "2.94",
+            "The average transaction length for ARM process"
+        ],
+        "n_transactions": [
+            "transactions count",
+            4817,
+            4817,
+            "The total number of transactions for ARM process"
+        ],
+        "density": [
+            "transactions density",
+            0.01850625993108788,
+            "1.9%",
+            "The density of transactions for ARM process"
         ]
     },
     "datasetTypePredicted": 2,
@@ -172,7 +196,7 @@
     "valueItem": "ProduitID",
     "min_support": 0.01,
     "min_confidence": 0.2,
-    "min_lift": 1.5,
+    "min_lift": 32,
     "max_length": 4,
     "sSort": -3,
     "datasetName": "invoiceType2.csv",

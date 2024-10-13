@@ -7,10 +7,29 @@
     "datasetName": "invoiceType1.csv",
     "redundantRemoveType": 0,
     "Records": 4817,
-    "RecordsCreationTime": "0.158",
+    "RecordsCreationTime": "0.042",
     "RulesCount": 4,
-    "RulesCreationTime": "0.953",
+    "RulesCreationTime": "0.056",
     "rules": [
+        {
+            "LHS": [
+                "2320HZFH"
+            ],
+            "RHS": [
+                "2330HZFH",
+                "2350HZFH"
+            ],
+            "Confidence": 0.5,
+            "Lift": 32.99315068493151,
+            "Conviction": 1.9696906788457547,
+            "Leverage": 0.011071826310258772,
+            "LHS_Count": 110,
+            "LHS_Support": 0.02283578991073282,
+            "RHS_Count": 73,
+            "RHS_Support": 0.01515466057712269,
+            "Support": 0.01141789495536641,
+            "Count": 55
+        },
         {
             "LHS": [
                 "2330HZFH",
@@ -35,19 +54,18 @@
                 "2320HZFH"
             ],
             "RHS": [
-                "2330HZFH",
                 "2350HZFH"
             ],
-            "Confidence": 0.5,
-            "Lift": 32.99315068493151,
-            "Conviction": 1.9696906788457547,
-            "Leverage": 0.011071826310258772,
+            "Confidence": 0.7454545454545455,
+            "Lift": 32.35004095004095,
+            "Conviction": 3.838043832853881,
+            "Leverage": 0.016496829420782365,
             "LHS_Count": 110,
             "LHS_Support": 0.02283578991073282,
-            "RHS_Count": 73,
-            "RHS_Support": 0.01515466057712269,
-            "Support": 0.01141789495536641,
-            "Count": 55
+            "RHS_Count": 111,
+            "RHS_Support": 0.023043388000830393,
+            "Support": 0.01702304338800083,
+            "Count": 82
         },
         {
             "LHS": [
@@ -64,24 +82,6 @@
             "LHS_Support": 0.023043388000830393,
             "RHS_Count": 110,
             "RHS_Support": 0.02283578991073282,
-            "Support": 0.01702304338800083,
-            "Count": 82
-        },
-        {
-            "LHS": [
-                "2320HZFH"
-            ],
-            "RHS": [
-                "2350HZFH"
-            ],
-            "Confidence": 0.7454545454545455,
-            "Lift": 32.35004095004095,
-            "Conviction": 3.838043832853881,
-            "Leverage": 0.016496829420782365,
-            "LHS_Count": 110,
-            "LHS_Support": 0.02283578991073282,
-            "RHS_Count": 111,
-            "RHS_Support": 0.023043388000830393,
             "Support": 0.01702304338800083,
             "Count": 82
         }

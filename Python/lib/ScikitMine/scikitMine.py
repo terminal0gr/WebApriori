@@ -1,12 +1,26 @@
 import skmine
 from skmine.datasets import make_transactions
 
-D = make_transactions(n_transactions=100,
-                     n_items=10,
-                     density=.2)
+# synthetic data creation
+def syntheticDataCreation():
 
-from skmine.datasets.utils import describe
-print(describe(D))
+    # With a binary matrix representation of the resulting dataset, we have the following equality
+    #     .. math:: density = { Number\ of\ ones \over Number\ of\ cells }
+    # This is equivalent to
+    #     .. math:: density = { Average\ transaction\ size \over number\ of\ items
 
-print(type(D))
-# print(D)
+    D = make_transactions(n_transactions=10,
+                        n_items=20,
+                        density=.2)
+
+    from skmine.datasets.utils import describe
+    print(describe(D))
+
+    print(type(D))
+    print(D)
+    return D
+
+syntheticDataCreation()
+
+
+

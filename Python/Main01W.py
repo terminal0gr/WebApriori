@@ -9,6 +9,9 @@ from time import time
 import pandas as pd
 import datasetAttrAutoDetectMetadata as Metadata
 import Global
+from skmine.datasets.utils import describe
+import skmine
+
 # global variables section
 max_rules=1000
 max_items=999
@@ -696,7 +699,7 @@ class webApriori():
                         self.groupItem=self.jsonData['groupItem']
                     if 'valueItem' in self.jsonData:
                         self.valueItem=self.jsonData['valueItem']
-                elif self.callType==100: #retrieveParticipatingItems
+                elif self.callType>=100: #retrieveParticipatingItems
                     if self.arg1 is not None:
                         self.groupItem=self.arg1
                     elif 'groupItem' in self.jsonData:
@@ -781,6 +784,9 @@ class webApriori():
                 self.excludedItems={}
                 if self.callType==100: # Retrieval of the participating items
                     return(self.retrieveParticipatingItems(records))
+                elif self.callType==101: # Retrieval n_items, avg_transaction_size, n_transactions, density=avg_transaction_size / n_items
+                    D=pd.Series(records)
+                    return(skmine.datasets.utils.describe(D))
                 else:
                     self.retrieveParticipatingItems()
 
