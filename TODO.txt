@@ -7,7 +7,9 @@
 02/10/2024 Cannot Autodetect quote ' in FPGrowthSample.txt 
 04/10/2024 After successful save of the items filtering show toast (3 seconds) instead of modal
 04/10/2024 Number of Transactions, Number of items, sparsity index must be saved and shown
+
 13/10/2024 In datasetType 2, if group Item or Value Item changed, info is not updated...
+14/10/2024 PRIORITY! records=WAInst.prepare_records() ln 186 Error in "Info"
 
 06/10/2024 IMPORTANT! dEclat and Top K implementation in python
 

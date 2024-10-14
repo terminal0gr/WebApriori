@@ -145,11 +145,19 @@
 
     // It is an append. the key/value pair is appended or, edited if it exists 
     if  ($json_data['datasetType']==2) { //2-INV dataset Type
+        // If groupItem or valueItem changed by user, then the dataset information features must be updated
+        if ($json_data['groupItem'] != (string) $_POST['groupItem'] || $json_data['valueItem']!=(string) $_POST['valueItem']) {
+            $json_data['datasetTypeChanged']=true;
+        }
         $json_data['groupItem']=(string) $_POST['groupItem'];
         $json_data['valueItem']=(string) $_POST['valueItem'];
     }
 
     if  ($json_data['datasetType']==3) { //3-SI dataset Type
+        // If absentValue changed by user, then the dataset information features must be updated
+        if ($json_data['absentValue']!=(string) $_POST['absentValue']) {
+            $json_data['datasetTypeChanged']=true;
+        }
         $json_data['absentValue']=(string) $_POST['absentValue'];
     }
 

@@ -7,6 +7,8 @@ import datasetTypeDetection as df
 from Inv_2_Sorter import Inv_2_Sorter
 import Global
 import Main01W as Apriori
+import pandas as pd
+import skmine
 
 nRows=500
 
@@ -181,7 +183,10 @@ class Metadata():
         # 4th parameter=101 means --> transformed transaction description. n_items, avg_transaction_size, n_transactions, density=avg_transaction_size / n_items
         # wrapped in a dictionary
         WAInst=Apriori.webApriori(identity,datasetName,public,101,arg1=None,arg2=None)
-        DFI2=WAInst.runWebApriori()
+        records=WAInst.prepare_records()
+        D=pd.Series(records)
+        DFI2=skmine.datasets.utils.describe(D)
+        # DFI2=WAInst.runWebApriori()
         key='n_items'
         if key in DFI2:
             datasetAttributes['datasetFeatures'][key]=("Items count",DFI2[key],DFI2[key],"The total number of items for ARM process")

@@ -12,7 +12,7 @@
             "Number Of Columns",
             4,
             4,
-            "The total number of columns\/features in the Dataset"
+            "The total number of columns/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -34,7 +34,7 @@
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            1,
+            1.0,
             "100.0%",
             "The Average of distinct values per row over the total rows"
         ],
@@ -64,19 +64,19 @@
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0,
+            0.0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
@@ -112,13 +112,13 @@
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0,
+            0.0,
             "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            1,
+            1.0,
             "100.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
@@ -139,6 +139,30 @@
             0,
             0,
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
+        ],
+        "n_items": [
+            "Items count",
+            21,
+            21,
+            "The total number of items for ARM process"
+        ],
+        "avg_transaction_size": [
+            "Avg items per transaction",
+            66.0,
+            "66.00",
+            "The average number of items per transaction for ARM process"
+        ],
+        "n_transactions": [
+            "transactions count",
+            1,
+            1,
+            "The total number of transactions for ARM process"
+        ],
+        "density": [
+            "transactions density",
+            3.142857142857143,
+            "314.3%",
+            "The density of transactions for ARM process"
         ]
     },
     "datasetTypePredicted": 4,
