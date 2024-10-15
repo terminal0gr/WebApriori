@@ -41,7 +41,7 @@
             "Number Of Columns",
             33,
             33,
-            "The total number of columns/features in the Dataset"
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -99,13 +99,13 @@
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
@@ -151,7 +151,7 @@
             "39.4%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
-        "HasHeader": [
+        "hasHeader": [
             "Has Header?",
             true,
             true,
@@ -168,6 +168,30 @@
             0,
             0,
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
+        ],
+        "n_items": [
+            "Items count",
+            177,
+            177,
+            "The total number of items for ARM process"
+        ],
+        "avg_transaction_size": [
+            "Avg items per transaction",
+            33,
+            "33.00",
+            "The average number of items per transaction for ARM process"
+        ],
+        "n_transactions": [
+            "transactions count",
+            649,
+            649,
+            "The total number of transactions for ARM process"
+        ],
+        "density": [
+            "transactions density",
+            0.1864406779661017,
+            "18.6%",
+            "The density of transactions for ARM process"
         ]
     },
     "datasetTypePredicted": 4,

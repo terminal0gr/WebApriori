@@ -206,13 +206,14 @@
     if (!empty($_POST['redundantType'])) {
         $json_data['redundantRemoveType'] = (int) $_POST['redundantType'];
     }    
-    $json_data['participatingItems']="[]"; 
-    if (!empty($_POST['extra_parameters'])) {
-        // Use a regular expression to match quoted segments
-        preg_match_all('/"([^"]+)"/', $_POST['extra_parameters'], $matches);
-        // Extract the matches
-        $json_data['participatingItems'] = $matches[1];
-    }    
+    //Erase if no problem after 31/12/2024
+    // $json_data['participatingItems']="[]"; 
+    // if (!empty($_POST['extra_parameters'])) {
+    //     // Use a regular expression to match quoted segments
+    //     preg_match_all('/"([^"]+)"/', $_POST['extra_parameters'], $matches);
+    //     // Extract the matches
+    //     $json_data['participatingItems'] = $matches[1];
+    // }    
 
     // It is an append. the key/value pair is appended or, edited if it exists 
     if  ($json_data['datasetType']==2) { //2-INV dataset Type

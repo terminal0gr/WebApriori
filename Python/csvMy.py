@@ -572,7 +572,10 @@ class Sniffer:
                     return (False, None, dialect)
                 else:
                     # Forced by user case
-                    return (forceHasHeader, None, dialect)
+                    if forceHasHeader==1:
+                        return (True, header, dialect)
+                    else:
+                        return (False, None, dialect)
             
         #If not even one item from the header found in the next # lines then it is propably header!
         if headerItemFound==0:
@@ -581,7 +584,11 @@ class Sniffer:
                 return (True, header, dialect)
             else:
                 # Forced by user case
-                return (forceHasHeader, None, dialect)
+                if forceHasHeader==1:
+                    return (True, header, dialect)
+                else:
+                    return (False, None, dialect)
+                
             
         #Malliaridis 03/12/2023 end
 

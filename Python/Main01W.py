@@ -13,8 +13,8 @@ from skmine.datasets.utils import describe
 import skmine
 
 # global variables section
-max_rules=1000
-max_items=999
+max_rules=10000
+max_items=9999
 
 __Version__ = '02.00.00 29/09/2024'
 __Developer__ = 'Malliaridis konstantinos'
@@ -432,16 +432,20 @@ class webApriori():
             else:
                 filepath=os.path.join('public', self.datasetName)
 
-            if 'participatingItems' in self.jsonData:
-                if len(self.jsonData['participatingItems'])>max_items:
-                    print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' of the ' + str(len(self.jsonData['participatingItems'])) + ' columns will be processed.')
-                    self.jsonData['participatingItems']=self.jsonData['participatingItems'][0:max_items+1]
+            # Erase if no problem after 31/12/2024
+            # if not onlyForStats:
+            #     if 'participatingItems' in self.jsonData:
+            #         if len(self.jsonData['participatingItems'])>max_items:
+            #             print('Max column limit exceeded (' + str(max_items) + '). Only the first ' + str(max_items) + ' of the ' + str(len(self.jsonData['participatingItems'])) + ' columns will be processed.')
+            #             self.jsonData['participatingItems']=self.jsonData['participatingItems'][0:max_items+1]
 
             #Read the dataset from file
-            dataset=Global.readDataset(filepath, sep=self.datasetSep, encoding='utf-8-sig', hasHeader=self.jsonData['hasHeader'])
+            dataset=Global.readDataset(filepath, sep=self.datasetSep, encoding='utf-8-sig', hasHeader=self.hasHeader)
             if not isinstance(dataset, pd.DataFrame):
                 print(f"An error occurred: Could not read dataset!")    
-                return(f"An error occurred: Could not read dataset!")    
+                return(f"An error occurred: Could not read dataset!")  
+
+
 
             if int(self.datasetType)==1:
                         
@@ -496,9 +500,11 @@ class webApriori():
                         
             elif self.datasetType==3:
                 
-                if 'participatingItems' in self.jsonData:
-                    if len(self.jsonData['participatingItems'])>0 and self.jsonData['participatingItems']!='[]':
-                        dataset = dataset[self.jsonData['participatingItems']]
+                # Erase if no problem after 31/12/2024
+                # if not onlyForStats:
+                #     if 'participatingItems' in self.jsonData:
+                #         if len(self.jsonData['participatingItems'])>0 and self.jsonData['participatingItems']!='[]':
+                #             dataset = dataset[self.jsonData['participatingItems']]
                 
                 #put the name of product in item#
                 for arg in dataset.columns:
@@ -511,19 +517,23 @@ class webApriori():
                 return(records)
                                     
             elif self.datasetType==4:
-                    
-                if      'participatingItems' in self.jsonData \
-                    and len(self.jsonData['participatingItems'])>0 \
-                    and self.jsonData['participatingItems']!='[]':
-                        dataset = dataset[self.jsonData['participatingItems']]
-                        for arg in self.jsonData['participatingItems']:
+
+                # Erase if no problem after 31/12/2024
+                # manipulated=False
+                # if not onlyForStats:
+                #     if      'participatingItems' in self.jsonData \
+                #         and len(self.jsonData['participatingItems'])>0 \
+                #         and self.jsonData['participatingItems']!='[]':
+                #             manipulated=True
+                #             dataset = dataset[self.jsonData['participatingItems']]
+                #             for arg in self.jsonData['participatingItems']:
+                #                 dataset[arg] = arg + '=' + dataset[arg].astype(str)
+                #if not manipulated and self.hasHeader:
+                if self.hasHeader:
+                    if len(self.header)>0 and self.header!='[]':
+                        dataset = dataset[self.header]
+                        for arg in self.header:
                             dataset[arg] = arg + '=' + dataset[arg].astype(str)
-                elif self.hasHeader==True:
-                    if 'header' in self.jsonData:
-                        if len(self.jsonData['header'])>0 and self.jsonData['header']!='[]':
-                            dataset = dataset[self.jsonData['header']]
-                            for arg in self.jsonData['header']:
-                                dataset[arg] = arg + '=' + dataset[arg].astype(str)
                 
                 records=dataset.values.tolist()
                 return(records)
@@ -710,13 +720,13 @@ class webApriori():
                         self.valueItem=self.jsonData['valueItem']
 
             if self.jsonData['datasetType']==3:
-                if self.callType==0: #AR Mining
+                if self.callType<100: #AR Mining
                     if 'absentValue' in self.jsonData:
                         self.absentValue=self.jsonData['absentValue']
                     else:    
                         print("An error occurred: Could not retrieve the absent value of 3-SI dataset!")
                         return "An error occurred: Could not retrieve the absent value of 3-SI dataset!"
-                elif self.callType==100: #retrieveParticipatingItems
+                elif self.callType>=100: #retrieveParticipatingItems
                     if self.arg1 is not None:
                         self.absentValue=self.arg1
                     elif 'absentValue' in self.jsonData:
@@ -731,6 +741,11 @@ class webApriori():
 
             self.datasetType=int(self.jsonData['datasetType'])
             self.hasHeader=bool(self.jsonData['hasHeader'])
+
+            self.header='[]'
+            if self.hasHeader and 'header' in self.jsonData:
+                if len(self.jsonData['header'])>0 and self.jsonData['header']!='[]':
+                    self.header=self.jsonData['header']
 
             self.min_support=0.01
             if 'min_support' in self.jsonData:
@@ -766,9 +781,9 @@ class webApriori():
             if 'redundantRemoveType' in self.jsonData:
                 self.redundantRemoveType=self.jsonData['redundantRemoveType']
 
-            self.participatingItems=[]
-            if 'participatingItems' in self.jsonData:
-                self.participatingItems=self.jsonData['participatingItems'] 
+            # self.participatingItems=[]
+            # if 'participatingItems' in self.jsonData:
+            #     self.participatingItems=self.jsonData['participatingItems'] 
 
             #Time starts here
             # recordTime: The time of reading and transforming adequally the dataset for use in ARM

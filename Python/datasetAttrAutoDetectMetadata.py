@@ -135,7 +135,7 @@ class Metadata():
                         datasetAttributes['groupItem']=sorter.generate_best_item()
 
             if forceArg2 is not None:
-                datasetAttributes['groupItem']=forceArg2
+                datasetAttributes['valueItem']=forceArg2
             else:
                 #####################            
                 #VALUE ITEM DETECTION
@@ -183,6 +183,19 @@ class Metadata():
         # 4th parameter=101 means --> transformed transaction description. n_items, avg_transaction_size, n_transactions, density=avg_transaction_size / n_items
         # wrapped in a dictionary
         WAInst=Apriori.webApriori(identity,datasetName,public,101,arg1=None,arg2=None)
+        # The Attributes below are needed in WAInst.prepare_records
+        WAInst.datasetSep=datasetAttributes['delimiter']
+        WAInst.hasHeader=datasetAttributes['hasHeader']
+        WAInst.datasetType=datasetAttributes['datasetType']
+        WAInst.header=datasetAttributes['header']
+        if WAInst.datasetType==2:
+            if 'groupItem' in datasetAttributes:
+                WAInst.groupItem=datasetAttributes['groupItem']
+            if 'valueItem' in datasetAttributes:
+                WAInst.valueItem=datasetAttributes['valueItem']
+        if  WAInst.datasetType==3:
+            if 'absentValue' in datasetAttributes:
+                WAInst.absentValue=datasetAttributes['absentValue']
         records=WAInst.prepare_records()
         D=pd.Series(records)
         DFI2=skmine.datasets.utils.describe(D)
@@ -257,12 +270,22 @@ class Metadata():
         if mustReinitialize:
             json_data=self.createMetadataFile(identity,datasetName,-1,public) 
         else:
-            # Changes found in dataset. DatasetFeatures must be updated.
-            if json_data['delimiter']!=json_data['datasetFeatures']['delimiter'][1] or json_data['hasHeader']!=json_data['datasetFeatures']['hasHeader'][1] or 'datasetTypeChanged' in json_data:
-                # Key created in PHP call and must be erased by code below because it was needed to lead to this if block.
-                json_data.pop('datasetTypeChanged', None)
-                # Calling createMetadataFile but without autodetecting delimiter and hasHeader
-                json_data=self.createMetadataFile(identity,datasetName,json_data['datasetType'],public, json_data['delimiter'], json_data['hasHeader']) 
+            try:
+                # Changes found in dataset. DatasetFeatures must be updated.
+                if json_data['delimiter']!=json_data['datasetFeatures']['delimiter'][1] or json_data['hasHeader']!=json_data['datasetFeatures']['hasHeader'][1] or 'datasetTypeChanged' in json_data:
+                    # Key created in PHP call and must be erased by code below because it was needed to lead to this if block.
+                    json_data.pop('datasetTypeChanged', None)
+                    # Calling createMetadataFile but without autodetecting delimiter and hasHeader
+                    if json_data['datasetType']==2:
+                        # needs groupItem, valueItem
+                        json_data=self.createMetadataFile(identity,datasetName,json_data['datasetType'],public, json_data['delimiter'], json_data['hasHeader'],json_data['groupItem'],json_data['valueItem']) 
+                    elif json_data['datasetType']==3:
+                        # needs absentValue
+                        json_data=self.createMetadataFile(identity,datasetName,json_data['datasetType'],public, json_data['delimiter'], json_data['hasHeader'],json_data['absentValue'])
+                    else:                                                          
+                        json_data=self.createMetadataFile(identity,datasetName,json_data['datasetType'],public, json_data['delimiter'], json_data['hasHeader']) 
+            except Exception as e:
+                json_data=self.createMetadataFile(identity,datasetName,-1,public) 
 
         # Now you can work with the JSON data as a Python dictionary or list
         return json_data

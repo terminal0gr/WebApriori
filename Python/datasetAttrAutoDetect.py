@@ -17,6 +17,8 @@ if len(sys.argv)>1:
 # datasetName='H-MineSample.txt'	
 # datasetName='invoice.csv'	
 datasetName='titanic02.csv'	
+# datasetName='4Thyroid_Diff.csv'
+# datasetName='grocery_timestamp.csv'
 if len(sys.argv)>2:
     if len(sys.argv[2])>0:
         datasetName=sys.argv[2]
@@ -37,6 +39,9 @@ force=1
 if len(sys.argv)>5:
     if len(sys.argv[5])>0:
         force=int(sys.argv[5])
+
+
+
 
 metadataInst=Metadata.Metadata()
 

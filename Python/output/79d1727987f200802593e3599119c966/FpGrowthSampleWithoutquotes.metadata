@@ -134,17 +134,32 @@
             0,
             0,
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
+        ],
+        "n_items": [
+            "Items count",
+            17,
+            17,
+            "The total number of items for ARM process"
+        ],
+        "avg_transaction_size": [
+            "Avg items per transaction",
+            6.8,
+            "6.80",
+            "The average number of items per transaction for ARM process"
+        ],
+        "n_transactions": [
+            "transactions count",
+            5,
+            5,
+            "The total number of transactions for ARM process"
+        ],
+        "density": [
+            "transactions density",
+            0.39999999999999997,
+            "40.0%",
+            "The density of transactions for ARM process"
         ]
     },
     "datasetTypePredicted": 1,
-    "datasetType": 1,
-    "min_support": 0.6,
-    "min_confidence": 0.2,
-    "min_lift": 1.5,
-    "max_length": 6,
-    "sSort": -3,
-    "datasetName": "FpGrowthSampleWithoutquotes.txt",
-    "public": 1,
-    "redundantRemoveType": 0,
-    "participatingItems": "[]"
+    "datasetType": 1
 }

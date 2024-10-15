@@ -7,10 +7,10 @@
 02/10/2024 Cannot Autodetect quote ' in FPGrowthSample.txt 
 04/10/2024 After successful save of the items filtering show toast (3 seconds) instead of modal
 04/10/2024 Number of Transactions, Number of items, sparsity index must be saved and shown
+15/10/2024 Improve/make smooth uploading dataset procedure
 
-13/10/2024 In datasetType 2, if group Item or Value Item changed, info is not updated...
-14/10/2024 PRIORITY! records=WAInst.prepare_records() ln 186 Error in "Info"
 
+15/10/2024 IMPORTANT! Check Autodetect, Info For all datasetTypes because many changes occured. E.g. Type 0 datasets raise error in autoDetect!
 06/10/2024 IMPORTANT! dEclat and Top K implementation in python
 
 Datasets   Number of transactions   Number of distinct items    Average transaction size
@@ -38,7 +38,9 @@ such as Julia [2], AUTO-SKLEARN [3], Chameleon [4], ML-Plan [5].
 Must be integraded in my association_rules.py
 
 
-
+DONE - V01.00.00 15/10/2024 29/09/2024 participating items must be used or corrected for dataset types 1,2 in native implementation of apriori. excludedItems is used instead
+DONE - V01.00.00 15/10/2024 15/10/2024 participatingItems Wiped from everywhere in code. excludedItems is used instead
+DONE - V01.00.00 15/10/2024 13/10/2024 In datasetType 2, if group Item or Value Item changed, info is not updated...
 DONE - V01.00.00 04/10/2024 29/09/2024 participating items must be used or corrected in all dataset types in native implementation of apriori
 DONE - V01.00.00 04/10/2024 02/10/2024 Integrade mlxtend source files in my repository because of the changes I have made.
 DONE - V01.00.00 02/10/2024 30/09/2024 1-char columns not working right with NaN's > datasetTypeDetection.py ln245

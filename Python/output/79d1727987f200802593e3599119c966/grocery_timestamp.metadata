@@ -277,6 +277,30 @@
             4,
             4,
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
+        ],
+        "n_items": [
+            "Items count",
+            142,
+            142,
+            "The total number of items for ARM process"
+        ],
+        "avg_transaction_size": [
+            "Avg items per transaction",
+            15.5428,
+            "15.54",
+            "The average number of items per transaction for ARM process"
+        ],
+        "n_transactions": [
+            "transactions count",
+            5000,
+            5000,
+            "The total number of transactions for ARM process"
+        ],
+        "density": [
+            "transactions density",
+            0.10945633802816901,
+            "10.9%",
+            "The density of transactions for ARM process"
         ]
     },
     "datasetTypePredicted": 3,
