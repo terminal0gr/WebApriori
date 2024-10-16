@@ -188,7 +188,7 @@
 
 				var datasetType = document.getElementById("datasetType").value;
 				if (datasetType=="0") {
-					MyModal("Information", "This dataset (0 - Unmanaged dataset Type  can't be used for frequent itemsets or useful association rules.");
+					MyModal("Information", "Unable to process the dataset. The dataset is declared as 0-Unmanaged type thus it can't be used for association rules mining as it can't produce interesting frequent itemsets.");
 					return;
 				}
 

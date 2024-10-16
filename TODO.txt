@@ -8,9 +8,11 @@
 04/10/2024 After successful save of the items filtering show toast (3 seconds) instead of modal
 04/10/2024 Number of Transactions, Number of items, sparsity index must be saved and shown
 15/10/2024 Improve/make smooth uploading dataset procedure
+16/10/2024 In Dataset Type 1 In info (Top 1,2,3 Value %) is computed including NaN Values. H-mineSample.txt Top1 Value (d) 4/24-->16.7% it should 4/21 19%
 
 
-15/10/2024 IMPORTANT! Check Autodetect, Info For all datasetTypes because many changes occured. E.g. Type 0 datasets raise error in autoDetect!
+15/10/2024 IMPORTANT! Check Autodetect, Info For all datasetTypes because many changes occured. 
+16/10/2024 Filter participating items won't work for 0data_balita.csv and 4-NOA declared.
 06/10/2024 IMPORTANT! dEclat and Top K implementation in python
 
 Datasets   Number of transactions   Number of distinct items    Average transaction size

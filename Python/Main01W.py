@@ -90,9 +90,9 @@ class webApriori():
                 
                 #Malliaridis 15/8/2024.
                 if self.webAprioriInst.hasHeader and self.webAprioriInst.datasetType==4 and 'header' in self.webAprioriInst.jsonData:
-                    item=str(self.webAprioriInst.jsonData['header'][index]) + '=' + str(item)
+                    item=str(self.webAprioriInst.jsonData['header'][index]) + '=' + str(item).strip()
                 else:
-                    item=str(item)
+                    item=str(item).strip()
 
                 if item not in self.__itemset_index_map:
                     self.__items.append(item)
@@ -463,7 +463,7 @@ class webApriori():
                 records = [[x for x in sublist if not pd.isna(x)] for sublist in records]
                 return(records)
                     
-            elif self.datasetType==2:
+            elif int(self.datasetType)==2:
 
                 if self.groupItem is None:
                     # Grouping Column not set!
@@ -498,7 +498,7 @@ class webApriori():
                     
                 return(records)
                         
-            elif self.datasetType==3:
+            elif int(self.datasetType)==3:
                 
                 # Erase if no problem after 31/12/2024
                 # if not onlyForStats:
@@ -516,7 +516,7 @@ class webApriori():
                 records = [[y for y in x if str(y) !=self.absentValue] for x in records]
                 return(records)
                                     
-            elif self.datasetType==4:
+            elif int(self.datasetType)==4:
 
                 # Erase if no problem after 31/12/2024
                 # manipulated=False
@@ -538,9 +538,10 @@ class webApriori():
                 records=dataset.values.tolist()
                 return(records)
                     
-            else:
-                print("An error occurred: Unknown or unable to process the dataset. Its dataset type is 0 which means it can't be used for association rules mining as it can't produce interesting frequent itemsets.")
-                return("An error occurred: Unknown or unable to process the dataset. Its dataset type is 0 which means it can't be used for association rules mining as it can't produce interesting frequent itemsets.")
+            else: #Ok it is of type 0. Return whatever can be returned for statistic purposes only.
+                records=dataset.values.tolist()
+                return(records)                    
+                
 
         except Exception as e:
             print(f"An error occurred: {e}")     
@@ -639,9 +640,9 @@ class webApriori():
                 for index, item in enumerate(sublist):
 
                     if self.hasHeader and self.datasetType==4 and 'header' in self.jsonData:
-                        uniqueItem=str(self.jsonData['header'][index]) + '=' + str(item.strip())
+                        uniqueItem=str(self.jsonData['header'][index]) + '=' + str(item).strip()
                     else:    
-                        uniqueItem=str(item.strip())
+                        uniqueItem=str(item).strip()
 
                     if uniqueItem not in uniqueItems:
                         
@@ -693,6 +694,9 @@ class webApriori():
             if not 'datasetType' in self.jsonData:
                 print("An error occurred: Could not retrieve the dataset type of the dataset!") 
                 return "An error occurred: Could not retrieve the dataset type of the dataset!"
+            elif int(self.jsonData['datasetType'])==0:
+                print("An error occurred: Unable to process the dataset. The dataset is declared as 0-Unmanaged type thus it can't be used for association rules mining as it can't produce interesting frequent itemsets.")
+                return("An error occurred: Unable to process the dataset. The dataset is declared as 0-Unmanaged type thus it can't be used for association rules mining as it can't produce interesting frequent itemsets.")
 
             if not 'hasHeader' in self.jsonData:
                 print("An error occurred: Could not retrieve the dataset has header or not!") 

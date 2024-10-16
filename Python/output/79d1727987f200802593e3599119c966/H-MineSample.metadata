@@ -1,15 +1,12 @@
 {
-    "hasHeader": true,
-    "header": [
-        "c,",
-        ",e,f,g,i"
-    ],
-    "delimiter": "d",
+    "hasHeader": false,
+    "header": null,
+    "delimiter": ",",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            2,
-            2,
+            6,
+            6,
             "The total number of columns/features in the Dataset"
         ],
         "_name": [
@@ -20,44 +17,44 @@
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.8333333333333333,
-            "83.3%",
+            0.5833333333333334,
+            "58.3%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.8333333333333334,
-            "83.3%",
+            0.4583333333333333,
+            "45.8%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            1.0,
-            "100.0%",
+            0.875,
+            "87.5%",
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "a,c,",
-            "a,c,",
+            "d",
+            "d",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.3333333333333333,
-            "33.3%",
+            0.16666666666666666,
+            "16.7%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.16666666666666666,
-            "16.7%",
+            0.125,
+            "12.5%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.16666666666666666,
-            "16.7%",
+            0.125,
+            "12.5%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
@@ -92,44 +89,44 @@
         ],
         "MinItemLen": [
             "Min Item length",
-            2,
-            2,
+            1,
+            1,
             "The length of the smallest element in dataset"
         ],
         "MaxItemLen": [
             "Max Item Length",
-            6,
-            6,
+            1,
+            1,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            4.0,
-            "4.0",
+            1.0,
+            "1.0",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0.0,
-            "0.0%",
+            1.0,
+            "100.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.5,
-            "50.0%",
+            0.6666666666666666,
+            "66.7%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
         "hasHeader": [
             "Has Header?",
-            true,
-            true,
+            false,
+            false,
             "Does the dataset have Header?"
         ],
         "delimiter": [
             "delimiter",
-            "d",
-            "d",
+            ",",
+            ",",
             "The delimiter between the columns of the dataset"
         ],
         "type2Words": [
@@ -140,29 +137,29 @@
         ],
         "n_items": [
             "Items count",
-            30,
-            30,
+            11,
+            11,
             "The total number of items for ARM process"
         ],
         "avg_transaction_size": [
             "Avg items per transaction",
-            191.0,
-            "191.00",
+            5.25,
+            "5.25",
             "The average number of items per transaction for ARM process"
         ],
         "n_transactions": [
             "transactions count",
-            1,
-            1,
+            4,
+            4,
             "The total number of transactions for ARM process"
         ],
         "density": [
             "transactions density",
-            6.366666666666666,
-            "636.7%",
+            0.4772727272727273,
+            "47.7%",
             "The density of transactions for ARM process"
         ]
     },
     "datasetTypePredicted": 0,
-    "datasetType": 0
+    "datasetType": 1
 }

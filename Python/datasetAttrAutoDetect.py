@@ -16,9 +16,10 @@ if len(sys.argv)>1:
               
 # datasetName='H-MineSample.txt'	
 # datasetName='invoice.csv'	
-datasetName='titanic02.csv'	
+# datasetName='titanic02.csv'	
 # datasetName='4Thyroid_Diff.csv'
 # datasetName='grocery_timestamp.csv'
+datasetName='0data_balita.csv'
 if len(sys.argv)>2:
     if len(sys.argv[2])>0:
         datasetName=sys.argv[2]

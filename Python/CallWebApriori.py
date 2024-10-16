@@ -3,12 +3,12 @@ import Main01W as Apriori
 identity='79d1727987f200802593e3599119c966' 
 # datasetName='H-MineSample.txt'
 # datasetName='0fish_catches.csv'
-datasetName='invoiceType1.csv'
+datasetName='0data_balita.csv'
 # datasetName='invoiceType2.csv'
 # datasetName='Transactional_T10I4D100K.csv'
 # datasetName='Titanic02.csv'
 public=0
-callType=0
+callType=100
 arg1='IDInvoice'
 arg2='ProduitID'
 
