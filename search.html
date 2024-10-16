@@ -1587,10 +1587,6 @@
 				element = document.getElementById('SI-3-absentValue');
 				element.classList.remove("d-block");
 				element.classList.add("d-none");
-				element = document.getElementById('extraParametersDiv');
-				element.classList.remove("col-12");
-				element.classList.remove("col-10");
-				element.classList.add("col-8");
 				break;
 			case '3':
 
@@ -1605,10 +1601,6 @@
 				element = document.getElementById('SI-3-absentValue');
 				element.classList.remove("d-none");
 				element.classList.add("d-block");
-				element = document.getElementById('extraParametersDiv');
-				element.classList.remove("col-12");
-				element.classList.remove("col-8");
-				element.classList.add("col-10");
 				break;
 			default:
 				element = document.getElementById('INV-2-groupItem');
@@ -1620,10 +1612,6 @@
 				element = document.getElementById('SI-3-absentValue');
 				element.classList.remove("d-block");
 				element.classList.add("d-none");
-				element = document.getElementById('extraParametersDiv');
-				element.classList.remove("col-10");
-				element.classList.remove("col-8");
-				element.classList.add("col-12");
 				break;			
 			}
 		}
@@ -1962,9 +1950,6 @@ class,age,sex,survived<br>
 						<label for="absentValue" class="form-label">Absent item</label>
 						<input type="text" id="absentValue" name="absentValue" class="form-control" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Declare the absent value without quotes, for 3 - Sparse Item (SI) dataset type, if not already predicted successfully. If it is the empty value declare (nan). For more details please press ?" placeholder="absent Item e.g. 0">
 					</div>
-					<div id="extraParametersDiv" class="col-12">
-						<label id="filterParticipatingItems1" class="d-block" ><a href="#" onclick="filterParticipatingItems()" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Filter the items that would participate in AR mining. ">Filter participating items</a></label>			
-					</div>
 				</div>
 			</div>
 		</div>
@@ -2001,24 +1986,28 @@ class,age,sex,survived<br>
 			</div>
 		</div>
 
-		<div id="itemsSelection"  style="display:none">
+		<div id="itemsSelectionWrap" >
 
 			<br>
 
-			<div class="container mt-2 lightgraybackground udfwidth mx-auto border rounded p-2">
+			<div id="ItemsSelectionContainer" class="container mt-2 lightgraybackground udfwidth mx-auto border rounded p-2">
 
 				<div class="row">
-					<div class="col-11">
-						<h4 class="text-center text-primary">Items participating in AR mining process</h4>
-					</div>
-					<div class="col-1">
-						<button type="button" class="btn btn-sm" onclick="filterParticipatingItems()" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Hides dataset type guide section"><img src="./images/close24grey.png" width="24" height="24" alt="hide">	</button>
+					<div class="col-12">
+						<h4 class="text-center text-primary">Items management for AR mining</h4>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col-2">
-						<p class="text-center text-primary">Batch Actions</p>
+					<div class="col-12">
+						<label class="d-block" ><a href="#" onclick="filterParticipatingItems()" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Filter the items that would participate in AR mining. ">Filter participating items</a></label>			
+					</div>
+				</div>
+
+				<div id="itemsSelection" style="display:none">
+				<div class="row">
+					<div class="col-1">
+						<p class="text-center text-primary">Actions</p>
 					</div>
 					<div class="col-2">
 						<button type="button" class="btn btn-sm btn-secondary m-0 p-0 w-100" onclick="BatchActionsParticipatingItems(-1)" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Reinitializes all items in the dataset and marks them as included.">Reinitialize</button>
@@ -2034,6 +2023,9 @@ class,age,sex,survived<br>
 					</div>
 					<div class="col-2">
 						<button type="button" class="btn btn-sm btn-secondary m-0 p-0 w-100" onclick="BatchActionsParticipatingItems(3)" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="This action excludes all items in AR mining.">All excluded</button>
+					</div>
+					<div class="col-1" >
+						<button type="button" class="btn btn-sm" onclick="filterParticipatingItems()" data-bs-toggle="tooltip" data-bs-delay='{"show":800,"hide":100}' data-bs-title="Hides dataset type guide section"><img src="./images/close24grey.png" width="24" height="24" alt="hide">	</button>
 					</div>
 				</div>
 
@@ -2059,6 +2051,9 @@ class,age,sex,survived<br>
 						<!-- Rows will be inserted here by JavaScript -->
 					</div>
 				</div>
+
+			</div>
+
 				
 			</div>
 		</div>
