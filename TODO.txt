@@ -6,13 +6,14 @@
 29/09/2024 Autodetect, Info, Filter Participating items must be managed async.
 02/10/2024 Cannot Autodetect quote ' in FPGrowthSample.txt 
 04/10/2024 After successful save of the items filtering show toast (3 seconds) instead of modal
-04/10/2024 Number of Transactions, Number of items, sparsity index must be saved and shown
 15/10/2024 Improve/make smooth uploading dataset procedure
 16/10/2024 In Dataset Type 1 In info (Top 1,2,3 Value %) is computed including NaN Values. H-mineSample.txt Top1 Value (d) 4/24-->16.7% it should 4/21 19%
 
 
 15/10/2024 IMPORTANT! Check Autodetect, Info For all datasetTypes because many changes occured. 
-16/10/2024 Filter participating items won't work for 0data_balita.csv and 4-NOA declared.
+16/10/2024 Filter participating items must be updated when declaring new datasetType e.g. 0data_balita.csv and 4-NOA declared.
+    ln 1168 retrieveParticipatingItems
+    ln 1560 datasetTypeChanged
 06/10/2024 IMPORTANT! dEclat and Top K implementation in python
 
 Datasets   Number of transactions   Number of distinct items    Average transaction size
@@ -39,7 +40,7 @@ such as Julia [2], AUTO-SKLEARN [3], Chameleon [4], ML-Plan [5].
 
 Must be integraded in my association_rules.py
 
-
+DONE - V01.00.00 16/10/2024 04/10/2024 Number of Transactions, Number of items, sparsity index must be saved and shown
 DONE - V01.00.00 15/10/2024 29/09/2024 participating items must be used or corrected for dataset types 1,2 in native implementation of apriori. excludedItems is used instead
 DONE - V01.00.00 15/10/2024 15/10/2024 participatingItems Wiped from everywhere in code. excludedItems is used instead
 DONE - V01.00.00 15/10/2024 13/10/2024 In datasetType 2, if group Item or Value Item changed, info is not updated...

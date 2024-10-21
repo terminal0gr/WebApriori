@@ -651,10 +651,12 @@
 								document.getElementById("Redundant3").checked=false;
 							}
 
-							//Todo: Fill the user item choices here...
-
 							fillTable(res);
 						}
+
+						$("#itemsSelectionWrap").show();
+						$("#ARMSection").show();
+
 					}
 					catch(err) {
 						MyModal("Error", err.message);
@@ -1986,7 +1988,7 @@ class,age,sex,survived<br>
 			</div>
 		</div>
 
-		<div id="itemsSelectionWrap" >
+		<div id="itemsSelectionWrap" style="display:none">
 
 			<br>
 
@@ -2060,7 +2062,7 @@ class,age,sex,survived<br>
 
 		<br>
 
-		<div class="lightgraybackground udfwidth mx-auto border rounded p-2">
+		<div id="ARMSection" class="lightgraybackground udfwidth mx-auto border rounded p-2" style="display:none">
 			<div class="col">	
 				<h4 class="text-center text-primary">ARM parameterization</h4>
 			</div>
