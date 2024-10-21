@@ -79,10 +79,16 @@ def readDataset(filepath, sep=';', encoding='utf-8-sig', hasHeader=True, nRows=N
         if hasHeader:
             headerV1=0
 
+        # In web interface if the delimiter is the TAB then it is shown to the user as `{TAB}`
+        # In python is `\t` So here is the transformation.
+        if sep=="{TAB}":
+            sep="\t"
+
         if is_arff_file(filepath):
             dataset=loadarfftoDataframe(filepath, encoding)
         if not isinstance(dataset, pd.DataFrame):
             try:
+
                 dataset = pd.read_csv(filepath, sep=sep, encoding=encoding, header=headerV1, nrows=nRows)
             except Exception:
                 with open(filepath, mode='r') as file:

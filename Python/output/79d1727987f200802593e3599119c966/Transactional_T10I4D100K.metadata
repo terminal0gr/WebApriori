@@ -1,7 +1,7 @@
 {
     "hasHeader": false,
     "header": null,
-    "delimiter": " ",
+    "delimiter": "{TAB}",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
@@ -125,8 +125,8 @@
         ],
         "delimiter": [
             "delimiter",
-            " ",
-            " ",
+            "{TAB}",
+            "{TAB}",
             "The delimiter between the columns of the dataset"
         ],
         "type2Words": [

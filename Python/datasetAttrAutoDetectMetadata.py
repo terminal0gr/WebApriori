@@ -200,10 +200,10 @@ class Metadata():
         D=pd.Series(records)
         DFI2=skmine.datasets.utils.describe(D)
 
-        # Convert Series to DataFrame
-        df = D.to_frame()
-        # Write to file with ';' delimiter and UTF-8 encoding
-        df.to_csv("output_file.csv", sep=';', encoding='utf-8', index=False, header=False)
+        # # Convert Series to DataFrame
+        # df = D.to_frame()
+        # # Write to file with ';' delimiter and UTF-8 encoding
+        # df.to_csv("output_file.csv", sep=';', encoding='utf-8', index=False, header=False)
         
         # DFI2=WAInst.runWebApriori()
         key='n_items'

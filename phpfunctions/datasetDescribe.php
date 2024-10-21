@@ -119,7 +119,7 @@
         //Create new  $json_data
         $json_data = [
             "hasHeader"   => $hasHeader,
-            "delimiter"   => $_POST['separator'],
+            "delimiter"   => $_POST['delimiter'],
             "datasetType" => (int) $_POST['datasetType']
         ];
     }

@@ -7,7 +7,7 @@
     "datasetName": "FpGrowthSampleWithoutquotes.txt",
     "redundantRemoveType": 0,
     "Records": 5,
-    "RecordsCreationTime": "0.002",
+    "RecordsCreationTime": "0.013",
     "RulesCount": 24,
     "RulesCreationTime": "0.001",
     "rules": [
@@ -52,8 +52,8 @@
                 "a"
             ],
             "RHS": [
-                "c",
-                "f"
+                "f",
+                "c"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -68,84 +68,8 @@
         },
         {
             "LHS": [
-                "c",
-                "f"
-            ],
-            "RHS": [
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "a"
-            ],
-            "RHS": [
-                "c",
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "m"
-            ],
-            "RHS": [
-                "c",
-                "a"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "c",
-                "a"
-            ],
-            "RHS": [
-                "m"
-            ],
-            "Confidence": 1.0,
-            "Lift": 1.6666666666666667,
-            "Conviction": 999.999,
-            "Leverage": 0.24,
-            "LHS_Count": 3,
-            "LHS_Support": 0.6,
-            "RHS_Count": 3,
-            "RHS_Support": 0.6,
-            "Support": 0.6,
-            "Count": 3
-        },
-        {
-            "LHS": [
-                "c",
-                "m"
+                "f",
+                "c"
             ],
             "RHS": [
                 "a"
@@ -167,7 +91,7 @@
             ],
             "RHS": [
                 "m",
-                "f"
+                "c"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -185,8 +109,8 @@
                 "m"
             ],
             "RHS": [
-                "a",
-                "f"
+                "c",
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -201,8 +125,8 @@
         },
         {
             "LHS": [
-                "a",
-                "f"
+                "c",
+                "a"
             ],
             "RHS": [
                 "m"
@@ -221,7 +145,83 @@
         {
             "LHS": [
                 "m",
-                "f"
+                "c"
+            ],
+            "RHS": [
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "a"
+            ],
+            "RHS": [
+                "f",
+                "m"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "m"
+            ],
+            "RHS": [
+                "f",
+                "a"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "f",
+                "a"
+            ],
+            "RHS": [
+                "m"
+            ],
+            "Confidence": 1.0,
+            "Lift": 1.6666666666666667,
+            "Conviction": 999.999,
+            "Leverage": 0.24,
+            "LHS_Count": 3,
+            "LHS_Support": 0.6,
+            "RHS_Count": 3,
+            "RHS_Support": 0.6,
+            "Support": 0.6,
+            "Count": 3
+        },
+        {
+            "LHS": [
+                "f",
+                "m"
             ],
             "RHS": [
                 "a"
@@ -242,8 +242,8 @@
                 "m"
             ],
             "RHS": [
-                "c",
-                "f"
+                "f",
+                "c"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -258,8 +258,8 @@
         },
         {
             "LHS": [
-                "c",
-                "f"
+                "f",
+                "c"
             ],
             "RHS": [
                 "m"
@@ -280,9 +280,9 @@
                 "a"
             ],
             "RHS": [
+                "f",
                 "c",
-                "m",
-                "f"
+                "m"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -300,9 +300,9 @@
                 "m"
             ],
             "RHS": [
+                "f",
                 "c",
-                "a",
-                "f"
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -321,8 +321,8 @@
                 "a"
             ],
             "RHS": [
-                "m",
-                "f"
+                "f",
+                "m"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -337,12 +337,12 @@
         },
         {
             "LHS": [
-                "a",
-                "f"
+                "f",
+                "a"
             ],
             "RHS": [
-                "c",
-                "m"
+                "m",
+                "c"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -361,8 +361,8 @@
                 "a"
             ],
             "RHS": [
-                "c",
-                "f"
+                "f",
+                "c"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -377,8 +377,8 @@
         },
         {
             "LHS": [
-                "c",
-                "f"
+                "f",
+                "c"
             ],
             "RHS": [
                 "m",
@@ -397,12 +397,12 @@
         },
         {
             "LHS": [
-                "c",
-                "m"
+                "m",
+                "c"
             ],
             "RHS": [
-                "a",
-                "f"
+                "f",
+                "a"
             ],
             "Confidence": 1.0,
             "Lift": 1.6666666666666667,
@@ -417,8 +417,8 @@
         },
         {
             "LHS": [
-                "m",
-                "f"
+                "f",
+                "m"
             ],
             "RHS": [
                 "c",
@@ -437,9 +437,9 @@
         },
         {
             "LHS": [
+                "f",
                 "c",
-                "a",
-                "f"
+                "a"
             ],
             "RHS": [
                 "m"
@@ -457,9 +457,9 @@
         },
         {
             "LHS": [
+                "f",
                 "c",
-                "m",
-                "f"
+                "m"
             ],
             "RHS": [
                 "a"

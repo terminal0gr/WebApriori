@@ -20,7 +20,8 @@ if len(sys.argv)>1:
               
 # datasetName='H-MineSample.txt'	
 # datasetName='titanic02.csv'	
-datasetName='invoiceType2.csv'
+# datasetName='invoiceType2.csv'
+datasetName='T10I4D100K.csv'
 if len(sys.argv)>2:
     if len(sys.argv[2])>0:
         datasetName=sys.argv[2]

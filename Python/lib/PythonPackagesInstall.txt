@@ -1,0 +1,7 @@
+
+pip install scikit-learn
+pip install scikit-mine
+pip install pami    or     pip install 'pami[gpu]'
+
+
+

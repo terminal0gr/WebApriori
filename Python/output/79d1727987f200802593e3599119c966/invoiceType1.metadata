@@ -161,14 +161,5 @@
         ]
     },
     "datasetTypePredicted": 1,
-    "datasetType": 1,
-    "min_support": 0.01,
-    "min_confidence": 0.2,
-    "min_lift": 32,
-    "max_length": 4,
-    "sSort": -3,
-    "datasetName": "invoiceType1.csv",
-    "public": 1,
-    "redundantRemoveType": 0,
-    "participatingItems": "[]"
+    "datasetType": 1
 }

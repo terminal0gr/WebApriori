@@ -23,8 +23,8 @@
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.5,
-            "50.0%",
+            0.425,
+            "42.5%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
@@ -35,8 +35,8 @@
         ],
         "Top1Value": [
             "Most Frequent Value",
-            " 'c'",
-            " 'c'",
+            "'f'",
+            "'f'",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
@@ -53,8 +53,8 @@
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.075,
-            "7.5%",
+            0.1,
+            "10.0%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
         "FreqOfIntegerCol": [
@@ -95,14 +95,14 @@
         ],
         "MaxItemLen": [
             "Max Item Length",
-            4,
-            4,
+            3,
+            3,
             "The length of the largest element in dataset"
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            3.875,
-            "3.9",
+            3,
+            "3.0",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
@@ -137,8 +137,8 @@
         ],
         "n_items": [
             "Items count",
-            20,
-            20,
+            17,
+            17,
             "The total number of items for ARM process"
         ],
         "avg_transaction_size": [
@@ -155,8 +155,8 @@
         ],
         "density": [
             "transactions density",
-            0.33999999999999997,
-            "34.0%",
+            0.39999999999999997,
+            "40.0%",
             "The density of transactions for ARM process"
         ]
     },
