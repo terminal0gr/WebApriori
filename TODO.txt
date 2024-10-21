@@ -14,6 +14,7 @@
 16/10/2024 Filter participating items must be updated when declaring new datasetType e.g. 0data_balita.csv and 4-NOA declared.
     ln 1168 retrieveParticipatingItems
     ln 1560 datasetTypeChanged
+21/10/2024 Dataset 
 06/10/2024 IMPORTANT! dEclat and Top K implementation in python
 
 Datasets   Number of transactions   Number of distinct items    Average transaction size

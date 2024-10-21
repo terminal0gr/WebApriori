@@ -179,7 +179,7 @@ class Metadata():
                datasetAttributes['absentValue']=str(DFI.Top1Value)
 
         ###########################################################################
-        # Append to file 4 important features of the transformed final dataset n_items, avg_transaction_size, n_transactions, density=avg_transaction_size / n_items
+        # Append to file, four important features of the transformed final dataset n_items, avg_transaction_size, n_transactions, density=avg_transaction_size / n_items
         # 4th parameter=101 means --> transformed transaction description. n_items, avg_transaction_size, n_transactions, density=avg_transaction_size / n_items
         # wrapped in a dictionary
         WAInst=Apriori.webApriori(identity,datasetName,public,101,arg1=None,arg2=None)
@@ -199,6 +199,12 @@ class Metadata():
         records=WAInst.prepare_records()
         D=pd.Series(records)
         DFI2=skmine.datasets.utils.describe(D)
+
+        # Convert Series to DataFrame
+        df = D.to_frame()
+        # Write to file with ';' delimiter and UTF-8 encoding
+        df.to_csv("output_file.csv", sep=';', encoding='utf-8', index=False, header=False)
+        
         # DFI2=WAInst.runWebApriori()
         key='n_items'
         if key in DFI2:
