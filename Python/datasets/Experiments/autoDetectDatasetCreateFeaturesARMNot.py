@@ -2,6 +2,7 @@ import os
 import sys
 import pandas as pd
 import skmine
+from skmine.datasets.utils import describe
 
 # Add two levels up to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname('ARM'), '..', '..')))
@@ -13,7 +14,13 @@ import Global
 ##################################
 ##################################
 
-filepath=os.path.join('accidents.dat')
+# filepath=os.path.join('accidents.dat')
+# filepath=os.path.join('chess.dat')
+# filepath=os.path.join('connect.dat')
+# filepath=os.path.join('kosarak.dat') #10 minutes
+filepath=os.path.join('mushroom.dat')
+
+
 
 # # Get a list of all entries in the directory
 # entries = os.listdir(directory_path)
@@ -31,6 +38,7 @@ records=dataset.values.tolist()
 #remove nan elements from this list
 records = [[x for x in sublist if not pd.isna(x)] for sublist in records]
 
-D=pd.Series(records)
-F=skmine.datasets.utils.describe(D)
+D=pd.Series(records) 
+F=describe(D)
+print(F)
 
