@@ -18,7 +18,9 @@ import Global
 # filepath=os.path.join('chess.dat')
 # filepath=os.path.join('connect.dat')
 # filepath=os.path.join('kosarak.dat') #10 minutes
-filepath=os.path.join('mushroom.dat')
+# filepath=os.path.join('mushroom.dat')
+# filepath=os.path.join('pumsb.dat')
+filepath=os.path.join('pumsb_star.dat')
 
 
 
