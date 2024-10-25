@@ -14,14 +14,17 @@ import Global
 ##################################
 ##################################
 
-# filepath=os.path.join('accidents.dat')
+filepath=os.path.join('accidents.dat')
 # filepath=os.path.join('chess.dat')
 # filepath=os.path.join('connect.dat')
 # filepath=os.path.join('kosarak.dat') #10 minutes
 # filepath=os.path.join('mushroom.dat')
 # filepath=os.path.join('pumsb.dat')
-filepath=os.path.join('pumsb_star.dat')
-
+# filepath=os.path.join('pumsb_star.dat')
+# filepath=os.path.join('T10I4D100K.dat')
+# filepath=os.path.join('T40I10D100K.dat')
+# filepath=os.path.join('retail.dat')
+# ; filepath=os.path.join('T16IT20D100K.csv')
 
 
 # # Get a list of all entries in the directory

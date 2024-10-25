@@ -239,7 +239,7 @@ class datasetFeatures:
             datasetFeaturesInst.MaxItemLen = (df.map(lambda x: len(str(x)) if x is not None and str(x).lower() not in ['nan', 'na'] else 0).max()).max()
             
             # Finds the average len excluding the missing values completely (dropna)
-            datasetFeaturesInst.AvgItemLen = (df.map(lambda x: len(str(x)) if x is not None and str(x).lower() not in ['nan', 'na'] else None).dropna().mean()).mean()
+            datasetFeaturesInst.AvgItemLen = (df.map(lambda x: len(str(x)) if x is not None and str(x).lower() not in ['nan', 'na'] else 0).dropna().mean()).mean()
 
             # Count columns with only 1-character items
             datasetFeaturesInst.Freq1CharColumns = (df.map(lambda x: len(str(x)) == 1 if x is not None and str(x).lower() not in ['nan', 'na'] else False).all()).sum()/df.shape[1]

@@ -1,0 +1,165 @@
+{
+    "hasHeader": false,
+    "header": null,
+    "delimiter": " ",
+    "datasetFeatures": {
+        "NumberOfColumns": [
+            "Number Of Columns",
+            68,
+            68,
+            "The total number of columns\/features in the Dataset"
+        ],
+        "_name": [
+            "Name",
+            "T40I10D100K.dat",
+            "T40I10D100K.dat",
+            "The name of the dataset"
+        ],
+        "AvgOfDistinctValuesPerCol": [
+            "AvgOfDistinctValuesPerCol",
+            0.272735294117647,
+            "27.3%",
+            "The Average of distinct values per column over the total columns"
+        ],
+        "AvgOfDistinctValuesOverAll": [
+            "AvgOfDistinctValuesOverAll",
+            0.02673529411764706,
+            "2.7%",
+            "The ratio of the number of total unique values to the number of elements"
+        ],
+        "AvgOfDistinctValuesPerRow": [
+            "AvgOfDistinctValuesPerRow",
+            0.6024117647058824,
+            "60.2%",
+            "The Average of distinct values per row over the total rows"
+        ],
+        "Top1Value": [
+            "Most Frequent Value",
+            "",
+            "",
+            "The most frequent value in the dataset"
+        ],
+        "FreqOfTop1FreqValue": [
+            "Top 1 Value %",
+            0.014705882352941176,
+            "1.5%",
+            "The ratio Of the number of the most frequent value to the number of elements"
+        ],
+        "FreqOfTop2FreqValue": [
+            "Top 2 Value %",
+            0.004147058823529412,
+            "0.4%",
+            "The ratio of the number of the second most frequent value to the number of elements"
+        ],
+        "FreqOfTop3FreqValue": [
+            "Top 3 Value %",
+            0.0035,
+            "0.4%",
+            "The ratio of the number of the third most frequent value to the number of elements"
+        ],
+        "FreqOfIntegerCol": [
+            "Integer Columns %",
+            0,
+            "0.0%",
+            "The ratio of integer columns to the total number of columns"
+        ],
+        "FreqOfNumberCol": [
+            "Number Columns %",
+            0.36764705882352944,
+            "36.8%",
+            "The ratio of float number columns to the total number of columns"
+        ],
+        "FreqOfDateCol": [
+            "Date Columns %",
+            0.014705882352941176,
+            "1.5%",
+            "The ratio of date columns to the total number of columns"
+        ],
+        "FreqOfStringCol": [
+            "String Columns %",
+            0.617647,
+            "61.8%",
+            "The ratio of columns with text to the total number of columns"
+        ],
+        "FreqOfBoolCol": [
+            "Boolean Columns %",
+            0,
+            "0.0%",
+            "The ratio of boolean columns to the total number of columns"
+        ],
+        "MinItemLen": [
+            "Min Item length",
+            0,
+            0,
+            "The length of the smallest element in dataset"
+        ],
+        "MaxItemLen": [
+            "Max Item Length",
+            3,
+            3,
+            "The length of the largest element in dataset"
+        ],
+        "AvgItemLen": [
+            "Avg Item Length",
+            2.823529411764706,
+            "2.8",
+            "The average length of the elements in dataset"
+        ],
+        "Freq1CharColumns": [
+            "1-Char Columns %",
+            0,
+            "0.0%",
+            "The columns count with exclusively 1-character elements by the total of columns"
+        ],
+        "Freq2ValuesItemColumns": [
+            "2-Value Item Columns %",
+            0.10294117647058823,
+            "10.3%",
+            "The columns count having exclusively 2 values by the total number of columns"
+        ],
+        "hasHeader": [
+            "Has Header?",
+            false,
+            false,
+            "Does the dataset have Header?"
+        ],
+        "delimiter": [
+            "delimiter",
+            " ",
+            " ",
+            "The delimiter between the columns of the dataset"
+        ],
+        "type2Words": [
+            "Type 2-INV Words",
+            0,
+            0,
+            "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
+        ],
+        "n_items": [
+            "Items count",
+            943,
+            943,
+            "The total number of items for ARM process"
+        ],
+        "avg_transaction_size": [
+            "Avg items per transaction",
+            40.60507,
+            "40.61",
+            "The average number of items per transaction for ARM process"
+        ],
+        "n_transactions": [
+            "transactions count",
+            100000,
+            100000,
+            "The total number of transactions for ARM process"
+        ],
+        "density": [
+            "transactions density",
+            0.043059459172852595,
+            "4.3%",
+            "The density of transactions for ARM process"
+        ]
+    },
+    "datasetTypePredicted": 1,
+    "datasetType": 1
+}

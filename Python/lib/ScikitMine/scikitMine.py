@@ -32,7 +32,7 @@ def syntheticDataCreation(n_transactions,n_items,density,filepath=None):
         print(D)
         return D
 
-syntheticDataCreation(n_transactions=200000,n_items=2000,density=0.2,filepath="default")
+syntheticDataCreation(n_transactions=100000,n_items=20,density=0.8,filepath="default")
 
 
 
