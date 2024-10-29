@@ -193,32 +193,11 @@ Not as easy as its name promises!
 
 
 
+https://www.youtube.com/watch?v=6iLue3EFBWU
+MySQL Shutdown Unexpectedly Fixed | MySQL not starting in XAMPP Server
 
-
-
-
-
-
-Papers that describe the Apriori algorithm and some implementation aspects of this program:
-
-Frequent Item Set Mining
-Christian Borgelt
-Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery 2(6):437-456.
-J. Wiley & Sons, Chichester, United Kingdom 2012
-doi:10.1002/widm.1074 wiley.com
-(20 pages)
-Recursion Pruning for the Apriori Algorithm
-Christian Borgelt
-2nd Workshop of Frequent Item Set Mining Implementations (FIMI 2004, Brighton, UK).
-fimi_04.pdf (41 kb) fimi_04.ps.gz (29 kb) (2 pages)
-Efficient Implementations of Apriori and Eclat
-Christian Borgelt
-Workshop of Frequent Item Set Mining Implementations (FIMI 2003, Melbourne, FL, USA).
-fimi_03.pdf (304 kb) fimi_03.ps.gz (197 kb) (9 pages)
-Induction of Association Rules: Apriori Implementation
-Christian Borgelt and Rudolf Kruse
-15th Conference on Computational Statistics (Compstat 2002, Berlin, Germany), 395-400
-Physica Verlag, Heidelberg, Germany 2002
-cstat_02.pdf (105 kb) cstat_02.ps.gz (91 kb) (6 pages)
-
-
+1. Rename \xampp\mysql\data to Something else (e.g. data1)
+2. Create a new file data in \xampp\mysql\
+3. Copy all files ###EXCEPT file ibdata1 ### from \xampp\mysql\backup to data just created before 
+4. Copy all files from the renamed file data (e.g. data1) to data but skip the copy of dublicate files when asked.
+PESTO!!!

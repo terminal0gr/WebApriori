@@ -91,7 +91,7 @@ def readDataset(filepath, sep=';', encoding='utf-8-sig', hasHeader=True, nRows=N
 
                 dataset = pd.read_csv(filepath, sep=sep, encoding=encoding, header=headerV1, nrows=nRows)
             except Exception:
-                with open(filepath, mode='r') as file:
+                with open(filepath, mode='r', encoding=encoding) as file:
                     reader = csv.reader(file, delimiter=sep)
                     if nRows is None: #Read all the lines of the file
                         data = [line for line in reader]

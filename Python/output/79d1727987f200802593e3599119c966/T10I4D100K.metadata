@@ -1,59 +1,59 @@
 {
     "hasHeader": false,
     "header": null,
-    "delimiter": "{TAB}",
+    "delimiter": " ",
     "datasetFeatures": {
         "NumberOfColumns": [
             "Number Of Columns",
-            21,
-            21,
+            22,
+            22,
             "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
-            "T10I4D100K.csv",
-            "T10I4D100K.csv",
+            "T10I4D100K.dat",
+            "T10I4D100K.dat",
             "The name of the dataset"
         ],
         "AvgOfDistinctValuesPerCol": [
             "AvgOfDistinctValuesPerCol",
-            0.2762857142857142,
-            "27.6%",
+            0.2656363636363636,
+            "26.6%",
             "The Average of distinct values per column over the total columns"
         ],
         "AvgOfDistinctValuesOverAll": [
             "AvgOfDistinctValuesOverAll",
-            0.06923809523809524,
-            "6.9%",
+            0.06618181818181817,
+            "6.6%",
             "The ratio of the number of total unique values to the number of elements"
         ],
         "AvgOfDistinctValuesPerRow": [
             "AvgOfDistinctValuesPerRow",
-            0.4827619047619046,
-            "48.3%",
+            0.5062727272727277,
+            "50.6%",
             "The Average of distinct values per row over the total rows"
         ],
         "Top1Value": [
             "Most Frequent Value",
-            "368",
-            "368",
+            "",
+            "",
             "The most frequent value in the dataset"
         ],
         "FreqOfTop1FreqValue": [
             "Top 1 Value %",
-            0.003619047619047619,
-            "0.4%",
+            0.045454545454545456,
+            "4.5%",
             "The ratio Of the number of the most frequent value to the number of elements"
         ],
         "FreqOfTop2FreqValue": [
             "Top 2 Value %",
-            0.0033333333333333335,
+            0.0034545454545454545,
             "0.3%",
             "The ratio of the number of the second most frequent value to the number of elements"
         ],
         "FreqOfTop3FreqValue": [
             "Top 3 Value %",
-            0.0030476190476190477,
+            0.003181818181818182,
             "0.3%",
             "The ratio of the number of the third most frequent value to the number of elements"
         ],
@@ -65,20 +65,20 @@
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            1,
-            "100.0%",
+            0.045454545454545456,
+            "4.5%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0,
-            "0.0%",
+            0.045454545454545456,
+            "4.5%",
             "The ratio of date columns to the total number of columns"
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            0,
-            "0.0%",
+            0.909091,
+            "90.9%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
@@ -89,8 +89,8 @@
         ],
         "MinItemLen": [
             "Min Item length",
-            1,
-            1,
+            0,
+            0,
             "The length of the smallest element in dataset"
         ],
         "MaxItemLen": [
@@ -101,8 +101,8 @@
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            2.9523809523809526,
-            "3.0",
+            2.8181818181818183,
+            "2.8",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
@@ -113,8 +113,8 @@
         ],
         "Freq2ValuesItemColumns": [
             "2-Value Item Columns %",
-            0.09523809523809523,
-            "9.5%",
+            0.09090909090909091,
+            "9.1%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
         "hasHeader": [
@@ -125,8 +125,8 @@
         ],
         "delimiter": [
             "delimiter",
-            "{TAB}",
-            "{TAB}",
+            " ",
+            " ",
             "The delimiter between the columns of the dataset"
         ],
         "type2Words": [
@@ -137,37 +137,37 @@
         ],
         "n_items": [
             "Items count",
-            870,
-            870,
+            871,
+            871,
             "The total number of items for ARM process"
         ],
         "avg_transaction_size": [
             "Avg items per transaction",
-            10.101836193525791,
-            "10.10",
+            11.10228,
+            "11.10",
             "The average number of items per transaction for ARM process"
         ],
         "n_transactions": [
             "transactions count",
-            99935,
-            99935,
+            100000,
+            100000,
             "The total number of transactions for ARM process"
         ],
         "density": [
             "transactions density",
-            0.011611305969569875,
-            "1.2%",
+            0.01274659012629162,
+            "1.3%",
             "The density of transactions for ARM process"
         ]
     },
     "datasetTypePredicted": 1,
     "datasetType": 1,
-    "min_support": 0.005,
+    "min_support": 0.01,
     "min_confidence": 0.2,
     "min_lift": 1.5,
     "max_length": 8,
     "sSort": -3,
-    "datasetName": "T10I4D100K.csv",
+    "datasetName": "T10I4D100K.dat",
     "public": 1,
     "redundantRemoveType": 0
 }
