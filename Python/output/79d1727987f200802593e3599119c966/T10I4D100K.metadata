@@ -7,7 +7,7 @@
             "Number Of Columns",
             22,
             22,
-            "The total number of columns/features in the Dataset"
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -59,7 +59,7 @@
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of integer columns to the total number of columns"
         ],
@@ -83,7 +83,7 @@
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -107,7 +107,7 @@
         ],
         "Freq1CharColumns": [
             "1-Char Columns %",
-            0.0,
+            0,
             "0.0%",
             "The columns count with exclusively 1-character elements by the total of columns"
         ],
@@ -161,5 +161,13 @@
         ]
     },
     "datasetTypePredicted": 1,
-    "datasetType": 1
+    "datasetType": 1,
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 8,
+    "sSort": -3,
+    "datasetName": "T10I4D100K.dat",
+    "public": 1,
+    "redundantRemoveType": 0
 }
