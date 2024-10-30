@@ -2,8 +2,8 @@ import os
 import sys
 import json
 
-datasetName='1base2.csv' 
-minSup=0.01
+datasetName='FpGrowthSampleWithoutquotes.txt' 
+minSup=0.6
 separator=','
 
 filepath=os.path.join('datasets', datasetName)
@@ -30,7 +30,7 @@ json.dumps(outputDict, indent=4)
 # print('Memory (RSS): ' + str(obj1.getMemoryRSS()))
 # print('Memory (USS): ' + str(obj1.getMemoryUSS()))
 
-
+sys.exit()
 
 AlgorithmName='Apriori_bitset_PAMI'
 from PAMI.frequentPattern.basic import Aprioribitset as PAMI
