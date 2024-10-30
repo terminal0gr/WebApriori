@@ -1,0 +1,196 @@
+,Patterns,Support
+0,mineral water,711
+1,spaghetti,549
+2,eggs,532
+3,chocolate,485
+4,french fries,463
+5,milk,381
+6,green tea,340
+7,ground beef,281
+8,frozen vegetables,276
+9,burgers,257
+10,pancakes,236
+11,shrimp,232
+12,cookies,231
+13,cake,231
+14,escalope,212
+15,tomatoes,206
+16,turkey,198
+17,olive oil,198
+18,low fat yogurt,170
+19,chicken,170
+20,grated cheese,166
+21,soup,163
+22,herb & pepper,151
+23,cooking oil,144
+24,frozen smoothie,144
+25,whole wheat rice,136
+26,champagne,128
+27,salmon,117
+28,honey,116
+29,avocado,107
+30,whole wheat pasta,91
+31,fresh bread,91
+32,butter,89
+33,red wine,86
+34,pepper,86
+35,ham,83
+36,energy bar,80
+37,fresh tuna,77
+38,hot dogs,77
+39,energy drink,72
+40,yogurt cake,72
+41,oil,71
+42,brownies,71
+43,light mayo,70
+44,muffins,69
+45,meatballs,65
+46,french wine,65
+47,vegetables mix,59
+48,strawberries,59
+49,cottage cheese,59
+50,parmesan cheese,58
+51,tomato juice,56
+52,cereals,54
+53,almonds,52
+54,tomato sauce,52
+55,light cream,50
+56,pasta,50
+57,rice,50
+58,white wine,50
+59,mushroom cream sauce,48
+60,yams,43
+61,mint,43
+62,cider,39
+63,protein bar,36
+64,black tea,34
+65,fromage blanc,34
+66,carrots,32
+67,extra dark chocolate,31
+68,eggplant,31
+69,mineral water spaghetti,182
+70,mineral water eggs,144
+71,mineral water chocolate,143
+72,mineral water french fries,69
+73,mineral water milk,145
+74,mineral water green tea,59
+75,mineral water ground beef,111
+76,mineral water frozen vegetables,111
+77,mineral water burgers,72
+78,mineral water pancakes,67
+79,mineral water shrimp,84
+80,mineral water cake,71
+81,mineral water escalope,37
+82,mineral water tomatoes,75
+83,mineral water turkey,57
+84,mineral water olive oil,82
+85,mineral water low fat yogurt,46
+86,mineral water chicken,55
+87,mineral water grated cheese,53
+88,mineral water soup,77
+89,mineral water herb & pepper,52
+90,mineral water cooking oil,52
+91,mineral water frozen smoothie,36
+92,mineral water whole wheat rice,48
+93,mineral water salmon,45
+94,mineral water avocado,36
+95,mineral water whole wheat pasta,37
+96,mineral water red wine,31
+97,mineral water fresh tuna,32
+98,mineral water spaghetti eggs,37
+99,mineral water spaghetti chocolate,42
+100,mineral water spaghetti milk,51
+101,mineral water spaghetti ground beef,43
+102,mineral water spaghetti frozen vegetables,40
+103,mineral water spaghetti shrimp,32
+104,mineral water spaghetti tomatoes,33
+105,mineral water eggs milk,32
+106,mineral water chocolate milk,33
+107,mineral water milk ground beef,37
+108,spaghetti eggs,98
+109,spaghetti chocolate,112
+110,spaghetti french fries,65
+111,spaghetti milk,116
+112,spaghetti green tea,46
+113,spaghetti ground beef,108
+114,spaghetti frozen vegetables,93
+115,spaghetti burgers,72
+116,spaghetti pancakes,54
+117,spaghetti shrimp,75
+118,spaghetti cake,38
+119,spaghetti escalope,34
+120,spaghetti tomatoes,71
+121,spaghetti turkey,47
+122,spaghetti olive oil,64
+123,spaghetti chicken,46
+124,spaghetti grated cheese,54
+125,spaghetti soup,43
+126,spaghetti herb & pepper,48
+127,spaghetti cooking oil,42
+128,spaghetti whole wheat pasta,32
+129,spaghetti pepper,32
+130,spaghetti fresh tuna,31
+131,eggs chocolate,85
+132,eggs french fries,103
+133,eggs milk,84
+134,eggs green tea,62
+135,eggs ground beef,47
+136,eggs frozen vegetables,57
+137,eggs burgers,76
+138,eggs pancakes,51
+139,eggs shrimp,51
+140,eggs cake,53
+141,eggs tomatoes,37
+142,eggs turkey,60
+143,eggs low fat yogurt,45
+144,eggs chicken,32
+145,eggs herb & pepper,38
+146,eggs cooking oil,33
+147,chocolate french fries,83
+148,chocolate milk,81
+149,chocolate green tea,44
+150,chocolate ground beef,54
+151,chocolate frozen vegetables,54
+152,chocolate burgers,43
+153,chocolate pancakes,35
+154,chocolate shrimp,51
+155,chocolate escalope,41
+156,chocolate tomatoes,33
+157,chocolate olive oil,40
+158,chocolate low fat yogurt,36
+159,chocolate chicken,40
+160,chocolate frozen smoothie,31
+161,chocolate champagne,35
+162,french fries milk,54
+163,french fries green tea,67
+164,french fries burgers,50
+165,french fries pancakes,38
+166,french fries cookies,33
+167,french fries cake,46
+168,french fries escalope,40
+169,milk green tea,35
+170,milk ground beef,65
+171,milk frozen vegetables,56
+172,milk burgers,52
+173,milk pancakes,33
+174,milk shrimp,48
+175,milk cake,31
+176,milk tomatoes,42
+177,milk olive oil,44
+178,milk chicken,34
+179,milk soup,43
+180,green tea burgers,36
+181,green tea cookies,31
+182,green tea cake,36
+183,ground beef frozen vegetables,44
+184,ground beef burgers,31
+185,ground beef tomatoes,33
+186,ground beef turkey,32
+187,ground beef olive oil,38
+188,ground beef herb & pepper,46
+189,frozen vegetables pancakes,31
+190,frozen vegetables shrimp,58
+191,frozen vegetables tomatoes,51
+192,frozen vegetables olive oil,33
+193,burgers turkey,37
+194,shrimp tomatoes,36

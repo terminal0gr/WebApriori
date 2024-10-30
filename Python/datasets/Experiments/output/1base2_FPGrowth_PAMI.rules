@@ -1,0 +1,196 @@
+,Patterns,Support
+0,extra dark chocolate,31
+1,eggplant,31
+2,carrots,32
+3,black tea,34
+4,fromage blanc,34
+5,protein bar,36
+6,cider,39
+7,yams,43
+8,mint,43
+9,mushroom cream sauce,48
+10,light cream,50
+11,pasta,50
+12,rice,50
+13,white wine,50
+14,almonds,52
+15,tomato sauce,52
+16,cereals,54
+17,tomato juice,56
+18,parmesan cheese,58
+19,vegetables mix,59
+20,strawberries,59
+21,cottage cheese,59
+22,meatballs,65
+23,french wine,65
+24,muffins,69
+25,light mayo,70
+26,oil,71
+27,brownies,71
+28,energy drink,72
+29,yogurt cake,72
+30,fresh tuna,77
+31,fresh tuna spaghetti,31
+32,fresh tuna mineral water,32
+33,hot dogs,77
+34,energy bar,80
+35,ham,83
+36,red wine,86
+37,red wine mineral water,31
+38,pepper,86
+39,pepper spaghetti,32
+40,butter,89
+41,whole wheat pasta,91
+42,whole wheat pasta spaghetti,32
+43,whole wheat pasta mineral water,37
+44,fresh bread,91
+45,avocado,107
+46,avocado mineral water,36
+47,honey,116
+48,salmon,117
+49,salmon mineral water,45
+50,champagne,128
+51,champagne chocolate,35
+52,whole wheat rice,136
+53,whole wheat rice mineral water,48
+54,cooking oil,144
+55,cooking oil eggs,33
+56,cooking oil spaghetti,42
+57,cooking oil mineral water,52
+58,frozen smoothie,144
+59,frozen smoothie chocolate,31
+60,frozen smoothie mineral water,36
+61,herb & pepper,151
+62,herb & pepper eggs,38
+63,herb & pepper ground beef,46
+64,herb & pepper spaghetti,48
+65,herb & pepper mineral water,52
+66,soup,163
+67,soup spaghetti,43
+68,soup milk,43
+69,soup mineral water,77
+70,grated cheese,166
+71,grated cheese mineral water,53
+72,grated cheese spaghetti,54
+73,low fat yogurt,170
+74,low fat yogurt chocolate,36
+75,low fat yogurt eggs,45
+76,low fat yogurt mineral water,46
+77,chicken,170
+78,chicken eggs,32
+79,chicken milk,34
+80,chicken chocolate,40
+81,chicken spaghetti,46
+82,chicken mineral water,55
+83,turkey,198
+84,turkey ground beef,32
+85,turkey burgers,37
+86,turkey spaghetti,47
+87,turkey mineral water,57
+88,turkey eggs,60
+89,olive oil,198
+90,olive oil frozen vegetables,33
+91,olive oil ground beef,38
+92,olive oil chocolate,40
+93,olive oil milk,44
+94,olive oil spaghetti,64
+95,olive oil mineral water,82
+96,tomatoes,206
+97,tomatoes ground beef,33
+98,tomatoes chocolate,33
+99,tomatoes shrimp,36
+100,tomatoes eggs,37
+101,tomatoes milk,42
+102,tomatoes frozen vegetables,51
+103,tomatoes spaghetti,71
+104,tomatoes spaghetti mineral water,33
+105,tomatoes mineral water,75
+106,escalope,212
+107,escalope spaghetti,34
+108,escalope mineral water,37
+109,escalope french fries,40
+110,escalope chocolate,41
+111,cookies,231
+112,cookies green tea,31
+113,cookies french fries,33
+114,cake,231
+115,cake milk,31
+116,cake green tea,36
+117,cake spaghetti,38
+118,cake french fries,46
+119,cake eggs,53
+120,cake mineral water,71
+121,shrimp,232
+122,shrimp milk,48
+123,shrimp eggs,51
+124,shrimp chocolate,51
+125,shrimp frozen vegetables,58
+126,shrimp spaghetti,75
+127,shrimp spaghetti mineral water,32
+128,shrimp mineral water,84
+129,pancakes,236
+130,pancakes frozen vegetables,31
+131,pancakes milk,33
+132,pancakes chocolate,35
+133,pancakes french fries,38
+134,pancakes eggs,51
+135,pancakes spaghetti,54
+136,pancakes mineral water,67
+137,burgers,257
+138,burgers ground beef,31
+139,burgers green tea,36
+140,burgers chocolate,43
+141,burgers french fries,50
+142,burgers milk,52
+143,burgers mineral water,72
+144,burgers spaghetti,72
+145,burgers eggs,76
+146,frozen vegetables,276
+147,frozen vegetables ground beef,44
+148,frozen vegetables chocolate,54
+149,frozen vegetables milk,56
+150,frozen vegetables eggs,57
+151,frozen vegetables spaghetti,93
+152,frozen vegetables spaghetti mineral water,40
+153,frozen vegetables mineral water,111
+154,ground beef,281
+155,ground beef eggs,47
+156,ground beef chocolate,54
+157,ground beef milk,65
+158,ground beef milk mineral water,37
+159,ground beef spaghetti,108
+160,ground beef spaghetti mineral water,43
+161,ground beef mineral water,111
+162,green tea,340
+163,green tea milk,35
+164,green tea chocolate,44
+165,green tea spaghetti,46
+166,green tea mineral water,59
+167,green tea eggs,62
+168,green tea french fries,67
+169,milk,381
+170,milk french fries,54
+171,milk chocolate,81
+172,milk chocolate mineral water,33
+173,milk eggs,84
+174,milk eggs mineral water,32
+175,milk spaghetti,116
+176,milk spaghetti mineral water,51
+177,milk mineral water,145
+178,french fries,463
+179,french fries spaghetti,65
+180,french fries mineral water,69
+181,french fries chocolate,83
+182,french fries eggs,103
+183,chocolate,485
+184,chocolate eggs,85
+185,chocolate spaghetti,112
+186,chocolate spaghetti mineral water,42
+187,chocolate mineral water,143
+188,eggs,532
+189,eggs spaghetti,98
+190,eggs spaghetti mineral water,37
+191,eggs mineral water,144
+192,spaghetti,549
+193,spaghetti mineral water,182
+194,mineral water,711

@@ -2,9 +2,9 @@ import os
 import sys
 import json
 
-datasetName='T10I4D100K.dat' 
+datasetName='1base2.csv' 
 minSup=0.01
-separator=' '
+separator=','
 
 filepath=os.path.join('datasets', datasetName)
 
