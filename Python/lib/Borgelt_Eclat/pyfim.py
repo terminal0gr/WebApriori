@@ -149,7 +149,8 @@ returns if a parameter 'out' is a list, the return value is a list of
         if   target == 'm':     # if to report only maximal item sets
             if r < supp: report(pexs, [], sall, data)
         elif target == 'c':     # if to report only closed  item sets
-            if r < s:    report(pexs, [], sall, data)
+            # if r < s:    report(pexs, [], sall, data)
+            if r < supp: report(pexs, [], sall, data) # subtistution of the above just for working
         else:                   # if to report all frequent item sets
             report([], pexs, sall, data)  # report the empty item set
     if isinstance(out, [].__class__): return out

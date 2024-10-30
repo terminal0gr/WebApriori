@@ -1,3 +1,5 @@
+# Unable to finish even for example2 which is given as an example with thw implementation.
+
 import os
 import sys
 import json
@@ -28,11 +30,11 @@ dataframe = Example2().get()
 
 startTime=time()
 eclat_instance = ECLAT(data=dataframe, verbose=False) #verbose=True to see the loading bar
-# eclat_instance.df_bin   #generate a binary dataframe, that can be used for other analyzes.
-# eclat_instance.uniq_    #a list with all the names of the different items
+eclat_instance.df_bin   #generate a binary dataframe, that can be used for other analyzes.
+eclat_instance.uniq_    #a list with all the names of the different items
 get_ECLAT_indexes, get_ECLAT_supports = eclat_instance.fit(min_support=0.01,
                                                            min_combination=1,
-                                                           max_combination=6,
+                                                           max_combination=3,
                                                            separator=',',
                                                            verbose=False)
 endTime=time()
