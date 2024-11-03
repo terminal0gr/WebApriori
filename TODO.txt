@@ -8,26 +8,24 @@
 04/10/2024 After successful save of the items filtering show toast (3 seconds) instead of modal
 15/10/2024 Improve/make smooth uploading dataset procedure
 16/10/2024 In Dataset Type 1 In info (Top 1,2,3 Value %) is computed including NaN Values. H-mineSample.txt Top1 Value (d) 4/24-->16.7% it should 4/21 19%
-
-
 15/10/2024 IMPORTANT! Check Autodetect, Info For all datasetTypes because many changes occured. 
 16/10/2024 Filter participating items must be updated when declaring new datasetType e.g. 0data_balita.csv and 4-NOA declared.
     ln 1168 retrieveParticipatingItems
     ln 1560 datasetTypeChanged
-21/10/2024 Dataset ARM features collection
+
+
 06/10/2024 IMPORTANT! dEclat and Top K implementation in python
+01/11/2024 In Borgelt eClat Try if helps memory and CPU if items kept in dictionary as numbers instead texts.
+
+Done 01/11/2024 21/10/2024 Dataset ARM features collection
+
 
 T10I4D100K.csv
 T10: This represents the average transaction length (the number of items per transaction). In this case, each transaction contains, on average, 10 items.
 I4: This represents the average size of the frequent itemsets (the number of items that frequently appear together). In this case, the frequent itemsets tend to have about 4 items on average.
 D100K: This represents the number of transactions in the dataset. Specifically, it refers to 100,000 transactions (D100K = 100K = 100,000).
 
-Datasets   Number of transactions   Number of distinct items    Average transaction size
-Chess         3,196                     75                         37
-Connect      67,557                    129                         43
-T25I10D10K   10,000                  1,000                         25
-Mushrooms     8,416                    128                         23
-Pumsb        49,046                  7,116                         74
+
 
 
 Rapidminer, Weka, SPSS, Knime, Orange, Spark Lib
