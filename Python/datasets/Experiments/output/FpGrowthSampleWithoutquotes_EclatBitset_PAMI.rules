@@ -1,0 +1,20 @@
+,Patterns,Support
+0,f,4
+1,c,4
+2,p,4
+3,a,3
+4,m,3
+5,b,3
+6,f c,3
+7,f p,3
+8,f a,3
+9,f m,3
+10,c p,3
+11,c a,3
+12,c m,3
+13,a m,3
+14,f c a,3
+15,f c m,3
+16,f a m,3
+17,c a m,3
+18,f c a m,3
