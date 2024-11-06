@@ -2,6 +2,12 @@
     "version": "0.2.0",
     "configurations": [       
         {
+            "type": "java",
+            "name": "Run java",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
             "name": "Listen for Xdebug",
             "type": "php",
             "request": "launch",
