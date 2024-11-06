@@ -16,7 +16,7 @@ obj1.mine()
 frequentPatternsDF= obj1.getPatternsAsDataFrame()
 frequentPatternsDF.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+AlgorithmName+'.rules'))
 print(frequentPatternsDF)
-outputDict = {}
+outputDict = {} 
 outputDict['totalFI']=str(len(frequentPatternsDF))
 outputDict['Runtime']=str(obj1.getRuntime())
 outputDict['Memory']=str(obj1.getMemoryUSS())

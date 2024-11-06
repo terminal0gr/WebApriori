@@ -5,7 +5,7 @@ import json
 
 
 datasetName='chess.dat' 
-minSup=0.8
+minSup=0.7
 separator=' '
 # datasetName='FpGrowthSampleWithoutQuotes.txt' 
 # minSup=0.6
@@ -26,7 +26,6 @@ data = [
 AlgorithmName='Eclat_PAMI'
 from PAMI.frequentPattern.basic import ECLAT as PAMI
 obj1 = PAMI.ECLAT(iFile=filepath, minSup=minSup, sep=separator)
-# obj1 = PAMI.ECLAT(data, minSup=minSup, sep=separator)
 obj1.mine(False)
 frequentPatternsDF= obj1.getPatternsAsDataFrame()
 frequentPatternsDF.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+'.rules'))
