@@ -37,7 +37,7 @@ public class MemoryLogger {
 	private static MemoryLogger instance = new MemoryLogger();
 
 	// variable to store the maximum memory usage
-	private double maxMemory = 0;
+	private long maxMemory = 0;
 
 	// A boolean flag to indicate whether the recording mode is on or off
 	private boolean recordingMode = false;
@@ -62,7 +62,7 @@ public class MemoryLogger {
 	 * 
 	 * @return a double value indicating memory as megabytes
 	 */
-	public double getMaxMemory() {
+	public long getMaxMemory() {
 		return maxMemory;
 	}
 
@@ -79,8 +79,9 @@ public class MemoryLogger {
 	 * 
 	 * @return the memory usage in megabytes
 	 */
-	public double checkMemory() {
-		double currentMemory = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024d / 1024d;
+	public long checkMemory() {
+		//double currentMemory = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024d / 1024d;
+		long currentMemory = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory());
 		if (currentMemory > maxMemory) {
 			maxMemory = currentMemory;
 		}

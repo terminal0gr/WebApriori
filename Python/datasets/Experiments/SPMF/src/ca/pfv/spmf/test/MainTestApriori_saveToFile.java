@@ -15,7 +15,7 @@ public class MainTestApriori_saveToFile {
 	public static void main(String [] arg) throws IOException{
 
 		//String input = fileToPath("contextPasquier99.txt");
-		String input =  "C:\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\datasets\\chess.dat";
+		String input =  "\\WebApriori\\Python\\datasets\\Experiments\\datasets\\chess.dat";
 		String output = ".//output.txt";  // the path for saving the frequent itemsets found
 		
 		double minsup = 0.8; // means a minsup of 2 transaction (we used a relative support)

@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
 
+import org.json.JSONObject;
+
 import ca.pfv.spmf.tools.MemoryLogger;
 
 /*
@@ -457,6 +459,15 @@ public class AlgoNegFIN {
                 + MemoryLogger.getInstance().getMaxMemory() + " MB");
         System.out.println("=====================================");
     }
+
+    //Malliaridis output
+	public JSONObject printStatsNew() {
+		JSONObject jsonObject = new JSONObject();
+        jsonObject.put("totalFI", outputCount);
+        jsonObject.put("Runtime", (endTimestamp - startTimestamp)/1000.);
+        jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
+        return jsonObject;
+	}
 
     /**
      * Run the algorithm

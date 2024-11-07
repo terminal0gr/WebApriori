@@ -24,9 +24,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import org.json.JSONObject;
 
 import ca.pfv.spmf.algorithms.ArraysAlgos;
 import ca.pfv.spmf.patterns.itemset_array_integers_with_count.Itemset;
@@ -72,10 +75,10 @@ public class AlgoApriori {
 	protected long endTimestamp; //
 	
 	/**  end time of last execution */
-	private int itemsetCount;  // 
+	public int itemsetCount;  // 
 	
 	/** itemset found during last execution */
-	private int databaseSize;
+	public int databaseSize;
 	
 	/** the minimum support set by the user */
 	private int minsupRelative;
@@ -481,12 +484,23 @@ public class AlgoApriori {
 	 */
 	public void printStats() {
 		System.out.println("=============  APRIORI - STATS =============");
-		System.out.println(" Candidates count : " + totalCandidateCount);
+		System.out.println(" Candidates count : " + totalCandidateCount); 
 		System.out.println(" The algorithm stopped at size " + (k - 1));
 		System.out.println(" Frequent itemsets count : " + itemsetCount);
 		System.out.println(" Maximum memory usage : " + MemoryLogger.getInstance().getMaxMemory() + " mb");
 		System.out.println(" Total time ~ " + (endTimestamp - startTimestamp) + " ms");
 		System.out.println("===================================================");
+	}
+
+	/**
+	 * Malliaridis output
+	 */
+	public JSONObject printStatsNew() {
+		JSONObject jsonObject = new JSONObject();
+        jsonObject.put("totalFI", itemsetCount);
+        jsonObject.put("Runtime", (endTimestamp - startTimestamp)/1000.);
+        jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
+        return jsonObject;
 	}
 
 	/** 

@@ -32,6 +32,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONObject;
+
 import ca.pfv.spmf.patterns.itemset_array_integers_with_count.Itemset;
 import ca.pfv.spmf.patterns.itemset_array_integers_with_count.Itemsets;
 import ca.pfv.spmf.tools.MemoryLogger;
@@ -518,6 +520,15 @@ loop1:	for (long i = 1, max = 1 << position; i < max; i++) {
 		System.out.println(" Frequent itemsets count : " + itemsetCount); 
 		System.out.println(" Total time ~ " + temps + " ms");
 		System.out.println("===================================================");
+	}
+
+    //Malliaridis output
+	public JSONObject printStatsNew() {
+		JSONObject jsonObject = new JSONObject();
+        jsonObject.put("totalFI", itemsetCount);
+        jsonObject.put("Runtime", (endTime - startTimestamp)/1000.);
+        jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
+        return jsonObject;
 	}
 
 	/**

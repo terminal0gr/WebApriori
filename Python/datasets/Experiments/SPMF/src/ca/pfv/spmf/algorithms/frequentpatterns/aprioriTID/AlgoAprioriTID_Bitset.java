@@ -30,6 +30,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.json.JSONObject;
+
 import ca.pfv.spmf.patterns.itemset_array_integers_with_tids_bitset.Itemset;
 import ca.pfv.spmf.tools.MemoryLogger;
 
@@ -308,6 +310,15 @@ public class AlgoAprioriTID_Bitset {
 		System.out.println(" Total time ~ " + (endTimeStamp - startTimestamp)	+ " ms");
 		System.out.println("===================================================");
 	}
+
+	public JSONObject printStatsNew() {
+		JSONObject jsonObject = new JSONObject();
+        jsonObject.put("totalFI", itemsetCount);
+        jsonObject.put("Runtime", (endTimeStamp - startTimestamp)/1000.);
+        jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
+        return jsonObject;
+	}
+
 
 	/** 
 	 * Set the maximum pattern length
