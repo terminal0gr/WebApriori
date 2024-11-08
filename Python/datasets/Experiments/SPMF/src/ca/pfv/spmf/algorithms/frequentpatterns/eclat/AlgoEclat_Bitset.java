@@ -28,6 +28,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.json.JSONObject;
+
 import ca.pfv.spmf.datastructures.triangularmatrix.TriangularMatrix;
 import ca.pfv.spmf.input.transaction_database_list_integers.TransactionDatabase;
 import ca.pfv.spmf.patterns.itemset_array_integers_with_count.Itemset;
@@ -624,6 +626,15 @@ public class AlgoEclat_Bitset {
 		System.out.println(" Maximum memory usage : "
 				+ MemoryLogger.getInstance().getMaxMemory() + " mb");
 		System.out.println("===================================================");
+	}
+
+	//Malliaridis output
+	public JSONObject printStatsNew() {
+		JSONObject jsonObject = new JSONObject();
+        jsonObject.put("totalFI", itemsetCount);
+        jsonObject.put("Runtime", (endTime - startTimestamp)/1000.);
+        jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
+        return jsonObject;
 	}
 
 	/**

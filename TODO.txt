@@ -17,6 +17,9 @@
 06/10/2024 IMPORTANT! dEclat and Top K implementation in python
 01/11/2024 In Borgelt eClat Try if helps memory and CPU if items kept in dictionary as numbers instead texts.
 
+For Research: Transform input data to integer via dictionary (e.g '{potatoes: 1, sugar:2 etc.)
+Research use of FPGrowth_strings SPMF
+
 Done 01/11/2024 21/10/2024 Dataset ARM features collection
 
 

@@ -71,6 +71,10 @@ public class TransactionDatabase {
 	 * @throws IOException exception if error reading the file
 	 */
 	public void loadFile(String path) throws IOException {
+		loadFile(path," ");
+	}
+
+	public void loadFile(String path, String delimiter) throws IOException {
 		String thisLine; // variable to read each line
 		try (BufferedReader myInput = new BufferedReader(new InputStreamReader(new FileInputStream(new File(path))))) {
 
@@ -98,7 +102,7 @@ public class TransactionDatabase {
 							&& thisLine.charAt(0) != '@') {
 						// split the line according to spaces and then
 						// call "addTransaction" to process this line.
-						addTransaction(thisLine.split(" "));
+						addTransaction(thisLine.split(delimiter));
 					}
 				}
 			}

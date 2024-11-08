@@ -65,7 +65,6 @@ json.dumps(outputDict, indent=4)
 ############################
 
 
-
 ############################
 AlgorithmName='Eclat_PAMI'
 from PAMI.frequentPattern.basic import ECLAT as PAMI
