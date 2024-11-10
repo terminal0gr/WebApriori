@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.json.JSONObject;
+
 import ca.pfv.spmf.tools.MemoryLogger;
 
 /*
@@ -689,6 +691,19 @@ public class FIN {
 		System.out.println(" Max memory:"
 				+ MemoryLogger.getInstance().getMaxMemory() + " MB");
 		System.out.println("=====================================");
+	}
+
+	//Malliaridis output
+	public JSONObject printStatsNew(String algorithm,double minSup) {
+		JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Algorithm", algorithm);
+        jsonObject.put("Language", "java");
+        jsonObject.put("library", "SPMF");
+        jsonObject.put("minSup", minSup);
+        jsonObject.put("totalFI", outputCount);
+        jsonObject.put("Runtime", (endTimestamp - startTimestamp)/1000.);
+        jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
+        return jsonObject;
 	}
 
 	/** Class to pass an integer by reference as in C++

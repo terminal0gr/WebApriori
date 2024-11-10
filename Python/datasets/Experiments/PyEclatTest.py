@@ -8,12 +8,16 @@ from pyECLAT import ECLAT
 from time import time
 import psutil
 
-datasetName='T10I4D100K.dat'
-minSup=0.01
+datasetName='chess.dat'
+minSup=0.8
 separator=' '
 
-filepath=os.path.join('datasets', datasetName)
+ext1='_mlxtend.fim'
+ext2='_mlxtend.json'
 
+
+
+filepath=os.path.join('datasets', datasetName)
 
 AlgorithmName='Eclat_pyECLAT'
 
@@ -32,10 +36,10 @@ startTime=time()
 eclat_instance = ECLAT(data=dataframe, verbose=False) #verbose=True to see the loading bar
 eclat_instance.df_bin   #generate a binary dataframe, that can be used for other analyzes.
 eclat_instance.uniq_    #a list with all the names of the different items
-get_ECLAT_indexes, get_ECLAT_supports = eclat_instance.fit(min_support=0.01,
+get_ECLAT_indexes, get_ECLAT_supports = eclat_instance.fit(min_support=minSup,
                                                            min_combination=1,
                                                            max_combination=3,
-                                                           separator=',',
+                                                           separator=separator,
                                                            verbose=False)
 endTime=time()
 process = psutil.Process(os.getpid())

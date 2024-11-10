@@ -1,5 +1,9 @@
 {
-    "Runtime": 3.01,
-    "Memory": 20722088,
-    "totalFI": 8227
+    "Runtime": 3.252,
+    "library": "SPMF",
+    "Language": "java",
+    "Memory": 20722280,
+    "minSup": 0.8,
+    "totalFI": 8227,
+    "Algorithm": "Apriori"
 }

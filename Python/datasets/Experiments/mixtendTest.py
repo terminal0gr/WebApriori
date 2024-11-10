@@ -6,8 +6,11 @@ import json
 import psutil
 
 datasetName='chess.dat' 
-minSup=0.7
+minSup=0.8
 separator=' '
+
+ext1='_mlxtend.fim'
+ext2='_mlxtend.json'
 
 # Sample transactions
 # transactions = [
@@ -46,44 +49,50 @@ df = pd.DataFrame(te_ary, columns=te.columns_)
 
 
 ################################
-AlgorithmName='FPGrowth_mlxtend'
+AlgorithmName='FPGrowth'
 # FI mining
 startTime=time()
 frequentPatterns = fpgrowth(df, min_support=minSup, use_colnames=True)
 endTime=time()
 # output frequentPatterns
-frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+'.rules'))
+frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 # results
 process = psutil.Process(os.getpid())
 memoryUSS = process.memory_full_info().uss
 outputDict = {} 
-outputDict['totalFI']=str(len(frequentPatterns))
-outputDict['Runtime']=str(str(endTime-startTime))
-outputDict['Memory']=str(memoryUSS)
-ext='.json'
-file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext),'w')
+outputDict['Algorithm']=AlgorithmName
+outputDict['Language']="python"
+outputDict['library']="mlxtend"
+outputDict['minSup']=minSup
+outputDict['totalFI']=len(frequentPatterns)
+outputDict['Runtime']=endTime-startTime
+outputDict['Memory']=memoryUSS
+file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
 json.dump(outputDict, file, indent=4)
 file.close()  
 json.dumps(outputDict, indent=4)
 ################################
 
 ################################
-AlgorithmName='HMine_mlxtend'
+AlgorithmName='HMine'
 # FI mining
 startTime=time()
 frequentPatterns = hmine(df, min_support=minSup, use_colnames=True)
 endTime=time()
 # output frequentPatterns
-frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+'.rules'))
+frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 # results
 process = psutil.Process(os.getpid())
 memoryUSS = process.memory_full_info().uss
 outputDict = {} 
-outputDict['totalFI']=str(len(frequentPatterns))
-outputDict['Runtime']=str(str(endTime-startTime))
-outputDict['Memory']=str(memoryUSS)
-ext='.json'
-file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext),'w')
+outputDict['Algorithm']=AlgorithmName
+outputDict['Language']="python"
+outputDict['library']="mlxtend"
+outputDict['minSup']=minSup
+outputDict['totalFI']=len(frequentPatterns)
+outputDict['Runtime']=endTime-startTime
+outputDict['Memory']=memoryUSS
+file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
 json.dump(outputDict, file, indent=4)
 file.close()  
 json.dumps(outputDict, indent=4)
@@ -91,22 +100,25 @@ json.dumps(outputDict, indent=4)
 
 
 ################################
-AlgorithmName='Apriori_mlxtend'
+AlgorithmName='Apriori'
 # FI mining
 startTime=time()
 frequentPatterns = apriori(df, min_support=minSup, low_memory=False, use_colnames=True)
 endTime=time()
 # output frequentPatterns
-frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+'.rules'))
+frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 # results
 process = psutil.Process(os.getpid())
 memoryUSS = process.memory_full_info().uss
 outputDict = {} 
-outputDict['totalFI']=str(len(frequentPatterns))
-outputDict['Runtime']=str(str(endTime-startTime))
-outputDict['Memory']=str(memoryUSS)
-ext='.json'
-file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext),'w')
+outputDict['Algorithm']=AlgorithmName
+outputDict['Language']="python"
+outputDict['library']="mlxtend"
+outputDict['minSup']=minSup
+outputDict['totalFI']=len(frequentPatterns)
+outputDict['Runtime']=endTime-startTime
+outputDict['Memory']=memoryUSS
+file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
 json.dump(outputDict, file, indent=4)
 file.close()  
 json.dumps(outputDict, indent=4)

@@ -33,6 +33,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+
+import org.json.JSONObject;
+
 import java.util.Map.Entry;
 
 import ca.pfv.spmf.patterns.itemset_array_integers_with_count.Itemset;
@@ -614,6 +617,19 @@ loop1:	for (long i = 1, max = 1 << position; i < max; i++) {
 		System.out.println(" Total time ~ " + time + " ms");
 		System.out.println("===================================================");
 	}
+
+	//Malliaridis output
+	public JSONObject printStatsNew(String algorithm) {
+		JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Algorithm", algorithm);
+        jsonObject.put("Language", "java");
+        jsonObject.put("library", "SPMF");
+        jsonObject.put("minSup", minSupportRelative);
+        jsonObject.put("totalFI", nItemsets.size());
+        jsonObject.put("Runtime", (endTime - startTimestamp)/1000.);
+        jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
+        return jsonObject;
+	}	
 
 	/**
 	 * Get the number of transactions in the last transaction database read.

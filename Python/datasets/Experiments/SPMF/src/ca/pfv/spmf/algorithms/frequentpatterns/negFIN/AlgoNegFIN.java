@@ -461,8 +461,12 @@ public class AlgoNegFIN {
     }
 
     //Malliaridis output
-	public JSONObject printStatsNew() {
+	public JSONObject printStatsNew(String algorithm,double minSup) {
 		JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Algorithm", algorithm);
+        jsonObject.put("Language", "java");
+        jsonObject.put("library", "SPMF");
+        jsonObject.put("minSup", minSup);
         jsonObject.put("totalFI", outputCount);
         jsonObject.put("Runtime", (endTimestamp - startTimestamp)/1000.);
         jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());

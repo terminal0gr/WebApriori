@@ -1,9 +1,9 @@
 {
-    "Algorithm": "FPGrowth",
+    "Algorithm": "Eclat_bitset",
     "Language": "python",
     "library": "PAMI",
     "minSup": 0.8,
     "totalFI": 8227,
-    "Runtime": 0.10699987411499023,
-    "Memory": 87248896
+    "Runtime": 0.07400012016296387,
+    "Memory": 89219072
 }

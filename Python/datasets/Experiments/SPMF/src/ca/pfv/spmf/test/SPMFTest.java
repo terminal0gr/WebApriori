@@ -2,19 +2,19 @@ package ca.pfv.spmf.test;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
 
 import org.json.JSONObject;
 
 import ca.pfv.spmf.algorithms.frequentpatterns.apriori.AlgoApriori;
 import ca.pfv.spmf.algorithms.frequentpatterns.aprioriTID.AlgoAprioriTID_Bitset;
+import ca.pfv.spmf.algorithms.frequentpatterns.dFIN.AlgoDFIN;
 import ca.pfv.spmf.algorithms.frequentpatterns.eclat.AlgoDEclat;
 import ca.pfv.spmf.algorithms.frequentpatterns.eclat.AlgoDEclat_Bitset;
 import ca.pfv.spmf.algorithms.frequentpatterns.eclat.AlgoEclat;
 import ca.pfv.spmf.algorithms.frequentpatterns.eclat.AlgoEclat_Bitset;
+import ca.pfv.spmf.algorithms.frequentpatterns.fin_prepost.FIN;
 import ca.pfv.spmf.algorithms.frequentpatterns.fpgrowth.AlgoFPGrowth;
-import ca.pfv.spmf.algorithms.frequentpatterns.fpgrowth_with_strings.AlgoFPGrowth_Strings;
+//import ca.pfv.spmf.algorithms.frequentpatterns.fpgrowth_with_strings.AlgoFPGrowth_Strings;
 import ca.pfv.spmf.algorithms.frequentpatterns.negFIN.AlgoNegFIN;
 import ca.pfv.spmf.input.transaction_database_list_integers.TransactionDatabase;
 
@@ -24,7 +24,7 @@ public class SPMFTest {
 
         //Declaration section
         String datasetName = "chess.dat";
-        double minsup = 0.8; // means a minsup of 2 transaction (we used a relative support)
+        double minSup = 0.8; // means a minSup of 2 transaction (we used a relative support)
 
         String outPutResultsfile, noPrefix;
         JSONObject pSN;
@@ -47,10 +47,10 @@ public class SPMFTest {
 		AlgoApriori algo = new AlgoApriori();
 		// Uncomment the following line to set the maximum pattern length (number of items per itemset)
         //algo.setMaximumPatternLength(3);
-        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.fim";
-		algo.runAlgorithm(minsup, input, outPutResultsfile);
-		pSN=algo.printStatsNew();
-        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.json";
+        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.fim";
+		algo.runAlgorithm(minSup, input, outPutResultsfile);
+		pSN=algo.printStatsNew(algorithm,minSup);
+        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.json";
         // Write the JSON object to the file
         try (FileWriter file = new FileWriter(outPutResultsfile)) {
             file.write(pSN.toString(4)); // 4 is for pretty-print indentation
@@ -62,14 +62,14 @@ public class SPMFTest {
 
 
         ////////////////////////////
-        algorithm="AprioriTID_Bitset";
+        algorithm="Apriori_TID_bitset";
 		AlgoAprioriTID_Bitset algo1 = new AlgoAprioriTID_Bitset();
 		// Uncomment the following line to set the maximum pattern length (number of items per itemset)
         //algo1.setMaximumPatternLength(3);
-        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.fim";
-		algo1.runAlgorithm(input, outPutResultsfile, minsup);
-		pSN=algo1.printStatsNew();
-        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.json";
+        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.fim";
+		algo1.runAlgorithm(input, outPutResultsfile, minSup);
+		pSN=algo1.printStatsNew(algorithm,minSup);
+        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.json";
         // Write the JSON object to the file
         try (FileWriter file = new FileWriter(outPutResultsfile)) {
             file.write(pSN.toString(4)); // 4 is for pretty-print indentation
@@ -83,7 +83,7 @@ public class SPMFTest {
         ////////////////////////////
         algorithm="Eclat";
         AlgoEclat algoEclat = new AlgoEclat();
-        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.fim";
+        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.fim";
         // Loading the transaction database
 		database = new TransactionDatabase();
 		try {
@@ -91,9 +91,9 @@ public class SPMFTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
-		algoEclat.runAlgorithm(outPutResultsfile, database, minsup, false);
-		pSN=algoEclat.printStatsNew();
-        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.json";
+		algoEclat.runAlgorithm(outPutResultsfile, database, minSup, false);
+		pSN=algoEclat.printStatsNew(algorithm,minSup);
+        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.json";
         // Write the JSON object to the file
         try (FileWriter file = new FileWriter(outPutResultsfile)) {
             file.write(pSN.toString(4)); // 4 is for pretty-print indentation
@@ -106,7 +106,7 @@ public class SPMFTest {
         ////////////////////////////
         algorithm="Eclat_bitset";
         AlgoEclat_Bitset algoEclat_Bitset = new AlgoEclat_Bitset();
-        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.fim";
+        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.fim";
         // Loading the transaction database
 		database = new TransactionDatabase();
 		try {
@@ -114,9 +114,9 @@ public class SPMFTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
-		algoEclat_Bitset.runAlgorithm(outPutResultsfile, database, minsup, false);
-		pSN=algoEclat_Bitset.printStatsNew();
-        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.json";
+		algoEclat_Bitset.runAlgorithm(outPutResultsfile, database, minSup, false);
+		pSN=algoEclat_Bitset.printStatsNew(algorithm,minSup);
+        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.json";
         // Write the JSON object to the file
         try (FileWriter file = new FileWriter(outPutResultsfile)) {
             file.write(pSN.toString(4)); // 4 is for pretty-print indentation
@@ -130,7 +130,7 @@ public class SPMFTest {
         ////////////////////////////diffsets
         algorithm="DEclat";
         AlgoEclat algoDEclat = new AlgoDEclat();
-        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.fim";
+        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.fim";
         // Loading the transaction database
 		database = new TransactionDatabase();
 		try {
@@ -138,9 +138,9 @@ public class SPMFTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
-		algoDEclat.runAlgorithm(outPutResultsfile, database, minsup, false);
-		pSN=algoDEclat.printStatsNew();
-        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.json";
+		algoDEclat.runAlgorithm(outPutResultsfile, database, minSup, false);
+		pSN=algoDEclat.printStatsNew(algorithm,minSup);
+        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.json";
         // Write the JSON object to the file
         try (FileWriter file = new FileWriter(outPutResultsfile)) {
             file.write(pSN.toString(4)); // 4 is for pretty-print indentation
@@ -153,7 +153,7 @@ public class SPMFTest {
         ////////////////////////////
         algorithm="DEclat_bitset";
         AlgoDEclat_Bitset algoDEclat_Bitset = new AlgoDEclat_Bitset();
-        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.fim";
+        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.fim";
         // Loading the transaction database
 		database = new TransactionDatabase();
 		try {
@@ -161,9 +161,9 @@ public class SPMFTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
-		algoDEclat_Bitset.runAlgorithm(outPutResultsfile, database, minsup, false);
-		pSN=algoDEclat_Bitset.printStatsNew();
-        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.json";
+		algoDEclat_Bitset.runAlgorithm(outPutResultsfile, database, minSup, false);
+		pSN=algoDEclat_Bitset.printStatsNew(algorithm,minSup);
+        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.json";
         // Write the JSON object to the file
         try (FileWriter file = new FileWriter(outPutResultsfile)) {
             file.write(pSN.toString(4)); // 4 is for pretty-print indentation
@@ -176,10 +176,10 @@ public class SPMFTest {
         ////////////////////////////
         algorithm="FPGrowth";
         AlgoFPGrowth algoFPGrowth = new AlgoFPGrowth();
-        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.fim";
-		algoFPGrowth.runAlgorithm(input, outPutResultsfile, minsup);
-		pSN=algoFPGrowth.printStatsNew();
-        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.json";
+        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.fim";
+		algoFPGrowth.runAlgorithm(input, outPutResultsfile, minSup);
+		pSN=algoFPGrowth.printStatsNew(algorithm,minSup);
+        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.json";
         // Write the JSON object to the file
         try (FileWriter file = new FileWriter(outPutResultsfile)) {
             file.write(pSN.toString(4)); // 4 is for pretty-print indentation
@@ -195,18 +195,52 @@ public class SPMFTest {
         //AlgoFPGrowth_Strings algo = new AlgoFPGrowth_Strings();
 
 
+        ////////////////////////////
         algorithm="FIN";
+		FIN fin = new FIN();
+		// Uncomment the following line to set the maximum pattern length (number of items per itemset)
+        //algo1.setMaximumPatternLength(3);
+        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.fim";
+		fin.runAlgorithm(input, minSup, outPutResultsfile);
+		pSN=fin.printStatsNew(algorithm,minSup);
+        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.json";
+        // Write the JSON object to the file
+        try (FileWriter file = new FileWriter(outPutResultsfile)) {
+            file.write(pSN.toString(4)); // 4 is for pretty-print indentation
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ////////////////////////////
+
+
+        ////////////////////////////
         algorithm="DFIN";
+        AlgoDFIN algoDFIN = new AlgoDFIN();
+		// Uncomment the following line to set the maximum pattern length (number of items per itemset)
+        //algo1.setMaximumPatternLength(3);
+        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.fim";
+		algoDFIN.runAlgorithm(input, minSup, outPutResultsfile);
+		pSN=algoDFIN.printStatsNew(algorithm,minSup);
+        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.json";
+        // Write the JSON object to the file
+        try (FileWriter file = new FileWriter(outPutResultsfile)) {
+            file.write(pSN.toString(4)); // 4 is for pretty-print indentation
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ////////////////////////////
 
         ////////////////////////////
         algorithm="negFIN";
 		AlgoNegFIN algoNegFIN = new AlgoNegFIN();
 		// Uncomment the following line to set the maximum pattern length (number of items per itemset)
         //algo1.setMaximumPatternLength(3);
-        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.fim";
-		algoNegFIN.runAlgorithm(input, minsup, outPutResultsfile);
-		pSN=algoNegFIN.printStatsNew();
-        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minsup) + "_" + algorithm + "_SPMF.json";
+        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.fim";
+		algoNegFIN.runAlgorithm(input, minSup, outPutResultsfile);
+		pSN=algoNegFIN.printStatsNew(algorithm,minSup);
+        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.json";
         // Write the JSON object to the file
         try (FileWriter file = new FileWriter(outPutResultsfile)) {
             file.write(pSN.toString(4)); // 4 is for pretty-print indentation

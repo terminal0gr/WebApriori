@@ -1,5 +1,9 @@
 {
-    "totalFI": "8227",
-    "Runtime": "1.0890848636627197",
-    "Memory": "1168830464"
+    "Algorithm": "Eclat",
+    "Language": "python",
+    "library": "PAMI",
+    "minSup": 0.8,
+    "totalFI": 8227,
+    "Runtime": 1.0840120315551758,
+    "Memory": 1168785408
 }

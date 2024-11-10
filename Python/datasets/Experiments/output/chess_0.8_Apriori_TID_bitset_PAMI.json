@@ -1,5 +1,9 @@
 {
-    "totalFI": "8227",
-    "Runtime": "0.0815131664276123",
-    "Memory": "88608768"
+    "Algorithm": "Apriori_TID_bitset",
+    "Language": "python",
+    "library": "PAMI",
+    "minSup": 0.8,
+    "totalFI": 8227,
+    "Runtime": 0.08100271224975586,
+    "Memory": 87597056
 }

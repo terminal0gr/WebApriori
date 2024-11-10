@@ -1,9 +1,9 @@
 {
-    "Algorithm": "FPGrowth",
+    "Algorithm": "DEclat",
     "Language": "python",
     "library": "PAMI",
     "minSup": 0.8,
     "totalFI": 8227,
-    "Runtime": 0.10699987411499023,
-    "Memory": 87248896
+    "Runtime": 1.4255797863006592,
+    "Memory": 330182656
 }

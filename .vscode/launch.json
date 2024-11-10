@@ -8,6 +8,13 @@
             "mainClass": "${file}"
         },
         {
+            "type": "java",
+            "name": "Run java incr mem",
+            "request": "launch",
+            "mainClass": "${file}",
+            "vmArgs": "-Xms512m -Xmx16g"
+        },
+        {
             "name": "Listen for Xdebug",
             "type": "php",
             "request": "launch",

@@ -1,0 +1,9 @@
+{
+    "Algorithm": "HMine",
+    "Language": "python",
+    "library": "mlxtend",
+    "minSup": 0.8,
+    "totalFI": "8227",
+    "Runtime": "1.5541374683380127",
+    "Memory": "127414272"
+}

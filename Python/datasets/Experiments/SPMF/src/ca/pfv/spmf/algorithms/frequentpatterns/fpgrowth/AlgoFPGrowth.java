@@ -523,8 +523,12 @@ loop1:	for (long i = 1, max = 1 << position; i < max; i++) {
 	}
 
     //Malliaridis output
-	public JSONObject printStatsNew() {
+	public JSONObject printStatsNew(String algorithm,double minSup) {
 		JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Language", "java");
+        jsonObject.put("library", "SPMF");
+        jsonObject.put("Algorithm", algorithm);
+        jsonObject.put("minSup", minSup);
         jsonObject.put("totalFI", itemsetCount);
         jsonObject.put("Runtime", (endTime - startTimestamp)/1000.);
         jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
