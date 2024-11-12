@@ -24,7 +24,11 @@ public class SPMFTest {
 
         //Declaration section
         String datasetName = "chess.dat";
-        double minSup = 0.8; // means a minSup of 2 transaction (we used a relative support)
+        double minSup = 0.8; 
+        String separator = " ";
+        datasetName="1_L-0023.csv";
+        minSup=0.01;
+        separator=";";
 
         String outPutResultsfile, noPrefix;
         JSONObject pSN;
@@ -48,7 +52,7 @@ public class SPMFTest {
 		// Uncomment the following line to set the maximum pattern length (number of items per itemset)
         //algo.setMaximumPatternLength(3);
         outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.fim";
-		algo.runAlgorithm(minSup, input, outPutResultsfile);
+		algo.runAlgorithm(minSup, input, outPutResultsfile, separator);
 		pSN=algo.printStatsNew(algorithm,minSup);
         outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.json";
         // Write the JSON object to the file

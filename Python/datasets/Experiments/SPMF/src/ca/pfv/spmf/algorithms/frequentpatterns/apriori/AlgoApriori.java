@@ -114,7 +114,7 @@ public class AlgoApriori {
 	 *               method will return the result.
 	 * @throws IOException exception if error while writting or reading the input/output file
 	 */
-	public Itemsets runAlgorithm(double minsup, String input, String output) throws IOException {
+	public Itemsets runAlgorithm(double minsup, String input, String output, String sep) throws IOException {
 		
 		// if the user wants to keep the result into memory
 		if(output == null){
@@ -157,7 +157,8 @@ public class AlgoApriori {
 				continue;
 			}
 			// split the line according to spaces
-			String[] lineSplited = line.split(" ");
+			if (sep==null) sep=" ";
+			String[] lineSplited = line.split(sep);
 			
 			// create an array of int to store the items in this transaction
 			int transaction[] = new int[lineSplited.length];

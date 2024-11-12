@@ -12,6 +12,7 @@
 16/10/2024 Filter participating items must be updated when declaring new datasetType e.g. 0data_balita.csv and 4-NOA declared.
     ln 1168 retrieveParticipatingItems
     ln 1560 datasetTypeChanged
+12/11/2024 1_
 
 
 06/10/2024 IMPORTANT! dEclat and Top K implementation in python
@@ -19,6 +20,23 @@
 
 For Research: Transform input data to integer via dictionary (e.g '{potatoes: 1, sugar:2 etc.)
 Research use of FPGrowth_strings SPMF
+
+PAMI:
+    +1. finding min support by counting transactions by transforming 1-MBL transactional data to tabular database.
+        It sorts items in descending order by the length of transactions that they belong 
+        sample:
+        {
+            (a,)=[1,3,4,5],
+            (b,)=[1,3,5],
+            (f,)=[1,4,6],
+            (d,)=[1,4],
+            ....
+        }
+
+SPMF: 
+    -1. Takes as seperator only the {space}
+    -2. Takes as items only integers
+
 
 Done 01/11/2024 21/10/2024 Dataset ARM features collection
 

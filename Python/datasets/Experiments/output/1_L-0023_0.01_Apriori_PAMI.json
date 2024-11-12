@@ -1,0 +1,9 @@
+{
+    "Algorithm": "Apriori",
+    "Language": "python",
+    "library": "PAMI",
+    "minSup": 0.01,
+    "totalFI": 1756,
+    "Runtime": 0.5205028057098389,
+    "Memory": 89673728
+}

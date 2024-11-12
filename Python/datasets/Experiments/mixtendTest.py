@@ -8,6 +8,9 @@ import psutil
 datasetName='chess.dat' 
 minSup=0.8
 separator=' '
+datasetName='1_L-0023.csv' 
+minSup=0.01
+separator=';'
 
 ext1='_mlxtend.fim'
 ext2='_mlxtend.json'
@@ -38,7 +41,7 @@ ext2='_mlxtend.json'
 # Read the file, treating each line as a single entry
 # creates a list of lists
 filepath=os.path.join('datasets', datasetName)
-with open(filepath) as f:
+with open(filepath,encoding='utf-8-sig') as f:
     transactions = [line.strip().split(sep=separator) for line in f]
 
 # Convert transactions to one-hot encoded DataFrame

@@ -1,0 +1,9 @@
+{
+    "Algorithm": "Apriori",
+    "Language": "python",
+    "library": "mlxtend",
+    "minSup": 0.01,
+    "totalFI": 1757,
+    "Runtime": 10.102118253707886,
+    "Memory": 142852096
+}

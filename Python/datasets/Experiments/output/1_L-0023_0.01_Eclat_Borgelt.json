@@ -1,0 +1,9 @@
+{
+    "Algorithm": "Eclat",
+    "Language": "python",
+    "library": "Borgelt",
+    "minSup": 0.01,
+    "totalFI": 1757,
+    "Runtime": 1.813915729522705,
+    "Memory": 81297408
+}

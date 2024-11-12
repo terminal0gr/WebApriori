@@ -1,0 +1,9 @@
+{
+    "Algorithm": "DEclat",
+    "Language": "python",
+    "library": "PAMI",
+    "minSup": 0.01,
+    "totalFI": 1756,
+    "Runtime": 19.769509077072144,
+    "Memory": 463998976
+}
