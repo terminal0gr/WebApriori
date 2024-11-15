@@ -18,8 +18,25 @@
 06/10/2024 IMPORTANT! dEclat and Top K implementation in python
 01/11/2024 In Borgelt eClat Try if helps memory and CPU if items kept in dictionary as numbers instead texts.
 
-For Research: Transform input data to integer via dictionary (e.g '{potatoes: 1, sugar:2 etc.)
+python (must research...)
+tuple of dictionaries     ({'name': 'e', 'count': 2}, {'name': 'd', 'count': 3}, {'name': 'c', 'count': 3}, {'name': 'b', 'count': 4}, {'name': 'a', 'count': 4})
+faster than dictionary.   [{'name': 'e', 'count': 2}, {'name': 'd', 'count': 3}, {'name': 'c', 'count': 3}, {'name': 'b', 'count': 4}, {'name': 'a', 'count': 4}] 
+
+
+
+For Research: Transform input data to integer via dictionary (e.g '{potatoes: 1, sugar:2 etc.) is done in original negFIN 
 Research use of FPGrowth_strings SPMF
+
+negFIN original
+    > The order of bitmap_code is opposite of that described in paper.. 
+      e.g. item e of the first transaction b,d,e in paper is 01011 and in python code is 11010
+                                                             abcde                       edcba
+
+    +1. items names subtistuted by index (int) when running the algorithms
+    +2. Seems extremely fast implementation
+negFIN_Mall
+    +1. Memory Save mode created. When memorySave=False algorithm is slightly faster and slightly more memory is consumed.
+    
 
 PAMI:
     +1. finding min support by counting transactions by transforming 1-MBL transactional data to tabular database.

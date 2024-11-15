@@ -6,11 +6,11 @@ import json
 import psutil
 
 datasetName='chess.dat' 
-minSup=0.8
+minSup=0.5
 separator=' '
-datasetName='1_L-0023.csv' 
-minSup=0.01
-separator=';'
+# datasetName='1_L-0023.csv' 
+# minSup=0.01
+# separator=';'
 
 ext1='_mlxtend.fim'
 ext2='_mlxtend.json'
@@ -76,54 +76,54 @@ file.close()
 json.dumps(outputDict, indent=4)
 ################################
 
-################################
-AlgorithmName='HMine'
-# FI mining
-startTime=time()
-frequentPatterns = hmine(df, min_support=minSup, use_colnames=True)
-endTime=time()
-# output frequentPatterns
-frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
-# results
-process = psutil.Process(os.getpid())
-memoryUSS = process.memory_full_info().uss
-outputDict = {} 
-outputDict['Algorithm']=AlgorithmName
-outputDict['Language']="python"
-outputDict['library']="mlxtend"
-outputDict['minSup']=minSup
-outputDict['totalFI']=len(frequentPatterns)
-outputDict['Runtime']=endTime-startTime
-outputDict['Memory']=memoryUSS
-file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
-json.dump(outputDict, file, indent=4)
-file.close()  
-json.dumps(outputDict, indent=4)
-################################
+# ################################
+# AlgorithmName='HMine'
+# # FI mining
+# startTime=time()
+# frequentPatterns = hmine(df, min_support=minSup, use_colnames=True)
+# endTime=time()
+# # output frequentPatterns
+# frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
+# # results
+# process = psutil.Process(os.getpid())
+# memoryUSS = process.memory_full_info().uss
+# outputDict = {} 
+# outputDict['Algorithm']=AlgorithmName
+# outputDict['Language']="python"
+# outputDict['library']="mlxtend"
+# outputDict['minSup']=minSup
+# outputDict['totalFI']=len(frequentPatterns)
+# outputDict['Runtime']=endTime-startTime
+# outputDict['Memory']=memoryUSS
+# file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
+# json.dump(outputDict, file, indent=4)
+# file.close()  
+# json.dumps(outputDict, indent=4)
+# ################################
 
 
-################################
-AlgorithmName='Apriori'
-# FI mining
-startTime=time()
-frequentPatterns = apriori(df, min_support=minSup, low_memory=False, use_colnames=True)
-endTime=time()
-# output frequentPatterns
-frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
-# results
-process = psutil.Process(os.getpid())
-memoryUSS = process.memory_full_info().uss
-outputDict = {} 
-outputDict['Algorithm']=AlgorithmName
-outputDict['Language']="python"
-outputDict['library']="mlxtend"
-outputDict['minSup']=minSup
-outputDict['totalFI']=len(frequentPatterns)
-outputDict['Runtime']=endTime-startTime
-outputDict['Memory']=memoryUSS
-file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
-json.dump(outputDict, file, indent=4)
-file.close()  
-json.dumps(outputDict, indent=4)
-################################
+# ################################
+# AlgorithmName='Apriori'
+# # FI mining
+# startTime=time()
+# frequentPatterns = apriori(df, min_support=minSup, low_memory=False, use_colnames=True)
+# endTime=time()
+# # output frequentPatterns
+# frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
+# # results
+# process = psutil.Process(os.getpid())
+# memoryUSS = process.memory_full_info().uss
+# outputDict = {} 
+# outputDict['Algorithm']=AlgorithmName
+# outputDict['Language']="python"
+# outputDict['library']="mlxtend"
+# outputDict['minSup']=minSup
+# outputDict['totalFI']=len(frequentPatterns)
+# outputDict['Runtime']=endTime-startTime
+# outputDict['Memory']=memoryUSS
+# file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
+# json.dump(outputDict, file, indent=4)
+# file.close()  
+# json.dumps(outputDict, indent=4)
+# ################################
 
