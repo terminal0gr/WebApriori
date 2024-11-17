@@ -4,18 +4,18 @@ import json
 import psutil
 
 
-# datasetName='chess.dat' 
-# minSup=0.5
-# separator=' '
+datasetName='chess.dat' 
+minSup=0.5
+separator=' '
 # datasetName='1_L-0023.csv' 
 # minSup=0.01
 # separator=';'
 # datasetName='FpGrowthSampleWithoutQuotes.txt' 
 # minSup=0.6
 # separator=','
-datasetName='negFINPaperSample.txt' 
-minSup=0.4
-separator=','
+# datasetName='negFINPaperSample.txt' 
+# minSup=0.4
+# separator=','
 
 ext1='_Mall.fim' 
 ext2='_Mall.json'
@@ -33,7 +33,7 @@ negFIN.runAlgorithm()
 process = psutil.Process(os.getpid())
 memoryUSS = process.memory_full_info().uss
 
-negFIN.printStats() # just for console output.
+negFIN.printStats() # just for console output. 
 
 outputDict = {}
 outputDict['Algorithm']=AlgorithmName

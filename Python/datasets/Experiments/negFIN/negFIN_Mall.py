@@ -305,12 +305,12 @@ class NegFIN:
     # standard output
     def printStats(self):
         print('=' * 5 + 'negFIN - STATS' + '=' * 5)
-        print(f' Minsup = {self.min_support}\n Number of transactions: {self.num_of_transactions}');
-        print(f' Number of frequent  itemsets: {self.num_of_frequent_itemsets}');
-        print(f' Total time ~: {self.execution_time} ms');
+        print(f' Minsup = {self.min_support}\n Number of transactions: {self.num_of_transactions}')
+        print(f' Number of frequent  itemsets: {self.num_of_frequent_itemsets}')
+        print(f' Total time ~: {self.execution_time} ms')
         #     System.out.println(' Max memory:'
         #             + MemoryLogger.getInstance().getMaxMemory() + ' MB');
-        print('=' * 14);
+        print('=' * 14)
 
 
 if __name__ == '__main__':
@@ -322,4 +322,4 @@ if __name__ == '__main__':
     # Applying the algorithm
     algorithm = NegFIN(datasetFile1, minSupport1, outputFile1, delimiter1)
     algorithm.runAlgorithm()
-    algorithm.printStats()
+    # algorithm.printStats()
