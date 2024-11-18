@@ -3,7 +3,7 @@
     "Language": "python",
     "library": "Borgelt",
     "minSup": 0.8,
-    "totalFI": "8227",
-    "Runtime": "3.8600592613220215",
-    "Memory": "80420864"
+    "totalFI": 8227,
+    "Runtime": 1.54129958152771,
+    "Memory": 80154624
 }

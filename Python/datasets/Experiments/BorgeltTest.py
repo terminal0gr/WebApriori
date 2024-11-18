@@ -10,9 +10,9 @@ from pyfim import eclat
 datasetName='chess.dat'
 minSup=0.8
 separator=' '
-datasetName='1_L-0023.csv' 
-minSup=0.01
-separator=';'
+# datasetName='1_L-0023.csv' 
+# minSup=0.01
+# separator=';'
 
 ext1='_Borgelt.fim'
 ext2='_Borgelt.json'
