@@ -5,8 +5,8 @@
             "name": "C++ (gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${file}",
-            "args": [],
+            "program": "${fileDirname}/${fileBasenameNoExtension}.exe", // Output executable
+            "args": ["datasets/chess.dat", "0.8", ""],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
