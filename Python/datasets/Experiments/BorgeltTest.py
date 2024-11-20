@@ -6,7 +6,6 @@ from time import time
 import psutil
 from pyfim import eclat
 
-
 datasetName='chess.dat'
 minSup=0.8
 separator=' '

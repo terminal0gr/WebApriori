@@ -8,6 +8,8 @@
  */
 
 #include <cstdlib>
+#include <windows.h>
+#include <psapi.h>
 #include<iostream>
 #include <stdio.h>
 #include <cmath>
@@ -15,7 +17,7 @@
 #include <windows.h>
 #include <psapi.h>
 #include <cstring>
-
+#include <ctime>
 
 using namespace std;
 int dump;
@@ -944,12 +946,61 @@ void ___run(FILE *in, char* filename) {
     delete[] ___sameItems;
     //YYY ??? inserted
     delete[] ___mask_for_item;
-    printf("-----%d %d %l \n", ___nlNodeCount, ___resultCount, ___nlLenSum / ((double) ___resultCount));
+    printf("-----%d %d %lf \n", ___nlNodeCount, ___resultCount, ___nlLenSum / ((double) ___resultCount));
     if (1 == dump)
         fclose(___out);
 }
 
 //========================================
+
+
+void printMemoryUsage() {
+    PROCESS_MEMORY_COUNTERS pmc;
+    if (GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc))) {
+        std::cout << "Working Set Size: " << pmc.WorkingSetSize / 1024 << " KB" << std::endl;
+        std::cout << "Peak Working Set Size: " << pmc.PeakWorkingSetSize / 1024 << " KB" << std::endl;
+        std::cout << "Pagefile Usage: " << pmc.PagefileUsage / 1024 << " KB" << std::endl;
+    } else {
+        std::cerr << "Failed to retrieve memory info." << std::endl;
+    }
+}
+
+int printInfo(double elapsed, double threshold, char* filename) {
+	
+	PROCESS_MEMORY_COUNTERS pmc;
+    if (!GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc))) {
+        printf("Failed to retrieve memory info.");
+        return 0;
+    }
+
+    // Buffer to hold the dynamically constructed filename
+    char outFilename[256];
+    // Extract the base name (without extension) from filename
+    char *dot = strrchr(filename, '.'); // Find the last dot
+    size_t baseLength = (dot != nullptr) ? (dot - filename) : strlen(filename);
+    char base[256];
+    strncpy(base, filename, baseLength);
+    base[baseLength] = '\0'; // Null-terminate the base name
+    // Construct the output filename
+    sprintf(outFilename, "../output/%s_%.1f_%s.json", base, threshold, "negFIN_Aryabarzan");
+
+    // Open the file
+    FILE *outFile = fopen(outFilename, "wt");
+	// FILE *outFile;
+    // outFile = fopen("output.json", "wt");
+
+    fprintf(outFile, "{\n",elapsed);
+	fprintf(outFile, "    \"algorithm\": \"negFIN\",\n");
+	fprintf(outFile, "    \"language\": \"C++\",\n");
+	fprintf(outFile, "    \"library\": \"Aryabarzan\",\n");
+	fprintf(outFile, "    \"minSup\": %.3lf,\n",threshold);
+	fprintf(outFile, "    \"totalFI\": %d,\n",___resultCount);
+	fprintf(outFile, "    \"runtime\": %.3lf,\n",elapsed);
+    fprintf(outFile, "    \"memory\": %d\n",pmc.PeakWorkingSetSize);
+    fprintf(outFile, "}\n",elapsed);
+    fclose(outFile);
+    return 1;
+}
 
 int main(int argc, char **argv) {
     //cout << "usage: negnodeset.exe <datafile> <MINSUP>(0~1)  <number_of_transactions> <ISOUT>\n";
@@ -977,9 +1028,23 @@ int main(int argc, char **argv) {
     ___bf_cursor = 0;
     ___bf_col = 0;
 
+	// Start the clock
+    clock_t start = clock();
+
     //Read Dataset
     ___getData(___in, filename, THRESHOLD);
     ___run(___in, filename);
+    
+    // End the clock
+    clock_t end = clock();
+    // Calculate elapsed time
+    double elapsed = double(end - start) / CLOCKS_PER_SEC;
+    
+    printInfo(elapsed,THRESHOLD, filename);
+    
+    std::cout << "Processing time: " << elapsed << " seconds" << std::endl;
+    printMemoryUsage();
+    
     return 0;
 }
 
