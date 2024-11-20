@@ -1,0 +1,9 @@
+{
+    "algorithm": "negFIN",
+    "language": "C++",
+    "library": "Aryabarzan",
+    "minSup": 0.650,
+    "totalFI": 111778,
+    "runtime": 0.015,
+    "memory": 4476928
+}

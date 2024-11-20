@@ -15,30 +15,50 @@
 12/11/2024 1_
 
 
-06/10/2024 IMPORTANT! dEclat and Top K implementation in python
+06/10/2024 IMPORTANT! Top K implementation in python
 01/11/2024 In Borgelt eClat Try if helps memory and CPU if items kept in dictionary as numbers instead texts.
+
+
+
 
 python (must research...)
 tuple of dictionaries     ({'name': 'e', 'count': 2}, {'name': 'd', 'count': 3}, {'name': 'c', 'count': 3}, {'name': 'b', 'count': 4}, {'name': 'a', 'count': 4})
 faster than dictionary.   [{'name': 'e', 'count': 2}, {'name': 'd', 'count': 3}, {'name': 'c', 'count': 3}, {'name': 'b', 'count': 4}, {'name': 'a', 'count': 4}] 
 
 
-
 For Research: Transform input data to integer via dictionary (e.g '{potatoes: 1, sugar:2 etc.) is done in original negFIN 
 Research use of FPGrowth_strings SPMF
 
-negFIN original
+######################
+negFIN python (negFINTest.py)
     > The order of bitmap_code is opposite of that described in paper.. 
       e.g. item e of the first transaction b,d,e in paper is 01011 and in python code is 11010
                                                              abcde                       edcba
 
     +1. items names subtistuted by index (int) when running the algorithms
     +2. Seems extremely fast implementation
+    +3. implements bitarray (String of bits with the same functioning as in C++ bitwise operators) with no limitation to 1-item frequent itemsets
 negFIN_Mall
     +1. Memory Save mode created. When memorySave=False algorithm is slightly faster and slightly more memory is consumed.
-    
 
-PAMI:
+    -1 slightly slower from the original C++ implementation
+
+######################
+negFIN original C++ (folder negFIN_C++\compile.bat & runtest.bat after filled with all the experiments)
+    +1 May be the fastest implementation overall
+
+    -1 Works up to 128 different 1-item frequent itemsets
+
+
+######################
+PAMI: implements in python:
+    - Apriori_TID_bitset
+    - Eclat_bitset
+    - FPGrowth
+    - Eclat
+    - Apriori
+    - DEclat (diffsets Eclat)
+
     +1. finding min support by counting transactions by transforming 1-MBL transactional data to tabular database.
         It sorts items in descending order by the length of transactions that they belong 
         sample:
@@ -50,9 +70,25 @@ PAMI:
             ....
         }
 
-SPMF: 
+######################
+SPMF (java): 
+    +1 Quick implementation in general and surely faster than python.
+
     -1. Takes as seperator only the {space}
     -2. Takes as items only integers
+
+######################
+Borgelt py:
+    -1 Extremely slow implementation of Eclat
+Borgelt C++:
+    ? quick?
+    ? which algorithms?
+
+######################
+Goethals Eclat py:
+    +1 Very simple implementation
+    ? quick?
+
 
 
 Done 01/11/2024 21/10/2024 Dataset ARM features collection

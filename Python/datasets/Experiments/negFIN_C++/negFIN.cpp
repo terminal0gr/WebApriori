@@ -973,16 +973,25 @@ int printInfo(double elapsed, double threshold, char* filename) {
         return 0;
     }
 
-    // Buffer to hold the dynamically constructed filename
-    char outFilename[256];
+
+    // Extract the base name from the full path
+    char *lastSlash = strrchr(filename, '\\'); // Find the last backslash (Windows path separator)
+    if (lastSlash == nullptr) {
+        lastSlash = filename; // If no backslash, use the whole filename
+    } else {
+        lastSlash++; // Move past the backslash
+    }
+
     // Extract the base name (without extension) from filename
-    char *dot = strrchr(filename, '.'); // Find the last dot
-    size_t baseLength = (dot != nullptr) ? (dot - filename) : strlen(filename);
+    char *dot = strrchr(lastSlash, '.'); // Find the last dot
+    size_t baseLength = (dot != nullptr) ? (dot - lastSlash) : strlen(lastSlash);
     char base[256];
-    strncpy(base, filename, baseLength);
+    strncpy(base, lastSlash, baseLength);
     base[baseLength] = '\0'; // Null-terminate the base name
     // Construct the output filename
-    sprintf(outFilename, "../output/%s_%.1f_%s.json", base, threshold, "negFIN_Aryabarzan");
+    // Buffer to hold the dynamically constructed filename
+    char outFilename[256];    
+    sprintf(outFilename, "../output/%s_%.3lf_%s.json", base, threshold, "negFIN_Aryabarzan");
 
     // Open the file
     FILE *outFile = fopen(outFilename, "wt");
