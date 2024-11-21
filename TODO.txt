@@ -72,6 +72,18 @@ PAMI: implements in python:
 
 ######################
 SPMF (java): 
+    - Apriori
+    - AprioriTID bitset
+    - Eclat 
+    - Eclat_bitset
+    - DEclat (diffsets Eclat)
+    - DEclat_bitset
+    - FPGrowth
+    - FIN
+    - DFIN
+    - negFIN
+
+
     +1 Quick implementation in general and surely faster than python.
 
     -1. Takes as seperator only the {space}
