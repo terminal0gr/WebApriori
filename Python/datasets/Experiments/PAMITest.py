@@ -35,21 +35,22 @@ AlgorithmName='Apriori_TID_bitset'
 from PAMI.frequentPattern.basic import Aprioribitset as PAMI
 obj1 = PAMI.Aprioribitset(iFile=filepath, minSup=minSup, sep=separator)
 obj1.mine(False)
-frequentPatterns= obj1.getPatternsAsDataFrame()
-frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
+# frequentPatterns= obj1.getPatternsAsDataFrame()
+# frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 # print(frequentPatternsDF)
 outputDict = {}
 outputDict['Algorithm']=AlgorithmName
 outputDict['Language']="python"
 outputDict['library']="PAMI"
 outputDict['minSup']=minSup
-outputDict['totalFI']=len(frequentPatterns)
+outputDict['totalFI']=len(obj1._finalPatterns.items())
 outputDict['Runtime']=obj1.getRuntime()
 outputDict['Memory']=obj1.getMemoryUSS()
 file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
 json.dump(outputDict, file, indent=4)
 file.close() 
 json.dumps(outputDict, indent=4)
+print(AlgorithmName + " Done!")
 ############################
 
 ############################
@@ -57,21 +58,22 @@ AlgorithmName='Eclat_bitset'
 from PAMI.frequentPattern.basic import ECLATbitset as PAMI
 obj1 = PAMI.ECLATbitset(iFile=filepath, minSup=minSup, sep=separator)
 obj1.mine(False)
-frequentPatterns= obj1.getPatternsAsDataFrame()
-frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
+# frequentPatterns= obj1.getPatternsAsDataFrame()
+# frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 # print(frequentPatternsDF)
 outputDict = {}
 outputDict['Algorithm']=AlgorithmName
 outputDict['Language']="python"
 outputDict['library']="PAMI"
 outputDict['minSup']=minSup
-outputDict['totalFI']=len(frequentPatterns)
+outputDict['totalFI']=len(obj1._finalPatterns.items())
 outputDict['Runtime']=obj1.getRuntime()
 outputDict['Memory']=obj1.getMemoryUSS()
 file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
 json.dump(outputDict, file, indent=4)
 file.close() 
 json.dumps(outputDict, indent=4)
+print(AlgorithmName + " Done!")
 ############################
 
 
@@ -81,42 +83,44 @@ AlgorithmName='FPGrowth'
 from PAMI.frequentPattern.basic import FPGrowth as PAMI
 obj1 = PAMI.FPGrowth(iFile=filepath, minSup=minSup, sep=separator)
 obj1.mine()
-frequentPatterns= obj1.getPatternsAsDataFrame()
-frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
+# frequentPatterns= obj1.getPatternsAsDataFrame()
+# frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 outputDict = {}
 outputDict['Algorithm']=AlgorithmName
 outputDict['Language']="python"
 outputDict['library']="PAMI"
 outputDict['minSup']=minSup
-outputDict['totalFI']=len(frequentPatterns)
+outputDict['totalFI']=len(obj1._finalPatterns.items())
 outputDict['Runtime']=obj1.getRuntime()
 outputDict['Memory']=obj1.getMemoryUSS()
 file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
 json.dump(outputDict, file, indent=4)
 file.close() 
 json.dumps(outputDict, indent=4)
+print(AlgorithmName + " Done!")
 ############################
 
 # ############################
-# AlgorithmName='Eclat'
-# from PAMI.frequentPattern.basic import ECLAT as PAMI
-# obj1 = PAMI.ECLAT(iFile=filepath, minSup=minSup, sep=separator)
-# obj1.mine(False)
+AlgorithmName='Eclat'
+from PAMI.frequentPattern.basic import ECLAT as PAMI
+obj1 = PAMI.ECLAT(iFile=filepath, minSup=minSup, sep=separator)
+obj1.mine(False)
 # frequentPatterns= obj1.getPatternsAsDataFrame()
 # frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
-# # print(frequentPatternsDF)
-# outputDict = {}
-# outputDict['Algorithm']=AlgorithmName
-# outputDict['Language']="python"
-# outputDict['library']="PAMI"
-# outputDict['minSup']=minSup
-# outputDict['totalFI']=len(frequentPatterns)
-# outputDict['Runtime']=obj1.getRuntime()
-# outputDict['Memory']=obj1.getMemoryUSS()
-# file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
-# json.dump(outputDict, file, indent=4)
-# file.close() 
-# json.dumps(outputDict, indent=4)
+# print(frequentPatternsDF)
+outputDict = {}
+outputDict['Algorithm']=AlgorithmName
+outputDict['Language']="python"
+outputDict['library']="PAMI"
+outputDict['minSup']=minSup
+outputDict['totalFI']=len(obj1._finalPatterns.items())
+outputDict['Runtime']=obj1.getRuntime()
+outputDict['Memory']=obj1.getMemoryUSS()
+file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
+json.dump(outputDict, file, indent=4)
+file.close() 
+json.dumps(outputDict, indent=4)
+print(AlgorithmName + " Done!")
 # ############################
 
 # ############################
@@ -124,21 +128,22 @@ json.dumps(outputDict, indent=4)
 # from PAMI.frequentPattern.basic import Apriori as PAMI
 # obj1 = PAMI.Apriori(iFile=filepath, minSup=minSup, sep=separator)
 # obj1.mine(False)
-# frequentPatterns= obj1.getPatternsAsDataFrame()
-# frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
+# # frequentPatterns= obj1.getPatternsAsDataFrame()
+# # frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 # # print(frequentPatternsDF)
 # outputDict = {}
 # outputDict['Algorithm']=AlgorithmName
 # outputDict['Language']="python"
 # outputDict['library']="PAMI"
 # outputDict['minSup']=minSup
-# outputDict['totalFI']=len(frequentPatterns)
+# outputDict['totalFI']=len(obj1._finalPatterns.items())
 # outputDict['Runtime']=obj1.getRuntime()
 # outputDict['Memory']=obj1.getMemoryUSS()
 # file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
 # json.dump(outputDict, file, indent=4)
 # file.close() 
 # json.dumps(outputDict, indent=4)
+# print(AlgorithmName + " Done!")
 # ############################
 
 # ############################
@@ -148,19 +153,20 @@ json.dumps(outputDict, indent=4)
 # # from editedCode.PAMIECLATDiffset import ECLATDiffset as PAMIedited
 # # obj1 = PAMIedited.ECLATDiffset(data, minSup=minSup, sep=separator)
 # obj1.mine()
-# frequentPatterns= obj1.getPatternsAsDataFrame()
-# frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
+# # frequentPatterns= obj1.getPatternsAsDataFrame()
+# # frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 # # print(frequentPatternsDF)
 # outputDict = {}
 # outputDict['Algorithm']=AlgorithmName
 # outputDict['Language']="python"
 # outputDict['library']="PAMI"
 # outputDict['minSup']=minSup
-# outputDict['totalFI']=len(frequentPatterns)
+# outputDict['totalFI']=len(obj1._finalPatterns.items())
 # outputDict['Runtime']=obj1.getRuntime()
 # outputDict['Memory']=obj1.getMemoryUSS()
 # file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
 # json.dump(outputDict, file, indent=4)
 # file.close() 
 # json.dumps(outputDict, indent=4)
+# print(AlgorithmName + " Done!")
 # ############################

@@ -7,7 +7,7 @@ import psutil
 from pyfim import eclat
 
 datasetName='chess.dat'
-minSup=0.8
+minSup=0.5
 separator=' '
 # datasetName='1_L-0023.csv' 
 # minSup=0.01
@@ -34,10 +34,10 @@ filepath=os.path.join('datasets', datasetName)
 AlgorithmName='Eclat'
 # Read the file, treating each line as a single entry
 # creates a list of lists
+startTime=time()
 with open(filepath,encoding='utf-8-sig') as f:
     data = [line.strip().split(sep=separator) for line in f]
 
-startTime=time()
 Fiml=[]
 FIMs = eclat(data, target='s', supp=minSup, zmin=1, out=Fiml)
 endTime=time()

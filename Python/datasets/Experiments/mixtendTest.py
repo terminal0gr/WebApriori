@@ -58,7 +58,7 @@ startTime=time()
 frequentPatterns = fpgrowth(df, min_support=minSup, use_colnames=True)
 endTime=time()
 # output frequentPatterns
-frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
+# frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 # results
 process = psutil.Process(os.getpid())
 memoryUSS = process.memory_full_info().uss
@@ -77,28 +77,28 @@ json.dumps(outputDict, indent=4)
 ################################
 
 # ################################
-# AlgorithmName='HMine'
-# # FI mining
-# startTime=time()
-# frequentPatterns = hmine(df, min_support=minSup, use_colnames=True)
-# endTime=time()
-# # output frequentPatterns
+AlgorithmName='HMine'
+# FI mining
+startTime=time()
+frequentPatterns = hmine(df, min_support=minSup, use_colnames=True)
+endTime=time()
+# output frequentPatterns
 # frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
-# # results
-# process = psutil.Process(os.getpid())
-# memoryUSS = process.memory_full_info().uss
-# outputDict = {} 
-# outputDict['Algorithm']=AlgorithmName
-# outputDict['Language']="python"
-# outputDict['library']="mlxtend"
-# outputDict['minSup']=minSup
-# outputDict['totalFI']=len(frequentPatterns)
-# outputDict['Runtime']=endTime-startTime
-# outputDict['Memory']=memoryUSS
-# file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
-# json.dump(outputDict, file, indent=4)
-# file.close()  
-# json.dumps(outputDict, indent=4)
+# results
+process = psutil.Process(os.getpid())
+memoryUSS = process.memory_full_info().uss
+outputDict = {} 
+outputDict['Algorithm']=AlgorithmName
+outputDict['Language']="python"
+outputDict['library']="mlxtend"
+outputDict['minSup']=minSup
+outputDict['totalFI']=len(frequentPatterns)
+outputDict['Runtime']=endTime-startTime
+outputDict['Memory']=memoryUSS
+file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
+json.dump(outputDict, file, indent=4)
+file.close()  
+json.dumps(outputDict, indent=4)
 # ################################
 
 

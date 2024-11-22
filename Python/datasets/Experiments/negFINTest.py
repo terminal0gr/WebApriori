@@ -17,8 +17,8 @@ separator=' '
 # minSup=0.4
 # separator=','
 
-ext1='_Mall.fim' 
-ext2='_Mall.json'
+ext1='_Aryabarzan_Mall_py.fim' 
+ext2='_Aryabarzan_Mall_py.json'
 
 filepath=os.path.join('datasets', datasetName)
 
@@ -47,4 +47,5 @@ file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSu
 json.dump(outputDict, file, indent=4)
 file.close() 
 json.dumps(outputDict, indent=4)
+print(AlgorithmName + " Done!")
 ############################

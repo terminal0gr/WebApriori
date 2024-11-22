@@ -69,6 +69,7 @@ PAMI: implements in python:
             (d,)=[1,4],
             ....
         }
+    +2 Time is measured without the FIM export
 
 ######################
 SPMF (java): 
@@ -90,8 +91,33 @@ SPMF (java):
     -2. Takes as items only integers
 
 ######################
-Borgelt py:
-    -1 Extremely slow implementation of Eclat
+mlxtend py:
+    - Apriori
+    - H-mine
+    - FPGrowth
+
+    +1 Time is measured without the FIM export
+
+######################
+negFIN Aryabarzan+Mall Contribution Language:python
+    +1 Quick
+    +2 Mall Contribution (Memory saver flag to allow run faster)
+    +3 Time is measured without thw FIM export
+
+    -1 At the original version, time and memory include FIM export which is integraded in the algorithm
+            (TODO: Can it be seperated?)
+
+######################
+negFIN Aryabarzan+Mall Contribution Language:C++ 
+    +1 The QUICKEST!
+    +2 Mall Contribution: Time elapsed, menory consuption, Json output of the statistics
+    +3 Time is measured without thw FIM export
+
+######################
+Borgelt Eclat py:
+    -1 Very slow implementation of Eclat
+    -2 Uses in the algorithm the names of the items (string) slowing the whole process
+
 Borgelt C++:
     ? quick?
     ? which algorithms?
@@ -99,9 +125,8 @@ Borgelt C++:
 ######################
 Goethals Eclat py:
     +1 Very simple implementation
-    ? quick?
-
-
+    +2 Propably the quickest eclat (TODO: Research)
+    TODO FIM_Count is multiplyed by 2...
 
 Done 01/11/2024 21/10/2024 Dataset ARM features collection
 
@@ -121,11 +146,18 @@ such as Julia [2], AUTO-SKLEARN [3], Chameleon [4], ML-Plan [5].
    Works in Main01W. But print and returns must be checked. Also the other programs must be transformed to run from waitress and flask
 16/06/2024 Upload AutoML WebApriori to NIREAS
 
-0fish_catches 
-0 Internal apriori  62.950
-2 mlxtend apriori   55.419
-3 mlxtend FPGrowth   4.313
-4 mlxtend H-mine     4.542
+
+ReView - Survey
+
+- Review of algorithms
+- Review of libraries
+- Contributions
+- Experimental study
+    - datasets
+
+
+
+
 
 
 Must be integraded in my association_rules.py
