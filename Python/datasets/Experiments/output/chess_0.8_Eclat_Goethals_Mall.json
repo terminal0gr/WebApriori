@@ -3,7 +3,7 @@
     "Language": "python",
     "library": "Goethal",
     "minSup": 0.8,
-    "totalFI": 16565,
-    "Runtime": 1.4647834300994873,
-    "Memory": 27381760
+    "totalFI": 8227,
+    "Runtime": 0.7564153671264648,
+    "Memory": 27484160
 }

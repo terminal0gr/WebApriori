@@ -8,8 +8,12 @@ from time import time
 import psutil
 
 datasetName='chess.dat'
-minSup=0.8
+minSup=0.5
 separator=' '
+# datasetName='FpGrowthSampleWithoutQuotes.txt' 
+# minSup=0.6
+# separator=','
+
 
 ext1='_Goethals_Mall.fim'
 ext2='_Goethals_Mall.json'

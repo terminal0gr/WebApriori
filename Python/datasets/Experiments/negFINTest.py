@@ -5,7 +5,7 @@ import psutil
 
 
 datasetName='chess.dat' 
-minSup=0.5
+minSup=0.95
 separator=' '
 # datasetName='1_L-0023.csv' 
 # minSup=0.01

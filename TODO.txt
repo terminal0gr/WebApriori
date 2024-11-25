@@ -115,18 +115,23 @@ negFIN Aryabarzan+Mall Contribution Language:C++
 
 ######################
 Borgelt Eclat py:
-    -1 Very slow implementation of Eclat
-    -2 Uses in the algorithm the names of the items (string) slowing the whole process
+    -1 Uses in the algorithm the names of the items (string) slowing the whole process
 
 Borgelt C++:
     ? quick?
     ? which algorithms?
 
 ######################
-Goethals Eclat py:
+Goethals Eclat py: http://adrem.uantwerpen.be/~goethals/software/files/eclat.py
     +1 Very simple implementation
-    +2 Propably the quickest eclat (TODO: Research)
-    TODO FIM_Count is multiplyed by 2...
+
+    -1 Uses in the algorithm the names of the items (string) slowing the whole process
+
+    Contributions: goethal_Eclat_Mall.py
+    1. Use with dataset with any seperator
+    2. improved precition in computing absolute minSup with math.ceil function
+    3. Improved reading of the transaction dataset (manipulation of special characters such as line feed '\n')
+    4. Code for computing running time nad memory consumption.
 
 Done 01/11/2024 21/10/2024 Dataset ARM features collection
 

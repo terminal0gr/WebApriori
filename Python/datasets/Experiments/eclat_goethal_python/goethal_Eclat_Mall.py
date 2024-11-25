@@ -2,6 +2,8 @@
 # contributor: Malliaridis Konstantinos, International Hellenic University, Greece
 
 from sys import argv
+import csv
+import math
 
 class goethals_Eclat():
 
@@ -32,16 +34,27 @@ class goethals_Eclat():
         trans = 0
         self.FIM_Count=0
 
-        f = open(self.filename, 'r')
-        for row in f:
-            trans += 1
-            for item in row.split(self.separator):
-                if item not in data:
-                    data[item] = set()
-                data[item].add(trans)
-        f.close()
 
-        self.minSupA=int(float(self.minSup)*trans) #transform minSup from percentage to real count of minSup
+        # Malliaridis 23/11/2024
+        with open(self.filename, encoding='utf-8-sig') as file_input:
+            reader = csv.reader(file_input, delimiter=self.separator)
+            for transaction in reader:
+                trans += 1
+                for item in transaction:
+                    if item=='': continue
+                    if item not in data:
+                        data[item] = set()
+                    data[item].add(trans)
+        # f = open(self.filename, 'r')
+        # for row in f:
+        #     trans += 1
+        #     for item in row.split(self.separator):
+        #         if item not in data:
+        #             data[item] = set()
+        #         data[item].add(trans)
+        # f.close()
+
+        self.minSupA=math.ceil(float(self.minSup)*trans) #transform minSup from percentage to real count of minSup
 
         goethals_Eclat.eclat(self,[], sorted(data.items(), key=lambda item: len(item[1]), reverse=True))
 
