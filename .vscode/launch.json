@@ -6,7 +6,8 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}.exe", // Output executable
-            "args": ["datasets/chess.dat", "0.8", ""],
+            // "args": ["datasets/chess.dat", "0.8", ""],
+            "args": ["../../datasets/chess.dat", "3", "0.8"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
