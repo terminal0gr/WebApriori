@@ -14,8 +14,6 @@
 #include <stdio.h>
 #include <cmath>
 #include<time.h>
-#include <windows.h>
-#include <psapi.h>
 #include <cstring>
 #include <ctime>
 

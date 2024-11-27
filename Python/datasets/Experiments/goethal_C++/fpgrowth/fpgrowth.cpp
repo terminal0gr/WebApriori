@@ -8,6 +8,8 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <windows.h>
+#include <psapi.h>
 #include <vector>
 #include <algorithm>
 #include <cmath>   // For std::ceil
@@ -36,7 +38,6 @@ void FPgrowth::setOutput(char *of)
 
 int FPgrowth::mine()
 {
-  int added=0;
   clock_t start;
 
   fpt->setOutput(out);
@@ -54,11 +55,16 @@ int FPgrowth::mine()
     tnr++;
   }
 
-  //Malliaridis 26/11/2024 transform minsupp from percentage to actual number
-  minsup=static_cast<int>(std::ceil(minsup0_1 * tnr));
-  cout << "minSupp perc: " << minsup0_1 << endl;
+
+  //Malliaridis 26/11/2024 transform Absolute Minimum Support to Relative Minimum Support [0...1] and vice versa
+  if (minsup==0) {
+    minsup=static_cast<int>(std::ceil(minsup0_1 * tnr));
+  } else {
+    minsup0_1=(double)minsup/tnr;
+  }
+  printf("Relative minSupp: %.3lf\n", minsup0_1);
   cout << "transactions: " << tnr << endl;
-  cout << "Actual minSup: " << minsup << endl;
+  cout << "Absolute minSup: " << minsup << endl;
 
   fpt->setMinsup(minsup);
 
@@ -93,11 +99,55 @@ int FPgrowth::mine()
 
   start = clock();
   int *tmp  = new int[100];
-  added = fpt->grow(tmp,1);
+  frequentItemsetsCount = fpt->grow(tmp,1);
   delete [] tmp;
   delete [] FPtree::remap;
   delete FPtree::relist;
   cout << "Frequent sets generated [" << (clock()-start)/double(CLOCKS_PER_SEC) << "s]" << endl;
 
-  return added;
+  return frequentItemsetsCount;
+}
+
+//Malliaridis 27/11/2024
+int FPgrowth::printInfo(double elapsed, double threshold, char* filename, char* algorithm, char* creator) {
+	
+	PROCESS_MEMORY_COUNTERS pmc;
+  if (!GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc))) {
+    printf("Failed to retrieve memory info.");
+    return 0;
+  }
+
+  // Extract the base name from the full path
+  char *lastSlash = strrchr(filename, '\\'); // Find the last backslash (Windows path separator)
+  if (lastSlash == nullptr) {
+    lastSlash = filename; // If no backslash, use the whole filename
+  } else {
+    lastSlash++; // Move past the backslash
+  }
+
+  // Extract the base name (without extension) from filename
+  char *dot = strrchr(lastSlash, '.'); // Find the last dot
+  size_t baseLength = (dot != nullptr) ? (dot - lastSlash) : strlen(lastSlash);
+  char base[256];
+  strncpy(base, lastSlash, baseLength);
+  base[baseLength] = '\0'; // Null-terminate the base name
+  // Construct the output filename
+  // Buffer to hold the dynamically constructed filename
+  char outFilename[256];    
+  sprintf(outFilename, "../../output/%s_%.3lf_%s_%s.json", base, threshold, algorithm, creator);
+
+  FILE *outFile = fopen(outFilename, "wt");
+
+  fprintf(outFile, "{\n",elapsed);
+	fprintf(outFile, "    \"algorithm\": \"%s\",\n",algorithm);
+	fprintf(outFile, "    \"language\": \"C++\",\n");
+	fprintf(outFile, "    \"library\": \"%s\",\n",creator);
+	fprintf(outFile, "    \"minSup\": %.3lf,\n",threshold);
+	fprintf(outFile, "    \"totalFI\": %d,\n",frequentItemsetsCount);
+	fprintf(outFile, "    \"runtime\": %.3lf,\n",elapsed);
+  fprintf(outFile, "    \"memory\": %d\n",pmc.PeakWorkingSetSize);
+  fprintf(outFile, "}\n",elapsed);
+  fclose(outFile);
+  
+  return 1;
 }

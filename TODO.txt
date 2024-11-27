@@ -122,6 +122,15 @@ Borgelt C++:
     ? which algorithms?
 
 ######################
+***Not compiling because of printInfo()***
+Goethals C++:
+    - Eclat 
+    - FpGrowth
+    Contribution:
+    +1 minSup transformed to be used either as actual number or as a percentage in the range [0...1]
+
+
+######################
 Goethals Eclat py: http://adrem.uantwerpen.be/~goethals/software/files/eclat.py
     +1 Very simple implementation
 

@@ -8,6 +8,7 @@
 #include <iostream>
 using namespace std;
 #include <stdlib.h>
+#include <cmath>
 #include <time.h>
 #include "data.h"
 #include "item.h"
@@ -32,17 +33,25 @@ int main(int argc, char *argv[])
     
     fpgrowth->setData(argv[1],atoi(argv[2]));
     
-    // Malliaridis read minSup in [0-1] instead actual minSup
-    fpgrowth->setMinsup0_1(std::stod(argv[3]));
+    // Malliaridis read minSup with both Absolute Minimum Support and Relative Minimum Support [0...1]
+    double ms = std::atof(argv[3]); //reads string argument as double
+    if (ms>1) {
+      fpgrowth->setMinsup(static_cast<int>(std::floor(ms)));
+    } else {
+      fpgrowth->setMinsup0_1(ms);
+    }
     //fpgrowth->setMinsup(atoi(argv[3]));
 
     if(argc==5) fpgrowth->setOutput(argv[4]);
     
     clock_t start = clock();
     int added = fpgrowth->mine();
-    cout << added << "\t[" << (clock()-start)/double(CLOCKS_PER_SEC) << "s]" << endl;
+    double elapsed=(clock()-start)/double(CLOCKS_PER_SEC);
+    cout << added << "\t[" << elapsed << "s]" << endl;
     if(argc==5) cout << "Frequent sets written to " << argv[4] << endl;
     
+    fpgrowth->printInfo(elapsed,fpgrowth->getMinsup0_1(),argv[1], "FPGrowth", "Goethal");
+
     delete fpgrowth;
   }
   
