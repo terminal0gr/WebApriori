@@ -4,7 +4,7 @@ import json
 
 
 datasetName='chess.dat' 
-minSup=0.9
+minSup=0.5
 separator=' '
 # datasetName='1_L-0023.csv' 
 # minSup=0.01
@@ -13,8 +13,8 @@ separator=' '
 # minSup=0.6
 # separator=','
 
-ext1='_PAMI.fim'
-ext2='_PAMI.json'
+ext1='_PAMI_py.fim'
+ext2='_PAMI_py.json'
 
 
 

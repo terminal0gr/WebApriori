@@ -109,7 +109,7 @@ int FPgrowth::mine()
 }
 
 //Malliaridis 27/11/2024
-int FPgrowth::printInfo(double elapsed, double threshold, char* filename, char* algorithm, char* creator) {
+int FPgrowth::printInfo(double elapsed, double threshold, char* filename, char* algorithm, char* creator, char* language) {
 	
 	PROCESS_MEMORY_COUNTERS pmc;
   if (!GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc))) {
@@ -134,13 +134,13 @@ int FPgrowth::printInfo(double elapsed, double threshold, char* filename, char* 
   // Construct the output filename
   // Buffer to hold the dynamically constructed filename
   char outFilename[256];    
-  sprintf(outFilename, "../../output/%s_%.3lf_%s_%s.json", base, threshold, algorithm, creator);
+  sprintf(outFilename, "../../output/%s_%.3lf_%s_%s_%s.json", base, threshold, algorithm, creator, language);
 
   FILE *outFile = fopen(outFilename, "wt");
 
   fprintf(outFile, "{\n",elapsed);
 	fprintf(outFile, "    \"algorithm\": \"%s\",\n",algorithm);
-	fprintf(outFile, "    \"language\": \"C++\",\n");
+	fprintf(outFile, "    \"language\": \"%s\",\n",language);
 	fprintf(outFile, "    \"library\": \"%s\",\n",creator);
 	fprintf(outFile, "    \"minSup\": %.3lf,\n",threshold);
 	fprintf(outFile, "    \"totalFI\": %d,\n",frequentItemsetsCount);

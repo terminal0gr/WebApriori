@@ -1,9 +1,0 @@
-{
-    "Runtime": 0.046,
-    "library": "SPMF",
-    "Language": "java",
-    "Memory": 268296432,
-    "minSup": 0.8,
-    "totalFI": 8227,
-    "Algorithm": "negFIN"
-}

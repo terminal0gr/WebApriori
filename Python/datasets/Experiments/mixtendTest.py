@@ -12,8 +12,8 @@ separator=' '
 # minSup=0.01
 # separator=';'
 
-ext1='_mlxtend.fim'
-ext2='_mlxtend.json'
+ext1='_mlxtend_py.fim'
+ext2='_mlxtend_py.json'
 
 # Sample transactions
 # transactions = [

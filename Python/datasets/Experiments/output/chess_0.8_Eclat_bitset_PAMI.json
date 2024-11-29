@@ -1,9 +1,0 @@
-{
-    "Algorithm": "Eclat_bitset",
-    "Language": "python",
-    "library": "PAMI",
-    "minSup": 0.8,
-    "totalFI": 8227,
-    "Runtime": 0.07400012016296387,
-    "Memory": 89219072
-}

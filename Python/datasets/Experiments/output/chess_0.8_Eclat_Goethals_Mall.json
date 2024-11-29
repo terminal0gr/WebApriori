@@ -1,9 +1,0 @@
-{
-    "Algorithm": "Eclat",
-    "Language": "python",
-    "library": "Goethal",
-    "minSup": 0.8,
-    "totalFI": 8227,
-    "Runtime": 0.7564153671264648,
-    "Memory": 27484160
-}

@@ -1,9 +1,0 @@
-{
-    "Algorithm": "FPGrowth",
-    "Language": "python",
-    "library": "mlxtend",
-    "minSup": 0.5,
-    "totalFI": 1272932,
-    "Runtime": 14.738842487335205,
-    "Memory": 1218043904
-}

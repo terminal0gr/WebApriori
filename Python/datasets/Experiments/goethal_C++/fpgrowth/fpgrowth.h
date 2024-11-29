@@ -35,6 +35,6 @@ class FPgrowth
   int mine();
 
   //Malliaridis 27/11/2024
-  int printInfo(double elapsed, double threshold, char* filename, char* algorithm, char* creator);
+  int printInfo(double elapsed, double threshold, char* filename, char* algorithm, char* creator, char* language);
 
 };

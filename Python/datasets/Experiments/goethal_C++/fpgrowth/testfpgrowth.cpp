@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     cout << added << "\t[" << elapsed << "s]" << endl;
     if(argc==5) cout << "Frequent sets written to " << argv[4] << endl;
     
-    fpgrowth->printInfo(elapsed,fpgrowth->getMinsup0_1(),argv[1], "FPGrowth", "Goethal");
+    fpgrowth->printInfo(elapsed,fpgrowth->getMinsup0_1(),argv[1], "FPGrowth", "Goethal", "cpp");
 
     delete fpgrowth;
   }

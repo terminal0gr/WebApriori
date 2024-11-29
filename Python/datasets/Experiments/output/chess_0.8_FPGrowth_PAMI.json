@@ -1,9 +1,0 @@
-{
-    "Algorithm": "FPGrowth",
-    "Language": "python",
-    "library": "PAMI",
-    "minSup": 0.8,
-    "totalFI": 8227,
-    "Runtime": 0.10699987411499023,
-    "Memory": 87248896
-}

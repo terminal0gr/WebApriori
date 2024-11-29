@@ -15,8 +15,8 @@ separator=' '
 # separator=','
 
 
-ext1='_Goethals_Mall.fim'
-ext2='_Goethals_Mall.json'
+ext1='_Goethals_Mall_py.fim'
+ext2='_Goethals_Mall_py.json'
 
 filepath=os.path.join('datasets', datasetName)
 

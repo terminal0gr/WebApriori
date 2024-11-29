@@ -13,8 +13,8 @@ separator=' '
 # minSup=0.01
 # separator=';'
 
-ext1='_Borgelt.fim'
-ext2='_Borgelt.json'
+ext1='_Borgelt_py.fim'
+ext2='_Borgelt_py.json'
 
 
 filepath=os.path.join('datasets', datasetName)

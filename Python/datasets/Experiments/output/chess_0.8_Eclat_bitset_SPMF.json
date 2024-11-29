@@ -1,9 +1,0 @@
-{
-    "Runtime": 0.017,
-    "library": "SPMF",
-    "Language": "java",
-    "Memory": 30271728,
-    "minSup": 0.8,
-    "totalFI": 8227,
-    "Algorithm": "Eclat_bitset"
-}
