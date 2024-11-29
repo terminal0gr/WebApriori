@@ -61,7 +61,7 @@ public class DescriptionAlgoAprioriAssociationRules extends DescriptionOfAlgorit
 
 		AlgoApriori apriori = new AlgoApriori();
 		ca.pfv.spmf.patterns.itemset_array_integers_with_count.Itemsets patterns = apriori
-				.runAlgorithm(minsup, inputFile, null);
+				.runAlgorithm(minsup, inputFile, "", " ");
 		apriori.printStats();
 		int databaseSize = apriori.getDatabaseSize();
 

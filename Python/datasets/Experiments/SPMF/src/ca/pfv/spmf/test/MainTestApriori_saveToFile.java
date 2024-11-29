@@ -26,7 +26,7 @@ public class MainTestApriori_saveToFile {
 		// Uncomment the following line to set the maximum pattern length (number of items per itemset)
 //		algo.setMaximumPatternLength(3);
 
-		algo.runAlgorithm(minsup, input, output);
+		algo.runAlgorithm(minsup, input, output, " ");
 		algo.printStats();
 	}
 	

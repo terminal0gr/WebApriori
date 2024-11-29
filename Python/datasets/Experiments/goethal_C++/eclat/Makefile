@@ -1,6 +1,11 @@
 objects = data.o eclat.o testeclat.o
+
 CC = g++
 flags = -O3 -Wall -ansi -pedantic
+
+# CXX = g++
+# CXXFLAGS = -std=c++11 -Wall -Wextra
+
 
 eclat: $(objects)
 	$(CC) $(flags) $(objects) -o eclat

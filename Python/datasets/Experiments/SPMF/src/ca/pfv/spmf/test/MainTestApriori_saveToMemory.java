@@ -30,7 +30,7 @@ public class MainTestApriori_saveToMemory {
 		// Uncomment the following line to set the maximum pattern length (number of items per itemset, e.g. 3 )
 //		apriori.setMaximumPatternLength(3);
 		
-		Itemsets result = algorithm.runAlgorithm(minsup, input, output);
+		Itemsets result = algorithm.runAlgorithm(minsup, input, output, " ");
 		algorithm.printStats();
 		result.printItemsets(algorithm.getDatabaseSize());
 	}

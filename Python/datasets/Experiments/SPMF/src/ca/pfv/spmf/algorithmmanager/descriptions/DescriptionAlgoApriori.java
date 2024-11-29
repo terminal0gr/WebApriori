@@ -64,7 +64,7 @@ public class DescriptionAlgoApriori extends DescriptionOfAlgorithm {
 			algorithm.setMaximumPatternLength(getParamAsInteger(parameters[1]));
 		}
 		
-		algorithm.runAlgorithm(minsup, inputFile, outputFile);
+		algorithm.runAlgorithm(minsup, inputFile, outputFile," ");
 		algorithm.printStats();
 	}
 

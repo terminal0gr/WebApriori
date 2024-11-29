@@ -118,16 +118,20 @@ Borgelt Eclat py:
     -1 Uses in the algorithm the names of the items (string) slowing the whole process
 
 Borgelt C++:
+
     ? quick?
     ? which algorithms?
 
 ######################
-***Not compiling because of printInfo()***
 Goethals C++:
     - Eclat 
     - FpGrowth
     Contribution:
     +1 minSup transformed to be used either as actual number or as a percentage in the range [0...1]
+
+    usage:
+    D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\goethal_C++\eclat\runTest.bat
+    D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\goethal_C++\fpgrowth\runTest.bat
 
 
 ######################

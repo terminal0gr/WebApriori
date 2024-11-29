@@ -10,7 +10,7 @@ using namespace std;
 #include <stdlib.h>
 #include <cmath>
 #include <time.h>
-#include "data.h"
+#include "data.h" 
 #include "item.h"
 #include "fptree.h"
 #include "fpgrowth.h"
