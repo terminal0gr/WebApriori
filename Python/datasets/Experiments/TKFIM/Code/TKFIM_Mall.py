@@ -1,0 +1,240 @@
+#import libraries
+import numpy as np
+import pandas as pd
+import copy
+import time as t
+
+class TKFIM:
+
+    def __init__(self, dataset_file, topK, delimiter=' '):
+        self.dataset_file = dataset_file
+        self.min_support = None  # The relative minimum support
+        self.min_count = None  # The absolute minimum support
+        self.delimiter = delimiter
+        self.num_of_transactions = None
+        self.num_of_frequent_itemsets = None;
+        self.execution_time = None
+        self.topK = topK
+        #initialize variables for TKFIM algorithm
+        self.dataset = self.readDatasetFile()
+        self.itemset = dict()
+        self.data = dict()# for storing diffsets
+        self.topKList = dict()#for showing end results
+        # self.diffset = set() # is the actual diffset of an item.
+
+    def readDatasetFile(self):
+        df1 = pd.read_csv(self.dataset_file, sep=self.delimiter, header=None)
+
+        self.num_of_transactions = df1.count(axis=0)[0]# total num of rows.
+
+        trx = [str(i) for i in range(1, int(df1.max().max()) + 1)]#list containing values from 0 to max value in dataframe
+        #print(trx)
+        trxIds = []
+        d = dict.fromkeys(trx)#initialize dict with trx as keys and assign empty values.
+        row = df1.values.tolist()
+        for each in trx:
+            i = 0;
+            while(i != self.num_of_transactions): #loop through every row for each iteration of trx.
+                #current  = row[i]# i is the current row number, Var row contains complete row data.
+                if float(each) in row[i]: #if value is present in current row.
+                    # if not d[each]: #if d[each] is currently empty
+                    #     d[each] = i # then assign row number to d[each]
+                    # else:
+                    #     d[each] = str(d[each]) + ", " + str(i)# get current value of d[each], add current row number to the value and assign back to d[each].
+                    trxIds.append(int(i))
+                    # print(trxIds)
+
+                # else:
+                # 	print(f"{each} not found in {i}")
+                i+=1 #increment until total num of rows == i.
+            d[each] = trxIds.copy()
+            # d[each] = trxIds
+            trxIds.clear()
+        return d
+
+
+    #define necessary functions
+    def makePrefix(self, key):
+        #this functions is responsible for generating classes i.e FBA, ABC etc
+        tem_var = ""
+
+        for i in range(0, len(key)):
+            if key[i] not in tem_var:
+                tem_var += key[i]
+        return tem_var
+
+    def Merge(self, dict1, dict2):
+        #this function is responsible for merging two dictionaries
+        res = {**dict1, **dict2}
+        return res
+
+    def GetTopKListOnly(self):
+        res = {}
+
+        topKCount = int(0)
+        for k,v in self.data.items():
+            if v not in res.values():
+                topKCount += 1
+            if topKCount<=self.topK:
+                res[k] = v
+
+        return res
+
+
+    def firstTopKList(self):
+        itemset = {}
+        for k,v in self.dataset.items():
+            c=len(v)
+            itemset[k] = c
+            self.data[k] = v # store all dataset into data...
+        # print(f"itemset 5: \t {itemset['5']}")
+            # print(f"Key {k}: \t value:\t {len(v)}")
+        itemset = sorted(itemset.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
+
+        firstTopKList = {}
+        for k,v in itemset:
+            firstTopKList[k] = v
+
+        firstTopKList = self.GetTopKListOnly(firstTopKList)
+        itemset.clear()
+        # print("--------------Top ",K," List (Round 1)----------------")
+        # print(topKList)
+        return firstTopKList
+
+    def getFromTopK(self, initialTopK):
+
+        itemset = {}
+        topKList = {}
+
+        givenTopK = copy.deepcopy(initialTopK)
+        minKey = min(givenTopK, key=givenTopK.get)
+        smallestK = givenTopK[minKey]
+        itemCount =  int(1)
+
+        while itemCount > 0:
+
+            #for k in list(givenTopK.keys()):
+            k = int(0)
+
+            listOFKeys = list(givenTopK.keys())
+            # print(f"itemset of {i}\t {listOFKeys}")
+            while(k < len(listOFKeys)):
+                k1 = int(k + 1)
+                while (k1 < len(listOFKeys)):
+                    # if k!=k1 and k+k1 not in itemset and k1+k not in itemset:
+                    firstClass = listOFKeys[k]
+                    secondClass = listOFKeys[k1]
+                    # key = ""
+
+                    if len(firstClass) <= 2:
+                        #print(f"firstClass[prefix]\t {firstClass}")           key = firstClass + secondClass
+                        diffset = list(set(self.data[firstClass]) - set(self.data[secondClass]))
+                        support = len(self.data[firstClass]) - len(diffset)
+                        key = firstClass +"," + secondClass
+                        transactions = [ele for ele in set(self.data[firstClass]) if ele not in diffset]
+                        #print(f"transactions: \t {transactions}")
+                        self.data[key] = transactions #add class alongside diffset in data for upcoming classes
+                        # print(f"Key : {key}\t Support: {support}\t Diffset: {diffset}\n")
+                        if support >= smallestK:
+                            itemset[key] = support
+                        else:
+                            break
+
+                    else:
+                        prefixA = firstClass[:-1]
+                        prefixB = secondClass[:-1]
+
+
+                        # print(f"firstClass[0]\t {prefixA[0]} \t secondClass[0] {prefixB[0]}\t Length: {len(prefixA)}")
+                        if prefixA == prefixB:
+                            # print("I am true too")
+                            key = firstClass +","+secondClass
+                            # key = makePrefix(key)
+                            diffset = list(set(self.data[firstClass]) - set(self.data[secondClass]))
+                            support = len(self.data[firstClass]) - len(diffset)
+
+                            transactions = [ele for ele in set(self.data[firstClass]) if ele not in diffset]
+                            #print(f"transactions: \t {transactions}")
+                            self.data[key] = transactions #add class alongside diffset in data for upcoming classes
+                            # print(f"Key : {key}\t Support: {support}\t Diffset: {diffset}\n")
+                            if support >= smallestK:
+                                itemset[key] = support
+                            elif support < smallestK:
+                                break
+
+                    #print(listOFKeys[k1])
+                    # itemset = sorted(itemset.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
+                    # itemset = dict(itemset)
+                    k1 += 1
+                    # k1 = int(k + 1)
+                k+=1
+
+
+            itemset = sorted(itemset.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
+            # print(itemset)
+            # topKList = {}
+            topKCount = int(0)
+            for k,v in itemset:
+                if v not in topKList.values():
+                    topKCount += 1
+                if topKCount<=self.topK:
+                    topKList[k] = v
+
+            topKList = self.Merge(initialTopK, topKList)
+            topKList = dict(sorted(topKList.items(), key= lambda kv:(kv[1], kv[0]), reverse = True))
+            # print("############# Top K List After ############")
+            #print(topKList)
+            topKList = self.GetTopKListOnly(topKList, self.topK)
+            #print(topKList)
+            topKList = dict(sorted(topKList.items(), key= lambda kv:(kv[1], kv[0]), reverse = True))
+            #print(topKList)\
+            minKey = min(topKList, key=topKList.get)
+            smallestK = topKList[minKey]# for reset smallest K
+
+            # print(f"Itemset: \t{itemset}")
+            # print(len(itemset))
+            if(len(itemset) == 0):
+                itemCount = 0
+            else:
+                itemCount += 1
+
+            # print(f"Item Count \t {itemCount}")
+            givenTopK.clear()
+            itemset = dict(itemset)
+            givenTopK = copy.deepcopy(itemset)
+            # print(itemset)
+            itemset.clear()
+            
+        return smallestK, topKList
+
+    ###Run codes/functions here.####
+    # dataset = {
+    #     'A' : [1,2,3,6,7,8,9,10],
+    #     'B' : [1,2,4,5,6,7,8,9,10],
+    #     'C' : [4,5,9,10],
+    #     'D' : [1,3,4,5,7,9],
+    #     'E' : [4,5,10],
+    #     'F' : [1,2,3,4,5,6,7,8,9,10],
+    #     #'G' : [3,4,2,4,5,6,7,8,9]
+    #     }
+
+    def mine(self):
+
+        start = t.time()#Start Time.
+        # dataset = pd.d
+        # print(f"lenght of 58:\t {len(dataset['58'])}")
+        # K = int(input("Enter the number of item's you require: \n"))
+        # K = 100
+        # print(f"support of 58: \t {dataset['58']}")
+        initialTopK = self.firstTopKList()
+
+        # print("--------------Top ",K," List (Round 1)----------------")
+        # print(initialTopK)
+        # print(type(initialTopK))
+        minSup, finalTopK = self.getFromTopK(initialTopK)
+        # print(finalTopK)
+        end = t.time()#Final Time
+        self.execution_time=end - start
+        print(f"\nTotal Execution Time: {self.execution_time} Seconds")
+        print(f"minSup:{minSup}")
+        print(f"FIM found:{len(finalTopK)}")

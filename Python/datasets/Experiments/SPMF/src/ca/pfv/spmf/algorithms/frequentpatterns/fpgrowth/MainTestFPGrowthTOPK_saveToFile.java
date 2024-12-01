@@ -15,12 +15,31 @@ import ca.pfv.spmf.algorithms.frequentpatterns.fpgrowth.AlgoFPGrowth;
 public class MainTestFPGrowthTOPK_saveToFile {
 
 	public static void main(String [] arg) throws FileNotFoundException, IOException{
-		// the file paths
-		String input = fileToPath("contextPasquier99.txt");  // the database
-		String output = ".//output.txt";  // the path for saving the frequent itemsets found
-		
-		int k = 5; // means a minsup of 2 transaction (we used a relative support)
 
+        //Declaration section
+        String datasetName = "kosarak.dat";
+        Integer k = 1000; 
+        String separator = " ";
+        String algorithm = "";
+
+        String outPutResultsfile, noPrefix;
+
+		// the file paths
+        int lastDotIndex = datasetName.lastIndexOf('.');
+        if (lastDotIndex != -1) { //found
+            noPrefix = datasetName.substring(0, lastDotIndex); // Removes everything after the last '.'
+        } else {
+            noPrefix=datasetName;
+        }
+
+        String input =  "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\datasets\\" + datasetName;
+
+
+		//String input = fileToPath("contextPasquier99.txt");  // the database
+		//String output = ".//output.txt";  // the path for saving the frequent itemsets found
+		String output ="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + k + "_" + algorithm + "_SPMF_java.fim";
+
+		
 		// Applying the FPGROWTH algorithmMainTestFPGrowth.java
 		AlgoFPGrowthTOPK algo = new AlgoFPGrowthTOPK();
 		

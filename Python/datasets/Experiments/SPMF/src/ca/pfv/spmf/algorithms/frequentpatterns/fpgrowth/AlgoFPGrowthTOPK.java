@@ -618,18 +618,17 @@ loop1:	for (long i = 1, max = 1 << position; i < max; i++) {
 		System.out.println("===================================================");
 	}
 
-	//Malliaridis output
 	public JSONObject printStatsNew(String algorithm) {
 		JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Algorithm", algorithm);
         jsonObject.put("Language", "java");
         jsonObject.put("library", "SPMF");
-        jsonObject.put("minSup", minSupportRelative);
+        jsonObject.put("Algorithm", algorithm);
+        jsonObject.put("minSup", nItemsets.peek().getAbsoluteSupport());
         jsonObject.put("totalFI", nItemsets.size());
         jsonObject.put("Runtime", (endTime - startTimestamp)/1000.);
         jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
         return jsonObject;
-	}	
+	}
 
 	/**
 	 * Get the number of transactions in the last transaction database read.

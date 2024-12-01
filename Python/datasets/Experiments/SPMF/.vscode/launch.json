@@ -6,9 +6,16 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Current File",
+            "name": "Run java",
             "request": "launch",
             "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Run java incr mem",
+            "request": "launch",
+            "mainClass": "${file}",
+            "vmArgs": "-Xms512m -Xmx16g"
         },
         {
             "type": "java",

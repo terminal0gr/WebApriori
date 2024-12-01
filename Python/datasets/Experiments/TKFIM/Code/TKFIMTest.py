@@ -5,11 +5,11 @@ import psutil
 
 
 datasetName='chess.dat' 
-minSup=0.886107635
+topK=100
 separator=' '
-# datasetName='kosarak.dat' 
-# minSup=0.022692883
-# separator=' '
+datasetName='kosarak.dat' 
+topK=100
+separator=' '
 
 
 # datasetName='1_L-0023.csv' 
@@ -22,33 +22,30 @@ separator=' '
 # minSup=0.4
 # separator=','
 
-ext1='_Aryabarzan_Mall_py.fim' 
-ext2='_Aryabarzan_Mall_py.json'
+ext1='_Iqbal_Mall_py.fim' 
+ext2='_Iqbal_Mall_py.json'
 
 filepath=os.path.join('datasets', datasetName)
 
 ############################
-AlgorithmName='negFIN'
-# from negFIN.neg_fin import NegFIN
-from negFIN.negFIN_Mall import NegFIN
-outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1)
-negFIN = NegFIN(filepath, minSup, outFimFilePath, separator, False)
-negFIN.runAlgorithm()
+AlgorithmName='TKFIM'
+from TKFIM_Mall import TKFIM
+outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+topK+"_"+AlgorithmName+ext1)
+TKalgo = TKFIM(filepath, topK, separator)
+TKalgo.mine()
 
 process = psutil.Process(os.getpid())
 memoryUSS = process.memory_full_info().uss
-
-negFIN.printStats() # just for console output. 
 
 outputDict = {}
 outputDict['Algorithm']=AlgorithmName
 outputDict['Language']="python"
 outputDict['library']="Mall"
-outputDict['minSup']=minSup
-outputDict['totalFI']=negFIN.num_of_frequent_itemsets
-outputDict['Runtime']=negFIN.execution_time/1000.
+outputDict['minSup']=TKalgo.min_support
+outputDict['totalFI']=TKalgo.num_of_frequent_itemsets
+outputDict['Runtime']=TKalgo.execution_time/1000.
 outputDict['Memory']=memoryUSS
-file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
+file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+topK+"_"+AlgorithmName+ext2),'w')
 json.dump(outputDict, file, indent=4)
 file.close() 
 json.dumps(outputDict, indent=4)
