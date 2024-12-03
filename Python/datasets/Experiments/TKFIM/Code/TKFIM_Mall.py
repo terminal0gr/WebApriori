@@ -16,41 +16,55 @@ class TKFIM:
         self.execution_time = None
         self.topK = topK
         #initialize variables for TKFIM algorithm
-        self.dataset = self.readDatasetFile()
-        self.itemset = dict()
-        self.data = dict()# for storing diffsets
+        # self.itemset = dict()
+        self.data = None # for storing diffsets
         self.topKList = dict()#for showing end results
         # self.diffset = set() # is the actual diffset of an item.
 
     def readDatasetFile(self):
-        df1 = pd.read_csv(self.dataset_file, sep=self.delimiter, header=None)
 
-        self.num_of_transactions = df1.count(axis=0)[0]# total num of rows.
+        with open(self.dataset_file, encoding='utf-8-sig') as f:
+            transactions = [line.strip().split(sep=self.delimiter) for line in f]
 
-        trx = [str(i) for i in range(1, int(df1.max().max()) + 1)]#list containing values from 0 to max value in dataframe
-        #print(trx)
-        trxIds = []
-        d = dict.fromkeys(trx)#initialize dict with trx as keys and assign empty values.
-        row = df1.values.tolist()
-        for each in trx:
-            i = 0;
-            while(i != self.num_of_transactions): #loop through every row for each iteration of trx.
-                #current  = row[i]# i is the current row number, Var row contains complete row data.
-                if float(each) in row[i]: #if value is present in current row.
-                    # if not d[each]: #if d[each] is currently empty
-                    #     d[each] = i # then assign row number to d[each]
-                    # else:
-                    #     d[each] = str(d[each]) + ", " + str(i)# get current value of d[each], add current row number to the value and assign back to d[each].
-                    trxIds.append(int(i))
-                    # print(trxIds)
+        self.num_of_transactions=len(transactions)
 
-                # else:
-                # 	print(f"{each} not found in {i}")
-                i+=1 #increment until total num of rows == i.
-            d[each] = trxIds.copy()
-            # d[each] = trxIds
-            trxIds.clear()
-        return d
+        d = {}
+        for i, row in enumerate(transactions):
+            for item in row:
+                if item not in d:
+                    d[item] = []  # Initialize a new list if the key is not in the dictionary
+                d[item].append(i)  # Append the transaction index to the list                
+
+        self.data=d
+
+        # df1 = pd.read_csv(self.dataset_file, sep=self.delimiter, header=None)
+
+        # self.num_of_transactions = df1.count(axis=0)[0]# total num of rows.
+
+        # trx = [str(i) for i in range(1, int(df1.max().max()) + 1)]#list containing values from 0 to max value in dataframe
+        # #print(trx)
+        # trxIds = []
+        # d = dict.fromkeys(trx)#initialize dict with trx as keys and assign empty values.
+        # row = df1.values.tolist()
+        # for each in trx:
+        #     i = 0
+        #     while(i != self.num_of_transactions): #loop through every row for each iteration of trx.
+        #         #current  = row[i]# i is the current row number, Var row contains complete row data.
+        #         if float(each) in row[i]: #if value is present in current row.
+        #             # if not d[each]: #if d[each] is currently empty
+        #             #     d[each] = i # then assign row number to d[each]
+        #             # else:
+        #             #     d[each] = str(d[each]) + ", " + str(i)# get current value of d[each], add current row number to the value and assign back to d[each].
+        #             trxIds.append(int(i))
+        #             # print(trxIds)
+
+        #         # else:
+        #         # 	print(f"{each} not found in {i}")
+        #         i+=1 #increment until total num of rows == i.
+        #     d[each] = trxIds.copy()
+        #     # d[each] = trxIds
+        #     trxIds.clear()
+        #return d
 
 
     #define necessary functions
@@ -68,37 +82,36 @@ class TKFIM:
         res = {**dict1, **dict2}
         return res
 
-    def GetTopKListOnly(self):
+    def GetTopKListOnly(self, firstTopKList):
         res = {}
 
         topKCount = int(0)
-        for k,v in self.data.items():
+        for k,v in firstTopKList.items():
             if v not in res.values():
                 topKCount += 1
             if topKCount<=self.topK:
                 res[k] = v
+            else:
+                break
 
         return res
 
-
     def firstTopKList(self):
-        itemset = {}
-        for k,v in self.dataset.items():
+        itemset = {} # 
+        for k,v in self.data.items():
             c=len(v)
             itemset[k] = c
-            self.data[k] = v # store all dataset into data...
-        # print(f"itemset 5: \t {itemset['5']}")
-            # print(f"Key {k}: \t value:\t {len(v)}")
-        itemset = sorted(itemset.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
 
-        firstTopKList = {}
-        for k,v in itemset:
-            firstTopKList[k] = v
+        # itemset = sorted(itemset.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
+        # firstTopKList = {}
+        # for k,v in itemset:
+        #     firstTopKList[k] = v
+
+        firstTopKList = {k: v for k, v in sorted(itemset.items(), key=lambda item: item[1], reverse=True)}
 
         firstTopKList = self.GetTopKListOnly(firstTopKList)
         itemset.clear()
-        # print("--------------Top ",K," List (Round 1)----------------")
-        # print(topKList)
+
         return firstTopKList
 
     def getFromTopK(self, initialTopK):
@@ -221,20 +234,14 @@ class TKFIM:
     def mine(self):
 
         start = t.time()#Start Time.
-        # dataset = pd.d
-        # print(f"lenght of 58:\t {len(dataset['58'])}")
-        # K = int(input("Enter the number of item's you require: \n"))
-        # K = 100
-        # print(f"support of 58: \t {dataset['58']}")
+
         initialTopK = self.firstTopKList()
 
-        # print("--------------Top ",K," List (Round 1)----------------")
-        # print(initialTopK)
-        # print(type(initialTopK))
         minSup, finalTopK = self.getFromTopK(initialTopK)
-        # print(finalTopK)
+
         end = t.time()#Final Time
         self.execution_time=end - start
+
         print(f"\nTotal Execution Time: {self.execution_time} Seconds")
         print(f"minSup:{minSup}")
         print(f"FIM found:{len(finalTopK)}")

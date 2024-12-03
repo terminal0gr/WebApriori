@@ -4,9 +4,9 @@ import json
 import psutil
 
 
-datasetName='chess.dat' 
-topK=100
-separator=' '
+# datasetName='chess.dat' 
+# topK=100
+# separator=' '
 datasetName='kosarak.dat' 
 topK=100
 separator=' '
@@ -29,9 +29,10 @@ filepath=os.path.join('datasets', datasetName)
 
 ############################
 AlgorithmName='TKFIM'
-from TKFIM_Mall import TKFIM
-outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+topK+"_"+AlgorithmName+ext1)
+from TKFIM.Code.TKFIM_Mall import TKFIM
+outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
 TKalgo = TKFIM(filepath, topK, separator)
+TKalgo.readDatasetFile()
 TKalgo.mine()
 
 process = psutil.Process(os.getpid())
@@ -45,7 +46,7 @@ outputDict['minSup']=TKalgo.min_support
 outputDict['totalFI']=TKalgo.num_of_frequent_itemsets
 outputDict['Runtime']=TKalgo.execution_time/1000.
 outputDict['Memory']=memoryUSS
-file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+topK+"_"+AlgorithmName+ext2),'w')
+file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext2),'w')
 json.dump(outputDict, file, indent=4)
 file.close() 
 json.dumps(outputDict, indent=4)
