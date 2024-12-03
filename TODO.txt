@@ -12,10 +12,13 @@
 16/10/2024 Filter participating items must be updated when declaring new datasetType e.g. 0data_balita.csv and 4-NOA declared.
     ln 1168 retrieveParticipatingItems
     ln 1560 datasetTypeChanged
-12/11/2024 1_
+
 
 
 06/10/2024 IMPORTANT! Top K implementation in python
+
+03/12/2024 Check NegFin & TKFIM for Top K=1000 (0.886107634543179) one ouputs 1012 and the other 1009
+
 01/11/2024 In Borgelt eClat Try if helps memory and CPU if items kept in dictionary as numbers instead texts.
 
 

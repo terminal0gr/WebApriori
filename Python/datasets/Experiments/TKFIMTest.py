@@ -5,7 +5,7 @@ import psutil
 
 
 datasetName='chess.dat' 
-topK=100
+topK=1000
 separator=' '
 # datasetName='kosarak.dat' 
 # topK=100
@@ -46,7 +46,7 @@ outputDict['Language']="python"
 outputDict['library']="Mall"
 outputDict['minSup']=TKalgo.minSup
 outputDict['totalFI']=TKalgo.topK
-outputDict['Runtime']=TKalgo.execution_time/1000.
+outputDict['Runtime']=TKalgo.execution_time
 outputDict['Memory']=memoryUSS
 file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext2),'w')
 json.dump(outputDict, file, indent=4)

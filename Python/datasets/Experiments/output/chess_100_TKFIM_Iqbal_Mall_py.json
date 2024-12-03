@@ -2,8 +2,8 @@
     "Algorithm": "TKFIM",
     "Language": "python",
     "library": "Mall",
-    "minSup": 0.9023779724655819,
+    "minSup": 0.945244055068836,
     "totalFI": 100,
-    "Runtime": 0.08157291555404664,
-    "Memory": 101621760
+    "Runtime": 13.99942398071289,
+    "Memory": 124137472
 }

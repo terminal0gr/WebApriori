@@ -4,8 +4,9 @@ import json
 import psutil
 
 
+
 datasetName='chess.dat' 
-minSup=0.9023779724655819
+minSup=0.886107634543179
 separator=' '
 # datasetName='kosarak.dat' 
 # minSup=0.022692883
@@ -32,7 +33,10 @@ AlgorithmName='negFIN'
 # from negFIN.neg_fin import NegFIN
 from negFIN.negFIN_Mall import NegFIN
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1)
+
 negFIN = NegFIN(filepath, minSup, outFimFilePath, separator, False)
+# negFIN = NegFIN(filepath, minSup, output_file=None, delimiter=separator, memorySave=False)
+
 negFIN.runAlgorithm()
 
 process = psutil.Process(os.getpid())

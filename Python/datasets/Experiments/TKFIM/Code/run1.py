@@ -87,7 +87,6 @@ def getFromTopK(initialTopK):
                 secondClass = listOFKeys[k1]
 
                 if len(firstClass) <= 2:
-
                     diffset = list(set(data[firstClass]) - set(data[secondClass]))
                     support = len(data[firstClass]) - len(diffset)
                     key = firstClass +"," + secondClass
@@ -204,7 +203,8 @@ data = pd.d
 # file.close()
 
 # print(f"lenght of 58:\t {len(dataset['58'])}")
-K = int(input("Enter the number of item's you require: \n"))
+# K = int(input("Enter the number of item's you require: \n"))
+K = 20
 # print(f"support of 58: \t {dataset['58']}")
 
 start = t.time()#Start Time.
@@ -215,5 +215,6 @@ print(initialTopK)
 #print(type(initialTopK))
 finalTopK = getFromTopK(initialTopK)
 print(finalTopK)
+print(f"Total FI Count: {len(finalTopK)}")
 end = t.time()#Final Time
 print(f"\nTotal Execution Time: {end - start} Seconds")

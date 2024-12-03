@@ -179,16 +179,21 @@ class NegFIN:
         Returns:
             Write the discovered frequent itemset into the output file.
         """
-        # Create a buffer for writing to file
-        file_buffer = []
 
         self.num_of_frequent_itemsets += 1
-        # Get the real name (string name) of items
-        itemset_string = [self.F1[itemset_buffer[i]]['name'] for i in range(N_itemset_length)]
-        # Append the count of the itemset
-        itemset_string.append('#SUP: {0}\n'.format(N.count))
-        line = ' '.join(itemset_string)
-        file_buffer.append(line)
+
+        if self.writer is not None:
+            # Create a buffer for writing to file
+            file_buffer = []
+
+            # Get the real name (string name) of items
+            itemset_string = [self.F1[itemset_buffer[i]]['name'] for i in range(N_itemset_length)]
+            # Append the count of the itemset
+            # itemset_string.append(': {0}\n'.format(N.count))
+            # line = ','.join(itemset_string)
+            line = '    "' + ','.join(itemset_string) + '"' + ': {0}'.format(N.count) + ',\n'
+            
+            file_buffer.append(line)
 
         # === Write all combination that can be made using this itemset and all subsets of FIS_parent
         if FIS_parent_length > 0:
@@ -196,23 +201,28 @@ class NegFIN:
             max = 1 << FIS_parent_length
             for i in range(1, max):
                 # Get the real name of items
-                itemset_string = [self.F1[itemset_buffer[i]]['name'] for i in range(N_itemset_length)]
-                # We create a new subset
-                # Check if the j bit is set to 1. #isSet = i & (1 << j)
-                subsetString = [self.F1[FIS_parent_buffer[j]]['name'] for j in range(FIS_parent_length) if
-                                (i & (1 << j)) > 0]
-                # Concatenate the itemset with the subset
-                itemset_string.extend(subsetString)
-                # Append the count of the itemset
-                itemset_string.append('#SUP: {0}\n'.format(N.count))
-                line = ' '.join(itemset_string)
-                file_buffer.append(line)
+
+                if self.writer is not None:
+                    itemset_string = [self.F1[itemset_buffer[i]]['name'] for i in range(N_itemset_length)]
+                    # We create a new subset
+                    # Check if the j bit is set to 1. #isSet = i & (1 << j)
+                    subsetString = [self.F1[FIS_parent_buffer[j]]['name'] for j in range(FIS_parent_length) if
+                                    (i & (1 << j)) > 0]
+                    # Concatenate the itemset with the subset
+                    itemset_string.extend(subsetString)
+                    # Append the count of the itemset
+                    # itemset_string.append(': {0}\n'.format(N.count))
+                    # line = ' '.join(itemset_string)
+                    line = '    "' + ','.join(itemset_string) + '"' + ': {0}'.format(N.count) + ',\n'
+                    
+                    file_buffer.append(line)
 
                 self.num_of_frequent_itemsets += 1
 
         # Write the file_buffer to file and create a new line
         # so that we are ready for writing the next itemset.
-        self.writer.writelines(file_buffer)
+        if self.writer is not None:
+            self.writer.writelines(file_buffer)
 
     def __construct_frequent_itemset_tree(self, N, itemset_buffer, N_itemset_length, N_right_siblings,
                                           FIS_parent_buffer,
@@ -275,7 +285,8 @@ class NegFIN:
         self.__find_F1()
         self.__generate_NodeSets_of_1_itemsets()
         root = self.__create_root_of_frequent_itemset_tree()
-        self.writer = open(self.output_file, 'w')
+        if self.output_file is not None:
+            self.writer = open(self.output_file, 'w')
         # The following buffer is used for storing frequent itemsets discovered in a depth.
         itemset_buffer = [None] * len(self.F1)
         # Cardinality of itemset.
@@ -294,8 +305,8 @@ class NegFIN:
             # Call this recursive method to traverse the search space in a depth-first order.
             self.__construct_frequent_itemset_tree(child, itemset_buffer, itemset_length + 1, root.children,
                                                    FIS_parent_buffer, FIS_parent_length)
-
-        self.writer.close()
+        if self.writer is not None:
+            self.writer.close()
 
         end_timestamp = datetime.now()
         time_diff = (end_timestamp - start_timestamp) # Total execution time of algorithm.
