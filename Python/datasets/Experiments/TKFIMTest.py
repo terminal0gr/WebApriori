@@ -4,12 +4,12 @@ import json
 import psutil
 
 
-# datasetName='chess.dat' 
-# topK=100
-# separator=' '
-datasetName='kosarak.dat' 
+datasetName='chess.dat' 
 topK=100
 separator=' '
+# datasetName='kosarak.dat' 
+# topK=100
+# separator=' '
 
 
 # datasetName='1_L-0023.csv' 
@@ -38,12 +38,14 @@ TKalgo.mine()
 process = psutil.Process(os.getpid())
 memoryUSS = process.memory_full_info().uss
 
+TKalgo.writeFIM(outFimFilePath)
+
 outputDict = {}
 outputDict['Algorithm']=AlgorithmName
 outputDict['Language']="python"
 outputDict['library']="Mall"
-outputDict['minSup']=TKalgo.min_support
-outputDict['totalFI']=TKalgo.num_of_frequent_itemsets
+outputDict['minSup']=TKalgo.minSup
+outputDict['totalFI']=TKalgo.topK
 outputDict['Runtime']=TKalgo.execution_time/1000.
 outputDict['Memory']=memoryUSS
 file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext2),'w')

@@ -3,22 +3,22 @@ import numpy as np
 import pandas as pd
 import copy
 import time as t
+import json
 
 class TKFIM:
 
     def __init__(self, dataset_file, topK, delimiter=' '):
         self.dataset_file = dataset_file
-        self.min_support = None  # The relative minimum support
+        self.minSup = None  # The relative minimum support
         self.min_count = None  # The absolute minimum support
         self.delimiter = delimiter
         self.num_of_transactions = None
-        self.num_of_frequent_itemsets = None;
         self.execution_time = None
         self.topK = topK
         #initialize variables for TKFIM algorithm
         # self.itemset = dict()
         self.data = None # for storing diffsets
-        self.topKList = dict()#for showing end results
+        self.finalTopK = None#for showing end results
         # self.diffset = set() # is the actual diffset of an item.
 
     def readDatasetFile(self):
@@ -36,11 +36,11 @@ class TKFIM:
                 d[item].append(i)  # Append the transaction index to the list                
 
         self.data=d
-
+        ##################################################
+        # This Code is changed with the above at 3/12/2024 from Malliaridis.
+        # pandas dataFrame cannot manipulate in right manner transactional dataset (1-MBL type)
         # df1 = pd.read_csv(self.dataset_file, sep=self.delimiter, header=None)
-
         # self.num_of_transactions = df1.count(axis=0)[0]# total num of rows.
-
         # trx = [str(i) for i in range(1, int(df1.max().max()) + 1)]#list containing values from 0 to max value in dataframe
         # #print(trx)
         # trxIds = []
@@ -57,7 +57,6 @@ class TKFIM:
         #             #     d[each] = str(d[each]) + ", " + str(i)# get current value of d[each], add current row number to the value and assign back to d[each].
         #             trxIds.append(int(i))
         #             # print(trxIds)
-
         #         # else:
         #         # 	print(f"{each} not found in {i}")
         #         i+=1 #increment until total num of rows == i.
@@ -83,16 +82,18 @@ class TKFIM:
         return res
 
     def GetTopKListOnly(self, firstTopKList):
-        res = {}
 
-        topKCount = int(0)
-        for k,v in firstTopKList.items():
-            if v not in res.values():
-                topKCount += 1
-            if topKCount<=self.topK:
-                res[k] = v
-            else:
-                break
+        res=dict(list(firstTopKList.items())[:self.topK])
+
+        # res = {}
+        # topKCount = 1
+        # for k,v in firstTopKList.items():
+        #     if v not in res.values():
+        #         topKCount += 1
+        #     if topKCount<=self.topK:
+        #         res[k] = v
+        #     else:
+        #         break
 
         return res
 
@@ -184,8 +185,7 @@ class TKFIM:
 
 
             itemset = sorted(itemset.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
-            # print(itemset)
-            # topKList = {}
+
             topKCount = int(0)
             for k,v in itemset:
                 if v not in topKList.values():
@@ -197,7 +197,7 @@ class TKFIM:
             topKList = dict(sorted(topKList.items(), key= lambda kv:(kv[1], kv[0]), reverse = True))
             # print("############# Top K List After ############")
             #print(topKList)
-            topKList = self.GetTopKListOnly(topKList, self.topK)
+            topKList = self.GetTopKListOnly(topKList)
             #print(topKList)
             topKList = dict(sorted(topKList.items(), key= lambda kv:(kv[1], kv[0]), reverse = True))
             #print(topKList)\
@@ -231,17 +231,28 @@ class TKFIM:
     #     #'G' : [3,4,2,4,5,6,7,8,9]
     #     }
 
+    def writeFIM(self, outputFile=None):
+        if (outputFile):
+            # Write the dictionary to a file in pretty JSON format
+            with open(outputFile, "w") as file:
+                json.dump(self.finalTopK, file, indent=4)
+
     def mine(self):
 
         start = t.time()#Start Time.
 
         initialTopK = self.firstTopKList()
 
-        minSup, finalTopK = self.getFromTopK(initialTopK)
+        self.min_count, self.finalTopK = self.getFromTopK(initialTopK)
+        self.minSup=self.min_count/self.num_of_transactions
 
         end = t.time()#Final Time
         self.execution_time=end - start
 
+        # if self.
+
+        # print(initialTopK)
         print(f"\nTotal Execution Time: {self.execution_time} Seconds")
-        print(f"minSup:{minSup}")
-        print(f"FIM found:{len(finalTopK)}")
+        print(f"FIM found:{len(self.finalTopK)}")
+        print(f"Absolute minSup:{self.min_count}")
+        print(f"Relative minSup:{self.minSup}")
