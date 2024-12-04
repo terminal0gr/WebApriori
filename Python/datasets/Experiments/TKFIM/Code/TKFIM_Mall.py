@@ -184,6 +184,9 @@ class TKFIM:
                         prefixA = firstClass.split(",")
                         prefixB = secondClass.split(",")
 
+                        if prefixA==['52','29','40','60','62']:
+                            print("Ok!")
+
                         length_of_classes = len(prefixA)-1
 
                         itemA = prefixA.pop(length_of_classes)
@@ -198,6 +201,10 @@ class TKFIM:
 
                             diffset = list(set(self.data[firstClass]) - set(self.data[secondClass]))
                             support = len(self.data[firstClass]) - len(diffset)
+
+                            # if support==2845:
+                            #     print(key)
+
 
                             # Correction 3/1/2024
                             # transactions = [ele for ele in set(self.data[firstClass]) if ele not in diffset]

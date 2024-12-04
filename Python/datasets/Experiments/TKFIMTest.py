@@ -4,7 +4,7 @@ import json
 import psutil
 
 
-datasetName='chess.dat' 
+datasetName='chess.dat'  
 topK=1000
 separator=' '
 # datasetName='kosarak.dat' 

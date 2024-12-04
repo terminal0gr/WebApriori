@@ -41,8 +41,9 @@ negFIN python (negFINTest.py)
     +1. items names subtistuted by index (int) when running the algorithms
     +2. Seems extremely fast implementation
     +3. implements bitarray (String of bits with the same functioning as in C++ bitwise operators) with no limitation to 1-item frequent itemsets
-negFIN_Mall
+negFIN_Mall1
     +1. Memory Save mode created. When memorySave=False algorithm is slightly faster and slightly more memory is consumed.
+    +2  Improved FI writing to a file. First a dictionary is created and then is written in json format.
 
     -1 slightly slower from the original C++ implementation
 
