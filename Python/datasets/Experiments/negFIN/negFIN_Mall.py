@@ -210,6 +210,7 @@ class NegFIN:
                                     (i & (1 << j)) > 0]
                     # Concatenate the itemset with the subset
                     itemset_string.extend(subsetString)
+
                     # Append the count of the itemset
                     # itemset_string.append(': {0}\n'.format(N.count))
                     # line = ' '.join(itemset_string)
@@ -287,6 +288,8 @@ class NegFIN:
         root = self.__create_root_of_frequent_itemset_tree()
         if self.output_file is not None:
             self.writer = open(self.output_file, 'w')
+            self.writer.write('{\n')
+
         # The following buffer is used for storing frequent itemsets discovered in a depth.
         itemset_buffer = [None] * len(self.F1)
         # Cardinality of itemset.
@@ -306,6 +309,7 @@ class NegFIN:
             self.__construct_frequent_itemset_tree(child, itemset_buffer, itemset_length + 1, root.children,
                                                    FIS_parent_buffer, FIS_parent_length)
         if self.writer is not None:
+            self.writer.write('}\n')
             self.writer.close()
 
         end_timestamp = datetime.now()

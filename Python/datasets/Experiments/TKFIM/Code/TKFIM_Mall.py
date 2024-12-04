@@ -139,7 +139,6 @@ class TKFIM:
         topKList = {}
 
         # Correction 3/12/2024
-        givenTopK = copy.deepcopy(initialTopK)
         givenTopK = {**initialTopK}
         # givenTopK = {}
         # givenTopK = Merge(givenTopK, initialTopK)
