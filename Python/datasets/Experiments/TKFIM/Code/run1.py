@@ -204,7 +204,7 @@ data = pd.d
 
 # print(f"lenght of 58:\t {len(dataset['58'])}")
 # K = int(input("Enter the number of item's you require: \n"))
-K = 20
+K = 1000
 # print(f"support of 58: \t {dataset['58']}")
 
 start = t.time()#Start Time.

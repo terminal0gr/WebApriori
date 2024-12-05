@@ -88,8 +88,21 @@ class TKFIM:
 
     def GetTopKListOnly(self, firstTopKList):
 
-        res=dict(list(firstTopKList.items())[:self.topK])
+        res=dict()
+        mS=-1
+        for index, (key, value) in enumerate(firstTopKList.items()):
+            # TODO Documentation
+            if index>=self.topK-1:
+                if mS==-1:
+                    mS=value
+                elif value!=mS:    
+                    break
 
+            res[key]=value
+
+        # res=dict(list(firstTopKList.items())[:self.topK])
+        ##################################################
+        # This Code is changed with the above at 3/12/2024 from Malliaridis.
         # res = {}
         # topKCount = 1
         # for k,v in firstTopKList.items():
@@ -112,7 +125,7 @@ class TKFIM:
         # firstTopKList = {}
         # for k,v in itemset:
         #     firstTopKList[k] = v
-
+        # Correction Malliaridis 3/12/2024
         firstTopKList = {k: v for k, v in sorted(itemset.items(), key=lambda item: item[1], reverse=True)}
 
         firstTopKList = self.GetTopKListOnly(firstTopKList)
@@ -126,17 +139,19 @@ class TKFIM:
         topKList = {}
 
         # Correction 3/12/2024
-        # givenTopK = copy.deepcopy(initialTopK)
-        givenTopK = {}
-        givenTopK = Merge(givenTopK, initialTopK)
+        # copy the dictionary
+        givenTopK = {**initialTopK}
+        # givenTopK = {}
+        # givenTopK = Merge(givenTopK, initialTopK)
 
+        # get the itemset which is the last in the dectionary
         minKey = min(givenTopK, key=givenTopK.get)
+        # get the smallest support from the above itemset
         smallestK = givenTopK[minKey]
         itemCount =  int(1)
 
         while itemCount > 0:
 
-            #for k in list(givenTopK.keys()):
             k = int(0)
 
             listOFKeys = list(givenTopK.keys())
@@ -144,10 +159,9 @@ class TKFIM:
             while(k < len(listOFKeys)):
                 k1 = int(k + 1)
                 while (k1 < len(listOFKeys)):
-                    # if k!=k1 and k+k1 not in itemset and k1+k not in itemset:
+
                     firstClass = listOFKeys[k]
                     secondClass = listOFKeys[k1]
-                    # key = ""
 
                     if len(firstClass) <= 2:
                         diffset = list(set(self.data[firstClass]) - set(self.data[secondClass]))
@@ -156,48 +170,62 @@ class TKFIM:
 
                         # Correction 3/1/2024
                         # transactions = [ele for ele in set(self.data[firstClass]) if ele not in diffset]
-                        # 4x faster the below than the above!
+                        # 4x faster the below than the above in chess.dat at least!
                         transactions = list(set(self.data[firstClass]))
                         for each in set(diffset):
                             transactions.remove(each)
 
-
-                        self.data[key] = transactions #add class alongside diffset in data for upcoming classes
-                        # print(f"Key : {key}\t Support: {support}\t Diffset: {diffset}\n")
                         if support >= smallestK:
+                            self.data[key] = transactions #add class alongside diffset in data for upcoming classes
                             itemset[key] = support
                         else:
                             break
 
                     else:
-                        prefixA = firstClass[:-1]
-                        prefixB = secondClass[:-1]
+                        prefixA = firstClass.split(",")
+                        prefixB = secondClass.split(",")
 
+                        # if prefixA==['52','29','40','60','62']:
+                        #     print("Ok!")
+                        if prefixA==['58','52','29','40','60','62']:
+                            print("OK!")
 
-                        # print(f"firstClass[0]\t {prefixA[0]} \t secondClass[0] {prefixB[0]}\t Length: {len(prefixA)}")
+                        length_of_classes = len(prefixA)-1
+
+                        itemA = prefixA.pop(length_of_classes)
+                        itemB = prefixB.pop(length_of_classes)
+
                         if prefixA == prefixB:
-                            # print("I am true too")
-                            key = firstClass +","+secondClass
-                            # key = makePrefix(key)
+
+                            items = [itemA, itemB]
+
+                            key = prefixA + items
+                            key = ",".join(key)
+
                             diffset = list(set(self.data[firstClass]) - set(self.data[secondClass]))
                             support = len(self.data[firstClass]) - len(diffset)
 
-                            transactions = [ele for ele in set(self.data[firstClass]) if ele not in diffset]
-                            #print(f"transactions: \t {transactions}")
-                            self.data[key] = transactions #add class alongside diffset in data for upcoming classes
-                            # print(f"Key : {key}\t Support: {support}\t Diffset: {diffset}\n")
+                            # if support==2845:
+                            #     print(key)
+
+
+                            # Correction 3/1/2024
+                            # transactions = [ele for ele in set(self.data[firstClass]) if ele not in diffset]
+                            # 4x faster the below than the above!
+                            transactions = list(set(self.data[firstClass]))
+                            for each in set(diffset):
+                                transactions.remove(each)
+
+
                             if support >= smallestK:
+                                self.data[key] = transactions #add class alongside diffset in data for upcoming classes
                                 itemset[key] = support
                             elif support < smallestK:
                                 break
 
-                    #print(listOFKeys[k1])
-                    # itemset = sorted(itemset.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
-                    # itemset = dict(itemset)
                     k1 += 1
-                    # k1 = int(k + 1)
-                k+=1
 
+                k+=1
 
             itemset = sorted(itemset.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
 
@@ -234,17 +262,6 @@ class TKFIM:
             itemset.clear()
             
         return smallestK, topKList
-
-    ###Run codes/functions here.####
-    # dataset = {
-    #     'A' : [1,2,3,6,7,8,9,10],
-    #     'B' : [1,2,4,5,6,7,8,9,10],
-    #     'C' : [4,5,9,10],
-    #     'D' : [1,3,4,5,7,9],
-    #     'E' : [4,5,10],
-    #     'F' : [1,2,3,4,5,6,7,8,9,10],
-    #     #'G' : [3,4,2,4,5,6,7,8,9]
-    #     }
 
     def writeFIM(self, outputFile=None):
         if (outputFile):

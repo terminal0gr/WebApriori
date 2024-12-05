@@ -150,6 +150,25 @@ Goethals Eclat py: http://adrem.uantwerpen.be/~goethals/software/files/eclat.py
     3. Improved reading of the transaction dataset (manipulation of special characters such as line feed '\n')
     4. Code for computing running time nad memory consumption.
 
+######################
+TKFIM (Top-K)
+    +1 Seem quickest from its precedetors
+
+    -1 Inability to manipulate all transactional datasets becuase of pandas dataframe (Can't handle efficiently 1-MBL Type datasets)
+    -2 It does not find exactly the first Top-K. It finds the first Top-K occurenses of different support itemsets
+    -3 In some occasions it cannot find all the frequent itemsets
+
+    Contributions: _Mall.py
+    +1 manipulate all transactional datasets with lists of lists structure instead of dataframe
+    +2 class wrapping of the algorithm from better manipulation and integreation
+    +3 quickest read of the dataset file
+    +4 better computation of the statistics (time and memory consuption)
+    +5 Transformed to find the exact Top-K itemsets plus all itemsets that have support equal to minSup.
+    +6 extensive improvements in all the code segments of the algorithm improving mining time to less tha half (50%)
+
+
+
+
 Done 01/11/2024 21/10/2024 Dataset ARM features collection
 
 
