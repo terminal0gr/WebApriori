@@ -1,23 +1,20 @@
 import os
-import sys
 import json
 import psutil
 
-
-# datasetName='chess.dat'  
-# topK=10000
-# separator=' '
-datasetName='kosarak.dat' 
+datasetName='chess.dat'  
 topK=1000
 separator=' '
-datasetName='accidents.dat' 
-topK=100
-separator=' '
+# datasetName='kosarak.dat' 
+# topK=100
+# separator=' '
+# datasetName='accidents.dat' 
+# topK=100
+# separator=' '
 # datasetName='T10I4D100K.dat'
 # topK=1000
 # separator=' '
-fastMode=False
-sparceData=True #intersect mode instead of diffsets
+sparseData=False #intersect mode instead of diffSets
 
 
 # datasetName='1_L-0023.csv' 
@@ -39,7 +36,7 @@ filepath=os.path.join('datasets', datasetName)
 AlgorithmName='TKFIM'
 from TKFIM.Code.TKFIM_Mall import TKFIM
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
-TKalgo = TKFIM(filepath, topK, separator, fastMode, sparceData)
+TKalgo = TKFIM(filepath, topK, separator, sparseData)
 TKalgo.readDatasetFile()
 TKalgo.mine()
 

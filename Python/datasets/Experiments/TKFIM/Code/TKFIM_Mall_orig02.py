@@ -5,15 +5,14 @@ import copy
 import time as t
 import json
 
-# made obsolete at 10/12/2024 by Malliaridis
-# def Merge(dict1, dict2):
-#     #this function is responsible for merging two dictionaries
-#     res = {**dict1, **dict2}
-#     return res
+def Merge(dict1, dict2):
+    #this function is responsible for merging two dictionaries
+    res = {**dict1, **dict2}
+    return res
 
 class TKFIM:
 
-    def __init__(self, dataset_file, topK, delimiter=' ', sparseData=True):
+    def __init__(self, dataset_file, topK, delimiter=' ', fastMode=False, sparceData=True):
         self.dataset_file = dataset_file
         self.minSup = None  # The relative minimum support
         self.min_count = None  # The absolute minimum support
@@ -21,12 +20,13 @@ class TKFIM:
         self.num_of_transactions = None 
         self.execution_time = None # Overall time of mining
         self.topK = topK #User defined Tok-K threshold
-        self.sparseData=sparseData
+        self.sparceData=sparceData
 
         #initialize variables for TKFIM algorithm
-        self.data = None # stores original data in its vertical representation (Key is the 1-item while value is a list of all the transactions containing that item)
-        self.finalTopK = None #for showing final results
-        self.heap=FixedSizeHeap(topK) #Tok-K absolute support values heap initialization
+        self.data = None # for storing diffsets
+        self.finalTopK = None #for showing end results
+        self.fastMode = fastMode #If false the slower about 70% but find all FIs. If true quicker with few FIs loss
+        self.heap=FixedSizeHeap(topK)
 
     def readDatasetFile(self):
 
@@ -48,7 +48,7 @@ class TKFIM:
         # pandas dataFrame cannot manipulate in right manner transactional dataset (1-MBL type)
         # df1 = pd.read_csv(self.dataset_file, sep=self.delimiter, header=None)
         # self.num_of_transactions = df1.count(axis=0)[0]# total num of rows.
-        # trx = [str(i) for i in range(1, int(df1.max().max()) + 1)]#list containing values from 0 to max value in dataFrame
+        # trx = [str(i) for i in range(1, int(df1.max().max()) + 1)]#list containing values from 0 to max value in dataframe
         # #print(trx)
         # trxIds = []
         # d = dict.fromkeys(trx)#initialize dict with trx as keys and assign empty values.
@@ -83,6 +83,10 @@ class TKFIM:
     #             tem_var += key[i]
     #     return tem_var
 
+    def Merge(self, dict1, dict2):
+        #this function is responsible for merging two dictionaries
+        res = {**dict1, **dict2}
+        return res
 
     def GetTopKListOnly(self, firstTopKList):
 
@@ -151,55 +155,38 @@ class TKFIM:
         # givenTopK = Merge(givenTopK, initialTopK)
 
         # 5/12/2024 Malliaridis Do not need because there is the self.min_count variable for this purpose
-        # get the itemset which is the last in the dictionary
+        # get the itemset which is the last in the dectionary
         # minKey = min(givenTopK, key=givenTopK.get)
         # get the smallest support from the above itemset
         # smallestK = givenTopK[minKey]
 
-        #count the items of the itemset
         itemCount =  int(1)
 
         while itemCount > 0:
 
-            # initialization of the first itemset counter
             k = int(0)
 
-            # Collect only the first topK items. the rest are discarded
-            # malliaridis 10/12/2024 (+10)
-            listOFKeys = list(givenTopK.keys())[:self.topK]
-            # listOFKeys = list(givenTopK.keys())
-
+            listOFKeys = list(givenTopK.keys())
+            # print(f"itemset of {i}\t {listOFKeys}")
             while(k < len(listOFKeys)):
-
-                firstClass = listOFKeys[k]
-                # stop current iteration if any of the two engaging itemsets has already been above the current minSup.
-                if givenTopK[firstClass]<=self.min_count:
-                    break
-
-                # initialization of the first itemset counter
                 k1 = int(k + 1)
-
                 while (k1 < len(listOFKeys)):
 
+                    firstClass = listOFKeys[k]
                     secondClass = listOFKeys[k1]
 
-                    # Malliaridis gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
-                    #stop current iteration if any of the two engaging itemsets has already been above the current minSup.
+                    # Malliaridis gave 5x in chess 1000 with intersect (7.9s vs 1.3s)
                     if givenTopK[firstClass]<=self.min_count or givenTopK[secondClass]<=self.min_count:
                         break
 
-                    # To find the candidate 2-item itemSets    
-                    if len(firstClass)==1:
+                    if len(firstClass) < 2:
 
-                        if self.sparseData:
-                            transactions=set(self.data[firstClass]) & set(self.data[secondClass])
+                        if self.sparceData:
+                            transactions=list(set(self.data[firstClass]) & set(self.data[secondClass]))
+                            support = len(transactions)
                         else:
-                            # (+11) 
-                            tmp=set(self.data[firstClass])
-                            diffSet = tmp - set(self.data[secondClass])
-                            transactions = tmp-diffSet
-                        
-                        support = len(transactions)
+                            diffset = list(set(self.data[firstClass]) - set(self.data[secondClass]))
+                            support = len(self.data[firstClass]) - len(diffset)
 
                         if support >= self.min_count:
 
@@ -209,43 +196,37 @@ class TKFIM:
                             key = firstClass +"," + secondClass
 
                             # Correction 3/1/2024
-                            # 10x faster at least the below than the above in chess.dat at least!
-                            # if not self.sparseData:
-                            #     transactions=list(transactions)
-                            # else:
-                            #     transactions = list(set(self.data[firstClass])-set(diffSet))
-                            #     transactions = list(set(self.data[firstClass]))
-                            #     for each in set(diffSet):
-                            #         transactions.remove(each)
+                            # transactions = [ele for ele in set(self.data[firstClass]) if ele not in diffset]
+                            # 4x faster the below than the above in chess.dat at least!
+                            if not self.sparceData:
+                                transactions = list(set(self.data[firstClass]))
+                                for each in set(diffset):
+                                    transactions.remove(each)
 
-                            self.data[key] = list(transactions) #add the frequent itemset to vertical database because it would help finding the superSet candidates.
+                            self.data[key] = transactions #add class alongside diffset in data for upcoming classes
                             itemset[key] = support
+                        elif self.fastMode:
+                            break #ignores all the other candidates (from current k1 to len(listOFKeys))
+                            #small loss of FIs but to about 40% quicker
 
-                        # 10/12/2024 Malliaridis (+7) obsolete and non working. loses itemsets.
-                        # elif self.fastMode:
-                            # break #ignores all the other candidates (from current k1 to len(listOFKeys))
-                            #loss of FIs but to about 40% quicker
 
-                    # To find the candidate (3 or more)-item itemSets 
                     else:
                         prefixA = firstClass.split(",")
                         prefixB = secondClass.split(",")
 
-                        itemA = prefixA.pop(itemCount-1)
-                        itemB = prefixB.pop(itemCount-1)
+                        length_of_classes = len(prefixA)-1
+
+                        itemA = prefixA.pop(length_of_classes)
+                        itemB = prefixB.pop(length_of_classes)
 
                         if prefixA == prefixB:
 
-                            if self.sparseData:
-                                transactions=set(self.data[firstClass]) & set(self.data[secondClass])
-                                
+                            if self.sparceData:
+                                transactions=list(set(self.data[firstClass]) & set(self.data[secondClass]))
+                                support = len(transactions)
                             else:
-                                # (+11)
-                                tmp=set(self.data[firstClass])
-                                diffSet = tmp - set(self.data[secondClass])
-                                transactions = tmp-diffSet
-
-                            support = len(transactions)
+                                diffset = list(set(self.data[firstClass]) - set(self.data[secondClass]))
+                                support = len(self.data[firstClass]) - len(diffset)
 
                             if support >= self.min_count:
 
@@ -258,22 +239,19 @@ class TKFIM:
                                 key = ",".join(key)
 
                                 # Correction 3/1/2024
-                                # transactions = [ele for ele in set(self.data[firstClass]) if ele not in diffSet]
+                                # transactions = [ele for ele in set(self.data[firstClass]) if ele not in diffset]
                                 # 4x faster the below than the above!
-                                # if self.sparseData:
-                                #     transactions=list(transactions)
-                                # else:
-                                #     transactions = list(set(self.data[firstClass]))
-                                #     for each in set(diffSet):
-                                #         transactions.remove(each)
+                                if not self.sparceData:
+                                    transactions = list(set(self.data[firstClass]))
+                                    for each in set(diffset):
+                                        transactions.remove(each)
 
-                                self.data[key] = list(transactions) #add the frequent itemset to vertical database because it would help finding the superSet candidates.
+                                self.data[key] = transactions #add class alongside diffset in data for upcoming classes
                                 itemset[key] = support
                                 
-                            # 10/12/2024 Malliaridis (+7) obsolete and non working. loses itemsets.
-                            # elif self.fastMode:
-                                # break #ignores all the other candidates (from current k1 to len(listOFKeys))
-                                #loss of FIs but to about 40% quicker
+                            elif self.fastMode:
+                                break #ignores all the other candidates (from current k1 to len(listOFKeys))
+                                #small loss of FIs but to about 40% quicker
 
                     k1 += 1
 
@@ -288,13 +266,10 @@ class TKFIM:
                 if topKCount<=self.topK:
                     topKList[k] = v
 
-            # merge two dictionaries into a new one using dictionary unpacking
-            topKList = {**initialTopK,**topKList} 
-            # self.Merge(initialTopK, topKList)
-
+            topKList = self.Merge(initialTopK, topKList)
             topKList = dict(sorted(topKList.items(), key= lambda kv:(kv[1], kv[0]), reverse = True))
             topKList = self.GetTopKListOnly(topKList)
-            #Deleted by Malliaridis 5/12/2024 unnecessary for mining time improvement
+            #Deleted by Malliaridis 5/12/2024 unnessesary for mining time improvement
             #topKList = dict(sorted(topKList.items(), key= lambda kv:(kv[1], kv[0]), reverse = True))
             # minKey = min(topKList, key=topKList.get)
             # smallestK = topKList[minKey] # for correcting smallest K
@@ -331,9 +306,12 @@ class TKFIM:
         self.min_count, self.finalTopK = self.getFromTopK(initialTopK)
         self.minSup=self.min_count/self.num_of_transactions
 
-        end = t.time()#end Time
-        self.execution_time=end-start
+        end = t.time()#Final Time
+        self.execution_time=end - start
 
+        # if self.
+
+        # print(initialTopK)
         print(f"\nTotal Execution Time: {self.execution_time} Seconds")
         print(f"FIM found:{len(self.finalTopK)}")
         print(f"Absolute minSup:{self.min_count}")
