@@ -12,7 +12,7 @@ def Merge(dict1, dict2):
 
 class TKFIM:
 
-    def __init__(self, dataset_file, topK, delimiter=' ', fastMode=False, sparceData=True):
+    def __init__(self, dataset_file, topK, delimiter=' ', fastMode=False):
         self.dataset_file = dataset_file
         self.minSup = None  # The relative minimum support
         self.min_count = None  # The absolute minimum support
@@ -20,7 +20,6 @@ class TKFIM:
         self.num_of_transactions = None 
         self.execution_time = None # Overall time of mining
         self.topK = topK #User defined Tok-K threshold
-        self.sparceData=sparceData
 
         #initialize variables for TKFIM algorithm
         self.data = None # for storing diffsets
@@ -176,13 +175,8 @@ class TKFIM:
                     secondClass = listOFKeys[k1]
 
                     if len(firstClass) < 2:
-
-                        if self.sparceData:
-                            transactions=list(set(self.data[firstClass]) & set(self.data[secondClass]))
-                            support = len(transactions)
-                        else:
-                            diffset = list(set(self.data[firstClass]) - set(self.data[secondClass]))
-                            support = len(self.data[firstClass]) - len(diffset)
+                        diffset = list(set(self.data[firstClass]) - set(self.data[secondClass]))
+                        support = len(self.data[firstClass]) - len(diffset)
 
                         if support >= self.min_count:
 
@@ -194,10 +188,9 @@ class TKFIM:
                             # Correction 3/1/2024
                             # transactions = [ele for ele in set(self.data[firstClass]) if ele not in diffset]
                             # 4x faster the below than the above in chess.dat at least!
-                            if not self.sparceData:
-                                transactions = list(set(self.data[firstClass]))
-                                for each in set(diffset):
-                                    transactions.remove(each)
+                            transactions = list(set(self.data[firstClass]))
+                            for each in set(diffset):
+                                transactions.remove(each)
 
                             self.data[key] = transactions #add class alongside diffset in data for upcoming classes
                             itemset[key] = support
@@ -215,12 +208,8 @@ class TKFIM:
 
                         if prefixA == prefixB:
 
-                            if self.sparceData:
-                                transactions=list(set(self.data[firstClass]) & set(self.data[secondClass]))
-                                support = len(transactions)
-                            else:
-                                diffset = list(set(self.data[firstClass]) - set(self.data[secondClass]))
-                                support = len(self.data[firstClass]) - len(diffset)
+                            diffset = list(set(self.data[firstClass]) - set(self.data[secondClass]))
+                            support = len(self.data[firstClass]) - len(diffset)
 
                             if support >= self.min_count:
 
@@ -235,10 +224,9 @@ class TKFIM:
                                 # Correction 3/1/2024
                                 # transactions = [ele for ele in set(self.data[firstClass]) if ele not in diffset]
                                 # 4x faster the below than the above!
-                                if not self.sparceData:
-                                    transactions = list(set(self.data[firstClass]))
-                                    for each in set(diffset):
-                                        transactions.remove(each)
+                                transactions = list(set(self.data[firstClass]))
+                                for each in set(diffset):
+                                    transactions.remove(each)
 
                                 self.data[key] = transactions #add class alongside diffset in data for upcoming classes
                                 itemset[key] = support

@@ -152,20 +152,39 @@ Goethals Eclat py: http://adrem.uantwerpen.be/~goethals/software/files/eclat.py
 
 ######################
 TKFIM (Top-K)
-    +1 Seem quickest from its precedetors
+    +1 Seems quickest from its precedetors
 
     -1 Inability to manipulate all transactional datasets becuase of pandas dataframe (Can't handle efficiently 1-MBL Type datasets)
     -2 It does not find exactly the first Top-K. It finds the first Top-K occurenses of different support itemsets
-    -3 In some occasions it cannot find all the frequent itemsets
+    -3 In some occasions it cannot find all the frequent itemsets (Corrected in Contribution +5)
+
+    chess  100 -> found 182? - > Total Execution Time: 14.965497016906738 Seconds
 
     Contributions: _Mall.py
-    +1 manipulate all transactional datasets with lists of lists structure instead of dataframe
+    +1 manipulate all transactional datasets (1-MBL) with a lists of lists structure instead of dataframe
     +2 class wrapping of the algorithm from better manipulation and integreation
     +3 quickest read of the dataset file
     +4 better computation of the statistics (time and memory consuption)
     +5 Transformed to find the exact Top-K itemsets plus all itemsets that have support equal to minSup.
-    +6 extensive improvements in all the code segments of the algorithm improving mining time to less tha half (50%)
+    +6 extensive improvements in all the code segments of the algorithm improving mining time to less than half (50%)
+    +7 Found a bug on the algorithm that allowed the loss of some FIs. Kept as quicker method with parameter
+    +8 Use of a quick heap structure to maintain the Top-K support values with insert and getMinSup functions DIRECTLY (reduced about a magnitude the mining time)
+    +9 use of intersection instead of diffset (Quicker in most cases) (kept both ways with parameter) Could it be automatic the alteration between?
+       chess  100 ->   14,9s       original implementation
+                  ->    0,09s 84MB with intersection fast no loss (x165 faster)
+                  ->    0,6s  84MB with intersection (x25 faster)
+                  ->    1,8s  85MB with original diffsets
+             1000 -> 2024,6        original implementation
+                  ->    1,5s 151MB fast with loss (2 itemsets) (x1350 faster)
+                  ->    8,0s 151MB with intersection (x253 faster)
+                  ->   30,5s 163MB with original diffsets
 
+        Top K frequent items via differenecially private Fp-Trees
+        Mining Top-K frequent Itemsets throui progressive sampling
+
+        scimago for checking 
+
+    TODO: In datasetName='T10I4D100K.dat', topK=1000 outputs 1000 FI but negFin output 1002 FI
 
 
 

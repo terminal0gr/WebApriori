@@ -10,6 +10,9 @@ separator=' '
 # datasetName='kosarak.dat' 
 # topK=100
 # separator=' '
+# datasetName='T10I4D100K.dat'
+# topK=1000
+# separator=' '
 
 
 # datasetName='1_L-0023.csv' 
@@ -31,7 +34,7 @@ filepath=os.path.join('datasets', datasetName)
 AlgorithmName='TKFIM'
 from TKFIM.Code.TKFIM_Mall import TKFIM
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
-TKalgo = TKFIM(filepath, topK, separator)
+TKalgo = TKFIM(filepath, topK, separator, True, True)
 TKalgo.readDatasetFile()
 TKalgo.mine()
 

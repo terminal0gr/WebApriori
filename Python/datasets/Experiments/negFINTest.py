@@ -6,10 +6,13 @@ import psutil
 
 
 datasetName='chess.dat' 
-minSup=0.886107634543179
+minSup=0.8864205256570713
 separator=' '
 # datasetName='kosarak.dat' 
 # minSup=0.022692883
+# separator=' '
+# datasetName='T10I4D100K.dat'
+# minSup=0.00521
 # separator=' '
 
 
