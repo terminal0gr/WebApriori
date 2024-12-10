@@ -175,6 +175,10 @@ class TKFIM:
                     firstClass = listOFKeys[k]
                     secondClass = listOFKeys[k1]
 
+                    # Malliaridis gave 5x in chess 1000 with intersect (7.9s vs 1.3s)
+                    if givenTopK[firstClass]<=self.min_count or givenTopK[secondClass]<=self.min_count:
+                        break
+
                     if len(firstClass) < 2:
 
                         if self.sparceData:
@@ -201,8 +205,10 @@ class TKFIM:
 
                             self.data[key] = transactions #add class alongside diffset in data for upcoming classes
                             itemset[key] = support
-                        else:
-                            break
+                        elif self.fastMode:
+                            break #ignores all the other candidates (from current k1 to len(listOFKeys))
+                            #small loss of FIs but to about 40% quicker
+
 
                     else:
                         prefixA = firstClass.split(",")

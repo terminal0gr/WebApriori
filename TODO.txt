@@ -184,8 +184,6 @@ TKFIM (Top-K)
 
         scimago for checking 
 
-    TODO: In datasetName='T10I4D100K.dat', topK=1000 outputs 1000 FI but negFin output 1002 FI
-
 
 
 Done 01/11/2024 21/10/2024 Dataset ARM features collection
