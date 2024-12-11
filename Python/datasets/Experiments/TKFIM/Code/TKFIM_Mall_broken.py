@@ -16,7 +16,7 @@ class TKFIM:
     def __init__(self, dataset_file, topK, delimiter=' ', sparseData=True):
         self.dataset_file = dataset_file
         self.minSup = None  # The relative minimum support
-        self.min_count = None  # The absolute minimum support 
+        self.min_count = None  # The absolute minimum support
         self.delimiter = delimiter 
         self.num_of_transactions = None 
         self.execution_time = None # Overall time of mining
@@ -25,7 +25,7 @@ class TKFIM:
 
         #initialize variables for TKFIM algorithm
         self.data = None # stores original data in its vertical representation (Key is the 1-item while value is a list of all the transactions containing that item)
-        self.finalTopK = None #for showing final results
+        self.finalTopK = dict() #for showing final results
         self.maxLevel=0 # The max length of itemsets grater than minSup
         self.heap=FixedSizeHeap(topK) #Tok-K absolute support values heap initialization
 
@@ -85,28 +85,44 @@ class TKFIM:
     #     return tem_var
 
 
-    def getTopKFI(self, topKItemSets):
-        # The procedure returns the dictionary of topK ItemSets with theis support in descending order
-        # The count of ItemSets may differ if there are itemsets with the same minimum support which are also included
-        # e.g. it may return 102 instead 100 if there are 3 itemsets with the same minSup.
-        topKItemSets = dict(sorted(topKItemSets.items(), key=lambda itemSet:(itemSet[1], itemSet[0]), reverse = True))
+    def getTopKFI(self, topKList):
+        # TODO Documentation
+        # TODO Documentation
+        # TODO Documentation
+
+        topKList = dict(sorted(topKList.items(), key=lambda itemSet:(itemSet[1], itemSet[0]), reverse = True))
 
         res=dict()
         mS=-1
-        for index, (key, value) in enumerate(topKItemSets.items()):
+        for index, (key, value) in enumerate(topKList.items()):
+            # TODO Documentation
             if index>=self.topK-1:
                 if mS==-1:
                     mS=value
-                elif value!=mS:
+                elif value!=mS:    
+                    mS=value
                     break
 
             res[key]=value
 
-        if mS==-1:
-            self.min_count=value
-        else:
+        # if mS==-1:
+        #     self.min_count=value
+        # else:
             self.min_count=mS
 
+        # res=dict(list(TopKList.items())[:self.topK])
+        ##################################################
+        # This Code is changed with the above at 3/12/2024 from Malliaridis.
+        # res = {}
+        # topKCount = 1
+        # for k,v in TopKList.items():
+        #     if v not in res.values():
+        #         topKCount += 1
+        #     if topKCount<=self.topK:
+        #         res[k] = v
+        #     else:
+        #         break
+        # self.finalTopK=res
         return res
 
     def firstTopKList(self):
@@ -115,47 +131,44 @@ class TKFIM:
             c=len(v)
             item1TopKList[k] = c
 
+        # item1TopKList = {k: v for k, v in sorted(itemset.items(), key=lambda item: item[1], reverse=True)}
         item1TopKList = self.getTopKFI(item1TopKList)
 
         self.heap.initialFill(list(item1TopKList.values()))
+
+        item1TopKList.clear()
 
         return item1TopKList
 
     def getFromTopK(self, initialTopK):
 
         itemset = {}
+
         topKList = {}
 
         # Correction 3/12/2024
         # copy the dictionary
-        givenTopK = {**initialTopK}
-        # givenTopK = {}
-        # givenTopK = Merge(givenTopK, initialTopK)
+        currentLevelTopK = {**initialTopK}
 
-        # 5/12/2024 Malliaridis Do not need because there is the self.min_count variable for this purpose
-        # get the itemset which is the last in the dictionary
-        # minKey = min(givenTopK, key=givenTopK.get)
-        # get the smallest support from the above itemset
-        # smallestK = givenTopK[minKey]
 
-        #count the items of the itemset
-        itemCount =  int(1)
+        #the number of items in itemset
+        level =  int(1)
 
-        while itemCount > 0:
+        while level > 0:
 
             # initialization of the first itemset counter
             k = int(0)
 
             # Collect only the first topK items. the rest are discarded
             # malliaridis 10/12/2024 (+10)
-            listOFKeys = list(givenTopK.keys())[:self.topK]
-            # listOFKeys = list(givenTopK.keys())
+            listOFKeys = list(currentLevelTopK.keys())[:self.topK]
+            # listOFKeys = list(currentLevelTopK.keys())
 
             while(k < len(listOFKeys)):
 
                 firstClass = listOFKeys[k]
                 # stop current iteration if firstClass itemset has already been above the current minSup.
-                if givenTopK[firstClass]<=self.min_count:
+                if currentLevelTopK[firstClass]<=self.min_count:
                     break
 
                 # initialization of the first itemset counter
@@ -167,22 +180,20 @@ class TKFIM:
 
                     # Malliaridis gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     #stop current iteration if any of the two engaging itemsets has already been above the current minSup.
-                    if givenTopK[firstClass]<=self.min_count or givenTopK[secondClass]<=self.min_count:
+                    if currentLevelTopK[firstClass]<=self.min_count or currentLevelTopK[secondClass]<=self.min_count:
                         break
 
                     # To find the candidate 2-item itemSets    
-                    if len(firstClass)==1:
+                    if level==1:
 
                         if self.sparseData:
                             transactions=set(self.data[firstClass]) & set(self.data[secondClass])
+                            support = len(transactions)
                         else:
                             # (+11) 
-                            tmp=set(self.data[firstClass])
-                            diffSet = tmp - set(self.data[secondClass])
-                            transactions = tmp-diffSet
-                        
-                        support = len(transactions)
-
+                            transactions = set(self.data[firstClass]) - set(self.data[secondClass])
+                            support = currentLevelTopK[firstClass]-len(transactions)
+                    
                         if support >= self.min_count:
 
                             #recalculate the new absolute minSup value
@@ -213,31 +224,30 @@ class TKFIM:
                         prefixA = firstClass.split(",")
                         prefixB = secondClass.split(",")
 
-                        itemA = prefixA.pop(itemCount-1)
-                        itemB = prefixB.pop(itemCount-1)
+                        itemA = prefixA.pop(level-1)
+                        itemB = prefixB.pop(level-1)
 
                         if prefixA == prefixB:
 
                             if self.sparseData:
                                 transactions=set(self.data[firstClass]) & set(self.data[secondClass])
-                                
+                                support = len(transactions)
                             else:
                                 # (+11)
-                                tmp=set(self.data[firstClass])
-                                diffSet = tmp - set(self.data[secondClass])
-                                transactions = tmp-diffSet
-
-                            support = len(transactions)
+                                transactions = set(self.data[secondClass])-set(self.data[firstClass])
+                                support=currentLevelTopK[firstClass]-len(transactions)
+                                # tmp=set(self.data[firstClass])
+                                # diffSet = tmp - set(self.data[secondClass])
+                                # transactions = tmp-diffSet
 
                             if support >= self.min_count:
 
                                 #recalculate the new absolute minSup value
                                 self.min_count=self.heap.insert(support)
 
-                                items = [itemA, itemB]
+                                items = prefixA + [itemA, itemB]
 
-                                key = prefixA + items
-                                key = ",".join(key)
+                                key = ",".join(items)
 
                                 # Correction 3/1/2024
                                 # transactions = [ele for ele in set(self.data[firstClass]) if ele not in diffSet]
@@ -260,6 +270,22 @@ class TKFIM:
                     k1 += 1
 
                 k+=1
+
+            # New idea...
+            # nextLevelTopK = dict(sorted(nextLevelTopK.items(), key = lambda itemset:(itemset[1], itemset[0]), reverse=True)[:self.topK])
+            # self.finalTopK = {**self.finalTopK,**nextLevelTopK}
+            # self.finalTopK = dict(sorted(self.finalTopK.items(), key= lambda itemset:(itemset[1], itemset[0]), reverse = True))
+            # self.finalTopK = self.getTopKFI(self.finalTopK)
+            # currentLevelTopK = {**dict(nextLevelTopK)}
+
+            # if(len(nextLevelTopK) == 0): # new itemset with support grater than minSup not found. Stop iteration
+            #     self.maxLevel=level
+            #     level=0
+            # else:
+            #     level += 1
+            #     nextLevelTopK.clear()
+
+
 
             itemset = sorted(itemset.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
 
@@ -286,13 +312,13 @@ class TKFIM:
             else:
                 itemCount += 1
 
-            givenTopK.clear()
+            currentLevelTopK.clear()
             itemset = dict(itemset)
 
             # Correction 3/12/2024
             # copy the dictionary
-            givenTopK = {**itemset}
-            # givenTopK = copy.deepcopy(itemset)
+            currentLevelTopK = {**itemset}
+            # currentLevelTopK = copy.deepcopy(itemset)
 
             itemset.clear()
             
@@ -310,7 +336,8 @@ class TKFIM:
 
         initialTopK = self.firstTopKList()
 
-        self.min_count, self.finalTopK = self.getFromTopK(initialTopK)
+        # self.min_count, self.finalTopK = self.getFromTopK(initialTopK)
+        self.getFromTopK(initialTopK)
         self.minSup=self.min_count/self.num_of_transactions
 
         end = t.time()#end Time
