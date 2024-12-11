@@ -171,14 +171,18 @@ TKFIM (Top-K)
     +8 Use of a quick heap structure to maintain the Top-K support values with insert and getMinSup functions DIRECTLY (reduced about a magnitude the mining time)
     +9 use of intersection instead of diffSet (Quicker in most cases) (kept both ways with parameter) Could it be automatic the alteration between?
        chess  100 ->   14,9s       original implementation
-                  ->    0,09s 84MB with intersection fast no loss (x165 faster)
-                  ->    0,6s  84MB with intersection (x25 faster)
-                  ->    1,8s  85MB with original diffsets
+                  ->    0,033s 79MB with diffset (True)
+                  ->    0.077s 84MB with intersection (False)
+                  ->    0,6s   84MB with intersection
              1000 -> 2024,6        original implementation
-                  ->    1,3s 151MB with integration (x1350 faster)
-                  ->    8,0s 151MB with intersection (x253 faster)
-                  ->   30,5s 163MB with original diffsets
-                  ->  144,0s       original implementation of TKFIM
+                  ->    0,58s 105MB with diffset (True)
+                  ->    1,25s 153MB with intersection (False)
+                  ->    8,0s  151MB with intersection
+                  ->   30,5s  163MB with original diffsets
+            10000 -> 
+                  ->   24,80s 400MB with diffset (True)
+                  ->   32,24s 781MB with intersection (False)
+                  
     +10 (5% faster) Collect only the first topK itemsets of listOFKeys. the rest are discarded.
     +11 Improved diffSet computation
 
@@ -187,6 +191,8 @@ TKFIM (Top-K)
 
         scimago for checking 
 
+        References:
+        Fast Vertical Mining Using Diffsets
 
 
 Done 01/11/2024 21/10/2024 Dataset ARM features collection

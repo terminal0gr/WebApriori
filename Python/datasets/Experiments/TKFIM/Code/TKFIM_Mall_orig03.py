@@ -189,17 +189,18 @@ class TKFIM:
                         break
 
                     # To find the candidate 2-item itemSets    
-                    if itemCount==1:
+                    if len(firstClass)==1:
 
                         if self.sparseData:
                             transactions=set(self.data[firstClass]) & set(self.data[secondClass])
-                            support = len(transactions)
                         else:
                             # (+11) 
-                            transactions = set(self.data[firstClass]) - set(self.data[secondClass])
-                            # support = len(tmp-transactions)
-                            support = givenTopK[firstClass]-len(transactions)
-                    
+                            tmp=set(self.data[firstClass])
+                            diffSet = tmp - set(self.data[secondClass])
+                            transactions = tmp-diffSet
+                        
+                        support = len(transactions)
+
                         if support >= self.min_count:
 
                             #recalculate the new absolute minSup value
@@ -237,14 +238,14 @@ class TKFIM:
 
                             if self.sparseData:
                                 transactions=set(self.data[firstClass]) & set(self.data[secondClass])
-                                support = len(transactions)
+                                
                             else:
                                 # (+11)
-                                transactions = set(self.data[secondClass])-set(self.data[firstClass])
-                                support=givenTopK[firstClass]-len(transactions)
-                                # tmp=set(self.data[firstClass])
-                                # diffSet = tmp - set(self.data[secondClass])
-                                # transactions = tmp-diffSet
+                                tmp=set(self.data[firstClass])
+                                diffSet = tmp - set(self.data[secondClass])
+                                transactions = tmp-diffSet
+
+                            support = len(transactions)
 
                             if support >= self.min_count:
 
@@ -278,10 +279,8 @@ class TKFIM:
 
                 k+=1
 
-            # New idea...
-            # itemset = dict(sorted(itemset.items(), key = lambda kv:(kv[1], kv[0]), reverse=True))
-
             itemset = sorted(itemset.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
+
             topKCount = int(0)
             for k,v in itemset:
                 if v not in topKList.values():

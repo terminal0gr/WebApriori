@@ -3,8 +3,11 @@ import sys
 import json
 
 
-datasetName='chess.dat' 
-minSup=0.886107634543179
+# datasetName='chess.dat' 
+# minSup=0.886107634543179
+# separator=' '
+datasetName='kosarak.dat' 
+minSup=0.022692883448720304
 separator=' '
 # datasetName='1_L-0023.csv' 
 # minSup=0.01
@@ -54,26 +57,26 @@ filepath=os.path.join('datasets', datasetName)
 ############################
 
 ############################
-AlgorithmName='Eclat_bitset'
-from PAMI.frequentPattern.basic import ECLATbitset as PAMI
-obj1 = PAMI.ECLATbitset(iFile=filepath, minSup=minSup, sep=separator)
-obj1.mine(False)
-# frequentPatterns= obj1.getPatternsAsDataFrame()
-# frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
-# print(frequentPatternsDF)
-outputDict = {}
-outputDict['Algorithm']=AlgorithmName
-outputDict['Language']="python"
-outputDict['library']="PAMI"
-outputDict['minSup']=minSup
-outputDict['totalFI']=len(obj1._finalPatterns.items())
-outputDict['Runtime']=obj1.getRuntime()
-outputDict['Memory']=obj1.getMemoryUSS()
-file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
-json.dump(outputDict, file, indent=4)
-file.close() 
-json.dumps(outputDict, indent=4)
-print(AlgorithmName + " Done!")
+# AlgorithmName='Eclat_bitset'
+# from PAMI.frequentPattern.basic import ECLATbitset as PAMI
+# obj1 = PAMI.ECLATbitset(iFile=filepath, minSup=minSup, sep=separator)
+# obj1.mine(False)
+# # frequentPatterns= obj1.getPatternsAsDataFrame()
+# # frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
+# # print(frequentPatternsDF)
+# outputDict = {}
+# outputDict['Algorithm']=AlgorithmName
+# outputDict['Language']="python"
+# outputDict['library']="PAMI"
+# outputDict['minSup']=minSup
+# outputDict['totalFI']=len(obj1._finalPatterns.items())
+# outputDict['Runtime']=obj1.getRuntime()
+# outputDict['Memory']=obj1.getMemoryUSS()
+# file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
+# json.dump(outputDict, file, indent=4)
+# file.close() 
+# json.dumps(outputDict, indent=4)
+# print(AlgorithmName + " Done!")
 ############################
 
 

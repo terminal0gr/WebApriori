@@ -2,19 +2,19 @@ import os
 import json
 import psutil
 
-datasetName='chess.dat'  
-topK=1000
-separator=' '
-# datasetName='kosarak.dat' 
-# topK=100
+# datasetName='chess.dat'  
+# topK=10000
 # separator=' '
+datasetName='kosarak.dat' 
+topK=100
+separator=' '
 # datasetName='accidents.dat' 
 # topK=100
 # separator=' '
 # datasetName='T10I4D100K.dat'
 # topK=1000
 # separator=' '
-sparseData=False #intersect mode instead of diffSets
+sparseData=True #intersect mode instead of diffSets
 
 
 # datasetName='1_L-0023.csv' 
@@ -57,5 +57,6 @@ file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(topK)
 json.dump(outputDict, file, indent=4)
 file.close() 
 json.dumps(outputDict, indent=4)
+print(f"Memory:{memoryUSS}")
 print(AlgorithmName + " Done!")
 ############################

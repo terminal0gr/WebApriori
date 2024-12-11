@@ -8,12 +8,12 @@ import psutil
 # datasetName='chess.dat' 
 # minSup=0.7897371714643304
 # separator=' '
-# datasetName='kosarak.dat' 
-# minSup=0.0063444316274108535
-# separator=' '
-datasetName='accidents.dat' 
-minSup=0.8196999850080692
+datasetName='kosarak.dat' 
+minSup=0.006533320134706798
 separator=' '
+# datasetName='accidents.dat' 
+# minSup=0.8196999850080692
+# separator=' '
 # datasetName='T10I4D100K.dat'
 # minSup=0.00522
 # separator=' '
