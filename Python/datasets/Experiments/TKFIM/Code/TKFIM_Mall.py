@@ -25,7 +25,8 @@ class TKFIM:
 
         #initialize variables for TKFIM algorithm
         self.data = None # stores original data in its vertical representation (Key is the 1-item while value is a list of all the transactions containing that item)
-        self.finalTopK = None #for showing final results
+        self.finalTopK = dict() #for showing final results
+        self.maxLevel=0 # The max length of itemsets grater than minSup
         self.heap=FixedSizeHeap(topK) #Tok-K absolute support values heap initialization
 
     def readDatasetFile(self):
@@ -84,11 +85,13 @@ class TKFIM:
     #     return tem_var
 
 
-    def GetTopKListOnly(self, firstTopKList):
-
+    def getTopKFI(self, TopKList):
+        # TODO Documentation
+        # TODO Documentation
+        # TODO Documentation
         res=dict()
         mS=-1
-        for index, (key, value) in enumerate(firstTopKList.items()):
+        for index, (key, value) in enumerate(TopKList.items()):
             # TODO Documentation
             if index>=self.topK-1:
                 if mS==-1:
@@ -103,19 +106,19 @@ class TKFIM:
         else:
             self.min_count=mS
 
-        # res=dict(list(firstTopKList.items())[:self.topK])
+        # res=dict(list(TopKList.items())[:self.topK])
         ##################################################
         # This Code is changed with the above at 3/12/2024 from Malliaridis.
         # res = {}
         # topKCount = 1
-        # for k,v in firstTopKList.items():
+        # for k,v in TopKList.items():
         #     if v not in res.values():
         #         topKCount += 1
         #     if topKCount<=self.topK:
         #         res[k] = v
         #     else:
         #         break
-
+        self.finalTopK=res
         return res
 
     def firstTopKList(self):
@@ -124,56 +127,42 @@ class TKFIM:
             c=len(v)
             itemset[k] = c
 
-        # itemset = sorted(itemset.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
-        # firstTopKList = {}
-        # for k,v in itemset:
-        #     firstTopKList[k] = v
-        # Correction Malliaridis 3/12/2024
-        firstTopKList = {k: v for k, v in sorted(itemset.items(), key=lambda item: item[1], reverse=True)}
+        item1TopKList = {k: v for k, v in sorted(itemset.items(), key=lambda item: item[1], reverse=True)}
+        item1TopKList = self.getTopKFI(item1TopKList)
 
-        firstTopKList = self.GetTopKListOnly(firstTopKList)
-
-        self.heap.initialFill(list(firstTopKList.values()))
+        self.heap.initialFill(list(item1TopKList.values()))
 
         itemset.clear()
 
-        return firstTopKList
+        return item1TopKList
 
     def getFromTopK(self, initialTopK):
 
-        itemset = {}
-        topKList = {}
+        nextLevelTopK = {}
 
         # Correction 3/12/2024
         # copy the dictionary
-        givenTopK = {**initialTopK}
-        # givenTopK = {}
-        # givenTopK = Merge(givenTopK, initialTopK)
+        currentLevelTopK = {**initialTopK}
 
-        # 5/12/2024 Malliaridis Do not need because there is the self.min_count variable for this purpose
-        # get the itemset which is the last in the dictionary
-        # minKey = min(givenTopK, key=givenTopK.get)
-        # get the smallest support from the above itemset
-        # smallestK = givenTopK[minKey]
 
-        #count the items of the itemset
-        itemCount =  int(1)
+        #the number of items in itemset
+        level =  int(1)
 
-        while itemCount > 0:
+        while level > 0:
 
             # initialization of the first itemset counter
             k = int(0)
 
             # Collect only the first topK items. the rest are discarded
             # malliaridis 10/12/2024 (+10)
-            listOFKeys = list(givenTopK.keys())[:self.topK]
-            # listOFKeys = list(givenTopK.keys())
+            listOFKeys = list(currentLevelTopK.keys())[:self.topK]
+            # listOFKeys = list(currentLevelTopK.keys())
 
             while(k < len(listOFKeys)):
 
                 firstClass = listOFKeys[k]
                 # stop current iteration if firstClass itemset has already been above the current minSup.
-                if givenTopK[firstClass]<=self.min_count:
+                if currentLevelTopK[firstClass]<=self.min_count:
                     break
 
                 # initialization of the first itemset counter
@@ -185,11 +174,11 @@ class TKFIM:
 
                     # Malliaridis gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     #stop current iteration if any of the two engaging itemsets has already been above the current minSup.
-                    if givenTopK[firstClass]<=self.min_count or givenTopK[secondClass]<=self.min_count:
+                    if currentLevelTopK[firstClass]<=self.min_count or currentLevelTopK[secondClass]<=self.min_count:
                         break
 
                     # To find the candidate 2-item itemSets    
-                    if itemCount==1:
+                    if level==1:
 
                         if self.sparseData:
                             transactions=set(self.data[firstClass]) & set(self.data[secondClass])
@@ -197,8 +186,7 @@ class TKFIM:
                         else:
                             # (+11) 
                             transactions = set(self.data[firstClass]) - set(self.data[secondClass])
-                            # support = len(tmp-transactions)
-                            support = givenTopK[firstClass]-len(transactions)
+                            support = currentLevelTopK[firstClass]-len(transactions)
                     
                         if support >= self.min_count:
 
@@ -218,7 +206,7 @@ class TKFIM:
                             #         transactions.remove(each)
 
                             self.data[key] = list(transactions) #add the frequent itemset to vertical database because it would help finding the superSet candidates.
-                            itemset[key] = support
+                            nextLevelTopK[key] = support
 
                         # 10/12/2024 Malliaridis (+7) obsolete and non working. loses itemsets.
                         # elif self.fastMode:
@@ -230,8 +218,8 @@ class TKFIM:
                         prefixA = firstClass.split(",")
                         prefixB = secondClass.split(",")
 
-                        itemA = prefixA.pop(itemCount-1)
-                        itemB = prefixB.pop(itemCount-1)
+                        itemA = prefixA.pop(level-1)
+                        itemB = prefixB.pop(level-1)
 
                         if prefixA == prefixB:
 
@@ -241,7 +229,7 @@ class TKFIM:
                             else:
                                 # (+11)
                                 transactions = set(self.data[secondClass])-set(self.data[firstClass])
-                                support=givenTopK[firstClass]-len(transactions)
+                                support=currentLevelTopK[firstClass]-len(transactions)
                                 # tmp=set(self.data[firstClass])
                                 # diffSet = tmp - set(self.data[secondClass])
                                 # transactions = tmp-diffSet
@@ -251,10 +239,9 @@ class TKFIM:
                                 #recalculate the new absolute minSup value
                                 self.min_count=self.heap.insert(support)
 
-                                items = [itemA, itemB]
+                                items = prefixA + [itemA, itemB]
 
-                                key = prefixA + items
-                                key = ",".join(key)
+                                key = ",".join(items)
 
                                 # Correction 3/1/2024
                                 # transactions = [ele for ele in set(self.data[firstClass]) if ele not in diffSet]
@@ -267,7 +254,7 @@ class TKFIM:
                                 #         transactions.remove(each)
 
                                 self.data[key] = list(transactions) #add the frequent itemset to vertical database because it would help finding the superSet candidates.
-                                itemset[key] = support
+                                nextLevelTopK[key] = support
                                 
                             # 10/12/2024 Malliaridis (+7) obsolete and non working. loses itemsets.
                             # elif self.fastMode:
@@ -279,43 +266,57 @@ class TKFIM:
                 k+=1
 
             # New idea...
-            # itemset = dict(sorted(itemset.items(), key = lambda kv:(kv[1], kv[0]), reverse=True))
+            # nextLevelTopK = dict(sorted(nextLevelTopK.items(), key = lambda itemset:(itemset[1], itemset[0]), reverse=True)[:self.topK])
+            self.finalTopK = {**self.finalTopK,**nextLevelTopK}
+            self.finalTopK = dict(sorted(self.finalTopK.items(), key= lambda itemset:(itemset[1], itemset[0]), reverse = True))
+            self.finalTopK = self.getTopKFI(self.finalTopK)
+            currentLevelTopK = {**dict(nextLevelTopK)}
 
-            itemset = sorted(itemset.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
-            topKCount = int(0)
-            for k,v in itemset:
-                if v not in topKList.values():
-                    topKCount += 1
-                if topKCount<=self.topK:
-                    topKList[k] = v
-
-            # merge two dictionaries into a new one using dictionary unpacking
-            topKList = {**initialTopK,**topKList} 
-            # self.Merge(initialTopK, topKList)
-
-            topKList = dict(sorted(topKList.items(), key= lambda kv:(kv[1], kv[0]), reverse = True))
-            topKList = self.GetTopKListOnly(topKList)
-            #Deleted by Malliaridis 5/12/2024 unnecessary for mining time improvement
-            #topKList = dict(sorted(topKList.items(), key= lambda kv:(kv[1], kv[0]), reverse = True))
-            # minKey = min(topKList, key=topKList.get)
-            # smallestK = topKList[minKey] # for correcting smallest K
-
-            if(len(itemset) == 0):
-                itemCount = 0
+            if(len(nextLevelTopK) == 0): # new itemset with support grater than minSup not found. Stop iteration
+                self.maxLevel=level
+                break
             else:
-                itemCount += 1
+                level += 1
+                nextLevelTopK.clear()
 
-            givenTopK.clear()
-            itemset = dict(itemset)
 
-            # Correction 3/12/2024
-            # copy the dictionary
-            givenTopK = {**itemset}
-            # givenTopK = copy.deepcopy(itemset)
 
-            itemset.clear()
+
+            # nextLevelTopK = sorted(nextLevelTopK.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
+            # topKCount = int(0)
+            # for k,v in nextLevelTopK:
+            #     if v not in topKList.values():
+            #         topKCount += 1
+            #     if topKCount<=self.topK:
+            #         topKList[k] = v
+            #     else:
+            #         break
+
+            # # merge two dictionaries into a new one using dictionary unpacking
+            # topKList = {**initialTopK,**topKList} 
+            # # self.Merge(initialTopK, topKList)
+
+            # topKList = dict(sorted(topKList.items(), key= lambda kv:(kv[1], kv[0]), reverse = True))
+            # topKList = self.getTopKFI(topKList)
+            # #Deleted by Malliaridis 5/12/2024 unnecessary for mining time improvement
+            # #topKList = dict(sorted(topKList.items(), key= lambda kv:(kv[1], kv[0]), reverse = True))
+            # # minKey = min(topKList, key=topKList.get)
+            # # smallestK = topKList[minKey] # for correcting smallest K
+
+            # #TODO - Check if it is better from speed - memory to delete this command
+            # # currentLevelTopK.clear()
+
+            # nextLevelTopK = dict(nextLevelTopK)
             
-        return self.min_count, topKList
+            # # copy the dictionary
+            # currentLevelTopK = {**dict(nextLevelTopK)}
+
+            # nextLevelTopK.clear()
+
+
+            
+        # return self.min_count, topKList
+        return self.min_count, self.finalTopK
 
     def writeFIM(self, outputFile=None):
         if (outputFile):
