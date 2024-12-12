@@ -1,9 +1,9 @@
 {
-    "Algorithm": "TKFIM",
+    "Algorithm": "qh_TopK_FIM",
     "Language": "python",
     "library": "Mall",
     "minSup": 0.022692883448720304,
     "totalFI": 100,
-    "Runtime": 18.772834300994873,
-    "Memory": 692473856
+    "Runtime": 19.312575817108154,
+    "Memory": 649039872
 }
