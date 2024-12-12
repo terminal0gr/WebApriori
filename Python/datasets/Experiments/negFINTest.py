@@ -8,9 +8,9 @@ import psutil
 # datasetName='chess.dat' 
 # minSup=0.7897371714643304
 # separator=' '
-datasetName='kosarak.dat' 
-minSup=0.0226928834487203
-separator=' '
+# datasetName='kosarak.dat' 
+# minSup=0.0226928834487203
+# separator=' '
 # datasetName='accidents.dat' 
 # minSup=0.8196999850080692
 # separator=' '
@@ -19,9 +19,9 @@ separator=' '
 # separator=' '
 
 
-# datasetName='1_L-0023.csv' 
-# minSup=0.01
-# separator=';'
+datasetName='1_L-0023.csv' 
+minSup=0.012266517981600222
+separator=';'
 # datasetName='FpGrowthSampleWithoutQuotes.txt' 
 # minSup=0.6
 # separator=','

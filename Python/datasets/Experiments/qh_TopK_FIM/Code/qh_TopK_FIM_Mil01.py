@@ -14,7 +14,6 @@ class qh_TopK_FIM:
         self.topK = topK #User defined Tok-K threshold
         self.sparseData=sparseData
         self.data = None # stores original data in its vertical representation (Key is the 1-item while value is a list of all the transactions containing that item)
-        self.itemDict = dict() # transform the items to numbers for speed and efficiency
         self.finalTopK = None #for showing final results
         self.maxLevel=0 # The max length of itemsets grater than minSup
         self.heap=FixedSizeHeap(topK) #Tok-K absolute support values heap initialization
@@ -28,26 +27,14 @@ class qh_TopK_FIM:
         self.num_of_transactions=len(transactions)
 
         # Vertical dataset representation
-        vR = {}
-        iSet = set()
-        itemIndex=0
-        itemDict=dict()
-        itemDictReversed=dict()
-        for transIndex, row in enumerate(transactions):
+        d = {}
+        for i, row in enumerate(transactions):
             for item in row:
-                # memory consumption 3x at least in kosarak 100
-                if item not in iSet:
-                    itemIndex+=1
-                    itemDict[itemIndex]=item
-                    itemDictReversed[item]=itemIndex
-                    vR[(itemIndex,)]=[]
-                    iSet.add(item)
-                vR[(itemDictReversed[item],)].append(transIndex)
-                # if item not in vR:
-                #     vR[item] = []  # Initialize a new list if the key is not in the dictionary
-                # vR[item].append(transIndex)  # Append the transaction index to the list                
+                if item not in d:
+                    d[item] = []  # Initialize a new list if the key is not in the dictionary
+                d[item].append(i)  # Append the transaction index to the list                
 
-        self.data=vR
+        self.data=d
 
     # Fills the topKList with the top-K 1-item itemsets.
     # It also initializes the quick heap for first and last time.
@@ -90,8 +77,6 @@ class qh_TopK_FIM:
         return topKDict, minSup
 
     def mineNextLevels(self, initialTopK):
-        # Implemented without recursion for faster implementation 
-        # and less memory consumption
 
         # Collects the final Top-K itemsets
         topKFI = {**initialTopK}
@@ -132,15 +117,11 @@ class qh_TopK_FIM:
                     if currentLevelTopK[classA]<=self.min_count or currentLevelTopK[classB]<=self.min_count:
                         break
 
-                    prefixA=classA[:-1]
-                    prefixB=classB[:-1]
-                    # prefixA = classA.split(",")
-                    # prefixB = classB.split(",")
+                    prefixA = classA.split(",")
+                    prefixB = classB.split(",")
 
-                    itemA = classA[-1]
-                    itemB = classB[-1]
-                    # itemA = prefixA.pop(level-1)
-                    # itemB = prefixB.pop(level-1)
+                    itemA = prefixA.pop(level-1)
+                    itemB = prefixB.pop(level-1)
 
                     if prefixA == prefixB:
 
@@ -160,14 +141,14 @@ class qh_TopK_FIM:
                             # recalculate the new absolute minSup value from quick heap
                             self.min_count=self.heap.insert(support)
 
-                            key=prefixA + (itemA, itemB)
-                            # items = [itemA, itemB]
-                            # key = prefixA + items
-                            # key = ",".join(key)
+                            items = [itemA, itemB]
+
+                            key = prefixA + items
+                            key = ",".join(key)
 
                             self.data[key] = list(transactions) #add the frequent itemset to vertical database because it would help finding the superSet candidates.
                             nextLevelTopK[key] = support
-                            
+
                     iB+=1
                 iA+=1
 
@@ -211,11 +192,10 @@ class qh_TopK_FIM:
         print(f"Relative minSup:{self.minSup}")
 
     def writeFIM(self, outputFile=None): #outputs the frequent itemsets in json format
-        print("TODO assemble FIM for output.")
-        # if (outputFile):
-        #     # Write the dictionary to a file in pretty JSON format
-        #     with open(outputFile, "w") as file:
-        #         json.dump(self.finalTopK, file, indent=4)
+        if (outputFile):
+            # Write the dictionary to a file in pretty JSON format
+            with open(outputFile, "w") as file:
+                json.dump(self.finalTopK, file, indent=4)
 
 # implementation of the quick heap which keeps only the Top-K supports in descending order
 # Quick and memory saver.

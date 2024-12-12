@@ -3,17 +3,21 @@ import json
 import psutil
 
 datasetName='chess.dat'  
-topK=1000
+topK=10000
 separator=' '
-datasetName='kosarak.dat' 
-topK=100
-separator=' '
+# datasetName='kosarak.dat' 
+# topK=100
+# separator=' '
 # datasetName='accidents.dat' 
 # topK=100
 # separator=' '
 # datasetName='T10I4D100K.dat'
 # topK=1000
 # separator=' '
+# datasetName='1_L-0023.csv'
+# topK=1000
+# separator=';'
+
 sparseData=True #tidSets (True) mode instead of diffSets (False)
 
 
@@ -27,14 +31,14 @@ sparseData=True #tidSets (True) mode instead of diffSets (False)
 # minSup=0.4
 # separator=','
 
-ext1='_Iqbal_Mall_py.fim' 
-ext2='_Iqbal_Mall_py.json'
+ext1='_Mall_py.fim' 
+ext2='_Mall_py.json'
 
 filepath=os.path.join('datasets', datasetName)
 
 ############################
 AlgorithmName='qh_TopK_FIM'
-from qh_TopK_FIM.Code.qh_TopK_FIM import qh_TopK_FIM
+from qh_TopK_FIM.Code.qh_TopK_FIM_Mil01 import qh_TopK_FIM
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
 TKalgo = qh_TopK_FIM(filepath, topK, separator, sparseData)
 TKalgo.readDatasetFile()

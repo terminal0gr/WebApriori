@@ -125,7 +125,7 @@ class NegFIN:
         # Creating and initializing the root of BMCTree
         bmc_tree_root = BMCTreeNode(item=None, count=None, bitmap_code=bitarray([False] * len(self.F1)))
 
-        with open(self.dataset_file) as fInput:
+        with open(self.dataset_file, encoding='utf-8-sig') as fInput:
             reader = csv.reader(fInput, delimiter=self.delimiter)
             for transaction in reader:
                 # Removing infrequent items from transaction,
@@ -255,8 +255,8 @@ class NegFIN:
         # Create itemset(s)
         self.__create_itemsets(N, itemset_buffer, N_itemset_length, FIS_parent_buffer, FIS_parent_length)
 
-        number_of_childeren = len(N.children)
-        for childIndex in range(number_of_childeren):
+        number_of_children = len(N.children)
+        for childIndex in range(number_of_children):
             child = N.children[0]
             itemset_buffer[N_itemset_length] = child.item
             del N.children[0] # We delete this node since it is not used anymore.
