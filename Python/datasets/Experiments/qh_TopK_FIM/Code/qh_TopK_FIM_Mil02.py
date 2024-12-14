@@ -4,7 +4,7 @@ import json
 
 class qh_TopK_FIM:
 
-    def __init__(self, dataset_file, topK, delimiter=' ', sparseData=True, bitSetMode=False):
+    def __init__(self, dataset_file, topK, delimiter=' ', sparseData=True):
         self.dataset_file = dataset_file
         self.minSup = None  # The relative minimum support
         self.min_count = None  # The absolute minimum support 
@@ -13,7 +13,6 @@ class qh_TopK_FIM:
         self.execution_time = None # Overall time of mining
         self.topK = topK #User defined Tok-K threshold
         self.sparseData=sparseData
-        self.bitSetMode=bitSetMode
         self.data = None # stores original data in its vertical representation (Key is the 1-item while value is a list of all the transactions containing that item)
         self.itemDict = dict() # transform the items to numbers for speed and efficiency
         self.finalTopK = None #for showing final results
@@ -48,25 +47,14 @@ class qh_TopK_FIM:
                 #     vR[item] = []  # Initialize a new list if the key is not in the dictionary
                 # vR[item].append(transIndex)  # Append the transaction index to the list                
 
-        if self.bitSetMode:
-            vBitSet=dict()
-            # for key, value in vR.items()[:self.topK-1]:
-            for index, (key, value) in enumerate(vR.items()):
-                if index>=self.topK: 
-                    break
-                vBitSet[key] = _bitPacker(vR[key], transIndex)
-            self.data=vBitSet
-        else:
-            self.data=vR
+        self.data=vR
 
     # Fills the topKList with the top-K 1-item itemsets.
     # It also initializes the quick heap for first and last time.
     def firstTopKList(self):
         item1TopKList = {} 
-        for index, (key, value) in enumerate(self.data.items()):
-            if index>=self.topK: break
-            item1TopKList[key] =int.bit_count(value)
-            #item1TopKList[key] = len(value)
+        for key, value in self.data.items():
+            item1TopKList[key] = len(value)
 
         item1TopKList, self.min_count = self.getTopKFI(item1TopKList)
 
@@ -157,10 +145,8 @@ class qh_TopK_FIM:
                     if prefixA == prefixB:
 
                         if self.sparseData:
-                            transactions=self.data[classA] & self.data[classB]
-                            support=int.bit_count(transactions)
-                            # transactions=set(self.data[classA]) & set(self.data[classB])
-                            # support = len(transactions)
+                            transactions=set(self.data[classA]) & set(self.data[classB])
+                            support = len(transactions)
                         else:
                             # (+11)
                             if level==1: #In level 1 we have tidSets
@@ -179,8 +165,7 @@ class qh_TopK_FIM:
                             # key = prefixA + items
                             # key = ",".join(key)
 
-                            self.data[key] = transactions
-                            # self.data[key] = list(transactions) #add the frequent itemset to vertical database because it would help finding the superSet candidates.
+                            self.data[key] = list(transactions) #add the frequent itemset to vertical database because it would help finding the superSet candidates.
                             nextLevelTopK[key] = support
                             
                     iB+=1
@@ -260,19 +245,3 @@ class FixedSizeHeap:
     
     def __str__(self):
         return "\n".join(map(str, self.heapList))
-    
-def _bitPacker(data, maxIndex):
-    """
-
-    It takes the data and maxIndex as input and generates integer as output value.
-
-    :param data: it takes data as input.
-    :type data: int or float
-    :param maxIndex: It converts the data into bits By taking the maxIndex value as condition.
-    :type maxIndex: int
-    """
-    packed_bits = 0
-    for i in data:
-        packed_bits |= 1 << (maxIndex - i)
-
-    return packed_bits

@@ -1,0 +1,9 @@
+{
+    "Algorithm": "Eclat_pyECLAT_py",
+    "Language": "python",
+    "library": "mlxtend",
+    "minSup": 0.5,
+    "totalFI": "0",
+    "Runtime": 0.31258606910705566,
+    "Memory": 87666688
+}

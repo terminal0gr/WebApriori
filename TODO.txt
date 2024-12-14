@@ -185,6 +185,7 @@ TKFIM (Top-K)
                   
     +10 (5% faster) Collect only the first topK itemsets of listOFKeys. the rest are discarded.
     +11 Improved diffSet computation
+    +12 TODO bitset improvement for TopK 1-items
 
         Top K frequent items via differenecially private Fp-Trees
         Mining Top-K frequent Itemsets throui progressive sampling

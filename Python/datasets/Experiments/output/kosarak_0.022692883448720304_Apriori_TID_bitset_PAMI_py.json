@@ -1,0 +1,9 @@
+{
+    "Algorithm": "Apriori_TID_bitset",
+    "Language": "python",
+    "library": "PAMI",
+    "minSup": 0.022692883448720304,
+    "totalFI": 100,
+    "Runtime": 58.453993797302246,
+    "Memory": 653295616
+}
