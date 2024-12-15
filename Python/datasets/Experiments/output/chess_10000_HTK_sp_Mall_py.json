@@ -1,9 +1,9 @@
 {
-    "Algorithm": "TKFIM",
+    "Algorithm": "HTK_sp",
     "Language": "python",
     "library": "Mall",
     "minSup": 0.7897371714643304,
     "totalFI": 10028,
-    "Runtime": 32.23649621009827,
-    "Memory": 780779520
+    "Runtime": 24.613664388656616,
+    "Memory": 739151872
 }

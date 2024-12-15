@@ -171,24 +171,25 @@ TKFIM (Top-K)
     +8 Use of a quick heap structure to maintain the Top-K support values with insert and getMinSup functions DIRECTLY (reduced about a magnitude the mining time)
     +9 use of intersection instead of diffSet (Quicker in most cases) (kept both ways with parameter) Could it be automatic the alteration between?
        chess  100 ->   14,9s       original implementation
-                  ->    0,033s 79MB with diffset (True)
-                  ->    0.077s 84MB with intersection (False)
-                  ->    0,6s   84MB with intersection
+                  ->    0,055s 30MB with diffset
+                  ->    0,045s 28MB with intersection, bitSet
+                  ->    0.101s 36MB with intersection
+                  ->    0,6s   84MB with intersection first stage
              1000 -> 2024,6        original implementation
-                  ->    0,58s 105MB with diffset (True)
-                  ->    1,25s 153MB with intersection (False)
-                  ->    8,0s  151MB with intersection
-                  ->   30,5s  163MB with original diffsets
+                  ->    0,530s  56MB with diffset
+                  ->    0,150s  31MB with intersection, bitSet
+                  ->    1,210s 103MB with intersection
+                  ->    8,000s 151MB with intersection first stage
+                  ->   30,500s 163MB with "original" diffsets
             10000 -> 
-                  ->   24,80s 400MB with diffset (True)
-                  ->   32,24s 781MB with intersection (False)
+                  ->   17,260s 357MB with diffset
+                  ->   12,920s  57MB with intersection, bitSet
+                  ->   24,620s 739MB with intersection
                   
     +10 (5% faster) Collect only the first topK itemsets of listOFKeys. the rest are discarded.
     +11 Improved diffSet computation
-    +12 TODO bitset improvement for TopK 1-items
-
-        Top K frequent items via differenecially private Fp-Trees
-        Mining Top-K frequent Itemsets throui progressive sampling
+    +12 Use tuple instead of string for self.data dictionary (gained speed and memory consumption)
+    +13 TODO bitset improvement for TopK 1-items
 
         scimago for checking 
 

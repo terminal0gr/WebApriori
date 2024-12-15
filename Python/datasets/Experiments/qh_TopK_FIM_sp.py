@@ -3,11 +3,11 @@ import json
 import psutil
 
 datasetName='chess.dat'  
-topK=10000
+topK=1000
 separator=' '
-datasetName='kosarak.dat' 
-topK=100
-separator=' '
+# datasetName='kosarak.dat' 
+# topK=100
+# separator=' '
 # datasetName='accidents.dat' 
 # topK=100
 # separator=' '
@@ -19,7 +19,7 @@ separator=' '
 # separator=';'
 
 sparseData=True #tidSets (True) mode instead of diffSets (False)
-bitSetMode=True #If bitSet will be used in transformation of the vertical database representation 
+bitSetMode=False #If bitSet will be used in transformation of the vertical database representation 
 
 
 # datasetName='1_L-0023.csv' 
@@ -39,11 +39,10 @@ filepath=os.path.join('datasets', datasetName)
 
 ############################
 AlgorithmName='qh_TopK_FIM_sp'
-from qh_TopK_FIM.Code.qh_TopK_FIM_Mil02 import qh_TopK_FIM
+from qh_TopK_FIM.Code.qh_TopK_FIM import qh_TopK_FIM
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
-# TKalgo = qh_TopK_FIM(filepath, topK, separator, sparseData, bitSetMode)
-TKalgo = qh_TopK_FIM(filepath, topK, separator, sparseData)
-TKalgo.readDatasetFile() 
+
+TKalgo = qh_TopK_FIM(filepath, topK, separator, sparseData, bitSetMode)
 TKalgo.mine()
 
 process = psutil.Process(os.getpid())

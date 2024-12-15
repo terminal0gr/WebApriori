@@ -1,9 +1,9 @@
 {
-    "Algorithm": "qh_TopK_FIM_sp_bs",
+    "Algorithm": "HTK_sp_bs",
     "Language": "python",
     "library": "Mall",
     "minSup": 0.7897371714643304,
     "totalFI": 10028,
-    "Runtime": 25.07639765739441,
-    "Memory": 57802752
+    "Runtime": 12.291721820831299,
+    "Memory": 57831424
 }
