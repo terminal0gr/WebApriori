@@ -151,18 +151,18 @@ Goethals Eclat py: http://adrem.uantwerpen.be/~goethals/software/files/eclat.py
     4. Code for computing running time nad memory consumption.
 
 ######################
-TKFIM (Top-K)
+HTKMiner (Top-K)
     +1 Seems quickest from its precedetors
 
-    -1 Inability to manipulate all transactional datasets becuase of pandas dataframe (Can't handle efficiently 1-MBL Type datasets)
-    -2 It does not find exactly the first Top-K. It finds the first Top-K occurenses of different support itemsets
+    -1 Inability to manipulate all transactional datasets because of pandas dataframe (Can't handle efficiently 1-MBL Type datasets)
+    -2 It does not find exactly the first Top-K. It finds the first Top-K occurrences of different support itemsets
     -3 In some occasions it cannot find all the frequent itemsets (Corrected in Contribution +5)
 
     chess  100 -> found 182? - > Total Execution Time: 14.965497016906738 Seconds
 
     Contributions: _Mall.py
     +1 manipulate all transactional datasets (1-MBL) with a lists of lists structure instead of dataframe
-    +2 class wrapping of the algorithm from better manipulation and integreation
+    +2 class wrapping of the algorithm from better manipulation and integration
     +3 quickest read of the dataset file
     +4 better computation of the statistics (time and memory consuption)
     +5 Transformed to find the exact Top-K itemsets plus all itemsets that have support equal to minSup.
@@ -189,7 +189,11 @@ TKFIM (Top-K)
     +10 (5% faster) Collect only the first topK itemsets of listOFKeys. the rest are discarded.
     +11 Improved diffSet computation
     +12 Use tuple instead of string for self.data dictionary (gained speed and memory consumption)
-    +13 TODO bitset improvement for TopK 1-items
+    +13 bitset in both intersection and diffSet implementations
+
+    TODO: FIM Output in case of bitset
+    TODO: FIM Output in case of bitset
+    TODO: FIM Output in case of bitset
 
         scimago for checking 
 

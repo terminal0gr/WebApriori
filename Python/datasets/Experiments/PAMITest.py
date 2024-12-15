@@ -150,26 +150,26 @@ print(AlgorithmName + " Done!")
 # ############################
 
 # ############################
-# AlgorithmName='DEclat'
-# from PAMI.frequentPattern.basic import ECLATDiffset as PAMI
-# obj1 = PAMI.ECLATDiffset(iFile=filepath, minSup=minSup, sep=separator)
-# # from editedCode.PAMIECLATDiffset import ECLATDiffset as PAMIedited
-# # obj1 = PAMIedited.ECLATDiffset(data, minSup=minSup, sep=separator)
-# obj1.mine()
-# # frequentPatterns= obj1.getPatternsAsDataFrame()
-# # frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
-# # print(frequentPatternsDF)
-# outputDict = {}
-# outputDict['Algorithm']=AlgorithmName
-# outputDict['Language']="python"
-# outputDict['library']="PAMI"
-# outputDict['minSup']=minSup
-# outputDict['totalFI']=len(obj1._finalPatterns.items())
-# outputDict['Runtime']=obj1.getRuntime()
-# outputDict['Memory']=obj1.getMemoryUSS()
-# file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
-# json.dump(outputDict, file, indent=4)
-# file.close() 
-# json.dumps(outputDict, indent=4)
-# print(AlgorithmName + " Done!")
+AlgorithmName='DEclat'
+from PAMI.frequentPattern.basic import ECLATDiffset as PAMI
+obj1 = PAMI.ECLATDiffset(iFile=filepath, minSup=minSup, sep=separator)
+# from editedCode.PAMIECLATDiffset import ECLATDiffset as PAMIedited
+# obj1 = PAMIedited.ECLATDiffset(data, minSup=minSup, sep=separator)
+obj1.mine()
+# frequentPatterns= obj1.getPatternsAsDataFrame()
+# frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
+# print(frequentPatternsDF)
+outputDict = {}
+outputDict['Algorithm']=AlgorithmName
+outputDict['Language']="python"
+outputDict['library']="PAMI"
+outputDict['minSup']=minSup
+outputDict['totalFI']=len(obj1._finalPatterns.items())
+outputDict['Runtime']=obj1.getRuntime()
+outputDict['Memory']=obj1.getMemoryUSS()
+file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
+json.dump(outputDict, file, indent=4)
+file.close() 
+json.dumps(outputDict, indent=4)
+print(AlgorithmName + " Done!")
 # ############################

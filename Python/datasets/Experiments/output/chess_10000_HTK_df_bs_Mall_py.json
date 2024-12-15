@@ -1,0 +1,9 @@
+{
+    "Algorithm": "HTK_df_bs",
+    "Language": "python",
+    "library": "Mall",
+    "minSup": 0.7897371714643304,
+    "totalFI": 10028,
+    "Runtime": 25.84936547279358,
+    "Memory": 57815040
+}

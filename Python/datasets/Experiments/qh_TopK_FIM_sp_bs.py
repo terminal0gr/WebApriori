@@ -4,10 +4,10 @@ import psutil
 
 
 sparseData=False #tidSets (True) mode instead of diffSets (False)
-bitSetMode=True #If bitSet will be used in transformation of the vertical database representation 
+bitSetMode=False #If bitSet will be used in transformation of the vertical database representation 
 
 datasetName='chess.dat'  
-topK=100
+topK=10000
 separator=' '
 datasetName='kosarak.dat' 
 topK=100
@@ -21,6 +21,9 @@ separator=' '
 # datasetName='1_L-0023.csv'
 # topK=1000
 # separator=';'
+# datasetName='FpGrowthSampleWithoutQuotes.txt'  
+# topK=5
+# separator=','
 
 
 
@@ -46,7 +49,7 @@ if sparseData: AlgorithmName+="_sp"
 else: AlgorithmName+="_df"
 if bitSetMode: AlgorithmName+="_bs"
 
-from qh_TopK_FIM.Code.qh_TopK_FIM import qh_TopK_FIM
+from Python.datasets.Experiments.qh_TopK_FIM.Code.HTKMiner import qh_TopK_FIM
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
 
 TKalgo = qh_TopK_FIM(filepath, topK, separator, sparseData, bitSetMode)

@@ -2,8 +2,12 @@ import os
 import json
 import psutil
 
+
+sparseData=False #tidSets (True) mode / diffSets (False)
+bitSetMode=False #If bitSet will be used in transformation of the vertical database representation 
+
 datasetName='chess.dat'  
-topK=1000
+topK=100
 separator=' '
 # datasetName='kosarak.dat' 
 # topK=100
@@ -17,9 +21,11 @@ separator=' '
 # datasetName='1_L-0023.csv'
 # topK=1000
 # separator=';'
+# datasetName='FpGrowthSampleWithoutQuotes.txt'  
+# topK=5
+# separator=','
 
-sparseData=True #tidSets (True) mode instead of diffSets (False)
-bitSetMode=False #If bitSet will be used in transformation of the vertical database representation 
+
 
 
 # datasetName='1_L-0023.csv' 
@@ -38,11 +44,15 @@ ext2='_Mall_py.json'
 filepath=os.path.join('datasets', datasetName)
 
 ############################
-AlgorithmName='qh_TopK_FIM_sp'
-from qh_TopK_FIM.Code.qh_TopK_FIM import qh_TopK_FIM
+AlgorithmName='HTKMiner'
+if sparseData: AlgorithmName+="_sp"
+else: AlgorithmName+="_df"
+if bitSetMode: AlgorithmName+="_bs"
+
+from Python.datasets.Experiments.HTKMiner.Code.HTKMiner import HTKMiner
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
 
-TKalgo = qh_TopK_FIM(filepath, topK, separator, sparseData, bitSetMode)
+TKalgo = HTKMiner(filepath, topK, separator, sparseData, bitSetMode)
 TKalgo.mine()
 
 process = psutil.Process(os.getpid())

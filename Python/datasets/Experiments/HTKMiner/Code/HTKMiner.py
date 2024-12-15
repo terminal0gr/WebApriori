@@ -3,7 +3,7 @@ import time as t
 import sys
 import json
 
-class qh_TopK_FIM:
+class HTKMiner: 
 
     def __init__(self, dataset_file, topK, delimiter=' ', sparseData=True, bitSetMode=False):
         self.dataset_file = dataset_file
@@ -92,7 +92,6 @@ class qh_TopK_FIM:
 
         return topKDict, minSup
 
-
     def getTopKFI(self, topKItemSets):
         # The procedure returns the dictionary of topK ItemSets from a given set of itemsets with their support in descending order
         # The count of ItemSets may differ if there are itemsets with the same minimum support which are also included
@@ -164,22 +163,12 @@ class qh_TopK_FIM:
 
                     prefixA=classA[:-1]
                     prefixB=classB[:-1]
-                    # prefixA = classA.split(",")
-                    # prefixB = classB.split(",")
 
                     itemA = classA[-1]
                     itemB = classB[-1]
-                    # itemA = prefixA.pop(level-1)
-                    # itemB = prefixB.pop(level-1)
 
                     if prefixA == prefixB:
 
-                        # if self.sparseData:
-                            # transactions=self.data[classA] & self.data[classB]
-                            # support=int.bit_count(transactions)
-                            # transactions=set(self.data[classA]) & set(self.data[classB])
-                            # support = len(transactions)
-                        # else:
                         # (+11)
                         if level==1: #In level 1 we have tidSets
                             transactions = set(self.data[classA])-set(self.data[classB])
@@ -271,27 +260,19 @@ class qh_TopK_FIM:
 
                     prefixA=classA[:-1]
                     prefixB=classB[:-1]
-                    # prefixA = classA.split(",")
-                    # prefixB = classB.split(",")
 
                     itemA = classA[-1]
                     itemB = classB[-1]
-                    # itemA = prefixA.pop(level-1)
-                    # itemB = prefixB.pop(level-1)
 
                     if prefixA == prefixB:
 
-                        # if self.sparseData:
-                            # transactions=self.data[classA] & self.data[classB]
-                            # support=int.bit_count(transactions)
-                            # transactions=set(self.data[classA]) & set(self.data[classB])
-                            # support = len(transactions)
-                        # else:
                         # (+11)
                         if level==1: #In level 1 we have tidSets
-                            transactions = self.data[classA]-self.data[classB]
+                            # bitwise difference of 2 numbers e.g. 29 (11101) and 27 (11011) 
+                            # 29 & (29 ^ 27) = 4 (00100)
+                            transactions=self.data[classA]&(self.data[classA]^self.data[classB])
                         else: #In next levels we have diffSets (see paper 'Fast Vertical mining using Diffsets' page 7)
-                            transactions = self.data[classB]-self.data[classA]
+                            transactions=self.data[classB]&(self.data[classB]^self.data[classA])
                         support=currentLevelTopK[classA]-int.bit_count(transactions)
 
                         if support >= self.min_count:
@@ -563,10 +544,13 @@ class qh_TopK_FIM:
 
     def writeFIM(self, outputFile=None): #outputs the frequent itemsets in json format
         print("TODO assemble FIM for output.")
-        # if (outputFile):
-        #     # Write the dictionary to a file in pretty JSON format
-        #     with open(outputFile, "w") as file:
-        #         json.dump(self.finalTopK, file, indent=4)
+        if (outputFile):
+            if self.sparseData:
+                print("a")
+            else:
+                # Write the dictionary to a file in pretty JSON format
+                with open(outputFile, "w") as file:
+                    json.dump(self.finalTopK, file, indent=4)
 
 # implementation of the quick heap which keeps only the Top-K supports in descending order
 # Quick and memory saver.
@@ -599,7 +583,8 @@ class FixedSizeHeap:
     
 def _bitPacker(data, maxIndex):
     """
-
+    Thank you Rage Uday Kiran (PAMI) For this wonderful code!
+    
     It takes the data and maxIndex as input and generates integer as output value.
 
     :param data: it takes data as input.
