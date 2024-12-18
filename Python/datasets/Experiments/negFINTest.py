@@ -14,14 +14,15 @@ import psutil
 # datasetName='accidents.dat' 
 # minSup=0.8196999850080692
 # separator=' '
+datasetName='pumsb.dat'
+minSup=0.867879133874322
+separator=' '
 # datasetName='T10I4D100K.dat'
 # minSup=0.00522
 # separator=' '
-
-
-datasetName='1_L-0023.csv' 
-minSup=0.012266517981600222
-separator=';'
+# datasetName='1_L-0023.csv' 
+# minSup=0.012266517981600222
+# separator=';'
 # datasetName='FpGrowthSampleWithoutQuotes.txt' 
 # minSup=0.6
 # separator=','
