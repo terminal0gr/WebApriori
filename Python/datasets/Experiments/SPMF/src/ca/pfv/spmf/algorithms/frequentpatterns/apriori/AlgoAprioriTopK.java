@@ -32,6 +32,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.PriorityQueue;
 
+import org.json.JSONObject;
+
 import ca.pfv.spmf.algorithms.ArraysAlgos;
 import ca.pfv.spmf.patterns.itemset_array_integers_with_count.Itemset;
 import ca.pfv.spmf.patterns.itemset_array_integers_with_count.Itemsets;
@@ -182,7 +184,7 @@ public class AlgoAprioriTopK {
 			String[] lineSplited = line.split(" ");
 
 			// create an array of int to store the items in this transaction
-			int transaction[] = new int[lineSplited.length];
+			int transaction[] = new int[lineSplited.length]; 
 
 			// for each item in this line (transaction)
 			for (int i = 0; i < lineSplited.length; i++) {
@@ -560,6 +562,18 @@ public class AlgoAprioriTopK {
 		System.out.println(" Maximum memory usage : " + MemoryLogger.getInstance().getMaxMemory() + " mb");
 		System.out.println(" Total time ~ " + (endTimestamp - startTimestamp) + " ms");
 		System.out.println("===================================================");
+	}
+
+	public JSONObject printStatsNew(String algorithm) {
+		JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Language", "java");
+        jsonObject.put("library", "SPMF");
+        jsonObject.put("Algorithm", algorithm);
+        jsonObject.put("minSup", (double)nItemsets.peek().getAbsoluteSupport()/databaseSize);
+        jsonObject.put("totalFI", nItemsets.size());
+        jsonObject.put("Runtime", (endTimestamp - startTimestamp)/1000.);
+        jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
+        return jsonObject;
 	}
 
 	/**
