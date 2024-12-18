@@ -1,13 +1,14 @@
 import os
+import sys
 import json
 import psutil
 
 
 sparseData=False #tidSets (True) mode / diffSets (False)
-bitSetMode=False #If bitSet will be used in transformation of the vertical database representation 
+bitSetMode=True #If bitSet will be used in transformation of the vertical database representation 
 
 datasetName='chess.dat'  
-topK=100
+topK=1000
 separator=' '
 # datasetName='kosarak.dat' 
 # topK=100
@@ -38,6 +39,52 @@ separator=' '
 # minSup=0.4
 # separator=','
 
+
+'''
+Call arguments          
+1) datasetName  
+    The name of the dataset. The program expect to find it in a file named dataset
+2) TopK 
+    The number of Top-K frequent itemsets that the user demands 
+3) separator 
+    The separator of the dataset For space, write " ".
+4) sparseData 
+    True  -> tidSets  with intersection 
+    False -> diffSets with difference 
+5) bitSetMode
+    True  -> Transform of items transactions to bitsets
+    False -> items transactions are represented by integers
+'''
+#identity
+if len(sys.argv)>1:
+    datasetName=str(sys.argv[1])
+
+if len(sys.argv)>2:
+    topK=int(sys.argv[2])
+
+if len(sys.argv)>3:
+    separator=str(sys.argv[3])
+
+if len(sys.argv)>4:
+    if str(sys.argv[4]) in ['True', 'true', '1']:
+        sparseData=True
+    else:
+        sparseData=False
+
+if len(sys.argv)>5:
+    if str(sys.argv[5]) in ['True', 'true', '1']:
+        bitSetMode=True
+    else:
+        bitSetMode=False
+
+################################
+################################
+#End of call arguments    
+################################
+################################
+
+
+
 ext1='_Mall_py.fim' 
 ext2='_Mall_py.json'
 
@@ -48,8 +95,11 @@ AlgorithmName='HTKMiner'
 if sparseData: AlgorithmName+="_sp"
 else: AlgorithmName+="_df"
 if bitSetMode: AlgorithmName+="_bs"
+print(sparseData)
+print(bitSetMode)
+print(AlgorithmName)
 
-from Python.datasets.Experiments.HTKMiner.Code.HTKMiner import HTKMiner
+from HTKMiner.Code.HTKMiner import HTKMiner
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
 
 TKalgo = HTKMiner(filepath, topK, separator, sparseData, bitSetMode)

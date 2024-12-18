@@ -176,15 +176,17 @@ HTKMiner (Top-K)
                   ->    0.101s 36MB with intersection
                   ->    0,6s   84MB with intersection first stage
              1000 -> 2024,6        original implementation
-                  ->    0,530s  56MB with diffset
-                  ->    0,150s  31MB with intersection, bitSet
-                  ->    1,210s 103MB with intersection
+                  ->    0,523s  38MB with diffset
+                  ->    0,152s  12MB with diffset, bitSet
+                  ->    1,199s  85MB with intersection
+                  ->    0,151s  13MB with intersection, bitSet
                   ->    8,000s 151MB with intersection first stage
                   ->   30,500s 163MB with "original" diffsets
             10000 -> 
-                  ->   17,260s 357MB with diffset
-                  ->   12,920s  57MB with intersection, bitSet
-                  ->   24,620s 739MB with intersection
+                  ->   16.693s 341MB with diffset
+                  ->   11,712s  39MB with diffset, bitSet
+                  ->   23,767s 722MB with intersection
+                  ->   11,764s  38MB with intersection, bitSet
                   
     +10 (5% faster) Collect only the first topK itemsets of listOFKeys. the rest are discarded.
     +11 Improved diffSet computation

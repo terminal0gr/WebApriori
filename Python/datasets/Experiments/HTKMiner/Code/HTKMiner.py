@@ -543,14 +543,11 @@ class HTKMiner:
         print(f"Relative minSup:{self.minSup}")
 
     def writeFIM(self, outputFile=None): #outputs the frequent itemsets in json format
-        print("TODO assemble FIM for output.")
         if (outputFile):
-            if self.sparseData:
-                print("a")
-            else:
-                # Write the dictionary to a file in pretty JSON format
-                with open(outputFile, "w") as file:
-                    json.dump(self.finalTopK, file, indent=4)
+            # Convert tuple keys to strings since JSON does not support tuple keys
+            data = {", ".join(map(str, key)): value for key, value in self.finalTopK.items()}
+            with open(outputFile, "w") as file:
+                json.dump(data, file, indent=4)
 
 # implementation of the quick heap which keeps only the Top-K supports in descending order
 # Quick and memory saver.
