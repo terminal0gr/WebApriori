@@ -1,9 +1,9 @@
 {
-    "Algorithm": "TKFIM",
+    "Algorithm": "HTKMiner_sp_bs",
     "Language": "python",
     "library": "Mall",
     "minSup": 0.022692883448720304,
     "totalFI": 100,
-    "Runtime": 11.294936418533325,
-    "Memory": 692588544
+    "Runtime": 46.14609146118164,
+    "Memory": 90992640
 }

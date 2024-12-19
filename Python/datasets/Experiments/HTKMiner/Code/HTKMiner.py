@@ -2,6 +2,8 @@
 import time as t
 import sys
 import json
+from concurrent.futures import ProcessPoolExecutor
+from functools import partial
 
 class HTKMiner: 
 
@@ -28,11 +30,15 @@ class HTKMiner:
             #TODO Documentation
             #TODO Documentation
 
-            # Vertical dataset representation
+            # Vertical dataset representation (temp)
             vR={}
+            # Ensures the uniquity of items (temp)
             iSet=set()
+            # The integer value given to each item
             itemIndex=0
+            # The Tid of each transaction
             transIndex=0
+            # The next 2 dictionaries are used to implement one bidirectional dictionary
             itemDict=dict()
             itemDictReversed=dict()
             for line in f:
@@ -45,6 +51,7 @@ class HTKMiner:
                         vR[(itemIndex,)]=list()
                         iSet.add(item)
                     vR[(itemDictReversed[item],)].append(transIndex)
+            # The # of transactions in dataset
             self.num_of_transactions=transIndex
 
         topKItemSetsList = sorted(((key, len(value)) for key, value in vR.items()), key=lambda x: x[1], reverse=True)
@@ -57,8 +64,16 @@ class HTKMiner:
         vR = {key: vR[key] for key in item1TopKList if key in vR}
 
         if self.bitSetMode:
+
+            # # if __name__ == '__main__':
+            # if __name__ == 'HTKMiner.Code.HTKMiner':
+            #     # Parallel processing
+            #     with ProcessPoolExecutor() as executor:
+            #         # Map each dictionary value to the costly operation
+            #         partialParallelOperation = partial(ParallelbitPackerOp, transIndex)
+            #         # result_partial = list(executor.map(partialParallelOperation, vR.values()))
+            #         vBitSet = {key: result for key, result in zip(vR.keys(), executor.map(partialParallelOperation, vR.values()))}
             vBitSet=dict()
-            # for key, value in vR.items()[:self.topK-1]:
             for key, value in vR.items():
                 vBitSet[key] = _bitPacker(vR[key], transIndex)
             self.data=vBitSet
@@ -66,6 +81,7 @@ class HTKMiner:
             self.data = vR
         
         return item1TopKList
+
 
     def InitialTopKFIList(self, topKItemSetsList):
         ### It works only for the first 1-item itemSets!!!
@@ -594,3 +610,8 @@ def _bitPacker(data, maxIndex):
         packed_bits |= 1 << (maxIndex - i)
 
     return packed_bits
+
+# Define a costly function
+def ParallelbitPackerOp(value, transCount):
+    return [_bitPacker(value, transCount)]
+    # return [x**2 for x in value]  # Example of a costly computation
