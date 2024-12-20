@@ -1,0 +1,9 @@
+{
+    "Algorithm": "HTK_sp",
+    "Language": "python",
+    "library": "Mall",
+    "minSup": 0.945244055068836,
+    "totalFI": 102,
+    "Runtime": 0.1029970645904541,
+    "Memory": 35536896
+}

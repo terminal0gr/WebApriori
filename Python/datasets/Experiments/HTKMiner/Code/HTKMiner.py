@@ -21,6 +21,7 @@ class HTKMiner:
         self.finalTopK = None #for showing final results
         self.maxLevel=0 # The max length of itemsets grater than minSup
         self.heap=FixedSizeHeap(topK) #Tok-K absolute support values heap initialization
+        self.itemDict=None # map item names to simple integers for better performance
 
     def readDatasetFile(self):
 
@@ -39,20 +40,25 @@ class HTKMiner:
             # The Tid of each transaction
             transIndex=0
             # The next 2 dictionaries are used to implement one bidirectional dictionary
-            itemDict=dict()
+            self.itemDict=dict()
             itemDictReversed=dict()
+            b1=t.time()
             for line in f:
                 transIndex+=1
                 for item in line.strip().split(sep=self.delimiter):
                     if item not in iSet:
                         itemIndex+=1
-                        itemDict[itemIndex]=item
+                        self.itemDict[itemIndex]=item
                         itemDictReversed[item]=itemIndex
-                        vR[(itemIndex,)]=list()
+                        vR[(itemIndex,)]=[transIndex]
                         iSet.add(item)
-                    vR[(itemDictReversed[item],)].append(transIndex)
+                    else:
+                        vR[(itemDictReversed[item],)].append(transIndex)
             # The # of transactions in dataset
             self.num_of_transactions=transIndex
+
+            b2=t.time()
+            print(f"Read Time: {(b2-b1):.3f} Seconds")
 
         topKItemSetsList = sorted(((key, len(value)) for key, value in vR.items()), key=lambda x: x[1], reverse=True)
 
@@ -62,6 +68,9 @@ class HTKMiner:
         self.heap.initialFill(list(item1TopKList.values()))
 
         vR = {key: vR[key] for key in item1TopKList if key in vR}
+
+        b3=t.time()
+        print(f"intermediate Time: {(b3-b2):.3f} Seconds")
 
         if self.bitSetMode:
 
@@ -75,11 +84,14 @@ class HTKMiner:
             #         vBitSet = {key: result for key, result in zip(vR.keys(), executor.map(partialParallelOperation, vR.values()))}
             vBitSet=dict()
             for key, value in vR.items():
-                vBitSet[key] = _bitPacker(vR[key], transIndex)
+                vBitSet[key] = _bitPacker(value, transIndex)
             self.data=vBitSet
         else:
             self.data = vR
         
+
+        print(f"bitset Time: {(t.time()-b3):.3f} Seconds")
+
         return item1TopKList
 
 
@@ -209,20 +221,22 @@ class HTKMiner:
                     iB+=1
                 iA+=1
 
-            # sort new level itemsets by their support value in descending order
-            nextLevelTopK = sorted(nextLevelTopK.items(), key = lambda itemset:(itemset[1], itemset[0]), reverse=True)
+            # filtered list with only the itemsets of that level that are gtreater or equa to current minSup 
+            # and ordered in support descending order 
+            nextLevelTopK = sorted([(key, value) for key, value in nextLevelTopK.items() if value >= self.min_count],
+                                     key=lambda x: x[1],  # Sort by the second element (value)
+                                     reverse=True         # Descending order
+                            )
 
             # Add in the final TopK the new level frequent itemsets that have support value greater than minSup threshold
             for value in nextLevelTopK:
-                if value[1]<self.min_count:
-                    break
                 topKFI[value[0]]=value[1]
 
             # return the absolute TopK itemsets so far
             topKFI, self.min_count = self.getTopKFI(topKFI)
 
             if(len(nextLevelTopK) == 0):
-                level = 0
+                level = 0 # Declares the end of procedure
             else:
                 level += 1
 
@@ -304,20 +318,22 @@ class HTKMiner:
                     iB+=1
                 iA+=1
 
-            # sort new level itemsets by their support value in descending order
-            nextLevelTopK = sorted(nextLevelTopK.items(), key = lambda itemset:(itemset[1], itemset[0]), reverse=True)
+            # filtered list with only the itemsets of that level that are gtreater or equa to current minSup 
+            # and ordered in support descending order 
+            nextLevelTopK = sorted([(key, value) for key, value in nextLevelTopK.items() if value >= self.min_count],
+                                     key=lambda x: x[1],  # Sort by the second element (value)
+                                     reverse=True         # Descending order
+                            )
 
             # Add in the final TopK the new level frequent itemsets that have support value greater than minSup threshold
             for value in nextLevelTopK:
-                if value[1]<self.min_count:
-                    break
                 topKFI[value[0]]=value[1]
 
             # return the absolute TopK itemsets so far
             topKFI, self.min_count = self.getTopKFI(topKFI)
 
             if(len(nextLevelTopK) == 0):
-                level = 0
+                level = 0 # Declares the end of procedure
             else:
                 level += 1
 
@@ -378,18 +394,8 @@ class HTKMiner:
 
                     if prefixA == prefixB:
 
-                        # if self.sparseData:
-                        # transactions=self.data[classA] & self.data[classB]
-                        # support=int.bit_count(transactions)
                         transactions=set(self.data[classA]) & set(self.data[classB])
                         support = len(transactions)
-                        # else:
-                        #     # (+11)
-                        #     if level==1: #In level 1 we have tidSets
-                        #         transactions = set(self.data[classA])-set(self.data[classB])
-                        #     else: #In next levels we have diffSets (see paper 'Fast Vertical mining using Diffsets' page 7)
-                        #         transactions = set(self.data[classB])-set(self.data[classA])
-                        #     support=currentLevelTopK[classA]-len(transactions)
 
                         if support >= self.min_count:
 
@@ -405,20 +411,22 @@ class HTKMiner:
                     iB+=1
                 iA+=1
 
-            # sort new level itemsets by their support value in descending order
-            nextLevelTopK = sorted(nextLevelTopK.items(), key = lambda itemset:(itemset[1], itemset[0]), reverse=True)
+            # filtered list with only the itemsets of that level that are gtreater or equa to current minSup 
+            # and ordered in support descending order 
+            nextLevelTopK = sorted([(key, value) for key, value in nextLevelTopK.items() if value >= self.min_count],
+                                     key=lambda x: x[1],  # Sort by the second element (value)
+                                     reverse=True         # Descending order
+                            )
 
             # Add in the final TopK the new level frequent itemsets that have support value greater than minSup threshold
             for value in nextLevelTopK:
-                if value[1]<self.min_count:
-                    break
                 topKFI[value[0]]=value[1]
 
             # return the absolute TopK itemsets so far
             topKFI, self.min_count = self.getTopKFI(topKFI)
 
             if(len(nextLevelTopK) == 0):
-                level = 0
+                level = 0 # Declares the end of procedure
             else:
                 level += 1
 
@@ -478,18 +486,10 @@ class HTKMiner:
 
                     if prefixA == prefixB:
 
-                        # if self.sparseData:
+                        # bitwise intersection
                         transactions=self.data[classA] & self.data[classB]
+                        # counts the bit that have 1 from the bit array of the number
                         support=int.bit_count(transactions)
-                            # transactions=set(self.data[classA]) & set(self.data[classB])
-                            # support = len(transactions)
-                        # else:
-                        #     # (+11)
-                        #     if level==1: #In level 1 we have tidSets
-                        #         transactions = set(self.data[classA])-set(self.data[classB])
-                        #     else: #In next levels we have diffSets (see paper 'Fast Vertical mining using Diffsets' page 7)
-                        #         transactions = set(self.data[classB])-set(self.data[classA])
-                        #     support=currentLevelTopK[classA]-len(transactions)
 
                         if support >= self.min_count:
 
@@ -506,20 +506,22 @@ class HTKMiner:
                     iB+=1
                 iA+=1
 
-            # sort new level itemsets by their support value in descending order
-            nextLevelTopK = sorted(nextLevelTopK.items(), key = lambda itemset:(itemset[1], itemset[0]), reverse=True)
+            # filtered list with only the itemsets of that level that are gtreater or equa to current minSup 
+            # and ordered in support descending order 
+            nextLevelTopK = sorted([(key, value) for key, value in nextLevelTopK.items() if value >= self.min_count],
+                                     key=lambda x: x[1],  # Sort by the second element (value)
+                                     reverse=True         # Descending order
+                            )
 
             # Add in the final TopK the new level frequent itemsets that have support value greater than minSup threshold
             for value in nextLevelTopK:
-                if value[1]<self.min_count:
-                    break
                 topKFI[value[0]]=value[1]
 
             # return the absolute TopK itemsets so far
             topKFI, self.min_count = self.getTopKFI(topKFI)
 
             if(len(nextLevelTopK) == 0):
-                level = 0
+                level = 0 # Declares the end of procedure
             else:
                 level += 1
 
@@ -561,7 +563,8 @@ class HTKMiner:
     def writeFIM(self, outputFile=None): #outputs the frequent itemsets in json format
         if (outputFile):
             # Convert tuple keys to strings since JSON does not support tuple keys
-            data = {", ".join(map(str, key)): value for key, value in self.finalTopK.items()}
+            # data = {", ".join(map(str, key)): value for key, value in self.finalTopK.items()}
+            data = {", ".join(self.itemDict[item] for item in key): value for key, value in self.finalTopK.items()}
             with open(outputFile, "w") as file:
                 json.dump(data, file, indent=4)
 
@@ -596,7 +599,7 @@ class FixedSizeHeap:
     
 def _bitPacker(data, maxIndex):
     """
-    Thank you Rage Uday Kiran (PAMI) For this wonderful code!
+    Thank you Rage Uday Kiran (PAMI) For this code!
     
     It takes the data and maxIndex as input and generates integer as output value.
 
@@ -607,7 +610,8 @@ def _bitPacker(data, maxIndex):
     """
     packed_bits = 0
     for i in data:
-        packed_bits |= 1 << (maxIndex - i)
+        # packed_bits |= 1 << (maxIndex - i)
+        packed_bits |= 1 << i
 
     return packed_bits
 

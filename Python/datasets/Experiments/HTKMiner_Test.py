@@ -7,21 +7,21 @@ import psutil
 sparseData=True #tidSets (True) mode / diffSets (False)
 bitSetMode=True #If bitSet will be used in transformation of the vertical database representation 
 
-# datasetName='chess.dat'  
-# topK=1000
-# separator=' '
-datasetName='kosarak.dat' 
+datasetName='chess.dat'  
 topK=100
 separator=' '
+# datasetName='kosarak.dat' 
+# topK=100
+# separator=' '
 # datasetName='accidents.dat' 
 # topK=100
 # separator=' '
 # datasetName='T10I4D100K.dat'
 # topK=1000
 # separator=' '
-# datasetName='1_L-0023.csv'
-# topK=1000
-# separator=';'
+datasetName='1_L-0023.csv'
+topK=1000
+separator=';'
 # datasetName='FpGrowthSampleWithoutQuotes.txt'  
 # topK=5
 # separator=','
@@ -95,33 +95,31 @@ AlgorithmName='HTKMiner'
 if sparseData: AlgorithmName+="_sp"
 else: AlgorithmName+="_df"
 if bitSetMode: AlgorithmName+="_bs"
-print(sparseData)
-print(bitSetMode)
-print(AlgorithmName)
 
 from HTKMiner.Code.HTKMiner import HTKMiner
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
 
-TKalgo = HTKMiner(filepath, topK, separator, sparseData, bitSetMode)
-TKalgo.mine()
+if __name__ == '__main__':
+    TKalgo = HTKMiner(filepath, topK, separator, sparseData, bitSetMode)
+    TKalgo.mine()
 
-process = psutil.Process(os.getpid())
-memoryUSS = process.memory_full_info().uss
+    process = psutil.Process(os.getpid())
+    memoryUSS = process.memory_full_info().uss
 
-TKalgo.writeFIM(outFimFilePath)
+    TKalgo.writeFIM(outFimFilePath)
 
-outputDict = {}
-outputDict['Algorithm']=AlgorithmName
-outputDict['Language']="python"
-outputDict['library']="Mall"
-outputDict['minSup']=TKalgo.minSup
-outputDict['totalFI']=len(TKalgo.finalTopK)
-outputDict['Runtime']=TKalgo.execution_time
-outputDict['Memory']=memoryUSS
-file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext2),'w')
-json.dump(outputDict, file, indent=4)
-file.close() 
-json.dumps(outputDict, indent=4)
-print(f"Memory:{memoryUSS}")
-print(AlgorithmName + " Done!")
-############################
+    outputDict = {}
+    outputDict['Algorithm']=AlgorithmName
+    outputDict['Language']="python"
+    outputDict['library']="Mall"
+    outputDict['minSup']=TKalgo.minSup
+    outputDict['totalFI']=len(TKalgo.finalTopK)
+    outputDict['Runtime']=TKalgo.execution_time
+    outputDict['Memory']=memoryUSS
+    file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext2),'w')
+    json.dump(outputDict, file, indent=4)
+    file.close() 
+    json.dumps(outputDict, indent=4)
+    print(f"Memory:{memoryUSS}")
+    print(AlgorithmName + " Done!")
+    ############################
