@@ -1,0 +1,9 @@
+{
+    "Algorithm": "qh_TopK_FIM",
+    "Language": "python",
+    "library": "Mall",
+    "minSup": 0.012266517981600222,
+    "totalFI": 1025,
+    "Runtime": 1.903249740600586,
+    "Memory": 32821248
+}

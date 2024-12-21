@@ -1,0 +1,9 @@
+{
+    "Runtime": 0.444,
+    "library": "SPMF",
+    "Language": "java",
+    "Memory": 405775664,
+    "minSup": 0.5,
+    "totalFI": 1272932,
+    "Algorithm": "DFIN"
+}

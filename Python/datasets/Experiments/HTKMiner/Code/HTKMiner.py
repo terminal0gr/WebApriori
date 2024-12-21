@@ -74,17 +74,17 @@ class HTKMiner:
 
         if self.bitSetMode:
 
-            # # if __name__ == '__main__':
-            # if __name__ == 'HTKMiner.Code.HTKMiner':
-            #     # Parallel processing
-            #     with ProcessPoolExecutor() as executor:
-            #         # Map each dictionary value to the costly operation
-            #         partialParallelOperation = partial(ParallelbitPackerOp, transIndex)
-            #         # result_partial = list(executor.map(partialParallelOperation, vR.values()))
-            #         vBitSet = {key: result for key, result in zip(vR.keys(), executor.map(partialParallelOperation, vR.values()))}
-            vBitSet=dict()
-            for key, value in vR.items():
-                vBitSet[key] = _bitPacker(value, transIndex)
+            # Parallel processing
+            with ProcessPoolExecutor() as executor:
+                # Map each dictionary value to the costly operation
+                partialParallelOperation = partial(ParallelbitPackerOp)
+                # result_partial = list(executor.map(partialParallelOperation, vR.values()))
+                vBitSet = {key: result for key, result in zip(vR.keys(), executor.map(partialParallelOperation, vR.values()))}
+
+            # vBitSet=dict()
+            # for key, value in vR.items():
+            #     vBitSet[key] = _bitPacker(value)
+
             self.data=vBitSet
         else:
             self.data = vR
@@ -597,7 +597,7 @@ class FixedSizeHeap:
     def __str__(self):
         return "\n".join(map(str, self.heapList))
     
-def _bitPacker(data, maxIndex):
+def _bitPacker(data):
     """
     Thank you Rage Uday Kiran (PAMI) For this code!
     
@@ -611,11 +611,11 @@ def _bitPacker(data, maxIndex):
     packed_bits = 0
     for i in data:
         # packed_bits |= 1 << (maxIndex - i)
+        #Slighty updated. for more speed. instead building the number from most significant digit we start from the left side of the number.
         packed_bits |= 1 << i
-
     return packed_bits
 
 # Define a costly function
-def ParallelbitPackerOp(value, transCount):
-    return [_bitPacker(value, transCount)]
+def ParallelbitPackerOp(value):
+    return _bitPacker(value)
     # return [x**2 for x in value]  # Example of a costly computation
