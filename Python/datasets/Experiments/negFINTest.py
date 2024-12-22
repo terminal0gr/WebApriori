@@ -9,7 +9,7 @@ import psutil
 # minSup=0.945244055068836
 # separator=' '
 datasetName='kosarak.dat' 
-minSup=0.0063444316274108535
+minSup=0.002392924458738467
 separator=' '
 # datasetName='accidents.dat' 
 # minSup=0.8196999850080692

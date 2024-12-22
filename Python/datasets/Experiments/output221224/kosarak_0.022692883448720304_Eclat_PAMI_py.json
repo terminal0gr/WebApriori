@@ -1,0 +1,9 @@
+{
+    "Algorithm": "Eclat",
+    "Language": "python",
+    "library": "PAMI",
+    "minSup": 0.022692883448720304,
+    "totalFI": 100,
+    "Runtime": 7.667219638824463,
+    "Memory": 888414208
+}
