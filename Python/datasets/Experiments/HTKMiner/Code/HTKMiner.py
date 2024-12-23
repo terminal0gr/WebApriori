@@ -63,13 +63,14 @@ class HTKMiner:
 
         item1TopKList, self.min_count = self.InitialTopKFIList(topKItemSetsList)
 
-        # Initializes the quick Heap with brute passing a list of support values
+        # Initializes the quick Heap with brute passing its first list of support values
         self.heap.initialFill(list(item1TopKList.values()))
 
+        # Get rid off the 1-itemsets that are non frequent based on the TopK value
         vR = {key: vR[key] for key in item1TopKList if key in vR}
 
         b3=t.time()
-        print(f"intermediate Time: {(b3-b1):.3f} Seconds")
+        print(f"Read dataset Time: {(b3-b1):.3f} Seconds")
 
         if self.bitSetMode:
 
@@ -89,8 +90,7 @@ class HTKMiner:
         else:
             self.data = vR
         
-
-        print(f"bitset Time: {(t.time()-b3):.3f} Seconds")
+        print(f"bitset transformation Time: {(t.time()-b3):.3f} Seconds")
 
         return item1TopKList
 
@@ -580,7 +580,7 @@ class FixedSizeHeap:
 
     def insert(self, value):
         # Custom binary search to find the correct position
-        low, high = 0, self.size-1
+        low, high = 0, len(self.heapList)-1
         while low < high:
             mid = (low + high) // 2
             if self.heapList[mid] > value:  # Reverse comparison for descending order
@@ -588,25 +588,12 @@ class FixedSizeHeap:
             else:
                 high = mid
         self.heapList.insert(low, value)  # Insert the item at the correct position
-
         # Maintain the fixed size
         if len(self.heapList) > self.size:
             self.heapList.pop()  # Remove the smallest element (last in the list)
         
         return self.getMinSup()
 
-    def insertold(self, value):
-        # Insert the new value
-        self.heapList.append(value)
-        # Sort the list in descending order
-        self.heapList.sort(reverse=True)
-
-        # Maintain the fixed size
-        if len(self.heapList) > self.size:
-            self.heapList.pop()  # Remove the smallest element (last in the list)
-        
-        return self.getMinSup()
-    
     def getMinSup(self):
         if self.heapList:
             return self.heapList[-1]  # Return the last element (smallest value)

@@ -5,12 +5,12 @@ import psutil
 
 
 
-# datasetName='chess.dat' 
-# minSup=0.945244055068836
-# separator=' '
-datasetName='kosarak.dat' 
-minSup=0.002392924458738467
+datasetName='chess.dat' 
+minSup=0.8864205256570713
 separator=' '
+# datasetName='kosarak.dat' 
+# minSup=0.002392924458738467
+# separator=' '
 # datasetName='accidents.dat' 
 # minSup=0.8196999850080692
 # separator=' '
@@ -29,6 +29,42 @@ separator=' '
 # datasetName='negFINPaperSample.txt' 
 # minSup=0.4
 # separator=','
+memorySave=False
+
+'''
+Call arguments          
+1) datasetName  
+    The name of the dataset. The program expect to find it in a file named dataset
+2) min_Support Value in [0..1] 
+3) separator 
+    The separator of the dataset For space, write " "
+4) memorySave 
+    True  -> less memory consuption, a little slower
+    False -> more memory consuption, a little quicker
+'''
+#identity
+if len(sys.argv)>1:
+    datasetName=str(sys.argv[1])
+
+if len(sys.argv)>2:
+    minSup=float(sys.argv[2])
+
+if len(sys.argv)>3:
+    separator=str(sys.argv[3])
+
+if len(sys.argv)>4:
+    if str(sys.argv[4]) in ['True', 'true', '1']:
+        memorySave=True
+    else:
+        memorySave=False
+
+################################
+################################
+#End of call arguments    
+################################
+################################
+
+
 
 ext1='_Aryabarzan_Mall_py.fim' 
 ext2='_Aryabarzan_Mall_py.json'
@@ -41,7 +77,7 @@ AlgorithmName='negFIN'
 from negFIN.negFIN_Mall1 import NegFIN
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1)
 
-negFIN = NegFIN(filepath, minSup, outFimFilePath, separator, False)
+negFIN = NegFIN(filepath, minSup, outFimFilePath, separator, memorySave)
 # negFIN = NegFIN(filepath, minSup, output_file=None, delimiter=separator, memorySave=False)
 
 negFIN.runAlgorithm()

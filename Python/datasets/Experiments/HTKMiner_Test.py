@@ -8,7 +8,7 @@ sparseData=True #tidSets (True) mode / diffSets (False)
 bitSetMode=True #If bitSet will be used in transformation of the vertical database representation 
 
 datasetName='chess.dat'  
-topK=100
+topK=1000
 separator=' '
 # datasetName='kosarak.dat' 
 # topK=100

@@ -1,0 +1,9 @@
+{
+    "Algorithm": "HTKMiner_sp_bs",
+    "Language": "python",
+    "library": "Mall",
+    "minSup": 0.9835102209985642,
+    "totalFI": 100,
+    "Runtime": 1.3323745727539062,
+    "Memory": 14610432
+}

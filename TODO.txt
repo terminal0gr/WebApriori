@@ -193,9 +193,7 @@ HTKMiner (Top-K)
     +12 Use tuple instead of string for self.data dictionary (gained speed and memory consumption)
     +13 bitset in both intersection and diffSet implementations
     +14 parallel computation of bitsets
-    +15 vertical database is preserves only for the last level of itemsets
-
-    Χτυπάει στο binarysearch ψηεσσ 1000
+    +15 vertical database is preserves only for the last level of itemsets (Memory save 2 magnitudes)
 
     TODO: FIM Output in case of bitset
     TODO: FIM Output in case of bitset
