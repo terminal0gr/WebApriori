@@ -1,18 +1,17 @@
 import os
 import sys
 import json
-import psutil
 
 
 sparseData=True #tidSets (True) mode / diffSets (False)
-bitSetMode=False #If bitSet will be used in transformation of the vertical database representation 
+bitSetMode=True #If bitSet will be used in transformation of the vertical database representation 
 
-# datasetName='chess.dat'  
-# topK=100
-# separator=' '
-datasetName='kosarak.dat' 
-topK=550
+datasetName='chess.dat'  
+topK=100
 separator=' '
+# datasetName='kosarak.dat' 
+# topK=550
+# separator=' '
 # datasetName='accidents.dat' 
 # topK=100
 # separator=' '
@@ -99,28 +98,24 @@ if bitSetMode: AlgorithmName+="_bs"
 from HTKMiner.Code.HTKMiner import HTKMiner
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
 
-# It is vital for the parallel proccessings
+# It is vital for the parallel processing
 if __name__ == '__main__':
-    TKalgo = HTKMiner(filepath, topK, separator, sparseData, bitSetMode)
-    TKalgo.mine()
+    HTKAlgo = HTKMiner(filepath, topK, separator, sparseData, bitSetMode)
+    HTKAlgo.mine()
 
-    process = psutil.Process(os.getpid())
-    memoryUSS = process.memory_full_info().uss
-
-    TKalgo.writeFIM(outFimFilePath)
+    HTKAlgo.writeFIM(outFimFilePath)
 
     outputDict = {}
     outputDict['Algorithm']=AlgorithmName
     outputDict['Language']="python"
     outputDict['library']="Mall"
-    outputDict['minSup']=TKalgo.minSup
-    outputDict['totalFI']=len(TKalgo.finalTopK)
-    outputDict['Runtime']=TKalgo.execution_time
-    outputDict['Memory']=memoryUSS
+    outputDict['minSup']=HTKAlgo.minSup
+    outputDict['totalFI']=len(HTKAlgo.finalTopK)
+    outputDict['Runtime']=HTKAlgo.execution_time
+    outputDict['Memory']=HTKAlgo.maxMemoryUSS
     file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext2),'w')
     json.dump(outputDict, file, indent=4)
     file.close() 
     json.dumps(outputDict, indent=4)
-    print(f"Memory:{memoryUSS}")
-    print(AlgorithmName + " Done!")
     ############################
+    print(AlgorithmName + " Done!")

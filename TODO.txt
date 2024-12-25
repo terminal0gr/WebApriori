@@ -195,14 +195,9 @@ HTKMiner (Top-K)
     +14 parallel computation of bitsets
     +15 vertical database is preserves only for the last level of itemsets (Memory save 2 magnitudes)
 
-    TODO: FIM Output in case of bitset
-    TODO: FIM Output in case of bitset
-    TODO: FIM Output in case of bitset
+TODO: Fill the ARMDatasetFeatures.xlsx with algorithms missing minSup values
 
         scimago for checking 
-
-        References:
-        Fast Vertical Mining Using Diffsets
 
 
 Done 01/11/2024 21/10/2024 Dataset ARM features collection
