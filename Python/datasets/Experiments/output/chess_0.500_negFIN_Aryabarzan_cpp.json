@@ -4,6 +4,6 @@
     "library": "Aryabarzan",
     "minSup": 0.500,
     "totalFI": 1272932,
-    "runtime": 0.047,
-    "memory": 5541888
+    "runtime": 0.072,
+    "memory": 5910528
 }

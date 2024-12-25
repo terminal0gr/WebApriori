@@ -153,11 +153,11 @@ class HTKMiner:
         # Implemented without recursion for faster implementation 
         # and less memory consumption
 
-        # Collects the final Top-K itemsets
+        # Collects the final Top-K itemsets with its support
         topKFI = {**initialTopK}
-        # Represents the current level itemsets
+        # Represents the current level itemsets with its support
         currentLevelTopK = {**initialTopK}
-        # Represents the next level candidate itemsets to be found
+        # Represents the next level candidate itemsets to be found with its support
         nextLevelTopK = {}
 
         #count the items participating in itemset or alternatively the current class level
@@ -475,10 +475,9 @@ class HTKMiner:
                 while (iB<len(listOFKeys)):
 
                     classB = listOFKeys[iB]
-
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     # Stop current iteration if any of the two engaging itemsets has already been above the current minSup.
-                    if currentLevelTopK[classA]<=self.min_count or currentLevelTopK[classB]<=self.min_count:
+                    if currentLevelTopK[classB]<=self.min_count:
                         break
 
                     prefixA=classA[:-1]

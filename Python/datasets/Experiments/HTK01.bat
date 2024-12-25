@@ -165,4 +165,5 @@ call python HTKMiner_Test.py "1_L-0023.dat" "10000" ";" False False
 call python HTKMiner_Test.py "1_L-0023.dat" "10000" ";" "False" "True"
 call python HTKMiner_Test.py "1_L-0023.dat" "10000" ";" "True" "False"
 call python HTKMiner_Test.py "1_L-0023.dat" "10000" ";" "True" "True"
+
 pause

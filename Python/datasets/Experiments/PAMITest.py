@@ -15,6 +15,42 @@ separator=' '
 # datasetName='FpGrowthSampleWithoutQuotes.txt' 
 # minSup=0.6
 # separator=','
+memorySave=False
+
+
+'''
+Call arguments          
+1) datasetName  
+    The name of the dataset. The program expect to find it in a file named dataset
+2) min_Support Value in [0..1] 
+3) separator 
+    The separator of the dataset For space, write " "
+4) memorySave 
+    True  -> less memory consuption, a little slower
+    False -> more memory consuption, a little quicker
+'''
+#identity
+if len(sys.argv)>1:
+    datasetName=str(sys.argv[1])
+
+if len(sys.argv)>2:
+    minSup=float(sys.argv[2])
+
+if len(sys.argv)>3:
+    separator=str(sys.argv[3])
+
+if len(sys.argv)>4:
+    if str(sys.argv[4]) in ['True', 'true', '1']:
+        memorySave=True
+    else:
+        memorySave=False
+
+################################
+################################
+#End of call arguments    
+################################
+################################
+
 
 ext1='_PAMI_py.fim'
 ext2='_PAMI_py.json'
@@ -60,10 +96,10 @@ filepath=os.path.join('datasets', datasetName)
 AlgorithmName='Eclat_bitset'
 from PAMI.frequentPattern.basic import ECLATbitset as PAMI
 obj1 = PAMI.ECLATbitset(iFile=filepath, minSup=minSup, sep=separator)
-obj1.mine(False)
-# frequentPatterns= obj1.getPatternsAsDataFrame()
-# frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
-# print(frequentPatternsDF)
+obj1.mine(memorySave)
+frequentPatterns= obj1.getPatternsAsDataFrame()
+frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
+print(frequentPatterns)
 outputDict = {}
 outputDict['Algorithm']=AlgorithmName
 outputDict['Language']="python"
