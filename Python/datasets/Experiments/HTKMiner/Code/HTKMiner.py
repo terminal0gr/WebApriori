@@ -4,7 +4,8 @@ import sys
 import json
 from concurrent.futures import ProcessPoolExecutor
 from functools import partial
-import bisect
+import psutil
+import os
 
 class HTKMiner: 
 
@@ -22,8 +23,10 @@ class HTKMiner:
         self.levelData = None
         self.finalTopK = None #for showing final results
         self.maxLevel=0 # The max length of itemsets grater than minSup
-        self.heap=FixedSizeHeap(topK) #Tok-K absolute support values heap initialization
+        self.heap=QuickHeap(topK) #Tok-K absolute support values heap initialization
         self.itemDict=None # map item names to simple integers for better performance
+        self.process=psutil.Process(os.getpid())
+        self.maxMemoryUSS=0
 
     def readDatasetFile(self):
 
@@ -77,7 +80,7 @@ class HTKMiner:
             # Parallel processing
             with ProcessPoolExecutor() as executor:
                 # Map each dictionary value to the costly operation
-                partialParallelOperation = partial(ParallelbitPackerOp)
+                partialParallelOperation = partial(parallelBitSetOp)
                 # result_partial = list(executor.map(partialParallelOperation, vR.values()))
                 vBitSet = {key: result for key, result in zip(vR.keys(), executor.map(partialParallelOperation, vR.values()))}
 
@@ -165,6 +168,11 @@ class HTKMiner:
 
         while level > 0:
 
+            # We keep only the max memory used between the stages.
+            memoryUSS = self.process.memory_full_info().uss
+            if self.maxMemoryUSS<memoryUSS:
+                self.maxMemoryUSS=memoryUSS
+
             # The vertical itemset database representation for the current level ONLY!
             levelData=dict()
 
@@ -227,7 +235,7 @@ class HTKMiner:
                     iB+=1
                 iA+=1
 
-            # filtering the itemsets that are abode the new current misSup thresold
+            # filtering the itemsets that are above the new current minSup threshold
             nextLevelTopK = {key: value for key, value in nextLevelTopK.items() if value > self.min_count}
 
             # merge in the final topKFI the new level frequent itemsets that have support value greater than minSup threshold
@@ -261,6 +269,11 @@ class HTKMiner:
         level = 1
 
         while level > 0:
+
+            # We keep only the max memory used between the stages.
+            memoryUSS = self.process.memory_full_info().uss
+            if self.maxMemoryUSS<memoryUSS:
+                self.maxMemoryUSS=memoryUSS
 
             # The vertical itemset database representation for the current level ONLY!
             levelData=dict()
@@ -361,6 +374,11 @@ class HTKMiner:
 
         while level > 0:
 
+            # We keep only the max memory used between the stages.
+            memoryUSS = self.process.memory_full_info().uss
+            if self.maxMemoryUSS<memoryUSS:
+                self.maxMemoryUSS=memoryUSS
+
             # The vertical itemset database representation for the current level ONLY!
             levelData=dict()
 
@@ -452,6 +470,11 @@ class HTKMiner:
         level = 1
 
         while level > 0:
+
+            # We keep only the max memory used between the stages.
+            memoryUSS = self.process.memory_full_info().uss
+            if self.maxMemoryUSS<memoryUSS:
+                self.maxMemoryUSS=memoryUSS
 
             # The vertical itemset database representation for the current level ONLY!
             levelData=dict()
@@ -558,6 +581,7 @@ class HTKMiner:
         print(f"FIM found:{len(self.finalTopK)}")
         print(f"Absolute minSup:{self.min_count}")
         print(f"Relative minSup:{self.minSup}")
+        print(f"Max Memory:{self.maxMemoryUSS}")       
 
     def writeFIM(self, outputFile=None): #outputs the frequent itemsets in json format
         if (outputFile):
@@ -569,7 +593,7 @@ class HTKMiner:
 
 # implementation of the quick heap which keeps only the Top-K supports in descending order
 # Quick and memory saver.
-class FixedSizeHeap:
+class QuickHeap:
     def __init__(self, size=10):
         self.size = size
         self.heapList = []  # Initialize an empty list
@@ -604,22 +628,22 @@ class FixedSizeHeap:
 def _bitPacker(data):
     """
     Thank you Rage Uday Kiran (PAMI) For this code!
-    
-    It takes the data and maxIndex as input and generates integer as output value.
-
     :param data: it takes data as input.
     :type data: int or float
     :param maxIndex: It converts the data into bits By taking the maxIndex value as condition.
-    :type maxIndex: int
+    :type maxIndex: int  
+
+    Updated version
+    It takes a list of integers as input (data) and generates a single integer as output value (return).
     """
     packed_bits = 0
     for i in data:
         # packed_bits |= 1 << (maxIndex - i)
-        #Slighty updated. for more speed. instead building the number from most significant digit we start from the left side of the number.
+        # Slightly updated. for more speed. instead building the number from most significant digit we start from the left side of the number.
+        # It is faster and got rid of the maxIndex presence.
         packed_bits |= 1 << i
     return packed_bits
 
-# Define a costly function
-def ParallelbitPackerOp(value):
+# used in parallel computations
+def parallelBitSetOp(value):
     return _bitPacker(value)
-    # return [x**2 for x in value]  # Example of a costly computation
