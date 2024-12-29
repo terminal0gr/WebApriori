@@ -1,6 +1,5 @@
 #import libraries
 import time as t
-import sys
 import json
 from concurrent.futures import ProcessPoolExecutor
 from functools import partial
@@ -9,24 +8,24 @@ import os
 
 class HTKMiner: 
 
-    def __init__(self, dataset_file, topK, delimiter=' ', sparseData=True, bitSetMode=False):
+    def __init__(self, dataset_file, topK, delimiter=' ', sparseData=True, bitSetMode=False, commitTimeout=0):
         self.dataset_file = dataset_file
         self.minSup = None  # The relative minimum support
         self.min_count = 0  # The absolute minimum support 
         self.delimiter = delimiter 
         self.num_of_transactions = None 
-        self.execution_time = None # Overall time of mining
         self.topK = topK #User defined Tok-K threshold
-        self.sparseData=sparseData
-        self.bitSetMode=bitSetMode
+        self.sparseData=sparseData # User specified. True intersection mode, False Diffset mode
+        self.bitSetMode=bitSetMode # User specified. True bitSet mode, False tidSet mode
         self.data = None # stores original data in its vertical representation (Key is the 1-item while value is a list of all the transactions containing that item)
-        self.levelData = None
         self.finalTopK = None #for showing final results
         self.maxLevel=0 # The max length of itemsets grater than minSup
         self.heap=QuickHeap(topK) #Tok-K absolute support values heap initialization
         self.itemDict=None # map item names to simple integers for better performance
+        self.execution_time = None # Overall time of mining
         self.process=psutil.Process(os.getpid())
         self.maxMemoryUSS=0
+        self.commitTimeout=commitTimeout
 
     def readDatasetFile(self):
 
@@ -138,6 +137,7 @@ class HTKMiner:
         # plus the itemsets that have equal support as the current minSup.
         topKDict=dict()
         currentLevelTopK=dict()
+        supList=list()
         mS=-1
         for index, (key, value) in enumerate(topKItemSets.items()):
             if index>=self.topK-1:
@@ -145,13 +145,20 @@ class HTKMiner:
                     mS=value
                 elif value!=mS:
                     break
+            # The absolute topK itemsets
             topKDict[key]=value
+            # the supports only list in descending order for quick heap synchronization
+            supList.append(value)
+            # The TopK itemsets of the current depth level.
             if len(key)==level:
                 currentLevelTopK[key]=value
-        if mS==-1:
-            minSup=self.min_count
+        if mS==-1: # The itemsets found are less than the topK threshold. The currenrt minSup is 0.
+            minSup=0
         else:
             minSup=mS
+
+        # quick heap synchronization
+        self.heap.initialFill(supList)
 
         return topKDict, minSup, currentLevelTopK
 
@@ -163,8 +170,6 @@ class HTKMiner:
         topKFI = {**initialTopK}
         # Represents the current level itemsets with its support
         currentLevelTopK = {**initialTopK}
-        # Represents the next level candidate itemsets to be found with its support
-        nextLevelTopK = {}
 
         #count the items participating in itemset or alternatively the current class level
         level = 1
@@ -178,6 +183,9 @@ class HTKMiner:
 
             # The vertical itemset database representation for the current level ONLY!
             levelData=dict()
+
+            # Represents the next level candidate itemsets to be found with its support
+            nextLevelTopK = {}
 
             # initialization of the first itemset counter
             iA = 0
@@ -239,7 +247,7 @@ class HTKMiner:
                 iA+=1
 
             # filtering the itemsets that are above the new current minSup threshold
-            nextLevelTopK = {key: value for key, value in nextLevelTopK.items() if value > self.min_count}
+            nextLevelTopK = {key: value for key, value in nextLevelTopK.items() if value >= self.min_count}
 
             # merge in the final topKFI the new level frequent itemsets that have support value greater than minSup threshold
             topKFI={**topKFI, **nextLevelTopK} 
@@ -247,7 +255,7 @@ class HTKMiner:
             # return the absolute TopK itemsets so far
             topKFI, self.min_count, currentLevelTopK = self.getTopKFI(topKFI,level+1)
 
-            if(len(currentLevelTopK) == 0):
+            if not currentLevelTopK or (self.commitTimeout!=0 and t.time()-self.start>self.commitTimeout):
                 level = 0 # Declares the end of procedure
             else:
                 level += 1
@@ -265,8 +273,6 @@ class HTKMiner:
         topKFI = {**initialTopK}
         # Represents the current level itemsets
         currentLevelTopK = {**initialTopK}
-        # Represents the next level candidate itemsets to be found
-        nextLevelTopK = {}
 
         #count the items participating in itemset or alternatively the current class level
         level = 1
@@ -280,6 +286,9 @@ class HTKMiner:
 
             # The vertical itemset database representation for the current level ONLY!
             levelData=dict()
+
+            # Represents the next level candidate itemsets to be found
+            nextLevelTopK = {}
 
             # initialization of the first itemset counter
             iA = 0
@@ -342,7 +351,7 @@ class HTKMiner:
                 iA+=1
 
             # filtering the itemsets that are abode the new current misSup thresold
-            nextLevelTopK = {key: value for key, value in nextLevelTopK.items() if value > self.min_count}
+            nextLevelTopK = {key: value for key, value in nextLevelTopK.items() if value >= self.min_count}
 
             # merge in the final topKFI the new level frequent itemsets that have support value greater than minSup threshold
             topKFI={**topKFI, **nextLevelTopK} 
@@ -350,7 +359,7 @@ class HTKMiner:
             # return the absolute TopK itemsets so far
             topKFI, self.min_count, currentLevelTopK = self.getTopKFI(topKFI,level+1)
 
-            if(len(currentLevelTopK) == 0):
+            if not currentLevelTopK or (self.commitTimeout!=0 and t.time()-self.start>self.commitTimeout):
                 level = 0 # Declares the end of procedure
             else:
                 level += 1
@@ -369,8 +378,6 @@ class HTKMiner:
         topKFI = {**initialTopK}
         # Represents the current level itemsets
         currentLevelTopK = {**initialTopK}
-        # Represents the next level candidate itemsets to be found
-        nextLevelTopK = {}
 
         #count the items participating in itemset or alternatively the current class level
         level = 1
@@ -384,6 +391,9 @@ class HTKMiner:
 
             # The vertical itemset database representation for the current level ONLY!
             levelData=dict()
+
+            # Represents the next level candidate itemsets to be found
+            nextLevelTopK = {}
 
             # initialization of the first itemset counter
             iA = 0
@@ -440,7 +450,7 @@ class HTKMiner:
                 iA+=1
             
             # filtering the itemsets that are abode the new current misSup thresold
-            nextLevelTopK = {key: value for key, value in nextLevelTopK.items() if value > self.min_count}
+            nextLevelTopK = {key: value for key, value in nextLevelTopK.items() if value >= self.min_count}
 
             # merge in the final topKFI the new level frequent itemsets that have support value greater than minSup threshold
             topKFI={**topKFI, **nextLevelTopK} 
@@ -448,7 +458,8 @@ class HTKMiner:
             # return the absolute TopK itemsets so far
             topKFI, self.min_count, currentLevelTopK = self.getTopKFI(topKFI,level+1)
 
-            if(len(currentLevelTopK) == 0):
+            if not currentLevelTopK or (self.commitTimeout!=0 and t.time()-self.start>self.commitTimeout):
+
                 level = 0 # Declares the end of procedure
             else:
                 level += 1
@@ -466,8 +477,6 @@ class HTKMiner:
         topKFI = {**initialTopK}
         # Represents the current level itemsets
         currentLevelTopK = {**initialTopK}
-        # Represents the next level candidate itemsets to be found
-        nextLevelTopK = {}
 
         #count the items participating in itemset or alternatively the current class level
         level = 1
@@ -481,6 +490,9 @@ class HTKMiner:
 
             # The vertical itemset database representation for the current level ONLY!
             levelData=dict()
+
+            # Represents the next level candidate itemsets to be found
+            nextLevelTopK = {}
 
             # initialization of the first itemset counter
             iA = 0
@@ -537,7 +549,7 @@ class HTKMiner:
                 iA+=1
 
             # filtering the itemsets that are abode the new current misSup thresold
-            nextLevelTopK = {key: value for key, value in nextLevelTopK.items() if value > self.min_count}
+            nextLevelTopK = {key: value for key, value in nextLevelTopK.items() if value >= self.min_count}
 
             # merge in the final topKFI the new level frequent itemsets that have support value greater than minSup threshold
             topKFI={**topKFI, **nextLevelTopK} 
@@ -545,7 +557,7 @@ class HTKMiner:
             # return the absolute TopK itemsets so far
             topKFI, self.min_count, currentLevelTopK = self.getTopKFI(topKFI,level+1)
 
-            if not currentLevelTopK: #No more candidates - levels
+            if not currentLevelTopK or (self.commitTimeout!=0 and t.time()-self.start>self.commitTimeout):
                 level = 0 # Declares the end of procedure
             else:
                 level += 1
@@ -559,7 +571,7 @@ class HTKMiner:
     # The main mining procedure
     def mine(self):
 
-        start = t.time() #Start Time.
+        self.start = t.time() #Start Time.
 
         initialTopK = self.readDatasetFile() 
 
@@ -577,10 +589,13 @@ class HTKMiner:
         self.minSup=self.min_count/self.num_of_transactions
 
         end = t.time() #end Time
-        self.execution_time=end-start
+        self.execution_time=end-self.start
 
-        print(f"Read Dataset Time: {(endRead-start):.3f} Seconds")
-        print(f"Total Execution Time: {self.execution_time:.3f} Seconds")
+        print(f"Read Dataset Time: {(endRead-self.start):.3f} Seconds")
+        if self.execution_time>self.commitTimeout:
+            print(f"Total Execution Time: {self.commitTimeout:.3f}+++ Seconds")
+        else:
+            print(f"Total Execution Time: {self.execution_time:.3f} Seconds")
         print(f"FIM found:{len(self.finalTopK)}")
         print(f"Absolute minSup:{self.min_count}")
         print(f"Relative minSup:{self.minSup}")
@@ -606,24 +621,24 @@ class QuickHeap:
 
     def insert(self, value):
         # Custom binary search to find the correct position
-        low, high = 0, len(self.heapList)-1
-        if self.heapList[high] > value:
-            low=high+1
+        high, low = 0, len(self.heapList)-1
+        if self.heapList[low] >= value:
+            high=low+1
         else:
-            while low < high:
-                mid = (low + high) // 2
+            while high < low:
+                mid = (high + low) // 2
                 if self.heapList[mid] > value:  # Reverse comparison for descending order
-                    low = mid + 1
+                    high = mid + 1
                 else:
-                    high = mid
-        self.heapList.insert(low, value)  # Insert the item at the correct position
+                    low = mid
+        self.heapList.insert(high, value)  # Insert the item at the correct position
         # Maintain the fixed size and return the minSup
         heapLen=len(self.heapList)
         if heapLen > self.size:
             self.heapList.pop()  # Remove the smallest element (last in the list)
             return self.heapList[-1] # Return the last element (smallest value)            
-        else: # First time that heap is full
-            return 0 # heap items less than the heap's size. minSup is 0
+        else: # The heap is not full
+            return 0 # heap items less than the heap's size. In that case minSup is 0
         
     def __str__(self):
         return "\n".join(map(str, self.heapList))

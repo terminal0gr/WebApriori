@@ -5,9 +5,10 @@ import json
 
 sparseData=True #tidSets (True) mode / diffSets (False)
 bitSetMode=True #If bitSet will be used in transformation of the vertical database representation 
+commitTimeout=300
 
 datasetName='chess.dat'  
-topK=100
+topK=10000
 separator=' '
 # datasetName='kosarak.dat' 
 # topK=550
@@ -24,9 +25,9 @@ separator=' '
 # datasetName='FpGrowthSampleWithoutQuotes.txt'  
 # topK=5
 # separator=','
-datasetName='T16IT20D100K.dat'
-topK=1000
-separator=' '
+# datasetName='T16IT20D100K.dat'
+# topK=1000
+# separator=' '
 
 
 '''
@@ -43,6 +44,8 @@ Call arguments
 5) bitSetMode
     True  -> Transform of items transactions to bitsets
     False -> items transactions are represented by integers
+6) commitTimeout (overall execution time threshold in seconds) default=0
+    if 0 then execution time is unlimited. 
 '''
 #identity
 if len(sys.argv)>1:
@@ -65,6 +68,9 @@ if len(sys.argv)>5:
         bitSetMode=True
     else:
         bitSetMode=False
+
+if len(sys.argv)>6:
+    commitTimeout=int(sys.argv[6])        
 
 ################################
 ################################
@@ -90,7 +96,7 @@ outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(to
 
 # It is vital for the parallel processing
 if __name__ == '__main__':
-    HTKAlgo = HTKMiner(filepath, topK, separator, sparseData, bitSetMode)
+    HTKAlgo = HTKMiner(filepath, topK, separator, sparseData, bitSetMode, commitTimeout)
     HTKAlgo.mine()
 
     HTKAlgo.writeFIM(outFimFilePath)
@@ -101,7 +107,10 @@ if __name__ == '__main__':
     outputDict['library']="Mall"
     outputDict['minSup']=HTKAlgo.minSup
     outputDict['totalFI']=len(HTKAlgo.finalTopK)
-    outputDict['Runtime']=HTKAlgo.execution_time
+    if HTKAlgo.execution_time>HTKAlgo.commitTimeout:
+        outputDict['Runtime']=str(HTKAlgo.commitTimeout)+'+++'
+    else:    
+        outputDict['Runtime']=HTKAlgo.execution_time
     outputDict['Memory']=HTKAlgo.maxMemoryUSS
     file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext2),'w')
     json.dump(outputDict, file, indent=4)

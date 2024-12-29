@@ -26,9 +26,10 @@ separator=' '
 # datasetName='FpGrowthSampleWithoutQuotes.txt' 
 # minSup=0.6
 # separator=','
-# datasetName='negFINPaperSample.txt' 
-# minSup=0.4
-# separator=','
+datasetName='T16IT20D100K.dat'
+minSup=0.37865
+separator=' '
+
 memorySave=False
 
 '''
