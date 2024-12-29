@@ -24,19 +24,9 @@ separator=' '
 # datasetName='FpGrowthSampleWithoutQuotes.txt'  
 # topK=5
 # separator=','
-
-
-
-
-# datasetName='1_L-0023.csv' 
-# minSup=0.01
-# separator=';'
-# datasetName='FpGrowthSampleWithoutQuotes.txt' 
-# minSup=0.6
-# separator=','
-# datasetName='negFINPaperSample.txt' 
-# minSup=0.4
-# separator=','
+datasetName='T16IT20D100K.dat'
+topK=1000
+separator=' '
 
 
 '''

@@ -12,7 +12,7 @@ class HTKMiner:
     def __init__(self, dataset_file, topK, delimiter=' ', sparseData=True, bitSetMode=False):
         self.dataset_file = dataset_file
         self.minSup = None  # The relative minimum support
-        self.min_count = None  # The absolute minimum support 
+        self.min_count = 0  # The absolute minimum support 
         self.delimiter = delimiter 
         self.num_of_transactions = None 
         self.execution_time = None # Overall time of mining
@@ -105,6 +105,9 @@ class HTKMiner:
         # The count of ItemSets may differ if there are itemsets with the same minimum support which are also included
         # e.g. it may return 102 instead 100 if there are 3 itemsets with the same minSup.
         
+        # itemsets found so far less than TopK threshold. Return them as is and set minSup to zero
+        if len(topKItemSetsList)<self.topK:
+            return dict(topKItemSetsList), 0
         # This mechanism guarantees that only the Top-K itemsets so far will be returned 
         # plus the itemsets that have equal support as the current minSup.
         topKDict=dict()
@@ -117,7 +120,7 @@ class HTKMiner:
                     break
             topKDict[key]=value
         if mS==-1:
-            minSup=value
+            minSup=self.min_count
         else:
             minSup=mS
 
@@ -146,7 +149,7 @@ class HTKMiner:
             if len(key)==level:
                 currentLevelTopK[key]=value
         if mS==-1:
-            minSup=value
+            minSup=self.min_count
         else:
             minSup=mS
 
@@ -604,24 +607,24 @@ class QuickHeap:
     def insert(self, value):
         # Custom binary search to find the correct position
         low, high = 0, len(self.heapList)-1
-        while low < high:
-            mid = (low + high) // 2
-            if self.heapList[mid] > value:  # Reverse comparison for descending order
-                low = mid + 1
-            else:
-                high = mid
+        if self.heapList[high] > value:
+            low=high+1
+        else:
+            while low < high:
+                mid = (low + high) // 2
+                if self.heapList[mid] > value:  # Reverse comparison for descending order
+                    low = mid + 1
+                else:
+                    high = mid
         self.heapList.insert(low, value)  # Insert the item at the correct position
-        # Maintain the fixed size
-        if len(self.heapList) > self.size:
+        # Maintain the fixed size and return the minSup
+        heapLen=len(self.heapList)
+        if heapLen > self.size:
             self.heapList.pop()  # Remove the smallest element (last in the list)
+            return self.heapList[-1] # Return the last element (smallest value)            
+        else: # First time that heap is full
+            return 0 # heap items less than the heap's size. minSup is 0
         
-        return self.getMinSup()
-
-    def getMinSup(self):
-        if self.heapList:
-            return self.heapList[-1]  # Return the last element (smallest value)
-        return None  # If the heap is empty
-    
     def __str__(self):
         return "\n".join(map(str, self.heapList))
     

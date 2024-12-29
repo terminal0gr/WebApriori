@@ -196,6 +196,10 @@ HTKMiner (Top-K)
     +15 vertical database is preserves only for the last level of itemsets (Memory save 2 magnitudes)
 
 TODO: Fill the ARMDatasetFeatures.xlsx with algorithms missing minSup values
+TODO: Major error in dataset T16IT20D100K.dat and TopK=1000 Wrong results!!!
+        Something with the heap.
+
+
 
         scimago for checking 
 
