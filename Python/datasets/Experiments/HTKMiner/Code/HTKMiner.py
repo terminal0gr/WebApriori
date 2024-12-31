@@ -6,17 +6,18 @@ from functools import partial
 import psutil
 import os
 
+
 class HTKMiner: 
 
-    def __init__(self, dataset_file, topK, delimiter=' ', sparseData=True, bitSetMode=False, commitTimeout=0):
+    def __init__(self, dataset_file, topK, delimiter=' ', sparseData=True, bitSetMode=True, commitTimeout=0):
         self.dataset_file = dataset_file
         self.minSup = None  # The relative minimum support
         self.min_count = 0  # The absolute minimum support 
         self.delimiter = delimiter 
         self.num_of_transactions = None 
         self.topK = topK #User defined Tok-K threshold
-        self.sparseData=sparseData # User specified. True intersection mode, False Diffset mode
-        self.bitSetMode=bitSetMode # User specified. True bitSet mode, False tidSet mode
+        self.sparseData=sparseData # User specified, default True. True intersection mode, False Diffset mode
+        self.bitSetMode=bitSetMode # User specified, default True. True bitSet mode, False tidSet mode
         self.data = None # stores original data in its vertical representation (Key is the 1-item while value is a list of all the transactions containing that item)
         self.finalTopK = None #for showing final results
         self.maxLevel=0 # The max length of itemsets grater than minSup
