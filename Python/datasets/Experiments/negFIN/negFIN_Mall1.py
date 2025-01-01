@@ -103,6 +103,7 @@ class NegFIN:
                     item_name_to_count[item_name] = item_count + 1
 
         item_name_to_count.pop('', None)  # Removing the empty item_name if exists.
+        # The absolute min Support
         self.min_count = ceil(self.num_of_transactions * self.min_support)
         # Removing infrequent items and making F1
         self.F1 = [{'name': item_name, 'count': item_count} for (item_name, item_count) in item_name_to_count.items() if

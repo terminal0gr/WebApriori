@@ -7,6 +7,8 @@ import psutil
 
 datasetName='chess.dat' 
 minSup=0.8864205256570713
+minSup=0.001
+
 separator=' '
 # datasetName='kosarak.dat' 
 # minSup=0.002392924458738467
@@ -26,9 +28,9 @@ separator=' '
 # datasetName='FpGrowthSampleWithoutQuotes.txt' 
 # minSup=0.6
 # separator=','
-datasetName='T16IT20D100K.dat'
-minSup=0.37865
-separator=' '
+# datasetName='T16IT20D100K.dat'
+# minSup=0.37865
+# separator=' '
 
 memorySave=False
 

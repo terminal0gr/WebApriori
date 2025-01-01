@@ -45,9 +45,10 @@ class HTKMiner:
             # The Tid of each transaction
             transIndex=0
             # The next 2 dictionaries are used to implement one bidirectional dictionary
+            # The idea is to map item names to their indexes and perform better in the algorithm
             self.itemDict=dict()
             itemDictReversed=dict()
-            b1=t.time()
+            b1=t.time() # start of reading
             for line in f:
                 transIndex+=1
                 for item in line.strip().split(sep=self.delimiter):
