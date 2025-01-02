@@ -15,22 +15,9 @@
 
 
 
-06/10/2024 IMPORTANT! Top K implementation in python
-
-03/12/2024 Check NegFin & TKFIM for Top K=1000 (0.886107634543179) one ouputs 1012 and the other 1009
-
 01/11/2024 In Borgelt eClat Try if helps memory and CPU if items kept in dictionary as numbers instead texts.
-
-
-
-
-python (must research...)
-tuple of dictionaries     ({'name': 'e', 'count': 2}, {'name': 'd', 'count': 3}, {'name': 'c', 'count': 3}, {'name': 'b', 'count': 4}, {'name': 'a', 'count': 4})
-faster than dictionary.   [{'name': 'e', 'count': 2}, {'name': 'd', 'count': 3}, {'name': 'c', 'count': 3}, {'name': 'b', 'count': 4}, {'name': 'a', 'count': 4}] 
-
-
 For Research: Transform input data to integer via dictionary (e.g '{potatoes: 1, sugar:2 etc.) is done in original negFIN 
-Research use of FPGrowth_strings SPMF
+For Research: Use of FPGrowth_strings SPMF
 
 ######################
 negFIN python (negFINTest.py)
@@ -155,56 +142,29 @@ HTKMiner (Top-K)
     +1 Seems quickest from its precedetors
 
     -1 Inability to manipulate all transactional datasets because of pandas dataframe (Can't handle efficiently 1-MBL Type datasets)
-    -2 It does not find exactly the first Top-K. It finds the first Top-K occurrences of different support itemsets
+    -2 It does not find exactly the first Top-K. It finds the first Top-K Rank, occurrences of different support itemsets
     -3 In some occasions it cannot find all the frequent itemsets (Corrected in Contribution +5)
-
-    chess  100 -> found 182? - > Total Execution Time: 14.965497016906738 Seconds
 
     Contributions: _Mall.py
     +1 manipulate all transactional datasets (1-MBL) with a lists of lists structure instead of dataframe
-    +2 class wrapping of the algorithm from better manipulation and integration
-    +3 quickest read of the dataset file
-    +4 better computation of the statistics (time and memory consuption)
-    +5 Transformed to find the exact Top-K itemsets plus all itemsets that have support equal to minSup.
-    +6 extensive improvements in all the code segments of the algorithm improving mining time to less than half (50%)
-    +7 Found a bug on the algorithm that allowed the loss of some FIs
-    +8 Use of a quick heap structure to maintain the Top-K support values with insert and getMinSup functions DIRECTLY (reduced about a magnitude the mining time)
-    +9 use of intersection instead of diffSet (Quicker in most cases) (kept both ways with parameter) Could it be automatic the alteration between?
-       chess  100 ->   14,9s       original implementation
-                  ->    0,055s 30MB with diffset
-                  ->    0,045s 28MB with intersection, bitSet
-                  ->    0.101s 36MB with intersection
-                  ->    0,6s   84MB with intersection first stage
-             1000 -> 2024,6        original implementation
-                  ->    0,523s  38MB with diffset
-                  ->    0,152s  12MB with diffset, bitSet
-                  ->    1,199s  85MB with intersection
-                  ->    0,151s  13MB with intersection, bitSet
-                  ->    8,000s 151MB with intersection first stage
-                  ->   30,500s 163MB with "original" diffsets
-            10000 -> 
-                  ->   16.693s 341MB with diffset
-                  ->   11,712s  39MB with diffset, bitSet
-                  ->   23,767s 722MB with intersection
-                  ->   11,764s  38MB with intersection, bitSet
-                  
-    +10 (5% faster) Collect only the first topK itemsets of listOFKeys. the rest are discarded.
+    +2 class wrapping of the algorithm for better manipulation and integration
+    +3 quickest read of the dataset file in vertical database presentation format (Traversed only once!)
+    +4 better computation of the statistics (time and memory consuption) Memory is estimewted in every level and peak memory consuption is found
+    +5 Finds the exact Top-K itemsets plus all itemsets that have support equal to minSup. If the minSup found is used by classic FIM algorithms like fpgrowth or negFIN it brings the exact results
+    +6 extensive improvements in all the code segments (see comments) of the algorithm improving mining time to less than half (50%)
+    +7 Use of a quick heap structure to maintain the Top-K support values with insert and getMinSup functions which DIRECTLY (reduced about a magnitude the mining time)
+    +8 use of intersection instead of diffSet (Quicker in most cases) (kept both ways with parameter) Could it be automatic the alteration between?
+    +10 (5% faster) Collect only the itemsets of current level that exist in current TopK (listOFKeys). the rest are discarded.
     +11 Improved diffSet computation
     +12 Use tuple instead of string for self.data dictionary (gained speed and memory consumption)
     +13 bitset in both intersection and diffSet implementations
-    +14 parallel computation of bitsets
-    +15 vertical database is preserves only for the last level of itemsets (Memory save 2 magnitudes)
-
-TODO: Fill the ARMDatasetFeatures.xlsx with algorithms missing minSup values
-TODO: Major error in dataset T16IT20D100K.dat and TopK=1000 Wrong results!!!
-        Something with the heap.
+    +14 parallel computation of bitsets (5x at least faster task computation)
+    +15 vertical database preserves ONLY the last level of itemsets (Memory save 2 magnitudes)
+    +16 intersection combined with bitset implementation PROVED (experimentally) faster in all datasets (in paper thorough analysis)
+    +17 encapsulated multiple iterations implementation insead of recursion implemented for (memory saving)
 
 
-
-        scimago for checking 
-
-
-Done 01/11/2024 21/10/2024 Dataset ARM features collection
+scimago for checking scientific journals reputation
 
 
 T10I4D100K.csv
