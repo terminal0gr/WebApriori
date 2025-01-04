@@ -7,51 +7,59 @@ import psutil
 import os
 
 
-class TB_Node:
-    """
-    The node in the TB tree.
+# class TB_Node:
+#     """
+#     The node in the TB tree.
 
-    Note: To get more information about the fields, refer to the supporting paper.
+#     Note: To get more information about the fields, refer to the supporting paper.
 
-    Attributes: 
-        item (int): The item (really the index of item) which is registered in this node.
-        count (int): The number of transactions reached to this node.
-        bitmap_code (bitarray): The bitmap representation of itemset registered from root to this node.
-            children (dict): The list of children of this node.
-            This dictionary maps each child item to child node for speeding up
-            accessing to the child node by its item.
-            child.item ==> child
-    """
+#     Attributes: 
+#         item (int): The item (really the index of item) which is registered in this node.
+#         count (int): The number of transactions reached to this node.
+#         bitmap_code (bitarray): The bitmap representation of itemset registered from root to this node.
+#             children (dict): The list of children of this node.
+#             This dictionary maps each child item to child node for speeding up
+#             accessing to the child node by its item.
+#             child.item ==> child
+#     """
 
-    def __init__(self, itemName, count=0, bitmap_code):
-        self.itemName = itemName
-        self.count = count
-        self.bitmap_code = bitmap_code
-        self.children = dict()
+#     def __init__(self, itemName, count=0):
+#         self.itemName = itemName
+#         self.count = count
+#         self.bitmap_code = bitmap_code
+#         self.children = dict()
 
-    def get_child_registering_item(self, item):
-        """
-        Return the child which registers the specified item.
-        If does not exist such child, then return None.
+#     def get_child_registering_item(self, item):
+#         """
+#         Return the child which registers the specified item.
+#         If does not exist such child, then return None.
 
-        Args:
-            item (int): The item (really the index of item).
+#         Args:
+#             item (int): The item (really the index of item).
 
-        Returns:
-            The BMCTreeNode that is child of this node and registers item.
-        """
-        return self.children.get(item)
+#         Returns:
+#             The BMCTreeNode that is child of this node and registers item.
+#         """
+#         return self.children.get(item)
 
-    def add_child(self, child):
-        self.children[child.item] = child
+#     def add_child(self, child):
+#         self.children[child.item] = child
 
-    def __repr__(self):
-        return f'{self.item}:{self.count}->{self.bitmap_code}'
+#     def __repr__(self):
+#         return f'{self.item}:{self.count}->{self.bitmap_code}'
 
 
 class BTK: 
 
     def __init__(self, dataset_file, topK, delimiter=' ', commitTimeout=0):
+
+        # Construct-TB-Tree step 4
+        self.start=0
+        self.finish=0
+        self.TB_Tree=dict()
+        self.BL=dict()
+
+
         self.dataset_file = dataset_file
         self.minSup = None  # The relative minimum support
         self.min_count = 0  # The absolute minimum support 
@@ -70,7 +78,7 @@ class BTK:
 
     def readDatasetFile(self):
 
-        # Construct-TB-Tree line 1
+        # Construct-TB-Tree Step 1
         with open(self.dataset_file, encoding='utf-8-sig') as f:
             # 1Item itemsets with their support
             sI = defaultdict(int)
@@ -87,7 +95,7 @@ class BTK:
             self.num_of_transactions=Tid
         sI = sorted(sI.items(), key=lambda x: x[1], reverse=True)
 
-        # Construct-TB-Tree line 2
+        # Construct-TB-Tree Step 2
         valid_elements = [item[0] for item in sI]
         valid_set = set(valid_elements)  # For fast membership checks
         # Sort and filter D1 values
@@ -99,41 +107,53 @@ class BTK:
             for key, value in dB.items()
         }
 
+        # Construct-TB-Tree Step 3,4
+        self.start=0
+        self.finish=0
+        self.TB_Tree=dict()
+        # self.TB_Tree[self.start]=['root',0,0]
+
+        self.buildTree(dB)
+
+        BL=dict()
+        # for key, value in self.TB_Tree.items():
+
+
+
+
+        # prefix = {}
+        # for value in dB.values():
+        #     if value:  # Ensure the list is non-empty
+        #         prefix[value[0]] = prefix.get(value[0], 0) + 1
+
+        # # Construct-TB-Tree step 5
+        # for pKey, pValue in prefix.items():
+        #     self.start+=1
+        #     currentTreeStart=self.start
+        #     self.TB_Tree[currentTreeStart]=[pKey,pValue,0]
+        #     prefixFiltered = {key: value[1:] for key, value in dB.items() if value[:1] == [pKey]}
+        #     self.buildTree(prefixFiltered)
+        #     self.finish+=1
+        #     self.TB_Tree[currentTreeStart][2]=self.finish
+
 
         sys.exit()
 
-        item1TopKList, self.min_count = self.InitialTopKFIList(topKItemSetsList)
+    def buildTree(self, dB):
+        prefix = {}
+        for value in dB.values():
+            if value:  # Ensure the list is non-empty
+                prefix[value[0]] = prefix.get(value[0], 0) + 1
 
-        # Initializes the quick Heap with brute passing its first list of support values
-        self.heap.initialFill(list(item1TopKList.values()))
-
-        # Get rid off the 1-itemsets that are non frequent based on the TopK value
-        vR = {key: vR[key] for key in item1TopKList if key in vR}
-
-        b3=t.time()
-        print(f"Read dataset Time: {(b3-b1):.3f} Seconds")
-
-        if self.bitSetMode:
-
-            # Parallel processing
-            with ProcessPoolExecutor() as executor:
-                # Map each dictionary value to the costly operation
-                partialParallelOperation = partial(parallelBitSetOp)
-                # result_partial = list(executor.map(partialParallelOperation, vR.values()))
-                vBitSet = {key: result for key, result in zip(vR.keys(), executor.map(partialParallelOperation, vR.values()))}
-
-            # Single core processing
-            # vBitSet=dict()
-            # for key, value in vR.items():
-            #     vBitSet[key] = _bitPacker(value)
-
-            self.data=vBitSet
-        else:
-            self.data = vR
-        
-        print(f"bitset transformation Time: {(t.time()-b3):.3f} Seconds")
-
-        return item1TopKList
+        # Construct-TB-Tree step 5
+        for pKey, pValue in prefix.items():
+            self.start+=1
+            currentTreeStart=self.start
+            self.TB_Tree[currentTreeStart]=[pKey,pValue,0]
+            prefixFiltered = {key: value[1:] for key, value in dB.items() if value[:1] == [pKey]}
+            self.buildTree(prefixFiltered)
+            self.finish+=1
+            self.TB_Tree[currentTreeStart][2]=self.finish
 
 
     def InitialTopKFIList(self, topKItemSetsList):

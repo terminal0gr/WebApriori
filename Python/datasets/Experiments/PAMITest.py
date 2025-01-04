@@ -6,15 +6,18 @@ import json
 # datasetName='chess.dat' 
 # minSup=0.886107634543179
 # separator=' '
-datasetName='kosarak.dat' 
-minSup=0.002392924458738467
-separator=' '
+# datasetName='kosarak.dat' 
+# minSup=0.002392924458738467
+# separator=' '
 # datasetName='1_L-0023.csv' 
 # minSup=0.01
 # separator=';'
 # datasetName='FpGrowthSampleWithoutQuotes.txt' 
 # minSup=0.6
 # separator=','
+datasetName='BTKSample.dat'  
+topK=0.8
+separator=' '
 memorySave=False
 
 
@@ -93,37 +96,13 @@ filepath=os.path.join('datasets', datasetName)
 ############################
 
 ############################
-AlgorithmName='Eclat_bitset'
-from PAMI.frequentPattern.basic import ECLATbitset as PAMI
-obj1 = PAMI.ECLATbitset(iFile=filepath, minSup=minSup, sep=separator)
-obj1.mine(memorySave)
-frequentPatterns= obj1.getPatternsAsDataFrame()
-frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
-print(frequentPatterns)
-outputDict = {}
-outputDict['Algorithm']=AlgorithmName
-outputDict['Language']="python"
-outputDict['library']="PAMI"
-outputDict['minSup']=minSup
-outputDict['totalFI']=len(obj1._finalPatterns.items())
-outputDict['Runtime']=obj1.getRuntime()
-outputDict['Memory']=obj1.getMemoryUSS()
-file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
-json.dump(outputDict, file, indent=4)
-file.close() 
-json.dumps(outputDict, indent=4)
-print(AlgorithmName + " Done!")
-############################
-
-
-
-############################
-# AlgorithmName='FPGrowth'
-# from PAMI.frequentPattern.basic import FPGrowth as PAMI
-# obj1 = PAMI.FPGrowth(iFile=filepath, minSup=minSup, sep=separator)
-# obj1.mine()
+# AlgorithmName='Eclat_bitset'
+# from PAMI.frequentPattern.basic import ECLATbitset as PAMI
+# obj1 = PAMI.ECLATbitset(iFile=filepath, minSup=minSup, sep=separator)
+# obj1.mine(memorySave)
 # frequentPatterns= obj1.getPatternsAsDataFrame()
 # frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
+# print(frequentPatterns)
 # outputDict = {}
 # outputDict['Algorithm']=AlgorithmName
 # outputDict['Language']="python"
@@ -137,6 +116,30 @@ print(AlgorithmName + " Done!")
 # file.close() 
 # json.dumps(outputDict, indent=4)
 # print(AlgorithmName + " Done!")
+############################
+
+
+
+############################
+AlgorithmName='FPGrowth'
+from PAMI.frequentPattern.basic import FPGrowth as PAMI
+obj1 = PAMI.FPGrowth(iFile=filepath, minSup=minSup, sep=separator)
+obj1.mine()
+frequentPatterns= obj1.getPatternsAsDataFrame()
+frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
+outputDict = {}
+outputDict['Algorithm']=AlgorithmName
+outputDict['Language']="python"
+outputDict['library']="PAMI"
+outputDict['minSup']=minSup
+outputDict['totalFI']=len(obj1._finalPatterns.items())
+outputDict['Runtime']=obj1.getRuntime()
+outputDict['Memory']=obj1.getMemoryUSS()
+file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
+json.dump(outputDict, file, indent=4)
+file.close() 
+json.dumps(outputDict, indent=4)
+print(AlgorithmName + " Done!")
 ############################
 
 # ############################
