@@ -7,6 +7,48 @@ import psutil
 import os
 
 
+class TB_Node:
+    """
+    The node in the TB tree.
+
+    Note: To get more information about the fields, refer to the supporting paper.
+
+    Attributes: 
+        item (int): The item (really the index of item) which is registered in this node.
+        count (int): The number of transactions reached to this node.
+        bitmap_code (bitarray): The bitmap representation of itemset registered from root to this node.
+            children (dict): The list of children of this node.
+            This dictionary maps each child item to child node for speeding up
+            accessing to the child node by its item.
+            child.item ==> child
+    """
+
+    def __init__(self, itemName, count=0, bitmap_code):
+        self.itemName = itemName
+        self.count = count
+        self.bitmap_code = bitmap_code
+        self.children = dict()
+
+    def get_child_registering_item(self, item):
+        """
+        Return the child which registers the specified item.
+        If does not exist such child, then return None.
+
+        Args:
+            item (int): The item (really the index of item).
+
+        Returns:
+            The BMCTreeNode that is child of this node and registers item.
+        """
+        return self.children.get(item)
+
+    def add_child(self, child):
+        self.children[child.item] = child
+
+    def __repr__(self):
+        return f'{self.item}:{self.count}->{self.bitmap_code}'
+
+
 class BTK: 
 
     def __init__(self, dataset_file, topK, delimiter=' ', commitTimeout=0):
@@ -56,8 +98,7 @@ class BTK:
             )
             for key, value in dB.items()
         }
-        # Output the result
-        print(dB)
+
 
         sys.exit()
 
