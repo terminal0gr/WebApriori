@@ -6,47 +6,66 @@ from collections import defaultdict
 import psutil
 import os
 
+class Tabk:
+    def __init__(self, max_size):
+        """
+        Initialize the Tabk object with a fixed size.
+        """
+        self.max_size = max_size
+        self.data = defaultdict(list)  # Dictionary to hold support as keys and itemsets as values
 
-# class TB_Node:
-#     """
-#     The node in the TB tree.
+    def _get_sorted_keys(self):
+        """
+        Return the sorted keys in descending order of support.
+        """
+        return sorted(self.data.keys(), reverse=True)
 
-#     Note: To get more information about the fields, refer to the supporting paper.
+    @property
+    def threshold(self):
+        """
+        Return the threshold (support of the last record).
+        """
+        sorted_keys = self._get_sorted_keys()
+        if len(sorted_keys) < self.max_size:
+            return float('-inf')  # No threshold if the table is not full
+        return sorted_keys[-1]
 
-#     Attributes: 
-#         item (int): The item (really the index of item) which is registered in this node.
-#         count (int): The number of transactions reached to this node.
-#         bitmap_code (bitarray): The bitmap representation of itemset registered from root to this node.
-#             children (dict): The list of children of this node.
-#             This dictionary maps each child item to child node for speeding up
-#             accessing to the child node by its item.
-#             child.item ==> child
-#     """
+    def insert(self, support, itemset):
+        """
+        Insert a new itemset with its support into the Tabk.
+        """
+        # If the support is below the current threshold, discard the itemset
+        if support < self.threshold:
+            return
+        
+        # If the support already exists, append the itemset to the existing list
+        if support in self.data:
+            self.data[support].append(itemset)
+        else:
+            # Otherwise, create a new record for this support
+            self.data[support] = [itemset]
 
-#     def __init__(self, itemName, count=0):
-#         self.itemName = itemName
-#         self.count = count
-#         self.bitmap_code = bitmap_code
-#         self.children = dict()
+        # Sort the data by support and ensure size constraints
+        self._trim_to_size()
 
-#     def get_child_registering_item(self, item):
-#         """
-#         Return the child which registers the specified item.
-#         If does not exist such child, then return None.
+    def _trim_to_size(self):
+        """
+        Trim the Tabk to ensure it does not exceed the maximum size.
+        """
+        sorted_keys = self._get_sorted_keys()
+        
+        # If the size exceeds the maximum, remove the lowest support records
+        while len(sorted_keys) > self.max_size:
+            lowest_support = sorted_keys[-1]
+            del self.data[lowest_support]
+            sorted_keys = self._get_sorted_keys()
 
-#         Args:
-#             item (int): The item (really the index of item).
-
-#         Returns:
-#             The BMCTreeNode that is child of this node and registers item.
-#         """
-#         return self.children.get(item)
-
-#     def add_child(self, child):
-#         self.children[child.item] = child
-
-#     def __repr__(self):
-#         return f'{self.item}:{self.count}->{self.bitmap_code}'
+    def __repr__(self):
+        """
+        Provide a string representation of the Tabk for easy debugging.
+        """
+        sorted_data = [(support, self.data[support]) for support in self._get_sorted_keys()]
+        return '\n'.join(f"{support}: {', '.join(map(str, itemsets))}" for support, itemsets in sorted_data)
 
 
 class BTK: 
@@ -89,7 +108,7 @@ class BTK:
                 Tid+=1
                 dB[Tid]=[]
                 for item in line.strip().split(sep=self.delimiter):
-                    sI[item] += 1
+                    sI[tuple(item)] += 1
                     dB[Tid].append(item)
             # The # of transactions in dataset
             self.num_of_transactions=Tid
@@ -126,32 +145,36 @@ class BTK:
             self.BL[BLItem].append([value[1], key, value[2]])  # Append the required values
 
         # Sort d2 by the order of keys in d3
+        self.BL={key:self.BL[key] for key in sorted(self.BL, key=lambda x: next(val2 for val1, val2 in sI if val1 == x), reverse=True)}
         # d2 = {key: d2[key] for key in sorted(d2, key=lambda x: d3[x])}
 
-        # Print the resulting dictionary
+        # Print the resulting BL List
         print(self.BL)
-        # for key, value in self.TB_Tree.items():
+
+        tabK=Tabk(self.topK)
+
+        # BTK Steps 5-10
+        for item_1, support in sI:
+            if support>tabK.threshold:
+                tabK.insert(support,item_1)
+        
+        while len(sI)>0:
+            self.Candidate_gen(sI)
+
+        print("Done!!!")
+
+    def Candidate_gen(self,Ci):
+        i=0
+        j=1
+        while i<len(Ci):
+            j=i+1
+            while j<len(Ci):
+                
 
 
 
 
-        # prefix = {}
-        # for value in dB.values():
-        #     if value:  # Ensure the list is non-empty
-        #         prefix[value[0]] = prefix.get(value[0], 0) + 1
-
-        # # Construct-TB-Tree step 5
-        # for pKey, pValue in prefix.items():
-        #     self.start+=1
-        #     currentTreeStart=self.start
-        #     self.TB_Tree[currentTreeStart]=[pKey,pValue,0]
-        #     prefixFiltered = {key: value[1:] for key, value in dB.items() if value[:1] == [pKey]}
-        #     self.buildTree(prefixFiltered)
-        #     self.finish+=1
-        #     self.TB_Tree[currentTreeStart][2]=self.finish
-
-
-        sys.exit()
+        
 
     def buildTree(self, dB):
         prefix = {}
