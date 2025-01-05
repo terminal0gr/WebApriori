@@ -115,7 +115,21 @@ class BTK:
 
         self.buildTree(dB)
 
-        BL=dict()
+        # Initialize an empty dictionary for d2
+        self.BL = {}
+
+        # Populate d2 using the data from d1
+        for key, value in self.TB_Tree.items():
+            BLItem = value[0]  # Extract the first element as the key for d2
+            if BLItem not in self.BL:
+                self.BL[BLItem] = []  # Initialize the list for this key if not already present
+            self.BL[BLItem].append([value[1], key, value[2]])  # Append the required values
+
+        # Sort d2 by the order of keys in d3
+        # d2 = {key: d2[key] for key in sorted(d2, key=lambda x: d3[x])}
+
+        # Print the resulting dictionary
+        print(self.BL)
         # for key, value in self.TB_Tree.items():
 
 
