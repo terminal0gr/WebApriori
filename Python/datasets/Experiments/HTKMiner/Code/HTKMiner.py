@@ -211,15 +211,12 @@ class HTKMiner:
                     classB = listOFKeys[iB]
 
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
-                    # Stop current iteration if any of the two engaging itemsets has already been above the current minSup.
-                    if currentLevelTopK[classA]<=self.min_count or currentLevelTopK[classB]<=self.min_count:
+                    # Stop current iteration if any of the second itemset has already been above the current minSup.
+                    if currentLevelTopK[classB]<=self.min_count:
                         break
 
                     prefixA=classA[:-1]
                     prefixB=classB[:-1]
-
-                    itemA = classA[-1]
-                    itemB = classB[-1]
 
                     if prefixA == prefixB:
 
@@ -235,7 +232,9 @@ class HTKMiner:
                             # recalculate the new absolute minSup value from quick heap
                             self.min_count=self.heap.insert(support)
 
-                            # The new candidate
+                            #next level candidate itemset
+                            itemA = classA[-1]
+                            itemB = classB[-1]
                             key=prefixA + (itemA, itemB)
 
                             #add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
@@ -314,15 +313,12 @@ class HTKMiner:
                     classB = listOFKeys[iB]
 
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
-                    # Stop current iteration if any of the two engaging itemsets has already been above the current minSup.
-                    if currentLevelTopK[classA]<=self.min_count or currentLevelTopK[classB]<=self.min_count:
+                    # Stop current iteration if any of the second itemset has already been above the current minSup.
+                    if currentLevelTopK[classB]<=self.min_count:
                         break
 
                     prefixA=classA[:-1]
                     prefixB=classB[:-1]
-
-                    itemA = classA[-1]
-                    itemB = classB[-1]
 
                     if prefixA == prefixB:
 
@@ -340,11 +336,13 @@ class HTKMiner:
                             # recalculate the new absolute minSup value from quick heap
                             self.min_count=self.heap.insert(support)
 
+                            #next level candidate itemset
+                            itemA = classA[-1]
+                            itemB = classB[-1]
                             key=prefixA + (itemA, itemB)
 
                             #add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
                             levelData[key] = transactions #bitSet implementation (a big integer number)
-                            # self.data[key] = transactions
 
                             # Insert itemset with its support
                             nextLevelTopK[key] = support
@@ -418,15 +416,12 @@ class HTKMiner:
                     classB = listOFKeys[iB]
 
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
-                    # Stop current iteration if any of the two engaging itemsets has already been above the current minSup.
-                    if currentLevelTopK[classA]<=self.min_count or currentLevelTopK[classB]<=self.min_count:
+                    # Stop current iteration if any of the second itemset has already been above the current minSup.
+                    if currentLevelTopK[classB]<=self.min_count:
                         break
 
                     prefixA=classA[:-1]
                     prefixB=classB[:-1]
-
-                    itemA = classA[-1]
-                    itemB = classB[-1]
 
                     if prefixA == prefixB:
 
@@ -438,12 +433,13 @@ class HTKMiner:
                             # recalculate the new absolute minSup value from quick heap
                             self.min_count=self.heap.insert(support)
 
+                            #next level candidate itemset
+                            itemA = classA[-1]
+                            itemB = classB[-1]
                             key=prefixA + (itemA, itemB)
 
-                            # self.data[key] = transactions
                             #add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
                             levelData[key] = list(transactions) #bitSet implementation (a big integer number)
-                            # self.data[key] = list(transactions) #add the frequent itemset to vertical database because it would help finding the superSet candidates.
 
                             # Insert itemset with its support
                             nextLevelTopK[key] = support
@@ -516,15 +512,12 @@ class HTKMiner:
 
                     classB = listOFKeys[iB]
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
-                    # Stop current iteration if any of the two engaging itemsets has already been above the current minSup.
+                    # Stop current iteration if any of the second itemset has already been above the current minSup.
                     if currentLevelTopK[classB]<=self.min_count:
                         break
 
                     prefixA=classA[:-1]
                     prefixB=classB[:-1]
-
-                    itemA = classA[-1]
-                    itemB = classB[-1]
 
                     if prefixA == prefixB:
 
@@ -538,6 +531,9 @@ class HTKMiner:
                             # recalculate the new absolute minSup value from quick heap
                             self.min_count=self.heap.insert(support)
 
+                            #next level candidate itemset
+                            itemA = classA[-1]
+                            itemB = classB[-1]
                             key=prefixA + (itemA, itemB)
 
                             #+15 add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
