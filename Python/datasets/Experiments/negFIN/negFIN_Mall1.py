@@ -5,66 +5,46 @@ from bitarray import bitarray
 import json
 
 
-class TB_Node:
-    def __init__(self, item_name, count=0, parent=None, start_build=0, finish_build=0):
-        """
-        Initialize a tree node.
-        
-        Args:
-            item_name (str): The name of the item represented by this node.
-            count (int): The count of transactions matching the itemset. Default is 0.
-            parent (TreeNode): Pointer to the parent node. Default is None.
-            start_build (int): Integer value for the start-build field. Default is 0.
-            finish_build (int): Integer value for the finish-build field. Default is 0.
-        """
-        self.item_name = item_name
+class BMCTreeNode:
+    """
+    The node in the BMC tree.
+
+    Note: To get more information about the fields, refer to the supporting paper.
+
+    Attributes: 
+        item (int): The item (really the index of item) which is registered in this node.
+        count (int): The number of transactions reached to this node.
+        bitmap_code (bitarray): The bitmap representation of itemset registered from root to this node.
+            children (dict): The list of children of this node.
+            This dictionary maps each child item to child node for speeding up
+            accessing to the child node by its item.
+            child.item ==> child
+    """
+
+    def __init__(self, item, count, bitmap_code):
+        self.item = item
         self.count = count
-        self.parent = parent
-        self.start_build = start_build
-        self.finish_build = finish_build
+        self.bitmap_code = bitmap_code
+        self.children = dict()
+
+    def get_child_registering_item(self, item):
+        """
+        Return the child which registers the specified item.
+        If does not exist such child, then return None.
+
+        Args:
+            item (int): The item (really the index of item).
+
+        Returns:
+            The BMCTreeNode that is child of this node and registers item.
+        """
+        return self.children.get(item)
+
+    def add_child(self, child):
+        self.children[child.item] = child
 
     def __repr__(self):
-        return (f"TreeNode(item_name={self.item_name}, count={self.count}, "
-                f"start_build={self.start_build}, finish_build={self.finish_build})")
-
-
-class TB_Tree:
-    def __init__(self):
-        """
-        Initialize the root of the item prefix tree.
-        """
-        self.root = TB_Node("root")
-
-    def add_path(self, items, count=1):
-        """
-        Add a path of items to the tree, starting from the root.
-        
-        Args:
-            items (list): A list of item names representing the path.
-            count (int): The count to increment for the final node. Default is 1.
-        """
-        current_node = self.root
-        for item in items:
-            current_node = current_node.add_child(item)
-        current_node.count += count  # Update the count for the last node in the path
-
-    def add_node(self, nodeName, count=1):
-        """
-        Add a new node .
-        
-        Args:
-            items (list): A list of item names representing the path.
-            count (int): The count to increment for the final node. Default is 1.
-        """
-        node=TB_Node(nodeName,count,self)
-
-        for item in items:
-            current_node = current_node.add_child(item)
-        current_node.count += count  # Update the count for the last node in the path
-
-    def __repr__(self):
-        return f"ItemPrefixTree(root={self.root})"
-
+        return f'{self.item}:{self.count}->{self.bitmap_code}'
 
 
 class FrequentItemsetTreeNode:

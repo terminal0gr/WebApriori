@@ -78,7 +78,9 @@ class BTK:
         self.TB_Tree=dict()
         self.BL=dict()
         self.topK=topK
-
+        self.sI=None
+        self.dB=None
+        self.finalTopK=0
 
         self.dataset_file = dataset_file
         self.minSup = None  # The relative minimum support
@@ -95,68 +97,65 @@ class BTK:
         # Construct-TB-Tree Step 1
         with open(self.dataset_file, encoding='utf-8-sig') as f:
             # 1Item itemsets with their support
-            sI = defaultdict(int)
-            dB = dict()
+            self.sI = defaultdict(int)
+            self.dB = dict()
             Tid=0
-            b1=t.time() # start of reading
             for line in f:
                 Tid+=1
-                dB[Tid]=[]
+                self.dB[Tid]=[]
                 for item in line.strip().split(sep=self.delimiter):
-                    sI[tuple(item)] += 1
-                    dB[Tid].append(tuple(item))
+                    self.sI[(item,)] += 1
+                    self.dB[Tid].append((item,))
             # The # of transactions in dataset
             self.num_of_transactions=Tid
-        sI = sorted(sI.items(), key=lambda x: x[1], reverse=True)
+
+    def TB_Tree_Construction(self):
+        self.sI = sorted(self.sI.items(), key=lambda x: x[1], reverse=True)
 
         # Construct-TB-Tree Step 2
-        valid_elements = [item[0] for item in sI]
+        valid_elements = [item[0] for item in self.sI]
         valid_set = set(valid_elements)  # For fast membership checks
         # Sort and filter D1 values
-        dB = {
+        self.dB = {
             key: sorted(
                 [item for item in value if item in valid_set],  # Filter out invalid items
                 key=valid_elements.index  # Sort based on the order in valid_elements
             )
-            for key, value in dB.items()
+            for key, value in self.dB.items()
         }
 
         # Construct-TB-Tree Step 3,4
         self.start=0
         self.finish=0
         self.TB_Tree=dict()
-        # self.TB_Tree[self.start]=['root',0,0]
 
-        self.buildTree(dB)
+        self.buildTree(self.dB)
 
-        # Initialize an empty dictionary for d2
+    def BL_Construction(self):
+        # Initialize The B-list (BL)
         self.BL = {}
-
-        # Populate d2 using the data from d1
+        
         for key, value in self.TB_Tree.items():
-            BLItem = value[0]  # Extract the first element as the key for d2
+            BLItem = value[0]  
             if BLItem not in self.BL:
                 self.BL[BLItem] = []  # Initialize the list for this key if not already present
             self.BL[BLItem].append([value[1], key, value[2]])  # Append the required values
 
-        # Sort d2 by the order of keys in d3
-        self.BL={key:self.BL[key] for key in sorted(self.BL, key=lambda x: next(val2 for val1, val2 in sI if val1 == x), reverse=True)}
+        # BL List is sorted in descending order of their current rank
+        self.BL={key:self.BL[key] for key in sorted(self.BL, key=lambda x: next(val2 for val1, val2 in self.sI if val1 == x), reverse=True)}
         # d2 = {key: d2[key] for key in sorted(d2, key=lambda x: d3[x])}
 
-        # Print the resulting BL List
-        print(self.BL)
 
+    def itemset_Construction(self):
         self.tabK=TabK(self.topK)
 
         # BTK Steps 5-10
-        for item_1, support in sI:
+        for item_1, support in self.sI:
             if support>self.tabK.threshold:
                 self.tabK.insert(support,item_1)
-        
-        self.Candidate_gen(sI)
 
-        print("Done!!!")
-
+        self.Candidate_gen(self.sI)
+    
     def Candidate_gen(self,Ci):
         nextLevelC=[]
         i=0
@@ -168,17 +167,18 @@ class BTK:
                     px_i=Ci[i][0][:-1]
                     px_j=Ci[j][0][:-1]
                     if px_i==px_j:
-                        p=px_i + tuple(Ci[i][0][-1]) + tuple(Ci[j][0][-1])
-
-                        pBL, count= self.intersection(self.BL[tuple(Ci[i][0][-1])], self.BL[tuple(Ci[j][0][-1])], self.tabK.threshold)
+                        pBL, count= self.intersection(self.BL[(Ci[i][0][-1],)], self.BL[(Ci[j][0][-1],)], self.tabK.threshold)
                         if pBL:
+                            p=px_i + (Ci[i][0][-1],) + (Ci[j][0][-1],)
                             self.BL[p]=pBL
+                            self.tabK.insert(count,p)
                             nextLevelC.append((p, count))
                 j+=1
             i+=1
         
-        print(nextLevelC)
-        self.Candidate_gen(nextLevelC)
+        if nextLevelC:
+            print(nextLevelC)
+            self.Candidate_gen(nextLevelC)
 
                 
     def intersection(self, BLy, BLx, threshold):
@@ -210,8 +210,12 @@ class BTK:
                 s=1 # set flag 
             if (C1 < threshold or C2 < threshold):
                 return [], 0
-
-        return R, Rcount
+        # Malliaridis 6/1/2025 This check is vital for algorithm speed
+        if Rcount>threshold:
+            return R, Rcount
+        else:
+            return [], 0
+        
 
     def BLItemSup(self,BLItem):
         if BLItem:
@@ -237,22 +241,57 @@ class BTK:
     # The main mining procedure
     def mine(self):
 
-        self.start = t.time() #Start Time.
-
+        start = t.time() #Start Time.
         self.readDatasetFile() 
-
         endRead = t.time()
+        # We keep only the max memory used between the stages.
+        memoryUSS = self.process.memory_full_info().uss
+        if self.maxMemoryUSS<memoryUSS:
+            self.maxMemoryUSS=memoryUSS
 
+        self.TB_Tree_Construction()
+        endTBTree = t.time()
+        # We keep only the max memory used between the stages.
+        memoryUSS = self.process.memory_full_info().uss
+        if self.maxMemoryUSS<memoryUSS:
+            self.maxMemoryUSS=memoryUSS
+
+        self.BL_Construction()
+        endBL = t.time()
+        # We keep only the max memory used between the stages.
+        memoryUSS = self.process.memory_full_info().uss
+        if self.maxMemoryUSS<memoryUSS:
+            self.maxMemoryUSS=memoryUSS
+
+        self.itemset_Construction()
         end = t.time() #end Time
-        self.execution_time=end-self.start
+        # We keep only the max memory used between the stages.
+        memoryUSS = self.process.memory_full_info().uss
+        if self.maxMemoryUSS<memoryUSS:
+            self.maxMemoryUSS=memoryUSS
 
-        print(f"Read Dataset Time: {(endRead-self.start):.3f} Seconds")
+        print(self.tabK)
+        self.execution_time=end-start
+
+        print(f"Read Dataset Time: {(endRead-start):.3f} Seconds")
+        print(f"TB-Tree construction Time: {(endTBTree-endRead):.3f} Seconds")
+        print(f"B-List construction Time: {(endBL-endTBTree):.3f} Seconds")
+        print(f"FI mining construction Time: {(end-endBL):.3f} Seconds")
         if self.execution_time>self.commitTimeout:
             print(f"Total Execution Time: {self.commitTimeout:.3f}+++ Seconds")
         else:
             print(f"Total Execution Time: {self.execution_time:.3f} Seconds")
-        print(f"FIM found:{len(self.finalTopK)}")
+        # Count the FI mined
+        # Use a set to collect unique values
+        unique_values = set()
+        # Add each tuple in the dictionary values to the set
+        for value_list in self.tabK.data.values():
+            unique_values.update(value_list)  # Add all tuples in the current list to the set
+        self.finalTopK=len(unique_values)
+        print(f"FIM found:{self.finalTopK}")
+        self.min_count=self.tabK.threshold
         print(f"Absolute minSup:{self.min_count}")
+        self.minSup=self.min_count/self.num_of_transactions
         print(f"Relative minSup:{self.minSup}")
         print(f"Max Memory:{self.maxMemoryUSS}")       
 

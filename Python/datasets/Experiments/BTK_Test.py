@@ -5,9 +5,9 @@ import json
 
 commitTimeout=300
 
-# datasetName='chess.dat'  
-# topK=100
-# separator=' '
+datasetName='chess.dat'  
+topK=10
+separator=' '
 # datasetName='kosarak.dat' 
 # topK=550
 # separator=' '
@@ -20,9 +20,9 @@ commitTimeout=300
 # datasetName='1_L-0023.csv'
 # topK=1000
 # separator=';'
-datasetName='BTKSample.dat'  
-topK=4
-separator=' '
+# datasetName='BTKSample.dat'  
+# topK=4
+# separator=' '
 # datasetName='T16IT20D100K.dat'
 # topK=1000
 # separator=' '
@@ -75,14 +75,14 @@ outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(to
 BTKAlgo = BTK(filepath, topK, separator, commitTimeout)
 BTKAlgo.mine()
 
-BTKAlgo.writeFIM(outFimFilePath)
+# BTKAlgo.writeFIM(outFimFilePath)
 
 outputDict = {}
 outputDict['Algorithm']=AlgorithmName
 outputDict['Language']="python"
 outputDict['library']="Mall"
 outputDict['minSup']=BTKAlgo.minSup
-outputDict['totalFI']=len(BTKAlgo.finalTopK)
+outputDict['totalFI']=BTKAlgo.finalTopK
 if BTKAlgo.execution_time>BTKAlgo.commitTimeout:
     outputDict['Runtime']=str(BTKAlgo.commitTimeout)+'+++'
 else:    
