@@ -150,10 +150,15 @@ class BTK:
         self.tabK=TabK(self.topK)
 
         # BTK Steps 5-10
+        tempSI=[]
         for item_1, support in self.sI:
             if support>self.tabK.threshold:
                 self.tabK.insert(support,item_1)
+                tempSI.append((item_1,support,))
+            else:
+                break
 
+        self.sI=tempSI
         self.Candidate_gen(self.sI)
     
     def Candidate_gen(self,Ci):
@@ -167,7 +172,7 @@ class BTK:
                     px_i=Ci[i][0][:-1]
                     px_j=Ci[j][0][:-1]
                     if px_i==px_j:
-                        pBL, count= self.intersection(self.BL[(Ci[i][0][-1],)], self.BL[(Ci[j][0][-1],)], self.tabK.threshold)
+                        pBL, count= self.intersection(self.BL[(Ci[i][0])], self.BL[(Ci[j][0][-1],)], self.tabK.threshold)
                         if pBL:
                             p=px_i + (Ci[i][0][-1],) + (Ci[j][0][-1],)
                             self.BL[p]=pBL
@@ -177,7 +182,6 @@ class BTK:
             i+=1
         
         if nextLevelC:
-            print(nextLevelC)
             self.Candidate_gen(nextLevelC)
 
                 
