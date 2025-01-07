@@ -174,7 +174,7 @@ class BTK:
                     # px_j = Ci[j][0][:-1]
                     px_j = Ci[j][0][1:]
                     if px_i==px_j:
-                        pBL, count= self.intersection(self.BL[(Ci[i][0])], self.BL[(Ci[j][0])], self.tabK.threshold)
+                        pBL, count= self.intersection(self.BL[(Ci[i][0])], self.BL[(Ci[j][0],)], self.tabK.threshold)
                         if pBL:
                             # p=px_i + (Ci[i][0][-1],) + (Ci[j][0][-1],)
                             p=(Ci[i][0][0],) + (Ci[j][0][0],) + px_i
@@ -188,7 +188,7 @@ class BTK:
             self.Candidate_gen(nextLevelC)
 
                 
-    def intersection(self, BLy, BLx, threshold):
+    def intersection(self, BLx, BLy, threshold):
         i=0
         j=0
         Rcount=0
@@ -218,7 +218,7 @@ class BTK:
             if (C1 < threshold or C2 < threshold):
                 return [], 0
         # Malliaridis 6/1/2025 This check is vital for algorithm speed
-        if Rcount>=threshold:
+        if Rcount>threshold:
             return R, Rcount
         else:
             return [], 0
@@ -277,6 +277,7 @@ class BTK:
         if self.maxMemoryUSS<memoryUSS:
             self.maxMemoryUSS=memoryUSS
 
+        print(self.tabK)
         self.execution_time=end-start
 
         print(f"Read Dataset Time: {(endRead-start):.3f} Seconds")
@@ -303,10 +304,8 @@ class BTK:
 
     def writeFIM(self, outputFile=None): #outputs the frequent itemsets in json format
         if (outputFile):
-            data = {
-                ", ".join(t): key
-                for key, value_list in sorted(self.tabK.data.items(), reverse=True) 
-                for t in value_list
-            }  
+            # Convert tuple keys to strings since JSON does not support tuple keys
+            # data = {", ".join(map(str, key)): value for key, value in self.finalTopK.items()}
+            data = {", ".join(self.itemDict[item] for item in key): value for key, value in self.finalTopK.items()}
             with open(outputFile, "w") as file:
                 json.dump(data, file, indent=4)

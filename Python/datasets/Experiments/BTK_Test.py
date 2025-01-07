@@ -6,7 +6,7 @@ import json
 commitTimeout=300
 
 datasetName='chess.dat'  
-topK=10
+topK= 556
 separator=' '
 # datasetName='kosarak.dat' 
 # topK=550
@@ -23,9 +23,7 @@ separator=' '
 # datasetName='BTKSample.dat'  
 # topK=4
 # separator=' '
-# datasetName='T16IT20D100K.dat'
-# topK=1000
-# separator=' '
+
 
 
 '''
@@ -75,7 +73,7 @@ outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(to
 BTKAlgo = BTK(filepath, topK, separator, commitTimeout)
 BTKAlgo.mine()
 
-# BTKAlgo.writeFIM(outFimFilePath)
+BTKAlgo.writeFIM(outFimFilePath)
 
 outputDict = {}
 outputDict['Algorithm']=AlgorithmName
@@ -91,6 +89,5 @@ outputDict['Memory']=BTKAlgo.maxMemoryUSS
 file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext2),'w')
 json.dump(outputDict, file, indent=4)
 file.close() 
-json.dumps(outputDict, indent=4)
 ############################
 print(AlgorithmName + " Done!")

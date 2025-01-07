@@ -594,7 +594,8 @@ class HTKMiner:
             print(f"Total Execution Time: {self.commitTimeout:.3f}+++ Seconds")
         else:
             print(f"Total Execution Time: {self.execution_time:.3f} Seconds")
-        print(f"FIM found:{len(self.finalTopK)}")
+        print(f"FIM found :{len(self.finalTopK)}")
+        print(f"Rank count:{self.heap.rankCount()}")
         print(f"Absolute minSup:{self.min_count}")
         print(f"Relative minSup:{self.minSup}")
         print(f"Max Memory:{self.maxMemoryUSS}")       
@@ -638,6 +639,9 @@ class QuickHeap:
         else: # The heap is not full
             return 0 # heap items less than the heap's size. In that case minSup is 0
         
+    def rankCount(self):
+        return len(set(self.heapList))
+
     def __str__(self):
         return "\n".join(map(str, self.heapList))
     

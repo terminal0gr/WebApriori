@@ -8,7 +8,7 @@ bitSetMode=True #If bitSet will be used in transformation of the vertical databa
 commitTimeout=300
 
 datasetName='chess.dat'  
-topK=16
+topK=10000
 separator=' '
 # datasetName='kosarak.dat' 
 # topK=550
