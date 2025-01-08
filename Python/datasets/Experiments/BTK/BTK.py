@@ -169,14 +169,11 @@ class BTK:
             j=i+1
             while j<len(Ci):
                 if Ci[i][1]>=self.tabK.threshold and Ci[j][1]>=self.tabK.threshold:
-                    # px_i=Ci[i][0][:-1]
                     px_i = Ci[i][0][1:]
-                    # px_j = Ci[j][0][:-1]
                     px_j = Ci[j][0][1:]
-                    if px_i==px_j:
+                    if px_i==px_j: #and not any(v1 == Ci[j][0] for v1, _ in self.subsume.get(Ci[i][0], [])):
                         pBL, count= self.intersection(self.BL[(Ci[i][0])], self.BL[(Ci[j][0])], self.tabK.threshold)
                         if pBL:
-                            # p=px_i + (Ci[i][0][-1],) + (Ci[j][0][-1],)
                             p=(Ci[i][0][0],) + (Ci[j][0][0],) + px_i
                             self.BL[p]=pBL
                             self.tabK.insert(count,p)
@@ -248,15 +245,17 @@ class BTK:
     def Find_Subsume(self):
         self.subsume={}
         for i in range(1,len(self.sI)):
-            for j in range(i,0,-1):
-                if self.sI[j][0] in self.subsume[self.sI[i][0]][0]:
-                    continue
-                if self.check_Subsume(self.BL[i], self.BL[j]):
+            for j in range(i-1,-1,-1):
+                if self.sI[i][0] in self.subsume:
+                    # if self.sI[j][0] in self.subsume[self.sI[i][0]][0]:
+                    if any(v1 == self.sI[j][0] for v1, v2 in self.subsume[self.sI[i][0]]):
+                        continue
+                if self.check_Subsume(self.BL[self.sI[i][0]], self.BL[self.sI[j][0]]):
                     if self.sI[i][0] not in self.subsume:
                         self.subsume[self.sI[i][0]] = []  # Initialize the list of subsumes
                     self.subsume[self.sI[i][0]].append(self.sI[j])  # Append the subsume
-                    for value in self.subsume[j].values():
-                        self.subsume[self.sI[i][0]].append(value)
+                    if self.sI[j][0] in self.subsume:
+                        self.subsume[self.sI[i][0]].extend(self.subsume[self.sI[j][0]])
 
     def check_Subsume(self,BLx,BLy):
         i=0
@@ -269,7 +268,7 @@ class BTK:
                     j+=1
             else:
                 return False # early stopping strategy when met, return False        
-        if i==len(BLy):
+        if i==len(BLx):
             return True
         return False
 

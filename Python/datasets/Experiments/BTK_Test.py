@@ -21,7 +21,7 @@ separator=' '
 # topK=1000
 # separator=';'
 datasetName='BTKSample.dat'  
-topK=2
+topK=20
 separator=' '
 
 
