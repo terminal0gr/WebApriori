@@ -158,8 +158,20 @@ class BTK:
             else:
                 break
 
+        # BTK Steps 11-13    
         self.sI=tempSI
         self.Candidate_gen(self.sI)
+
+        # BTK Steps 14-18
+        print(self.tabK.data)
+        for sup, fiList in self.tabK.data.items():
+            for fi in fiList:
+                if fi in self.subsume:
+                    print(f"fi={fi} == subsume {self.subsume[fi]}, sup=={sup}")
+
+
+
+
     
     def Candidate_gen(self,Ci):
         nextLevelC=[]
@@ -171,10 +183,12 @@ class BTK:
                 if Ci[i][1]>=self.tabK.threshold and Ci[j][1]>=self.tabK.threshold:
                     px_i = Ci[i][0][1:]
                     px_j = Ci[j][0][1:]
-                    if px_i==px_j: #and not any(v1 == Ci[j][0] for v1, _ in self.subsume.get(Ci[i][0], [])):
+                    if px_i==px_j and not any(v1 == Ci[i][0] for v1 in self.subsume.get(Ci[j], [])):
                         pBL, count= self.intersection(self.BL[(Ci[i][0])], self.BL[(Ci[j][0])], self.tabK.threshold)
                         if pBL:
                             p=(Ci[i][0][0],) + (Ci[j][0][0],) + px_i
+                            if Ci[j][0] in self.subsume:
+                                self.subsume[p]=self.subsume.get(Ci[j][0])
                             self.BL[p]=pBL
                             self.tabK.insert(count,p)
                             nextLevelC.append((p, count))
@@ -247,13 +261,12 @@ class BTK:
         for i in range(1,len(self.sI)):
             for j in range(i-1,-1,-1):
                 if self.sI[i][0] in self.subsume:
-                    # if self.sI[j][0] in self.subsume[self.sI[i][0]][0]:
-                    if any(v1 == self.sI[j][0] for v1, v2 in self.subsume[self.sI[i][0]]):
+                    if any(val == self.sI[j][0] for val in self.subsume[self.sI[i][0]]):
                         continue
                 if self.check_Subsume(self.BL[self.sI[i][0]], self.BL[self.sI[j][0]]):
                     if self.sI[i][0] not in self.subsume:
                         self.subsume[self.sI[i][0]] = []  # Initialize the list of subsumes
-                    self.subsume[self.sI[i][0]].append(self.sI[j])  # Append the subsume
+                    self.subsume[self.sI[i][0]].append(self.sI[j][0])  # Append the subsume
                     if self.sI[j][0] in self.subsume:
                         self.subsume[self.sI[i][0]].extend(self.subsume[self.sI[j][0]])
 

@@ -158,8 +158,12 @@ class BTK:
             else:
                 break
 
+        # BTK Steps 11-13   
         self.sI=tempSI
         self.Candidate_gen(self.sI)
+
+        # BTK Steps 14-18
+        print(self.tabK.data)        
     
     def Candidate_gen(self,Ci):
         nextLevelC=[]
