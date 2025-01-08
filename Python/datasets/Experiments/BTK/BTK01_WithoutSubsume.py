@@ -245,34 +245,6 @@ class BTK:
             self.finish+=1
             self.TB_Tree[currentTreeStart][2]=self.finish
 
-    def Find_Subsume(self):
-        self.subsume={}
-        for i in range(1,len(self.sI)):
-            for j in range(i,0,-1):
-                if self.sI[j][0] in self.subsume[self.sI[i][0]][0]:
-                    continue
-                if self.check_Subsume(self.BL[i], self.BL[j]):
-                    if self.sI[i][0] not in self.subsume:
-                        self.subsume[self.sI[i][0]] = []  # Initialize the list of subsumes
-                    self.subsume[self.sI[i][0]].append(self.sI[j])  # Append the subsume
-                    for value in self.subsume[j].values():
-                        self.subsume[self.sI[i][0]].append(value)
-
-    def check_Subsume(self,BLx,BLy):
-        i=0
-        j=0
-        while i<len(BLx) and j<len(BLy):
-            if BLx[i][1]>BLy[j][1]: #start
-                if BLx[i][2]<BLy[j][2]: #finish
-                    i+=1
-                else:
-                    j+=1
-            else:
-                return False # early stopping strategy when met, return False        
-        if i==len(BLy):
-            return True
-        return False
-
     # The main mining procedure
     def mine(self):
 
@@ -297,14 +269,6 @@ class BTK:
         memoryUSS = self.process.memory_full_info().uss
         if self.maxMemoryUSS<memoryUSS:
             self.maxMemoryUSS=memoryUSS
-
-        self.Find_Subsume()
-        endSubsume = t.time()
-        # We keep only the max memory used between the stages.
-        memoryUSS = self.process.memory_full_info().uss
-        if self.maxMemoryUSS<memoryUSS:
-            self.maxMemoryUSS=memoryUSS
-
 
         self.itemset_Construction()
         end = t.time() #end Time

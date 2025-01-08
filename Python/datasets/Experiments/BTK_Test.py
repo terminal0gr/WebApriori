@@ -6,7 +6,7 @@ import json
 commitTimeout=300
 
 datasetName='chess.dat'  
-topK= 556
+topK= 247
 separator=' '
 # datasetName='kosarak.dat' 
 # topK=550
@@ -20,9 +20,9 @@ separator=' '
 # datasetName='1_L-0023.csv'
 # topK=1000
 # separator=';'
-# datasetName='BTKSample.dat'  
-# topK=4
-# separator=' '
+datasetName='BTKSample.dat'  
+topK=2
+separator=' '
 
 
 

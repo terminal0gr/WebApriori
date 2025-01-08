@@ -589,7 +589,7 @@ class HTKMiner:
         end = t.time() #end Time
         self.execution_time=end-self.start
 
-        print(f"Read Dataset Time: {(endRead-self.start):.3f} Seconds")
+        print(f"FI Mining Time: {(end-endRead):.3f} Seconds")
         if self.execution_time>self.commitTimeout:
             print(f"Total Execution Time: {self.commitTimeout:.3f}+++ Seconds")
         else:
