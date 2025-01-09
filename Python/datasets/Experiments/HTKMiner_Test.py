@@ -10,9 +10,9 @@ commitTimeout=300
 datasetName='chess.dat'  
 topK=1000
 separator=' '
-datasetName='kosarak.dat' 
-topK=100
-separator=' '
+# datasetName='kosarak.dat' 
+# topK=100
+# separator=' '
 # datasetName='accidents.dat' 
 # topK=100
 # separator=' '
@@ -106,7 +106,9 @@ if __name__ == '__main__':
     outputDict['Language']="python"
     outputDict['library']="Mall"
     outputDict['minSup']=HTKAlgo.minSup
+    outputDict['topK']=topK
     outputDict['totalFI']=len(HTKAlgo.finalTopK)
+    outputDict['Rank']=HTKAlgo.heap.rankCount()
     if HTKAlgo.execution_time>HTKAlgo.commitTimeout:
         outputDict['Runtime']=str(HTKAlgo.commitTimeout)+'+++'
     else:    

@@ -6,11 +6,11 @@ import json
 commitTimeout=300
 
 datasetName='chess.dat'  
-topK= 247
+topK= 1000
 separator=' '
-datasetName='kosarak.dat' 
-topK=100
-separator=' '
+# datasetName='kosarak.dat' 
+# topK=100
+# separator=' '
 # datasetName='accidents.dat' 
 # topK=100
 # separator=' '
@@ -21,7 +21,7 @@ separator=' '
 # topK=1000
 # separator=';'
 # datasetName='BTKSample.dat'  
-# topK=20
+# topK=25
 # separator=' '
 
 
@@ -71,23 +71,25 @@ outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(to
 
 
 BTKAlgo = BTK(filepath, topK, separator, commitTimeout)
-BTKAlgo.mine()
+if BTKAlgo.mine()!=1:
 
-BTKAlgo.writeFIM(outFimFilePath)
+    BTKAlgo.writeFIM(outFimFilePath)
 
-outputDict = {}
-outputDict['Algorithm']=AlgorithmName
-outputDict['Language']="python"
-outputDict['library']="Mall"
-outputDict['minSup']=BTKAlgo.minSup
-outputDict['totalFI']=BTKAlgo.finalTopK
-if BTKAlgo.execution_time>BTKAlgo.commitTimeout:
-    outputDict['Runtime']=str(BTKAlgo.commitTimeout)+'+++'
+    outputDict = {}
+    outputDict['Algorithm']=AlgorithmName
+    outputDict['Language']="python"
+    outputDict['library']="Mall"
+    outputDict['minSup']=BTKAlgo.minSup
+    outputDict['totalFI']=BTKAlgo.finalTopK
+    if BTKAlgo.execution_time>BTKAlgo.commitTimeout:
+        outputDict['Runtime']=str(BTKAlgo.commitTimeout)+'+++'
+    else:    
+        outputDict['Runtime']=BTKAlgo.execution_time
+    outputDict['Memory']=BTKAlgo.maxMemoryUSS
+    file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext2),'w')
+    json.dump(outputDict, file, indent=4)
+    file.close() 
+    ############################
+    print(AlgorithmName + " Done!")
 else:    
-    outputDict['Runtime']=BTKAlgo.execution_time
-outputDict['Memory']=BTKAlgo.maxMemoryUSS
-file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext2),'w')
-json.dump(outputDict, file, indent=4)
-file.close() 
-############################
-print(AlgorithmName + " Done!")
+    print(AlgorithmName + " Failed!")

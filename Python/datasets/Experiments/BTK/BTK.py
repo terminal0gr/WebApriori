@@ -300,6 +300,10 @@ class BTK:
         memoryUSS = self.process.memory_full_info().uss
         if self.maxMemoryUSS<memoryUSS:
             self.maxMemoryUSS=memoryUSS
+        if (endTBTree-start)>self.commitTimeout:
+            print(f"Total Execution Time exceeds: {self.commitTimeout}+++ Seconds!!!")
+            return 1
+
 
         self.BL_Construction()
         endBL = t.time()
@@ -307,6 +311,11 @@ class BTK:
         memoryUSS = self.process.memory_full_info().uss
         if self.maxMemoryUSS<memoryUSS:
             self.maxMemoryUSS=memoryUSS
+        if (endBL-start)>self.commitTimeout:
+            print(f"Total Execution Time exceeds: {self.commitTimeout}+++ Seconds!!!")
+            return 1
+
+
 
         self.Find_Subsume()
         endSubsume = t.time()
@@ -314,7 +323,9 @@ class BTK:
         memoryUSS = self.process.memory_full_info().uss
         if self.maxMemoryUSS<memoryUSS:
             self.maxMemoryUSS=memoryUSS
-
+        if (endSubsume-start)>self.commitTimeout:
+            print(f"Total Execution Time exceeds: {self.commitTimeout}+++ Seconds!!!")
+            return 1
 
         self.itemset_Construction()
         end = t.time() #end Time
@@ -330,7 +341,7 @@ class BTK:
         print(f"B-List construction Time: {(endBL-endTBTree):.3f} Seconds")
         print(f"FI mining Time: {(end-endBL):.3f} Seconds")
         if self.execution_time>self.commitTimeout:
-            print(f"Total Execution Time: {self.commitTimeout:.3f}+++ Seconds")
+            print(f"Total Execution Time exceeds: {self.commitTimeout}+++ Seconds!!!")
         else:
             print(f"Total Execution Time: {self.execution_time:.3f} Seconds")
         # Count the FI mined
