@@ -5,6 +5,7 @@ from functools import partial
 from collections import defaultdict
 import psutil
 import os
+from itertools import chain, combinations
 
 class TabK:
     def __init__(self, max_size):
@@ -143,8 +144,6 @@ class BTK:
 
         # BL List is sorted in descending order of their current rank
         self.BL={key:self.BL[key] for key in sorted(self.BL, key=lambda x: next(val2 for val1, val2 in self.sI if val1 == x), reverse=True)}
-        # d2 = {key: d2[key] for key in sorted(d2, key=lambda x: d3[x])}
-
 
     def itemset_Construction(self):
         self.tabK=TabK(self.topK)
@@ -163,15 +162,14 @@ class BTK:
         self.Candidate_gen(self.sI)
 
         # BTK Steps 14-18
-        print(self.tabK.data)
         for sup, fiList in self.tabK.data.items():
             for fi in fiList:
                 if fi in self.subsume:
-                    print(f"fi={fi} == subsume {self.subsume[fi]}, sup=={sup}")
-
-
-
-
+                    # Generate all possible combinations of items in subsume
+                    subsumeCombinations = chain.from_iterable(combinations(self.subsume[fi], r) for r in range(1, len(self.subsume[fi]) + 1))
+                    for combination in subsumeCombinations:
+                        self.tabK.insert(sup, fi + tuple(chain.from_iterable(combination)))
+                    # print(f"fi={fi} == subsume {self.subsume[fi]}, sup=={sup}")
     
     def Candidate_gen(self,Ci):
         nextLevelC=[]
@@ -183,7 +181,7 @@ class BTK:
                 if Ci[i][1]>=self.tabK.threshold and Ci[j][1]>=self.tabK.threshold:
                     px_i = Ci[i][0][1:]
                     px_j = Ci[j][0][1:]
-                    if px_i==px_j and not any(v1 == Ci[i][0] for v1 in self.subsume.get(Ci[j], [])):
+                    if px_i==px_j and not any(v1 == Ci[i][0] for v1 in self.subsume.get(Ci[j][0], [])):
                         pBL, count= self.intersection(self.BL[(Ci[i][0])], self.BL[(Ci[j][0])], self.tabK.threshold)
                         if pBL:
                             p=(Ci[i][0][0],) + (Ci[j][0][0],) + px_i

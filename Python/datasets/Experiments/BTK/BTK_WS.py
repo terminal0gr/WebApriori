@@ -163,7 +163,7 @@ class BTK:
         self.Candidate_gen(self.sI)
 
         # BTK Steps 14-18
-        print(self.tabK.data)        
+        #Not implemented
     
     def Candidate_gen(self,Ci):
         nextLevelC=[]

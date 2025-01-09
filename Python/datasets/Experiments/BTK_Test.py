@@ -8,9 +8,9 @@ commitTimeout=300
 datasetName='chess.dat'  
 topK= 247
 separator=' '
-# datasetName='kosarak.dat' 
-# topK=550
-# separator=' '
+datasetName='kosarak.dat' 
+topK=100
+separator=' '
 # datasetName='accidents.dat' 
 # topK=100
 # separator=' '
@@ -20,9 +20,9 @@ separator=' '
 # datasetName='1_L-0023.csv'
 # topK=1000
 # separator=';'
-datasetName='BTKSample.dat'  
-topK=20
-separator=' '
+# datasetName='BTKSample.dat'  
+# topK=20
+# separator=' '
 
 
 
