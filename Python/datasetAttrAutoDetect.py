@@ -13,10 +13,11 @@ identity='79d1727987f200802593e3599119c966'
 # datasetName='T10I4D100K.dat'
 # datasetName='kosarak.dat'
 # datasetName="chess.dat"
-datasetName="1_L-0023.csv"
+# datasetName="1_L-0023.csv"
+datasetName="webdocs.dat"
 
 datasetType=1 # -1 means detect DatasetType. Else force the value from user
-public=1 # 0 > private, 1 > public
+public=0 # 0 > private, 1 > public
 force=0 # Force recreate dataset attributes
 
 #------------------------------

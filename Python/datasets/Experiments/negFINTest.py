@@ -29,6 +29,10 @@ separator=' '
 # datasetName='T16IT20D100K.dat'
 # minSup=0.37865
 # separator=' '
+datasetName='webdocs.dat'
+minSup=0.000008864818608081642
+separator=' '
+
 
 memorySave=False
 
