@@ -3,7 +3,9 @@
     "Language": "python",
     "library": "Mall",
     "minSup": 0.53743,
+    "topK": 1000,
     "totalFI": 1003,
-    "Runtime": 1.114567518234253,
-    "Memory": 26095616
+    "Rank": 523,
+    "Runtime": 1.1185109615325928,
+    "Memory": 25735168
 }
