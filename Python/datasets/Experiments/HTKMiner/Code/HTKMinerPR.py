@@ -7,14 +7,12 @@ from functools import partial
 import psutil
 import os
 
-def process_chunk(chunk, delimiter):
+def process_chunk(chunk, trans_index_chunk, delimiter):
     vR_chunk = {}
     iSet_chunk = set()
     item_dict = {}
     item_dict_reversed = {}
-    #item_index_chunk = len(shared_item_dict)  # Start with the existing number of items
     item_index_chunk = 0
-    trans_index_chunk = 0
     trans_item_chunk = 0
 
     for line in chunk:
@@ -44,17 +42,21 @@ def read_file_parallel(dataset_file, delimiter, num_workers=0):
     with open(dataset_file, encoding='utf-8-sig') as f:
         # Create chunks based on the file
         chunks = []
+        linesCount=0
+        chunksLinesCount= []
         while True:
             lines = f.readlines(chunk_size)
             if not lines:
                 break
             chunks.append(lines)
+            chunksLinesCount.append(linesCount)
+            linesCount+=len(lines)
 
     # Process chunks in parallel
     with ProcessPoolExecutor(max_workers=num_workers) as executor:
         results = executor.map(
             process_chunk,
-            chunks,
+            chunks, chunksLinesCount,
             [delimiter] * len(chunks),
         )
 
@@ -69,20 +71,18 @@ def read_file_parallel(dataset_file, delimiter, num_workers=0):
     for vR_chunk, item_dict, item_dict_reversed, trans_index, trans_item in results:
         for item, _ in item_dict_reversed.items():
             if item in shared_item_dict_reversed:
-                if item_dict_reversed[item]!=shared_item_dict_reversed[item]:
-                    vR_chunk[(shared_item_dict_reversed[item],)]=vR_chunk.pop((item_dict_reversed[item],))
+                # if item_dict_reversed[item]!=shared_item_dict_reversed[item]:
+                    # vR_chunk[(shared_item_dict_reversed[item],)]=vR_chunk.pop((item_dict_reversed[item],))
+                vR[(shared_item_dict_reversed[item],)].extend(vR_chunk[(item_dict_reversed[item],)])
             else:
                 shared_item_dict_reversed[item]=itemIndex
                 shared_item_dict[itemIndex]=item
+                vR[(shared_item_dict_reversed[item],)]=vR_chunk[(item_dict_reversed[item],)]
                 itemIndex+=1
                 
-        # shared_item_dict.update(item_dict)
-        tIndex+=trans_index
         tItem+=trans_item
-        vR.update(vR_chunk)
 
-    iIntex=len(shared_item_dict)
-    return vR, shared_item_dict, tIndex, tItem, iIntex
+    return vR, shared_item_dict, trans_index, tItem, itemIndex
 
 
 class HTKMiner: 
@@ -94,7 +94,7 @@ class HTKMiner:
         self.delimiter = delimiter 
         self.num_of_transactions = 0 # The count of transactions in database
         self.itemCount = 0 # The count of items in database
-        self.TransitemCount = 0 # The count of all items in every transaction
+        self.transItemCount = 0 # The count of all items in every transaction
         self.topK = topK #User defined Tok-K threshold
         self.sparseData=sparseData # User specified, default True. True intersection mode, False Diffset mode
         self.bitSetMode=bitSetMode # User specified, default True. True bitSet mode, False tidSet mode
@@ -115,7 +115,7 @@ class HTKMiner:
 
         #################
         #Parallel reading
-        vR, self.item_dict, self.num_of_transactions, self.TransitemCount, self.itemCount = read_file_parallel(self.dataset_file, self.delimiter)
+        vR, self.itemDict, self.num_of_transactions, self.transItemCount, self.itemCount = read_file_parallel(self.dataset_file, self.delimiter)
 
         #################
         #Sequential reading
@@ -132,7 +132,7 @@ class HTKMiner:
         #     itemIndex=0
         #     # The Tid of each transaction
         #     transIndex=0
-        #     transitem=0
+        #     transItem=0
         #     # The next 2 dictionaries are used to implement one bidirectional dictionary
         #     # The idea is to map item names to their indexes and perform better in the algorithm
         #     self.itemDict=dict()
@@ -140,7 +140,7 @@ class HTKMiner:
         #     for line in f:
         #         transIndex+=1
         #         for item in line.strip().split(sep=self.delimiter):
-        #             transitem+=1
+        #             transItem+=1
         #             if item not in iSet:
         #                 itemIndex+=1
         #                 self.itemDict[itemIndex]=item
@@ -152,7 +152,7 @@ class HTKMiner:
         #     # statistics
         #     self.num_of_transactions=transIndex
         #     self.itemCount=itemIndex
-        #     self.TransitemCount=transitem
+        #     self.transItemCount=transItem
 
         topKItemSetsList = sorted(((key, len(value)) for key, value in vR.items()), key=lambda x: x[1], reverse=True)
 
@@ -692,7 +692,7 @@ class HTKMiner:
         print(f"Max Memory:{self.maxMemoryUSS}")       
         print(f"Transactions:{self.num_of_transactions}")   
         print(f"Items:{self.itemCount}")  
-        avg=self.TransitemCount/self.num_of_transactions 
+        avg=self.transItemCount/self.num_of_transactions 
         print(f"Avg item size pre trans:{avg:.1f}")   
         print(f"Dataset density:{avg/self.itemCount:.5}")
 
