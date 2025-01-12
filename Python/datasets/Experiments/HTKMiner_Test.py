@@ -28,9 +28,9 @@ separator=' '
 # datasetName='T16IT20D100K.dat'
 # topK=1000
 # separator=' '
-datasetName='webdocs.dat'
-topK=100
-separator=' '
+# datasetName='webdocs.dat'
+# topK=100
+# separator=' '
 
 
 
@@ -95,7 +95,7 @@ if sparseData: AlgorithmName+="_sp"
 else: AlgorithmName+="_df"
 if bitSetMode: AlgorithmName+="_bs"
 
-from HTKMiner.Code.HTKMiner05 import HTKMiner
+from HTKMiner.Code.HTKMinerPR import HTKMiner
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
 
 # It is vital for the parallel processing

@@ -7,9 +7,17 @@ from functools import partial
 import psutil
 import os
 
-def process_chunk(chunk, delimiter):
+def ItemExists(item, iSet, itemIndex):
+    if item not in iSet:
+        iSet.append(item)
+        itemIndex.value+=1
+        return False, itemIndex.value
+    else:
+        return True, 0
+
+def process_chunk(chunk, delimiter, iSet, itemIndex, lock):
     vR_chunk = {}
-    iSet_chunk = set()
+    #iSet_chunk = set()
     item_dict = {}
     item_dict_reversed = {}
     #item_index_chunk = len(shared_item_dict)  # Start with the existing number of items
@@ -21,19 +29,28 @@ def process_chunk(chunk, delimiter):
         trans_index_chunk += 1
         for item in line.strip().split(sep=delimiter):
             trans_item_chunk += 1
-
-            if item in iSet_chunk:
+            lock.acquire()
+            # with lock:
+            found, item_index_chunk=ItemExists(item, iSet, itemIndex)
+            lock.release()
+              
+            if found:
                 vR_chunk[(item_dict_reversed[item],)].append(trans_index_chunk)
-            else:
-                iSet_chunk.add(item)
-                item_index_chunk += 1
+            else:    
+            # if item not in iSet:
+            #     iSet.add(item)
+            #     item_index_chunk += 1
                 item_dict[item_index_chunk] = item
                 item_dict_reversed[item] = item_index_chunk
                 vR_chunk[(item_index_chunk,)] = [trans_index_chunk]
     
-    return vR_chunk, item_dict, item_dict_reversed, trans_index_chunk, trans_item_chunk
+    return vR_chunk, item_dict, trans_index_chunk, trans_item_chunk
 
 def read_file_parallel(dataset_file, delimiter, num_workers=0):
+    manager = Manager()
+    itemIndex = manager.Value('i', 0)  # Shared integer initialized to 0
+    iSet=manager.list()
+    lock=manager.Lock() # Explicit lock for synchronizing access
 
     # Determine file size and chunk size
     file_size = os.path.getsize(dataset_file)
@@ -56,33 +73,25 @@ def read_file_parallel(dataset_file, delimiter, num_workers=0):
             process_chunk,
             chunks,
             [delimiter] * len(chunks),
+            [iSet] * len(chunks),
+            [itemIndex] * len(chunks),
+            [lock] * len(chunks),
         )
 
     # Shared dictionaries for mapping item names and indexes
     shared_item_dict = {}
-    shared_item_dict_reversed = {}
     # Combine results from each process
-    vR = {}
+    combined_vR = {}
     tIndex=0
     tItem=0
-    itemIndex=0
-    for vR_chunk, item_dict, item_dict_reversed, trans_index, trans_item in results:
-        for item, _ in item_dict_reversed.items():
-            if item in shared_item_dict_reversed:
-                if item_dict_reversed[item]!=shared_item_dict_reversed[item]:
-                    vR_chunk[(shared_item_dict_reversed[item],)]=vR_chunk.pop((item_dict_reversed[item],))
-            else:
-                shared_item_dict_reversed[item]=itemIndex
-                shared_item_dict[itemIndex]=item
-                itemIndex+=1
-                
-        # shared_item_dict.update(item_dict)
+    for vR_chunk, item_dict, trans_index, trans_item in results:
+        combined_vR.update(vR_chunk)
+        shared_item_dict.update(item_dict)
         tIndex+=trans_index
         tItem+=trans_item
-        vR.update(vR_chunk)
 
     iIntex=len(shared_item_dict)
-    return vR, shared_item_dict, tIndex, tItem, iIntex
+    return combined_vR, shared_item_dict, tIndex, tItem, iIntex
 
 
 class HTKMiner: 
