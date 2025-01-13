@@ -32,11 +32,12 @@ def process_chunk(chunk, trans_index_chunk, delimiter):
     return vR_chunk, item_dict, item_dict_reversed, trans_index_chunk, trans_item_chunk
 
 def read_file_parallel(dataset_file, delimiter, num_workers=0):
+    # if num_workers==0:
+    #     num_workers=os.cpu_count()
+    num_workers=4
 
     # Determine file size and chunk size
     file_size = os.path.getsize(dataset_file)
-    if num_workers==0:
-        num_workers=os.cpu_count()
     chunk_size = file_size // num_workers
 
     with open(dataset_file, encoding='utf-8-sig') as f:

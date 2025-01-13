@@ -7,9 +7,9 @@ sparseData=True #tidSets (True) mode / diffSets (False)
 bitSetMode=True #If bitSet will be used in transformation of the vertical database representation 
 commitTimeout=300
 
-# datasetName='chess.dat'  
-# topK=1000
-# separator=' '
+datasetName='chess.dat'  
+topK=1000
+separator=' '
 # datasetName='kosarak.dat' 
 # topK=100
 # separator=' '
@@ -28,9 +28,9 @@ commitTimeout=300
 # datasetName='T16IT20D100K.dat'
 # topK=1000
 # separator=' '
-datasetName='webdocs.dat'
-topK=100
-separator=' '
+# datasetName='webdocs.dat'
+# topK=100
+# separator=' '
 
 
 
@@ -95,7 +95,7 @@ if sparseData: AlgorithmName+="_sp"
 else: AlgorithmName+="_df"
 if bitSetMode: AlgorithmName+="_bs"
 
-from HTKMiner.Code.HTKMinerPR import HTKMiner
+from HTKMiner.Code.HTKMinerExp import HTKMiner
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
 
 # It is vital for the parallel processing

@@ -25,10 +25,16 @@ class HTKMiner:
         self.maxLevel=0 # The max length of itemsets grater than minSup
         self.heap=QuickHeap(topK) #Tok-K absolute support values heap initialization
         self.itemDict=None # map item names to simple integers for better performance
+        self.commitTimeout=commitTimeout
         self.execution_time = None # Overall time of mining
         self.process=psutil.Process(os.getpid())
         self.maxMemoryUSS=0
-        self.commitTimeout=commitTimeout
+
+        # Stats
+        self.interOverallTime=0
+        self.interCandidatesCount=0
+        self.queueUpdateOverallTime=0
+        self.queueUpdateCount=0
 
     def readDatasetFile(self):
 
@@ -485,6 +491,11 @@ class HTKMiner:
         #count the items participating in itemset or alternatively the current class level
         level = 1
 
+        self.interOverallTime=0
+        self.interCandidatesCount=0
+        self.queueUpdateOverallTime=0
+        self.queueUpdateCount=0
+
         while level > 0:
 
             # We keep only the max memory used between the stages.
@@ -527,15 +538,25 @@ class HTKMiner:
 
                     if prefixA == prefixB:
 
+                        i1=t.time()
                         # bitwise intersection
                         transactions=self.data[classA] & self.data[classB]
                         # counts the bit that have 1 from the bit array of the number
                         support=int.bit_count(transactions)
+                        i2=t.time()
+
+                        self.interOverallTime+=i2-i1
+                        self.interCandidatesCount+=1
 
                         if support >= self.min_count:
 
+                            i1=t.time()
                             # recalculate the new absolute minSup value from quick heap
                             self.min_count=self.heap.insert(support)
+                            i2=t.time()
+
+                            self.queueUpdateOverallTime+=i2-i1
+                            self.queueUpdateCount+=1                            
 
                             #next level candidate itemset
                             itemA = classA[-1]
@@ -609,7 +630,18 @@ class HTKMiner:
         print(f"Items:{self.itemCount}")  
         avg=self.TransitemCount/self.num_of_transactions 
         print(f"Avg item size pre trans:{avg:.1f}")   
-        print(f"Dataset density:{avg/self.itemCount:.5}")
+        print(f"Dataset density:{avg/self.itemCount:.5f}")
+        print("#######################################")
+        print(f"Candidates Count:{self.interCandidatesCount}")   
+        print(f"Overall Intersection time:{self.interOverallTime:.3f}")   
+        if self.interCandidatesCount!=0:
+            print(f"Average Intersection time:{(self.interOverallTime/self.interCandidatesCount)}")   
+        print(f"Queue Update Count:{self.queueUpdateCount}")   
+        print(f"Overall Queue Update time:{self.queueUpdateOverallTime:.3f}")   
+        if self.queueUpdateCount!=0:
+            print(f"Average Queue Update time:{(self.queueUpdateOverallTime/self.queueUpdateCount)}")   
+
+
 
     def writeFIM(self, outputFile=None): #outputs the frequent itemsets in json format
         if (outputFile):

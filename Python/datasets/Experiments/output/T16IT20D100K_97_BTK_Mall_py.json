@@ -1,0 +1,9 @@
+{
+    "Algorithm": "BTK",
+    "Language": "python",
+    "library": "Mall",
+    "minSup": 0.65493,
+    "totalFI": 109,
+    "Runtime": 6.6389665603637695,
+    "Memory": 203317248
+}

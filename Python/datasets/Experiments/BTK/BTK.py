@@ -193,6 +193,11 @@ class BTK:
                 j+=1
             i+=1
         
+        if t.time()-self.startTime>self.commitTimeout:
+            print("Commit Timeout thresohold exceeded!!!")
+            sys.exit()
+
+        
         if nextLevelC:
             self.Candidate_gen(nextLevelC)
 
@@ -286,13 +291,15 @@ class BTK:
     # The main mining procedure
     def mine(self):
 
-        start = t.time() #Start Time.
+        self.startTime = t.time() #Start Time.
         self.readDatasetFile() 
         endRead = t.time()
         # We keep only the max memory used between the stages.
         memoryUSS = self.process.memory_full_info().uss
         if self.maxMemoryUSS<memoryUSS:
             self.maxMemoryUSS=memoryUSS
+        print(f"Read Dataset Time: {(endRead-self.startTime):.3f} Seconds")
+            
 
         self.TB_Tree_Construction()
         endTBTree = t.time()
@@ -300,18 +307,20 @@ class BTK:
         memoryUSS = self.process.memory_full_info().uss
         if self.maxMemoryUSS<memoryUSS:
             self.maxMemoryUSS=memoryUSS
-        if (endTBTree-start)>self.commitTimeout:
+        print(f"TB-Tree construction Time: {(endTBTree-endRead):.3f} Seconds")
+        if (endTBTree-self.startTime)>self.commitTimeout:
             print(f"Total Execution Time exceeds: {self.commitTimeout}+++ Seconds!!!")
             return 1
 
 
         self.BL_Construction()
         endBL = t.time()
+        print(f"B-List construction Time: {(endBL-endTBTree):.3f} Seconds")
         # We keep only the max memory used between the stages.
         memoryUSS = self.process.memory_full_info().uss
         if self.maxMemoryUSS<memoryUSS:
             self.maxMemoryUSS=memoryUSS
-        if (endBL-start)>self.commitTimeout:
+        if (endBL-self.startTime)>self.commitTimeout:
             print(f"Total Execution Time exceeds: {self.commitTimeout}+++ Seconds!!!")
             return 1
 
@@ -319,11 +328,12 @@ class BTK:
 
         self.Find_Subsume()
         endSubsume = t.time()
+        print(f"Subsume construction Time: {(endSubsume-endBL):.3f} Seconds")
         # We keep only the max memory used between the stages.
         memoryUSS = self.process.memory_full_info().uss
         if self.maxMemoryUSS<memoryUSS:
             self.maxMemoryUSS=memoryUSS
-        if (endSubsume-start)>self.commitTimeout:
+        if (endSubsume-self.startTime)>self.commitTimeout:
             print(f"Total Execution Time exceeds: {self.commitTimeout}+++ Seconds!!!")
             return 1
 
@@ -333,12 +343,10 @@ class BTK:
         memoryUSS = self.process.memory_full_info().uss
         if self.maxMemoryUSS<memoryUSS:
             self.maxMemoryUSS=memoryUSS
+            
 
-        self.execution_time=end-start
+        self.execution_time=end-self.endSubsume
 
-        print(f"Read Dataset Time: {(endRead-start):.3f} Seconds")
-        print(f"TB-Tree construction Time: {(endTBTree-endRead):.3f} Seconds")
-        print(f"B-List construction Time: {(endBL-endTBTree):.3f} Seconds")
         print(f"FI mining Time: {(end-endBL):.3f} Seconds")
         if self.execution_time>self.commitTimeout:
             print(f"Total Execution Time exceeds: {self.commitTimeout}+++ Seconds!!!")
