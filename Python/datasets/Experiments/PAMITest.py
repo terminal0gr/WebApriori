@@ -15,9 +15,12 @@ import json
 # datasetName='FpGrowthSampleWithoutQuotes.txt' 
 # minSup=0.6
 # separator=','
-datasetName='BTKSample.dat'  
-topK=0.8
-separator=' '
+datasetName='L-0023.csv' 
+minSup=0.005296905492054642
+separator=';'
+# datasetName='BTKSample.dat'  
+# topK=0.8
+# separator=' '
 memorySave=False
 
 

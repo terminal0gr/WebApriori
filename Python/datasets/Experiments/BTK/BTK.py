@@ -345,7 +345,7 @@ class BTK:
             self.maxMemoryUSS=memoryUSS
             
 
-        self.execution_time=end-self.endSubsume
+        self.execution_time=end-self.startTime
 
         print(f"FI mining Time: {(end-endBL):.3f} Seconds")
         if self.execution_time>self.commitTimeout:

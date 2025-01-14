@@ -14,7 +14,9 @@ class HTKMiner:
         self.minSup = None  # The relative minimum support
         self.min_count = 0  # The absolute minimum support 
         self.delimiter = delimiter 
-        self.num_of_transactions = None 
+        self.num_of_transactions = 0 # The count of transactions in database
+        self.itemCount = 0 # The count of items in database
+        self.TransitemCount = 0 # The count of all items in every transaction
         self.topK = topK #User defined Tok-K threshold
         self.sparseData=sparseData # User specified, default True. True intersection mode, False Diffset mode
         self.bitSetMode=bitSetMode # User specified, default True. True bitSet mode, False tidSet mode
@@ -44,6 +46,8 @@ class HTKMiner:
             itemIndex=0
             # The Tid of each transaction
             transIndex=0
+            # The overall count of items in dataset
+            transitem=0
             # The next 2 dictionaries are used to implement one bidirectional dictionary
             # The idea is to map item names to their indexes and perform better in the algorithm
             self.itemDict=dict()
@@ -52,6 +56,7 @@ class HTKMiner:
             for line in f:
                 transIndex+=1
                 for item in line.strip().split(sep=self.delimiter):
+                    transitem+=1
                     if item not in iSet:
                         itemIndex+=1
                         self.itemDict[itemIndex]=item
@@ -60,8 +65,11 @@ class HTKMiner:
                         iSet.add(item)
                     else:
                         vR[(itemDictReversed[item],)].append(transIndex)
-            # The # of transactions in dataset
+            
+            # statistics
             self.num_of_transactions=transIndex
+            self.itemCount=itemIndex
+            self.TransitemCount=transitem
 
         topKItemSetsList = sorted(((key, len(value)) for key, value in vR.items()), key=lambda x: x[1], reverse=True)
 
@@ -200,7 +208,7 @@ class HTKMiner:
 
                 classA = listOFKeys[iA]
                 # stop current iteration if classA itemset has already been above the current minSup.
-                if currentLevelTopK[classA]<=self.min_count:
+                if currentLevelTopK[classA]<self.min_count:
                     break
 
                 # initialization of the second itemset counter
@@ -212,7 +220,7 @@ class HTKMiner:
 
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     # Stop current iteration if any of the second itemset has already been above the current minSup.
-                    if currentLevelTopK[classB]<=self.min_count:
+                    if currentLevelTopK[classB]<self.min_count:
                         break
 
                     prefixA=classA[:-1]
@@ -302,7 +310,7 @@ class HTKMiner:
 
                 classA = listOFKeys[iA]
                 # stop current iteration if classA itemset has already been above the current minSup.
-                if currentLevelTopK[classA]<=self.min_count:
+                if currentLevelTopK[classA]<self.min_count:
                     break
 
                 # initialization of the second itemset counter
@@ -314,7 +322,7 @@ class HTKMiner:
 
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     # Stop current iteration if any of the second itemset has already been above the current minSup.
-                    if currentLevelTopK[classB]<=self.min_count:
+                    if currentLevelTopK[classB]<self.min_count:
                         break
 
                     prefixA=classA[:-1]
@@ -405,7 +413,7 @@ class HTKMiner:
 
                 classA = listOFKeys[iA]
                 # stop current iteration if classA itemset has already been above the current minSup.
-                if currentLevelTopK[classA]<=self.min_count:
+                if currentLevelTopK[classA]<self.min_count:
                     break
 
                 # initialization of the second itemset counter
@@ -417,7 +425,7 @@ class HTKMiner:
 
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     # Stop current iteration if any of the second itemset has already been above the current minSup.
-                    if currentLevelTopK[classB]<=self.min_count:
+                    if currentLevelTopK[classB]<self.min_count:
                         break
 
                     prefixA=classA[:-1]
@@ -502,7 +510,7 @@ class HTKMiner:
 
                 classA = listOFKeys[iA]
                 # stop current iteration if classA itemset has already been above the current minSup.
-                if currentLevelTopK[classA]<=self.min_count:
+                if currentLevelTopK[classA]<self.min_count:
                     break
 
                 # initialization of the second itemset counter
@@ -513,7 +521,7 @@ class HTKMiner:
                     classB = listOFKeys[iB]
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     # Stop current iteration if any of the second itemset has already been above the current minSup.
-                    if currentLevelTopK[classB]<=self.min_count:
+                    if currentLevelTopK[classB]<self.min_count:
                         break
 
                     prefixA=classA[:-1]
@@ -598,7 +606,13 @@ class HTKMiner:
         print(f"Rank count:{self.heap.rankCount()}")
         print(f"Absolute minSup:{self.min_count}")
         print(f"Relative minSup:{self.minSup}")
-        print(f"Max Memory:{self.maxMemoryUSS}")       
+        print(f"Max Memory:{self.maxMemoryUSS}")      
+        # Useful stats
+        print(f"Transactions:{self.num_of_transactions}")   
+        print(f"Items:{self.itemCount}")  
+        avg=self.TransitemCount/self.num_of_transactions 
+        print(f"Avg item size pre trans:{avg:.1f}")   
+        print(f"Dataset density:{avg/self.itemCount:.5f}") 
 
     def writeFIM(self, outputFile=None): #outputs the frequent itemsets in json format
         if (outputFile):

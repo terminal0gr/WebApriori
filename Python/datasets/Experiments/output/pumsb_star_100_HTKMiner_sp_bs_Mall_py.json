@@ -6,6 +6,8 @@
     "topK": 100,
     "totalFI": 101,
     "Rank": 49,
-    "Runtime": 1.074774980545044,
-    "Memory": 15945728
+    "Items": 2088,
+    "TopK 1-itemsets": 12,
+    "Runtime": 1.1842732429504395,
+    "Memory": 15872000
 }

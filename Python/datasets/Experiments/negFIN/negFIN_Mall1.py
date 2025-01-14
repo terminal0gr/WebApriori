@@ -3,6 +3,8 @@ from datetime import datetime
 from math import ceil
 from bitarray import bitarray
 import json
+import os
+import psutil
 
 
 class BMCTreeNode:
@@ -86,6 +88,7 @@ class NegFIN:
         self.execution_time = None
         self.memorySave = memorySave 
         self.finalFiDict=dict() #Dictinary with the FI mined
+        self.maxMemoryUSS = 0 # Keep the maximum memory used'
 
 
     def __find_F1(self):
@@ -101,6 +104,11 @@ class NegFIN:
                 for item_name in transaction:
                     item_count = item_name_to_count.setdefault(item_name, 0)
                     item_name_to_count[item_name] = item_count + 1
+
+        process = psutil.Process(os.getpid())
+        memoryUSS = process.memory_full_info().uss
+        if self.maxMemoryUSS<memoryUSS:
+            self.maxMemoryUSS=memoryUSS
 
         item_name_to_count.pop('', None)  # Removing the empty item_name if exists.
         # The absolute min Support
@@ -275,8 +283,22 @@ class NegFIN:
 
         start_timestamp = datetime.now()
         self.__find_F1()
+        process = psutil.Process(os.getpid())
+        memoryUSS = process.memory_full_info().uss
+        if self.maxMemoryUSS<memoryUSS:
+            self.maxMemoryUSS=memoryUSS        
+
         self.__generate_NodeSets_of_1_itemsets()
+        process = psutil.Process(os.getpid())
+        memoryUSS = process.memory_full_info().uss
+        if self.maxMemoryUSS<memoryUSS:
+            self.maxMemoryUSS=memoryUSS        
+
         root = self.__create_root_of_frequent_itemset_tree()
+        process = psutil.Process(os.getpid())
+        memoryUSS = process.memory_full_info().uss
+        if self.maxMemoryUSS<memoryUSS:
+            self.maxMemoryUSS=memoryUSS        
 
         # The following buffer is used for storing frequent itemsets discovered in a depth.
         itemset_buffer = [None] * len(self.F1)
@@ -296,6 +318,11 @@ class NegFIN:
             # Call this recursive method to traverse the search space in a depth-first order.
             self.__construct_frequent_itemset_tree(child, itemset_buffer, itemset_length + 1, root.children,
                                                    FIS_parent_buffer, FIS_parent_length)
+
+        process = psutil.Process(os.getpid())
+        memoryUSS = process.memory_full_info().uss
+        if self.maxMemoryUSS<memoryUSS:
+            self.maxMemoryUSS=memoryUSS        
 
         end_timestamp = datetime.now()
         time_diff = (end_timestamp - start_timestamp) # Total execution time of algorithm.

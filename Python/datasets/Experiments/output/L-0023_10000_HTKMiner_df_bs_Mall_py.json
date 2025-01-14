@@ -4,8 +4,8 @@
     "library": "Mall",
     "minSup": 0.005296905492054642,
     "topK": 10000,
-    "totalFI": 11210,
+    "totalFI": 11257,
     "Rank": 168,
-    "Runtime": 6.6421990394592285,
-    "Memory": 36376576
+    "Runtime": 8.636246681213379,
+    "Memory": 36532224
 }

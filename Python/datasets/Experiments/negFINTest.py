@@ -5,9 +5,9 @@ import psutil
 
 
 
-datasetName='chess.dat' 
-minSup=0.983729662077597
-separator=' '
+# datasetName='chess.dat' 
+# minSup=0.983729662077597
+# separator=' '
 # datasetName='kosarak.dat' 
 # minSup=0.002392924458738467
 # separator=' '
@@ -18,10 +18,13 @@ separator=' '
 # minSup=0.867879133874322
 # separator=' '
 # datasetName='T10I4D100K.dat'
-# minSup=0.00522
+# minSup=0.00227
 # separator=' '
-# datasetName='1_L-0023.csv' 
-# minSup=0.012266517981600222
+# datasetName='T40I10D100K.dat'
+# minSup=0.01303
+# separator=' '
+# datasetName='L-0023.csv' 
+# minSup=0.005296905492054642
 # separator=';'
 # datasetName='FpGrowthSampleWithoutQuotes.txt' 
 # minSup=0.6
@@ -30,7 +33,7 @@ separator=' '
 # minSup=0.37865
 # separator=' '
 datasetName='webdocs.dat'
-minSup=0.000008864818608081642
+minSup=0.32720459173964384
 separator=' '
 
 
@@ -87,9 +90,6 @@ negFIN = NegFIN(filepath, minSup, outFimFilePath, separator, memorySave)
 
 negFIN.runAlgorithm()
 
-process = psutil.Process(os.getpid())
-memoryUSS = process.memory_full_info().uss
-
 # Only to sort results in descending order of absolute support value of every itemset
 negFIN.finalFiDict = {k: v for k, v in sorted(negFIN.finalFiDict.items(), key=lambda item: item[1], reverse=True)}
 negFIN.writeFIM(outFimFilePath)
@@ -103,7 +103,7 @@ outputDict['library']="Mall"
 outputDict['minSup']=minSup
 outputDict['totalFI']=negFIN.num_of_frequent_itemsets
 outputDict['Runtime']=negFIN.execution_time/1000.
-outputDict['Memory']=memoryUSS
+outputDict['Memory']=negFIN.maxMemoryUSS
 file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
 json.dump(outputDict, file, indent=4)
 file.close() 

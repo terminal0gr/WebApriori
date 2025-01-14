@@ -1,0 +1,9 @@
+{
+    "Algorithm": "negFIN",
+    "Language": "python",
+    "library": "Mall",
+    "minSup": 0.364352536,
+    "totalFI": 977,
+    "Runtime": 0.081507,
+    "Memory": 8159232
+}

@@ -200,7 +200,7 @@ class HTKMiner:
 
                 classA = listOFKeys[iA]
                 # stop current iteration if classA itemset has already been above the current minSup.
-                if currentLevelTopK[classA]<=self.min_count:
+                if currentLevelTopK[classA]<self.min_count:
                     break
 
                 # initialization of the second itemset counter
@@ -212,7 +212,7 @@ class HTKMiner:
 
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     # Stop current iteration if any of the second itemset has already been above the current minSup.
-                    if currentLevelTopK[classB]<=self.min_count:
+                    if currentLevelTopK[classB]<self.min_count:
                         break
 
                     prefixA=classA[:-1]
@@ -302,7 +302,7 @@ class HTKMiner:
 
                 classA = listOFKeys[iA]
                 # stop current iteration if classA itemset has already been above the current minSup.
-                if currentLevelTopK[classA]<=self.min_count:
+                if currentLevelTopK[classA]<self.min_count:
                     break
 
                 # initialization of the second itemset counter
@@ -314,7 +314,7 @@ class HTKMiner:
 
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     # Stop current iteration if any of the second itemset has already been above the current minSup.
-                    if currentLevelTopK[classB]<=self.min_count:
+                    if currentLevelTopK[classB]<self.min_count:
                         break
 
                     prefixA=classA[:-1]
@@ -405,7 +405,7 @@ class HTKMiner:
 
                 classA = listOFKeys[iA]
                 # stop current iteration if classA itemset has already been above the current minSup.
-                if currentLevelTopK[classA]<=self.min_count:
+                if currentLevelTopK[classA]<self.min_count:
                     break
 
                 # initialization of the second itemset counter
@@ -417,7 +417,7 @@ class HTKMiner:
 
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     # Stop current iteration if any of the second itemset has already been above the current minSup.
-                    if currentLevelTopK[classB]<=self.min_count:
+                    if currentLevelTopK[classB]<self.min_count:
                         break
 
                     prefixA=classA[:-1]
@@ -502,7 +502,7 @@ class HTKMiner:
 
                 classA = listOFKeys[iA]
                 # stop current iteration if classA itemset has already been above the current minSup.
-                if currentLevelTopK[classA]<=self.min_count:
+                if currentLevelTopK[classA]<self.min_count:
                     break
 
                 # initialization of the second itemset counter
@@ -513,7 +513,7 @@ class HTKMiner:
                     classB = listOFKeys[iB]
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     # Stop current iteration if any of the second itemset has already been above the current minSup.
-                    if currentLevelTopK[classB]<=self.min_count:
+                    if currentLevelTopK[classB]<self.min_count:
                         break
 
                     prefixA=classA[:-1]
@@ -600,9 +600,6 @@ class HTKMiner:
         print(f"Relative minSup:{self.minSup}")
         print(f"Max Memory:{self.maxMemoryUSS}")       
         
-        print(f"1-item: {sum(1 for key in self.finalTopK if len(key) == 1)} / {len(self.finalTopK)}")
-
-
     def writeFIM(self, outputFile=None): #outputs the frequent itemsets in json format
         if (outputFile):
             # Convert tuple keys to strings since JSON does not support tuple keys

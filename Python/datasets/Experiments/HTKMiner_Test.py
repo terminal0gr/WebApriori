@@ -5,11 +5,11 @@ import json
 
 sparseData=True #tidSets (True) mode / diffSets (False)
 bitSetMode=True #If bitSet will be used in transformation of the vertical database representation 
-commitTimeout=300
+commitTimeout=1000
 
-datasetName='chess.dat'  
-topK=1000
-separator=' '
+# datasetName='chess.dat'  
+# topK=1000
+# separator=' '
 # datasetName='kosarak.dat' 
 # topK=100
 # separator=' '
@@ -19,14 +19,14 @@ separator=' '
 # datasetName='T10I4D100K.dat'
 # topK=1000
 # separator=' '
-# datasetName='1_L-0023.csv'
-# topK=1000
-# separator=';'
+datasetName='L-0023.csv'
+topK=10000
+separator=';'
 # datasetName='FpGrowthSampleWithoutQuotes.txt'  
 # topK=5
 # separator=','
 # datasetName='T16IT20D100K.dat'
-# topK=1000
+# topK=100
 # separator=' '
 # datasetName='webdocs.dat'
 # topK=100
@@ -95,7 +95,7 @@ if sparseData: AlgorithmName+="_sp"
 else: AlgorithmName+="_df"
 if bitSetMode: AlgorithmName+="_bs"
 
-from HTKMiner.Code.HTKMinerExp import HTKMiner
+from HTKMiner.Code.HTKMiner import HTKMiner
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
 
 # It is vital for the parallel processing
@@ -113,6 +113,11 @@ if __name__ == '__main__':
     outputDict['topK']=topK
     outputDict['totalFI']=len(HTKAlgo.finalTopK)
     outputDict['Rank']=HTKAlgo.heap.rankCount()
+    Top1KItemsets=sum(1 for key in HTKAlgo.finalTopK if len(key) == 1)
+    outputDict['Items']=HTKAlgo.itemCount
+    outputDict['TopK 1-itemsets']=Top1KItemsets
+    print(f"1-item: {sum(1 for key in HTKAlgo.finalTopK if len(key) == 1)} / {HTKAlgo.itemCount}")
+
     if HTKAlgo.execution_time>HTKAlgo.commitTimeout:
         outputDict['Runtime']=str(HTKAlgo.commitTimeout)+'+++'
     else:    
@@ -122,5 +127,7 @@ if __name__ == '__main__':
     json.dump(outputDict, file, indent=4)
     file.close() 
     json.dumps(outputDict, indent=4)
+
+
     ############################
     print(AlgorithmName + " Done!")
