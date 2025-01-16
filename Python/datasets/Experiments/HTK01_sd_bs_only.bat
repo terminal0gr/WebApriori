@@ -58,8 +58,9 @@ call python HTKMiner_Test.py "T16IT20D100K.dat" "100" " " "True" "True"
 call python HTKMiner_Test.py "T16IT20D100K.dat" "1000" " " "True" "True"
 call python HTKMiner_Test.py "T16IT20D100K.dat" "10000" " " "True" "True"
 
-rem T16IT20D100K
+rem webdocs
 call python HTKMiner_Test.py "webdocs.dat" "100" " " "True" "True" "1000"
 call python HTKMiner_Test.py "webdocs.dat" "1000" " " "True" "True" "1000"
+call python HTKMiner_Test.py "webdocs.dat" "1000" " " "True" "True" "2000"
 
 pause
