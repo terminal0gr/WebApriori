@@ -8,6 +8,6 @@
     "Rank": 511,
     "Items": 2113,
     "TopK 1-itemsets": 18,
-    "Runtime": 2.0163023471832275,
-    "Memory": 34676736
+    "Runtime": 1.874570608139038,
+    "Memory": 34631680
 }

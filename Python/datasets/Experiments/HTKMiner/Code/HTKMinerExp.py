@@ -584,9 +584,8 @@ class HTKMiner:
 
         endRead = t.time()
 
-        # initialTopK = self.firstTopKList()
         if self.sparseData and self.bitSetMode:
-            initialTopK=dict(islice(initialTopK.items(), 45))
+            initialTopK=dict(islice(initialTopK.items(), 21))
             self.finalTopK, self.min_count = self.mineNextLevelIntersectionBitSet(initialTopK)
         elif self.sparseData and not self.bitSetMode:
             self.finalTopK, self.min_count = self.mineNextLevelIntersection(initialTopK)

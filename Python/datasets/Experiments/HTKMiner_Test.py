@@ -10,9 +10,9 @@ commitTimeout=1000
 # datasetName='chess.dat'  
 # topK=1000
 # separator=' '
-# datasetName='kosarak.dat' 
-# topK=100
-# separator=' '
+datasetName='kosarak.dat' 
+topK=10000
+separator=' '
 # datasetName='accidents.dat' 
 # topK=100
 # separator=' '
@@ -22,9 +22,9 @@ commitTimeout=1000
 # datasetName='L-0023.csv'
 # topK=10000
 # separator=';'
-datasetName='pumsb_star.dat'
-topK=10000
-separator=' '
+# datasetName='pumsb_star.dat'
+# topK=10000
+# separator=' '
 # datasetName='FpGrowthSampleWithoutQuotes.txt'  
 # topK=5
 # separator=','
@@ -98,7 +98,7 @@ if sparseData: AlgorithmName+="_sp"
 else: AlgorithmName+="_df"
 if bitSetMode: AlgorithmName+="_bs"
 
-from HTKMiner.Code.HTKMiner import HTKMiner
+from HTKMiner.Code.HTKMinerExp import HTKMiner
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
 
 # It is vital for the parallel processing
