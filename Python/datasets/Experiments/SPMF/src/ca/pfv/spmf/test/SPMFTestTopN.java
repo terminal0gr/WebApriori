@@ -31,13 +31,13 @@ public class SPMFTestTopN {
 
 
         ////////////////////////////
-        // algorithm="FPGrowth_topN";
-		// AlgoFPGrowthTOPK algoFPGrowthTOPK = new AlgoFPGrowthTOPK();
+        // algorithm="Apriori_topN";
+        // AlgoAprioriTopK algoAprioriTOPK = new AlgoAprioriTopK();
 		// // Uncomment the following line to set the maximum pattern length (number of items per itemset)
         // //algo.setMaximumPatternLength(3);
         // outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Integer.toString(topK) + "_" + algorithm + "_SPMF.fim";
-		// algoFPGrowthTOPK.runAlgorithm(input, outPutResultsfile, topK);
-		// pSN=algoFPGrowthTOPK.printStatsNew(algorithm);
+		// algoAprioriTOPK.runAlgorithm(topK, input, outPutResultsfile);
+		// pSN=algoAprioriTOPK.printStatsNew(algorithm);
         // outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Integer.toString(topK) + "_" + algorithm + "_SPMF.json";
         // // Write the JSON object to the file
         // try (FileWriter file = new FileWriter(outPutResultsfile)) {
@@ -45,24 +45,26 @@ public class SPMFTestTopN {
         //     file.flush();
         // } catch (IOException e) {
         //     e.printStackTrace();
-        // }
+        // }        
+        // System.out.println(algorithm + " finished");
         ////////////////////////////
-        algorithm="Apriori_topN";
-        AlgoAprioriTopK algoAprioriTOPK = new AlgoAprioriTopK();
-		// Uncomment the following line to set the maximum pattern length (number of items per itemset)
-        //algo.setMaximumPatternLength(3);
-        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Integer.toString(topK) + "_" + algorithm + "_SPMF.fim";
-		algoAprioriTOPK.runAlgorithm(topK, input, outPutResultsfile);
-		pSN=algoAprioriTOPK.printStatsNew(algorithm);
-        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Integer.toString(topK) + "_" + algorithm + "_SPMF.json";
+        algorithm="FPGrowth_Top_K";
+		AlgoFPGrowthTOPK algoFPGrowthTopK = new AlgoFPGrowthTOPK();
+        outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + topK + "_" + algorithm + "_SPMF_java.fim";
+		algoFPGrowthTopK.runAlgorithm(input, outPutResultsfile, topK);
+		//pSN=algoFPGrowthTopK.printStatsNew(algorithm,minSup);
+        pSN=algoFPGrowthTopK.printStatsNew(algorithm);
+        outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + topK + "_" + algorithm + "_SPMF_java.json";
         // Write the JSON object to the file
         try (FileWriter file = new FileWriter(outPutResultsfile)) {
             file.write(pSN.toString(4)); // 4 is for pretty-print indentation
             file.flush();
         } catch (IOException e) {
             e.printStackTrace();
-        }        
+        }
+        System.out.println(algorithm + " finished");
         ////////////////////////////
+
 
 	}
 }
