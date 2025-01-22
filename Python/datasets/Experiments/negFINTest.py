@@ -5,9 +5,9 @@ import psutil
 
 
 
-# datasetName='chess.dat' 
-# minSup=0.983729662077597
-# separator=' '
+datasetName='chess.dat' 
+minSup=0.886107634543179
+separator=' '
 # datasetName='kosarak.dat' 
 # minSup=0.002392924458738467
 # separator=' '
@@ -32,9 +32,9 @@ import psutil
 # datasetName='T16IT20D100K.dat'
 # minSup=0.37865
 # separator=' '
-datasetName='webdocs.dat'
-minSup=0.32720459173964384
-separator=' '
+# datasetName='webdocs.dat'
+# minSup=0.32720459173964384
+# separator=' '
 
 
 memorySave=False

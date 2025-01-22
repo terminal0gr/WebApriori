@@ -116,6 +116,9 @@ public class AlgoFPGrowthTOPK {
 	 * @throws IOException exception if error reading or writing files
 	 */
 	public PriorityQueue<Itemset> runAlgorithm(String input, String output, int kValue) throws FileNotFoundException, IOException {
+		return runAlgorithm(input, output, kValue, " ");
+	}
+	public PriorityQueue<Itemset> runAlgorithm(String input, String output, int kValue, String separator) throws FileNotFoundException, IOException {
 		// record start time
 		startTimestamp = System.currentTimeMillis();
 		
@@ -146,6 +149,8 @@ public class AlgoFPGrowthTOPK {
 		// The frequency is stored in a map:
 		//    key: item   value: support
 		final Map<Integer, Integer> mapSupport = scanDatabaseToDetermineFrequencyOfSingleItems(input); 
+		// check the memory usage
+		MemoryLogger.getInstance().checkMemory();
 		
 		
 		// We add all frequent items to the set of candidate of size 1
@@ -165,6 +170,8 @@ public class AlgoFPGrowthTOPK {
 //				System.out.println(minSupportRelative);
 			}
 		}
+		// check the memory usage
+		MemoryLogger.getInstance().checkMemory();
 		// ==============================================================
 		
 		// (2) Scan the database again to build the initial FP-Tree
@@ -213,12 +220,16 @@ public class AlgoFPGrowthTOPK {
 			// add the sorted transaction to the fptree.
 			tree.addTransaction(transaction);
 		}
+		// check the memory usage
+		MemoryLogger.getInstance().checkMemory();
 		// close the input file
 		reader.close();
 		
 		// We create the header table for the tree using the calculated support of single items
 		tree.createHeaderList(mapSupport);
-		
+		MemoryLogger.getInstance().checkMemory();
+		// close the input file
+
 		// (5) We start to mine the FP-Tree by calling the recursive method.
 		// Initially, the prefix alpha is empty.
 		// if at least an item is frequent
@@ -238,6 +249,9 @@ public class AlgoFPGrowthTOPK {
 			// ======================================
 			fpgrowth(tree, itemsetBuffer, 0, transactionCount, mapSupport);
 		}
+		MemoryLogger.getInstance().checkMemory();
+		// close the input file
+
 		
 		// close the output file if the result was saved to a file
 		if(writer != null){
@@ -461,7 +475,11 @@ loop1:	for (long i = 1, max = 1 << position; i < max; i++) {
 	 * @throws IOException  exception if error while writing the file
 	 * @return a map for storing the support of each item (key: item, value: support)
 	 */
-	private  Map<Integer, Integer> scanDatabaseToDetermineFrequencyOfSingleItems(String input)
+	private  Map<Integer, Integer> scanDatabaseToDetermineFrequencyOfSingleItems(String input) throws FileNotFoundException, IOException
+	{
+		return scanDatabaseToDetermineFrequencyOfSingleItems(input," ");
+	}
+	private  Map<Integer, Integer> scanDatabaseToDetermineFrequencyOfSingleItems(String input, String separator)
 			throws FileNotFoundException, IOException {
 		// a map for storing the support of each item (key: item, value: support)
 		 Map<Integer, Integer> mapSupport = new HashMap<Integer, Integer>();
@@ -609,12 +627,21 @@ loop1:	for (long i = 1, max = 1 << position; i < max; i++) {
 	 * Print statistics about the algorithm execution to System.out.
 	 */
 	public void printStats() {
+		printStats("SPMF_FPGrowth_TopK");
+	}
+	public void printStats(String algorithm) {
 		System.out.println("=============  FP-GROWTH (top-k version) 2.60 - STATS =============");
 		long time = endTime - startTimestamp;
-		System.out.println(" Transactions count from database : " + transactionCount);
-		System.out.print(" Max memory usage: " + MemoryLogger.getInstance().getMaxMemory() + " mb \n");
-		System.out.println(" Frequent itemsets count : " + nItemsets.size()); 
-		System.out.println(" Total time ~ " + time + " ms");
+		System.out.println("Transactions count from database: " + transactionCount);
+		System.out.print("Max memory usage: " + MemoryLogger.getInstance().getMaxMemory() + " mb \n");
+		System.out.println("Frequent itemsets count: " + nItemsets.size()); 
+		System.out.println("Total time: " + time/1000. + " s");
+		System.out.println("Language: java");
+		System.out.println("library: SPMF");
+        System.out.println("Algorithm" + algorithm);
+		System.out.println("minSup:" + nItemsets.peek().getRelativeSupport(transactionCount));
+        System.out.println("minSup Absolute" + nItemsets.peek().getAbsoluteSupport());
+        System.out.println("totalFI: " + nItemsets.size());
 		System.out.println("===================================================");
 	}
 
@@ -623,7 +650,8 @@ loop1:	for (long i = 1, max = 1 << position; i < max; i++) {
         jsonObject.put("Language", "java");
         jsonObject.put("library", "SPMF");
         jsonObject.put("Algorithm", algorithm);
-        jsonObject.put("minSup", nItemsets.peek().getAbsoluteSupport());
+		jsonObject.put("minSup", nItemsets.peek().getRelativeSupport(transactionCount));
+        jsonObject.put("minSup Absolute", nItemsets.peek().getAbsoluteSupport());
         jsonObject.put("totalFI", nItemsets.size());
         jsonObject.put("Runtime", (endTime - startTimestamp)/1000.);
         jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());

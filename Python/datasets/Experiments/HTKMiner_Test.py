@@ -7,12 +7,12 @@ sparseData=True #tidSets (True) mode / diffSets (False)
 bitSetMode=True #If bitSet will be used in transformation of the vertical database representation 
 commitTimeout=300
 
-# datasetName='chess.dat'  
-# topK=1000
-# separator=' '
-datasetName='kosarak.dat' 
-topK=100
+datasetName='chess.dat'  
+topK=10000
 separator=' '
+# datasetName='kosarak.dat' 
+# topK=100
+# separator=' '
 # datasetName='accidents.dat' 
 # topK=100
 # separator=' '
@@ -113,6 +113,7 @@ if __name__ == '__main__':
     outputDict['Language']="python"
     outputDict['library']="Mall"
     outputDict['minSup']=HTKAlgo.minSup
+    outputDict['minSupAbsolute']=HTKAlgo.heap.heapList[-1]
     outputDict['topK']=topK
     outputDict['totalFI']=len(HTKAlgo.finalTopK)
     outputDict['Rank']=HTKAlgo.heap.rankCount()

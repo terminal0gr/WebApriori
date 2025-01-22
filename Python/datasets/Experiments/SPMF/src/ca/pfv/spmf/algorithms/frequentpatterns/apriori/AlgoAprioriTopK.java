@@ -554,13 +554,21 @@ public class AlgoAprioriTopK {
 	 * Print statistics about the algorithm execution to System.out.
 	 */
 	public void printStats() {
-		System.out.println("=============  APRIORI(top-k) - STATS =============");
-		System.out.println(" Candidates count : " + totalCandidateCount);
-		System.out.println(" The algorithm stopped at size " + (k - 1));
-		System.out.println(" Intermal minsup: " + minsupRelative);
-		System.out.println(" Frequent itemsets count : " + nItemsets.size());
-		System.out.println(" Maximum memory usage : " + MemoryLogger.getInstance().getMaxMemory() + " mb");
-		System.out.println(" Total time ~ " + (endTimestamp - startTimestamp) + " ms");
+		printStats("SPMF_FPGrowth_TopK");
+	}
+	public void printStats(String algorithm) {
+		System.out.println("=============  Apriori (top-k version) STATS =============");
+		long time = endTimestamp - startTimestamp;
+		System.out.println("Transactions count from database: " + databaseSize);
+		System.out.print("Max memory usage: " + MemoryLogger.getInstance().getMaxMemory() + " mb \n");
+		System.out.println("Frequent itemsets count: " + nItemsets.size()); 
+		System.out.println("Total time: " + time/1000. + " s");
+		System.out.println("Language: java");
+		System.out.println("library: SPMF");
+        System.out.println("Algorithm" + algorithm);
+		System.out.println("minSup:" + nItemsets.peek().getRelativeSupport(databaseSize));
+        System.out.println("minSup Absolute:" + nItemsets.peek().getAbsoluteSupport());
+        System.out.println("totalFI: " + nItemsets.size());
 		System.out.println("===================================================");
 	}
 
@@ -569,7 +577,8 @@ public class AlgoAprioriTopK {
         jsonObject.put("Language", "java");
         jsonObject.put("library", "SPMF");
         jsonObject.put("Algorithm", algorithm);
-        jsonObject.put("minSup", (double)nItemsets.peek().getAbsoluteSupport()/databaseSize);
+		jsonObject.put("minSup", nItemsets.peek().getRelativeSupport(databaseSize));
+        jsonObject.put("minSup Absolute", nItemsets.peek().getAbsoluteSupport());
         jsonObject.put("totalFI", nItemsets.size());
         jsonObject.put("Runtime", (endTimestamp - startTimestamp)/1000.);
         jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());

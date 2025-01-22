@@ -70,7 +70,7 @@ def clean_BMC_tree(root):
     for item, child in root.children.items():
         clean_BMC_tree(child)
     del root.item
-    del root.children
+    del root.children 
 
 
 class NegFIN:
@@ -79,7 +79,7 @@ class NegFIN:
         self.min_support = min_support  # The relative minimum support
         self.min_count = None  # The absolute minimum support
         self.output_file = output_file
-        self.delimiter = delimiter
+        self.delimiter = delimiter 
         self.num_of_transactions = None
         self.F1 = None
         self.item_to_NodeSet = None
