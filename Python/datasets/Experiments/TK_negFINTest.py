@@ -3,7 +3,7 @@ import sys
 import json
 import psutil
 
-
+sys.setrecursionlimit(10000)
 
 datasetName='kosarak.dat' 
 TopK=100

@@ -24,6 +24,7 @@ separator=';'
 # topK=25
 # separator=' '
 
+sys.setrecursionlimit(10000)
 
 
 '''
