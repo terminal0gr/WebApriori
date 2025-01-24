@@ -6,7 +6,7 @@ import psutil
 
 
 datasetName='chess.dat' 
-minSup=0.886107634543179
+minSup=0.945244055068836
 separator=' '
 # datasetName='kosarak.dat' 
 # minSup=0.002392924458738467
@@ -35,6 +35,10 @@ separator=' '
 # datasetName='webdocs.dat'
 # minSup=0.32720459173964384
 # separator=' '
+# datasetName='negFINPaperSample.txt'
+# minSup=0.40
+# separator=','
+
 
 
 memorySave=False

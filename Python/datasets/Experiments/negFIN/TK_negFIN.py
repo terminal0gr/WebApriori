@@ -76,25 +76,23 @@ def clean_BMC_tree(root):
 class TK_NegFIN:
     def __init__(self, dataset_file, topK, output_file, delimiter=' ', memorySave=True):
         self.dataset_file = dataset_file
-        self.min_support = 0  # The relative minimum support
-        self.min_count = 0  # The absolute minimum support
+        self.min_count = 1  # The absolute minimum support
         self.topK = topK #User defined Tok-K threshold
         self.output_file = output_file
         self.delimiter = delimiter
         self.num_of_transactions = None
         self.F1 = None
         self.item_to_NodeSet = None
-        self.writer = None
-        self.num_of_frequent_itemsets = 0
-        self.execution_time = None
+        self.num_of_candidate_FI = 0
         self.memorySave = memorySave 
-        self.finalFiDict=dict() #Dictinary with the FI mined
+        self.finalTopK=dict() #Dictinary with the FI mined
         self.maxMemoryUSS = 0 # Keep the maximum memory used'
+        self.execution_time = 0 # The overall execution time
 
         self.heap=QuickHeap(topK) #Tok-K absolute support values heap initialization
 
 
-    def getTopKFI(self, topKItemSets, level=0):
+    def getTopKFI(self, topKItemSets):
         # The procedure returns the dictionary of topK ItemSets from a given set of itemsets with their support in descending order
         # The count of ItemSets may differ if there are itemsets with the same minimum support which are also included
         # e.g. it may return 102 instead 100 if there are 3 itemsets with the same minSup.
@@ -105,7 +103,6 @@ class TK_NegFIN:
         # This mechanism guarantees that only the Top-K itemsets so far will be returned 
         # plus the itemsets that have equal support as the current minSup.
         topKDict=dict()
-        currentLevelTopK=dict()
         supList=list()
         mS=-1
         for index, (key, value) in enumerate(topKItemSets.items()):
@@ -119,17 +116,15 @@ class TK_NegFIN:
             # the supports only list in descending order for quick heap synchronization
             supList.append(value)
             # The TopK itemsets of the current depth level.
-            if len(key)==level:
-                currentLevelTopK[key]=value
-        if mS==-1: # The itemsets found are less than the topK threshold. The currenrt minSup is 0.
-            minSup=0
+        if mS==-1: # The itemsets found are less than the topK threshold. The currenrt minSup is 1.
+            minSup=1
         else:
             minSup=mS
 
         # quick heap synchronization
         self.heap.initialFill(supList)
 
-        return topKDict, minSup, currentLevelTopK
+        return topKDict, minSup
 
     def __find_F1(self):
         """
@@ -151,13 +146,24 @@ class TK_NegFIN:
             self.maxMemoryUSS=memoryUSS
 
         item_name_to_count.pop('', None)  # Removing the empty item_name if exists.
+        self.itemCount=len(item_name_to_count)
 
         # return the absolute TopK itemsets so far
-        self.F1, self.min_count, currentLevelTopK = self.getTopKFI(item_name_to_count,0)
+        # TK_negFIN 22/1/2025
+        # self.min_count = ceil(self.num_of_transactions * self.minSup)
+        self.F1, self.min_count = self.getTopKFI(item_name_to_count)
+
         # Removing infrequent items and making F1
-        self.F1 = [{'name': item_name, 'count': item_count} for (item_name, item_count) in item_name_to_count.items() if
-                    self.min_count <= item_count]
+        # TK_negFIN 22/1/2025
+        # self.F1 = [{'name': item_name, 'count': item_count} for (item_name, item_count) in item_name_to_count.items() if
+        #             self.min_count <= item_count]
+        self.F1 = [{'name': item_name, 'count': item_count} for (item_name, item_count) in self.F1.items()]
+        
         # Sorting F1 in ascending order of items' count
+        # TK_negFIN 22/1/2025
+        # self.F1.sort(key=lambda item: item['count'])
+        # Sorting F1 in descending order of items' count because we want to exam first most frequent the 1-itemsets.
+        # the opposite of what the original algorithm do
         self.F1.sort(key=lambda item: item['count'], reverse=True)
 
         self.F1 = tuple(self.F1)  # Converting to a tuple to speed up
@@ -185,6 +191,7 @@ class TK_NegFIN:
                                item_name in item_name_to_item_index]
                 # Sorting the transaction in descending order of items' index
                 # Please note that items' index have a direct relation with items' count
+
                 transaction.sort(reverse=True)
 
                 # Inserting transaction to the BMCTree
@@ -234,11 +241,11 @@ class TK_NegFIN:
             Write the discovered frequent itemset into the output file.
         """
 
-        self.num_of_frequent_itemsets += 1
+        self.num_of_candidate_FI += 1
 
         # Get the real name (string name) of items
         itemset_string = [self.F1[itemset_buffer[i]]['name'] for i in range(N_itemset_length)]
-        self.finalFiDict[','.join(itemset_string)] = N.count
+        self.finalTopK[','.join(itemset_string)] = N.count
 
         # === Write all combination that can be made using this itemset and all subsets of FIS_parent
         if FIS_parent_length > 0:
@@ -251,12 +258,14 @@ class TK_NegFIN:
                 # We create a new subset
                 # Check if the j bit is set to 1. #isSet = i & (1 << j)
                 subsetString = [self.F1[FIS_parent_buffer[j]]['name'] for j in range(FIS_parent_length) if
-                                (i & (1 << j)) > 0]
+                                (i & (1 << j)) > 0 and i!=j]
+                
+  
                 # Concatenate the itemset with the subset
                 itemset_string.extend(subsetString)
-                self.finalFiDict[','.join(itemset_string)] = N.count
+                self.finalTopK[','.join(itemset_string)] = N.count
 
-                self.num_of_frequent_itemsets += 1
+                self.num_of_candidate_FI += 1
 
     def __construct_frequent_itemset_tree(self, N, itemset_buffer, N_itemset_length, N_right_siblings,
                                           FIS_parent_buffer,
@@ -295,7 +304,11 @@ class TK_NegFIN:
                         sum_of_NegNodeSets_counts += nj.count
 
             child.count = N.count - sum_of_NegNodeSets_counts
+            
             if self.min_count <= child.count:
+                # New command TK_negFIN 22/1/2025
+                self.min_count=self.heap.insert(child.count)
+
                 if N.count == child.count:
                     FIS_parent_buffer[FIS_parent_length] = sibling.item
                     FIS_parent_length += 1
@@ -304,21 +317,22 @@ class TK_NegFIN:
                     N.children.append(child)
 
         # Create itemset(s)
-        self.__create_itemsets(N, itemset_buffer, N_itemset_length, FIS_parent_buffer, FIS_parent_length)
+        if self.min_count <= N.count:
+            self.__create_itemsets(N, itemset_buffer, N_itemset_length, FIS_parent_buffer, FIS_parent_length)
 
-        number_of_children = len(N.children)
-        for childIndex in range(number_of_children):
-            child = N.children[0]
-            itemset_buffer[N_itemset_length] = child.item
-            del N.children[0] # We delete this node since it is not used anymore.
-            self.__construct_frequent_itemset_tree(child, itemset_buffer, N_itemset_length + 1, N.children,
-                                                   FIS_parent_buffer, FIS_parent_length)
+            number_of_children = len(N.children)
+            for childIndex in range(number_of_children):
+                child = N.children[0]
+                itemset_buffer[N_itemset_length] = child.item
+                del N.children[0] # We delete this node since it is not used anymore.
+                self.__construct_frequent_itemset_tree(child, itemset_buffer, N_itemset_length + 1, N.children,
+                                                    FIS_parent_buffer, FIS_parent_length)
 
     def writeFIM(self, outputFile=None):
         if (outputFile):
             # Write the dictionary to a file in pretty JSON format
             with open(outputFile, "w") as file:
-                json.dump(self.finalFiDict, file, indent=4)
+                json.dump(self.finalTopK, file, indent=4)
 
 
     def runAlgorithm(self):
@@ -340,7 +354,7 @@ class TK_NegFIN:
         process = psutil.Process(os.getpid())
         memoryUSS = process.memory_full_info().uss
         if self.maxMemoryUSS<memoryUSS:
-            self.maxMemoryUSS=memoryUSS        
+            self.maxMemoryUSS=memoryUSS   
 
         # The following buffer is used for storing frequent itemsets discovered in a depth.
         itemset_buffer = [None] * len(self.F1)
@@ -366,6 +380,8 @@ class TK_NegFIN:
         if self.maxMemoryUSS<memoryUSS:
             self.maxMemoryUSS=memoryUSS        
 
+        self.finalTopK, self.min_count = self.getTopKFI(self.finalTopK)     
+
         end_timestamp = datetime.now()
         time_diff = (end_timestamp - start_timestamp) # Total execution time of algorithm.
         self.execution_time = time_diff.total_seconds() * 1000
@@ -373,14 +389,17 @@ class TK_NegFIN:
     # Print statistics about the latest execution of the algorithm to
     # standard output
     def printStats(self):
-        print('=' * 5 + 'negFIN - STATS' + '=' * 5)
-        print(f' Minsup = {self.min_support}\n Number of transactions: {self.num_of_transactions}')
-        print(f' Number of frequent  itemsets: {self.num_of_frequent_itemsets}')
-        print(f' Total time ~: {self.execution_time/1000.} s')
-        #     System.out.println(' Max memory:'
-        #             + MemoryLogger.getInstance().getMaxMemory() + ' MB');
-        print('=' * 14)
-
+        print(f"FI Mining Time: {(self.execution_time/1000.):.3f} Seconds")
+        print(f"FIM found :{len(self.finalTopK)}")
+        print(f'Candidate FIM found: {self.num_of_candidate_FI}')
+        print(f"Rank count:{self.heap.rankCount()}")
+        print(f"Absolute minSup:{self.min_count}")
+        print(f"Relative minSup:{self.min_count/self.num_of_transactions}")
+        print(f"Max Memory:{self.maxMemoryUSS}")      
+        # Useful stats
+        print(f"Transactions:{self.num_of_transactions}")   
+        print(f"Items:{self.itemCount}")  
+        print("TK_negFIN Done!")
 
 # implementation of the quick heap which keeps only the Top-K supports in descending order
 # Quick and memory saver.
@@ -411,7 +430,7 @@ class QuickHeap:
             self.heapList.pop()  # Remove the smallest element (last in the list)
             return self.heapList[-1] # Return the last element (smallest value)            
         else: # The heap is not full
-            return 0 # heap items less than the heap's size. In that case minSup is 0
+            return 1 # heap items less than the heap's size. In that case minSup is 1
         
     def rankCount(self):
         return len(set(self.heapList))

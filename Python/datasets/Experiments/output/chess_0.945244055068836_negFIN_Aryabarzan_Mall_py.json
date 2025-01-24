@@ -4,6 +4,6 @@
     "library": "Mall",
     "minSup": 0.945244055068836,
     "totalFI": 102,
-    "Runtime": 0.040998,
-    "Memory": 7802880
+    "Runtime": 3.680633,
+    "Memory": 27230208
 }

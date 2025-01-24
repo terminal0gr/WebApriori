@@ -1,0 +1,9 @@
+{
+    "Algorithm": "TK_negFIN",
+    "Language": "python",
+    "library": "Mall",
+    "TopK": 13,
+    "totalFI": 61,
+    "Runtime": 2.668104,
+    "Memory": 27701248
+}

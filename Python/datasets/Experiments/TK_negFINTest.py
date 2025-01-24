@@ -5,36 +5,12 @@ import psutil
 
 
 
-datasetName='chess.dat' 
+datasetName='kosarak.dat' 
 TopK=100
 separator=' '
-# datasetName='kosarak.dat' 
-# TopK=0.002392924458738467
-# separator=' '
-# datasetName='accidents.dat' 
-# TopK=0.8196999850080692
-# separator=' '
-# datasetName='pumsb.dat'
-# TopK=0.867879133874322
-# separator=' '
-# datasetName='T10I4D100K.dat'
-# TopK=0.00227
-# separator=' '
-# datasetName='T40I10D100K.dat'
-# TopK=0.01303
-# separator=' '
-# datasetName='L-0023.csv' 
-# TopK=0.005296905492054642
-# separator=';'
-# datasetName='FpGrowthSampleWithoutQuotes.txt' 
-# TopK=0.6
+# datasetName='negFINPaperSample.txt'
+# TopK=13
 # separator=','
-# datasetName='T16IT20D100K.dat'
-# TopK=0.37865
-# separator=' '
-# datasetName='webdocs.dat'
-# TopK=0.32720459173964384
-# separator=' '
 
 
 memorySave=False
@@ -55,7 +31,7 @@ if len(sys.argv)>1:
     datasetName=str(sys.argv[1])
 
 if len(sys.argv)>2:
-    TopK=float(sys.argv[2])
+    TopK=int(sys.argv[2])
 
 if len(sys.argv)>3:
     separator=str(sys.argv[3])
@@ -90,7 +66,7 @@ negFIN = TK_NegFIN(filepath, TopK, outFimFilePath, separator, memorySave)
 negFIN.runAlgorithm()
 
 # Only to sort results in descending order of absolute support value of every itemset
-negFIN.finalFiDict = {k: v for k, v in sorted(negFIN.finalFiDict.items(), key=lambda item: item[1], reverse=True)}
+# negFIN.finalTopK = {k: v for k, v in sorted(negFIN.finalTopK.items(), key=lambda item: item[1], reverse=True)}
 negFIN.writeFIM(outFimFilePath)
 
 negFIN.printStats() # just for console output. 
@@ -99,13 +75,21 @@ outputDict = {}
 outputDict['Algorithm']=AlgorithmName
 outputDict['Language']="python"
 outputDict['library']="Mall"
+outputDict['transactions']=negFIN.num_of_transactions
 outputDict['TopK']=TopK
-outputDict['totalFI']=negFIN.num_of_frequent_itemsets
+outputDict['totalFI']=len(negFIN.finalTopK)
+outputDict['Rank']=negFIN.heap.rankCount()
+outputDict['minSup']=negFIN.min_count
+outputDict['minSupAbsolute']=negFIN.min_count/negFIN.num_of_transactions
+outputDict['total candidates']=negFIN.num_of_candidate_FI
 outputDict['Runtime']=negFIN.execution_time/1000.
 outputDict['Memory']=negFIN.maxMemoryUSS
+Top1KItemsets=sum(1 for key in negFIN.finalTopK if len(key) == 1)
+outputDict['Items']=negFIN.itemCount
+outputDict['TopK 1-itemsets']=Top1KItemsets
+
 file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(TopK)+"_"+AlgorithmName+ext2),'w')
 json.dump(outputDict, file, indent=4)
 file.close() 
 json.dumps(outputDict, indent=4)
-print(AlgorithmName + " Done!")
 ############################
