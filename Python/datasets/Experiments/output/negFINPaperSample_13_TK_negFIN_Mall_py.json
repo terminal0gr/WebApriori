@@ -2,8 +2,15 @@
     "Algorithm": "TK_negFIN",
     "Language": "python",
     "library": "Mall",
+    "transactions": 5,
     "TopK": 13,
     "totalFI": 61,
-    "Runtime": 2.668104,
-    "Memory": 27701248
+    "Rank": 4,
+    "minSup": 1,
+    "minSupAbsolute": 0.2,
+    "total candidates": 61,
+    "Runtime": 7.000207901000977e-06,
+    "Memory": 27975680,
+    "Items": 9,
+    "TopK 1-itemsets": 9
 }

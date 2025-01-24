@@ -6,11 +6,11 @@
     "TopK": 10000,
     "totalFI": 10028,
     "Rank": 556,
-    "minSup": 0,
-    "minSupAbsolute": 2524,
-    "total candidates": 344324,
-    "Runtime": 44.890668,
-    "Memory": 125313024,
+    "minSup": 2524,
+    "minSupAbsolute": 0.7897371714643304,
+    "total candidates": 344395,
+    "Runtime": 44.06398606300354,
+    "Memory": 105766912,
     "Items": 75,
     "TopK 1-itemsets": 4
 }

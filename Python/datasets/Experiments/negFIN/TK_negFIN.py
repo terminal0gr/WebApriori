@@ -1,10 +1,11 @@
 import csv
-from datetime import datetime
+import time as t
 from math import ceil
 from bitarray import bitarray
 import json
 import os
 import psutil
+import sys
 
 
 class BMCTreeNode:
@@ -74,7 +75,7 @@ def clean_BMC_tree(root):
 
 
 class TK_NegFIN:
-    def __init__(self, dataset_file, topK, output_file, delimiter=' ', memorySave=True):
+    def __init__(self, dataset_file, topK, output_file, delimiter=' ', memorySave=True, commitTimeout=0):
         self.dataset_file = dataset_file
         self.min_count = 1  # The absolute minimum support
         self.topK = topK #User defined Tok-K threshold
@@ -88,6 +89,8 @@ class TK_NegFIN:
         self.finalTopK=dict() #Dictinary with the FI mined
         self.maxMemoryUSS = 0 # Keep the maximum memory used'
         self.execution_time = 0 # The overall execution time
+        self.startTime = 0 #The time of mining beggining
+        self.commitTimeout=commitTimeout
 
         self.heap=QuickHeap(topK) #Tok-K absolute support values heap initialization
 
@@ -164,7 +167,7 @@ class TK_NegFIN:
         # self.F1.sort(key=lambda item: item['count'])
         # Sorting F1 in descending order of items' count because we want to exam first most frequent the 1-itemsets.
         # the opposite of what the original algorithm do
-        self.F1.sort(key=lambda item: item['count'], reverse=True)
+        self.F1=sorted(self.F1, key=lambda x: (-x['count'], x['name']))
 
         self.F1 = tuple(self.F1)  # Converting to a tuple to speed up
 
@@ -318,6 +321,12 @@ class TK_NegFIN:
 
         # Create itemset(s)
         if self.min_count <= N.count:
+            
+            t1=t.time()   
+            if self.commitTimeout>0 and (t1-self.startTime)>self.commitTimeout:
+                print(f"Total Execution (before __create_itemsets) Time exceeds: {self.commitTimeout}+++ Seconds!!!")
+                sys.exit()
+
             self.__create_itemsets(N, itemset_buffer, N_itemset_length, FIS_parent_buffer, FIS_parent_length)
 
             number_of_children = len(N.children)
@@ -337,7 +346,7 @@ class TK_NegFIN:
 
     def runAlgorithm(self):
 
-        start_timestamp = datetime.now()
+        self.startTime = t.time()
         self.__find_F1()
         process = psutil.Process(os.getpid())
         memoryUSS = process.memory_full_info().uss
@@ -382,14 +391,16 @@ class TK_NegFIN:
 
         self.finalTopK, self.min_count = self.getTopKFI(self.finalTopK)     
 
-        end_timestamp = datetime.now()
-        time_diff = (end_timestamp - start_timestamp) # Total execution time of algorithm.
-        self.execution_time = time_diff.total_seconds() * 1000
+        self.execution_time = t.time()-self.startTime # Total execution time of algorithm.
+
 
     # Print statistics about the latest execution of the algorithm to
     # standard output
     def printStats(self):
-        print(f"FI Mining Time: {(self.execution_time/1000.):.3f} Seconds")
+        if self.execution_time>self.commitTimeout:
+            print(f"Total Execution Time exceeds: {self.commitTimeout}+++ Seconds!!!")
+        else:
+            print(f"Total Execution Time: {self.execution_time:.3f} Seconds")
         print(f"FIM found :{len(self.finalTopK)}")
         print(f'Candidate FIM found: {self.num_of_candidate_FI}')
         print(f"Rank count:{self.heap.rankCount()}")

@@ -42,6 +42,11 @@ if len(sys.argv)>4:
     else:
         memorySave=False
 
+commitTimeout=0
+if len(sys.argv)>5:
+    commitTimeout=int(sys.argv[5])
+
+
 ################################
 ################################
 #End of call arguments    
@@ -61,7 +66,7 @@ AlgorithmName='TK_negFIN'
 from negFIN.TK_negFIN import TK_NegFIN
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(TopK)+"_"+AlgorithmName+ext1)
 
-negFIN = TK_NegFIN(filepath, TopK, outFimFilePath, separator, memorySave)
+negFIN = TK_NegFIN(filepath, TopK, outFimFilePath, separator, memorySave, commitTimeout)
 
 negFIN.runAlgorithm()
 
@@ -82,7 +87,7 @@ outputDict['Rank']=negFIN.heap.rankCount()
 outputDict['minSup']=negFIN.min_count
 outputDict['minSupAbsolute']=negFIN.min_count/negFIN.num_of_transactions
 outputDict['total candidates']=negFIN.num_of_candidate_FI
-outputDict['Runtime']=negFIN.execution_time/1000.
+outputDict['Runtime']=negFIN.execution_time
 outputDict['Memory']=negFIN.maxMemoryUSS
 Top1KItemsets=sum(1 for key in negFIN.finalTopK if len(key) == 1)
 outputDict['Items']=negFIN.itemCount

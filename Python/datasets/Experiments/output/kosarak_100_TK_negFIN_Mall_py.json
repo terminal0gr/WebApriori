@@ -9,8 +9,8 @@
     "minSup": 22466,
     "minSupAbsolute": 0.022692883448720304,
     "total candidates": 137,
-    "Runtime": 59.476055,
-    "Memory": 433520640,
+    "Runtime": 57.766592502593994,
+    "Memory": 435572736,
     "Items": 41270,
     "TopK 1-itemsets": 6
 }

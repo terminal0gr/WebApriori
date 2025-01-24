@@ -40,6 +40,16 @@ negFIN original C++ (folder negFIN_C++\compile.bat & runtest.bat after filled wi
 
     -1 Works up to 128 different 1-item frequent itemsets
 
+######################
+TK_negFIN Mall    
+
+    +1 Finds the Top K FI (not the rank)
+    +2 Implemented backward construction of the set-enumeration tree (for finding association rules) 
+       for finding quicker the adequate absolute minSup
+
+    -1 Slow especially for finding more than TopK 100 FIs.
+    -2 Uses recursion which making slower the performance and spents more memory
+
 
 ######################
 PAMI: implements in python:
