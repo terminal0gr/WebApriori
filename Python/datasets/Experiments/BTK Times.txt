@@ -1,0 +1,223 @@
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem retail
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python BTK_Test.py "retail.dat" "98" " " "1000"
+Read Dataset Time: 0.516 Seconds
+TB-Tree construction Time: 157.117 Seconds
+B-List construction Time: 10.227 Seconds
+Subsume construction Time: 931.384 Seconds
+Total Execution Time exceeds: 1000+++ Seconds!!!
+BTK Failed!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python BTK_Test.py "retail.dat" "509" " " "1000"
+Read Dataset Time: 0.459 Seconds
+TB-Tree construction Time: 155.863 Seconds
+B-List construction Time: 10.067 Seconds
+Subsume construction Time: 939.167 Seconds
+Total Execution Time exceeds: 1000+++ Seconds!!!
+BTK Failed!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python BTK_Test.py "retail.dat" "758" " " "1000"
+Read Dataset Time: 0.452 Seconds
+TB-Tree construction Time: 155.117 Seconds
+B-List construction Time: 10.026 Seconds
+Subsume construction Time: 936.214 Seconds
+Total Execution Time exceeds: 1000+++ Seconds!!!
+BTK Failed!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem accidents
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python BTK_Test.py "accidents.dat" "917" " " "1000"
+Read Dataset Time: 4.495 Seconds
+TB-Tree construction Time: 57.336 Seconds
+B-List construction Time: 3.620 Seconds
+Subsume construction Time: 163.516 Seconds
+FI mining Time: 468.341 Seconds
+Total Execution Time: 533.791 Seconds
+FIM found:927
+Absolute minSup:225157
+Relative minSup:0.6618702286710388
+Max Memory:2732064768
+BTK Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python BTK_Test.py "accidents.dat" "3481" " " "1000"
+Read Dataset Time: 4.401 Seconds
+TB-Tree construction Time: 57.675 Seconds
+B-List construction Time: 3.621 Seconds
+Subsume construction Time: 164.324 Seconds
+Commit Timeout thresohold exceeded!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem chess
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python BTK_Test.py "chess.dat" "556" " " "1000"
+Read Dataset Time: 0.077 Seconds
+TB-Tree construction Time: 0.222 Seconds
+B-List construction Time: 0.016 Seconds
+Subsume construction Time: 0.222 Seconds
+FI mining Time: 354.589 Seconds
+Total Execution Time: 354.904 Seconds
+FIM found:10028
+Absolute minSup:2524
+Relative minSup:0.7897371714643304
+Max Memory:42528768
+BTK Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem connect
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python BTK_Test.py "connect.dat" "1605" " " "1000"
+Read Dataset Time: 1.159 Seconds
+TB-Tree construction Time: 11.942 Seconds
+B-List construction Time: 0.398 Seconds
+Subsume construction Time: 4.989 Seconds
+Commit Timeout thresohold exceeded!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem pumsb
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python BTK_Test.py "pumsb.dat" "2444" " " "1000"
+Read Dataset Time: 1.393 Seconds
+TB-Tree construction Time: 22.793 Seconds
+B-List construction Time: 1.379 Seconds
+Subsume construction Time: 169.677 Seconds
+Commit Timeout thresohold exceeded!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem pumsb_star
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python BTK_Test.py "pumsb.dat" "1286" " " "1000"
+Read Dataset Time: 1.319 Seconds
+TB-Tree construction Time: 22.873 Seconds
+B-List construction Time: 1.373 Seconds
+Subsume construction Time: 168.286 Seconds
+Commit Timeout thresohold exceeded!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem T10I4D100K
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python BTK_Test.py "T10I4D100K.dat" "953" " " "1000"
+Read Dataset Time: 4.433 Seconds
+TB-Tree construction Time: 18.653 Seconds
+B-List construction Time: 0.597 Seconds
+Subsume construction Time: 1.624 Seconds
+Commit Timeout thresohold exceeded!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem T40I10D100K
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python BTK_Test.py "T16IT20D100K.dat" "865" " " "1000"
+Read Dataset Time: 0.701 Seconds
+TB-Tree construction Time: 4.269 Seconds
+B-List construction Time: 0.096 Seconds
+Subsume construction Time: 0.047 Seconds
+FI mining Time: 94.499 Seconds
+Total Execution Time: 99.565 Seconds
+FIM found:2039
+Absolute minSup:44941
+Relative minSup:0.44941
+Max Memory:250863616
+BTK Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python BTK_Test.py "T16IT20D100K.dat" "2117" " " "1000"
+Read Dataset Time: 0.647 Seconds
+TB-Tree construction Time: 4.280 Seconds
+B-List construction Time: 0.111 Seconds
+Subsume construction Time: 0.048 Seconds
+Commit Timeout thresohold exceeded!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem T16IT20D100K
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python BTK_Test.py "T16IT20D100K.dat" "556" " " "1000"
+Read Dataset Time: 0.647 Seconds
+TB-Tree construction Time: 4.368 Seconds
+B-List construction Time: 0.095 Seconds
+Subsume construction Time: 0.048 Seconds
+FI mining Time: 23.603 Seconds
+Total Execution Time: 28.713 Seconds
+FIM found:1132
+Absolute minSup:53709
+Relative minSup:0.53709
+Max Memory:226574336
+BTK Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem kosarak
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "kosarak.dat" "1000" " " "False" "1000"
+Total Execution (before __create_itemsets) Time exceeds: 1000+++ Seconds!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "kosarak.dat" "10000" " " "False" "1000"
+Total Execution (before __create_itemsets) Time exceeds: 1000+++ Seconds!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem retail
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "retail.dat" "1000" " " "False" "1000"
+Total Execution Time: 464.576 Seconds
+FIM found :1001
+Candidate FIM found: 1183
+Rank count:509
+Absolute minSup:321
+Relative minSup:0.0036410244776661146
+Max Memory:227528704
+Transactions:88162
+Items:16470
+TK_negFIN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "retail.dat" "10000" " " "False" "1000"
+Total Execution (before __create_itemsets) Time exceeds: 1000+++ Seconds!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem accidents
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "accidents.dat" "1000" " " "False" "1000"
+Total Execution (before __create_itemsets) Time exceeds: 1000+++ Seconds!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "accidents.dat" "10000" " " "False" "1000"
+Total Execution (before __create_itemsets) Time exceeds: 1000+++ Seconds!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem connect
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "connect.dat" "1000" " " "False" "1000"
+Total Execution (before __create_itemsets) Time exceeds: 1000+++ Seconds!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "connect.dat" "10000" " " "False" "1000"
+Total Execution (before __create_itemsets) Time exceeds: 1000+++ Seconds!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem pumsb
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "pumsb.dat" "1000" " " "False" "1000"
+Total Execution (before __create_itemsets) Time exceeds: 1000+++ Seconds!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "pumsb.dat" "10000" " " "False" "1000"
+Total Execution (before __create_itemsets) Time exceeds: 1000+++ Seconds!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem pumsb_star
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "pumsb_star.dat" "1000" " " "False" "1000"
+Total Execution (before __create_itemsets) Time exceeds: 1000+++ Seconds!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "pumsb_star.dat" "10000" " " "False" "1000"
+Total Execution (before __create_itemsets) Time exceeds: 1000+++ Seconds!!!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem T10I4D100K
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "T10I4D100K.dat" "10000" " " "False" "1000"
+Total Execution Time exceeds: 1000+++ Seconds!!!
+FIM found :10075
+Candidate FIM found: 42525387
+Rank count:953
+Absolute minSup:227
+Relative minSup:0.00227
+Max Memory:5540900864
+Transactions:100000
+Items:870
+TK_negFIN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem T40I10D100K
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "T40I10D100K.dat" "1000" " " "False" "1000"
+Total Execution Time: 752.959 Seconds
+FIM found :1000
+Candidate FIM found: 1477
+Rank count:865
+Absolute minSup:2693
+Relative minSup:0.02693
+Max Memory:2035453952
+Transactions:100000
+Items:942
+TK_negFIN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python TK_negFINTest.py "T40I10D100K.dat" "10000" " " "False" "1000"

@@ -43,11 +43,6 @@ call python BTK_Test.py "T10I4D100K.dat" "98" " " "300"
 call python BTK_Test.py "T10I4D100K.dat" "660" " " "300"
 call python BTK_Test.py "T10I4D100K.dat" "953" " " "300"
 
-rem T16IT20D100K
-call python BTK_Test.py "T16IT20D100K.dat" "71" " " "300"
-call python BTK_Test.py "T16IT20D100K.dat" "247" " " "300"
-call python BTK_Test.py "T16IT20D100K.dat" "556" " " "300"
-
 rem T40I10D100K
 call python BTK_Test.py "T16IT20D100K.dat" "97" " " "300"
 call python BTK_Test.py "T16IT20D100K.dat" "865" " " "300"
@@ -57,5 +52,11 @@ rem L-0023.csv
 call python BTK_Test.py "L-0023.csv" "69" ";" "300"
 call python BTK_Test.py "L-0023.csv" "143" ";" "300"
 call python BTK_Test.py "L-0023.csv" "168" ";" "300"
+
+rem T16IT20D100K
+call python BTK_Test.py "T16IT20D100K.dat" "91" " " "300"
+call python BTK_Test.py "T16IT20D100K.dat" "523" " " "300"
+call python BTK_Test.py "T16IT20D100K.dat" "1581" " " "300"
+
 
 pause

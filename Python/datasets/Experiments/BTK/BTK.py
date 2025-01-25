@@ -194,7 +194,7 @@ class BTK:
             i+=1
         
         if t.time()-self.startTime>self.commitTimeout:
-            print("Commit Timeout thresohold exceeded!!!")
+            print(f"Total Execution Time exceeds: {self.commitTimeout}+++ Seconds!!!")
             sys.exit()
 
         
