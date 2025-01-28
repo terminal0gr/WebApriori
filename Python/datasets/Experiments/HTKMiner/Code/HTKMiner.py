@@ -579,7 +579,7 @@ class HTKMiner:
 
         self.start = t.time() #Start Time.
 
-        initialTopK = self.readDatasetFile() 
+        initialTopK = self.readDatasetFile()  
 
         endRead = t.time()
 

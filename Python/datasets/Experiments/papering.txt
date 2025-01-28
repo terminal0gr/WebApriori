@@ -1,0 +1,42 @@
+Abstract
+
+a.Introduction
+significance of fast top-k frequent itemsets 
+- Motivation
+top-k algorithms not exist
+- Contribution
+htkminer, In addition, we transform...tk-negfin, experimental study on datasets (memory, cpu-time)
+- Paper organazation
+
+b.Related work
+1.support based
+2.2-4 level
+3.ranked
+4.top-k
+
+c. The proposed heap top-k miner;
+1.The algorithm
+- sp bs
+2. Variation of htk miner
+3. Impementation issues
+
+d. The proposed tk-negfin algorithm
+
+e. experimental study
+1. Dataset
+2. Experimental setup
+machine description
+3. Experimetal results
+
+
+f. Conclusions and future work
+
+
+
+
+journal finder
+	Elsevier
+	Springer
+Latex templates for review
+
+expert systems for applications
