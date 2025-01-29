@@ -204,7 +204,10 @@ class HTKMiner:
             # malliaridis 10/12/2024 (+10)
             listOFKeys = tuple(currentLevelTopK.keys())
 
-            while(iA < len(listOFKeys)):
+            # malliaridis 10/12/2024 (+10%)
+            countKeys=len(listOFKeys)            
+
+            while(iA < countKeys):
 
                 classA = listOFKeys[iA]
                 # stop current iteration if classA itemset has already been above the current minSup.
@@ -214,7 +217,7 @@ class HTKMiner:
                 # initialization of the second itemset counter
                 iB=iA+1
 
-                while (iB<len(listOFKeys)):
+                while (iB < countKeys):
 
                     classB = listOFKeys[iB]
 
@@ -223,6 +226,8 @@ class HTKMiner:
                     if currentLevelTopK[classB]<self.min_count:
                         break
 
+                    # prefixA and prefixB keep the current itemset but the last item.
+                    # example: if classA key is (a, b, c), prefixA keeps (a, b)
                     prefixA=classA[:-1]
                     prefixB=classB[:-1]
 
@@ -241,9 +246,9 @@ class HTKMiner:
                             self.min_count=self.heap.insert(support)
 
                             #next level candidate itemset
-                            itemA = classA[-1]
-                            itemB = classB[-1]
-                            key=prefixA + (itemA, itemB)
+                            # itemA = classA[-1]
+                            # itemB = classB[-1]
+                            key=prefixA + (classA[-1], classB[-1])
 
                             #add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
                             levelData[key] = list(transactions) #list of the transactions ion which the itemset participates
@@ -306,7 +311,10 @@ class HTKMiner:
             # malliaridis 10/12/2024 (+10)
             listOFKeys = tuple(currentLevelTopK.keys())
 
-            while(iA < len(listOFKeys)):
+            # malliaridis 10/12/2024 (+10%)
+            countKeys=len(listOFKeys)
+
+            while(iA < countKeys):
 
                 classA = listOFKeys[iA]
                 # stop current iteration if classA itemset has already been above the current minSup.
@@ -316,7 +324,7 @@ class HTKMiner:
                 # initialization of the second itemset counter
                 iB=iA+1
 
-                while (iB<len(listOFKeys)):
+                while (iB < countKeys):
 
                     classB = listOFKeys[iB]
 
@@ -325,6 +333,8 @@ class HTKMiner:
                     if currentLevelTopK[classB]<self.min_count:
                         break
 
+                    # prefixA and prefixB keep the current itemset but the last item.
+                    # example: if classA key is (a, b, c), prefixA keeps (a, b)
                     prefixA=classA[:-1]
                     prefixB=classB[:-1]
 
@@ -345,9 +355,9 @@ class HTKMiner:
                             self.min_count=self.heap.insert(support)
 
                             #next level candidate itemset
-                            itemA = classA[-1]
-                            itemB = classB[-1]
-                            key=prefixA + (itemA, itemB)
+                            # itemA = classA[-1]
+                            # itemB = classB[-1]
+                            key=prefixA + (classA[-1], classB[-1])
 
                             #add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
                             levelData[key] = transactions #bitSet implementation (a big integer number)
@@ -409,7 +419,10 @@ class HTKMiner:
             # listOFKeys = tuple(currentLevelTopK.keys())[:self.topK]
             listOFKeys = tuple(currentLevelTopK.keys())
 
-            while(iA < len(listOFKeys)):
+            # malliaridis 10/12/2024 (+10%)
+            countKeys=len(listOFKeys)
+
+            while(iA < countKeys):
 
                 classA = listOFKeys[iA]
                 # stop current iteration if classA itemset has already been above the current minSup.
@@ -419,7 +432,7 @@ class HTKMiner:
                 # initialization of the second itemset counter
                 iB=iA+1
 
-                while (iB<len(listOFKeys)):
+                while (iB < countKeys):
 
                     classB = listOFKeys[iB]
 
@@ -428,6 +441,8 @@ class HTKMiner:
                     if currentLevelTopK[classB]<self.min_count:
                         break
 
+                    # prefixA and prefixB keep the current itemset but the last item.
+                    # example: if classA key is (a, b, c), prefixA keeps (a, b)
                     prefixA=classA[:-1]
                     prefixB=classB[:-1]
 
@@ -442,9 +457,9 @@ class HTKMiner:
                             self.min_count=self.heap.insert(support)
 
                             #next level candidate itemset
-                            itemA = classA[-1]
-                            itemB = classB[-1]
-                            key=prefixA + (itemA, itemB)
+                            # itemA = classA[-1]
+                            # itemB = classB[-1]
+                            key=prefixA + (classA[-1], classB[-1])
 
                             #add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
                             levelData[key] = list(transactions) #bitSet implementation (a big integer number)
@@ -506,7 +521,10 @@ class HTKMiner:
             #listOFKeys = list(currentLevelTopK.keys())[:self.topK]
             listOFKeys = tuple(currentLevelTopK.keys())
 
-            while(iA < len(listOFKeys)):
+            # malliaridis 10/12/2024 (+10%)
+            countKeys=len(listOFKeys)
+
+            while(iA < countKeys):
 
                 classA = listOFKeys[iA]
                 # stop current iteration if classA itemset has already been above the current minSup.
@@ -516,7 +534,7 @@ class HTKMiner:
                 # initialization of the second itemset counter
                 iB=iA+1
 
-                while (iB<len(listOFKeys)):
+                while (iB<countKeys):
 
                     classB = listOFKeys[iB]
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
@@ -524,6 +542,8 @@ class HTKMiner:
                     if currentLevelTopK[classB]<self.min_count:
                         break
 
+                    # prefixA and prefixB keep the current itemset but the last item.
+                    # example: if classA key is (a, b, c), prefixA keeps (a, b)
                     prefixA=classA[:-1]
                     prefixB=classB[:-1]
 
@@ -540,9 +560,9 @@ class HTKMiner:
                             self.min_count=self.heap.insert(support)
 
                             #next level candidate itemset
-                            itemA = classA[-1]
-                            itemB = classB[-1]
-                            key=prefixA + (itemA, itemB)
+                            # itemA = classA[-1]
+                            # itemB = classB[-1]
+                            key=prefixA + (classA[-1], classB[-1])
 
                             #+15 add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
                             levelData[key] = transactions #bitSet implementation (a big integer number)
@@ -635,8 +655,12 @@ class QuickHeap:
     def insert(self, value):
         # Custom binary search to find the correct position
         high, low = 0, len(self.heapList)-1
+        heapLen=low+1 #Current heap size
         if self.heapList[low] >= value:
-            high=low+1
+            if self.size==low+1:
+                return self.heapList[low]
+            else:
+                high=low+1
         else:
             while high < low:
                 mid = (high + low) // 2
@@ -646,7 +670,8 @@ class QuickHeap:
                     low = mid
         self.heapList.insert(high, value)  # Insert the item at the correct position
         # Maintain the fixed size and return the minSup
-        heapLen=len(self.heapList)
+        heapLen+=1
+
         if heapLen > self.size:
             self.heapList.pop()  # Remove the smallest element (last in the list)
             return self.heapList[-1] # Return the last element (smallest value)            

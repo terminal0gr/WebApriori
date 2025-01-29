@@ -1,5 +1,7 @@
 Abstract
 
+Mining top-rank-k frequent patterns is a fundamental data mining task that aims to identify the most frequent patterns in a transaction database. Despite the existence of numerous algorithms for this task, it remains computationally intensive. To address this challenge, this paper introduces HTK Miner, a novel algorithm designed to efficiently discover top-k frequent patterns. HTK Miner leverages two key innovations: (1) a quick heap structure (Q-heap) that dynamically adjusts the support threshold to expedite pattern identification, and (2) a dictionary-based bitset representation of the transactional database, which employs a vertical data format to accelerate pattern discovery. By traversing the database only once, HTK Miner significantly reduces both computational overhead and memory consumption. Extensive experiments on various datasets demonstrate that HTK Miner outperforms existing methods in terms of computational efficiency and memory savings, establishing it as a highly competitive solution for top-k frequent pattern mining.
+
 a.Introduction
 significance of fast top-k frequent itemsets 
 - Motivation
@@ -40,3 +42,21 @@ journal finder
 Latex templates for review
 
 expert systems for applications
+
+Springer Science+Business Media 
+	BTK
+	
+Article in Knowledge-Based Systems
+	2016 U 101 An_efficient_algorithm_for_mining_the_top-k_high_u
+	
+Expert Systems With Applications
+	2021 E 14 TK-FIN Customized frequent patterns mining algorithms for enhanced Top-Rank-K
+	
+PerrJ Computer Science
+	2021 U 7 TKFIM Top-K frequent itemset mining technique based on equivalence classes
+
+Springer Data Science and Engineering
+	2024 U 0 PTF Efficient Top‑k Frequent Itemset Mining on Massive Data
+
+Data Mining and Knowledge Discovery
+	Our Journal

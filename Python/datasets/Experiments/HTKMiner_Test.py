@@ -7,12 +7,12 @@ sparseData=True #tidSets (True) mode / diffSets (False)
 bitSetMode=True #If bitSet will be used in transformation of the vertical database representation 
 commitTimeout=300
 
-datasetName='chess.dat'  
+# datasetName='chess.dat'  
+# topK=10000
+# separator=' '
+datasetName='kosarak.dat' 
 topK=100
 separator=' '
-# datasetName='kosarak.dat' 
-# topK=100
-# separator=' '
 # datasetName='accidents.dat' 
 # topK=100
 # separator=' '

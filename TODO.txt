@@ -149,11 +149,13 @@ Goethals Eclat py: http://adrem.uantwerpen.be/~goethals/software/files/eclat.py
 
 ######################
 HTKMiner (Top-K)
+
+    TK-FIM
     +1 Seems quickest from its precedetors
 
     -1 Inability to manipulate all transactional datasets because of pandas dataframe (Can't handle efficiently 1-MBL Type datasets)
-    -2 It does not find exactly the first Top-K. It finds the first Top-K Rank, occurrences of different support itemsets
-    -3 In some occasions it cannot find all the frequent itemsets (Corrected in Contribution +5)
+    -2 It finds the first Top-K Rank not the first topK FI, occurrences of different support itemsets
+    -3 In some occasions it cannot find all the frequent itemsets 
 
     Contributions: _Mall.py
     +1 manipulate all transactional datasets (1-MBL) with a lists of lists structure instead of dataframe
@@ -168,9 +170,9 @@ HTKMiner (Top-K)
     +10 Use tuple instead of string for self.data dictionary (gained speed and memory consumption)
    ++11 bitset in both intersection and diffSet implementations
    ++12 parallel computation of bitsets (5x at least faster task computation)
-    +13 vertical database preserves ONLY the last level of itemsets (Memory save 2 magnitudes)
+   ++13 vertical database preserves ONLY the last level of itemsets (Memory save 2 magnitudes)
     +14 intersection combined with bitset implementation PROVED (experimentally) faster in all datasets (in paper thorough analysis)
-    +15 encapsulated multiple iterations implementation insead of recursion implemented for (memory saving)
+   ++15 encapsulated multiple iterations implementation instead of recursion implemented for (memory saving)
 
 
 scimago for checking scientific journals reputation
