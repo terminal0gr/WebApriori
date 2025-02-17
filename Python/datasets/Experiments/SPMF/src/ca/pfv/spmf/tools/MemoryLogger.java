@@ -95,7 +95,7 @@ public class MemoryLogger {
 				e.printStackTrace();
 			}
 		}
-		return currentMemory;
+		return maxMemory;
 	}
 
 	/**

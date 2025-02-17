@@ -630,7 +630,7 @@ loop1:	for (long i = 1, max = 1 << position; i < max; i++) {
 		printStats("SPMF_FPGrowth_TopK");
 	}
 	public void printStats(String algorithm) {
-		System.out.println("=============  FP-GROWTH (top-k version) 2.60 - STATS =============");
+		System.out.println("=============  FP-GROWTH (top-k version) 2.61 - STATS =============");
 		long time = endTime - startTimestamp;
 		System.out.println("Transactions count from database: " + transactionCount);
 		System.out.print("Max memory usage: " + MemoryLogger.getInstance().getMaxMemory() + " mb \n");

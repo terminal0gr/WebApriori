@@ -34,9 +34,6 @@ class HTKMiner:
 
         # Dataset traversed once only!
         with open(self.dataset_file, encoding='utf-8-sig') as f:
-            #TODO Documentation
-            #TODO Documentation
-            #TODO Documentation
 
             # Vertical dataset representation (temp)
             vR={}
@@ -47,16 +44,15 @@ class HTKMiner:
             # The Tid of each transaction
             transIndex=0
             # The overall count of items in dataset
-            transitem=0
+            # transitem=0 # Uncomment for stats only 
             # The next 2 dictionaries are used to implement one bidirectional dictionary
             # The idea is to map item names to their indexes and perform better in the algorithm
             self.itemDict=dict()
             itemDictReversed=dict()
             b1=t.time() # start of reading
             for line in f:
-                transIndex+=1
                 for item in line.strip().split(sep=self.delimiter):
-                    transitem+=1
+                    # transitem+=1 # Uncomment for stats only
                     if item not in iSet:
                         itemIndex+=1
                         self.itemDict[itemIndex]=item
@@ -65,21 +61,20 @@ class HTKMiner:
                         iSet.add(item)
                     else:
                         vR[(itemDictReversed[item],)].append(transIndex)
+                transIndex+=1
             
             # statistics
             self.num_of_transactions=transIndex
             self.itemCount=itemIndex
-            self.TransitemCount=transitem
+            # self.TransitemCount=transitem # Uncomment for stats only
 
-        topKItemSetsList = sorted(((key, len(value)) for key, value in vR.items()), key=lambda x: x[1], reverse=True)
-
-        item1TopKList, self.min_count = self.InitialTopKFIList(topKItemSetsList)
+        item1TopK, self.min_count = self.InitialTopKFI(vR)
 
         # Initializes the quick Heap with brute passing its first list of support values
-        self.heap.initialFill(list(item1TopKList.values()))
+        self.heap.initialFill(list(item1TopK.values()))
 
         # Get rid off the 1-itemsets that are non frequent based on the TopK value
-        vR = {key: vR[key] for key in item1TopKList if key in vR}
+        vR = {key: vR[key] for key in item1TopK if key in vR}
 
         b3=t.time()
         print(f"Read dataset Time: {(b3-b1):.3f} Seconds")
@@ -104,15 +99,17 @@ class HTKMiner:
         
         print(f"bitset transformation Time: {(t.time()-b3):.3f} Seconds")
 
-        return item1TopKList
+        return item1TopK
 
 
-    def InitialTopKFIList(self, topKItemSetsList):
+    def InitialTopKFI(self, vR):
         ### It works only for the first 1-item itemSets!!!
 
         # The procedure returns the dictionary of the first topK 1-Item ItemSets form the set of itemsets with their support in descending order
         # The count of ItemSets may differ if there are itemsets with the same minimum support which are also included
         # e.g. it may return 102 instead 100 if there are 3 itemsets with the same minSup.
+
+        topKItemSetsList = sorted(((key, len(value)) for key, value in vR.items()), key=lambda x: x[1], reverse=True)
         
         # itemsets found so far less than TopK threshold. Return them as is and set minSup to zero
         if len(topKItemSetsList)<self.topK:
@@ -630,9 +627,11 @@ class HTKMiner:
         # Useful stats
         print(f"Transactions:{self.num_of_transactions}")   
         print(f"Items:{self.itemCount}")  
-        avg=self.TransitemCount/self.num_of_transactions 
-        print(f"Avg item size pre trans:{avg:.1f}")   
-        print(f"Dataset density:{avg/self.itemCount:.5f}") 
+
+        # Uncomment only if self.TransitemCount has been computed in read dataset for stats
+        # avg=self.TransitemCount/self.num_of_transactions 
+        # print(f"Avg item size pre trans:{avg:.1f}")   
+        # print(f"Dataset density:{avg/self.itemCount:.5f}") 
 
     def writeFIM(self, outputFile=None): #outputs the frequent itemsets in json format
         if (outputFile):
@@ -692,13 +691,13 @@ def _bitPacker(data):
     :param maxIndex: It converts the data into bits By taking the maxIndex value as condition.
     :type maxIndex: int  
 
-    Updated version
+    Updated version by Malliaridis Konstantinos
     It takes a list of integers as input (data) and generates a single integer as output value (return).
     """
     packed_bits = 0
     for i in data:
         # packed_bits |= 1 << (maxIndex - i)
-        # Slightly updated. for more speed. instead building the number from most significant digit we start from the left side of the number.
+        # Slightly updated. for more speed (>15%). instead building the number from most significant digit we start from the left side of the number.
         # It is faster and got rid of the maxIndex presence.
         packed_bits |= 1 << i
     return packed_bits

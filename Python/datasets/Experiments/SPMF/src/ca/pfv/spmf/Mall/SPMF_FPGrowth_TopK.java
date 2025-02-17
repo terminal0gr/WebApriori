@@ -12,8 +12,8 @@ public class SPMF_FPGrowth_TopK {
 	public static void main(String [] arg) throws IOException{
 
         //Declaration section
-        String datasetName = "kosarak.dat";
-        int topK = 100; // means a minSup of 2 transaction (we used a relative support)
+        String datasetName = "retail.dat";
+        int topK = 10000; // means a minSup of 2 transaction (we used a relative support)
         String separator = " ";
 
         //Line arguments section

@@ -158,21 +158,22 @@ HTKMiner (Top-K)
     -3 In some occasions it cannot find all the frequent itemsets 
 
     Contributions: _Mall.py
-    +1 manipulate all transactional datasets (1-MBL) with a lists of lists structure instead of dataframe
-   ++2 quickest read of the dataset file in vertical database presentation format (Traversed only once!)
-    +3 better computation of the statistics (time and memory consuption) Memory is estimewted in every level and peak memory consuption is found
-   ++4 Finds the exact Top-K itemsets plus all itemsets that have support equal to minSup. If the minSup found is used by classic FIM algorithms like fpgrowth or negFIN it brings the exact results
-    +5 extensive improvements in all the code segments (see comments) of the algorithm improving mining time to less than half (50%)
-   ++6 Use of a quick heap structure to maintain the Top-K support values with insert and getMinSup functions which DIRECTLY (reduced about a magnitude the mining time)
-    +7 use of intersection instead of diffSet (Quicker in most cases) (kept both ways with parameter) Could it be automatic the alteration between?
-    +8 (5% faster) Collect only the itemsets of current level that exist in current TopK (listOFKeys). the rest are discarded.
-    +9 diffSet computation (optional)
-    +10 Use tuple instead of string for self.data dictionary (gained speed and memory consumption)
-   ++11 bitset in both intersection and diffSet implementations
-   ++12 parallel computation of bitsets (5x at least faster task computation)
-   ++13 vertical database preserves ONLY the last level of itemsets (Memory save 2 magnitudes)
-    +14 intersection combined with bitset implementation PROVED (experimentally) faster in all datasets (in paper thorough analysis)
-   ++15 encapsulated multiple iterations implementation instead of recursion implemented for (memory saving)
+    v++1 quickest read of the dataset file in vertical database presentation format (Traversed only once!)
+    v++2 A bidirectional dictionary is used to map items with indices
+    v +3 manipulate all transactional datasets (1-MBL) with a dicitonary of lists structure instead of dataframe
+    v++4 vertical database preserves ONLY the last level of itemsets (Memory save 2 magnitudes)
+    v++5 encapsulated multiple iterations implementation instead of recursion implemented for (memory saving)
+    v +6 Use tuple instead of string for VR key (gained speed and memory consumption)
+    v++7 bitset numbers in both intersection and diffSet implementations
+    v++8 parallel computation of bitsets (5x at least faster task computation)
+    v++9 Finds the exact Top-K itemsets plus all itemsets that have support equal to minSup. If the minSup found is used by classic FIM algorithms like fpgrowth or negFIN it brings the exact results
+    v++10 Use of a quick heap structure to maintain the Top-K support values with insert and getMinSup functions which DIRECTLY (reduced about a magnitude the mining time)
+    v+11 (5% faster) Collect only the itemsets of current level that exist in current TopK (listOFKeys). the rest are discarded.
+    +12 extensive improvements in all the code segments (see comments) of the algorithm improving mining time to less than half (50%)
+        e.g. ln 200, ln 205, ln 223, 
+    +13 better computation of the statistics (time and memory consuption) Memory is estimewted in every level and peak memory consuption is found
+
+    +1 Section Experiments. intersection combined with bitset implementation PROVED (experimentally) faster in all datasets (in paper thorough analysis)
 
 
 scimago for checking scientific journals reputation
