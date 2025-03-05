@@ -1,0 +1,14 @@
+{
+    "Algorithm": "HTKMiner_sp_bs",
+    "Language": "python",
+    "library": "Mall",
+    "minSup": 0.00015879857534992401,
+    "minSupAbsolute": 14,
+    "topK": 75000,
+    "totalFI": 79979,
+    "Rank": 805,
+    "Items": 16470,
+    "TopK 1-itemsets": 7427,
+    "Runtime": "300+++",
+    "Memory": 2026360832
+}

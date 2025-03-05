@@ -3,13 +3,13 @@ import sys
 import json
 
 
-sparseData=False #tidSets (True) mode / diffSets (False)
-bitSetMode=False #If bitSet will be used in transformation of the vertical database representation 
+sparseData=True #tidSets (True) mode / diffSets (False)
+bitSetMode=True #If bitSet will be used in transformation of the vertical database representation 
 commitTimeout=300
 
-# datasetName='chess.dat'  
-# topK=10000
-# separator=' '
+datasetName='chess.dat'  
+topK=100
+separator=' '
 # datasetName='kosarak.dat' 
 # topK=100
 # separator=' '
@@ -34,9 +34,12 @@ commitTimeout=300
 # datasetName='webdocs.dat'
 # topK=100
 # separator=' '
-datasetName='HTK-MinerPaperSample.txt'
-topK=10
-separator=' '
+# datasetName='HTK-MinerPaperSample.txt'
+# topK=10
+# separator=' '
+# datasetName='SubsumePaperSample.txt'
+# topK=10
+# separator=' '
 
 
 

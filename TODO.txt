@@ -171,9 +171,9 @@ HTKMiner (Top-K)
     v+11 (5% faster) Collect only the itemsets of current level that exist in current TopK (listOFKeys). the rest are discarded.
     +12 extensive improvements in all the code segments (see comments) of the algorithm improving mining time to less than half (50%)
         e.g. ln 200, ln 205, ln 223, 
-    +13 better computation of the statistics (time and memory consuption) Memory is estimewted in every level and peak memory consuption is found
 
     +1 Section Experiments. intersection combined with bitset implementation PROVED (experimentally) faster in all datasets (in paper thorough analysis)
+    +2 better computation of the statistics (time and memory consuption) Memory is estimewted in every level and peak memory consuption is found
 
 
 scimago for checking scientific journals reputation

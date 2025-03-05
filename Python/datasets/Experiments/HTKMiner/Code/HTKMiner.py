@@ -164,7 +164,8 @@ class HTKMiner:
         else:
             minSup=mS
 
-        # quick heap synchronization
+        # quick heap synchronization - verification. Not necessary. 
+        # It works propably and with out this line but this does not offer execution speed
         self.heap.initialFill(supList)
 
         return topKDict, minSup, currentLevelTopK
@@ -189,7 +190,7 @@ class HTKMiner:
                 self.maxMemoryUSS=memoryUSS
 
             # The vertical itemset database representation for the current level ONLY!
-            levelData=dict()
+            nextLevelData=dict()
 
             # Represents the next level candidate itemsets to be found with its support
             nextLevelTopK = {}
@@ -197,8 +198,7 @@ class HTKMiner:
             # initialization of the first itemset counter
             iA = 0
 
-            # Collect only the first topK items. the rest are discarded
-            # malliaridis 10/12/2024 (+10)
+            # listOFKeys is a tuple for more efficiency in iteration with only the itemsets
             listOFKeys = tuple(currentLevelTopK.keys())
 
             # malliaridis 10/12/2024 (+10%)
@@ -248,7 +248,7 @@ class HTKMiner:
                             key=prefixA + (classA[-1], classB[-1])
 
                             #add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
-                            levelData[key] = list(transactions) #list of the transactions ion which the itemset participates
+                            nextLevelData[key] = list(transactions) #list of the transactions ion which the itemset participates
                             # self.data[key] = list(transactions) #add the frequent itemset to vertical database because it would help finding the superSet candidates.
 
                             # Insert itemset with its support
@@ -264,6 +264,7 @@ class HTKMiner:
             topKFI={**topKFI, **nextLevelTopK} 
 
             # return the absolute TopK itemsets so far
+            # In currentLevelTopK, collect only the first topK items. the rest are discarded
             topKFI, self.min_count, currentLevelTopK = self.getTopKFI(topKFI,level+1)
 
             if not currentLevelTopK or (self.commitTimeout!=0 and t.time()-self.start>self.commitTimeout):
@@ -272,7 +273,7 @@ class HTKMiner:
                 level += 1
                 # We do not need to preserve the previous levels of itemset representation. Only the last one created
                 # 2 orders of magnitude less memory consumption in kosarak 10000 sp bs
-                self.data=levelData
+                self.data=nextLevelData
 
         return topKFI, self.min_count
     
@@ -296,7 +297,7 @@ class HTKMiner:
                 self.maxMemoryUSS=memoryUSS
 
             # The vertical itemset database representation for the current level ONLY!
-            levelData=dict()
+            nextLevelData=dict()
 
             # Represents the next level candidate itemsets to be found
             nextLevelTopK = {}
@@ -357,7 +358,7 @@ class HTKMiner:
                             key=prefixA + (classA[-1], classB[-1])
 
                             #add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
-                            levelData[key] = transactions #bitSet implementation (a big integer number)
+                            nextLevelData[key] = transactions #bitSet implementation (a big integer number)
 
                             # Insert itemset with its support
                             nextLevelTopK[key] = support
@@ -380,7 +381,7 @@ class HTKMiner:
                 level += 1
                 # We do not need to preserve the previous levels of itemset representation. Only the last one created
                 # 2 orders of magnitude less memory consumption in kosarak 10000 sp bs
-                self.data=levelData
+                self.data=nextLevelData
 
         return topKFI, self.min_count
 
@@ -405,7 +406,7 @@ class HTKMiner:
                 self.maxMemoryUSS=memoryUSS
 
             # The vertical itemset database representation for the current level ONLY!
-            levelData=dict()
+            nextLevelData=dict()
 
             # Represents the next level candidate itemsets to be found
             nextLevelTopK = {}
@@ -459,7 +460,7 @@ class HTKMiner:
                             key=prefixA + (classA[-1], classB[-1])
 
                             #add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
-                            levelData[key] = list(transactions) #bitSet implementation (a big integer number)
+                            nextLevelData[key] = list(transactions) #bitSet implementation (a big integer number)
 
                             # Insert itemset with its support
                             nextLevelTopK[key] = support
@@ -483,7 +484,7 @@ class HTKMiner:
                 level += 1
                 # We do not need to preserve the previous levels of itemset representation. Only the last one created
                 # 2 orders of magnitude less memory consumption in kosarak 10000 sp bs
-                self.data=levelData
+                self.data=nextLevelData
 
         return topKFI, self.min_count
 
@@ -507,7 +508,7 @@ class HTKMiner:
                 self.maxMemoryUSS=memoryUSS
 
             # The vertical itemset database representation for the current level ONLY!
-            levelData=dict()
+            nextLevelData=dict()
 
             # Represents the next level candidate itemsets to be found
             nextLevelTopK = {}
@@ -562,7 +563,7 @@ class HTKMiner:
                             key=prefixA + (classA[-1], classB[-1])
 
                             #+15 add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
-                            levelData[key] = transactions #bitSet implementation (a big integer number)
+                            nextLevelData[key] = transactions #bitSet implementation (a big integer number)
                             # self.data[key] = transactions  
 
                             # Insert itemset with its support
@@ -586,7 +587,7 @@ class HTKMiner:
                 level += 1
                 # We do not need to preserve the previous levels of itemset representation. Only the last one created
                 # 2 orders of magnitude less memory consumption in kosarak 10000 sp bs
-                self.data=levelData
+                self.data=nextLevelData
 
         return topKFI, self.min_count
 

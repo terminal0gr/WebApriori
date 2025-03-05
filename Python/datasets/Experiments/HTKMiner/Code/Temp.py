@@ -20,3 +20,4 @@ slicing_time = timeit.timeit(use_list_slicing, number=1000)
 
 print(f"islice: {islice_time:.6f} seconds")
 print(f"list slicing: {slicing_time:.6f} seconds")
+

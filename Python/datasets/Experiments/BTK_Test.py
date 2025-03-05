@@ -17,12 +17,12 @@ separator=' '
 # datasetName='T10I4D100K.dat'
 # topK=1000
 # separator=' '
-datasetName='L-0023.csv'
-topK=92
-separator=';'
-# datasetName='BTKSample.dat'  
-# topK=25
-# separator=' '
+# datasetName='L-0023.csv'
+# topK=92
+# separator=';'
+datasetName='BTKSample.dat'  
+topK=25
+separator=' '
 
 sys.setrecursionlimit(10000)
 
