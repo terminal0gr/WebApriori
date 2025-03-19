@@ -1,5 +1,5 @@
 {
-    "Algorithm": "HTKMiner_df_bs",
+    "Algorithm": "HTKMiner_BSN",
     "Language": "python",
     "library": "Mall",
     "minSup": 0.32720459173964384,
@@ -9,6 +9,6 @@
     "Rank": 100,
     "Items": 5267656,
     "TopK 1-itemsets": 17,
-    "Runtime": 315.7005469799042,
-    "Memory": 1537081344
+    "Runtime": 302.0712308883667,
+    "Memory": 1536880640
 }

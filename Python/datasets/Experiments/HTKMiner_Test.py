@@ -3,9 +3,9 @@ import sys
 import json
 
 
-sparseData=True #tidSets (True) mode / diffSets (False)
+tidSet=True #tidSets (True) mode / diffSets (False)
 bitSetMode=True #If bitSet will be used in transformation of the vertical database representation 
-commitTimeout=300
+commitTimeout=1000
 
 datasetName='chess.dat'  
 topK=100
@@ -52,7 +52,7 @@ Call arguments
     The number of Top-K frequent itemsets that the user demands 
 3) separator 
     The separator of the dataset For space, write " ".
-4) sparseData 
+4) tidSet 
     True  -> tidSets  with intersection 
     False -> diffSets with difference 
 5) bitSetMode
@@ -73,9 +73,9 @@ if len(sys.argv)>3:
 
 if len(sys.argv)>4:
     if str(sys.argv[4]) in ['True', 'true', '1']:
-        sparseData=True
+        tidSet=True
     else:
-        sparseData=False
+        tidSet=False
 
 if len(sys.argv)>5:
     if str(sys.argv[5]) in ['True', 'true', '1']:
@@ -101,16 +101,23 @@ filepath=os.path.join('datasets', datasetName)
 
 ############################
 AlgorithmName='HTKMiner'
-if sparseData: AlgorithmName+="_sp"
-else: AlgorithmName+="_df"
-if bitSetMode: AlgorithmName+="_bs"
+if tidSet: 
+    if bitSetMode:
+        AlgorithmName+="_BSN"
+    else:
+        AlgorithmName+="_TS"
+else:
+    if bitSetMode:
+        AlgorithmName+="_DBSN"
+    else:
+        AlgorithmName+="_DTS"
 
-from HTKMiner.Code.HTKMiner import HTKMiner
+from HTKMiner.Code.HTKMiner07 import HTKMiner
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
 
 # It is vital for the parallel processing
 if __name__ == '__main__':
-    HTKAlgo = HTKMiner(filepath, topK, separator, sparseData, bitSetMode, commitTimeout)
+    HTKAlgo = HTKMiner(filepath, topK, separator, tidSet, bitSetMode, commitTimeout)
     HTKAlgo.mine()
 
     HTKAlgo.writeFIM(outFimFilePath)

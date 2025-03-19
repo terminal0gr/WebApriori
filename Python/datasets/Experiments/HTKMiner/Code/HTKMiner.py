@@ -9,7 +9,7 @@ import os
 
 class HTKMiner: 
 
-    def __init__(self, dataset_file, topK, delimiter=' ', sparseData=True, bitSetMode=True, commitTimeout=0):
+    def __init__(self, dataset_file, topK, delimiter=' ', tidSet=True, bitSetMode=True, commitTimeout=0):
         self.dataset_file = dataset_file
         self.minSup = None  # The relative minimum support
         self.min_count = 0  # The absolute minimum support 
@@ -18,7 +18,7 @@ class HTKMiner:
         self.itemCount = 0 # The count of items in database
         self.TransitemCount = 0 # The count of all items in every transaction
         self.topK = topK #User defined Tok-K threshold
-        self.sparseData=sparseData # User specified, default True. True intersection mode, False Diffset mode
+        self.tidSet=tidSet # User specified, default True. True intersection mode, False Diffset mode
         self.bitSetMode=bitSetMode # User specified, default True. True bitSet mode, False tidSet mode
         self.data = None # stores original data in its vertical representation (Key is the 1-item while value is a list of all the transactions containing that item)
         self.finalTopK = None #for showing final results
@@ -343,8 +343,14 @@ class HTKMiner:
                             # bitwise difference of 2 numbers e.g. 29 (11101) and 27 (11011) 
                             # 29 & (29 ^ 27) = 4 (00100)
                             transactions=self.data[classA]&(self.data[classA]^self.data[classB])
+                            # Alternative but slower 
+                            # 11101 & (~ 11011) = 4 (00100)
+                            # transactions=self.data[classA]&(~self.data[classB])
+
                         else: #In next levels we have diffSets (see paper 'Fast Vertical mining using Diffsets' page 7)
                             transactions=self.data[classB]&(self.data[classB]^self.data[classA])
+                            # Alternative but slower 
+                            # transactions=self.data[classB]&(~self.data[classA])
                         support=currentLevelTopK[classA]-int.bit_count(transactions)
 
                         if support >= self.min_count:
@@ -602,13 +608,13 @@ class HTKMiner:
         endRead = t.time()
 
         # initialTopK = self.firstTopKList()
-        if self.sparseData and self.bitSetMode:
+        if self.tidSet and self.bitSetMode:
             self.finalTopK, self.min_count = self.mineNextLevelIntersectionBitSet(initialTopK)
-        elif self.sparseData and not self.bitSetMode:
+        elif self.tidSet and not self.bitSetMode:
             self.finalTopK, self.min_count = self.mineNextLevelIntersection(initialTopK)
-        elif not self.sparseData and self.bitSetMode:
+        elif not self.tidSet and self.bitSetMode:
             self.finalTopK, self.min_count = self.mineNextLevelDiffSetBitSet(initialTopK)
-        elif not self.sparseData and not self.bitSetMode:
+        elif not self.tidSet and not self.bitSetMode:
             self.finalTopK, self.min_count = self.mineNextLevelDiffSet(initialTopK)
         self.minSup=self.min_count/self.num_of_transactions
 

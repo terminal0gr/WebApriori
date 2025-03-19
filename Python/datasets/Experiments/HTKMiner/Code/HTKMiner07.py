@@ -9,7 +9,7 @@ import os
 
 class HTKMiner: 
 
-    def __init__(self, dataset_file, topK, delimiter=' ', sparseData=True, bitSetMode=True, commitTimeout=0):
+    def __init__(self, dataset_file, topK, delimiter=' ', tidSet=True, bitSetMode=True, commitTimeout=0):
         self.dataset_file = dataset_file
         self.minSup = None  # The relative minimum support
         self.min_count = 0  # The absolute minimum support 
@@ -18,7 +18,7 @@ class HTKMiner:
         self.itemCount = 0 # The count of items in database
         self.TransitemCount = 0 # The count of all items in every transaction
         self.topK = topK #User defined Tok-K threshold
-        self.sparseData=sparseData # User specified, default True. True intersection mode, False Diffset mode
+        self.tidSet=tidSet # User specified, default True. True intersection mode, False Diffset mode
         self.bitSetMode=bitSetMode # User specified, default True. True bitSet mode, False tidSet mode
         self.data = None # stores original data in its vertical representation (Key is the 1-item while value is a list of all the transactions containing that item)
         self.finalTopK = None #for showing final results
@@ -34,9 +34,6 @@ class HTKMiner:
 
         # Dataset traversed once only!
         with open(self.dataset_file, encoding='utf-8-sig') as f:
-            #TODO Documentation
-            #TODO Documentation
-            #TODO Documentation
 
             # Vertical dataset representation (temp)
             vR={}
@@ -47,16 +44,15 @@ class HTKMiner:
             # The Tid of each transaction
             transIndex=0
             # The overall count of items in dataset
-            transitem=0
+            # transitem=0 # Uncomment for stats only 
             # The next 2 dictionaries are used to implement one bidirectional dictionary
             # The idea is to map item names to their indexes and perform better in the algorithm
             self.itemDict=dict()
             itemDictReversed=dict()
             b1=t.time() # start of reading
             for line in f:
-                transIndex+=1
                 for item in line.strip().split(sep=self.delimiter):
-                    transitem+=1
+                    # transitem+=1 # Uncomment for stats only
                     if item not in iSet:
                         itemIndex+=1
                         self.itemDict[itemIndex]=item
@@ -65,21 +61,20 @@ class HTKMiner:
                         iSet.add(item)
                     else:
                         vR[(itemDictReversed[item],)].append(transIndex)
+                transIndex+=1
             
             # statistics
             self.num_of_transactions=transIndex
             self.itemCount=itemIndex
-            self.TransitemCount=transitem
+            # self.TransitemCount=transitem # Uncomment for stats only
 
-        topKItemSetsList = sorted(((key, len(value)) for key, value in vR.items()), key=lambda x: x[1], reverse=True)
-
-        item1TopKList, self.min_count = self.InitialTopKFIList(topKItemSetsList)
+        item1TopK, self.min_count = self.InitialTopKFI(vR)
 
         # Initializes the quick Heap with brute passing its first list of support values
-        self.heap.initialFill(list(item1TopKList.values()))
+        self.heap.initialFill(list(item1TopK.values()))
 
         # Get rid off the 1-itemsets that are non frequent based on the TopK value
-        vR = {key: vR[key] for key in item1TopKList if key in vR}
+        vR = {key: vR[key] for key in item1TopK if key in vR}
 
         b3=t.time()
         print(f"Read dataset Time: {(b3-b1):.3f} Seconds")
@@ -104,15 +99,17 @@ class HTKMiner:
         
         print(f"bitset transformation Time: {(t.time()-b3):.3f} Seconds")
 
-        return item1TopKList
+        return item1TopK
 
 
-    def InitialTopKFIList(self, topKItemSetsList):
+    def InitialTopKFI(self, vR):
         ### It works only for the first 1-item itemSets!!!
 
         # The procedure returns the dictionary of the first topK 1-Item ItemSets form the set of itemsets with their support in descending order
         # The count of ItemSets may differ if there are itemsets with the same minimum support which are also included
         # e.g. it may return 102 instead 100 if there are 3 itemsets with the same minSup.
+
+        topKItemSetsList = sorted(((key, len(value)) for key, value in vR.items()), key=lambda x: x[1], reverse=True)
         
         # itemsets found so far less than TopK threshold. Return them as is and set minSup to zero
         if len(topKItemSetsList)<self.topK:
@@ -167,7 +164,8 @@ class HTKMiner:
         else:
             minSup=mS
 
-        # quick heap synchronization
+        # quick heap synchronization - verification. Not necessary. 
+        # It works propably and with out this line but this does not offer execution speed
         self.heap.initialFill(supList)
 
         return topKDict, minSup, currentLevelTopK
@@ -192,7 +190,7 @@ class HTKMiner:
                 self.maxMemoryUSS=memoryUSS
 
             # The vertical itemset database representation for the current level ONLY!
-            levelData=dict()
+            nextLevelData=dict()
 
             # Represents the next level candidate itemsets to be found with its support
             nextLevelTopK = {}
@@ -200,8 +198,7 @@ class HTKMiner:
             # initialization of the first itemset counter
             iA = 0
 
-            # Collect only the first topK items. the rest are discarded
-            # malliaridis 10/12/2024 (+10)
+            # listOFKeys is a tuple for more efficiency in iteration with only the itemsets
             listOFKeys = tuple(currentLevelTopK.keys())
 
             # malliaridis 10/12/2024 (+10%)
@@ -226,6 +223,8 @@ class HTKMiner:
                     if currentLevelTopK[classB]<self.min_count:
                         break
 
+                    # prefixA and prefixB keep the current itemset but the last item.
+                    # example: if classA key is (a, b, c), prefixA keeps (a, b)
                     prefixA=classA[:-1]
                     prefixB=classB[:-1]
 
@@ -244,12 +243,12 @@ class HTKMiner:
                             self.min_count=self.heap.insert(support)
 
                             #next level candidate itemset
-                            itemA = classA[-1]
-                            itemB = classB[-1]
-                            key=prefixA + (itemA, itemB)
+                            # itemA = classA[-1]
+                            # itemB = classB[-1]
+                            key=prefixA + (classA[-1], classB[-1])
 
                             #add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
-                            levelData[key] = list(transactions) #list of the transactions ion which the itemset participates
+                            nextLevelData[key] = list(transactions) #list of the transactions ion which the itemset participates
                             # self.data[key] = list(transactions) #add the frequent itemset to vertical database because it would help finding the superSet candidates.
 
                             # Insert itemset with its support
@@ -265,6 +264,7 @@ class HTKMiner:
             topKFI={**topKFI, **nextLevelTopK} 
 
             # return the absolute TopK itemsets so far
+            # In currentLevelTopK, collect only the first topK items. the rest are discarded
             topKFI, self.min_count, currentLevelTopK = self.getTopKFI(topKFI,level+1)
 
             if not currentLevelTopK or (self.commitTimeout!=0 and t.time()-self.start>self.commitTimeout):
@@ -273,7 +273,7 @@ class HTKMiner:
                 level += 1
                 # We do not need to preserve the previous levels of itemset representation. Only the last one created
                 # 2 orders of magnitude less memory consumption in kosarak 10000 sp bs
-                self.data=levelData
+                self.data=nextLevelData
 
         return topKFI, self.min_count
     
@@ -297,7 +297,7 @@ class HTKMiner:
                 self.maxMemoryUSS=memoryUSS
 
             # The vertical itemset database representation for the current level ONLY!
-            levelData=dict()
+            nextLevelData=dict()
 
             # Represents the next level candidate itemsets to be found
             nextLevelTopK = {}
@@ -331,6 +331,8 @@ class HTKMiner:
                     if currentLevelTopK[classB]<self.min_count:
                         break
 
+                    # prefixA and prefixB keep the current itemset but the last item.
+                    # example: if classA key is (a, b, c), prefixA keeps (a, b)
                     prefixA=classA[:-1]
                     prefixB=classB[:-1]
 
@@ -341,8 +343,14 @@ class HTKMiner:
                             # bitwise difference of 2 numbers e.g. 29 (11101) and 27 (11011) 
                             # 29 & (29 ^ 27) = 4 (00100)
                             transactions=self.data[classA]&(self.data[classA]^self.data[classB])
+                            # Alternative but slower 
+                            # 11101 & (~ 11011) = 4 (00100)
+                            # transactions=self.data[classA]&(~self.data[classB])
+
                         else: #In next levels we have diffSets (see paper 'Fast Vertical mining using Diffsets' page 7)
                             transactions=self.data[classB]&(self.data[classB]^self.data[classA])
+                            # Alternative but slower 
+                            # transactions=self.data[classB]&(~self.data[classA])
                         support=currentLevelTopK[classA]-int.bit_count(transactions)
 
                         if support >= self.min_count:
@@ -351,12 +359,12 @@ class HTKMiner:
                             self.min_count=self.heap.insert(support)
 
                             #next level candidate itemset
-                            itemA = classA[-1]
-                            itemB = classB[-1]
-                            key=prefixA + (itemA, itemB)
+                            # itemA = classA[-1]
+                            # itemB = classB[-1]
+                            key=prefixA + (classA[-1], classB[-1])
 
                             #add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
-                            levelData[key] = transactions #bitSet implementation (a big integer number)
+                            nextLevelData[key] = transactions #bitSet implementation (a big integer number)
 
                             # Insert itemset with its support
                             nextLevelTopK[key] = support
@@ -379,7 +387,7 @@ class HTKMiner:
                 level += 1
                 # We do not need to preserve the previous levels of itemset representation. Only the last one created
                 # 2 orders of magnitude less memory consumption in kosarak 10000 sp bs
-                self.data=levelData
+                self.data=nextLevelData
 
         return topKFI, self.min_count
 
@@ -404,7 +412,7 @@ class HTKMiner:
                 self.maxMemoryUSS=memoryUSS
 
             # The vertical itemset database representation for the current level ONLY!
-            levelData=dict()
+            nextLevelData=dict()
 
             # Represents the next level candidate itemsets to be found
             nextLevelTopK = {}
@@ -453,12 +461,12 @@ class HTKMiner:
                             self.min_count=self.heap.insert(support)
 
                             #next level candidate itemset
-                            itemA = classA[-1]
-                            itemB = classB[-1]
-                            key=prefixA + (itemA, itemB)
+                            # itemA = classA[-1]
+                            # itemB = classB[-1]
+                            key=prefixA + (classA[-1], classB[-1])
 
                             #add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
-                            levelData[key] = list(transactions) #bitSet implementation (a big integer number)
+                            nextLevelData[key] = list(transactions) #bitSet implementation (a big integer number)
 
                             # Insert itemset with its support
                             nextLevelTopK[key] = support
@@ -482,7 +490,7 @@ class HTKMiner:
                 level += 1
                 # We do not need to preserve the previous levels of itemset representation. Only the last one created
                 # 2 orders of magnitude less memory consumption in kosarak 10000 sp bs
-                self.data=levelData
+                self.data=nextLevelData
 
         return topKFI, self.min_count
 
@@ -498,8 +506,6 @@ class HTKMiner:
         #count the items participating in itemset or alternatively the current class level
         level = 1
 
-        self.candidatesCount=0
-
         while level > 0:
 
             # We keep only the max memory used between the stages.
@@ -508,13 +514,10 @@ class HTKMiner:
                 self.maxMemoryUSS=memoryUSS
 
             # The vertical itemset database representation for the current level ONLY!
-            levelData=dict()
+            nextLevelData=dict()
 
             # Represents the next level candidate itemsets to be found
             nextLevelTopK = {}
-
-            # initialization of the first itemset counter
-            iA = 0
 
             #listOFKeys = list(currentLevelTopK.keys())[:self.topK]
             listOFKeys = tuple(currentLevelTopK.keys())
@@ -522,24 +525,28 @@ class HTKMiner:
             # malliaridis 10/12/2024 (+10%)
             countKeys=len(listOFKeys)
 
-            while(iA < countKeys):
+            # initialization of the second itemset counter
+            iB = 1
+            while(iB < countKeys):
 
-                classA = listOFKeys[iA]
+                classB = listOFKeys[iB]
                 # stop current iteration if classA itemset has already been above the current minSup.
-                if currentLevelTopK[classA]<self.min_count:
+                if currentLevelTopK[classB]<self.min_count:
                     break
 
-                # initialization of the second itemset counter
-                iB=iA+1
+                # initialization of the first itemset counter
+                iA=0
 
-                while (iB<countKeys):
+                while (iA<iB):
 
-                    classB = listOFKeys[iB]
+                    classA = listOFKeys[iA]
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     # Stop current iteration if any of the second itemset has already been above the current minSup.
-                    if currentLevelTopK[classB]<self.min_count:
+                    if currentLevelTopK[classA]<self.min_count:
                         break
 
+                    # prefixA and prefixB keep the current itemset but the last item.
+                    # example: if classA key is (a, b, c), prefixA keeps (a, b)
                     prefixA=classA[:-1]
                     prefixB=classB[:-1]
 
@@ -549,8 +556,6 @@ class HTKMiner:
                         transactions=self.data[classA] & self.data[classB]
                         # counts the bit that have 1 from the bit array of the number
                         support=int.bit_count(transactions)
-
-                        # self.candidatesCount+=1
 
                         if support >= self.min_count:
 
@@ -563,14 +568,14 @@ class HTKMiner:
                             key=prefixA + (classA[-1], classB[-1])
 
                             #+15 add the frequent itemset to level's vertical database because it would help finding the superSet candidates.
-                            levelData[key] = transactions #bitSet implementation (a big integer number)
+                            nextLevelData[key] = transactions #bitSet implementation (a big integer number)
                             # self.data[key] = transactions  
 
                             # Insert itemset with its support
                             nextLevelTopK[key] = support
                             
-                    iB+=1
-                iA+=1
+                    iA+=1
+                iB+=1
 
             # filtering the itemsets that are abode the new current misSup thresold
             nextLevelTopK = {key: value for key, value in nextLevelTopK.items() if value >= self.min_count}
@@ -587,9 +592,7 @@ class HTKMiner:
                 level += 1
                 # We do not need to preserve the previous levels of itemset representation. Only the last one created
                 # 2 orders of magnitude less memory consumption in kosarak 10000 sp bs
-                self.data=levelData
-
-        print(f"Candidates prossessed: {self.candidatesCount}")
+                self.data=nextLevelData
 
         return topKFI, self.min_count
 
@@ -604,13 +607,13 @@ class HTKMiner:
         endRead = t.time()
 
         # initialTopK = self.firstTopKList()
-        if self.sparseData and self.bitSetMode:
+        if self.tidSet and self.bitSetMode:
             self.finalTopK, self.min_count = self.mineNextLevelIntersectionBitSet(initialTopK)
-        elif self.sparseData and not self.bitSetMode:
+        elif self.tidSet and not self.bitSetMode:
             self.finalTopK, self.min_count = self.mineNextLevelIntersection(initialTopK)
-        elif not self.sparseData and self.bitSetMode:
+        elif not self.tidSet and self.bitSetMode:
             self.finalTopK, self.min_count = self.mineNextLevelDiffSetBitSet(initialTopK)
-        elif not self.sparseData and not self.bitSetMode:
+        elif not self.tidSet and not self.bitSetMode:
             self.finalTopK, self.min_count = self.mineNextLevelDiffSet(initialTopK)
         self.minSup=self.min_count/self.num_of_transactions
 
@@ -630,9 +633,11 @@ class HTKMiner:
         # Useful stats
         print(f"Transactions:{self.num_of_transactions}")   
         print(f"Items:{self.itemCount}")  
-        avg=self.TransitemCount/self.num_of_transactions 
-        print(f"Avg item size pre trans:{avg:.1f}")   
-        print(f"Dataset density:{avg/self.itemCount:.5f}") 
+
+        # Uncomment only if self.TransitemCount has been computed in read dataset for stats
+        # avg=self.TransitemCount/self.num_of_transactions 
+        # print(f"Avg item size pre trans:{avg:.1f}")   
+        # print(f"Dataset density:{avg/self.itemCount:.5f}") 
 
     def writeFIM(self, outputFile=None): #outputs the frequent itemsets in json format
         if (outputFile):
@@ -669,9 +674,7 @@ class QuickHeap:
                 else:
                     low = mid
         self.heapList.insert(high, value)  # Insert the item at the correct position
-
         # Maintain the fixed size and return the minSup
-        # heapLen=len(self.heapList)
         heapLen+=1
 
         if heapLen > self.size:
@@ -694,13 +697,13 @@ def _bitPacker(data):
     :param maxIndex: It converts the data into bits By taking the maxIndex value as condition.
     :type maxIndex: int  
 
-    Updated version
+    Updated version by Malliaridis Konstantinos
     It takes a list of integers as input (data) and generates a single integer as output value (return).
     """
     packed_bits = 0
     for i in data:
         # packed_bits |= 1 << (maxIndex - i)
-        # Slightly updated. for more speed. instead building the number from most significant digit we start from the left side of the number.
+        # Slightly updated. for more speed (>15%). instead building the number from most significant digit we start from the left side of the number.
         # It is faster and got rid of the maxIndex presence.
         packed_bits |= 1 << i
     return packed_bits
