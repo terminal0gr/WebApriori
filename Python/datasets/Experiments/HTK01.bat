@@ -167,13 +167,14 @@ call python HTKMiner_Test.py "1_L-0023.dat" "10000" ";" "True" "False"
 call python HTKMiner_Test.py "1_L-0023.dat" "10000" ";" "True" "True"
 
 rem webdocs
-call python HTKMiner_Test.py "1_L-0023.dat" "100" ";" False False
-call python HTKMiner_Test.py "1_L-0023.dat" "100" ";" "False" "True"
-call python HTKMiner_Test.py "1_L-0023.dat" "100" ";" "True" "False"
-call python HTKMiner_Test.py "1_L-0023.dat" "100" ";" "True" "True"
-call python HTKMiner_Test.py "1_L-0023.dat" "1000" ";" "False" "True" 2000
-call python HTKMiner_Test.py "1_L-0023.dat" "1000" ";" "True" "True" 2000
-call python HTKMiner_Test.py "1_L-0023.dat" "10000" ";" "False" "True" 2000
-call python HTKMiner_Test.py "1_L-0023.dat" "10000" ";" "True" "True" 2000
+call python HTKMiner_Test.py "webdocs.dat" "100" " " False False
+call python HTKMiner_Test.py "webdocs.dat" "100" " " "False" "True"
+call python HTKMiner_Test.py "webdocs.dat" "100" " " "True" "False"
+call python HTKMiner_Test.py "webdocs.dat" "100" " " "True" "True"
+call python HTKMiner_Test.py "webdocs.dat" "1000" " " "False" "True" 2000
+call python HTKMiner_Test.py "webdocs.dat" "1000" " " "True" "True" 2000
+call python HTKMiner_Test.py "webdocs.dat" "10000" " " "False" "True" 2000
+call python HTKMiner_Test.py "webdocs.dat" "10000" " " "True" "True" 2000
 
+pause
 pause

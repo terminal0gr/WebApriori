@@ -112,7 +112,7 @@ else:
     else:
         AlgorithmName+="_DTS"
 
-from HTKMiner.Code.HTKMiner07 import HTKMiner
+from HTKMiner.Code.HTKMiner import HTKMiner
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
 
 # It is vital for the parallel processing

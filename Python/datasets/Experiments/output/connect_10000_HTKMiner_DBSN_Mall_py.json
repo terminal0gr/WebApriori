@@ -1,0 +1,14 @@
+{
+    "Algorithm": "HTKMiner_DBSN",
+    "Language": "python",
+    "library": "Mall",
+    "minSup": 0.9227023106413843,
+    "minSupAbsolute": 62335,
+    "topK": 10000,
+    "totalFI": 10015,
+    "Rank": 1605,
+    "Items": 129,
+    "TopK 1-itemsets": 19,
+    "Runtime": 7.186819314956665,
+    "Memory": 114810880
+}

@@ -195,28 +195,31 @@ class HTKMiner:
             # Represents the next level candidate itemsets to be found with its support
             nextLevelTopK = {}
 
-            # initialization of the first itemset counter
-            iA = 0
-
             # listOFKeys is a tuple for more efficiency in iteration with only the itemsets
             listOFKeys = tuple(currentLevelTopK.keys())
 
             # malliaridis 10/12/2024 (+10%)
             countKeys=len(listOFKeys)            
 
-            while(iA < countKeys):
+            # initialization of the second itemset counter
+            iB = 1
+            while(iB < countKeys):
 
-                classA = listOFKeys[iA]
+                classB = listOFKeys[iB]
                 # stop current iteration if classA itemset has already been above the current minSup.
-                if currentLevelTopK[classA]<self.min_count:
+                if currentLevelTopK[classB]<self.min_count:
                     break
 
-                # initialization of the second itemset counter
-                iB=iA+1
+                # initialization of the first itemset counter
+                iA=0
 
-                while (iB < countKeys):
+                while (iA<iB):
 
-                    classB = listOFKeys[iB]
+                    classA = listOFKeys[iA]
+                    # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
+                    # Stop current iteration if any of the second itemset has already been above the current minSup.
+                    if currentLevelTopK[classA]<self.min_count:
+                        break
 
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     # Stop current iteration if any of the second itemset has already been above the current minSup.
@@ -254,8 +257,8 @@ class HTKMiner:
                             # Insert itemset with its support
                             nextLevelTopK[key] = support
                             
-                    iB+=1
-                iA+=1
+                    iA+=1
+                iB+=1
 
             # filtering the itemsets that are above the new current minSup threshold
             nextLevelTopK = {key: value for key, value in nextLevelTopK.items() if value >= self.min_count}
@@ -302,9 +305,6 @@ class HTKMiner:
             # Represents the next level candidate itemsets to be found
             nextLevelTopK = {}
 
-            # initialization of the first itemset counter
-            iA = 0
-
             # Collect only the first topK items. the rest are discarded
             # malliaridis 10/12/2024 (+10)
             listOFKeys = tuple(currentLevelTopK.keys())
@@ -312,23 +312,24 @@ class HTKMiner:
             # malliaridis 10/12/2024 (+10%)
             countKeys=len(listOFKeys)
 
-            while(iA < countKeys):
+            # initialization of the second itemset counter
+            iB = 1
+            while(iB < countKeys):
 
-                classA = listOFKeys[iA]
+                classB = listOFKeys[iB]
                 # stop current iteration if classA itemset has already been above the current minSup.
-                if currentLevelTopK[classA]<self.min_count:
+                if currentLevelTopK[classB]<self.min_count:
                     break
 
-                # initialization of the second itemset counter
-                iB=iA+1
+                # initialization of the first itemset counter
+                iA=0
 
-                while (iB < countKeys):
+                while (iA<iB):
 
-                    classB = listOFKeys[iB]
-
+                    classA = listOFKeys[iA]
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     # Stop current iteration if any of the second itemset has already been above the current minSup.
-                    if currentLevelTopK[classB]<self.min_count:
+                    if currentLevelTopK[classA]<self.min_count:
                         break
 
                     # prefixA and prefixB keep the current itemset but the last item.
@@ -369,8 +370,8 @@ class HTKMiner:
                             # Insert itemset with its support
                             nextLevelTopK[key] = support
                             
-                    iB+=1
-                iA+=1
+                    iA+=1
+                iB+=1
 
             # filtering the itemsets that are abode the new current misSup thresold
             nextLevelTopK = {key: value for key, value in nextLevelTopK.items() if value >= self.min_count}
@@ -417,32 +418,30 @@ class HTKMiner:
             # Represents the next level candidate itemsets to be found
             nextLevelTopK = {}
 
-            # initialization of the first itemset counter
-            iA = 0
-
             # listOFKeys = tuple(currentLevelTopK.keys())[:self.topK]
             listOFKeys = tuple(currentLevelTopK.keys())
 
             # malliaridis 10/12/2024 (+10%)
             countKeys=len(listOFKeys)
 
-            while(iA < countKeys):
+            # initialization of the second itemset counter
+            iB = 1
+            while(iB < countKeys):
 
-                classA = listOFKeys[iA]
+                classB = listOFKeys[iB]
                 # stop current iteration if classA itemset has already been above the current minSup.
-                if currentLevelTopK[classA]<self.min_count:
+                if currentLevelTopK[classB]<self.min_count:
                     break
 
-                # initialization of the second itemset counter
-                iB=iA+1
+                # initialization of the first itemset counter
+                iA=0
 
-                while (iB < countKeys):
+                while (iA<iB):
 
-                    classB = listOFKeys[iB]
-
+                    classA = listOFKeys[iA]
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
                     # Stop current iteration if any of the second itemset has already been above the current minSup.
-                    if currentLevelTopK[classB]<self.min_count:
+                    if currentLevelTopK[classA]<self.min_count:
                         break
 
                     # prefixA and prefixB keep the current itemset but the last item.
@@ -471,8 +470,8 @@ class HTKMiner:
                             # Insert itemset with its support
                             nextLevelTopK[key] = support
                             
-                    iB+=1
-                iA+=1
+                    iA+=1
+                iB+=1
             
             # filtering the itemsets that are abode the new current misSup thresold
             nextLevelTopK = {key: value for key, value in nextLevelTopK.items() if value >= self.min_count}

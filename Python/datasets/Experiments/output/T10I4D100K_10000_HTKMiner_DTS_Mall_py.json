@@ -1,0 +1,14 @@
+{
+    "Algorithm": "HTKMiner_DTS",
+    "Language": "python",
+    "library": "Mall",
+    "minSup": 0.00227,
+    "minSupAbsolute": 227,
+    "topK": 10000,
+    "totalFI": 10075,
+    "Rank": 953,
+    "Items": 870,
+    "TopK 1-itemsets": 730,
+    "Runtime": 99.34171390533447,
+    "Memory": 569782272
+}
