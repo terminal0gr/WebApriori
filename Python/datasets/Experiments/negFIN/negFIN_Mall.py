@@ -2,6 +2,9 @@ import csv
 from datetime import datetime
 from math import ceil
 from bitarray import bitarray
+import json
+import os
+import psutil
 
 
 class BMCTreeNode:
@@ -67,7 +70,7 @@ def clean_BMC_tree(root):
     for item, child in root.children.items():
         clean_BMC_tree(child)
     del root.item
-    del root.children
+    del root.children 
 
 
 class NegFIN:
@@ -76,14 +79,16 @@ class NegFIN:
         self.min_support = min_support  # The relative minimum support
         self.min_count = None  # The absolute minimum support
         self.output_file = output_file
-        self.delimiter = delimiter
+        self.delimiter = delimiter 
         self.num_of_transactions = None
         self.F1 = None
         self.item_to_NodeSet = None
         self.writer = None
-        self.num_of_frequent_itemsets = 0;
+        self.num_of_frequent_itemsets = 0
         self.execution_time = None
         self.memorySave = memorySave 
+        self.finalFiDict=dict() #Dictinary with the FI mined
+        self.maxMemoryUSS = 0 # Keep the maximum memory used'
 
 
     def __find_F1(self):
@@ -100,7 +105,13 @@ class NegFIN:
                     item_count = item_name_to_count.setdefault(item_name, 0)
                     item_name_to_count[item_name] = item_count + 1
 
+        process = psutil.Process(os.getpid())
+        memoryUSS = process.memory_full_info().uss
+        if self.maxMemoryUSS<memoryUSS:
+            self.maxMemoryUSS=memoryUSS
+
         item_name_to_count.pop('', None)  # Removing the empty item_name if exists.
+        # The absolute min Support
         self.min_count = ceil(self.num_of_transactions * self.min_support)
         # Removing infrequent items and making F1
         self.F1 = [{'name': item_name, 'count': item_count} for (item_name, item_count) in item_name_to_count.items() if
@@ -123,7 +134,7 @@ class NegFIN:
         # Creating and initializing the root of BMCTree
         bmc_tree_root = BMCTreeNode(item=None, count=None, bitmap_code=bitarray([False] * len(self.F1)))
 
-        with open(self.dataset_file) as fInput:
+        with open(self.dataset_file, encoding='utf-8-sig') as fInput:
             reader = csv.reader(fInput, delimiter=self.delimiter)
             for transaction in reader:
                 # Removing infrequent items from transaction,
@@ -170,7 +181,7 @@ class NegFIN:
             root.children.append(child)
         return root
 
-    def __write_itemsets_to_file(self, N, itemset_buffer, N_itemset_length, FIS_parent_buffer, FIS_parent_length):
+    def __create_itemsets(self, N, itemset_buffer, N_itemset_length, FIS_parent_buffer, FIS_parent_length):
         """
         Write the itemset represented by 'N',
          and all combination that can be made using this itemset and all subsets of FIS_parent,
@@ -183,18 +194,9 @@ class NegFIN:
 
         self.num_of_frequent_itemsets += 1
 
-        if self.writer is not None:
-            # Create a buffer for writing to file
-            file_buffer = []
-
-            # Get the real name (string name) of items
-            itemset_string = [self.F1[itemset_buffer[i]]['name'] for i in range(N_itemset_length)]
-            # Append the count of the itemset
-            # itemset_string.append(': {0}\n'.format(N.count))
-            # line = ','.join(itemset_string)
-            line = '    "' + ','.join(itemset_string) + '"' + ': {0}'.format(N.count) + ',\n'
-            
-            file_buffer.append(line)
+        # Get the real name (string name) of items
+        itemset_string = [self.F1[itemset_buffer[i]]['name'] for i in range(N_itemset_length)]
+        self.finalFiDict[','.join(itemset_string)] = N.count
 
         # === Write all combination that can be made using this itemset and all subsets of FIS_parent
         if FIS_parent_length > 0:
@@ -203,28 +205,16 @@ class NegFIN:
             for i in range(1, max):
                 # Get the real name of items
 
-                if self.writer is not None:
-                    itemset_string = [self.F1[itemset_buffer[i]]['name'] for i in range(N_itemset_length)]
-                    # We create a new subset
-                    # Check if the j bit is set to 1. #isSet = i & (1 << j)
-                    subsetString = [self.F1[FIS_parent_buffer[j]]['name'] for j in range(FIS_parent_length) if
-                                    (i & (1 << j)) > 0]
-                    # Concatenate the itemset with the subset
-                    itemset_string.extend(subsetString)
-
-                    # Append the count of the itemset
-                    # itemset_string.append(': {0}\n'.format(N.count))
-                    # line = ' '.join(itemset_string)
-                    line = '    "' + ','.join(itemset_string) + '"' + ': {0}'.format(N.count) + ',\n'
-                    
-                    file_buffer.append(line)
+                itemset_string = [self.F1[itemset_buffer[i]]['name'] for i in range(N_itemset_length)]
+                # We create a new subset
+                # Check if the j bit is set to 1. #isSet = i & (1 << j)
+                subsetString = [self.F1[FIS_parent_buffer[j]]['name'] for j in range(FIS_parent_length) if
+                                (i & (1 << j)) > 0]
+                # Concatenate the itemset with the subset
+                itemset_string.extend(subsetString)
+                self.finalFiDict[','.join(itemset_string)] = N.count
 
                 self.num_of_frequent_itemsets += 1
-
-        # Write the file_buffer to file and create a new line
-        # so that we are ready for writing the next itemset.
-        if self.writer is not None:
-            self.writer.writelines(file_buffer)
 
     def __construct_frequent_itemset_tree(self, N, itemset_buffer, N_itemset_length, N_right_siblings,
                                           FIS_parent_buffer,
@@ -271,27 +261,44 @@ class NegFIN:
                     child.item = sibling.item
                     N.children.append(child)
 
-        # Write itemset(s) to file
-        self.__write_itemsets_to_file(N, itemset_buffer, N_itemset_length, FIS_parent_buffer, FIS_parent_length)
+        # Create itemset(s)
+        self.__create_itemsets(N, itemset_buffer, N_itemset_length, FIS_parent_buffer, FIS_parent_length)
 
-        number_of_childeren = len(N.children)
-        for childIndex in range(number_of_childeren):
+        number_of_children = len(N.children)
+        for childIndex in range(number_of_children):
             child = N.children[0]
             itemset_buffer[N_itemset_length] = child.item
             del N.children[0] # We delete this node since it is not used anymore.
             self.__construct_frequent_itemset_tree(child, itemset_buffer, N_itemset_length + 1, N.children,
                                                    FIS_parent_buffer, FIS_parent_length)
 
-    def runAlgorithm(self):
+    def writeFIM(self, outputFile=None):
+        if (outputFile):
+            # Write the dictionary to a file in pretty JSON format
+            with open(outputFile, "w") as file:
+                json.dump(self.finalFiDict, file, indent=4)
 
-        if self.output_file is not None:
-            self.writer = open(self.output_file, 'w')
-            self.writer.write('{\n')
+
+    def runAlgorithm(self):
 
         start_timestamp = datetime.now()
         self.__find_F1()
+        process = psutil.Process(os.getpid())
+        memoryUSS = process.memory_full_info().uss
+        if self.maxMemoryUSS<memoryUSS:
+            self.maxMemoryUSS=memoryUSS        
+
         self.__generate_NodeSets_of_1_itemsets()
+        process = psutil.Process(os.getpid())
+        memoryUSS = process.memory_full_info().uss
+        if self.maxMemoryUSS<memoryUSS:
+            self.maxMemoryUSS=memoryUSS        
+
         root = self.__create_root_of_frequent_itemset_tree()
+        process = psutil.Process(os.getpid())
+        memoryUSS = process.memory_full_info().uss
+        if self.maxMemoryUSS<memoryUSS:
+            self.maxMemoryUSS=memoryUSS        
 
         # The following buffer is used for storing frequent itemsets discovered in a depth.
         itemset_buffer = [None] * len(self.F1)
@@ -312,14 +319,12 @@ class NegFIN:
             self.__construct_frequent_itemset_tree(child, itemset_buffer, itemset_length + 1, root.children,
                                                    FIS_parent_buffer, FIS_parent_length)
 
+        process = psutil.Process(os.getpid())
+        memoryUSS = process.memory_full_info().uss
+        if self.maxMemoryUSS<memoryUSS:
+            self.maxMemoryUSS=memoryUSS        
+
         end_timestamp = datetime.now()
-
-        
-
-        if self.writer is not None:
-            self.writer.write('}\n')
-            self.writer.close()
-
         time_diff = (end_timestamp - start_timestamp) # Total execution time of algorithm.
         self.execution_time = time_diff.total_seconds() * 1000
 
@@ -329,7 +334,7 @@ class NegFIN:
         print('=' * 5 + 'negFIN - STATS' + '=' * 5)
         print(f' Minsup = {self.min_support}\n Number of transactions: {self.num_of_transactions}')
         print(f' Number of frequent  itemsets: {self.num_of_frequent_itemsets}')
-        print(f' Total time ~: {self.execution_time} ms')
+        print(f' Total time ~: {self.execution_time/1000.} s')
         #     System.out.println(' Max memory:'
         #             + MemoryLogger.getInstance().getMaxMemory() + ' MB');
         print('=' * 14)

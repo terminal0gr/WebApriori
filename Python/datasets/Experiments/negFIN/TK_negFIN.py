@@ -77,24 +77,25 @@ def clean_BMC_tree(root):
 class TK_NegFIN:
     def __init__(self, dataset_file, topK, output_file, delimiter=' ', memorySave=True, commitTimeout=0):
         self.dataset_file = dataset_file
-        self.min_count = 1  # The absolute minimum support
-        self.topK = topK #User defined Tok-K threshold
         self.output_file = output_file
         self.delimiter = delimiter
         self.num_of_transactions = None
         self.F1 = None
         self.item_to_NodeSet = None
-        self.num_of_candidate_FI = 0
         self.memorySave = memorySave 
+
+        # TK_negFIN 22/1/2025 new properties
+        self.num_of_candidate_FI = 0
+        self.min_count = 1  # The absolute minimum support initially set to 1 - the lowest value
+        self.topK = topK #User defined Top-K threshold
         self.finalTopK=dict() #Dictinary with the FI mined
         self.maxMemoryUSS = 0 # Keep the maximum memory used'
         self.execution_time = 0 # The overall execution time
         self.startTime = 0 #The time of mining beggining
         self.commitTimeout=commitTimeout
-
         self.heap=QuickHeap(topK) #Tok-K absolute support values heap initialization
 
-
+    #Sub borrowed of the HTK-Miner 22/1/2025
     def getTopKFI(self, topKItemSets):
         # The procedure returns the dictionary of topK ItemSets from a given set of itemsets with their support in descending order
         # The count of ItemSets may differ if there are itemsets with the same minimum support which are also included
@@ -151,7 +152,7 @@ class TK_NegFIN:
         item_name_to_count.pop('', None)  # Removing the empty item_name if exists.
         self.itemCount=len(item_name_to_count)
 
-        # return the absolute TopK itemsets so far
+        # return the absolute TopK itemsets so far and the current min_count 
         # TK_negFIN 22/1/2025
         # self.min_count = ceil(self.num_of_transactions * self.minSup)
         self.F1, self.min_count = self.getTopKFI(item_name_to_count)
@@ -263,8 +264,7 @@ class TK_NegFIN:
                 subsetString = [self.F1[FIS_parent_buffer[j]]['name'] for j in range(FIS_parent_length) if
                                 (i & (1 << j)) > 0 and i!=j]
                 
-  
-                # Concatenate the itemset with the subset
+                  # Concatenate the itemset with the subset
                 itemset_string.extend(subsetString)
                 self.finalTopK[','.join(itemset_string)] = N.count
 
@@ -309,6 +309,7 @@ class TK_NegFIN:
             child.count = N.count - sum_of_NegNodeSets_counts
             
             if self.min_count <= child.count:
+
                 # New command TK_negFIN 22/1/2025
                 self.min_count=self.heap.insert(child.count)
 
@@ -320,6 +321,16 @@ class TK_NegFIN:
                     N.children.append(child)
 
         # Create itemset(s)
+        # Altered original commands TK_negFIN 22/1/2025
+        # self.__create_itemsets(N, itemset_buffer, N_itemset_length, FIS_parent_buffer, FIS_parent_length)
+        # number_of_children = len(N.children)
+        # for childIndex in range(number_of_children):
+        #     child = N.children[0]
+        #     itemset_buffer[N_itemset_length] = child.item
+        #     del N.children[0] # We delete this node since it is not used anymore.
+        #     self.__construct_frequent_itemset_tree(child, itemset_buffer, N_itemset_length + 1, N.children,
+        #                                            FIS_parent_buffer, FIS_parent_length)
+        #With TK_negFIN ones 22/1/2025
         if self.min_count <= N.count:
             
             t1=t.time()   
@@ -397,7 +408,7 @@ class TK_NegFIN:
     # Print statistics about the latest execution of the algorithm to
     # standard output
     def printStats(self):
-        if self.execution_time>self.commitTimeout:
+        if self.commitTimeout>0 and self.execution_time>self.commitTimeout:
             print(f"Total Execution Time exceeds: {self.commitTimeout}+++ Seconds!!!")
         else:
             print(f"Total Execution Time: {self.execution_time:.3f} Seconds")
