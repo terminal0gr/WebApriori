@@ -1,3 +1,4 @@
-call negFIN.exe ..\..\datasets\kosarak.dat 0.008242407591095775 ""
+call negFIN.exe ..\..\datasets\kosarak.dat 0.0226928834487203 ""
+
 
 pause

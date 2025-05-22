@@ -993,12 +993,28 @@ int printInfo(double elapsed, double threshold, char* filename, char* algorithm,
 
     FILE *outFile = fopen(outFilename, "wt");
 
+    //Screen  
+    printf("{\n");
+    printf("    \"algorithm\": \"%s\",\n",algorithm);
+    printf("    \"language\": \"%s\",\n",language);
+    printf("    \"library\": \"%s\",\n",creator);
+    printf("    \"minSup\": %.10lf,\n",threshold);
+    printf("    \"minSupAbsolute\": %d,\n",___Min_Support);
+    printf("    \"totalFI\": %d,\n",___resultCount);
+    printf("    \"Frequent 1-item itemsets\": %d,\n",___numOfFItem);
+    printf("    \"runtime\": %.3lf,\n",elapsed);
+    printf("    \"memory\": %d\n",pmc.PeakWorkingSetSize);
+    printf("}\n");
+
+    //File
     fprintf(outFile, "{\n");
     fprintf(outFile, "    \"algorithm\": \"%s\",\n",algorithm);
     fprintf(outFile, "    \"language\": \"%s\",\n",language);
     fprintf(outFile, "    \"library\": \"%s\",\n",creator);
-    fprintf(outFile, "    \"minSup\": %.3lf,\n",threshold);
+    fprintf(outFile, "    \"minSup\": %.10lf,\n",threshold);
+    fprintf(outFile, "    \"minSupAbsolute\": %d,\n",___Min_Support);
     fprintf(outFile, "    \"totalFI\": %d,\n",___resultCount);
+    fprintf(outFile, "    \"Frequent 1-item itemsets\": %d,\n",___numOfFItem);
     fprintf(outFile, "    \"runtime\": %.3lf,\n",elapsed);
     fprintf(outFile, "    \"memory\": %d\n",pmc.PeakWorkingSetSize);
     fprintf(outFile, "}\n");

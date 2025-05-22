@@ -1,3 +1,12 @@
+echo off
+
+rem arguments:
+rem 1 -> dataset name. Must be found in ../dataset file
+rem 2 -> K parameter for the TopK frequent pattern mining
+rem 3 -> item separation/delimiter in each dataset transaction
+rem 4 -> Memory Save mode. If True, more efficient memory use but a little slower runtime
+rem 5 -> runtimeThreshold in seconds (CommitTimeout)
+
 rem kosarak
 call python TK_negFINTest.py "kosarak.dat" "1000" " " "False" "1000"
 call python TK_negFINTest.py "kosarak.dat" "10000" " " "False" "1000"

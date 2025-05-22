@@ -6,11 +6,8 @@ import json
 commitTimeout=300
 
 datasetName='mushroom.dat'  
-topK= 24
+topK= 31
 separator=' '
-# datasetName='chess.dat'  
-# topK= 71
-# separator=' '
 # datasetName='kosarak.dat' 
 # topK=100
 # separator=' '
@@ -63,14 +60,14 @@ if len(sys.argv)>4:
 
 
 ext1='_Mall_py.fim' 
-ext2='_Mall_py.json'
+ext2='_Mall_py.json' 
 
 filepath=os.path.join('datasets', datasetName)
 
 ############################
 AlgorithmName='BTK'
 
-from BTK.BTK import BTK
+from BTK.BTK_WS import BTK
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(topK)+"_"+AlgorithmName+ext1)
 
 

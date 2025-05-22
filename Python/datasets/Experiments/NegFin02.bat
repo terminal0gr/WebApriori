@@ -1,4 +1,4 @@
-call python negFinTest.py "webdocs.dat" "0.150844344423024" " " False
+call python negFinTest.py "kosarak.dat" "0.0226928834487203" " " False
 
 pause
 pause

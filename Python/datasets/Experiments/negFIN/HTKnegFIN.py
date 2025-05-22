@@ -74,7 +74,7 @@ def clean_BMC_tree(root):
     del root.children
 
 
-class TK_NegFIN:
+class HTKnegFIN:
     def __init__(self, dataset_file, topK, output_file, delimiter=' ', memorySave=True, commitTimeout=0):
         self.dataset_file = dataset_file
         self.output_file = output_file
@@ -84,7 +84,7 @@ class TK_NegFIN:
         self.item_to_NodeSet = None
         self.memorySave = memorySave 
 
-        # TK_negFIN 22/1/2025 new properties
+        # HTKnegFIN 22/1/2025 new properties
         self.num_of_candidate_FI = 0
         self.min_count = 1  # The absolute minimum support initially set to 1 - the lowest value
         self.topK = topK #User defined Top-K threshold
@@ -153,18 +153,18 @@ class TK_NegFIN:
         self.itemCount=len(item_name_to_count)
 
         # return the absolute TopK itemsets so far and the current min_count 
-        # TK_negFIN 22/1/2025
+        # HTKnegFIN 22/1/2025
         # self.min_count = ceil(self.num_of_transactions * self.minSup)
         self.F1, self.min_count = self.getTopKFI(item_name_to_count)
 
         # Removing infrequent items and making F1
-        # TK_negFIN 22/1/2025
+        # HTKnegFIN 22/1/2025
         # self.F1 = [{'name': item_name, 'count': item_count} for (item_name, item_count) in item_name_to_count.items() if
         #             self.min_count <= item_count]
         self.F1 = [{'name': item_name, 'count': item_count} for (item_name, item_count) in self.F1.items()]
         
         # Sorting F1 in ascending order of items' count
-        # TK_negFIN 22/1/2025
+        # HTKnegFIN 22/1/2025
         # self.F1.sort(key=lambda item: item['count'])
         # Sorting F1 in descending order of items' count because we want to exam first most frequent the 1-itemsets.
         # the opposite of what the original algorithm do
@@ -310,7 +310,7 @@ class TK_NegFIN:
             
             if self.min_count <= child.count:
 
-                # New command TK_negFIN 22/1/2025
+                # New command HTKnegFIN 22/1/2025
                 self.min_count=self.heap.insert(child.count)
 
                 if N.count == child.count:
@@ -321,7 +321,7 @@ class TK_NegFIN:
                     N.children.append(child)
 
         # Create itemset(s)
-        # Altered original commands TK_negFIN 22/1/2025
+        # Altered original commands HTKnegFIN 22/1/2025
         # self.__create_itemsets(N, itemset_buffer, N_itemset_length, FIS_parent_buffer, FIS_parent_length)
         # number_of_children = len(N.children)
         # for childIndex in range(number_of_children):
@@ -330,7 +330,7 @@ class TK_NegFIN:
         #     del N.children[0] # We delete this node since it is not used anymore.
         #     self.__construct_frequent_itemset_tree(child, itemset_buffer, N_itemset_length + 1, N.children,
         #                                            FIS_parent_buffer, FIS_parent_length)
-        #With TK_negFIN ones 22/1/2025
+        #With HTKnegFIN ones 22/1/2025
         if self.min_count <= N.count:
             
             t1=t.time()   
@@ -421,7 +421,7 @@ class TK_NegFIN:
         # Useful stats
         print(f"Transactions:{self.num_of_transactions}")   
         print(f"Items:{self.itemCount}")  
-        print("TK_negFIN Done!")
+        print("HTKnegFIN Done!")
 
 # implementation of the quick heap which keeps only the Top-K supports in descending order
 # Quick and memory saver.

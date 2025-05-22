@@ -86,7 +86,7 @@ filepath=os.path.join('datasets', datasetName)
 ############################
 AlgorithmName='negFIN'
 # from negFIN.neg_fin import NegFIN
-from negFIN.negFIN_Mall1 import NegFIN
+from negFIN.negFIN_Mall import NegFIN
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1)
 
 negFIN = NegFIN(filepath, minSup, outFimFilePath, separator, memorySave)
@@ -105,7 +105,9 @@ outputDict['Algorithm']=AlgorithmName
 outputDict['Language']="python"
 outputDict['library']="Mall"
 outputDict['minSup']=minSup
+outputDict['minSupAbsolute']=negFIN.min_count
 outputDict['totalFI']=negFIN.num_of_frequent_itemsets
+# outputDict['Frequent 1-item itemsets']=negFIN.F1.count
 outputDict['Runtime']=negFIN.execution_time/1000.
 outputDict['Memory']=negFIN.maxMemoryUSS
 file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')

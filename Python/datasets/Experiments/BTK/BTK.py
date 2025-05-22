@@ -271,7 +271,10 @@ class BTK:
                         self.subsume[self.sI[i][0]] = []  # Initialize the list of subsumes
                     self.subsume[self.sI[i][0]].append(self.sI[j][0])  # Append the subsume
                     if self.sI[j][0] in self.subsume:
-                        self.subsume[self.sI[i][0]].extend(self.subsume[self.sI[j][0]])
+                        for item in self.subsume[self.sI[j][0]]:
+                            if item not in self.subsume[self.sI[i][0]]:
+                                self.subsume[self.sI[i][0]].append(item)
+                        #self.subsume[self.sI[i][0]].extend(self.subsume[self.sI[j][0]])
 
     def check_Subsume(self,BLx,BLy):
         i=0

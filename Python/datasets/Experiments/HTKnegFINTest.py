@@ -61,36 +61,35 @@ ext2='_Mall_py.json'
 filepath=os.path.join('datasets', datasetName)
 
 ############################
-AlgorithmName='TK_negFIN'
-# from negFIN.neg_fin import NegFIN
-from negFIN.TK_negFIN import TK_NegFIN
+AlgorithmName='HTKnegFIN'
+from negFIN.HTKnegFIN import HTKnegFIN
 outFimFilePath=os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(TopK)+"_"+AlgorithmName+ext1)
 
-negFIN = TK_NegFIN(filepath, TopK, outFimFilePath, separator, memorySave, commitTimeout)
+algo = HTKnegFIN(filepath, TopK, outFimFilePath, separator, memorySave, commitTimeout)
 
-negFIN.runAlgorithm()
+algo.runAlgorithm()
 
 # Only to sort results in descending order of absolute support value of every itemset
-# negFIN.finalTopK = {k: v for k, v in sorted(negFIN.finalTopK.items(), key=lambda item: item[1], reverse=True)}
-negFIN.writeFIM(outFimFilePath)
+# algo.finalTopK = {k: v for k, v in sorted(algo.finalTopK.items(), key=lambda item: item[1], reverse=True)}
+algo.writeFIM(outFimFilePath)
 
-negFIN.printStats() # just for console output. 
+algo.printStats() # just for console output. 
 
 outputDict = {}
 outputDict['Algorithm']=AlgorithmName
 outputDict['Language']="python"
 outputDict['library']="Mall"
-outputDict['transactions']=negFIN.num_of_transactions
+outputDict['transactions']=algo.num_of_transactions
 outputDict['TopK']=TopK
-outputDict['totalFI']=len(negFIN.finalTopK)
-outputDict['Rank']=negFIN.heap.rankCount()
-outputDict['minSup']=negFIN.min_count
-outputDict['minSupAbsolute']=negFIN.min_count/negFIN.num_of_transactions
-outputDict['total candidates']=negFIN.num_of_candidate_FI
-outputDict['Runtime']=negFIN.execution_time
-outputDict['Memory']=negFIN.maxMemoryUSS
-Top1KItemsets=sum(1 for key in negFIN.finalTopK if len(key) == 1)
-outputDict['Items']=negFIN.itemCount
+outputDict['totalFI']=len(algo.finalTopK)
+outputDict['Rank']=algo.heap.rankCount()
+outputDict['minSup']=algo.min_count
+outputDict['minSupAbsolute']=algo.min_count/algo.num_of_transactions
+outputDict['total candidates']=algo.num_of_candidate_FI
+outputDict['Runtime']=algo.execution_time
+outputDict['Memory']=algo.maxMemoryUSS
+Top1KItemsets=sum(1 for key in algo.finalTopK if len(key) == 1)
+outputDict['Items']=algo.itemCount
 outputDict['TopK 1-itemsets']=Top1KItemsets
 
 file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(TopK)+"_"+AlgorithmName+ext2),'w')
