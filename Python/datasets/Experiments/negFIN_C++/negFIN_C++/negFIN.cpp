@@ -964,7 +964,7 @@ void printMemoryUsage() {
 }
 
 //Malliaridis 27/11/2024
-int printInfo(double elapsed, double threshold, char* filename, char* algorithm, char* creator, char* language) {
+int printInfo(double elapsed, double threshold, char *filename, const char* algorithm, const char* creator, const char* language) {
 	
 	PROCESS_MEMORY_COUNTERS pmc;
     if (!GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc))) {
@@ -975,7 +975,12 @@ int printInfo(double elapsed, double threshold, char* filename, char* algorithm,
     // Extract the base name from the full path
     char *lastSlash = strrchr(filename, '\\'); // Find the last backslash (Windows path separator)
     if (lastSlash == nullptr) {
-        lastSlash = filename; // If no backslash, use the whole filename
+        char *lastSlash = strrchr(filename, '/'); // Find the last backslash (non Windows path separator)
+        if (lastSlash == nullptr) {
+            lastSlash = filename; // If no backslash, use the whole filename
+        } else {
+            lastSlash++; // Move past the backslash
+        }
     } else {
         lastSlash++; // Move past the backslash
     }
@@ -989,9 +994,14 @@ int printInfo(double elapsed, double threshold, char* filename, char* algorithm,
     // Construct the output filename
     // Buffer to hold the dynamically constructed filename
     char outFilename[256];    
+    printf("../../output/%s_%.10lf_%s_%s_%s.json\n", base, threshold, algorithm, creator, language);
     sprintf(outFilename, "../../output/%s_%.3lf_%s_%s_%s.json", base, threshold, algorithm, creator, language);
 
     FILE *outFile = fopen(outFilename, "wt");
+    if (outFile == NULL) {
+        perror("Failed to open file");
+        return -1;
+    }
 
     //Screen  
     printf("{\n");
@@ -1003,7 +1013,7 @@ int printInfo(double elapsed, double threshold, char* filename, char* algorithm,
     printf("    \"totalFI\": %d,\n",___resultCount);
     printf("    \"Frequent 1-item itemsets\": %d,\n",___numOfFItem);
     printf("    \"runtime\": %.3lf,\n",elapsed);
-    printf("    \"memory\": %d\n",pmc.PeakWorkingSetSize);
+    //printf("    \"memory\": %d\n",pmc.PeakWorkingSetSize);
     printf("}\n");
 
     //File
