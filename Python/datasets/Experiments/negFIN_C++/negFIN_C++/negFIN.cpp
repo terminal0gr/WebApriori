@@ -20,7 +20,12 @@
 using namespace std;
 int dump;
 
-
+const char* ___algorithm="negFIN";
+const char* ___creator="Aryabarzan";
+const char* ___language="cpp";
+const char* ___basefilename;
+int ___Min_Support; //Absolute
+double ___support;  //Relative
 
 //======================== NegNodeSet
 int **___buffer;
@@ -30,9 +35,9 @@ int ___bf_col;
 int ___bf_currentSize;
 
 
-
 int ___numOfFItem;
-int ___Min_Support;
+
+
 
 struct ___Item {
     int index;
@@ -90,14 +95,14 @@ int ___comp(const void *a, const void *b) {
     return (*(___Item *) b).num - (*(___Item *) a).num;
 }
 
-void ___getData(FILE * in, char *filename, double support) {
+void ___getData(FILE * in, char *filename) {
     if ((in = fopen(filename, "r")) == NULL) {
         cout << "read wrong!" << endl;
         fclose(in);
         exit(1);
     }
 
-    char str[500];
+    char str[100000];
     ___Item **tempItem = new ___Item*[10];
     tempItem[0] = new ___Item[10000];
     for (int i = 0; i < 10000; i++) {
@@ -105,19 +110,19 @@ void ___getData(FILE * in, char *filename, double support) {
         tempItem[0][i].num = 0;
     }
 
-    int numOfTrans = 0;
-    int size = 1;
-    int numOfItem = 0;
-    int num = 0;
-    int col = 0;
-    while (fgets(str, 500, in)) {
-        //???XXX Commented
-        //		if(feof(in)) break;
+    long long numOfTrans = 0;
+    long long size = 1;
+    long long numOfItem = 0; // Counts unique items encountered
+    long long num = 0;
+    long long col = 0;
+    while (fgets(str, 100000, in)) {
+
         numOfTrans++;
         num = 0;
-        for (int i = 0; i < 500 && str[i] != '\0'; i++) {
-            if (str[i] != ' ') num = num * 10 + str[i] - '0';
-            else {
+        for (int i = 0; i < 100000 && str[i] != '\0' && str[i] != '\n'; i++) {
+            if (str[i] != ' ') {
+                num = num * 10 + str[i] - '0';
+            } else {
                 col = num / 10000;
                 if (col >= size) {
                     for (int j = size; j <= col; j++) {
@@ -133,12 +138,10 @@ void ___getData(FILE * in, char *filename, double support) {
                 num = 0;
             }
         }
-        //XXX inserted
-        if (feof(in)) break;
     }
     fclose(in);
 
-    ___Min_Support = int(support * numOfTrans);
+    ___Min_Support = static_cast<int>(std::round(___support * numOfTrans));
     ___item = new ___Item[numOfItem];
     for (int i = 0, p = 0; i < size; i++)
         for (int j = 0; j < 10000; j++)
@@ -218,7 +221,7 @@ void ___buildTree(FILE *in, char * filename) {
 
 
 
-    char str[500];
+    char str[100000];
     ___Item transaction[1000];
     for (int i = 0; i < 1000; i++) {
         transaction[i].index = 0;
@@ -226,11 +229,11 @@ void ___buildTree(FILE *in, char * filename) {
     }
 
     int num = 0, tLen = 0;
-    while (fgets(str, 500, in)) {
+    while (fgets(str, 100000, in)) {
 
         num = 0;
         tLen = 0;
-        for (int i = 0; i < 500 && str[i] != '\0'; i++) {
+        for (int i = 0; i < 100000 && str[i] != '\0'; i++) {
             if (str[i] != ' ') num = num * 10 + str[i] - '0';
             else {
                 for (int j = 0; j < ___numOfFItem; j++) {
@@ -906,8 +909,13 @@ void ___deleteNLTree(___NodeListTreeNode *root) {
 }
 
 void ___run(FILE *in, char* filename) {
-    if (1 == dump) {
-        ___out = fopen("sdp_negNodeSet.txt", "wt");
+    if (dump == 1) {
+        char outFilename[256];    
+        sprintf(outFilename, "../../output/%s_%.3lf_%s_%s_%s.fim", ___basefilename, ___support, ___algorithm, ___creator, ___language);
+        ___out = fopen(outFilename, "wt");
+        if (___out == NULL) {
+            perror("Failed to open file");
+        }
         ___result = new int[___numOfFItem];
         ___resultLen = 0;
     }
@@ -963,24 +971,12 @@ void printMemoryUsage() {
     }
 }
 
-//Malliaridis 27/11/2024
-int printInfo(double elapsed, double threshold, char *filename, const char* algorithm, const char* creator, const char* language) {
-	
-	PROCESS_MEMORY_COUNTERS pmc;
-    if (!GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc))) {
-        printf("Failed to retrieve memory info.");
-        return 0;
-    }
+const char* getTheFilenameWithoutExt(const char* filename){
+    const char* lastSlash = strrchr(filename, '/');
+    if (!lastSlash) lastSlash = strrchr(filename, '\\');
 
-    // Extract the base name from the full path
-    char *lastSlash = strrchr(filename, '\\'); // Find the last backslash (Windows path separator)
     if (lastSlash == nullptr) {
-        char *lastSlash = strrchr(filename, '/'); // Find the last backslash (non Windows path separator)
-        if (lastSlash == nullptr) {
-            lastSlash = filename; // If no backslash, use the whole filename
-        } else {
-            lastSlash++; // Move past the backslash
-        }
+        lastSlash = filename; // If no backslash, use the whole filename
     } else {
         lastSlash++; // Move past the backslash
     }
@@ -988,14 +984,24 @@ int printInfo(double elapsed, double threshold, char *filename, const char* algo
     // Extract the base name (without extension) from filename
     char *dot = strrchr(lastSlash, '.'); // Find the last dot
     size_t baseLength = (dot != nullptr) ? (dot - lastSlash) : strlen(lastSlash);
-    char base[256];
-    strncpy(base, lastSlash, baseLength);
-    base[baseLength] = '\0'; // Null-terminate the base name
-    // Construct the output filename
-    // Buffer to hold the dynamically constructed filename
+    static char b1[256];
+    strncpy(b1, lastSlash, baseLength);
+    b1[baseLength] = '\0'; // Null-terminate the base name
+
+    return b1;
+}
+
+//Malliaridis 27/11/2024
+int printInfo(double elapsed, char *filename) {
+	
+	PROCESS_MEMORY_COUNTERS pmc;
+    if (!GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc))) {
+        printf("Failed to retrieve memory info.");
+        return 0;
+    }
+
     char outFilename[256];    
-    printf("../../output/%s_%.10lf_%s_%s_%s.json\n", base, threshold, algorithm, creator, language);
-    sprintf(outFilename, "../../output/%s_%.3lf_%s_%s_%s.json", base, threshold, algorithm, creator, language);
+    sprintf(outFilename, "../../output/%s_%.3lf_%s_%s_%s.json", ___basefilename, ___support, ___algorithm, ___creator, ___language);
 
     FILE *outFile = fopen(outFilename, "wt");
     if (outFile == NULL) {
@@ -1005,23 +1011,23 @@ int printInfo(double elapsed, double threshold, char *filename, const char* algo
 
     //Screen  
     printf("{\n");
-    printf("    \"algorithm\": \"%s\",\n",algorithm);
-    printf("    \"language\": \"%s\",\n",language);
-    printf("    \"library\": \"%s\",\n",creator);
-    printf("    \"minSup\": %.10lf,\n",threshold);
+    printf("    \"algorithm\": \"%s\",\n",___algorithm);
+    printf("    \"language\": \"%s\",\n",___language);
+    printf("    \"library\": \"%s\",\n",___creator);
+    printf("    \"minSup\": %.10lf,\n",___support);
     printf("    \"minSupAbsolute\": %d,\n",___Min_Support);
     printf("    \"totalFI\": %d,\n",___resultCount);
     printf("    \"Frequent 1-item itemsets\": %d,\n",___numOfFItem);
     printf("    \"runtime\": %.3lf,\n",elapsed);
-    //printf("    \"memory\": %d\n",pmc.PeakWorkingSetSize);
+    printf("    \"memory\": %d\n",pmc.PeakWorkingSetSize);
     printf("}\n");
 
     //File
     fprintf(outFile, "{\n");
-    fprintf(outFile, "    \"algorithm\": \"%s\",\n",algorithm);
-    fprintf(outFile, "    \"language\": \"%s\",\n",language);
-    fprintf(outFile, "    \"library\": \"%s\",\n",creator);
-    fprintf(outFile, "    \"minSup\": %.10lf,\n",threshold);
+    fprintf(outFile, "    \"algorithm\": \"%s\",\n",___algorithm);
+    fprintf(outFile, "    \"language\": \"%s\",\n",___language);
+    fprintf(outFile, "    \"library\": \"%s\",\n",___creator);
+    fprintf(outFile, "    \"minSup\": %.10lf,\n",___support);
     fprintf(outFile, "    \"minSupAbsolute\": %d,\n",___Min_Support);
     fprintf(outFile, "    \"totalFI\": %d,\n",___resultCount);
     fprintf(outFile, "    \"Frequent 1-item itemsets\": %d,\n",___numOfFItem);
@@ -1040,9 +1046,11 @@ int main(int argc, char **argv) {
      * fp_growth and eclat implentations.
      * */
     char *filename = argv[1];
-    double THRESHOLD = atof(argv[2]);
-    dump = atoi(argv[4]);
+    ___support = atof(argv[2]);
+    dump = atoi(argv[3]);
 
+    //the filename without extension
+    ___basefilename=getTheFilenameWithoutExt(filename);
 
     //--------------------- NegNodeSet
     cout << endl<<"negFIN"<<endl<<"\t";
@@ -1063,7 +1071,7 @@ int main(int argc, char **argv) {
     clock_t start = clock();
 
     //Read Dataset
-    ___getData(___in, filename, THRESHOLD);
+    ___getData(___in, filename);
     ___run(___in, filename);
     
     // End the clock
@@ -1071,7 +1079,7 @@ int main(int argc, char **argv) {
     // Calculate elapsed time
     double elapsed = double(end - start) / CLOCKS_PER_SEC;
     
-    printInfo(elapsed,THRESHOLD, filename, "negFIN", "Aryabarzan", "cpp");
+    printInfo(elapsed, filename);
     
     std::cout << "Processing time: " << elapsed << " seconds" << std::endl;
     printMemoryUsage();

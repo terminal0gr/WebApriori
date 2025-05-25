@@ -3,9 +3,9 @@
     "language": "cpp",
     "library": "Aryabarzan",
     "minSup": 0.0226928834,
-    "minSupAbsolute": 22716,
-    "totalFI": 72,
+    "minSupAbsolute": 22466,
+    "totalFI": 77,
     "Frequent 1-item itemsets": 17,
-    "runtime": 0.763,
-    "memory": 6074368
+    "runtime": 17.820,
+    "memory": 7356416
 }

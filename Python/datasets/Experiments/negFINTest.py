@@ -5,12 +5,12 @@ import psutil
 
 
 
-datasetName='chess.dat' 
-minSup=0.945244055068836
-separator=' '
-# datasetName='kosarak.dat' 
-# minSup=0.002392924458738467
+# datasetName='chess.dat' 
+# minSup=0.945244055068836
 # separator=' '
+datasetName='kosarak.dat' 
+minSup=0.0226928834487203
+separator=' '
 # datasetName='accidents.dat' 
 # minSup=0.8196999850080692
 # separator=' '

@@ -115,7 +115,7 @@ class NegFIN:
         self.min_count = ceil(self.num_of_transactions * self.min_support)
         # Removing infrequent items and making F1
         self.F1 = [{'name': item_name, 'count': item_count} for (item_name, item_count) in item_name_to_count.items() if
-                   self.min_count <= item_count]
+                   self.min_count <= item_count] 
         # Sorting F1 in ascending order of items' count
         self.F1.sort(key=lambda item: item['count'])
         self.F1 = tuple(self.F1)  # Converting to a tuple to speed up
