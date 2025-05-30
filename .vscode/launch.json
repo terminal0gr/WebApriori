@@ -7,8 +7,9 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}.exe", // Output executable
-            // "args": ["datasets/chess.dat", "0.8", ""],
-            "args": ["../../datasets/kosarak.dat", "0.0226928834487203", "1"],
+            "args": ["../../datasets/webdocs.dat", "0.327204591739643", "1"],
+            //"args": ["../../datasets/chess.dat", "0.945244055068836", "1"],
+            //"args": ["../../datasets/kosarak.dat", "0.00634443162741085", "1"], 
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],

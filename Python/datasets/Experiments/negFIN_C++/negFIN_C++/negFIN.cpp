@@ -115,14 +115,15 @@ void ___getData(FILE * in, char *filename) {
     long long numOfItem = 0; // Counts unique items encountered
     long long num = 0;
     long long col = 0;
-    while (fgets(str, 100000, in)) {
+
+    while (fgets(str, 500000, in)) {
 
         numOfTrans++;
         num = 0;
-        for (int i = 0; i < 100000 && str[i] != '\0' && str[i] != '\n'; i++) {
-            if (str[i] != ' ') {
+        for (int i = 0; i < 500000 && str[i] != '\0'; i++) {
+            if (str[i] != ' ' && str[i] != '\n') {
                 num = num * 10 + str[i] - '0';
-            } else {
+            } else if (num!=0) {
                 col = num / 10000;
                 if (col >= size) {
                     for (int j = size; j <= col; j++) {
@@ -216,7 +217,7 @@ void ___buildTree(FILE *in, char * filename) {
     ___nlistBegin = new int[ ___numOfFItem ];
     ___nlistLen = new int[ ___numOfFItem ];
     //	memset(_itemsetCount, 0, sizeof(int) *  numOfFItem);
-    memset(___nlistLen, 0, sizeof (int) * ___numOfFItem);
+    memset(___nlistLen, 0, sizeof (int) * ___numOfFItem);  //Initialize all frequent 1-item positions to 0
     //End YYY ??? inserted
 
 
@@ -234,8 +235,9 @@ void ___buildTree(FILE *in, char * filename) {
         num = 0;
         tLen = 0;
         for (int i = 0; i < 100000 && str[i] != '\0'; i++) {
-            if (str[i] != ' ') num = num * 10 + str[i] - '0';
-            else {
+            if (str[i] != ' ' && str[i] != '\n') {
+                num = num * 10 + str[i] - '0';
+            } else if (num!=0) {
                 for (int j = 0; j < ___numOfFItem; j++) {
                     if (num == ___item[j].index) {
                         transaction[tLen].index = num;
@@ -1001,7 +1003,7 @@ int printInfo(double elapsed, char *filename) {
     }
 
     char outFilename[256];    
-    sprintf(outFilename, "../../output/%s_%.3lf_%s_%s_%s.json", ___basefilename, ___support, ___algorithm, ___creator, ___language);
+    sprintf(outFilename, "../../output/%s_%.15lf_%s_%s_%s.json", ___basefilename, ___support, ___algorithm, ___creator, ___language);
 
     FILE *outFile = fopen(outFilename, "wt");
     if (outFile == NULL) {
@@ -1014,7 +1016,7 @@ int printInfo(double elapsed, char *filename) {
     printf("    \"algorithm\": \"%s\",\n",___algorithm);
     printf("    \"language\": \"%s\",\n",___language);
     printf("    \"library\": \"%s\",\n",___creator);
-    printf("    \"minSup\": %.10lf,\n",___support);
+    printf("    \"minSup\": %.15lf,\n",___support);
     printf("    \"minSupAbsolute\": %d,\n",___Min_Support);
     printf("    \"totalFI\": %d,\n",___resultCount);
     printf("    \"Frequent 1-item itemsets\": %d,\n",___numOfFItem);
@@ -1027,7 +1029,7 @@ int printInfo(double elapsed, char *filename) {
     fprintf(outFile, "    \"algorithm\": \"%s\",\n",___algorithm);
     fprintf(outFile, "    \"language\": \"%s\",\n",___language);
     fprintf(outFile, "    \"library\": \"%s\",\n",___creator);
-    fprintf(outFile, "    \"minSup\": %.10lf,\n",___support);
+    fprintf(outFile, "    \"minSup\": %.15lf,\n",___support);
     fprintf(outFile, "    \"minSupAbsolute\": %d,\n",___Min_Support);
     fprintf(outFile, "    \"totalFI\": %d,\n",___resultCount);
     fprintf(outFile, "    \"Frequent 1-item itemsets\": %d,\n",___numOfFItem);
