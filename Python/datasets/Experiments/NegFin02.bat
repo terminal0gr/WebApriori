@@ -1,4 +1,4 @@
-call python negFinTest.py "chess.dat" "0.8864205256570713" " " False
+call python negFinTest.py "retail.dat" "0.000816678387513894" " " False
 
 pause
 pause

@@ -119,11 +119,12 @@ void ___getData(FILE * in, char *filename) {
     while (fgets(str, 500000, in)) {
 
         numOfTrans++;
-        num = 0;
+        num = -1; //Initialization to negative because there may be an item declared as 0
         for (int i = 0; i < 500000 && str[i] != '\0'; i++) {
             if (str[i] != ' ' && str[i] != '\n') {
-                num = num * 10 + str[i] - '0';
-            } else if (num!=0) {
+                if (num==-1) num = str[i] - '0';
+                else num = num * 10 + str[i] - '0';
+            } else if (num!=-1) {
                 col = num / 10000;
                 if (col >= size) {
                     for (int j = size; j <= col; j++) {
@@ -136,7 +137,7 @@ void ___getData(FILE * in, char *filename) {
                     size = col + 1;
                 }
                 if (0 == tempItem[col][num % 10000].num++) numOfItem++;
-                num = 0;
+                num = -1;
             }
         }
     }
@@ -232,12 +233,13 @@ void ___buildTree(FILE *in, char * filename) {
     int num = 0, tLen = 0;
     while (fgets(str, 100000, in)) {
 
-        num = 0;
+        num = -1; //Initialization to negative because there may be an item declared as 0
         tLen = 0;
         for (int i = 0; i < 100000 && str[i] != '\0'; i++) {
             if (str[i] != ' ' && str[i] != '\n') {
-                num = num * 10 + str[i] - '0';
-            } else if (num!=0) {
+                if (num==-1) num = str[i] - '0';
+                else num = num * 10 + str[i] - '0';
+            } else if (num!=-1) {
                 for (int j = 0; j < ___numOfFItem; j++) {
                     if (num == ___item[j].index) {
                         transaction[tLen].index = num;
@@ -246,7 +248,7 @@ void ___buildTree(FILE *in, char * filename) {
                         break;
                     }
                 }
-                num = 0;
+                num = -1;
             }
         }
 
@@ -913,7 +915,7 @@ void ___deleteNLTree(___NodeListTreeNode *root) {
 void ___run(FILE *in, char* filename) {
     if (dump == 1) {
         char outFilename[256];    
-        sprintf(outFilename, "../../output/%s_%.3lf_%s_%s_%s.fim", ___basefilename, ___support, ___algorithm, ___creator, ___language);
+        sprintf(outFilename, "../../output/%s_%.15lf_%s_%s_%s.fim", ___basefilename, ___support, ___algorithm, ___creator, ___language);
         ___out = fopen(outFilename, "wt");
         if (___out == NULL) {
             perror("Failed to open file");
