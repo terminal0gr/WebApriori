@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import ca.pfv.spmf.tools.MemoryLogger;
@@ -444,33 +445,61 @@ public class AlgoNegFIN {
     }
 
 
-    /**
-     * Print statistics about the latest execution of the algorithm to
-     * System.out.
-     */
-    public void printStats() {
-        System.out.println("========== negFIN - STATS ============");
-        System.out.println(" Minsup = " + minSupport
-                + "\n Number of transactions: " + numOfTrans);
-        System.out.println(" Number of frequent  itemsets: " + outputCount);
-        System.out.println(" Total time ~: " + (endTimestamp - startTimestamp)
-                + " ms");
-        System.out.println(" Max memory:"
-                + MemoryLogger.getInstance().getMaxMemory() + " MB");
-        System.out.println("=====================================");
-    }
+	/**
+	 * Print statistics about the latest execution of the algorithm to
+	 * System.out.
+	 */
+	public void printStats() {
+		System.out.println("========== dFIN - STATS ============");
+		System.out.println(" Minsup = " + minSupport
+				+ "\n Number of transactions: " + numOfTrans);
+		System.out.println(" Number of frequent  itemsets: " + outputCount);
+		System.out.println(" Total time ~: " + (endTimestamp - startTimestamp)
+				+ " ms");
+		System.out.println(" Max memory:"
+				+ MemoryLogger.getInstance().getMaxMemory() + " MB");
+		System.out.println("=====================================");
+	}
+
 
     //Malliaridis output
-	public JSONObject printStatsNew(String algorithm,double minSup) {
-		JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Algorithm", algorithm);
-        jsonObject.put("Language", "java");
-        jsonObject.put("library", "SPMF");
-        jsonObject.put("minSup", minSup);
-        jsonObject.put("totalFI", outputCount);
-        jsonObject.put("Runtime", (endTimestamp - startTimestamp)/1000.);
-        jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
-        return jsonObject;
+	public String  printStatsNew(String algorithm,double minSup) {
+
+        System.out.println("Number of transactions: " + numOfTrans);
+        System.out.println("Algorithm:" + algorithm);
+        System.out.println("language: java");
+        System.out.println("library: SPMF");
+        System.out.println("minSup: " + minSup);
+        System.out.println("minSupAbsolute: " + minSupport);
+        System.out.println("totalFI" + outputCount);
+        System.out.println("frequent 1-item itemsets: " + numOfFItem);
+        System.out.println("Runtime: " + (endTimestamp - startTimestamp)/1000. + " s");
+        System.out.println("Memory: " + MemoryLogger.getInstance().getMaxMemory()/(1024*1024) + " MB");
+
+        Map<String, Object> orderedMap = new LinkedHashMap<>();
+        orderedMap.put("Algorithm", algorithm);
+        orderedMap.put("language", "java");
+        orderedMap.put("library", "SPMF");
+        orderedMap.put("minSup", minSup);
+        orderedMap.put("minSupAbsolute", minSupport);
+        orderedMap.put("totalFI", outputCount);
+        orderedMap.put("frequent 1-item itemsets", numOfFItem);
+        orderedMap.put("Runtime", (endTimestamp - startTimestamp) / 1000.0);
+        orderedMap.put("Memory", MemoryLogger.getInstance().getMaxMemory());
+
+        StringBuilder jsonBuilder = new StringBuilder();
+        jsonBuilder.append("{");
+        boolean first = true;
+        for (Map.Entry<String, Object> entry : orderedMap.entrySet()) {
+            if (!first) jsonBuilder.append(",\n");
+            else jsonBuilder.append("\n");
+            jsonBuilder.append("    " + JSONObject.quote(entry.getKey()));
+            jsonBuilder.append(":");
+            jsonBuilder.append(JSONObject.valueToString(entry.getValue()));
+            first = false;
+        }
+        jsonBuilder.append("\n}");
+        return jsonBuilder.toString();
 	}
 
     /**

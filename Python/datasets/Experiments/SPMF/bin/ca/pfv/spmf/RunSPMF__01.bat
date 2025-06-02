@@ -1,0 +1,3 @@
+java SPMF_Apriori_TopK
+
+pause

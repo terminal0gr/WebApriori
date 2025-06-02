@@ -12,7 +12,7 @@ class goethals_Eclat():
         self.minSup=minSup
         self.minSupA=0 #Absolute minSup (e.g. 400)
         self.FIM_Count=0
-        self.separator=separator
+        self.separator=separator 
 
 
     def eclat(self, prefix, items):

@@ -4,11 +4,12 @@ javac -cp ".;lib/*;ca/pfv/spmf/patterns;ca/pfv/spmf/tools" -d "bin" ca\pfv\spmf\
 javac -cp ".;lib/*;ca/pfv/spmf/patterns;ca/pfv/spmf/tools" -d "bin" ca\pfv\spmf\algorithms\*.java
 javac -cp ".;lib/*;ca/pfv/spmf/patterns;ca/pfv/spmf/tools" -d "bin" ca\pfv\spmf\algorithms\frequentpatterns\apriori\*.java
 javac -cp ".;lib/*;ca/pfv/spmf/patterns;ca/pfv/spmf/tools" -d "bin" ca\pfv\spmf\algorithms\frequentpatterns\fpgrowth\*.java
+javac -cp ".;lib/*;ca/pfv/spmf/patterns;ca/pfv/spmf/tools" -d "bin" ca\pfv\spmf\algorithms\frequentpatterns\negFIN\*.java
 
 
 javac -cp ".;lib/*;ca/pfv/spmf/patterns;ca/pfv/spmf/tools" -d "bin" ca\pfv\spmf\Mall\*.java
 
-rem javac -cp ".;lib/*" -d "bin" ca\pfv\spmf\**\*.java
+rem javac -cp ".;lib/json-20250517.jar" -d "bin" ca\pfv\spmf\**\*.java
 
 
 pause

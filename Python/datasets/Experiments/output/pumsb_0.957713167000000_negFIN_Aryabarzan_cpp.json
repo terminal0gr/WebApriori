@@ -6,6 +6,6 @@
     "minSupAbsolute": 46972,
     "totalFI": 100,
     "Frequent 1-item itemsets": 12,
-    "runtime": 0.277,
-    "memory": 4653056
+    "runtime": 0.287,
+    "memory": 4657152
 }
