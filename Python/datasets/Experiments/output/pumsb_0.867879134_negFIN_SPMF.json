@@ -1,0 +1,11 @@
+{
+    "frequent 1-item itemsets": 21,
+    "Runtime": 0.774,
+    "library": "SPMF",
+    "Memory": 561737536,
+    "minSup": 0.867879134,
+    "minSupAbsolute": 42567,
+    "language": "java",
+    "totalFI": 9999,
+    "Algorithm": "negFIN"
+}

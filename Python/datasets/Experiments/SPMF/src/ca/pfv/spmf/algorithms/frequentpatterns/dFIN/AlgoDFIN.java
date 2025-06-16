@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -208,7 +209,8 @@ public class AlgoDFIN {
 		String line;
 
 		// we will use a buffer to store each transaction that is read.
-		Item[] transaction = new Item[1000];
+		// transaction is limited up to 10000 items
+		Item[] transaction = new Item[10000];
 
 		// for each line (transaction) until the end of the file
 		while (((line = reader.readLine()) != null)) {
@@ -807,17 +809,44 @@ public class AlgoDFIN {
 		System.out.println("=====================================");
 	}
 
-	//Malliaridis output
-	public JSONObject printStatsNew(String algorithm,double minSup) {
-		JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Algorithm", algorithm);
-        jsonObject.put("Language", "java");
-        jsonObject.put("library", "SPMF");
-        jsonObject.put("minSup", minSup);
-        jsonObject.put("totalFI", outputCount);
-        jsonObject.put("Runtime", (endTimestamp - startTimestamp)/1000.);
-        jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
-        return jsonObject;
+    //Malliaridis output
+	public String  printStatsNew(String algorithm,double minSup) {
+
+        System.out.println("Number of transactions: " + numOfTrans);
+        System.out.println("Algorithm:" + algorithm);
+        System.out.println("language: java");
+        System.out.println("library: SPMF");
+        System.out.println("minSup: " + minSup);
+        System.out.println("minSupAbsolute: " + minSupport);
+        System.out.println("totalFI: " + outputCount);
+        System.out.println("Items: " + numOfFItem);
+        System.out.println("Runtime: " + (endTimestamp - startTimestamp)/1000. + " s");
+        System.out.println("Memory: " + MemoryLogger.getInstance().getMaxMemory()/(1024*1024) + " MB");
+
+        Map<String, Object> orderedMap = new LinkedHashMap<>();
+        orderedMap.put("Algorithm", algorithm);
+        orderedMap.put("language", "java");
+        orderedMap.put("library", "SPMF");
+        orderedMap.put("minSup", minSup);
+        orderedMap.put("minSupAbsolute", minSupport);
+        orderedMap.put("totalFI", outputCount);
+        orderedMap.put("Items", numOfFItem);
+        orderedMap.put("Runtime", (endTimestamp - startTimestamp) / 1000.0);
+        orderedMap.put("Memory", MemoryLogger.getInstance().getMaxMemory());
+
+        StringBuilder jsonBuilder = new StringBuilder();
+        jsonBuilder.append("{");
+        boolean first = true;
+        for (Map.Entry<String, Object> entry : orderedMap.entrySet()) {
+            if (!first) jsonBuilder.append(",\n");
+            else jsonBuilder.append("\n");
+            jsonBuilder.append("    " + JSONObject.quote(entry.getKey()));
+            jsonBuilder.append(":");
+            jsonBuilder.append(JSONObject.valueToString(entry.getValue()));
+            first = false;
+        }
+        jsonBuilder.append("\n}");
+        return jsonBuilder.toString();
 	}
 
 	/** Class to pass an integer by reference as in C++

@@ -25,7 +25,7 @@ call python negFinTest.py "connect.dat" "0.922702311" " " False
 
 rem mushroom
 call python negFinTest.py "mushroom.dat" "0.549483013" " " False
-call python negFinTest.py "mushroom.dat" "0.364352536" " " False
+call python negFinTest.py "mushroom.dat" "0,364352535696701" " " False
 call python negFinTest.py "mushroom.dat" "0.226489414" " " False
 
 rem pumsb
@@ -34,7 +34,7 @@ call python negFinTest.py "pumsb.dat" "0.920299311" " " False
 call python negFinTest.py "pumsb.dat" "0.867879134" " " False
 
 rem pumsb_star
-call python negFinTest.py "pumsb_star.dat" "0.631081026" " " False
+call python negFinTest.py "pumsb_star.dat" "0.6310810259756148" " " False
 call python negFinTest.py "pumsb_star.dat" "0.479243975" " " False
 call python negFinTest.py "pumsb_star.dat" "0.424805285" " " False
 

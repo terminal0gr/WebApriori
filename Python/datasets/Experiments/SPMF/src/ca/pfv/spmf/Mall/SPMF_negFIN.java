@@ -3,8 +3,6 @@ package ca.pfv.spmf.Mall;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.json.JSONObject;
-
 import ca.pfv.spmf.algorithms.frequentpatterns.negFIN.AlgoNegFIN;
 
 public class SPMF_negFIN {
@@ -12,8 +10,9 @@ public class SPMF_negFIN {
 	public static void main(String [] arg) throws IOException{
 
         //Declaration section
-        String datasetName = "chess.dat";
-        Double minSup = 0.945244055068836; // relative support
+        String datasetName = "L-0023.csv";
+        Double minSup = 0.0326177864510733; // relative support
+        String separator = ";";
 
         //Line arguments section
         if (arg.length >= 1) {
@@ -21,6 +20,9 @@ public class SPMF_negFIN {
         }
         if (arg.length >= 2) {
             minSup=Double.parseDouble(arg[1]);
+        }
+        if (arg.length >= 3) {
+            separator=arg[2];
         }
 
         String outPutResultsfile, noPrefix;
@@ -46,37 +48,19 @@ public class SPMF_negFIN {
         algorithm="negFIN";
         AlgoNegFIN algo = new AlgoNegFIN();
         outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.fim";
+        algo.separator=separator;
 		algo.runAlgorithm(input, minSup, outPutResultsfile);
 		//algo.printStats();
         String pSN=algo.printStatsNew(algorithm, minSup);
         outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.json";
         // Write the JSON object to the file
         try (FileWriter file = new FileWriter(outPutResultsfile)) {
-            //file.write(pSN.toString(4)); // 4 is for pretty-print indentation
-            file.write(pSN); // 4 is for pretty-print indentation
+            file.write(pSN); 
             file.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }        
         System.out.println(algorithm + " finished");
-        ////////////////////////////
-        // algorithm="FPGrowth_Top_K";
-		// AlgoFPGrowthTOPK algoFPGrowthTopK = new AlgoFPGrowthTOPK();
-        // outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + topK + "_" + algorithm + "_SPMF_java.fim";
-		// algoFPGrowthTopK.runAlgorithm(input, outPutResultsfile, topK, separator);
-		// algoFPGrowthTopK.printStats(algorithm);
-        // pSN=algoFPGrowthTopK.printStatsNew(algorithm);
-        // outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + topK + "_" + algorithm + "_SPMF_java.json";
-        // // Write the JSON object to the file
-        // try (FileWriter file = new FileWriter(outPutResultsfile)) {
-        //     file.write(pSN.toString(4)); // 4 is for pretty-print indentation
-        //     file.flush();
-        // } catch (IOException e) {
-        //     e.printStackTrace();
-        // }
-        // System.out.println(algorithm + " finished");
-        ////////////////////////////
-
 
 	}
 }

@@ -1,0 +1,11 @@
+{
+    "Algorithm":"dFIN",
+    "language":"java",
+    "library":"SPMF",
+    "minSup":0.549483013,
+    "minSupAbsolute":4464,
+    "totalFI":107,
+    "Items":119,
+    "Runtime":0.173,
+    "Memory":86908248
+}

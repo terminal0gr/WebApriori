@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import ca.pfv.spmf.tools.MemoryLogger;
@@ -60,6 +59,7 @@ public class AlgoNegFIN {
     public int numOfFItem; // Number of items
     int outputCount = 0;// number of itemsets found
     public int minSupport; // minimum count
+    public String separator= " "; // item separator
     public Item[] item; // list of items sorted by count
     public int[] itemset; // the current itemset
     public int itemsetLen = 0; // the size of the current itemset
@@ -110,7 +110,7 @@ public class AlgoNegFIN {
             numOfTrans++;
 
             // split the line into items
-            String[] lineSplited = line.split(" ");
+            String[] lineSplited = line.split(separator);
             // for each item in the transaction
             for (String itemString : lineSplited) {
                 // increase the count count of the item by 1
@@ -180,7 +180,7 @@ public class AlgoNegFIN {
             }
 
             // split the line into items
-            String[] lineSplited = line.split(" ");
+            String[] lineSplited = line.split(separator);
 
             // for each item in the transaction
             int tLen = 0; // tLen
@@ -461,7 +461,6 @@ public class AlgoNegFIN {
 		System.out.println("=====================================");
 	}
 
-
     //Malliaridis output
 	public String  printStatsNew(String algorithm,double minSup) {
 
@@ -471,7 +470,7 @@ public class AlgoNegFIN {
         System.out.println("library: SPMF");
         System.out.println("minSup: " + minSup);
         System.out.println("minSupAbsolute: " + minSupport);
-        System.out.println("totalFI" + outputCount);
+        System.out.println("totalFI: " + outputCount);
         System.out.println("frequent 1-item itemsets: " + numOfFItem);
         System.out.println("Runtime: " + (endTimestamp - startTimestamp)/1000. + " s");
         System.out.println("Memory: " + MemoryLogger.getInstance().getMaxMemory()/(1024*1024) + " MB");
