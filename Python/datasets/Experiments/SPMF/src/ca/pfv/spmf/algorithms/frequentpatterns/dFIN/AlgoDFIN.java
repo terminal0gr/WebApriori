@@ -209,8 +209,8 @@ public class AlgoDFIN {
 		String line;
 
 		// we will use a buffer to store each transaction that is read.
-		// transaction is limited up to 10000 items
-		Item[] transaction = new Item[10000];
+		// 2025-06-16 Malliaridis: Transformed to 100000 to accommodate webdocs.dat which have transactions bigger than 1000
+		Item[] transaction = new Item[100000];
 
 		// for each line (transaction) until the end of the file
 		while (((line = reader.readLine()) != null)) {
@@ -809,7 +809,7 @@ public class AlgoDFIN {
 		System.out.println("=====================================");
 	}
 
-    //Malliaridis output
+	// 2025-06-16 Malliaridis: New stats procedure to fit with other experiments
 	public String  printStatsNew(String algorithm,double minSup) {
 
         System.out.println("Number of transactions: " + numOfTrans);

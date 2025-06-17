@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SPMF_dFIN",
+            "request": "launch",
+            "mainClass": "ca.pfv.spmf.Mall.SPMF_dFIN",
+            "projectName": "SPMF_19df86f"
+        },
+        {
+            "type": "java",
             "name": "Run java",
             "request": "launch",
             "mainClass": "${file}"

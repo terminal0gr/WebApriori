@@ -629,6 +629,8 @@ loop1:	for (long i = 1, max = 1 << position; i < max; i++) {
 	public void printStats() {
 		printStats("SPMF_FPGrowth_TopK");
 	}
+
+	// 2025-06-16 Malliaridis: New stats procedure to fit with other experiments	
 	public void printStats(String algorithm) {
 		System.out.println("=============  FP-GROWTH (top-k version) 2.61 - STATS =============");
 		long time = endTime - startTimestamp;
@@ -645,6 +647,7 @@ loop1:	for (long i = 1, max = 1 << position; i < max; i++) {
 		System.out.println("===================================================");
 	}
 
+	// 2025-06-16 Malliaridis: New stats procedure to fit with other experiments	
 	public JSONObject printStatsNew(String algorithm) {
 		JSONObject jsonObject = new JSONObject();
         jsonObject.put("Language", "java");

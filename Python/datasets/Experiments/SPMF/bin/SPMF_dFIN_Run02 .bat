@@ -1,6 +1,7 @@
 
-rem chess
-java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "chess.dat" "0.8864205256570713"
+java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "webdocs.dat" "0.327204591739643" 
+java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "webdocs.dat" "0.216111866918979"
+java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "webdocs.dat" "0.150844344423024"
 
 
 pause

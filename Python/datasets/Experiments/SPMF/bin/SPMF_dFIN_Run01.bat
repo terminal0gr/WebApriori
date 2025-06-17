@@ -1,9 +1,4 @@
 
-rem webdocs
-java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "webdocs.dat" "0.327204591739643" 
-java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "webdocs.dat" "0.216111866918979"
-java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "webdocs.dat" "0.150844344423024"
-
 rem kosarak
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "kosarak.dat" "0.0226928834487203"
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "kosarak.dat" "0.00634443162741085"
@@ -63,6 +58,11 @@ rem T16IT20D100K
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "T16IT20D100K.dat" "0.65513"
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "T16IT20D100K.dat" "0.53743"
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "T16IT20D100K.dat" "0.37865"
+
+rem webdocs
+java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "webdocs.dat" "0.327204591739643" 
+java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "webdocs.dat" "0.216111866918979"
+java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_dFIN "webdocs.dat" "0.150844344423024"
 
 pause
 pause
