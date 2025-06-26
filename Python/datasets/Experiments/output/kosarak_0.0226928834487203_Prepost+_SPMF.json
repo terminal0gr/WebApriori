@@ -1,0 +1,11 @@
+{
+    "Algorithm":"PrePost+",
+    "language":"java",
+    "library":"SPMF",
+    "minSup":0.0226928834487203,
+    "minSupAbsolute":22466,
+    "totalFI":100,
+    "Items":22,
+    "Runtime":1.763,
+    "Memory":191627888
+}

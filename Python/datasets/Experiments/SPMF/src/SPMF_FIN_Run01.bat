@@ -5,7 +5,7 @@ java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "kosarak.dat" "0.0
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "kosarak.dat" "0.002392924"
 
 rem retail
-java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "retail.dat" "0.013531907170890"
+java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "retail.dat" "0.013531907170889952"
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "retail.dat" "0.00364102447766611"
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "retail.dat" "0.000816678387513894"
 
@@ -27,7 +27,7 @@ java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "pumsb_star.dat" "
 rem pumsb
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "pumsb.dat" "0.957713167"
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "pumsb.dat" "0.920299310851037"
-java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "pumsb.dat" "0.867879134"
+java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "pumsb.dat" "0.867879133874322"
 
 rem T40I10D100K
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "T40I10D100K.dat" "0.09328"
@@ -37,7 +37,7 @@ java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "T40I10D100K.dat" 
 rem accidents
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "accidents.dat" "0.819699985"
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "accidents.dat" "0.656411402"
-java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "accidents.dat" "0.482793085"
+java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "accidents.dat" "0.4827930848984223"
 
 rem mushroom
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FIN "mushroom.dat" "0.549483013"

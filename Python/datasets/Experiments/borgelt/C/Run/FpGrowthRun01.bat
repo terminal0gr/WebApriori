@@ -1,0 +1,27 @@
+@echo off
+:: Run fpgrowth.exe and measure peak memory usage (error-proof)
+
+::kosarak
+powershell -command "$exe = 'fpgrowth.exe'; $args = '-s02.26928834487203   ..\..\..\datasets\kosarak.dat'; $timer = [System.Diagnostics.Stopwatch]::StartNew(); $process = Start-Process -FilePath $exe -ArgumentList $args -PassThru -NoNewWindow; $peakMem = 0; try { while (!$process.HasExited) { try { $currentMem = (Get-Process -Id $process.Id -ErrorAction Stop).PeakWorkingSet64 / 1MB; if ($currentMem -gt $peakMem) { $peakMem = $currentMem } } catch { break }; Start-Sleep -Milliseconds 100 } } finally { $timer.Stop() ; Write-Output '======= Performance Metrics ======='; Write-Output 'Peak Memory Usage (MB): '; $peakMem; Write-Output 'Execution Time: '; $($timer.Elapsed.ToString('hh\:mm\:ss\.fff'))"}"
+echo/
+powershell -command "$exe = 'fpgrowth.exe'; $args = '-s00.634443162741085  ..\..\..\datasets\kosarak.dat'; $timer = [System.Diagnostics.Stopwatch]::StartNew(); $process = Start-Process -FilePath $exe -ArgumentList $args -PassThru -NoNewWindow; $peakMem = 0; try { while (!$process.HasExited) { try { $currentMem = (Get-Process -Id $process.Id -ErrorAction Stop).PeakWorkingSet64 / 1MB; if ($currentMem -gt $peakMem) { $peakMem = $currentMem } } catch { break }; Start-Sleep -Milliseconds 100 } } finally { $timer.Stop() ; Write-Output '======= Performance Metrics ======='; Write-Output 'Peak Memory Usage (MB): '; $peakMem; Write-Output 'Execution Time: '; $($timer.Elapsed.ToString('hh\:mm\:ss\.fff'))"}"
+echo/
+powershell -command "$exe = 'fpgrowth.exe'; $args = '-s00.2392924          ..\..\..\datasets\kosarak.dat'; $timer = [System.Diagnostics.Stopwatch]::StartNew(); $process = Start-Process -FilePath $exe -ArgumentList $args -PassThru -NoNewWindow; $peakMem = 0; try { while (!$process.HasExited) { try { $currentMem = (Get-Process -Id $process.Id -ErrorAction Stop).PeakWorkingSet64 / 1MB; if ($currentMem -gt $peakMem) { $peakMem = $currentMem } } catch { break }; Start-Sleep -Milliseconds 100 } } finally { $timer.Stop() ; Write-Output '======= Performance Metrics ======='; Write-Output 'Peak Memory Usage (MB): '; $peakMem; Write-Output 'Execution Time: '; $($timer.Elapsed.ToString('hh\:mm\:ss\.fff'))"}"
+echo/
+
+::retail
+powershell -command "$exe = 'fpgrowth.exe'; $args = '-s01.35319071708899   ..\..\..\datasets\retail.dat'; $timer = [System.Diagnostics.Stopwatch]::StartNew(); $process = Start-Process -FilePath $exe -ArgumentList $args -PassThru -NoNewWindow; $peakMem = 0; try { while (!$process.HasExited) { try { $currentMem = (Get-Process -Id $process.Id -ErrorAction Stop).PeakWorkingSet64 / 1MB; if ($currentMem -gt $peakMem) { $peakMem = $currentMem } } catch { break }; Start-Sleep -Milliseconds 100 } } finally { $timer.Stop() ; Write-Output '======= Performance Metrics ======='; Write-Output 'Peak Memory Usage (MB): '; $peakMem; Write-Output 'Execution Time: '; $($timer.Elapsed.ToString('hh\:mm\:ss\.fff'))"}"
+echo/
+powershell -command "$exe = 'fpgrowth.exe'; $args = '-s00.364102447766611  ..\..\..\datasets\retail.dat'; $timer = [System.Diagnostics.Stopwatch]::StartNew(); $process = Start-Process -FilePath $exe -ArgumentList $args -PassThru -NoNewWindow; $peakMem = 0; try { while (!$process.HasExited) { try { $currentMem = (Get-Process -Id $process.Id -ErrorAction Stop).PeakWorkingSet64 / 1MB; if ($currentMem -gt $peakMem) { $peakMem = $currentMem } } catch { break }; Start-Sleep -Milliseconds 100 } } finally { $timer.Stop() ; Write-Output '======= Performance Metrics ======='; Write-Output 'Peak Memory Usage (MB): '; $peakMem; Write-Output 'Execution Time: '; $($timer.Elapsed.ToString('hh\:mm\:ss\.fff'))"}"
+echo/
+powershell -command "$exe = 'fpgrowth.exe'; $args = '-s00.0816678387513894 ..\..\..\datasets\retail.dat'; $timer = [System.Diagnostics.Stopwatch]::StartNew(); $process = Start-Process -FilePath $exe -ArgumentList $args -PassThru -NoNewWindow; $peakMem = 0; try { while (!$process.HasExited) { try { $currentMem = (Get-Process -Id $process.Id -ErrorAction Stop).PeakWorkingSet64 / 1MB; if ($currentMem -gt $peakMem) { $peakMem = $currentMem } } catch { break }; Start-Sleep -Milliseconds 100 } } finally { $timer.Stop() ; Write-Output '======= Performance Metrics ======='; Write-Output 'Peak Memory Usage (MB): '; $peakMem; Write-Output 'Execution Time: '; $($timer.Elapsed.ToString('hh\:mm\:ss\.fff'))"}"
+echo/
+
+
+:: webdocs
+:: powershell -command "$exe = 'fpgrowth.exe'; $args = '-s94.5244055068836  ..\..\..\datasets\webdocs.dat  '; $process = Start-Process -FilePath $exe -ArgumentList $args -PassThru -NoNewWindow; $peakMem = 0; try { while (!$process.HasExited) { try { $currentMem = (Get-Process -Id $process.Id -ErrorAction Stop).PeakWorkingSet64 / 1MB ; if ($currentMem -gt $peakMem) { $peakMem = $currentMem } } catch { break }; Start-Sleep -Milliseconds 1 } } finally { Write-Output 'Peak Memory (MB):'; $peakMem }"
+
+:: With only memory measuring
+:: powershell -command "$exe = 'fpgrowth.exe'; $args = '-s00.0816678387513894 ..\..\..\datasets\retail.dat'; $process = Start-Process -FilePath $exe -ArgumentList $args -PassThru -NoNewWindow; $peakMem = 0; try { while (!$process.HasExited) { try { $currentMem = (Get-Process -Id $process.Id -ErrorAction Stop).PeakWorkingSet64 / 1MB ; if ($currentMem -gt $peakMem) { $peakMem = $currentMem } } catch { break }; Start-Sleep -Milliseconds 100 } } finally { Write-Output 'Peak Memory (MB):'; $peakMem }"
+
+pause

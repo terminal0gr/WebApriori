@@ -10,9 +10,9 @@ java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "kosarak.dat" "
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "kosarak.dat" "0.002392924"
 
 rem retail
-java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "retail.dat" "0.013531907170890"
-java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "retail.dat" "0.003641024"
-java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "retail.dat" "0.000816678"
+java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "retail.dat" "0.013531907170889952"
+java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "retail.dat" "0.00364102447766611"
+java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "retail.dat" "0.000816678387513894"
 
 rem L-0023
 rem java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "L-0023.csv" "0.0326177864510733"
@@ -32,7 +32,7 @@ java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "pumsb_star.dat
 rem pumsb
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "pumsb.dat" "0.957713167"
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "pumsb.dat" "0.920299310851037"
-java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "pumsb.dat" "0.867879134"
+java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "pumsb.dat" "0.867879133874322"
 
 rem T40I10D100K
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "T40I10D100K.dat" "0.09328"
@@ -42,7 +42,7 @@ java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "T40I10D100K.da
 rem accidents
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "accidents.dat" "0.819699985"
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "accidents.dat" "0.656411402"
-java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "accidents.dat" "0.482793085"
+java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "accidents.dat" "0.4827930848984223"
 
 rem mushroom
 java -Xms1g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_negFIN "mushroom.dat" "0.549483013"

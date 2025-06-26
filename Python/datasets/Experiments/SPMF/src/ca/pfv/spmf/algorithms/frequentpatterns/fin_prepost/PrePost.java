@@ -8,8 +8,11 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import org.json.JSONObject;
 
 import ca.pfv.spmf.tools.MemoryLogger;
 
@@ -141,11 +144,17 @@ public class PrePost {
 		// Read Dataset
 		getData(filename, minsup);
 
+		// 2025-06-16 Malliaridis: Memory counter
+		MemoryLogger.getInstance().checkMemory();
+
 		resultLen = 0;
 		result = new int[numOfFItem];
 
 		// Build tree
 		buildTree(filename);
+
+		// 2025-06-16 Malliaridis: Memory counter
+		MemoryLogger.getInstance().checkMemory();
 
 		nlRoot.label = numOfFItem;
 		nlRoot.firstChild = null;
@@ -166,6 +175,10 @@ public class PrePost {
 			next = curNode.next;
 			// call the recursive "traverse" method
 			traverse(curNode, nlRoot, 1, 0);
+
+			MemoryLogger.getInstance().checkMemory();
+			// 2025-06-16 Malliaridis: Memory counter
+
 			for (int c = bf_col; c > from_col; c--) {
 				bf[c] = null;
 			}
@@ -668,6 +681,46 @@ public class PrePost {
 		System.out.println(" Max memory:"
 				+ MemoryLogger.getInstance().getMaxMemory() + " MB");
 		System.out.println("=====================================");
+	}
+
+	// 2025-06-16 Malliaridis: New stats procedure to fit with other experiments
+	public String  printStatsNew(String algorithm,double minSup) {
+
+        System.out.println("Number of transactions: " + numOfTrans);
+        System.out.println("Algorithm:" + algorithm);
+        System.out.println("language: java");
+        System.out.println("library: SPMF");
+        System.out.println("minSup: " + minSup);
+        System.out.println("minSupAbsolute: " + minSupport);
+        System.out.println("totalFI: " + outputCount);
+        System.out.println("Items: " + numOfFItem);
+        System.out.println("Runtime: " + (endTimestamp - startTimestamp)/1000. + " s");
+        System.out.println("Memory: " + MemoryLogger.getInstance().getMaxMemory()/(1024*1024) + " MB");
+
+        Map<String, Object> orderedMap = new LinkedHashMap<>();
+        orderedMap.put("Algorithm", algorithm);
+        orderedMap.put("language", "java");
+        orderedMap.put("library", "SPMF");
+        orderedMap.put("minSup", minSup);
+        orderedMap.put("minSupAbsolute", minSupport);
+        orderedMap.put("totalFI", outputCount);
+        orderedMap.put("Items", numOfFItem);
+        orderedMap.put("Runtime", (endTimestamp - startTimestamp) / 1000.0);
+        orderedMap.put("Memory", MemoryLogger.getInstance().getMaxMemory());
+
+        StringBuilder jsonBuilder = new StringBuilder();
+        jsonBuilder.append("{");
+        boolean first = true;
+        for (Map.Entry<String, Object> entry : orderedMap.entrySet()) {
+            if (!first) jsonBuilder.append(",\n");
+            else jsonBuilder.append("\n");
+            jsonBuilder.append("    " + JSONObject.quote(entry.getKey()));
+            jsonBuilder.append(":");
+            jsonBuilder.append(JSONObject.valueToString(entry.getValue()));
+            first = false;
+        }
+        jsonBuilder.append("\n}");
+        return jsonBuilder.toString();
 	}
 
 	/**
