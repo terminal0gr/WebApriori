@@ -3,9 +3,9 @@ import sys
 import json
 
 
-# datasetName='chess.dat' 
-# minSup=0.886107634543179
-# separator=' '
+datasetName='chess.dat' 
+minSup=0.886107634543179
+separator=' '
 # datasetName='kosarak.dat' 
 # minSup=0.002392924458738467
 # separator=' '
@@ -15,9 +15,9 @@ import json
 # datasetName='FpGrowthSampleWithoutQuotes.txt' 
 # minSup=0.6
 # separator=','
-datasetName='L-0023.csv' 
-minSup=0.005296905492054642
-separator=';'
+# datasetName='L-0023.csv' 
+# minSup=0.005296905492054642
+# separator=';'
 # datasetName='BTKSample.dat'  
 # topK=0.8
 # separator=' '
@@ -84,17 +84,18 @@ filepath=os.path.join('datasets', datasetName)
 # # frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 # # print(frequentPatternsDF)
 # outputDict = {}
+# outputDict['dataset']=datasetName
 # outputDict['Algorithm']=AlgorithmName
 # outputDict['Language']="python"
 # outputDict['library']="PAMI"
 # outputDict['minSup']=minSup
 # outputDict['totalFI']=len(obj1._finalPatterns.items())
-# outputDict['Runtime']=obj1.getRuntime()
-# outputDict['Memory']=obj1.getMemoryUSS()
-# file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
-# json.dump(outputDict, file, indent=4)
-# file.close() 
-# json.dumps(outputDict, indent=4)
+# outputDict['Runtime']=round(obj1.getRuntime(),2)
+# outputDict['Memory']=round(obj1.getMemoryUSS()/(1024*1024))
+# # file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
+# # json.dump(outputDict, file, indent=4)
+# # file.close() 
+# print(json.dumps(outputDict, indent=4))
 # print(AlgorithmName + " Done!")
 ############################
 
@@ -107,17 +108,18 @@ filepath=os.path.join('datasets', datasetName)
 # frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 # print(frequentPatterns)
 # outputDict = {}
+# outputDict['dataset']=datasetName
 # outputDict['Algorithm']=AlgorithmName
 # outputDict['Language']="python"
 # outputDict['library']="PAMI"
 # outputDict['minSup']=minSup
 # outputDict['totalFI']=len(obj1._finalPatterns.items())
-# outputDict['Runtime']=obj1.getRuntime()
-# outputDict['Memory']=obj1.getMemoryUSS()
-# file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
-# json.dump(outputDict, file, indent=4)
-# file.close() 
-# json.dumps(outputDict, indent=4)
+# outputDict['Runtime']=round(obj1.getRuntime(),2)
+# outputDict['Memory']=round(obj1.getMemoryUSS()/(1024*1024))
+# # file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
+# # json.dump(outputDict, file, indent=4)
+# # file.close() 
+# print(json.dumps(outputDict, indent=4))
 # print(AlgorithmName + " Done!")
 ############################
 
@@ -131,17 +133,18 @@ obj1.mine()
 frequentPatterns= obj1.getPatternsAsDataFrame()
 frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 outputDict = {}
+outputDict['dataset']=datasetName
 outputDict['Algorithm']=AlgorithmName
 outputDict['Language']="python"
 outputDict['library']="PAMI"
 outputDict['minSup']=minSup
 outputDict['totalFI']=len(obj1._finalPatterns.items())
-outputDict['Runtime']=obj1.getRuntime()
-outputDict['Memory']=obj1.getMemoryUSS()
-file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
-json.dump(outputDict, file, indent=4)
-file.close() 
-json.dumps(outputDict, indent=4)
+outputDict['Runtime']=round(obj1.getRuntime(),2)
+outputDict['Memory']=round(obj1.getMemoryUSS()/(1024*1024))
+# file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
+# json.dump(outputDict, file, indent=4)
+# file.close() 
+print(json.dumps(outputDict, indent=4))
 print(AlgorithmName + " Done!")
 ############################
 
@@ -154,17 +157,18 @@ print(AlgorithmName + " Done!")
 # # frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 # # print(frequentPatternsDF)
 # outputDict = {}
+# outputDict['dataset']=datasetName
 # outputDict['Algorithm']=AlgorithmName
 # outputDict['Language']="python"
 # outputDict['library']="PAMI"
 # outputDict['minSup']=minSup
 # outputDict['totalFI']=len(obj1._finalPatterns.items())
-# outputDict['Runtime']=obj1.getRuntime()
-# outputDict['Memory']=obj1.getMemoryUSS()
-# file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
-# json.dump(outputDict, file, indent=4)
-# file.close() 
-# json.dumps(outputDict, indent=4)
+# outputDict['Runtime']=round(obj1.getRuntime(),2)
+# outputDict['Memory']=round(obj1.getMemoryUSS()/(1024*1024))
+# # file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
+# # json.dump(outputDict, file, indent=4)
+# # file.close() 
+# print(json.dumps(outputDict, indent=4))
 # print(AlgorithmName + " Done!")
 # ############################
 
@@ -177,17 +181,18 @@ print(AlgorithmName + " Done!")
 # # frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 # # print(frequentPatternsDF)
 # outputDict = {}
+# outputDict['dataset']=datasetName
 # outputDict['Algorithm']=AlgorithmName
 # outputDict['Language']="python"
 # outputDict['library']="PAMI"
 # outputDict['minSup']=minSup
 # outputDict['totalFI']=len(obj1._finalPatterns.items())
-# outputDict['Runtime']=obj1.getRuntime()
-# outputDict['Memory']=obj1.getMemoryUSS()
-# file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
-# json.dump(outputDict, file, indent=4)
-# file.close() 
-# json.dumps(outputDict, indent=4)
+# outputDict['Runtime']=round(obj1.getRuntime(),2)
+# outputDict['Memory']=round(obj1.getMemoryUSS()/(1024*1024))
+# # file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
+# # json.dump(outputDict, file, indent=4)
+# # file.close() 
+# print(json.dumps(outputDict, indent=4))
 # print(AlgorithmName + " Done!")
 # ############################
 
@@ -202,16 +207,17 @@ print(AlgorithmName + " Done!")
 # # frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
 # # print(frequentPatternsDF)
 # outputDict = {}
+# outputDict['dataset']=datasetName
 # outputDict['Algorithm']=AlgorithmName
 # outputDict['Language']="python"
 # outputDict['library']="PAMI"
 # outputDict['minSup']=minSup
 # outputDict['totalFI']=len(obj1._finalPatterns.items())
-# outputDict['Runtime']=obj1.getRuntime()
-# outputDict['Memory']=obj1.getMemoryUSS()
-# file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
-# json.dump(outputDict, file, indent=4)
-# file.close() 
-# json.dumps(outputDict, indent=4)
+# outputDict['Runtime']=round(obj1.getRuntime(),2)
+# outputDict['Memory']=round(obj1.getMemoryUSS()/(1024*1024))
+# # file = open(os.path.join('Output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext2),'w')
+# # json.dump(outputDict, file, indent=4)
+# # file.close() 
+# print(json.dumps(outputDict, indent=4))
 # print(AlgorithmName + " Done!")
 # ############################

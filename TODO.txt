@@ -71,6 +71,11 @@ PAMI: implements in python:
             ....
         }
     +2 Time is measured without the FIM export
+    +3 Integrated measure of runtime and memory consumption
+    +4 Manipulate item seperator
+    +5 It offers a memory save option (increases runtime) The experiments made without energy saver option
+
+
 
 ######################
 SPMF (java): 
