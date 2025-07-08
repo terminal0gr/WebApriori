@@ -51,16 +51,41 @@ TK_negFIN Mall
     -2 Uses recursion which making slower the performance and spents more memory
 
 
+
+######################
+mlxtend py:
+    - Apriori
+    - H-mine
+    - FPGrowth
+
+    - Needs dataframe in 3-SI format as input. User must write code to read the transactional data.
+      - More memory consuption it needs a (transactions*items) dataframe of True/False or 0/1
+        e.g. for kosarak would need  38.1 GiB for an array with shape (990002 * 41270)
+      - More time needed for transformation
+    - No use of class. Only defs
+
+    +1 Time is measured without the FIM export
+
 ######################
 PAMI: implements in python:
-    - Apriori_TID_bitset
-    - Eclat_bitset
-    - FPGrowth
-    - Eclat
-    - Apriori
-    - DEclat (diffsets Eclat)
+    Apriori_TID_bitset 
+	  + Equivalent runtime and memory consuption results with Eclat_bitset
+    Eclat_bitset
+	  + Improved memory consuption in relation with eclat
+    FPGrowth
+	  ++ Best in both terms of runtime and memory consumption between PAMI algorithm implementations
+    Eclat 
+	  + faster than Eclat_bitset in low support top-K values
+	  - Extremely slower than Eclat_bitset  in high support values
+	  - High memory consumption especially in dense datasets.
+    Apriori
+	  - The most slow algorithm in ther experimens
+	  - One of the worst in memory conspuption
+    DEclat (diffsets Eclat)
+	  --- Sparse datasets: Huge memory consumption. Very slow runtime. Do experiment only in dense datasets to see how it is going...
+	  --- Dense  datasets: Slighly Better memory consumptiom than eclat and apriori but not consistently. Runtime worst in all cases
 
-    +1. finding min support by counting transactions by transforming 1-MBL transactional data to tabular database.
+    +1. finding min support by counting transactions by transforming 1-MBL transactional data to vertical database.
         It sorts items in descending order by the length of transactions that they belong 
         sample:
         {
@@ -95,14 +120,6 @@ SPMF (java):
 
     -1. Takes as seperator only the {space}
     -2. Takes as items only integers
-
-######################
-mlxtend py:
-    - Apriori
-    - H-mine
-    - FPGrowth
-
-    +1 Time is measured without the FIM export
 
 ######################
 negFIN Aryabarzan+Mall Contribution Language:python

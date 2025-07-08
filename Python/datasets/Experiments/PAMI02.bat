@@ -1,13 +1,18 @@
 @echo off
 
-rem call python PAMITest.py "chess.dat" "0.945244055068836"  " " False
-rem call python PAMITest.py "chess.dat" "0.8864205256570713" " " False
-rem call python PAMITest.py "chess.dat" "0.7897371714643304" " " False
-rem call python PAMITest.py "kosarak.dat" "0.002392924458738467" " " False
+rem connect
+call python PAMITest.py "connect.dat" "0.983510220998564" " " False
+call python PAMITest.py "connect.dat" "0.960596237251506" " " False
+call python PAMITest.py "connect.dat" "0.922702310641384" " " False
 
-rem L-0023
-call python PAMITest.py "L-0023.csv" "0.0326177864510733" ";" False
-call python PAMITest.py "L-0023.csv" "0.0122665179816002" ";" False
-call python PAMITest.py "L-0023.csv" "0.00529690549205464" ";" False
+rem chess
+call python PAMITest.py "chess.dat" "0.945244055068836" " " False
+call python PAMITest.py "chess.dat" "0.886420525657071" " " False
+call python PAMITest.py "chess.dat" "0.78973717146433" " " False
+
+rem T16IT20D100K
+call python PAMITest.py "T16IT20D100K.dat" "0.65513" " " False
+call python PAMITest.py "T16IT20D100K.dat" "0.53743" " " False
+call python PAMITest.py "T16IT20D100K.dat" "0.37865" " " False
 
 pause
