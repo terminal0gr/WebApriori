@@ -60,6 +60,8 @@ ext2='_mlxtend_py.json'
 # ]
 
 startTime=time()
+process = psutil.Process(os.getpid()) # Needed to measure memory
+memoryUSS=0 #Memory initialization
 
 # Read the file, treating each line as a single entry
 # creates a list of lists
@@ -71,26 +73,32 @@ with open(filepath,encoding='utf-8-sig') as f:
 from mlxtend.preprocessing import TransactionEncoder
 te = TransactionEncoder()
 te_ary = te.fit(transactions).transform(transactions)
+
 df = pd.DataFrame(te_ary, columns=te.columns_) 
 
-
-AlgorithmName='FPGrowth'
 midTime=time()
-frequentPatterns = fpgrowth(df, min_support=minSup, use_colnames=use_colnames)
 
-# AlgorithmName='HMine'
-# frequentPatterns = hmine(df, min_support=minSup, use_colnames=True)
+# Memory measurement only there...
+m=process.memory_full_info().uss
+if memoryUSS < m:
+    memoryUSS=m
 
+
+# AlgorithmName='FPGrowth'
+# frequentPatterns = fpgrowth(df, min_support=minSup, use_colnames=use_colnames)
+AlgorithmName='HMine'
+frequentPatterns = hmine(df, min_support=minSup, use_colnames=use_colnames)
 # AlgorithmName='Apriori'
-# frequentPatterns = apriori(df, min_support=minSup, low_memory=False, use_colnames=True)
+# frequentPatterns = apriori(df, min_support=minSup, low_memory=False, use_colnames=use_colnames)
 
 
 # End time
 endTime=time()
 
 # Memory measurement only there...
-process = psutil.Process(os.getpid())
-memoryUSS = process.memory_full_info().uss
+m=process.memory_full_info().uss
+if memoryUSS < m:
+    memoryUSS=m
 
 # output frequentPatterns
 # frequentPatterns.to_csv(os.path.join('output',os.path.splitext(datasetName)[0]+"_"+str(minSup)+"_"+AlgorithmName+ext1))
