@@ -1,0 +1,9 @@
+{
+    "algorithm": "FPGrowth",
+    "language": "cpp",
+    "library": "Goethal",
+    "minSup": 0.800,
+    "totalFI": 8227,
+    "runtime": 0.060,
+    "memory": 4820992
+}

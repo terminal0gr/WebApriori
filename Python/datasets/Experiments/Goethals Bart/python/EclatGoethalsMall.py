@@ -1,11 +1,14 @@
 # author: Bart Goethals, University of Antwerp, Belgium
 # contributor: Malliaridis Konstantinos, International Hellenic University, Greece
 
-from sys import argv
+import os
 import csv
 import math
+import psutil
 
 class goethals_Eclat():
+
+    maxMemoryUSS=0
 
     def __init__(self, filename, minSup=0.1, separator=" "):
         self.filename = filename
@@ -14,19 +17,25 @@ class goethals_Eclat():
         self.FIM_Count=0
         self.separator=separator 
 
-
     def eclat(self, prefix, items):
         while items:
-            i,itids = items.pop()
+            i,itids = items.pop() 
             isupp = len(itids)
             if isupp >= self.minSupA:
                 self.FIM_Count+=1
+                # Output the itemset along with its support
                 # print(sorted(prefix+[i]), ':', isupp)
                 suffix = [] 
                 for j, ojtids in items:
                     jtids = itids & ojtids
                     if len(jtids) >= self.minSupA:
                         suffix.append((j,jtids))
+
+                # Memory measurement... To be used seperate from runtime because it slow the process
+                m=psutil.Process(os.getpid()).memory_full_info().uss
+                if self.memoryUSS < m:
+                    self.memoryUSS=m
+
                 goethals_Eclat.eclat(self, prefix+[i], sorted(suffix, key=lambda item: len(item[1]), reverse=True))
 
     def mine(self):

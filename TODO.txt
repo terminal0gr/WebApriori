@@ -146,7 +146,10 @@ Borgelt C++:
     ? which algorithms?
 
 ######################
+http://adrem.uantwerpen.be/~goethals/software/
+
 Goethals C++:
+    - Apriori
     - Eclat 
     - FpGrowth
     Contribution:
@@ -159,7 +162,9 @@ Goethals C++:
 
 ######################
 Goethals Eclat py: http://adrem.uantwerpen.be/~goethals/software/files/eclat.py
+
     +1 Very simple implementation
+    +2 Fast implementation
 
     -1 Uses in the algorithm the names of the items (string) slowing the whole process
 
@@ -167,7 +172,7 @@ Goethals Eclat py: http://adrem.uantwerpen.be/~goethals/software/files/eclat.py
     1. Use with dataset with any seperator
     2. improved precition in computing absolute minSup with math.ceil function
     3. Improved reading of the transaction dataset (manipulation of special characters such as line feed '\n')
-    4. Code for computing running time nad memory consumption.
+    4. Code for computing running time and memory consumption.
 
 ######################
 HTKMiner (Top-K)
