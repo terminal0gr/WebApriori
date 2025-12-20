@@ -14,3 +14,6 @@
     "e, d, c": 2,
     "e, d, b": 2
 }
+
+Definition 1 (pattern). A set of items P ⊆ I is called an
+itemset or a pattern.

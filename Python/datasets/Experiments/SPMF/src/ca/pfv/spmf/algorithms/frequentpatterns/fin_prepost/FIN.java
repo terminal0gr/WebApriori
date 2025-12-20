@@ -718,7 +718,7 @@ public class FIN {
         orderedMap.put("totalFI", outputCount);
         orderedMap.put("Items", numOfFItem);
         orderedMap.put("Runtime", (endTimestamp - startTimestamp) / 1000.0);
-        orderedMap.put("Memory", MemoryLogger.getInstance().getMaxMemory());
+        orderedMap.put("Memory", MemoryLogger.getInstance().getMaxMemory()/(1024*1024));
 
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("{");

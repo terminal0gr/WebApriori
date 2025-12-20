@@ -30,11 +30,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.json.JSONObject;
+
 import ca.pfv.spmf.algorithms.ItemNameConverter;
+import ca.pfv.spmf.gui.visuals.timeline.ElementT;
 import ca.pfv.spmf.tools.MemoryLogger;
 
 /**
@@ -76,7 +80,7 @@ public class AlgoHMine {
 	int cells[];
 	
 	/** the minSupport threshold **/
-	int minSupport = 0;
+	int minSupport = 0; 
 	
 	/** temporary structure used to match an item to its row in a header table structure.
 	 * It is used for building each projected H structure. 
@@ -89,6 +93,11 @@ public class AlgoHMine {
 	
 	/** Special parameter to set the maximum size of itemsets to be discovered */
 	int maxItemsetSize = Integer.MAX_VALUE;
+
+	// this variable will count the number of item occurence in the database
+	int itemOccurrencesCount = 0;
+	// this variable will count the number of transactions
+	int transactionCount = 0;
 	
 	/**
 	 * Default constructor
@@ -123,10 +132,10 @@ public class AlgoHMine {
 		// We scan the database a first time to calculate the support of each item.
 		BufferedReader myInput = null;
 		String thisLine;
-		// this variable will count the number of item occurence in the database
-		int itemOccurrencesCount = 0;
-		// this variable will count the number of transactions
-		int transactionCount = 0;
+
+		itemOccurrencesCount = 0;
+   	    transactionCount = 0;
+
 		if(maxItemsetSize >=1){
 			try {
 				// prepare the object for reading the file
@@ -467,6 +476,47 @@ public class AlgoHMine {
 		System.out.println(" Frequent itemsets count : " + patternCount); 
 		System.out.println("===================================================");
 	}
+
+	// 2025-06-16 Malliaridis: New stats procedure to fit with other experiments
+	public String  printStatsNew(String algorithm,double minSup) {
+
+        System.out.println("Number of transactions: " + transactionCount);
+        System.out.println("Algorithm:" + algorithm);
+        System.out.println("language: java");
+        System.out.println("library: SPMF");
+        System.out.println("minSup: " + minSup);
+        System.out.println("minSupAbsolute: " + minSupport);
+        System.out.println("totalFI: " + patternCount);
+        System.out.println("Items: " + itemOccurrencesCount);
+        System.out.println("Runtime: " + (endTimestamp - startTimestamp)/1000. + " s");
+        System.out.println("Memory: " + MemoryLogger.getInstance().getMaxMemory()/(1024*1024) + " MB");
+
+        Map<String, Object> orderedMap = new LinkedHashMap<>();
+        orderedMap.put("Algorithm", algorithm);
+        orderedMap.put("language", "java");
+        orderedMap.put("library", "SPMF");
+        orderedMap.put("minSup", minSup);
+        orderedMap.put("minSupAbsolute", minSupport);
+        orderedMap.put("totalFI", patternCount);
+        orderedMap.put("Items", itemOccurrencesCount);
+        orderedMap.put("Runtime", (endTimestamp - startTimestamp) / 1000.0);
+        orderedMap.put("Memory", MemoryLogger.getInstance().getMaxMemory()/(1024*1024));
+
+        StringBuilder jsonBuilder = new StringBuilder();
+        jsonBuilder.append("{");
+        boolean first = true;
+        for (Map.Entry<String, Object> entry : orderedMap.entrySet()) {
+            if (!first) jsonBuilder.append(",\n");
+            else jsonBuilder.append("\n");
+            jsonBuilder.append("    " + JSONObject.quote(entry.getKey()));
+            jsonBuilder.append(":");
+            jsonBuilder.append(JSONObject.valueToString(entry.getValue()));
+            first = false;
+        }
+        jsonBuilder.append("\n}");
+        return jsonBuilder.toString();
+	}
+
 
 	/** 
 	 * Set the maximum pattern length

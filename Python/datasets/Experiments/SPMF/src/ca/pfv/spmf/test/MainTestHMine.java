@@ -12,7 +12,7 @@ import ca.pfv.spmf.algorithms.frequentpatterns.hmine.AlgoHMine;
  */
 public class MainTestHMine {
 
-	public static void main(String [] arg) throws IOException{
+	public static void main(String [] arg) throws IOException{ 
 		
 		String input = fileToPath("contextPasquier99.txt");  // the database
 		String output = ".//output.txt";  // the path for saving the frequent itemsets found

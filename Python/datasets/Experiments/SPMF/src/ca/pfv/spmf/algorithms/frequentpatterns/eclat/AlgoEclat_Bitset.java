@@ -24,6 +24,7 @@ import java.util.BitSet;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -62,7 +63,7 @@ import ca.pfv.spmf.tools.MemoryLogger;
 public class AlgoEclat_Bitset {
 
 	/** relative minimum support **/
-	private int minsupRelative;  
+	private int minsupAbsolute;  
 	/** the transaction database **/
 	protected TransactionDatabase database; 
 
@@ -95,6 +96,9 @@ public class AlgoEclat_Bitset {
 	
 	/** Special parameter to set the maximum size of itemsets to be discovered */
 	int maxItemsetSize = Integer.MAX_VALUE;
+
+	// this variable will count the number of item occurence in the database
+	int itemOccurrencesCount = 0;
 
 
 	/**
@@ -142,7 +146,7 @@ public class AlgoEclat_Bitset {
 		
 		// convert from an absolute minsup to a relative minsup by multiplying
 		// by the database size
-		this.minsupRelative = (int) Math.ceil(minsupp * database.size());
+		this.minsupAbsolute = (int) Math.ceil(minsupp * database.size());
 
 		// (1) First database pass : calculate tidsets of each item.
 		// This map will contain the tidset of each item
@@ -182,7 +186,7 @@ public class AlgoEclat_Bitset {
 			int support = tidset.support;
 			int item = entry.getKey();
 			// if the item is frequent
-			if(support >= minsupRelative && maxItemsetSize >= 1) {
+			if(support >= minsupAbsolute && maxItemsetSize >= 1) {
 				// add the item to the list of frequent items
 				frequentItems.add(item);
 				// output the item
@@ -236,7 +240,7 @@ public class AlgoEclat_Bitset {
 						// check the support of {i,j} according to the triangular matrix
 						supportIJ = matrix.getSupportForItems(itemI, itemJ);
 						// if not frequent
-						if (supportIJ < minsupRelative) {
+						if (supportIJ < minsupAbsolute) {
 							// we don't need to consider the itemset "ij" anymore
 							continue loopJ;
 						}
@@ -264,7 +268,7 @@ public class AlgoEclat_Bitset {
 					// equivalence class, the item "j" 
 					// actually represents the itemset "ij" since we keep the prefix "i" for the
 					// whole equilvalence class.
-					if(useTriangularMatrixOptimization || bitsetSupportIJ.support >= minsupRelative){
+					if(useTriangularMatrixOptimization || bitsetSupportIJ.support >= minsupAbsolute){
 					    equivalenceClassIitems.add(itemJ);
 					     // We also keep the tidset of "ij".
 					    equivalenceClassItidsets.add(bitsetSupportIJ);
@@ -324,6 +328,10 @@ public class AlgoEclat_Bitset {
 					if (item > maxItemId) {
 						maxItemId = item;
 					}
+
+					//Malliaridis 2025-10-29
+					this.itemOccurrencesCount++;
+
 				}
 				// we add the current transaction id to the tidset of the item
 				tids.bitset.set(i);
@@ -435,7 +443,7 @@ public class AlgoEclat_Bitset {
 			if(prefixLength+2 <= maxItemsetSize){
 				BitSetSupport bitsetSupportIJ = performAND(tidsetI, tidsetJ);
 				// If the itemset is frequent
-				if(bitsetSupportIJ.support >= minsupRelative) {
+				if(bitsetSupportIJ.support >= minsupAbsolute) {
 					// Append the prefix with I
 					int newPrefixLength = prefixLength+1;
 					prefix[prefixLength] = itemI;
@@ -480,7 +488,7 @@ public class AlgoEclat_Bitset {
 	//					// check the support of {i,j} according to the triangular matrix
 	//					int support = matrix.getSupportForItems(itemI, itemJ);
 	//					// if not frequent
-	//					if (support < minsupRelative) {
+	//					if (support < minsupAbsolute) {
 	//						// skip j;
 	////						System.out.println("PRUNE");
 	//						continue loopJ;
@@ -500,7 +508,7 @@ public class AlgoEclat_Bitset {
 					// Note actually, we just keep "j" for optimization because all itemsets
 					// in the equivalence class of prefix+i will start with prefix+i so it would just
 					// waste memory to keep prefix + i for all itemsets.		
-					if(bitsetSupportIJ.support >= minsupRelative) {
+					if(bitsetSupportIJ.support >= minsupAbsolute) {
 						equivalenceClassISuffixItems.add(itemJ);
 						// We also keep the corresponding tidset and support
 						equivalenceITidsets.add(bitsetSupportIJ);
@@ -629,17 +637,58 @@ public class AlgoEclat_Bitset {
 	}
 
 	//Malliaridis output
-	public JSONObject printStatsNew(String algorithm,double minSup) {
-		JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Algorithm", algorithm);
-        jsonObject.put("Language", "java");
-        jsonObject.put("library", "SPMF");
-        jsonObject.put("minSup", minSup);
-        jsonObject.put("totalFI", itemsetCount);
-        jsonObject.put("Runtime", (endTime - startTimestamp)/1000.);
-        jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
-        return jsonObject;
+	// public JSONObject printStatsNew(String algorithm,double minSup) {
+	// 	JSONObject jsonObject = new JSONObject();
+    //     jsonObject.put("Algorithm", algorithm);
+    //     jsonObject.put("Language", "java");
+    //     jsonObject.put("library", "SPMF");
+    //     jsonObject.put("minSup", minSup);
+    //     jsonObject.put("totalFI", itemsetCount);
+    //     jsonObject.put("Runtime", (endTime - startTimestamp)/1000.);
+    //     jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
+    //     return jsonObject;
+	// }
+
+		// 2025-06-16 Malliaridis: New stats procedure to fit with other experiments
+	public String  printStatsNew(String algorithm,double minSup) {
+
+        System.out.println("Number of transactions: " + database.size());
+        System.out.println("Algorithm:" + algorithm);
+        System.out.println("language: java");
+        System.out.println("library: SPMF");
+        System.out.println("minSup: " + minSup);
+        System.out.println("minSupAbsolute: " + minsupAbsolute);
+        System.out.println("totalFI: " + itemsetCount);
+        System.out.println("Items: " + itemOccurrencesCount);
+        System.out.println("Runtime: " + (endTime - startTimestamp)/1000. + " s");
+        System.out.println("Memory: " + MemoryLogger.getInstance().getMaxMemory()/(1024*1024) + " MB");
+
+        Map<String, Object> orderedMap = new LinkedHashMap<>();
+        orderedMap.put("Algorithm", algorithm);
+        orderedMap.put("language", "java");
+        orderedMap.put("library", "SPMF");
+        orderedMap.put("minSup", minSup);
+        orderedMap.put("minSupAbsolute", minsupAbsolute);
+        orderedMap.put("totalFI", itemsetCount);
+        orderedMap.put("Items", itemOccurrencesCount);
+        orderedMap.put("Runtime", (endTime - startTimestamp) / 1000.0);
+        orderedMap.put("Memory", MemoryLogger.getInstance().getMaxMemory()/(1024*1024));
+
+        StringBuilder jsonBuilder = new StringBuilder();
+        jsonBuilder.append("{");
+        boolean first = true;
+        for (Map.Entry<String, Object> entry : orderedMap.entrySet()) {
+            if (!first) jsonBuilder.append(",\n");
+            else jsonBuilder.append("\n");
+            jsonBuilder.append("    " + JSONObject.quote(entry.getKey()));
+            jsonBuilder.append(":");
+            jsonBuilder.append(JSONObject.valueToString(entry.getValue()));
+            first = false;
+        }
+        jsonBuilder.append("\n}");
+        return jsonBuilder.toString();
 	}
+
 
 	/**
 	 * Get the set of frequent itemsets.

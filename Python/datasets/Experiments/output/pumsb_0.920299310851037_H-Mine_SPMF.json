@@ -1,0 +1,11 @@
+{
+    "Algorithm":"H-Mine",
+    "language":"java",
+    "library":"SPMF",
+    "minSup":0.920299310851037,
+    "minSupAbsolute":45137,
+    "totalFI":1000,
+    "Items":3629404,
+    "Runtime":2.093,
+    "Memory":623
+}

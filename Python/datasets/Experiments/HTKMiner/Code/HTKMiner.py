@@ -5,6 +5,7 @@ from concurrent.futures import ProcessPoolExecutor
 from functools import partial 
 import psutil
 import os
+import sys
 
 
 class HTKMiner: 
@@ -98,6 +99,8 @@ class HTKMiner:
             self.data = vR
         
         print(f"bitset transformation Time: {(t.time()-b3):.3f} Seconds")
+
+        sys.exit()
 
         return item1TopK
 

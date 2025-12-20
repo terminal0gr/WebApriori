@@ -7,6 +7,8 @@ javac -cp ".;lib/*;ca/pfv/spmf/patterns;ca/pfv/spmf/tools" -d "bin" ca\pfv\spmf\
 javac -cp ".;lib/*;ca/pfv/spmf/patterns;ca/pfv/spmf/tools" -d "bin" ca\pfv\spmf\algorithms\frequentpatterns\negFIN\*.java
 javac -cp ".;lib/*;ca/pfv/spmf/patterns;ca/pfv/spmf/tools" -d "bin" ca\pfv\spmf\algorithms\frequentpatterns\dFIN\*.java
 javac -cp ".;lib/*;ca/pfv/spmf/patterns;ca/pfv/spmf/tools" -d "bin" ca\pfv\spmf\algorithms\frequentpatterns\fin_prepost\*.java
+javac -cp ".;lib/*;ca/pfv/spmf/patterns;ca/pfv/spmf/tools" -d "bin" ca\pfv\spmf\algorithms\frequentpatterns\hmine\*.java
+javac -cp ".;lib/*;ca/pfv/spmf/patterns;ca/pfv/spmf/tools" -d "bin" ca\pfv\spmf\algorithms\frequentpatterns\eclat\*.java
 
 javac -cp ".;lib/*;ca/pfv/spmf/patterns;ca/pfv/spmf/tools" -d "bin" ca\pfv\spmf\Mall\*.java
 

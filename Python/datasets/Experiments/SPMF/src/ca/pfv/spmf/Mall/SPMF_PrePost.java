@@ -10,10 +10,10 @@ public class SPMF_PrePost {
 	public static void main(String [] arg) throws IOException{
 
         //Declaration section
-        // String datasetName = "chess.dat";
-        // Double minSup = 0.945244055068836; // relative support
-        String datasetName = "kosarak.dat";
-        Double minSup = 0.0226928834487203; // relative support
+        String datasetName = "chess.dat";
+        Double minSup = 0.945244055068836; // relative support
+        // String datasetName = "kosarak.dat";
+        // Double minSup = 0.0226928834487203; // relative support
         Boolean usePrePostPlus = false;
 
         //Line arguments section

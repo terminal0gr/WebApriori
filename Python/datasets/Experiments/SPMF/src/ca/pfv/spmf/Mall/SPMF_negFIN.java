@@ -15,7 +15,7 @@ public class SPMF_negFIN {
         String separator = ";";
 
         //Line arguments section
-        if (arg.length >= 1) {
+        if (arg.length >= 1) { 
             datasetName=arg[0];
         }
         if (arg.length >= 2) {

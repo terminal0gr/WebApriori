@@ -1,0 +1,9 @@
+{
+    "Algorithm":"eclat",
+    "language":"java",
+    "library":"SPMF",
+    "minSup":0.479243975,
+    "totalFI":1003,
+    "Runtime":2.155,
+    "Memory":1524
+}
