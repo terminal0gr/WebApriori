@@ -1,0 +1,9 @@
+{
+    "Algorithm":"AprioriTID",
+    "language":"java",
+    "library":"SPMF",
+    "minSup":0.09328,
+    "totalFI":100,
+    "Runtime":3.47,
+    "Memory":788
+}

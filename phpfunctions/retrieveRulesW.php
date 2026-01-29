@@ -245,7 +245,7 @@
     curl_setopt($ch, CURLOPT_POSTFIELDS, $input);  // Passing data
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $output = curl_exec($ch);
-    curl_close($ch);
+    // curl_close($ch);
 
     if (!$output) {
         http_response_code(201);

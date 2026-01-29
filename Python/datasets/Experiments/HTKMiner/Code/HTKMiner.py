@@ -100,8 +100,6 @@ class HTKMiner:
         
         print(f"bitset transformation Time: {(t.time()-b3):.3f} Seconds")
 
-        sys.exit()
-
         return item1TopK
 
 

@@ -830,9 +830,9 @@ class webApriori():
                     from mlxtend.preprocessing import TransactionEncoder
                     from lib.mlxtend import apriori, fpgrowth, hmine, association_rules
 
-                    with open('output.txt', 'w') as file:
-                        for sublist in records:
-                            file.write(','.join(sublist) + '\n')
+                    # with open('output.txt', 'w') as file:
+                    #     for sublist in records:
+                    #         file.write(','.join([str(x) for x in sublist]) + '\n')
 
                     te = TransactionEncoder()
                     te_ary = te.fit(records).transform(records)
@@ -871,8 +871,7 @@ class webApriori():
                 assocTime=time()-assocTime
                 ##########################
 
-                str=self.output_association_rules(association_results, sort_index=abs(self.sSort), descending=descending, fileName=self.datasetName, public=self.public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime)
-                return(str)
+                return(self.output_association_rules(association_results, sort_index=abs(self.sSort), descending=descending, fileName=self.datasetName, public=self.public, records=len(records), recordTime=recordTime, rulesCount=len(association_results), assocTime=assocTime))
 
             else:
                 print("An error occurred: Could not retrieve records capable for frequent itemsets or Association Rules Mining")

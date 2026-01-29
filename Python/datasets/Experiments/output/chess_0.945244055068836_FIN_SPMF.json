@@ -5,7 +5,7 @@
     "minSup":0.945244055068836,
     "minSupAbsolute":3021,
     "totalFI":102,
-    "Items":118252,
-    "Runtime":0.146,
-    "Memory":24843920
+    "Items":75,
+    "Runtime":0.096,
+    "Memory":84
 }

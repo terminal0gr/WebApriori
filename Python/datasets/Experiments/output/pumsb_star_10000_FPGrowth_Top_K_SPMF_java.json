@@ -1,0 +1,10 @@
+{
+    "minSup Absolute": 1,
+    "Runtime": -1.769701588263E9,
+    "library": "SPMF",
+    "Language": "java",
+    "Memory": 276824064,
+    "minSup": 2.038902255025894E-5,
+    "totalFI": 85389293,
+    "Algorithm": "FPGrowth_Top_K"
+}

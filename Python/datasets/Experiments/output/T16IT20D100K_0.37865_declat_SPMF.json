@@ -1,0 +1,9 @@
+{
+    "Algorithm":"declat",
+    "language":"java",
+    "library":"SPMF",
+    "minSup":0.37865,
+    "totalFI":10034,
+    "Runtime":11.834,
+    "Memory":4400
+}

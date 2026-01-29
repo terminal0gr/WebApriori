@@ -12,12 +12,13 @@
 16/10/2024 Filter participating items must be updated when declaring new datasetType e.g. 0data_balita.csv and 4-NOA declared.
     ln 1168 retrieveParticipatingItems
     ln 1560 datasetTypeChanged
+09/01/2026 HTK-Miner must be implemented. Top-K AR must be researched
+    
 
 
 
 01/11/2024 In Borgelt eClat Try if helps memory and CPU if items kept in dictionary as numbers instead texts.
 For Research: Transform input data to integer via dictionary (e.g '{potatoes: 1, sugar:2 etc.) is done in original negFIN 
-For Research: Use of FPGrowth_strings SPMF
 
 ######################
 negFIN python (negFINTest.py)
@@ -41,7 +42,7 @@ negFIN original C++ (folder negFIN_C++\compile.bat & runtest.bat after filled wi
     -1 Works up to 128 different 1-item frequent itemsets
 
 ######################
-TK_negFIN Mall    
+HTK_negFIN Mall    
 
     +1 Finds the Top K FI (not the rank)
     +2 Implemented backward construction of the set-enumeration tree (for finding association rules) 
@@ -125,7 +126,7 @@ SPMF (java):
 negFIN Aryabarzan+Mall Contribution Language:python
     +1 Quick
     +2 Mall Contribution (Memory saver flag to allow run faster)
-    +3 Time is measured without thw FIM export
+    +3 Time is measured without the FIM export
 
     -1 At the original version, time and memory include FIM export which is integraded in the algorithm
             (TODO: Can it be seperated?)

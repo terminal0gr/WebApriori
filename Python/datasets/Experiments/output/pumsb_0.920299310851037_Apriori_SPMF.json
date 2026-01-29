@@ -1,0 +1,9 @@
+{
+    "Algorithm":"Apriori",
+    "language":"java",
+    "library":"SPMF",
+    "minSup":0.920299310851037,
+    "totalFI":1000,
+    "Runtime":6.018,
+    "Memory":316
+}

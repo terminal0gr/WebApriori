@@ -493,19 +493,42 @@ public class AlgoApriori {
 		System.out.println("===================================================");
 	}
 
-	/**
-	 * Malliaridis output
-	 */
-	public JSONObject printStatsNew(String algorithm,double minSup) {
-		JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Algorithm", algorithm);
-        jsonObject.put("Language", "java");
-        jsonObject.put("library", "SPMF");
-        jsonObject.put("minSup", minSup);
-        jsonObject.put("totalFI", itemsetCount);
-        jsonObject.put("Runtime", (endTimestamp - startTimestamp)/1000.);
-        jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
-        return jsonObject;
+	// 2026-01-14 Malliaridis: New stats procedure to fit with other experiments
+	public String  printStatsNew(String algorithm,double minSup) {
+
+        System.out.println("Number of transactions: " + database.size());
+        System.out.println("Algorithm:" + algorithm);
+        System.out.println("language: java");
+        System.out.println("library: SPMF");
+        System.out.println("minSup: " + minSup);
+        System.out.println("totalFI: " + itemsetCount);
+        //System.out.println("Items: " + itemOccurrencesCount);
+        System.out.println("Runtime: " + (endTimestamp - startTimestamp)/1000. + " s");
+        System.out.println("Memory: " + MemoryLogger.getInstance().getMaxMemory()/(1024*1024) + " MB");
+
+        Map<String, Object> orderedMap = new LinkedHashMap<>();
+        orderedMap.put("Algorithm", algorithm);
+        orderedMap.put("language", "java");
+        orderedMap.put("library", "SPMF");
+        orderedMap.put("minSup", minSup);
+        orderedMap.put("totalFI", itemsetCount);
+        //orderedMap.put("Items", itemOccurrencesCount);
+        orderedMap.put("Runtime", (endTimestamp - startTimestamp) / 1000.0);
+        orderedMap.put("Memory", MemoryLogger.getInstance().getMaxMemory()/(1024*1024));
+
+        StringBuilder jsonBuilder = new StringBuilder();
+        jsonBuilder.append("{");
+        boolean first = true;
+        for (Map.Entry<String, Object> entry : orderedMap.entrySet()) {
+            if (!first) jsonBuilder.append(",\n");
+            else jsonBuilder.append("\n");
+            jsonBuilder.append("    " + JSONObject.quote(entry.getKey()));
+            jsonBuilder.append(":");
+            jsonBuilder.append(JSONObject.valueToString(entry.getValue()));
+            first = false;
+        }
+        jsonBuilder.append("\n}");
+        return jsonBuilder.toString();
 	}
 
 	/** 

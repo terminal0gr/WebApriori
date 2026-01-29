@@ -6,6 +6,6 @@
     "minSupAbsolute":65513,
     "totalFI":100,
     "Items":20,
-    "Runtime":0.044,
-    "Memory":68
+    "Runtime":0.048,
+    "Memory":160
 }

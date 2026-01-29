@@ -4,6 +4,6 @@
     "library":"SPMF",
     "minSup":0.983510220998564,
     "totalFI":100,
-    "Runtime":0.775,
-    "Memory":354
+    "Runtime":0.951,
+    "Memory":572
 }

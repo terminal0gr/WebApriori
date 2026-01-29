@@ -2,12 +2,39 @@ package ca.pfv.spmf.Mall;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
 
 import org.json.JSONObject;
 
 import ca.pfv.spmf.algorithms.frequentpatterns.fpgrowth.AlgoFPGrowthTOPK;
 
 public class SPMF_FPGrowth_TopK {
+
+    // --- memory monitor running on other thread (Inner Class) ---
+    static class MemoryMonitor implements Runnable {
+        private long maxMemoryUsed = 0;
+        private volatile boolean running = true;
+        private final MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
+
+        @Override
+        public void run() {
+            while (running) {
+                long currentUsedMemory = memoryBean.getHeapMemoryUsage().getUsed();
+                if (currentUsedMemory > maxMemoryUsed) {
+                    maxMemoryUsed = currentUsedMemory;
+                }
+                try {
+                    Thread.sleep(50); // check every 100ms for accuracy
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
+
+        public void stop() { running = false; }
+        public double getMaxMemoryInMB() { return maxMemoryUsed / (1024.0 * 1024.0); }
+    }
 
 	public static void main(String [] arg) throws IOException{
 
@@ -68,7 +95,34 @@ public class SPMF_FPGrowth_TopK {
         algorithm="FPGrowth_Top_K";
 		AlgoFPGrowthTOPK algoFPGrowthTopK = new AlgoFPGrowthTOPK();
         outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + topK + "_" + algorithm + "_SPMF_java.fim";
-		algoFPGrowthTopK.runAlgorithm(input, outPutResultsfile, topK, separator);
+
+
+        // --- Start a new thread for monitoring ---
+        MemoryMonitor monitor = new MemoryMonitor();
+        Thread monitorThread = new Thread(monitor);
+        // Stage 1: Declare Daemon so not hang the JVM if Main crashes
+        monitorThread.setDaemon(true); 
+        monitorThread.start();
+        try {
+		    algoFPGrowthTopK.runAlgorithm(input, outPutResultsfile, topK, separator);
+        } catch (OutOfMemoryError oom) {
+            System.err.println("Error: out of memory while executing the algorithm " + algorithm);
+        } finally {
+            // Stage 2: In every case stop the monitoring thread
+            monitor.stop();
+            try {
+                monitorThread.join(1000); 
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            double peakMemMB = monitor.getMaxMemoryInMB();
+            System.out.println("===========================================");
+            System.out.println("Real peak memory: " + String.format("%.0f", peakMemMB) + " MB");
+            System.out.println("===========================================");
+        }
+
+
+
 		algoFPGrowthTopK.printStats(algorithm);
         pSN=algoFPGrowthTopK.printStatsNew(algorithm);
         outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + topK + "_" + algorithm + "_SPMF_java.json";

@@ -17,7 +17,10 @@ package ca.pfv.spmf.algorithms.frequentpatterns.eclat;
 */
 
 import java.util.BitSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
+
+import org.json.JSONObject;
 
 import ca.pfv.spmf.datastructures.triangularmatrix.TriangularMatrix;
 import ca.pfv.spmf.input.transaction_database_list_integers.TransactionDatabase;
@@ -77,6 +80,46 @@ public class AlgoDEclat_Bitset extends AlgoEclat_Bitset{
 				+ MemoryLogger.getInstance().getMaxMemory() + " mb");
 		System.out.println("===================================================");
 	}
+
+	// 2026-01-05 Malliaridis: New stats procedure to fit with other experiments
+	public String  printStatsNew(String algorithm,double minSup) {
+
+        System.out.println("Number of transactions: " + database.size());
+        System.out.println("Algorithm:" + algorithm);
+        System.out.println("language: java");
+        System.out.println("library: SPMF");
+        System.out.println("minSup: " + minSup);
+        System.out.println("totalFI: " + itemsetCount);
+        System.out.println("Items: " + itemOccurrencesCount);
+        System.out.println("Runtime: " + (endTime - startTimestamp)/1000. + " s");
+        System.out.println("Memory: " + MemoryLogger.getInstance().getMaxMemory()/(1024*1024) + " MB");
+
+        Map<String, Object> orderedMap = new LinkedHashMap<>();
+        orderedMap.put("Algorithm", algorithm);
+        orderedMap.put("language", "java");
+        orderedMap.put("library", "SPMF");
+        orderedMap.put("minSup", minSup);
+        orderedMap.put("totalFI", itemsetCount);
+        orderedMap.put("Items", itemOccurrencesCount);
+        orderedMap.put("Runtime", (endTime - startTimestamp) / 1000.0);
+        orderedMap.put("Memory", MemoryLogger.getInstance().getMaxMemory()/(1024*1024));
+
+        StringBuilder jsonBuilder = new StringBuilder();
+        jsonBuilder.append("{");
+        boolean first = true;
+        for (Map.Entry<String, Object> entry : orderedMap.entrySet()) {
+            if (!first) jsonBuilder.append(",\n");
+            else jsonBuilder.append("\n");
+            jsonBuilder.append("    " + JSONObject.quote(entry.getKey()));
+            jsonBuilder.append(":");
+            jsonBuilder.append(JSONObject.valueToString(entry.getValue()));
+            first = false;
+        }
+        jsonBuilder.append("\n}");
+        return jsonBuilder.toString();
+	}
+
+
 	
 	/**
 	 * This method scans the database to calculate the support of each single item

@@ -26,15 +26,21 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.json.JSONObject;
+
 import ca.pfv.spmf.input.transaction_database_list_integers.TransactionDatabase;
 import ca.pfv.spmf.patterns.itemset_array_integers_with_tids.Itemset;
 import ca.pfv.spmf.patterns.itemset_array_integers_with_tids.Itemsets;
-import ca.pfv.spmf.tools.MemoryLogger;
+
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryPoolMXBean;
+import java.lang.management.MemoryType;
 
 /**
  * This is an implementation of the AprioriTID algorithm.<br/><br/>
@@ -233,7 +239,7 @@ public class AlgoAprioriTID {
 		Iterator<Entry<Integer, Set<Integer>>> iterator = mapItemTIDS.entrySet().iterator();
 		while (iterator.hasNext()) {
 			// check memory usage
-			MemoryLogger.getInstance().checkMemory();
+			//MemoryLogger.getInstance().checkMemory();
 			
 			Map.Entry<Integer, Set<Integer>> entry = (Map.Entry<Integer, Set<Integer>>) iterator
 					.next();
@@ -330,6 +336,7 @@ public class AlgoAprioriTID {
 					}
 				}
 
+
 				// if the combination of itemset1 and itemset2 is frequent
 				if (list.size() >= minSuppRelative) {
 					// Create a new candidate by combining itemset1 and itemset2
@@ -407,13 +414,58 @@ public class AlgoAprioriTID {
 		System.out.println("=============  APRIORI TID v2.12 - STATS =============");
 		System.out.println(" Transactions count from database : " + databaseSize);
 		System.out.println(" Frequent itemsets count : " + itemsetCount);
-		System.out.println(" Maximum memory usage : " + 
-				MemoryLogger.getInstance().getMaxMemory() + " mb");
+		//System.out.println(" Maximum memory usage : " + MemoryLogger.getInstance().getMaxMemory() + " mb");
 		System.out.println(" Total time ~ " + (endTimeStamp - startTimestamp)
 				+ " ms");
 		System.out
 				.println("===================================================");
 	}
+
+	// 2026-01-20 Malliaridis: New stats procedure to fit with other experiments
+	public String  printStatsNew(String algorithm,double minSup) {
+
+		long maxMemory = 0;
+		for (MemoryPoolMXBean pool : ManagementFactory.getMemoryPoolMXBeans()) {
+			if (pool.getType() == MemoryType.HEAP) {
+				maxMemory += pool.getPeakUsage().getUsed();
+			}
+		}
+
+        System.out.println("Number of transactions: " + databaseSize);
+        System.out.println("Algorithm:" + algorithm);
+        System.out.println("language: java");
+        System.out.println("library: SPMF");
+        System.out.println("minSup: " + minSup);
+        System.out.println("totalFI: " + itemsetCount);
+        //System.out.println("Items: " + itemOccurrencesCount);
+        System.out.println("Runtime: " + (endTimeStamp - startTimestamp)/1000. + " s");
+        System.out.println("Max Memory: " + maxMemory/(1024*1024) + " MB");
+
+        Map<String, Object> orderedMap = new LinkedHashMap<>();
+        orderedMap.put("Algorithm", algorithm);
+        orderedMap.put("language", "java");
+        orderedMap.put("library", "SPMF");
+        orderedMap.put("minSup", minSup);
+        orderedMap.put("totalFI", itemsetCount);
+        //orderedMap.put("Items", itemOccurrencesCount);
+        orderedMap.put("Runtime", (endTimeStamp - startTimestamp) / 1000.0);
+		orderedMap.put("Memory", maxMemory/(1024*1024));
+
+        StringBuilder jsonBuilder = new StringBuilder();
+        jsonBuilder.append("{");
+        boolean first = true;
+        for (Map.Entry<String, Object> entry : orderedMap.entrySet()) {
+            if (!first) jsonBuilder.append(",\n");
+            else jsonBuilder.append("\n");
+            jsonBuilder.append("    " + JSONObject.quote(entry.getKey()));
+            jsonBuilder.append(":");
+            jsonBuilder.append(JSONObject.valueToString(entry.getValue()));
+            first = false;
+        }
+        jsonBuilder.append("\n}");
+        return jsonBuilder.toString();
+	}
+
 
 	/**
 	 * Get the number of transactions in the last database read.

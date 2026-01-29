@@ -1,0 +1,10 @@
+{
+    "Algorithm":"declat_bitset",
+    "language":"java",
+    "library":"SPMF",
+    "minSup":0.002392924,
+    "totalFI":10007,
+    "Items":0,
+    "Runtime":5.2,
+    "Memory":10852
+}

@@ -2,10 +2,37 @@ package ca.pfv.spmf.Mall;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
 
 import ca.pfv.spmf.algorithms.frequentpatterns.hmine.AlgoHMine;
 
 public class SPMF_H_Mine {
+
+    // --- memory monitor running on other thread (Inner Class) ---
+    static class MemoryMonitor implements Runnable {
+        private long maxMemoryUsed = 0;
+        private volatile boolean running = true;
+        private final MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
+
+        @Override
+        public void run() {
+            while (running) {
+                long currentUsedMemory = memoryBean.getHeapMemoryUsage().getUsed();
+                if (currentUsedMemory > maxMemoryUsed) {
+                    maxMemoryUsed = currentUsedMemory;
+                }
+                try {
+                    Thread.sleep(100); // Συχνός έλεγχος κάθε 50ms για ακρίβεια
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
+
+        public void stop() { running = false; }
+        public double getMaxMemoryInMB() { return maxMemoryUsed / (1024.0 * 1024.0); }
+    }
 
 	public static void main(String [] arg) throws IOException{
 
@@ -46,7 +73,33 @@ public class SPMF_H_Mine {
         AlgoHMine algo = new AlgoHMine();
 
         outPutResultsfile="\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.fim";
-		algo.runAlgorithm(input, outPutResultsfile, minSup);
+
+
+        // --- Start a new thread for monitoring ---
+        MemoryMonitor monitor = new MemoryMonitor();
+        Thread monitorThread = new Thread(monitor);
+        // Stage 1: Declare Daemon so not hang the JVM if Main crashes
+        monitorThread.setDaemon(true); 
+        monitorThread.start();
+        try {
+            algo.runAlgorithm(input, outPutResultsfile, minSup);
+        } catch (OutOfMemoryError oom) {
+            System.err.println("Error: out of memory while executing the algorithm " + algorithm);
+        } finally {
+            // Stage 2: In every case stop the monitoring thread
+            monitor.stop();
+            try {
+                monitorThread.join(1000); 
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            double peakMemMB = monitor.getMaxMemoryInMB();
+            System.out.println("===========================================");
+            System.out.println("Real peak memory: " + String.format("%.0f", peakMemMB) + " MB");
+            System.out.println("===========================================");
+        }
+
+
 		//algo.printStats();
         String pSN=algo.printStatsNew(algorithm, minSup);
         outPutResultsfile = "\\xampp\\htdocs\\WebApriori\\Python\\datasets\\Experiments\\output\\" + noPrefix + "_" + Double.toString(minSup) + "_" + algorithm + "_SPMF.json";

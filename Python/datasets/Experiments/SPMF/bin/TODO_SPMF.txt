@@ -1,0 +1,78 @@
+--1
+MemoryMonitor monitor = new MemoryMonitor();
+με εξωτερικό thread Γιατί:
+1. Η χρήση διαφορετικού thread είναι ο μόνος τρόπος για να έχεις "μάτια" πάνω στη μνήμη την ώρα που ο αλγόριθμος εκτελείται.
+Αλλιώς Το πρόγραμμα θα έμενε "κολλημένο" στη γραμμή του αλγορίθμου για λεπτά ή ώρες. Η μέτρηση m2 θα γινόταν αφού είχε τελειώσει ο αλγόριθμος, δηλαδή αφού η Java θα είχε ήδη καθαρίσει τα προσωρινά αντικείμενα. Δεν θα έβλεπες ποτέ το "Peak".
+
+2. Ο "Παρατηρητής" και ο "Εργάτης"
+Φαντάσου το σαν ένα πείραμα:
+
+Ο Εργάτης (Main Thread): Είναι ο αλγόριθμος AprioriTID. Είναι τόσο απασχολημένος με τους υπολογισμούς που δεν μπορεί να σταματήσει για να κοιτάξει το ρολόι ή τη μνήμη.
+
+Ο Παρατηρητής (Monitor Thread): Είναι ένας ξεχωριστός άνθρωπος που στέκεται δίπλα στον εργάτη και κοιτάζει το μανόμετρο της μνήμης κάθε 100ms.
+
+Επειδή τρέχουν παράλληλα, ο Παρατηρητής μπορεί να καταγράψει μια απότομη άνοδο στη μνήμη τη στιγμή ακριβώς που συμβαίνει, χωρίς να διακόψει ή να καθυστερήσει τον Εργάτη.
+
+3. Δεν χρειάζεται να πειράξεις τον κώδικα της SPMF
+Αν δεν χρησιμοποιούσες thread, θα έπρεπε να πας μέσα στις χιλιάδες γραμμές κώδικα της βιβλιοθήκης SPMF και να προσθέτεις εντολές μέτρησης μνήμης μέσα σε κάθε for και while loop του αλγορίθμου. Αυτό είναι πρακτικά αδύνατο και θα έκανε τον αλγόριθμο πολύ πιο αργό.
+Αν προσπαθούσες να το κάνεις στο ίδιο thread, θα αντιμετώπιζες τα εξής προβλήματα:
+
+4. Τι θα συμβεί αν ο αλγόριθμος κρασάρει με OutOfMemory;
+Αυτή είναι η δύναμη του thread! Ακόμα και αν ο αλγόριθμος "σκάσει" (crash), το thread του Monitor συχνά προλαβαίνει να καταγράψει την τελευταία τιμή πριν σταματήσει η JVM. Έτσι, ξέρεις αν το κρασάρισμα έγινε στα 11.9GB ή στα 8GB, κάτι που σου δίνει πολύτιμες πληροφορίες για το τι φταίει.
+
+1. Η Java εκτελείται σειριακά (Sequential Execution)
+Στην Java (και στις περισσότερες γλώσσες), οι εντολές εκτελούνται η μία μετά την άλλη. Αν έγραφες:
+Thread monitorThread = new Thread(monitor);
+
+
+
+--Intermediate way
+Αντί για το MemoryLogger, χρησιμοποίησε το ManagementFactory της Java. 
+Αυτό ρωτάει απευθείας το JVM για το "Peak Usage" που έχει καταγραφεί από την έναρξη του προγράμματος, 
+ανεξάρτητα από το πότε το καλείς.
+Used:
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryPoolMXBean;
+import java.lang.management.MemoryType;
+&
+long maxMemory = 0;
+for (MemoryPoolMXBean pool : ManagementFactory.getMemoryPoolMXBeans()) {
+    if (pool.getType() == MemoryType.HEAP) {
+        maxMemory += pool.getPeakUsage().getUsed();
+    }
+}
+
+Instead of:
+import ca.pfv.spmf.tools.MemoryLogger;
+&
+MemoryLogger.getInstance().getMaxMemory()
+
+Problem of the intermediate way:
+1. Το πρόβλημα του "Αθροίσματος των Peaks":
+   Η μνήμη Heap της Java δεν είναι ένα ενιαίο "κουτί", αλλά χωρίζεται σε επιμέρους τμήματα (Pools):
+      Eden Space (εκεί που γεννιούνται τα αντικείμενα)
+      Survivor Spaces (εκεί που πάνε μετά τον πρώτο καθαρισμό)
+      Old Generation (εκεί που πάνε τα αντικείμενα που επιβιώνουν για ώρα)
+    Όταν εκτελείς τον κώδικα pool.getPeakUsage().getUsed(), παίρνεις το υψηλότερο σημείο που έφτασε ποτέ το συγκεκριμένο pool 
+    από τότε που ξεκίνησε το πρόγραμμα.
+    Το παράδειγμα των 15GB:
+    Στο 1ο λεπτό, το Eden Space γεμίζει και φτάνει στο peak του (π.χ. 4GB). 
+    Γίνεται Garbage Collection και τα δεδομένα μεταφέρονται.
+    Στο 5ο λεπτό, το Old Generation γεμίζει και φτάνει στο δικό του peak (π.χ. 11GB).
+    Ο κώδικάς σου στο τέλος κάνει την πρόσθεση: $4GB (peak Eden) + 11GB (peak Old Gen) = 15GB$.
+
+
+
+--2 Alternative print stats function for verification and validation purposes
+public String printStatsNew(String algorithm,double minSup) 
+SPMF PrintStats function contains:
+- Transactions count
+- FI count
+- max memory Used
+- Total runtime 
+Contains printStats info plus:
+- Relative Minimum support
+- Absolute Minimum support
+- Items count
+
+

@@ -26,6 +26,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -33,7 +34,12 @@ import java.util.Map.Entry;
 import org.json.JSONObject;
 
 import ca.pfv.spmf.patterns.itemset_array_integers_with_tids_bitset.Itemset;
-import ca.pfv.spmf.tools.MemoryLogger;
+
+//import ca.pfv.spmf.tools.MemoryLogger;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryPoolMXBean;
+import java.lang.management.MemoryType;
+
 
 /**
  * This is an implementation of the AprioriTID algorithm. This version is very fast 
@@ -112,7 +118,7 @@ public class AlgoAprioriTID_Bitset {
 		// for each line (transaction) until the end of file
 		while (((line = reader.readLine()) != null)) { 
 			// check memory usage
-			MemoryLogger.getInstance().checkMemory();
+			//MemoryLogger.getInstance().checkMemory();
 			
 			// if the line is  a comment, is  empty or is a
 			// kind of metadata
@@ -240,7 +246,7 @@ public class AlgoAprioriTID_Bitset {
 				}
 
 				// NOW COMBINE ITEMSET 1 AND ITEMSET 2
-				Integer missing = itemset2.get(itemset2.size() - 1);
+				//Integer missing = itemset2.get(itemset2.size() - 1);
 
 				// create list of common tids
 				BitSet list = (BitSet) itemset1.getTransactionsIds().clone();
@@ -305,22 +311,54 @@ public class AlgoAprioriTID_Bitset {
 		System.out.println("=============  APRIORI TID BITSET v2.12 - STATS =============");
 		System.out.println(" Transactions count from database : " + tidcount);
 		System.out.println(" Frequent itemsets count : " + itemsetCount);
-		System.out.println(" Maximum memory usage : " + 
-				MemoryLogger.getInstance().getMaxMemory() + " mb");
+		//System.out.println(" Maximum memory usage : " +	MemoryLogger.getInstance().getMaxMemory() + " mb");
 		System.out.println(" Total time ~ " + (endTimeStamp - startTimestamp)	+ " ms");
 		System.out.println("===================================================");
 	}
 
-	public JSONObject printStatsNew(String algorithm,double minSup) {
-		JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Algorithm", algorithm);
-        jsonObject.put("Language", "java");
-        jsonObject.put("library", "SPMF");
-		jsonObject.put("minSup", minSup);
-        jsonObject.put("totalFI", itemsetCount);
-        jsonObject.put("Runtime", (endTimeStamp - startTimestamp)/1000.);
-        jsonObject.put("Memory", MemoryLogger.getInstance().getMaxMemory());
-        return jsonObject;
+	// 2026-01-14 Malliaridis: New stats procedure to fit with other experiments
+	public String  printStatsNew(String algorithm,double minSup) {
+
+		long maxMemory = 0;
+		for (MemoryPoolMXBean pool : ManagementFactory.getMemoryPoolMXBeans()) {
+			if (pool.getType() == MemoryType.HEAP) {
+				maxMemory += pool.getPeakUsage().getUsed();
+			}
+		}
+
+        System.out.println("Number of transactions: " + tidcount);
+        System.out.println("Algorithm:" + algorithm);
+        System.out.println("language: java");
+        System.out.println("library: SPMF");
+        System.out.println("minSup: " + minSup);
+        System.out.println("totalFI: " + itemsetCount);
+        //System.out.println("Items: " + itemOccurrencesCount);
+        System.out.println("Runtime: " + (endTimeStamp - startTimestamp)/1000. + " s");
+        System.out.println("Memory: " + maxMemory/(1024*1024) + " MB");
+
+        Map<String, Object> orderedMap = new LinkedHashMap<>();
+        orderedMap.put("Algorithm", algorithm);
+        orderedMap.put("language", "java");
+        orderedMap.put("library", "SPMF");
+        orderedMap.put("minSup", minSup);
+        orderedMap.put("totalFI", itemsetCount);
+        //orderedMap.put("Items", itemOccurrencesCount);
+        orderedMap.put("Runtime", (endTimeStamp - startTimestamp) / 1000.0);
+        orderedMap.put("Memory", maxMemory/(1024*1024));
+
+        StringBuilder jsonBuilder = new StringBuilder();
+        jsonBuilder.append("{");
+        boolean first = true;
+        for (Map.Entry<String, Object> entry : orderedMap.entrySet()) {
+            if (!first) jsonBuilder.append(",\n");
+            else jsonBuilder.append("\n");
+            jsonBuilder.append("    " + JSONObject.quote(entry.getKey()));
+            jsonBuilder.append(":");
+            jsonBuilder.append(JSONObject.valueToString(entry.getValue()));
+            first = false;
+        }
+        jsonBuilder.append("\n}");
+        return jsonBuilder.toString();
 	}
 
 

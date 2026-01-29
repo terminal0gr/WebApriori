@@ -1,0 +1,11 @@
+{
+    "Algorithm":"negFIN",
+    "language":"java",
+    "library":"SPMF",
+    "minSup":0.364352535696701,
+    "minSupAbsolute":2960,
+    "totalFI":1015,
+    "frequent 1-item itemsets":24,
+    "Runtime":0.109,
+    "Memory":50331648
+}

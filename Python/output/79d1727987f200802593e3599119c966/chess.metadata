@@ -137,14 +137,14 @@
         ],
         "n_items": [
             "Items count",
-            3271,
-            3271,
+            75,
+            75,
             "The total number of items for ARM process"
         ],
         "avg_transaction_size": [
             "Avg items per transaction",
-            38,
-            "38.00",
+            37,
+            "37.00",
             "The average number of items per transaction for ARM process"
         ],
         "n_transactions": [
@@ -155,19 +155,19 @@
         ],
         "density": [
             "transactions density",
-            0.011617242433506572,
-            "1.2%",
+            0.49333333333333335,
+            "49.3%",
             "The density of transactions for ARM process"
         ]
     },
     "datasetTypePredicted": 4,
-    "datasetType": 4,
+    "datasetType": 1,
     "min_support": 0.02,
     "min_confidence": 0.2,
-    "min_lift": 20,
+    "min_lift": 1.5,
     "max_length": 6,
     "sSort": -3,
     "datasetName": "chess.dat",
     "public": 1,
-    "redundantRemoveType": 0
+    "redundantRemoveType": 7
 }
