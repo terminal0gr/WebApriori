@@ -7,9 +7,9 @@
     "datasetName": "T10I4D100K.dat",
     "redundantRemoveType": 0,
     "Records": 100000,
-    "RecordsCreationTime": "0.936",
+    "RecordsCreationTime": "0.997",
     "RulesCount": 57,
-    "RulesCreationTime": "13.361",
+    "RulesCreationTime": "12.816",
     "rules": [
         {
             "LHS": [
@@ -252,8 +252,8 @@
                 "39"
             ],
             "RHS": [
-                "704",
-                "825"
+                "825",
+                "704"
             ],
             "Confidence": 0.2430718647252231,
             "Lift": 22.0573379968442,
@@ -268,8 +268,8 @@
         },
         {
             "LHS": [
-                "704",
-                "825"
+                "825",
+                "704"
             ],
             "RHS": [
                 "39"
@@ -311,8 +311,8 @@
                 "39"
             ],
             "RHS": [
-                "704",
-                "825"
+                "825",
+                "704"
             ],
             "Confidence": 0.2430718647252231,
             "Lift": 22.0573379968442,
@@ -327,8 +327,8 @@
         },
         {
             "LHS": [
-                "704",
-                "825"
+                "825",
+                "704"
             ],
             "RHS": [
                 "",

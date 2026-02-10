@@ -5,7 +5,6 @@ from concurrent.futures import ProcessPoolExecutor
 from functools import partial 
 import psutil
 import os
-import sys
 
 
 class HTKMiner: 
