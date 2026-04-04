@@ -1,0 +1,136 @@
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>rem TH1FIM.dat
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_13.exe "..\..\datasets\TH1FIM.dat" "100" "1"
+Read dataset 13 Started
+Dataset reading 13 ended: 3.742 s
+bitset transformation 13: 0.023 s
+FI mining time: 0.244 s
+Total Execution Time: 4.01 s
+FIM found: 100
+Absolute minSup: 108540
+Relative minSup: 0.040885821803511
+Peak Memory Usage: 173 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_13.exe "..\..\datasets\TH1FIM.dat" "1000" "1"
+Read dataset 13 Started
+Dataset reading 13 ended: 3.706 s
+bitset transformation 13: 0.09 s
+FI mining time: 6.611 s
+Total Execution Time: 10.407 s
+FIM found: 1000
+Absolute minSup: 36786
+Relative minSup: 0.013856880789239
+Peak Memory Usage: 640 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_13.exe "..\..\datasets\TH1FIM.dat" "10000" "1"
+Read dataset 13 Started
+Dataset reading 13 ended: 3.723 s
+bitset transformation 13: 0.089 s
+FI mining time: 90.546 s
+Total Execution Time: 94.359 s
+FIM found: 10000
+Absolute minSup: 13697
+Relative minSup: 0.005159508948247
+Peak Memory Usage: 5327 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>rem TH2FIM.dat
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_13.exe "..\..\datasets\TH2FIM.dat" "100" "1"
+Read dataset 13 Started
+Dataset reading 13 ended: 39.566 s
+bitset transformation 13: 0.214 s
+FI mining time: 3.396 s
+Total Execution Time: 43.177 s
+FIM found: 100
+Absolute minSup: 1083088
+Relative minSup: 0.040876420392091
+Peak Memory Usage: 1471 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_13.exe "..\..\datasets\TH2FIM.dat" "1000" "1"
+Read dataset 13 Started
+Dataset reading 13 ended: 37.675 s
+bitset transformation 13: 0.749 s
+FI mining time: 99.601 s
+Total Execution Time: 138.026 s
+FIM found: 1000
+Absolute minSup: 365625
+Relative minSup: 0.013798916806260
+Peak Memory Usage: 6371 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>rem susy
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_13.exe "..\..\datasets\SUSY.txt" "100" "1"
+Read dataset 13 Started
+Dataset reading 13 ended: 9.633 s
+bitset transformation 13: 0.117 s
+FI mining time: 0.107 s
+Total Execution Time: 9.858 s
+FIM found: 100
+Absolute minSup: 4354048
+Relative minSup: 0.870809600000000
+Peak Memory Usage: 423 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_13.exe "..\..\datasets\SUSY.txt" "1000" "1"
+Read dataset 13 Started
+Dataset reading 13 ended: 9.265 s
+bitset transformation 13: 0.125 s
+FI mining time: 2.483 s
+Total Execution Time: 11.873 s
+FIM found: 1000
+Absolute minSup: 3643590
+Relative minSup: 0.728718000000000
+Peak Memory Usage: 1103 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_13.exe "..\..\datasets\SUSY.txt" "10000" "1"
+Read dataset 13 Started
+Dataset reading 13 ended: 9.198 s
+bitset transformation 13: 0.126 s
+FI mining time: 63.711 s
+Total Execution Time: 73.037 s
+FIM found: 10001
+Absolute minSup: 757764
+Relative minSup: 0.151552800000000
+Peak Memory Usage: 11595 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>rem susy
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_13.exe "..\..\datasets\webdocs.dat" "100" "1"
+Read dataset 13 Started
+Dataset reading 13 ended: 86.718 s
+bitset transformation 13: 0.266 s
+FI mining time: 2.659 s
+Total Execution Time: 89.645 s
+FIM found: 100
+Absolute minSup: 553657
+Relative minSup: 0.327204591739644
+Peak Memory Usage: 2578 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_13.exe "..\..\datasets\webdocs.dat" "1000" "1"
+Read dataset 13 Started
+Dataset reading 13 ended: 83.618 s
+bitset transformation 13: 0.249 s
+FI mining time: 10.449 s
+Total Execution Time: 94.317 s
+FIM found: 1000
+Absolute minSup: 365679
+Relative minSup: 0.216111866918979
+Peak Memory Usage: 2756 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_13.exe "..\..\datasets\webdocs.dat" "10000" "1"
+Read dataset 13 Started
+Dataset reading 13 ended: 83.639 s
+bitset transformation 13: 0.524 s
+FI mining time: 139.75 s
+Total Execution Time: 223.914 s
+FIM found: 10000
+Absolute minSup: 255241
+Relative minSup: 0.150844344423024
+Peak Memory Usage: 6103 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_13.exe "..\..\datasets\TH2FIM.dat" "10000" "1"
+Read dataset 13 Started
+Dataset reading 13 ended: 37.293 s
+bitset transformation 13: 0.703 s
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc

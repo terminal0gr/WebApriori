@@ -1,0 +1,11 @@
+{
+    "algorithm": "negFIN",
+    "language": "cpp",
+    "library": "Aryabarzan",
+    "minSup": 0.013856880789239,
+    "minSupAbsolute": 36786,
+    "totalFI": 231,
+    "Frequent 1-item itemsets": 231,
+    "runtime": 36.182,
+    "memory": 1350189056
+}

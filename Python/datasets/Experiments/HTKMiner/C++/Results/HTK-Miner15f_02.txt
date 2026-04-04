@@ -1,0 +1,38 @@
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>rem webdocs.dat
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_15.exe "..\..\datasets\T80I100D2M.dat" "100" "1"
+Dataset: ..\..\datasets\T80I100D2M.dat Top-K: 100 Delimiter:
+Read dataset 15f Started
+Dataset reading 15f ended: 1.621 s
+bitset transformation 15f: 0.202 s
+FI mining time 15f: 0.512 s
+Total Execution Time: 2.337 s
+FIM found: 100
+Absolute minSup: 1598360
+Relative minSup: 0,799180000000000
+Peak Memory Usage 15f: 1119 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_15.exe "..\..\datasets\T80I100D2M.dat" "1000" "1"
+Dataset: ..\..\datasets\T80I100D2M.dat Top-K: 1000 Delimiter:
+Read dataset 15f Started
+Dataset reading 15f ended: 1.608 s
+bitset transformation 15f: 0.204 s
+FI mining time 15f: 2,583 s
+Total Execution Time: 4,396 s
+FIM found: 1002
+Absolute minSup: 1285339
+Relative minSup: 0,642669500000000
+Peak Memory Usage 15f: 1129 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_15,exe ",,\..\datasets\T80I100D2M.dat" "10000" "1"
+Dataset: ..\..\datasets\T80I100D2M,dat Top-K: 10000 Delimiter:
+Read dataset 15f Started
+Dataset reading 15f ended: 1,606 s
+bitset transformation 15f: 0,205 s
+FI mining time 15f: 25,689 s
+Total Execution Time: 27,501 s
+FIM found: 10001
+Absolute minSup: 1036871
+Relative minSup: 0,518435500000000
+Peak Memory Usage 15f: 3168 MB

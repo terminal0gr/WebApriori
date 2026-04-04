@@ -5,6 +5,8 @@ from concurrent.futures import ProcessPoolExecutor
 from functools import partial 
 import psutil
 import os
+import gmpy2
+from collections import defaultdict
 
 
 class HTKMiner: 
@@ -35,8 +37,9 @@ class HTKMiner:
         # Dataset traversed once only!
         with open(self.dataset_file, encoding='utf-8-sig') as f:
 
-            # Vertical dataset representation (temp)
-            vR={}
+            vR={} # list implementation for tidSet.
+            # vR=defaultdict(set) # set implementation for tidSet. 
+
             # Ensures the uniquity of items (temp)
             iSet=set()
             # The integer value given to each item
@@ -44,7 +47,7 @@ class HTKMiner:
             # The Tid of each transaction
             transIndex=0
             # The overall count of items in dataset
-            # transitem=0 # Uncomment for stats only 
+            transitem=0 # Uncomment for stats only 
             # The next 2 dictionaries are used to implement one bidirectional dictionary
             # The idea is to map item names to their indexes and perform better in the algorithm
             self.itemDict=dict()
@@ -52,7 +55,7 @@ class HTKMiner:
             b1=t.time() # start of reading
             for line in f:
                 for item in line.strip().split(sep=self.delimiter):
-                    # transitem+=1 # Uncomment for stats only
+                    transitem+=1 # Uncomment for stats only
                     if item not in iSet:
                         itemIndex+=1
                         self.itemDict[itemIndex]=item
@@ -61,12 +64,13 @@ class HTKMiner:
                         iSet.add(item)
                     else:
                         vR[(itemDictReversed[item],)].append(transIndex)
+                    # vR[(itemDictReversed[item],)].add(transIndex) # set implementation for tidSet. It is faster in insertion but slower in intersection. List implementation is faster in intersection but slower in insertion.
                 transIndex+=1
             
             # statistics
             self.num_of_transactions=transIndex
             self.itemCount=itemIndex
-            # self.TransitemCount=transitem # Uncomment for stats only
+            self.TransitemCount=transitem # Uncomment for stats only
 
         item1TopK, self.min_count = self.InitialTopKFI(vR)
 
@@ -78,22 +82,46 @@ class HTKMiner:
 
         b3=t.time()
         print(f"Read dataset Time: {(b3-b1):.3f} Seconds")
+        print(f"Total items in transactions: {self.TransitemCount}")
 
         if self.bitSetMode:
+            # # Parallel native processing
+            # with ProcessPoolExecutor() as executor:
+            #     # Map each dictionary value to the costly operation
+            #     partialParallelOperation = partial(parallelBitSetOp)
+            #     # result_partial = list(executor.map(partialParallelOperation, vR.values()))
+            #     vBitSet = {key: result for key, result in zip(vR.keys(), executor.map(partialParallelOperation, vR.values()))}
+            # self.data=vBitSet
 
-            # Parallel processing
-            with ProcessPoolExecutor() as executor:
-                # Map each dictionary value to the costly operation
-                partialParallelOperation = partial(parallelBitSetOp)
-                # result_partial = list(executor.map(partialParallelOperation, vR.values()))
-                vBitSet = {key: result for key, result in zip(vR.keys(), executor.map(partialParallelOperation, vR.values()))}
-
-            # Single core processing
+            # Single native processing
             # vBitSet=dict()
             # for key, value in vR.items():
             #     vBitSet[key] = _bitPacker(value)
+            # self.data=vBitSet
 
-            self.data=vBitSet
+            # The choice between single and parallel processing is based on the count of items in transactions. If the count is less than 100 million, we use single processing because it is faster. If the count is greater than 100 million, we use parallel processing because it is faster. The threshold of 100 million is based on empirical testing and may vary depending on the hardware and dataset characteristics. 
+            if self.TransitemCount<100000000:
+                # 1. single processing with gmpy2
+                vBitSet = {}
+                for k, v in vR.items():
+                    # Initialize a mutable large integer to 0
+                    bitset = gmpy2.xmpz(0) 
+                    for i in v:
+                        bitset[i] = 1 # Sets the i-th bit to 1 instantly in C
+                    vBitSet[k] = bitset
+                self.data=vBitSet
+            else:
+                # 2. Parallel processing with gmpy2 for better performance in bit manipulation and memory management
+                with ProcessPoolExecutor() as executor:
+                    # Notice: You don't need `partial` here at all. 
+                    # Just map the function directly to the values.
+                    self.data = {
+                        key: result for key, result in zip(
+                            vR.keys(), 
+                            executor.map(gmpy2_bitPacker, vR.values())
+                        )
+                    }
+
         else:
             self.data = vR
         
@@ -165,7 +193,7 @@ class HTKMiner:
             minSup=mS
 
         # quick heap synchronization - verification. Not necessary. 
-        # It works propably and with out this line but this does not offer execution speed
+        # It works propably and with out this line but this does not reduce execution speed
         self.heap.initialFill(supList)
 
         return topKDict, minSup, currentLevelTopK
@@ -217,7 +245,7 @@ class HTKMiner:
 
                     classA = listOFKeys[iA]
                     # Gave at least 5x in chess 1000 (and not only) with intersect (7.9s vs 1.3s)
-                    # Stop current iteration if any of the second itemset has already been above the current minSup.
+                    # Stop current iteration if any of the first itemset has already been above the current minSup.
                     if currentLevelTopK[classA]<self.min_count:
                         break
 
@@ -373,7 +401,7 @@ class HTKMiner:
                     iA+=1
                 iB+=1
 
-            # filtering the itemsets that are abode the new current misSup thresold
+            # filtering the itemsets that are above the new current misSup thresold
             nextLevelTopK = {key: value for key, value in nextLevelTopK.items() if value >= self.min_count}
 
             # merge in the final topKFI the new level frequent itemsets that have support value greater than minSup threshold
@@ -554,7 +582,8 @@ class HTKMiner:
                         # bitwise intersection
                         transactions=self.data[classA] & self.data[classB]
                         # counts the bit that have 1 from the bit array of the number
-                        support=int.bit_count(transactions)
+                        # support=int.bit_count(transactions)
+                        support=gmpy2.popcount(transactions)
 
                         if support >= self.min_count:
 
@@ -620,10 +649,7 @@ class HTKMiner:
         self.execution_time=end-self.start
 
         print(f"FI Mining Time: {(end-endRead):.3f} Seconds")
-        if self.execution_time>self.commitTimeout:
-            print(f"Total Execution Time: {self.commitTimeout:.3f}+++ Seconds")
-        else:
-            print(f"Total Execution Time: {self.execution_time:.3f} Seconds")
+        print(f"Total Execution Time: {self.execution_time:.3f} Seconds")
         print(f"FIM found :{len(self.finalTopK)}")
         print(f"Rank count:{self.heap.rankCount()}")
         print(f"Absolute minSup:{self.min_count}")
@@ -710,3 +736,10 @@ def _bitPacker(data):
 # used in parallel computations
 def parallelBitSetOp(value):
     return _bitPacker(value)
+
+# 1. The worker function now expects a single list (e.g., [0, 3, 4])
+def gmpy2_bitPacker(data):
+    BSN = gmpy2.xmpz(0) 
+    for i in data:
+        BSN[i] = 1 # Sets the i-th bit to 1 instantly
+    return BSN

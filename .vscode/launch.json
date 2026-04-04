@@ -1,19 +1,17 @@
 {
     "version": "0.2.0",
-    "configurations": [       
-
+    "configurations": [
         {
             "name": "C++ (gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}.exe", // Output executable
-            //"args": ["../../datasets/kosarak.dat", "100", "0"], 
-            "args": ["../../datasets/retail.dat", "100", "1"],
-            //"args": ["../../datasets/mushroom.dat", "10000", "1"],
-            //"args": ["../../datasets/T16IT20D100K.dat", "0.65513", "1"],
-            //"args": ["../../datasets/webdocs.dat", "0.327204591739643", "1"],
-            //"args": ["../../datasets/chess.dat", "0.945244055068836", "1"],
-            //"args": ["../../datasets/kosarak.dat", "0.00634443162741085", "1"], 
+            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+            "args": [
+                "../../datasets/kosarak.dat",
+                "100",
+                "true",
+                " "
+            ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
@@ -33,7 +31,6 @@
                 }
             ]
         },
-        
         {
             "type": "java",
             "name": "Run java",
@@ -114,7 +111,7 @@
                 "1"
             ],
             "console": "integratedTerminal"
-        },        
+        },
         {
             "name": "Run datasetDescribe 01",
             "type": "debugpy",
@@ -143,7 +140,7 @@
                 "-s94.5244055068836"
             ],
             "console": "integratedTerminal"
-        },        
+        },
         {
             "name": "Run python...",
             "type": "debugpy",
@@ -160,7 +157,7 @@
             "module": "flask",
             "cwd": "${workspaceFolder}/python",
             "env": {
-                "FLASK_APP": "app.py",  // replace 'app.py' with your entry point
+                "FLASK_APP": "app.py",
                 "FLASK_ENV": "development"
             },
             "args": [
@@ -170,7 +167,7 @@
             ],
             "jinja": true,
             "justMyCode": false
-        },        
+        },
         {
             "name": "Run Main04...",
             "type": "debugpy",
@@ -240,7 +237,8 @@
             "args": [
                 "79d1727987f200802593e3599119c966",
                 "FpGrowthSampleWithoutquotes.txt",
-                "0","2"
+                "0",
+                "2"
             ],
             "console": "integratedTerminal"
         },
@@ -251,7 +249,7 @@
             "runtimeArgs": [
                 "--remote-debugging-port=9222"
             ],
-            "url": "c:\\Users\\Start Again\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.5\\out\\startpage\\index.html", // Provide your project's url to finish configuring
+            "url": "c:\\Users\\Start Again\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.5\\out\\startpage\\index.html",
             "presentation": {
                 "hidden": true
             }
@@ -264,7 +262,7 @@
                 "--headless",
                 "--remote-debugging-port=9222"
             ],
-            "url": "c:\\Users\\Start Again\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.5\\out\\startpage\\index.html", // Provide your project's url to finish configuring
+            "url": "c:\\Users\\Start Again\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.5\\out\\startpage\\index.html",
             "presentation": {
                 "hidden": true
             }
@@ -273,10 +271,36 @@
             "type": "vscode-edge-devtools.debug",
             "name": "Open Edge DevTools",
             "request": "attach",
-            "url": "c:\\Users\\Start Again\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.5\\out\\startpage\\index.html", // Provide your project's url to finish configuring
+            "url": "c:\\Users\\Start Again\\.vscode\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.5\\out\\startpage\\index.html",
             "presentation": {
                 "hidden": true
             }
+        },
+        {
+            "name": "C/C++: g++.exe build and debug active file",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "D:\\msys64\\mingw64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "C/C++: g++.exe build active file"
         }
     ],
     "compounds": [

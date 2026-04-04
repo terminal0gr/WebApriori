@@ -8,8 +8,9 @@
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
-				"-std=c++20",
-                "-march=native",				
+				"-std=c++23",
+				"-march=native",
+				"-fopenmp",
 				"${file}",
 				"-o",
 				"${fileDirname}\\${fileBasenameNoExtension}.exe"
@@ -30,8 +31,9 @@
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
-				"-std=c++20",
-                "-march=native",				
+				"-std=c++23",
+				"-march=native",
+				"-fopenmp",
 				"${file}",
 				"-o",
 				"${fileDirname}\\${fileBasenameNoExtension}.exe"

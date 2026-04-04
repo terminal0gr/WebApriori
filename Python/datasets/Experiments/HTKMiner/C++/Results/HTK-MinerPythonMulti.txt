@@ -1,0 +1,790 @@
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem kosarak
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "kosarak.dat" "100" " " "True" "True"
+Read dataset Time: 2.504 Seconds
+Total items in transactions: 8019015
+bitset transformation Time: 0.627 Seconds
+FI Mining Time: 0.048 Seconds
+Total Execution Time: 3.421 Seconds
+FIM found :100
+Rank count:100
+Absolute minSup:22466
+Relative minSup:0.022692883448720304
+Max Memory:76378112
+Transactions:990002
+Items:41270
+1-item: 22 / 41270
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "kosarak.dat" "1000" " " "True" "True"
+Read dataset Time: 2.504 Seconds
+Total items in transactions: 8019015
+bitset transformation Time: 1.121 Seconds
+FI Mining Time: 1.514 Seconds
+Total Execution Time: 5.274 Seconds
+FIM found :1000
+Rank count:917
+Absolute minSup:6281
+Relative minSup:0.0063444316274108535
+Max Memory:210784256
+Transactions:990002
+Items:41270
+1-item: 104 / 41270
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "kosarak.dat" "10000" " " "True" "True"
+Read dataset Time: 2.504 Seconds
+Total items in transactions: 8019015
+bitset transformation Time: 5.685 Seconds
+FI Mining Time: 62.516 Seconds
+Total Execution Time: 70.792 Seconds
+FIM found :10007
+Rank count:3481
+Absolute minSup:2369
+Relative minSup:0.002392924458738467
+Max Memory:2446979072
+Transactions:990002
+Items:41270
+1-item: 434 / 41270
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem retail
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "retail.dat" "100" " " "True" "True"
+Read dataset Time: 0.301 Seconds
+Total items in transactions: 908576
+bitset transformation Time: 0.343 Seconds
+FI Mining Time: 0.000 Seconds
+Total Execution Time: 0.648 Seconds
+FIM found :100
+Rank count:98
+Absolute minSup:1193
+Relative minSup:0.013531907170889952
+Max Memory:26796032
+Transactions:88162
+Items:16470
+1-item: 38 / 16470
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "retail.dat" "1000" " " "True" "True"
+Read dataset Time: 0.284 Seconds
+Total items in transactions: 908576
+bitset transformation Time: 0.521 Seconds
+FI Mining Time: 0.363 Seconds
+Total Execution Time: 1.167 Seconds
+FIM found :1001
+Rank count:509
+Absolute minSup:321
+Relative minSup:0.0036410244776661146
+Max Memory:36777984
+Transactions:88162
+Items:16470
+1-item: 375 / 16470
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "retail.dat" "10000" " " "True" "True"
+Read dataset Time: 0.267 Seconds
+Total items in transactions: 908576
+bitset transformation Time: 2.478 Seconds
+FI Mining Time: 18.301 Seconds
+Total Execution Time: 21.054 Seconds
+FIM found :10167
+Rank count:758
+Absolute minSup:72
+Relative minSup:0.0008166783875138948
+Max Memory:192471040
+Transactions:88162
+Items:16470
+1-item: 2618 / 16470
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem L-0023
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "L-0023.csv" "100" ";" "True" "True"
+Read dataset Time: 0.048 Seconds
+Total items in transactions: 64987
+bitset transformation Time: 0.332 Seconds
+FI Mining Time: 0.000 Seconds
+Total Execution Time: 0.379 Seconds
+FIM found :100
+Rank count:69
+Absolute minSup:118
+Relative minSup:0.032896570950655145
+Max Memory:16187392
+Transactions:3587
+Items:2160
+1-item: 90 / 2160
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "L-0023.csv" "1000" ";" "True" "True"
+Read dataset Time: 0.047 Seconds
+Total items in transactions: 64987
+bitset transformation Time: 0.477 Seconds
+FI Mining Time: 0.075 Seconds
+Total Execution Time: 0.599 Seconds
+FIM found :1025
+Rank count:143
+Absolute minSup:44
+Relative minSup:0.012266517981600222
+Max Memory:18743296
+Transactions:3587
+Items:2160
+1-item: 482 / 2160
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "L-0023.csv" "10000" ";" "True" "True"
+Read dataset Time: 0.032 Seconds
+Total items in transactions: 64987
+bitset transformation Time: 0.659 Seconds
+FI Mining Time: 5.368 Seconds
+Total Execution Time: 6.061 Seconds
+FIM found :11257
+Rank count:168
+Absolute minSup:19
+Relative minSup:0.005296905492054642
+Max Memory:32219136
+Transactions:3587
+Items:2160
+1-item: 972 / 2160
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem T10I4D100K
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "T10I4D100K.dat" "100" " " "True" "True"
+Read dataset Time: 0.270 Seconds
+Total items in transactions: 1010228
+bitset transformation Time: 0.350 Seconds
+FI Mining Time: 0.013 Seconds
+Total Execution Time: 0.634 Seconds
+FIM found :100
+Rank count:98
+Absolute minSup:2614
+Relative minSup:0.02614
+Max Memory:21868544
+Transactions:100000
+Items:870
+1-item: 100 / 870
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "T10I4D100K.dat" "1000" " " "True" "True"
+Read dataset Time: 0.253 Seconds
+Total items in transactions: 1010228
+bitset transformation Time: 0.524 Seconds
+FI Mining Time: 0.484 Seconds
+Total Execution Time: 1.260 Seconds
+FIM found :1001
+Rank count:660
+Absolute minSup:522
+Relative minSup:0.00522
+Max Memory:37027840
+Transactions:100000
+Items:870
+1-item: 561 / 870
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "T10I4D100K.dat" "10000" " " "True" "True"
+Read dataset Time: 0.268 Seconds
+Total items in transactions: 1010228
+bitset transformation Time: 0.524 Seconds
+FI Mining Time: 6.406 Seconds
+Total Execution Time: 7.197 Seconds
+FIM found :10075
+Rank count:953
+Absolute minSup:227
+Relative minSup:0.00227
+Max Memory:286392320
+Transactions:100000
+Items:870
+1-item: 730 / 870
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem pumsb_star
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "pumsb_star.dat" "100" " " "True" "True"
+Read dataset Time: 0.548 Seconds
+Total items in transactions: 2475947
+bitset transformation Time: 0.380 Seconds
+FI Mining Time: 0.014 Seconds
+Total Execution Time: 0.942 Seconds
+FIM found :101
+Rank count:49
+Absolute minSup:30952
+Relative minSup:0.6310810259756148
+Max Memory:19734528
+Transactions:49046
+Items:2088
+1-item: 12 / 2088
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "pumsb_star.dat" "1000" " " "True" "True"
+Read dataset Time: 0.536 Seconds
+Total items in transactions: 2475947
+bitset transformation Time: 0.543 Seconds
+FI Mining Time: 0.090 Seconds
+Total Execution Time: 1.169 Seconds
+FIM found :1003
+Rank count:356
+Absolute minSup:23505
+Relative minSup:0.4792439750438364
+Max Memory:28762112
+Transactions:49046
+Items:2088
+1-item: 34 / 2088
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "pumsb_star.dat" "10000" " " "True" "True"
+Read dataset Time: 0.526 Seconds
+Total items in transactions: 2475947
+bitset transformation Time: 0.724 Seconds
+FI Mining Time: 5.321 Seconds
+Total Execution Time: 6.583 Seconds
+FIM found :10000
+Rank count:1286
+Absolute minSup:20835
+Relative minSup:0.424805284834645
+Max Memory:116170752
+Transactions:49046
+Items:2088
+1-item: 45 / 2088
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem pumsb
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "pumsb.dat" "100" " " "True" "True"
+Read dataset Time: 0.783 Seconds
+Total items in transactions: 3629404
+bitset transformation Time: 0.388 Seconds
+FI Mining Time: 0.006 Seconds
+Total Execution Time: 1.186 Seconds
+FIM found :100
+Rank count:64
+Absolute minSup:46972
+Relative minSup:0.9577131672307629
+Max Memory:19746816
+Transactions:49046
+Items:2113
+1-item: 12 / 2113
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "pumsb.dat" "1000" " " "True" "True"
+Read dataset Time: 0.756 Seconds
+Total items in transactions: 3629404
+bitset transformation Time: 0.558 Seconds
+FI Mining Time: 0.079 Seconds
+Total Execution Time: 1.401 Seconds
+FIM found :1000
+Rank count:511
+Absolute minSup:45137
+Relative minSup:0.9202993108510378
+Max Memory:27836416
+Transactions:49046
+Items:2113
+1-item: 18 / 2113
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "pumsb.dat" "10000" " " "True" "True"
+Read dataset Time: 0.739 Seconds
+Total items in transactions: 3629404
+bitset transformation Time: 0.767 Seconds
+FI Mining Time: 5.012 Seconds
+Total Execution Time: 6.526 Seconds
+FIM found :10002
+Rank count:2444
+Absolute minSup:42566
+Relative minSup:0.867879133874322
+Max Memory:103018496
+Transactions:49046
+Items:2113
+1-item: 21 / 2113
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem T40I10D100K
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "T40I10D100K.dat" "100" " " "True" "True"
+Read dataset Time: 0.914 Seconds
+Total items in transactions: 3960507
+bitset transformation Time: 0.367 Seconds
+FI Mining Time: 0.012 Seconds
+Total Execution Time: 1.292 Seconds
+FIM found :100
+Rank count:97
+Absolute minSup:9328
+Relative minSup:0.09328
+Max Memory:21274624
+Transactions:100000
+Items:942
+1-item: 100 / 942
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "T40I10D100K.dat" "1000" " " "True" "True"
+Read dataset Time: 0.914 Seconds
+Total items in transactions: 3960507
+bitset transformation Time: 0.606 Seconds
+FI Mining Time: 0.425 Seconds
+Total Execution Time: 1.953 Seconds
+FIM found :1000
+Rank count:865
+Absolute minSup:2693
+Relative minSup:0.02693
+Max Memory:31911936
+Transactions:100000
+Items:942
+1-item: 516 / 942
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "T40I10D100K.dat" "10000" " " "True" "True"
+Read dataset Time: 0.896 Seconds
+Total items in transactions: 3960507
+bitset transformation Time: 0.605 Seconds
+FI Mining Time: 11.057 Seconds
+Total Execution Time: 12.568 Seconds
+FIM found :10018
+Rank count:2117
+Absolute minSup:1303
+Relative minSup:0.01303
+Max Memory:242479104
+Transactions:100000
+Items:942
+1-item: 711 / 942
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem accidents
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "accidents.dat" "100" " " "True" "True"
+Read dataset Time: 2.318 Seconds
+Total items in transactions: 11500870
+bitset transformation Time: 0.675 Seconds
+FI Mining Time: 0.016 Seconds
+Total Execution Time: 3.044 Seconds
+FIM found :100
+Rank count:100
+Absolute minSup:278848
+Relative minSup:0.8196999850080692
+Max Memory:32350208
+Transactions:340183
+Items:468
+1-item: 9 / 468
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "accidents.dat" "1000" " " "True" "True"
+Read dataset Time: 2.238 Seconds
+Total items in transactions: 11500870
+bitset transformation Time: 0.848 Seconds
+FI Mining Time: 0.173 Seconds
+Total Execution Time: 3.312 Seconds
+FIM found :1000
+Rank count:986
+Absolute minSup:223300
+Relative minSup:0.6564114020982824
+Max Memory:78876672
+Transactions:340183
+Items:468
+1-item: 18 / 468
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "accidents.dat" "10000" " " "True" "True"
+Read dataset Time: 2.205 Seconds
+Total items in transactions: 11500870
+bitset transformation Time: 0.844 Seconds
+FI Mining Time: 6.841 Seconds
+Total Execution Time: 9.932 Seconds
+FIM found :10000
+Rank count:9137
+Absolute minSup:164238
+Relative minSup:0.4827930848984223
+Max Memory:569622528
+Transactions:340183
+Items:468
+1-item: 26 / 468
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem mushroom
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "mushroom.dat" "100" " " "True" "True"
+Read dataset Time: 0.063 Seconds
+Total items in transactions: 186852
+bitset transformation Time: 0.329 Seconds
+FI Mining Time: 0.003 Seconds
+Total Execution Time: 0.397 Seconds
+FIM found :107
+Rank count:31
+Absolute minSup:4464
+Relative minSup:0.5494830132939439
+Max Memory:16584704
+Transactions:8124
+Items:119
+1-item: 11 / 119
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "mushroom.dat" "1000" " " "True" "True"
+Read dataset Time: 0.032 Seconds
+Total items in transactions: 186852
+bitset transformation Time: 0.347 Seconds
+FI Mining Time: 0.061 Seconds
+Total Execution Time: 0.440 Seconds
+FIM found :1015
+Rank count:164
+Absolute minSup:2960
+Relative minSup:0.3643525356967011
+Max Memory:18255872
+Transactions:8124
+Items:119
+1-item: 24 / 119
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "mushroom.dat" "10000" " " "True" "True"
+Read dataset Time: 0.032 Seconds
+Total items in transactions: 186852
+bitset transformation Time: 0.336 Seconds
+FI Mining Time: 5.455 Seconds
+Total Execution Time: 5.823 Seconds
+FIM found :10011
+Rank count:368
+Absolute minSup:1840
+Relative minSup:0.22648941408173315
+Max Memory:34570240
+Transactions:8124
+Items:119
+1-item: 40 / 119
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem connect
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "connect.dat" "100" " " "True" "True"
+Read dataset Time: 0.566 Seconds
+Total items in transactions: 2904951
+bitset transformation Time: 0.387 Seconds
+FI Mining Time: 0.000 Seconds
+Total Execution Time: 0.961 Seconds
+FIM found :100
+Rank count:76
+Absolute minSup:66443
+Relative minSup:0.9835102209985642
+Max Memory:21049344
+Transactions:67557
+Items:129
+1-item: 10 / 129
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "connect.dat" "1000" " " "True" "True"
+Read dataset Time: 0.552 Seconds
+Total items in transactions: 2904951
+bitset transformation Time: 0.395 Seconds
+FI Mining Time: 0.079 Seconds
+Total Execution Time: 1.026 Seconds
+FIM found :1003
+Rank count:423
+Absolute minSup:64895
+Relative minSup:0.9605962372515061
+Max Memory:27942912
+Transactions:67557
+Items:129
+1-item: 15 / 129
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "connect.dat" "10000" " " "True" "True"
+Read dataset Time: 0.536 Seconds
+Total items in transactions: 2904951
+bitset transformation Time: 0.406 Seconds
+FI Mining Time: 5.279 Seconds
+Total Execution Time: 6.225 Seconds
+FIM found :10015
+Rank count:1605
+Absolute minSup:62335
+Relative minSup:0.9227023106413843
+Max Memory:112390144
+Transactions:67557
+Items:129
+1-item: 19 / 129
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem chess
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "chess.dat" "100" " " "True" "True"
+Read dataset Time: 0.032 Seconds
+Total items in transactions: 118252
+bitset transformation Time: 0.319 Seconds
+FI Mining Time: 0.012 Seconds
+Total Execution Time: 0.363 Seconds
+FIM found :102
+Rank count:71
+Absolute minSup:3021
+Relative minSup:0.945244055068836
+Max Memory:16568320
+Transactions:3196
+Items:75
+1-item: 11 / 75
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "chess.dat" "1000" " " "True" "True"
+Read dataset Time: 0.016 Seconds
+Total items in transactions: 118252
+bitset transformation Time: 0.332 Seconds
+FI Mining Time: 0.063 Seconds
+Total Execution Time: 0.411 Seconds
+FIM found :1001
+Rank count:247
+Absolute minSup:2833
+Relative minSup:0.8864205256570713
+Max Memory:17641472
+Transactions:3196
+Items:75
+1-item: 16 / 75
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "chess.dat" "10000" " " "True" "True"
+Read dataset Time: 0.031 Seconds
+Total items in transactions: 118252
+bitset transformation Time: 0.317 Seconds
+FI Mining Time: 5.138 Seconds
+Total Execution Time: 5.485 Seconds
+FIM found :10028
+Rank count:556
+Absolute minSup:2524
+Relative minSup:0.7897371714643304
+Max Memory:26902528
+Transactions:3196
+Items:75
+1-item: 21 / 75
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem T16IT20D100K
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "T16IT20D100K.dat" "100" " " "True" "True"
+Read dataset Time: 0.322 Seconds
+Total items in transactions: 1611679
+bitset transformation Time: 0.356 Seconds
+FI Mining Time: 0.000 Seconds
+Total Execution Time: 0.685 Seconds
+FIM found :100
+Rank count:91
+Absolute minSup:65513
+Relative minSup:0.65513
+Max Memory:19709952
+Transactions:100000
+Items:20
+1-item: 20 / 20
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "T16IT20D100K.dat" "1000" " " "True" "True"
+Read dataset Time: 0.315 Seconds
+Total items in transactions: 1611679
+bitset transformation Time: 0.356 Seconds
+FI Mining Time: 0.096 Seconds
+Total Execution Time: 0.772 Seconds
+FIM found :1003
+Rank count:523
+Absolute minSup:53743
+Relative minSup:0.53743
+Max Memory:29511680
+Transactions:100000
+Items:20
+1-item: 20 / 20
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "T16IT20D100K.dat" "10000" " " "True" "True"
+Read dataset Time: 0.313 Seconds
+Total items in transactions: 1611679
+bitset transformation Time: 0.358 Seconds
+FI Mining Time: 5.484 Seconds
+Total Execution Time: 6.165 Seconds
+FIM found :10034
+Rank count:1581
+Absolute minSup:37865
+Relative minSup:0.37865
+Max Memory:84357120
+Transactions:100000
+Items:20
+1-item: 20 / 20
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem webdocs
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "webdocs.dat" "100" " " "True" "True"
+Read dataset Time: 142.976 Seconds
+Total items in transactions: 299887139
+bitset transformation Time: 2.664 Seconds
+FI Mining Time: 0.158 Seconds
+Total Execution Time: 146.402 Seconds
+FIM found :100
+Rank count:100
+Absolute minSup:553657
+Relative minSup:0.32720459173964384
+Max Memory:1540890624
+Transactions:1692082
+Items:5267656
+1-item: 17 / 5267656
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "webdocs.dat" "1000" " " "True" "True"
+Read dataset Time: 137.599 Seconds
+Total items in transactions: 299887139
+bitset transformation Time: 10.769 Seconds
+FI Mining Time: 1.523 Seconds
+Total Execution Time: 151.528 Seconds
+FIM found :1000
+Rank count:992
+Absolute minSup:365679
+Relative minSup:0.2161118669189791
+Max Memory:1809993728
+Transactions:1692082
+Items:5267656
+1-item: 50 / 5267656
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "webdocs.dat" "10000" " " "True" "True"
+Read dataset Time: 138.010 Seconds
+Total items in transactions: 299887139
+bitset transformation Time: 30.058 Seconds
+FI Mining Time: 36.683 Seconds
+Total Execution Time: 207.973 Seconds
+FIM found :10000
+Rank count:9415
+Absolute minSup:255241
+Relative minSup:0.1508443444230244
+Max Memory:4948119552
+Transactions:1692082
+Items:5267656
+1-item: 118 / 5267656
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem susy
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "susy.txt" "100" " " "True" "True"
+Read dataset Time: 20.044 Seconds
+Total items in transactions: 95000000
+bitset transformation Time: 5.508 Seconds
+FI Mining Time: 0.079 Seconds
+Total Execution Time: 26.417 Seconds
+FIM found :100
+Rank count:100
+Absolute minSup:4354048
+Relative minSup:0.8708096
+Max Memory:83628032
+Transactions:5000000
+Items:179
+1-item: 9 / 179
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "susy.txt" "1000" " " "True" "True"
+Read dataset Time: 19.328 Seconds
+Total items in transactions: 95000000
+bitset transformation Time: 5.645 Seconds
+FI Mining Time: 1.751 Seconds
+Total Execution Time: 27.415 Seconds
+FIM found :1000
+Rank count:938
+Absolute minSup:3643590
+Relative minSup:0.728718
+Max Memory:1027596288
+Transactions:5000000
+Items:179
+1-item: 10 / 179
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "susy.txt" "10000" " " "True" "True"
+Read dataset Time: 19.247 Seconds
+Total items in transactions: 95000000
+bitset transformation Time: 5.633 Seconds
+FI Mining Time: 51.320 Seconds
+Total Execution Time: 76.909 Seconds
+FIM found :10001
+Rank count:7595
+Absolute minSup:757764
+Relative minSup:0.1515528
+Max Memory:7556898816
+Transactions:5000000
+Items:179
+1-item: 19 / 179
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem TH2FIM
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "TH2FIM.dat" "100" " " "True" "True"
+Read dataset Time: 74.008 Seconds
+Total items in transactions: 290432723
+bitset transformation Time: 22.256 Seconds
+FI Mining Time: 2.510 Seconds
+Total Execution Time: 100.778 Seconds
+FIM found :100
+Rank count:100
+Absolute minSup:1083088
+Relative minSup:0.04087642039209115
+Max Memory:381386752
+Transactions:26496645
+Items:836
+1-item: 56 / 836
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "TH2FIM.dat" "1000" " " "True" "True"
+Read dataset Time: 70.114 Seconds
+Total items in transactions: 290432723
+bitset transformation Time: 147.745 Seconds
+FI Mining Time: 74.625 Seconds
+Total Execution Time: 296.242 Seconds
+FIM found :1000
+Rank count:998
+Absolute minSup:365625
+Relative minSup:0.013798916806259812
+Max Memory:3949969408
+Transactions:26496645
+Items:836
+1-item: 231 / 836
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "TH2FIM.dat" "10000" " " "True" "True"
+Read dataset Time: 70.733 Seconds
+Total items in transactions: 290432723
+bitset transformation Time: 148.143 Seconds
+GNU MP: Cannot allocate memory (size=3312088)
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem T80I1001M
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "T80I100D1M.dat" "100" " " "True" "True"
+Read dataset Time: 17.153 Seconds
+Total items in transactions: 79998957
+bitset transformation Time: 3.467 Seconds
+FI Mining Time: 0.159 Seconds
+Total Execution Time: 21.573 Seconds
+FIM found :100
+Rank count:99
+Absolute minSup:798902
+Relative minSup:0.798902
+Max Memory:35041280
+Transactions:1000000
+Items:100
+1-item: 100 / 100
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "T80I100D1M.dat" "1000" " " "True" "True"
+Read dataset Time: 15.388 Seconds
+Total items in transactions: 79998957
+bitset transformation Time: 3.487 Seconds
+FI Mining Time: 0.836 Seconds
+Total Execution Time: 20.025 Seconds
+FIM found :1003
+Rank count:590
+Absolute minSup:642858
+Relative minSup:0.642858
+Max Memory:194568192
+Transactions:1000000
+Items:100
+1-item: 100 / 100
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "T80I100D1M.dat" "10000" " " "True" "True"
+Read dataset Time: 15.618 Seconds
+Total items in transactions: 79998957
+bitset transformation Time: 3.467 Seconds
+FI Mining Time: 13.667 Seconds
+Total Execution Time: 33.037 Seconds
+FIM found :10003
+Rank count:2649
+Absolute minSup:518797
+Relative minSup:0.518797
+Max Memory:1015406592
+Transactions:1000000
+Items:100
+1-item: 100 / 100
+HTKMiner_BSN Done!

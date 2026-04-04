@@ -1,0 +1,16 @@
+To do:
+Check overall times of 
+HTK-Miner13 (Original - multicore in bitset manupulate strings in dataset)
+HTK-Miner14b (multicore in dataset read and bitset transformation. No strings manipulation)
+HTK-Miner15 (multicore in dataset read and bitset transformation and in main mining proc. No strings manipulation)
+
+Possible names 
+HTK-Miner++: A High-Performance Framework for Top-K Frequent Itemset Mining
+
+HTK-Miner++: An Optimized Approach to Discovering Top-K Itemsets in Large-Scale Databases
+
+Accelerating Top-K Pattern Discovery: The HTK-Miner++ Algorithm
+
+HTK-Miner++: A Scalable Expert System for Efficient Top-K Itemset Extraction
+
+Enhancing Knowledge Discovery through HTK-Miner++: An Efficient Top-K Mining Implementation

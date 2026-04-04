@@ -1,0 +1,142 @@
+Please help me complete the code to work if the dataset contains alpharithetic characters not integers
+what I have now is
+    inline std::string_view fast_atostr(const char*& p, const char* end) {
+        while (p < end && *p == ' ') p++;
+        if (p >= end || *p == '\n') return {};
+
+        const char* start = p;
+        while (p < end && *p != ' ' && *p != '\n') p++;
+        
+        return std::string_view(start, p - start);
+    }
+		
+		and
+		
+		        // [Part 1: Fast I/O - Load file into memory]
+        std::ifstream in(path, std::ios::binary | std::ios::ate);
+        if (!in.is_open()) return {};
+        
+        size_t fileSize = in.tellg();
+        std::vector<char> buffer(fileSize + 1);
+        in.seekg(0);
+        in.read(buffer.data(), fileSize);
+        buffer[fileSize] = '\0'; // Null terminator for safety
+        in.close();
+
+        const char* start_ptr = buffer.data();
+        const char* end_ptr = start_ptr + fileSize;
+        int num_threads = omp_get_max_threads();
+
+        // Determine chunk boundaries for each thread (align to newlines)
+        std::vector<const char*> boundaries(num_threads + 1);
+        boundaries[0] = start_ptr;
+        boundaries[num_threads] = end_ptr;
+        for (int i = 1; i < num_threads; ++i) {
+            const char* p = start_ptr + (fileSize / num_threads) * i;
+            while (p < end_ptr && *p != '\n') p++;
+            boundaries[i] = (p < end_ptr) ? p + 1 : end_ptr;
+        }
+
+        // [Part 2: Pass 1 - Parallel ID Discovery]
+        std::vector<std::unordered_set<std::string_view>> local_sets(num_threads);
+        std::vector<int> local_trans_counts(num_threads, 0);
+
+        #pragma omp parallel num_threads(num_threads)
+        {
+            int tid = omp_get_thread_num();
+            const char* p = boundaries[tid];
+            const char* end = boundaries[tid + 1];
+
+            while (p < end) {
+                const char* line_end = p;
+                while (line_end < end && *line_end != '\n') line_end++;
+                
+                local_trans_counts[tid]++;
+                while (p < line_end) {
+                    std::string_view item = fast_atostr(p, line_end);
+                    if (!item.empty()) {
+                        local_sets[tid].insert(item);
+                    }
+                }
+                p = line_end + 1;
+            }
+        }
+
+        // [Part 3: Serial Merge - Assign Global IDs]
+        int total_trans = 0;
+        std::vector<int> trans_offsets(num_threads, 0);
+        std::unordered_set<std::string_view> global_distinct_items;
+        
+        for (int i = 0; i < num_threads; ++i) {
+            trans_offsets[i] = total_trans;
+            total_trans += local_trans_counts[i];
+            global_distinct_items.insert(local_sets[i].begin(), local_sets[i].end());
+            local_sets[i].clear(); // Free memory immediately
+        }
+
+        int itemIdx = 0;
+        std::unordered_map<std::string_view, int> intToId; // Mapping file strings to internal 0...N IDs
+        for (const auto& val : global_distinct_items) {
+            intToId[val] = itemIdx;
+            idToItem[itemIdx] = val;
+            itemToId[val] = itemIdx;
+            itemIdx++;
+        }
+        this->num_of_transactions = total_trans;
+        this->num_of_items = itemIdx;
+
+        // [Part 4: Pass 2 - Populate Vertical DB (vR)]
+        // Use the Flat Vector optimization to save memory and reduce hashing
+        std::vector<std::vector<std::vector<int>>> local_vR_vec(num_threads, 
+                                                std::vector<std::vector<int>>(num_of_items));
+
+        #pragma omp parallel num_threads(num_threads)
+        {
+            int tid = omp_get_thread_num();
+            const char* p = boundaries[tid];
+            const char* end = boundaries[tid + 1];
+            int current_trans = trans_offsets[tid];
+
+            while (p < end) {
+                const char* line_end = p;
+                while (line_end < end && *line_end != '\n') line_end++;
+                
+                while (p < line_end) {
+                    std::string_view item = fast_atostr(p, line_end);
+                    if (item.empty()) {
+                        int id = intToId[item];
+                        auto& tids = local_vR_vec[tid][id];
+                        if (tids.empty() || tids.back() != current_trans) {
+                            tids.push_back(current_trans);
+                        }
+                    }
+                }
+                current_trans++;
+                p = line_end + 1;
+            }
+        }
+
+        // [Part 5: Final Merge - Consolidate results into global vR]
+        std::unordered_map<int, std::vector<int>> vR; 
+        for (int id = 0; id < num_of_items; ++id) {
+            // Calculate total size for pre-allocation
+            size_t total_size = 0;
+            for (int tid = 0; tid < num_threads; ++tid) {
+                total_size += local_vR_vec[tid][id].size();
+            }
+
+            vR[id].reserve(total_size);
+            for (int tid = 0; tid < num_threads; ++tid) {
+                if (!local_vR_vec[tid][id].empty()) {
+                    vR[id].insert(vR[id].end(), 
+                                local_vR_vec[tid][id].begin(), 
+                                local_vR_vec[tid][id].end());
+                    
+                    // Free local memory as we go to lower peak memory consumption
+                    local_vR_vec[tid][id].clear();
+                    local_vR_vec[tid][id].shrink_to_fit();
+                }
+            }
+        }
+
+but does not work.

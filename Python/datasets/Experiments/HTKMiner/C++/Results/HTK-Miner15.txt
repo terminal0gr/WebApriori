@@ -1,0 +1,434 @@
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>rem 100
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\kosarak.dat" "100" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.21 s
+Level 1 Frequent Items: 100
+Initial MinSup: 6468
+Total Execution Time: 0.294 s
+FIM found: 100
+Absolute minSup: 22466
+Relative minSup: 0.022692883448720
+Peak Memory Usage: 124 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\retail.dat" "100" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.042 s
+Level 1 Frequent Items: 100
+Initial MinSup: 712
+Total Execution Time: 0.056 s
+FIM found: 100
+Absolute minSup: 1193
+Relative minSup: 0.013531907170890
+Peak Memory Usage: 28 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\L-0023.csv" "100" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.005 s
+Level 1 Frequent Items: 100
+Initial MinSup: 128
+Total Execution Time: 0.008 s
+FIM found: 100
+Absolute minSup: 181
+Relative minSup: 0.050459994424310
+Peak Memory Usage: 9 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\T10I4D100K.dat" "100" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.015 s
+Level 1 Frequent Items: 100
+Initial MinSup: 2614
+Total Execution Time: 0.04 s
+FIM found: 100
+Absolute minSup: 2614
+Relative minSup: 0.026140000000000
+Peak Memory Usage: 19 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\pumsb_star.dat" "100" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.033 s
+Level 1 Frequent Items: 100
+Initial MinSup: 6797
+Total Execution Time: 0.042 s
+FIM found: 101
+Absolute minSup: 30952
+Relative minSup: 0.631081025975615
+Peak Memory Usage: 40 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\pumsb.dat" "100" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.048 s
+Level 1 Frequent Items: 100
+Initial MinSup: 11798
+Total Execution Time: 0.058 s
+FIM found: 100
+Absolute minSup: 46972
+Relative minSup: 0.957713167230763
+Peak Memory Usage: 53 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\T40I10D100K.dat" "100" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.04 s
+Level 1 Frequent Items: 100
+Initial MinSup: 9328
+Total Execution Time: 0.069 s
+FIM found: 100
+Absolute minSup: 9328
+Relative minSup: 0.093280000000000
+Peak Memory Usage: 57 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\accidents.dat" "100" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.083 s
+Level 1 Frequent Items: 100
+Initial MinSup: 21067
+Total Execution Time: 0.115 s
+FIM found: 100
+Absolute minSup: 278848
+Relative minSup: 0.819699985008069
+Peak Memory Usage: 107 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\mushroom.dat" "100" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.003 s
+Level 1 Frequent Items: 103
+Initial MinSup: 48
+Total Execution Time: 0.004 s
+FIM found: 107
+Absolute minSup: 4464
+Relative minSup: 0.549483013293944
+Peak Memory Usage: 8 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\connect.dat" "100" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.024 s
+Level 1 Frequent Items: 100
+Initial MinSup: 1228
+Total Execution Time: 0.032 s
+FIM found: 100
+Absolute minSup: 66443
+Relative minSup: 0.983510220998564
+Peak Memory Usage: 39 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\chess.dat" "100" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.002 s
+Level 1 Frequent Items: 75
+Initial MinSup: 0
+Total Execution Time: 0.005 s
+FIM found: 102
+Absolute minSup: 3021
+Relative minSup: 0.945244055068836
+Peak Memory Usage: 7 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\T16IT20D100K.dat" "100" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.014 s
+Level 1 Frequent Items: 20
+Initial MinSup: 0
+Total Execution Time: 0.023 s
+FIM found: 100
+Absolute minSup: 65513
+Relative minSup: 0.655130000000000
+Peak Memory Usage: 24 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\webdocs.dat" "100" "1"
+Read dataset Started
+Dataset reading 14 ended: 18.485 s
+Level 1 Frequent Items: 100
+Initial MinSup: 281107
+Total Execution Time: 21.486 s
+FIM found: 100
+Absolute minSup: 553657
+Relative minSup: 0.327204591739644
+Peak Memory Usage: 6423 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>rem 1000
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\kosarak.dat" "1000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.194 s
+Level 1 Frequent Items: 1000
+Initial MinSup: 1256
+Total Execution Time: 0.719 s
+FIM found: 1000
+Absolute minSup: 6281
+Relative minSup: 0.006344431627411
+Peak Memory Usage: 275 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\retail.dat" "1000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.042 s
+Level 1 Frequent Items: 1004
+Initial MinSup: 169
+Total Execution Time: 0.156 s
+FIM found: 1001
+Absolute minSup: 321
+Relative minSup: 0.003641024477666
+Peak Memory Usage: 38 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\L-0023.csv" "1000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.006 s
+Level 1 Frequent Items: 1018
+Initial MinSup: 9
+Total Execution Time: 0.012 s
+FIM found: 1015
+Absolute minSup: 76
+Relative minSup: 0.021187621968219
+Peak Memory Usage: 10 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\T10I4D100K.dat" "1000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.015 s
+Level 1 Frequent Items: 870
+Initial MinSup: 0
+Total Execution Time: 0.743 s
+FIM found: 1001
+Absolute minSup: 522
+Relative minSup: 0.005220000000000
+Peak Memory Usage: 32 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\pumsb_star.dat" "1000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.033 s
+Level 1 Frequent Items: 1009
+Initial MinSup: 48
+Total Execution Time: 0.053 s
+FIM found: 1003
+Absolute minSup: 23505
+Relative minSup: 0.479243975043836
+Peak Memory Usage: 41 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\pumsb.dat" "1000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.044 s
+Level 1 Frequent Items: 1003
+Initial MinSup: 52
+Total Execution Time: 0.066 s
+FIM found: 1000
+Absolute minSup: 45137
+Relative minSup: 0.920299310851038
+Peak Memory Usage: 54 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\T40I10D100K.dat" "1000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.04 s
+Level 1 Frequent Items: 942
+Initial MinSup: 0
+Total Execution Time: 0.679 s
+FIM found: 1000
+Absolute minSup: 2693
+Relative minSup: 0.026930000000000
+Peak Memory Usage: 57 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\accidents.dat" "1000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.085 s
+Level 1 Frequent Items: 468
+Initial MinSup: 0
+Total Execution Time: 0.296 s
+FIM found: 1000
+Absolute minSup: 223300
+Relative minSup: 0.656411402098282
+Peak Memory Usage: 108 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\mushroom.dat" "1000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.003 s
+Level 1 Frequent Items: 119
+Initial MinSup: 0
+Total Execution Time: 0.011 s
+FIM found: 1015
+Absolute minSup: 2960
+Relative minSup: 0.364352535696701
+Peak Memory Usage: 9 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\connect.dat" "1000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.025 s
+Level 1 Frequent Items: 129
+Initial MinSup: 0
+Total Execution Time: 0.07 s
+FIM found: 1003
+Absolute minSup: 64895
+Relative minSup: 0.960596237251506
+Peak Memory Usage: 38 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\chess.dat" "1000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.002 s
+Level 1 Frequent Items: 75
+Initial MinSup: 0
+Total Execution Time: 0.008 s
+FIM found: 1001
+Absolute minSup: 2833
+Relative minSup: 0.886420525657071
+Peak Memory Usage: 7 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\T16IT20D100K.dat" "1000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.015 s
+Level 1 Frequent Items: 20
+Initial MinSup: 0
+Total Execution Time: 0.05 s
+FIM found: 1003
+Absolute minSup: 53743
+Relative minSup: 0.537430000000000
+Peak Memory Usage: 24 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\webdocs.dat" "1000" "1"
+Read dataset Started
+Dataset reading 14 ended: 18.466 s
+Level 1 Frequent Items: 1000
+Initial MinSup: 60314
+Total Execution Time: 28.678 s
+FIM found: 1000
+Absolute minSup: 365679
+Relative minSup: 0.216111866918979
+Peak Memory Usage: 6426 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>rem 10000
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\kosarak.dat" "10000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.196 s
+Level 1 Frequent Items: 10102
+Initial MinSup: 42
+Total Execution Time: 31.129 s
+FIM found: 10007
+Absolute minSup: 2369
+Relative minSup: 0.002392924458738
+Peak Memory Usage: 3489 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\retail.dat" "10000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.042 s
+Level 1 Frequent Items: 10340
+Initial MinSup: 6
+Total Execution Time: 5.868 s
+FIM found: 10167
+Absolute minSup: 72
+Relative minSup: 0.000816678387514
+Peak Memory Usage: 274 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\L-0023.csv" "10000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.005 s
+Level 1 Frequent Items: 1262
+Initial MinSup: 0
+Total Execution Time: 0.099 s
+FIM found: 10355
+Absolute minSup: 34
+Relative minSup: 0.009478672985782
+Peak Memory Usage: 22 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\T10I4D100K.dat" "10000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.015 s
+Level 1 Frequent Items: 870
+Initial MinSup: 0
+Total Execution Time: 2.063 s
+FIM found: 10075
+Absolute minSup: 227
+Relative minSup: 0.002270000000000
+Peak Memory Usage: 263 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\pumsb_star.dat" "10000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.033 s
+Level 1 Frequent Items: 2088
+Initial MinSup: 0
+Total Execution Time: 0.246 s
+FIM found: 10000
+Absolute minSup: 20835
+Relative minSup: 0.424805284834645
+Peak Memory Usage: 153 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\pumsb.dat" "10000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.044 s
+Level 1 Frequent Items: 2113
+Initial MinSup: 0
+Total Execution Time: 0.234 s
+FIM found: 10002
+Absolute minSup: 42566
+Relative minSup: 0.867879133874322
+Peak Memory Usage: 136 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\T40I10D100K.dat" "10000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.044 s
+Level 1 Frequent Items: 942
+Initial MinSup: 0
+Total Execution Time: 3.863 s
+FIM found: 10018
+Absolute minSup: 1303
+Relative minSup: 0.013030000000000
+Peak Memory Usage: 225 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\accidents.dat" "10000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.087 s
+Level 1 Frequent Items: 468
+Initial MinSup: 0
+Total Execution Time: 3.296 s
+FIM found: 10000
+Absolute minSup: 164238
+Relative minSup: 0.482793084898422
+Peak Memory Usage: 870 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\mushroom.dat" "10000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.003 s
+Level 1 Frequent Items: 119
+Initial MinSup: 0
+Total Execution Time: 0.163 s
+FIM found: 10011
+Absolute minSup: 1840
+Relative minSup: 0.226489414081733
+Peak Memory Usage: 30 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\connect.dat" "10000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.026 s
+Level 1 Frequent Items: 129
+Initial MinSup: 0
+Total Execution Time: 0.5 s
+FIM found: 10015
+Absolute minSup: 62335
+Relative minSup: 0.922702310641384
+Peak Memory Usage: 168 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\chess.dat" "10000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.002 s
+Level 1 Frequent Items: 75
+Initial MinSup: 0
+Total Execution Time: 0.137 s
+FIM found: 10028
+Absolute minSup: 2524
+Relative minSup: 0.789737171464330
+Peak Memory Usage: 17 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\T16IT20D100K.dat" "10000" "1"
+Read dataset Started
+Dataset reading 14 ended: 0.015 s
+Level 1 Frequent Items: 20
+Initial MinSup: 0
+Total Execution Time: 0.319 s
+FIM found: 10034
+Absolute minSup: 37865
+Relative minSup: 0.378650000000000
+Peak Memory Usage: 128 MB
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments\HTKMiner\C++>call HTK-Miner_CL.exe "..\..\datasets\webdocs.dat" "10000" "1"
+Read dataset Started
+Dataset reading 14 ended: 18.484 s
+Level 1 Frequent Items: 10002
+Initial MinSup: 2460
+Total Execution Time: 119.39 s
+FIM found: 10000
+Absolute minSup: 255241
+Relative minSup: 0.150844344423024
+Peak Memory Usage: 7881 MB

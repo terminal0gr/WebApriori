@@ -1,0 +1,141 @@
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem TH1FIM
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "TH1FIM.dat" "100" " " "True" "True"
+Read dataset Time: 7.039 Seconds
+bitset transformation Time: 112.196 Seconds
+FI Mining Time: 0.300 Seconds
+Total Execution Time: 119.783 Seconds
+FIM found :100
+Rank count:99
+Absolute minSup:108540
+Relative minSup:0.040885821803511496
+Max Memory:64073728
+Transactions:2654710
+Items:828
+1-item: 55 / 828
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "TH1FIM.dat" "1000" " " "True" "True"
+Read dataset Time: 6.281 Seconds
+bitset transformation Time: 208.642 Seconds
+FI Mining Time: 8.847 Seconds
+Total Execution Time: 224.155 Seconds
+FIM found :1000
+Rank count:984
+Absolute minSup:36786
+Relative minSup:0.01385688078923875
+Max Memory:447143936
+Transactions:2654710
+Items:828
+1-item: 231 / 828
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "TH1FIM.dat" "10000" " " "True" "True"
+Read dataset Time: 6.390 Seconds
+bitset transformation Time: 209.808 Seconds
+FI Mining Time: 124.835 Seconds
+Total Execution Time: 341.413 Seconds
+FIM found :10000
+Rank count:7353
+Absolute minSup:13697
+Relative minSup:0.005159508948246701
+Max Memory:5744017408
+Transactions:2654710
+Items:828
+1-item: 431 / 828
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem webdocs
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "webdocs.dat" "100" " " "True" "True"
+Read dataset Time: 143.625 Seconds
+bitset transformation Time: 135.145 Seconds
+FI Mining Time: 0.205 Seconds
+Total Execution Time: 279.634 Seconds
+FIM found :100
+Rank count:100
+Absolute minSup:553657
+Relative minSup:0.32720459173964384
+Max Memory:1536901120
+Transactions:1692082
+Items:5267656
+1-item: 17 / 5267656
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "webdocs.dat" "1000" " " "True" "True"
+Read dataset Time: 132.027 Seconds
+bitset transformation Time: 444.803 Seconds
+FI Mining Time: 2.738 Seconds
+Total Execution Time: 581.336 Seconds
+FIM found :1000
+Rank count:992
+Absolute minSup:365679
+Relative minSup:0.2161118669189791
+Max Memory:1805099008
+Transactions:1692082
+Items:5267656
+1-item: 50 / 5267656
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "webdocs.dat" "10000" " " "True" "True"
+Read dataset Time: 132.345 Seconds
+bitset transformation Time: 734.077 Seconds
+FI Mining Time: 62.468 Seconds
+Total Execution Time: 932.129 Seconds
+FIM found :10000
+Rank count:9415
+Absolute minSup:255241
+Relative minSup:0.1508443444230244
+Max Memory:5171535872
+Transactions:1692082
+Items:5267656
+1-item: 118 / 5267656
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>rem susy
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "susy.txt" "100" " " "True" "True"
+Read dataset Time: 18.506 Seconds
+bitset transformation Time: 3113.345 Seconds
+FI Mining Time: 0.031 Seconds
+Total Execution Time: 1000.000+++ Seconds
+FIM found :100
+Rank count:100
+Absolute minSup:1203636
+Relative minSup:0.2407272
+Max Memory:88961024
+Transactions:5000000
+Items:179
+1-item: 14 / 179
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "susy.txt" "1000" " " "True" "True"
+Read dataset Time: 17.113 Seconds
+bitset transformation Time: 3081.259 Seconds
+FI Mining Time: 1.355 Seconds
+Total Execution Time: 1000.000+++ Seconds
+FIM found :1000
+Rank count:999
+Absolute minSup:204121
+Relative minSup:0.0408242
+Max Memory:110227456
+Transactions:5000000
+Items:179
+1-item: 87 / 179
+HTKMiner_BSN Done!
+
+D:\xampp\htdocs\WebApriori\Python\datasets\Experiments>call python HTKMiner_Test.py "susy.txt" "10000" " " "True" "True"
+Read dataset Time: 17.234 Seconds
+bitset transformation Time: 3029.251 Seconds
+FI Mining Time: 6.032 Seconds
+Total Execution Time: 1000.000+++ Seconds
+FIM found :10039
+Rank count:5508
+Absolute minSup:2
+Relative minSup:4e-07
+Max Memory:112558080
+Transactions:5000000
+Items:179
+1-item: 174 / 179
+HTKMiner_BSN Done!

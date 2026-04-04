@@ -5,7 +5,7 @@ import json
 
 tidSet=True #tidSets (True) mode / diffSets (False)
 bitSetMode=True #If bitSet will be used in transformation of the vertical database representation 
-commitTimeout=1000
+commitTimeout=3500
 
 # datasetName='mushroom.dat'  
 # topK=70
