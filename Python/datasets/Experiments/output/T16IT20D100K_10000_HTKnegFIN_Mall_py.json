@@ -1,0 +1,16 @@
+{
+    "Algorithm": "HTKnegFIN",
+    "Language": "python",
+    "library": "Mall",
+    "transactions": 100000,
+    "TopK": 10000,
+    "totalFI": 10034,
+    "Rank": 1581,
+    "minSup": 37865,
+    "minSupAbsolute": 0.37865,
+    "total candidates": 87651,
+    "Runtime": 27.633286952972412,
+    "Memory": 65597440,
+    "Items": 20,
+    "TopK 1-itemsets": 10
+}

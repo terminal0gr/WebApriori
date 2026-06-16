@@ -1,23 +1,8 @@
-objects = data.o eclat.o testeclat.o
+CXX = g++
+# Crucial: Ensure -g is present. -O3 can be left out or changed to -O0 during debugging
+CXXFLAGS = -g -Wall -O0 
 
-CC = g++
-flags = -O3 -Wall -ansi -pedantic
+all: eclat
 
-# CXX = g++
-# CXXFLAGS = -std=c++11 -Wall -Wextra
-
-
-eclat: $(objects)
-	$(CC) $(flags) $(objects) -o eclat
-
-data.o: data.cpp data.h
-	$(CC) $(flags) -c data.cpp
-
-eclat.o: eclat.cpp data.h item.h eclat.h
-	$(CC) $(flags) -c eclat.cpp
-
-testeclat.o: testeclat.cpp data.h item.h eclat.h
-	$(CC) $(flags) -c testeclat.cpp
-
-clean: 
-	rm -f $(objects) eclat
+eclat: main.o eclat.o item.o
+	$(CXX) $(CXXFLAGS) -o eclat main.o eclat.o item.o

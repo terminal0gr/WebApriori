@@ -219,14 +219,9 @@ public:
             {
                 int tid = omp_get_thread_num();
 
-                // Reserve memory heuristic: next level usually smaller or similar
-                localNextLevelData[tid].reserve(n); 
-
                 DynamicBitSet newBits; // Reusable workspace for bitset operations
-                newBits.data.reserve(currentLevelData[0].bits.data.size()); // Ensure it matches the size of bitsets in candidates
 
                 std::vector<int> newKey; // Reusable workspace for itemset generation
-                newKey.reserve(level + 1); // We know the new itemset will be at most one item larger than current level
 
                 // SMART ITERATION MECHANISM (SIME) - Parallelized
                 // Using 'dynamic' schedule because mining tasks are often unbalanced

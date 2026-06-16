@@ -1,9 +1,9 @@
 {
     "minSup Absolute": 321,
-    "Runtime": 385.758,
+    "Runtime": 382.239,
     "library": "SPMF",
     "Language": "java",
-    "Memory": 63162480,
+    "Memory": 62368896,
     "minSup": 0.0036410244776661146,
     "totalFI": 1000,
     "Algorithm": "Apriori_topN"

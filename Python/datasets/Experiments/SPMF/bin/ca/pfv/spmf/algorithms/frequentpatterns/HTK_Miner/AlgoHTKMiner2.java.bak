@@ -1,0 +1,341 @@
+package ca.pfv.spmf.algorithms.frequentpatterns.HTK_Miner;
+
+/*
+ ** The implementation of the "HTK-Miner algorithm", the algorithm presented in:
+ * @article{HTK-Miner,
+ * title = {Efficient techniques for retrieving top-K frequent itemsets},
+ * journal = {Expert Systems with Applications},
+ * volume = {311},
+ * pages = {131250},
+ * year = {2026},
+ * issn = {0957-4174},
+ * doi = {https://doi.org/10.1016/j.eswa.2026.131250},
+ * url = {https://www.sciencedirect.com/science/article/pii/S0957417426001582},
+ * author = {Konstantinos Malliaridis and Stefanos Ougiaroglou},
+ * keywords = {HTK-Miner, HTK-negFIN, Q-Heap, Top- frequent itemsets},
+ * abstract = {Frequent itemset mining is a core data mining task aimed at uncovering recurrent patterns within transactional databases. Traditional methods rely on a minimum support threshold, which is often difficult to determine. Top-k mining offers a pragmatic alternative by retrieving the k most frequent itemsets. We propose two novel algorithms: HTK-Miner and HTK-negFIN. HTK-Miner, based on equivalence class theory and breadth-first search, utilizes vertical structures with four operational modes (TS, BSN, DTS, and DBSN). Its key innovation, the Quick Heap (Q-Heap), dynamically raises the support threshold to enable early pruning and accelerated identification. Furthermore, HTK-Miner requires a single database scan and employs compressed representations to reduce execution time and memory usage. HTK-negFIN adapts the pattern-growth paradigm by extending the efficient negFIN algorithm to the Top-k framework, integrating the Q-Heap and shared optimizations to achieve high performance. Experiments on diverse benchmark datasets demonstrate that our proposed algorithms consistently outperform state-of-the-art methods in both runtime and memory efficiency. These results highlight HTK-Miner and HTK-negFIN as scalable, effective solutions for Top-k frequent itemset mining.}
+ * }
+ *
+ * This file is part of the SPMF DATA MINING SOFTWARE
+ * (http://www.philippe-fournier-viger.com/spmf).
+ *
+ * SPMF is free software: you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 4 of the License, or (at your option) any later
+ * version.
+ *
+ * SPMF is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * SPMF. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @author Konstantinos Malliaridis and Stefanos Ougiaroglou (Copyright 2026)
+ * @Email terminal_gr@yahoo.com, konsmall@ihu.gr 
+ */
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * AlgoHTKMiner: Optimized for SPMF.
+ * Includes QuickHeap (primitive array) and K+N Tie-handling.
+ */
+public class AlgoHTKMiner {
+
+    private int k;
+    private int minCount = 0;
+    private int numberOfTransactions = 0;
+    private long startTimestamp;
+    private long endTimestamp;
+
+    private Map<String, Integer> itemToId = new HashMap<>();
+    private Map<Integer, String> idToItem = new HashMap<>();
+    private int[] rankToRaw;
+
+    // Structure to hold final results (Top-K + Ties)
+    private List<TopKFIM> topKFI = new ArrayList<>();
+    private QuickHeap quickHeap;
+
+    public AlgoHTKMiner() {}
+
+    public void runAlgorithm(String inputPath, String outputPath, int k) throws IOException {
+        this.k = k;
+        this.quickHeap = new QuickHeap(k);
+        this.startTimestamp = System.currentTimeMillis();
+        this.minCount = 0;
+        this.topKFI = new ArrayList<>();
+
+        // Step 1: Read and Rank (Level 1)
+        List<Candidate> currentLevelData = readAndRank(inputPath);
+        
+        // Initial global pruning to set minCount
+        performGetTopKFI(currentLevelData);
+
+        int level = 1;
+        while (currentLevelData != null && !currentLevelData.isEmpty()) {
+            List<Candidate> nextLevelData = new ArrayList<>();
+            int n = currentLevelData.size();
+
+            // SIME Mechanism
+            for (int j = 1; j < n; ++j) {
+                Candidate candJ = currentLevelData.get(j);
+                if (candJ.support < minCount) break;
+
+                for (int i = 0; i < j; ++i) {
+                    Candidate candI = currentLevelData.get(i);
+                    if (candI.support < minCount) break;
+
+                    // Prefix matching
+                    if (hasSamePrefix(candI.itemset, candJ.itemset, level - 1)) {
+                        CustomBitSet newBits = CustomBitSet.intersect(candI.bits, candJ.bits);
+                        int newSup = newBits.count();
+
+                        if (newSup >= minCount) {
+                            // Update the QuickHeap for thresholding
+                            minCount = quickHeap.insert(newSup);
+
+                            int[] newKey = new int[level + 1];
+                            System.arraycopy(candI.itemset, 0, newKey, 0, level);
+                            newKey[level] = candJ.itemset[level - 1];
+
+                            Candidate nextCand = new Candidate(newKey, newBits, newSup);
+                            nextLevelData.add(nextCand);
+                            
+                            // Add to global candidates for later pruning
+                            topKFI.add(new TopKFIM(newKey, newSup));
+                        }
+                    }
+                }
+            }
+
+            // Perform Global Pruning (K+N Ties logic) and prepare next level
+            performGetTopKFI(nextLevelData);
+            
+            // Sort by Support Descending for SIME prefix optimization
+            Collections.sort(nextLevelData, (a, b) -> {
+                if (a.support != b.support) return b.support - a.support;
+                return compareItemsets(a.itemset, b.itemset);
+            });
+            
+            currentLevelData = nextLevelData;
+            level++;
+        }
+
+        this.endTimestamp = System.currentTimeMillis();
+        saveResults(outputPath);
+    }
+
+    /**
+     * Requirement 4: Handles Top-K PLUS ties.
+     * Updates minCount and prunes both the global results and current candidates.
+     */
+    private void performGetTopKFI(List<Candidate> candidates) {
+        if (topKFI.isEmpty()) return;
+
+        // 1. Sort global results by support descending
+        Collections.sort(topKFI, (a, b) -> b.support - a.support);
+
+        // 2. Identify K-th support and include ties
+        if (topKFI.size() >= k) {
+            int kSup = topKFI.get(k - 1).support;
+            int cutoff = k;
+            
+            // Include N itemsets with same support
+            while (cutoff < topKFI.size() && topKFI.get(cutoff).support == kSup) {
+                cutoff++;
+            }
+
+            minCount = kSup;
+            
+            // Prune global list
+            if (topKFI.size() > cutoff) {
+                topKFI = new ArrayList<>(topKFI.subList(0, cutoff));
+            }
+        }
+
+        // 3. Prune current candidates level to save memory
+        candidates.removeIf(c -> c.support < minCount);
+    }
+
+    public void printStats() {
+        System.out.println("Total time: " + (endTimestamp - startTimestamp) / 1000.0 + " s");
+        System.out.println("Top-K found: " + topKFI.size());
+        System.out.println("Absolute minSup: " + minCount);
+        System.out.println("Relative minSup: " + (minCount / (double) numberOfTransactions));
+        System.out.println("Number of transactions: " + numberOfTransactions);
+    }
+
+    /**
+     * Requirement 2: Fast primitive-based heap.
+     * Uses binary search and array shifting for extremely fast insertion.
+     */
+    private static class QuickHeap {
+        private final int K;
+        private int[] heapList;
+        private int size;
+
+        public QuickHeap(int k) {
+            this.K = k;
+            this.heapList = new int[K];
+            this.size = 0;
+        }
+
+        public int insert(int value) {
+            // Early exit if value is worse than the worst item in a full heap
+            if (size == K && value <= heapList[size - 1]) {
+                return heapList[size - 1];
+            }
+
+            // Find insertion point (Binary Search for Descending Order)
+            int low = 0;
+            int high = size - 1;
+            int pos = size;
+
+            while (low <= high) {
+                int mid = (low + high) >>> 1;
+                if (heapList[mid] < value) {
+                    pos = mid;
+                    high = mid - 1;
+                } else {
+                    low = mid + 1;
+                }
+            }
+
+            // Shift and Insert
+            int numToMove = Math.min(size, K - 1) - pos;
+            if (numToMove > 0) {
+                System.arraycopy(heapList, pos, heapList, pos + 1, numToMove);
+            }
+            
+            heapList[pos] = value;
+            if (size < K) size++;
+
+            return (size == K) ? heapList[K - 1] : 0;
+        }
+    }
+
+    // --- Standard Helper Methods ---
+
+    private List<Candidate> readAndRank(String path) throws IOException {
+        Map<Integer, List<Integer>> vR = new HashMap<>();
+        int transIndex = 0;
+        int itemIndex = 0;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.isEmpty() || line.startsWith("#")) continue;
+                String[] items = line.split("\\s+");
+                for (String itemStr : items) {
+                    Integer id = itemToId.computeIfAbsent(itemStr, k -> {
+                        int newId = itemToId.size();
+                        idToItem.put(newId, itemStr);
+                        return newId;
+                    });
+                    List<Integer> tids = vR.computeIfAbsent(id, x -> new ArrayList<>());
+                    if (tids.isEmpty() || tids.get(tids.size() - 1) != transIndex) {
+                        tids.add(transIndex);
+                    }
+                }
+                transIndex++;
+            }
+        }
+        this.numberOfTransactions = transIndex;
+
+        List<ItemStat> stats = new ArrayList<>();
+        for (var entry : vR.entrySet()) stats.add(new ItemStat(entry.getValue().size(), entry.getKey()));
+        stats.sort((a, b) -> b.support - a.support);
+
+        int cutoff = Math.min(stats.size(), k);
+        rankToRaw = new int[stats.size()];
+        List<Candidate> l1 = new ArrayList<>();
+
+        for (int i = 0; i < stats.size(); i++) {
+            ItemStat stat = stats.get(i);
+            rankToRaw[i] = stat.rawID;
+            CustomBitSet bs = new CustomBitSet(numberOfTransactions);
+            for (int tid : vR.get(stat.rawID)) bs.set(tid);
+            
+            int[] itemset = new int[]{i};
+            l1.add(new Candidate(itemset, bs, stat.support));
+            topKFI.add(new TopKFIM(itemset, stat.support));
+            quickHeap.insert(stat.support);
+        }
+        return l1;
+    }
+
+    private boolean hasSamePrefix(int[] a, int[] b, int len) {
+        for (int i = 0; i < len; i++) if (a[i] != b[i]) return false;
+        return true;
+    }
+
+    private int compareItemsets(int[] a, int[] b) {
+        for (int i = 0; i < Math.min(a.length, b.length); i++) {
+            if (a[i] != b[i]) return a[i] - b[i];
+        }
+        return a.length - b.length;
+    }
+
+    private void saveResults(String path) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
+            for (TopKFIM res : topKFI) {
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < res.items.length; i++) {
+                    sb.append(idToItem.get(rankToRaw[res.items[i]]));
+                    if (i < res.items.length - 1) sb.append(" ");
+                }
+                sb.append(" #SUP: ").append(res.support);
+                writer.write(sb.toString());
+                writer.newLine();
+            }
+        }
+    }
+
+    // --- Data Structures ---
+
+    private static class CustomBitSet {
+        private final long[] data;
+        public CustomBitSet(int bits) { this.data = new long[(bits + 63) / 64]; }
+        public void set(int i) { data[i >> 6] |= (1L << (i & 63)); }
+        public int count() {
+            int c = 0;
+            for (long d : data) c += Long.bitCount(d);
+            return c;
+        }
+        public static CustomBitSet intersect(CustomBitSet a, CustomBitSet b) {
+            CustomBitSet res = new CustomBitSet(a.data.length * 64);
+            for (int i = 0; i < a.data.length; i++) res.data[i] = a.data[i] & b.data[i];
+            return res;
+        }
+    }
+
+    private static class Candidate {
+        int[] itemset;
+        CustomBitSet bits;
+        int support;
+        Candidate(int[] is, CustomBitSet b, int s) { this.itemset = is; this.bits = b; this.support = s; }
+    }
+
+    private static class TopKFIM {
+        int[] items;
+        int support;
+        TopKFIM(int[] i, int s) { this.items = i; this.support = s; }
+    }
+
+    private static class ItemStat {
+        int support, rawID;
+        ItemStat(int s, int r) { this.support = s; this.rawID = r; }
+    }
+}
