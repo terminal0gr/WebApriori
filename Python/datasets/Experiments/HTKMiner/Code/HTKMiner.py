@@ -18,7 +18,7 @@ class HTKMiner:
         self.delimiter = delimiter 
         self.num_of_transactions = 0 # The count of transactions in database
         self.itemCount = 0 # The count of items in database
-        self.TransitemCount = 0 # The count of all items in every transaction
+        self.TransitemCount = 0 # The overall count of all items in every transaction
         self.topK = topK #User defined Tok-K threshold
         self.tidSet=tidSet # User specified, default True. True intersection mode, False Diffset mode
         self.bitSetMode=bitSetMode # User specified, default True. True bitSet mode, False tidSet mode
@@ -70,7 +70,7 @@ class HTKMiner:
             # statistics
             self.num_of_transactions=transIndex
             self.itemCount=itemIndex
-            self.TransitemCount=transitem # Uncomment for stats only
+            self.TransitemCount=transitem 
 
         item1TopK, self.min_count = self.InitialTopKFI(vR)
 
@@ -82,7 +82,6 @@ class HTKMiner:
 
         b3=t.time()
         print(f"Read dataset Time: {(b3-b1):.3f} Seconds")
-        print(f"Total items in transactions: {self.TransitemCount}")
 
         if self.bitSetMode:
             # # Parallel native processing
@@ -658,11 +657,11 @@ class HTKMiner:
         # Useful stats
         print(f"Transactions:{self.num_of_transactions}")   
         print(f"Items:{self.itemCount}")  
+        avg=self.TransitemCount/self.num_of_transactions 
+        print(f"Avg item size pre trans:{avg:.1f}")   
+        print(f"Dataset density:{avg/self.itemCount:.5f}") 
+        print(f"Overall items count: {self.TransitemCount}")
 
-        # Uncomment only if self.TransitemCount has been computed in read dataset for stats
-        # avg=self.TransitemCount/self.num_of_transactions 
-        # print(f"Avg item size pre trans:{avg:.1f}")   
-        # print(f"Dataset density:{avg/self.itemCount:.5f}") 
 
     def writeFIM(self, outputFile=None): #outputs the frequent itemsets in json format
         if (outputFile):
@@ -670,7 +669,7 @@ class HTKMiner:
             # data = {", ".join(map(str, key)): value for key, value in self.finalTopK.items()}
             data = {", ".join(self.itemDict[item] for item in key): value for key, value in self.finalTopK.items()}
             with open(outputFile, "w") as file:
-                json.dump(data, file, indent=4)
+                json.dump(data, file, indent=4, ensure_ascii=False)
 
 # implementation of the quick heap which keeps only the Top-K supports in descending order
 # Quick and memory saver.
