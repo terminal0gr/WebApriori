@@ -1,6 +1,11 @@
-java -Xms12g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FPGrowth "pumsb.dat" "0.957713167"
-java -Xms12g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FPGrowth "pumsb.dat" "0.920299310851037"
-java -Xms12g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FPGrowth "pumsb.dat" "0.867879133874322"
+rem java -Xms12g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FPGrowth "TH2FIM.dat" "0.040876420392091"
+rem java -Xms12g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FPGrowth "T80I100D1M.dat" "0.798902"
+
+rem java -Xms12g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FPGrowth "TH2FIM.dat" "0.01379891680626"
+rem java -Xms12g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FPGrowth "T80I100D1M.dat" "0.642858"
+
+rem java -Xms12g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FPGrowth "TH2FIM.dat" "0.005116043936883"
+java -Xms12g -Xmx12g -cp "bin;lib/*" ca.pfv.spmf.Mall.SPMF_FPGrowth "T80I100D1M.dat" "0.518797"
 
 pause
 

@@ -46,6 +46,7 @@ import java.util.*;
 public class Database {
 	/** the largest item in the database */
 	public int maxItem = 0;
+	
 	/** the number of transactions in the database */
 	public int tidsCount =0;
 	

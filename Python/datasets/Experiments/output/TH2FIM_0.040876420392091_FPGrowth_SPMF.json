@@ -1,0 +1,9 @@
+{
+    "Algorithm":"FPGrowth",
+    "language":"java",
+    "library":"SPMF",
+    "minSup":0.040876420392091,
+    "totalFI":100,
+    "Runtime":100.241,
+    "Memory":11259
+}

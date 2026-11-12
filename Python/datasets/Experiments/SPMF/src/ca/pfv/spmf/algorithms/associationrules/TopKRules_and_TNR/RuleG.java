@@ -123,41 +123,49 @@ public class RuleG implements Comparable<RuleG>{
 	 *       then on the confidence,
 	 *       then on the hashCodes.
 	 */
-	public int compareTo(RuleG o) {
-		// if the same object, return 0.
-		if(o == this){
-			return 0;
-		}
-		// compare the supports
-		int compare = this.getAbsoluteSupport() - o.getAbsoluteSupport();
-		if(compare !=0){
-			return compare;
-		}
-		
-		//compare antecedent sizes
-		int itemset1sizeA = this.itemset1 == null ? 0 : this.itemset1.length;
-		int itemset1sizeB = o.itemset1 == null ? 0 : o.itemset1.length;
-		int compare2 = itemset1sizeA - itemset1sizeB;
-		if(compare2 !=0){
-			return compare2;
-		}
-		
-		//compare consequent sizes
-		int itemset2sizeA = this.itemset2 == null ? 0 : this.itemset2.length;
-		int itemset2sizeB = o.itemset2 == null ? 0 : o.itemset2.length;
-		int compare3 = itemset2sizeA - itemset2sizeB;
-		if(compare3 !=0){
-			return compare3;
-		}
-		
-		// compare confidence
-		int compare4 = (int)(this.getConfidence()  - o.getConfidence());
-		if(compare !=0){
-			return compare4;
-		}
 
-		// compare hashcodes
-		return this.hashCode() - o.hashCode();
+	public int compareTo(RuleG o) {
+	    if(o == this){
+	        return 0;
+	    }
+	    // compare the supports
+	    int compare = this.getAbsoluteSupport() - o.getAbsoluteSupport();
+	    if(compare != 0){
+	        return compare;
+	    }
+	    
+	    //compare antecedent sizes
+	    int itemset1sizeA = this.itemset1 == null ? 0 : this.itemset1.length;
+	    int itemset1sizeB = o.itemset1 == null ? 0 : o.itemset1.length;
+	    int compare2 = itemset1sizeA - itemset1sizeB;
+	    if(compare2 != 0){
+	        return compare2;
+	    }
+	    
+	    //compare consequent sizes
+	    int itemset2sizeA = this.itemset2 == null ? 0 : this.itemset2.length;
+	    int itemset2sizeB = o.itemset2 == null ? 0 : o.itemset2.length;
+	    int compare3 = itemset2sizeA - itemset2sizeB;
+	    if(compare3 != 0){
+	        return compare3;
+	    }
+	    
+	    // FIX 1 & 2: Use Double.compare and check compare4 (not compare!)
+	    int compare4 = Double.compare(this.getConfidence(), o.getConfidence());
+	    if(compare4 != 0){  // FIXED: was 'compare'
+	        return compare4;
+	    }
+
+	    // FIX 3: Deterministic lexicographic comparison instead of hashCode (2025)
+	    for(int i = 0; i < itemset1sizeA; i++) {
+	        int cmp = this.itemset1[i].compareTo(o.itemset1[i]);
+	        if(cmp != 0) return cmp;
+	    }
+	    for(int i = 0; i < itemset2sizeA; i++) {
+	        int cmp = this.itemset2[i].compareTo(o.itemset2[i]);
+	        if(cmp != 0) return cmp;
+	    }
+	    return 0;
 	}
 	
 	public boolean equals(Object o){

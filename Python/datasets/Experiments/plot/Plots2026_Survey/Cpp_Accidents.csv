@@ -1,0 +1,10 @@
+﻿Top-K,100,100,10000,10000
+Accidents,Runtime (sec),Memory (GB),Runtime (sec),Memory (GB)
+Apriori Borgelt,0.67,63,3.15,71
+Eclat Borgelt,0.63,63,1.13,85
+dEclat Borgelt,0.60,63,0.91,70
+LCM Borgelt,1.10,63,1.31,72
+FP-Growth Borgelt,0.72,63,1.04,63
+negFIN Aryabarzan,0.65,5,1.16,25
+HTK-Miner Malliaridis,0.16,108,3.10,866
+HTK-Miner++ Malliaridis,0.12,105,3.20,873

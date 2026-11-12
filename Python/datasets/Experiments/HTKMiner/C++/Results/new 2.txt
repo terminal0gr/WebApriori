@@ -18,7 +18,3 @@ b       3
 \section*{Acknowledgements}
 The publication of the article in OA mode was financially supported by HEAL-Link.
 
-Σε συνέχεια της επικοινωνίας μου μαζί σας, σας ενημερώνω ότι το ζήτημα με το Acknowledgement Section το έχω ήδη εισάγει στο manuscript κατά την διαδικασία του
-review απο την πλευρά μου της proof έκδοσης. Συνεπώς το μόνο πρόβλημα παραμένει το θέμα του ακαδημαικού email (konsmall@ihu.gr) που πρέπει να προσθεθεί στην
- Rights and Access form.
- 

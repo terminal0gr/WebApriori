@@ -226,7 +226,7 @@ public:
                 // SMART ITERATION MECHANISM (SIME) - Parallelized
                 // Using 'dynamic' schedule because mining tasks are often unbalanced
                 //#pragma omp for schedule(dynamic, 8)
-                #pragma omp for schedule(dynamic, 8)
+                #pragma omp for schedule(dynamic, 8) nowait
                 for (int j = 1; j < n; ++j) {
                     // Pruning A: In parallel, we use 'continue' for the outer loop 
                     // as threads handle non-contiguous chunks.
@@ -261,11 +261,11 @@ public:
                                     }
                                 }
 
-                                // 2. Create Itemset Key
+                                // Create Itemset Key
                                 newKey = currentLevelData[i].itemset;
                                 newKey.push_back(currentLevelData[j].itemset.back());
 
-                                // 4. Add to Thread-Local storage (Lock-free)
+                                // Add to Thread-Local storage (Lock-free)
                                 localNextLevelData[tid].push_back({std::move(newKey), std::move(newBits), newSup});
                             }
                         }

@@ -7,10 +7,9 @@
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
             "args": [
-                "../../datasets/chess.dat",
-                "100",
-                "true",
-                " "
+                "../../datasets/webdocs.dat",
+                "0.327204591739643",
+                "1"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

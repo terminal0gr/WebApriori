@@ -1,0 +1,17 @@
+﻿Dataset,Top-K,
+Kosarak,10000,
+Algorithm,Runtime,Memory
+HTK Miner Malliaridis,67.12,2593
+HTK-negFIN Malliaridis,12GB+++,12GB+++
+negFIN Aryabarzan,57.61,758
+Eclat Borgelt,30.58,1229
+Eclat Goethals ,17.87,547
+Apriori PAMI,83.64,3221
+Apriori Bitset PAMI,93.48,1848
+Eclat PAMI,20.66,2684
+Eclat bitset PAMI,94.56,1848
+dEclat PAMI,12GB+++,12GB+++
+FP-Growth PAMI,24.79,1067
+Apriori Mlxtend,1000+++,1000+++
+H-Mine Mlxtend,273.03,12618
+FP-Growth Mlxtend,12GB+++,12GB+++

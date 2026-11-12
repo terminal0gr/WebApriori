@@ -126,7 +126,7 @@
             "0.0%",
             "The columns count having exclusively 2 values by the total number of columns"
         ],
-        "HasHeader": [
+        "hasHeader": [
             "Has Header?",
             true,
             true,
@@ -143,6 +143,30 @@
             2,
             2,
             "The number of columns containing words used in Type 2-INV datasets. For example (Invoice, Item, Customer etc)"
+        ],
+        "n_items": [
+            "Items count",
+            706,
+            706,
+            "The total number of items for ARM process"
+        ],
+        "avg_transaction_size": [
+            "Avg items per transaction",
+            210.25,
+            "210.25",
+            "The average number of items per transaction for ARM process"
+        ],
+        "n_transactions": [
+            "transactions count",
+            4,
+            4,
+            "The total number of transactions for ARM process"
+        ],
+        "density": [
+            "transactions density",
+            0.2978045325779037,
+            "29.8%",
+            "The density of transactions for ARM process"
         ]
     },
     "datasetTypePredicted": 2,
@@ -156,6 +180,5 @@
     "sSort": -3,
     "datasetName": "2_L-0008.csv",
     "public": 1,
-    "redundantRemoveType": 0,
-    "participatingItems": "[]"
+    "redundantRemoveType": 0
 }

@@ -7,7 +7,7 @@
             "Number Of Columns",
             339,
             339,
-            "The total number of columns/features in the Dataset"
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -59,31 +59,31 @@
         ],
         "FreqOfIntegerCol": [
             "Integer Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of integer columns to the total number of columns"
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            1.0,
+            1,
             "100.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of columns with text to the total number of columns"
         ],
         "FreqOfBoolCol": [
             "Boolean Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of boolean columns to the total number of columns"
         ],
@@ -143,7 +143,7 @@
         ],
         "avg_transaction_size": [
             "Avg items per transaction",
-            42.0,
+            42,
             "42.00",
             "The average number of items per transaction for ARM process"
         ],
@@ -161,5 +161,13 @@
         ]
     },
     "datasetTypePredicted": 1,
-    "datasetType": 1
+    "datasetType": 1,
+    "min_support": 0.3272045,
+    "min_confidence": 0.05,
+    "min_lift": 0.8,
+    "max_length": 5,
+    "sSort": -3,
+    "datasetName": "kosarak.dat",
+    "public": 1,
+    "redundantRemoveType": 0
 }

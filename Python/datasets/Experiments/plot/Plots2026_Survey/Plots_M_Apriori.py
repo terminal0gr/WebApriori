@@ -8,7 +8,7 @@ matplotlib.rcParams['ps.fonttype'] = 42
 # Data Extraction
 ks = ['$10^2$\n(0.023)', '$10^3$\n(0.006)', '$10^4$\n(0.002)']
 algos = ['Apriori Py mlxtend', 'Apriori Py Pami', 'AprioriTID Py Pami', 'AprioriTID Java SPMF', 'AprioriTID bitset Java SPMF', 'Apriori C++ Borgelt']
-colors = ['skyblue', 'steelblue', 'blue', 'gray', 'black', 'red'] 
+colors = ['skyblue', 'steelblue', 'blue', 'gray', 'black', 'green'] 
 dataset = "kosarak" 
 
 
@@ -35,7 +35,7 @@ for i, k in enumerate(ks):
         
         if m is None:
             # If the algorithm timed out, leave the bar space blank and write a clean, vertical red 'T/O'
-            ax.text(x_pos, 0.1, 'Timeout (>1,000 s)', ha='center', va='bottom', color='red', 
+            ax.text(x_pos, 0.1, 'Timeout (>1,000 s)', ha='center', va='bottom', color=colors[j], 
                     fontsize=11, fontweight='bold', rotation=90, zorder=4)
             
             # Draw an empty dummy bar just to make sure the label links up to the legend correctly

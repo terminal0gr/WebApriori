@@ -1,0 +1,10 @@
+﻿Top-K,100,100,10000,10000
+L-0023,Runtime (sec),Memory (GB),Runtime (sec),Memory (GB)
+Apriori Borgelt,0.22,4,0.27,4
+Eclat Borgelt,0.20,4,0.23,4
+dEclat Borgelt,0.18,3,0.37,4
+LCM Borgelt,0.54,3,0.55,4
+FP-Growth Borgelt,0.25,4,0.25,4
+negFIN Aryabarzan,not FIMI,not FIMI,not FIMI,not FIMI
+HTK-Miner Malliaridis,0.01,9,0.19,20
+HTK-Miner++ Malliaridis,0.01,20,0.10,23

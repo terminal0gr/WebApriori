@@ -1,7 +1,6 @@
-echo T80I100D2M.dat
-call negFIN.exe "..\..\datasets\T80I100D1M.dat" "0.798902" "1"
-call negFIN.exe "..\..\datasets\T80I100D1M.dat" "0.642858" "1"
-call negFIN.exe "..\..\datasets\T80I100D1M.dat" "0.518797" "1"
+call negFIN.exe "..\..\datasets\webdocs.dat" "0.327204591739643" "1" 
+rem call negFIN.exe "..\..\datasets\webdocs.dat" "0.216111866918979" "1"
+rem call negFIN.exe "..\..\datasets\webdocs.dat" "0.150844344423024" "1"
 
 
 

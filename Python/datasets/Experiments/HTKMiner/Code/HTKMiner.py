@@ -52,7 +52,7 @@ class HTKMiner:
             # The idea is to map item names to their indexes and perform better in the algorithm
             self.itemDict=dict()
             itemDictReversed=dict()
-            b1=t.time() # start of reading
+            b1=t.perf_counter() # start of reading
             for line in f:
                 for item in line.strip().split(sep=self.delimiter):
                     transitem+=1 # Uncomment for stats only
@@ -80,7 +80,7 @@ class HTKMiner:
         # Get rid off the 1-itemsets that are non frequent based on the TopK value
         vR = {key: vR[key] for key in item1TopK if key in vR}
 
-        b3=t.time()
+        b3=t.perf_counter()
         print(f"Read dataset Time: {(b3-b1):.3f} Seconds")
 
         if self.bitSetMode:
@@ -124,7 +124,7 @@ class HTKMiner:
         else:
             self.data = vR
         
-        print(f"bitset transformation Time: {(t.time()-b3):.3f} Seconds")
+        print(f"bitset transformation Time: {(t.perf_counter()-b3):.3f} Seconds")
 
         return item1TopK
 
@@ -297,7 +297,7 @@ class HTKMiner:
             # In currentLevelTopK, collect only the first topK items. the rest are discarded
             topKFI, self.min_count, currentLevelTopK = self.getTopKFI(topKFI,level+1)
 
-            if not currentLevelTopK or (self.commitTimeout!=0 and t.time()-self.start>self.commitTimeout):
+            if not currentLevelTopK or (self.commitTimeout!=0 and t.perf_counter()-self.start>self.commitTimeout):
                 level = 0 # Declares the end of procedure
             else:
                 level += 1
@@ -409,7 +409,7 @@ class HTKMiner:
             # return the absolute TopK itemsets so far
             topKFI, self.min_count, currentLevelTopK = self.getTopKFI(topKFI,level+1)
 
-            if not currentLevelTopK or (self.commitTimeout!=0 and t.time()-self.start>self.commitTimeout):
+            if not currentLevelTopK or (self.commitTimeout!=0 and t.perf_counter()-self.start>self.commitTimeout):
                 level = 0 # Declares the end of procedure
             else:
                 level += 1
@@ -509,7 +509,7 @@ class HTKMiner:
             # return the absolute TopK itemsets so far
             topKFI, self.min_count, currentLevelTopK = self.getTopKFI(topKFI,level+1)
 
-            if not currentLevelTopK or (self.commitTimeout!=0 and t.time()-self.start>self.commitTimeout):
+            if not currentLevelTopK or (self.commitTimeout!=0 and t.perf_counter()-self.start>self.commitTimeout):
 
                 level = 0 # Declares the end of procedure
             else:
@@ -613,7 +613,7 @@ class HTKMiner:
             # return the absolute TopK itemsets so far
             topKFI, self.min_count, currentLevelTopK = self.getTopKFI(topKFI,level+1)
 
-            if not currentLevelTopK or (self.commitTimeout!=0 and t.time()-self.start>self.commitTimeout):
+            if not currentLevelTopK or (self.commitTimeout!=0 and t.perf_counter()-self.start>self.commitTimeout):
                 level = 0 # Declares the end of procedure
             else:
                 level += 1
@@ -627,11 +627,11 @@ class HTKMiner:
     # The main mining procedure
     def mine(self):
 
-        self.start = t.time() #Start Time.
+        self.start = t.perf_counter() #Start Time.
 
         initialTopK = self.readDatasetFile()  
 
-        endRead = t.time()
+        endRead = t.perf_counter()
 
         # initialTopK = self.firstTopKList()
         if self.tidSet and self.bitSetMode:
@@ -644,7 +644,7 @@ class HTKMiner:
             self.finalTopK, self.min_count = self.mineNextLevelDiffSet(initialTopK)
         self.minSup=self.min_count/self.num_of_transactions
 
-        end = t.time() #end Time
+        end = t.perf_counter() #end Time
         self.execution_time=end-self.start
 
         print(f"FI Mining Time: {(end-endRead):.3f} Seconds")

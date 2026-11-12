@@ -1,0 +1,11 @@
+{
+    "Algorithm":"eclat_bitset",
+    "language":"java",
+    "library":"SPMF",
+    "minSup":0.040876420392091,
+    "minSupAbsolute":1083088,
+    "totalFI":0,
+    "Items":836,
+    "Runtime":-1.787315123669E9,
+    "Memory":0
+}

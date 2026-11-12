@@ -1,0 +1,16 @@
+﻿Top-K,100,100,10000,10000
+L-0023,Runtime (sec),Memory (GB),Runtime (sec),Memory (GB)
+Apriori Mlxtend,0.74,94,136.20,102
+H-Mine Mlxtend,0.67,94,1.62,103
+FP-Growth Mlxtend,2.58,98,70.30,122
+Apriori PAMI,0.13,62,4.34,89
+Apriori Bitset PAMI,0.05,58,0.36,64
+Eclat PAMI,0.11,58,0.63,85
+Eclat bitset PAMI,0.05,57,0.36,63
+dEclat PAMI,0.44,72,56.74,2764
+FP-Growth PAMI,0.11,60,0.66,78
+Eclat Borgelt,not FIMI,not FIMI,not FIMI,not FIMI
+Eclat Goethals,0.08,51,0.51,52
+negFIN Aryabarzan,0.14,12,1.92,36
+HTK Miner Malliaridis,0.05,11,5.43,28
+HTK-negFIN Malliaridis,0.25,14,1000+++,1000+++

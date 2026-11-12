@@ -17,3 +17,6 @@ Python/datasets/Experiments/datasets/T80I100D2M.dat
 Python/datasets/Experiments/datasets/TH1FIM.dat
 Python/datasets/Experiments/datasets/TH2FIM.dat
 Python/datasets/Experiments/datasets/instacart_priorFIM.txt
+/Python/datasets/Experiments/borgelt/C/Run
+/Python/datasets/Experiments/borgelt/C/Run/Output
+*.fim

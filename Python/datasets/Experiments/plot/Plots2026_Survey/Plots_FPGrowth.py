@@ -10,7 +10,7 @@ matplotlib.rcParams["font.family"] = "Times New Roman"
 
 algoFamily = "FPGrowth"
 algos = ['FPGrowth Py mlxtend', 'FPGrowth Py Pami', 'FPGrowth Java SPMF', 'FPGrowth C++ Borgelt']
-colors = ['deepskyblue', 'blue', 'gray', 'red'] 
+colors = ['deepskyblue', 'blue', 'gray', 'green'] 
 markers = ['D', '>', 's', 'p']
 
 
@@ -73,15 +73,15 @@ for i, k in enumerate(x_labels):
         m = peakMemory[k][j]
         
         if m is None: # Timeout (>1,000 s)
-            ax2.text(x_pos, 0, 'Timeout (>1,000 s)', ha='center', va='bottom', color='red', 
+            ax2.text(x_pos, 0, 'Timeout (>1,000 s)', ha='center', va='bottom', color=colors[j], 
                     fontsize=defaultFontSize, fontweight='normal', rotation=90, zorder=4)
             ax2.bar(x_pos, 0, bar_width, color=colors[j])
         elif m == 99.999: # Special marker for the 12 GB cap (indicating Out of Memory)    
-            ax2.text(x_pos, 0, 'Out of Memory (>12 GB)', ha='center', va='bottom', color='red', 
+            ax2.text(x_pos, 0, 'Out of Memory (>12 GB)', ha='center', va='bottom', color=colors[j], 
                     fontsize=defaultFontSize, fontweight='normal', rotation=90, zorder=4)
             ax2.bar(x_pos, 0, bar_width, color=colors[j])
         elif m == -1: # Special marker for Not FIMI. Format not supported
-            ax2.text(x_pos, 0, 'Format not supported', ha='center', va='bottom', color='red', 
+            ax2.text(x_pos, 0, 'Format not supported', ha='center', va='bottom', color=colors[j], 
                     fontsize=defaultFontSize, fontweight='normal', rotation=90, zorder=4)
             ax2.bar(x_pos, 0, bar_width, color=colors[j])
         else:
@@ -180,15 +180,15 @@ for i, k in enumerate(x_labels):
         m = peakMemory[k][j]
         
         if m is None: # Timeout (>1,000 s)
-            ax2.text(x_pos, 0, 'Timeout (>1,000 s)', ha='center', va='bottom', color='red', 
+            ax2.text(x_pos, 0, 'Timeout (>1,000 s)', ha='center', va='bottom', color=colors[j], 
                     fontsize=defaultFontSize, fontweight='normal', rotation=90, zorder=4)
             ax2.bar(x_pos, 0, bar_width, color=colors[j])
         elif m == 99.999: # Special marker for the 12 GB cap (indicating Out of Memory)    
-            ax2.text(x_pos, 0, 'Out of Memory (>12 GB)', ha='center', va='bottom', color='red', 
+            ax2.text(x_pos, 0, 'Out of Memory (>12 GB)', ha='center', va='bottom', color=colors[j], 
                     fontsize=defaultFontSize, fontweight='normal', rotation=90, zorder=4)
             ax2.bar(x_pos, 0, bar_width, color=colors[j])
         elif m == -1: # Special marker for Not FIMI. Format not supported
-            ax2.text(x_pos, 0, 'Format not supported', ha='center', va='bottom', color='red', 
+            ax2.text(x_pos, 0, 'Format not supported', ha='center', va='bottom', color=colors[j], 
                     fontsize=defaultFontSize, fontweight='normal', rotation=90, zorder=4)
             ax2.bar(x_pos, 0, bar_width, color=colors[j])
         else:
@@ -285,15 +285,15 @@ for i, k in enumerate(x_labels):
         m = peakMemory[k][j]
         
         if m is None: # Timeout (>1,000 s)
-            ax2.text(x_pos, 0, 'Timeout (>1,000 s)', ha='center', va='bottom', color='red', 
+            ax2.text(x_pos, 0, 'Timeout (>1,000 s)', ha='center', va='bottom', color=colors[j], 
                     fontsize=defaultFontSize, fontweight='normal', rotation=90, zorder=4)
             ax2.bar(x_pos, 0, bar_width, color=colors[j])
         elif m == 99.999: # Special marker for the 12 GB cap (indicating Out of Memory)    
-            ax2.text(x_pos, 0, 'Out of Memory (>12 GB)', ha='center', va='bottom', color='red', 
+            ax2.text(x_pos, 0, 'Out of Memory (>12 GB)', ha='center', va='bottom', color=colors[j], 
                     fontsize=defaultFontSize, fontweight='normal', rotation=90, zorder=4)
             ax2.bar(x_pos, 0, bar_width, color=colors[j])
         elif m == -1: # Special marker for Not FIMI. Format not supported
-            ax2.text(x_pos, 0, 'Format not supported', ha='center', va='bottom', color='red', 
+            ax2.text(x_pos, 0, 'Format not supported', ha='center', va='bottom', color=colors[j], 
                     fontsize=defaultFontSize, fontweight='normal', rotation=90, zorder=4)
             ax2.bar(x_pos, 0, bar_width, color=colors[j])
         else:
@@ -390,15 +390,15 @@ for i, k in enumerate(x_labels):
         m = peakMemory[k][j]
         
         if m is None: # Timeout (>1,000 s)
-            ax2.text(x_pos, 0, 'Timeout (>1,000 s)', ha='center', va='bottom', color='red', 
+            ax2.text(x_pos, 0, 'Timeout (>1,000 s)', ha='center', va='bottom', color=colors[j], 
                     fontsize=defaultFontSize, fontweight='normal', rotation=90, zorder=4)
             ax2.bar(x_pos, 0, bar_width, color=colors[j])
         elif m == 99.999: # Special marker for the 12 GB cap (indicating Out of Memory)    
-            ax2.text(x_pos, 0, 'Out of Memory (>12 GB)', ha='center', va='bottom', color='red', 
+            ax2.text(x_pos, 0, 'Out of Memory (>12 GB)', ha='center', va='bottom', color=colors[j], 
                     fontsize=defaultFontSize, fontweight='normal', rotation=90, zorder=4)
             ax2.bar(x_pos, 0, bar_width, color=colors[j])
         elif m == -1: # Special marker for Not FIMI. Format not supported
-            ax2.text(x_pos, 0, 'Format not supported', ha='center', va='bottom', color='red', 
+            ax2.text(x_pos, 0, 'Format not supported', ha='center', va='bottom', color=colors[j], 
                     fontsize=defaultFontSize, fontweight='normal', rotation=90, zorder=4)
             ax2.bar(x_pos, 0, bar_width, color=colors[j])
         else:

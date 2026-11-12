@@ -1,0 +1,51 @@
+{
+    "min_support": 0.3272045,
+    "min_confidence": 0.05,
+    "min_lift": 0.8,
+    "max_length": 5,
+    "sSort": -3,
+    "datasetName": "kosarak.dat",
+    "redundantRemoveType": 0,
+    "Records": 990002,
+    "RecordsCreationTime": "2605.545",
+    "RulesCount": 2,
+    "RulesCreationTime": "56.185",
+    "rules": [
+        {
+            "LHS": [
+                "11"
+            ],
+            "RHS": [
+                "6"
+            ],
+            "Confidence": 0.889986678203068,
+            "Lift": 1.4651258474666244,
+            "Conviction": 3.568229155395248,
+            "Leverage": 0.10390152154429044,
+            "LHS_Count": 364065,
+            "LHS_Support": 0.36774168132993673,
+            "RHS_Count": 601374,
+            "RHS_Support": 0.6074472576823077,
+            "Support": 0.3272851974036416,
+            "Count": 324013
+        },
+        {
+            "LHS": [
+                "6"
+            ],
+            "RHS": [
+                "11"
+            ],
+            "Confidence": 0.5387878425073249,
+            "Lift": 1.4651258474666244,
+            "Conviction": 1.370862212538499,
+            "Leverage": 0.10390152154429044,
+            "LHS_Count": 601374,
+            "LHS_Support": 0.6074472576823077,
+            "RHS_Count": 364065,
+            "RHS_Support": 0.36774168132993673,
+            "Support": 0.3272851974036416,
+            "Count": 324013
+        }
+    ]
+}

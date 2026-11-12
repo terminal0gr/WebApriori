@@ -165,9 +165,9 @@ public:
 
 class HTKMiner {
 	
-private:
+  private:
     // Mappings (The 3-Tier System)
-    std::unordered_map<std::string_view, int> itemToId; // Name -> RawID
+    std::unordered_map<std::string_view, int> itemToId; // Name -> RawID 
     std::unordered_map<int, std::string_view> idToItem; // RawID -> Name
     std::vector<int> rankToRaw;                    // Rank -> RawID
     
@@ -189,7 +189,7 @@ private:
 
     using ItemStat = std::pair<int, int>; // {Support, RawID}
 
-public:
+  public:
     HTKMiner(int k, bool mode = true, std::string delim = " ") : heap(k), topK(k), tidSet(mode), delimiter(delim) {}
 
     void mine(const std::string& filepath) {
@@ -301,7 +301,7 @@ public:
         std::ofstream out(path);
         for (const auto& res : topKFI) {
             for (size_t i = 0; i < res.items.size(); ++i) {
-                out << idToItem[rankToRaw[res.items[i]]] << (i == res.items.size()-1 ? "" : " ");
+                out << this->idToItem[rankToRaw[res.items[i]]] << (i == res.items.size()-1 ? "" : " ");
             }
             out << " #SUP: " << res.support << "\n";
         }
@@ -392,15 +392,16 @@ public:
         }
 
         int itemIdx = 0;
-        std::unordered_map<std::string_view, int> intToId; 
+        //std::unordered_map<std::string_view, int> intToId; 
         
         for (const auto& val : global_distinct_items) {
-            intToId[val] = itemIdx;
+            //intToId[val] = itemIdx;
             
             // SECURITY FIX: Convert string_view to std::string for class members!
             // Otherwise, they will point to deleted memory when the function ends.
             this->idToItem[itemIdx] = std::string(val); 
-            this->itemToId[std::string(val)] = itemIdx;
+            // this->itemToId[std::string(val)] = itemIdx;
+            this->itemToId[val] = itemIdx;
             
             itemIdx++;
         }
@@ -429,8 +430,8 @@ public:
                     // FIXED: Check if NOT empty
                     if (!item.empty()) {
                         // Use .find() for safety, just in case a weird string slips through
-                        auto it = intToId.find(item);
-                        if (it != intToId.end()) {
+                        auto it = itemToId.find(item);
+                        if (it != itemToId.end()) {
                             int id = it->second;
                             auto& tids = local_vR_vec[tid][id];
                             
@@ -545,8 +546,10 @@ public:
                 const std::vector<int>& tids = vR[rawID];
                 for (int t : tids) workspace.set(t);
 
-                topKFI[i]={{i}, sup};
-                l1[i]={{i}, workspace, sup};
+                // topKFI[i]={{i}, sup};
+                // l1[i]={{i}, workspace, sup};
+                topKFI[i]={{rawID}, sup};
+                l1[i]={{rawID}, workspace, sup};
 
             }
         }

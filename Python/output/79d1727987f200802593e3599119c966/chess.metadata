@@ -162,12 +162,12 @@
     },
     "datasetTypePredicted": 4,
     "datasetType": 1,
-    "min_support": 0.02,
-    "min_confidence": 0.2,
-    "min_lift": 1.5,
-    "max_length": 6,
+    "min_support": 0.945244055068836,
+    "min_confidence": 0.001,
+    "min_lift": 0.1,
+    "max_length": 8,
     "sSort": -3,
     "datasetName": "chess.dat",
     "public": 1,
-    "redundantRemoveType": 7
+    "redundantRemoveType": 0
 }

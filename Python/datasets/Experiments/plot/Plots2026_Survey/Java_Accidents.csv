@@ -1,0 +1,20 @@
+﻿Top-K,100,100,10000,10000
+Accidents,Runtime (sec),Memory (GB),Runtime (sec),Memory (GB)
+AprioriTID (SPMF),4.47,2200,12GB+++,12GB+++
+AprioriTID bitset (SPMF),0.71,718,1.06,869
+Eclat (SPMF),2.60,1340,76.28,8640
+Eclat bitset (SPMF),0.17,540,0.32,650
+dEclat (SPMF),1.91,744,5.49,1279
+dEclat bitset (SPMF),0.25,450,0.35,560
+FP-Growth (SPMF),1.25,634,1.99,634
+LCMFreq (SPMF),2.08,684,194.56,7544
+H-Mine (SPMF),2.42,1616,63.84,7706
+PrePost+ (SPMF),1.45,660,1.86,765
+FIN (SPMF),3.30,1420,3.50,1424
+dFIN (SPMF),13.38,1446,14.23,1452
+negFIN (SPMF),0.65,609,1.16,750
+LinearTable,0.40,127,0.79,144
+Apriori top-K (SPMF),48.26,222,1000+++,1000+++
+FP-Growth top-K (SPMF),8.36,1040,12GB+++,12GB+++
+HTK-negFIN (SPMF),74.42,11631,12GB+++,12GB+++
+HTK-Miner (SPMF),1.47,498,2.95,2580

@@ -1,0 +1,10 @@
+﻿Top-K,100,100,10000,10000
+Kosarak,Runtime (sec),Memory (GB),Runtime (sec),Memory (GB)
+Apriori Borgelt,1.01,83,1.81,94
+Eclat Borgelt,1.07,83,1.40,134
+dEclat Borgelt,0.89,83,3.53,98
+LCM Borgelt,1.41,83,1.56,121
+FP-Growth Borgelt,0.94,84,1.76,150
+negFIN Aryabarzan,0.86,9,internal_error,internal_error
+HTK-Miner Malliaridis,0.39,120,66.95,3460
+HTK-Miner++ Malliaridis,0.35,130,14.01,3487

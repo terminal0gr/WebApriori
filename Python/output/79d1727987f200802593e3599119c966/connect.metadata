@@ -7,7 +7,7 @@
             "Number Of Columns",
             44,
             44,
-            "The total number of columns/features in the Dataset"
+            "The total number of columns\/features in the Dataset"
         ],
         "_name": [
             "Name",
@@ -65,19 +65,19 @@
         ],
         "FreqOfNumberCol": [
             "Number Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of float number columns to the total number of columns"
         ],
         "FreqOfDateCol": [
             "Date Columns %",
-            0.0,
+            0,
             "0.0%",
             "The ratio of date columns to the total number of columns"
         ],
         "FreqOfStringCol": [
             "String Columns %",
-            -0.0,
+            -0,
             "-0.0%",
             "The ratio of columns with text to the total number of columns"
         ],
@@ -101,8 +101,8 @@
         ],
         "AvgItemLen": [
             "Avg Item Length",
-            NaN,
-            "nan",
+            2.1136363636363638,
+            "2.1",
             "The average length of the elements in dataset"
         ],
         "Freq1CharColumns": [
@@ -137,14 +137,14 @@
         ],
         "n_items": [
             "Items count",
-            67686,
-            67686,
+            129,
+            129,
             "The total number of items for ARM process"
         ],
         "avg_transaction_size": [
             "Avg items per transaction",
-            44.0,
-            "44.00",
+            43,
+            "43.00",
             "The average number of items per transaction for ARM process"
         ],
         "n_transactions": [
@@ -155,11 +155,19 @@
         ],
         "density": [
             "transactions density",
-            0.0006500605738261974,
-            "0.1%",
+            0.3333333333333333,
+            "33.3%",
             "The density of transactions for ARM process"
         ]
     },
     "datasetTypePredicted": 4,
-    "datasetType": 4
+    "datasetType": 1,
+    "min_support": 0.01,
+    "min_confidence": 0.2,
+    "min_lift": 1.5,
+    "max_length": 4,
+    "sSort": -3,
+    "datasetName": "connect.dat",
+    "public": 1,
+    "redundantRemoveType": 0
 }
